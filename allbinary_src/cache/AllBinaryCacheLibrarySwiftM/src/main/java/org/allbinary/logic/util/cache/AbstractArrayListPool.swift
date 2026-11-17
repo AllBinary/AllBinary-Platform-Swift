@@ -1,0 +1,109 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.logic.util.cache
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.string.CommonStrings
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+
+open public class AbstractArrayListPool
+            : Object
+        
+                , PoolInterface {
+        
+
+    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    var buffers: BasicArrayList = BasicArrayListD()
+
+    var cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface
+public constructor (cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface)
+            : super()
+        {
+var cacheableInterfaceFactoryInterface = cacheableInterfaceFactoryInterface
+this.cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun clear()
+        //nullable = true from not(false or (false and true)) = true
+{
+
+
+
+                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun remove(key: Any)
+        //nullable = true from not(false or (false and false)) = true
+: CacheableInterface{
+var key = key
+
+
+
+                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun add(cacheableInterface: CacheableInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var cacheableInterface = cacheableInterface
+this.buffers.add(cacheableInterface)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun addArray(cacheableInterfaces: Array<CacheableInterface?>)
+        //nullable = true from not(false or (false and false)) = true
+{
+var cacheableInterfaces = cacheableInterfaces
+
+
+
+
+                        for (index in 0 until cacheableInterfaces!!.size)
+
+        {
+this.buffers.add(cacheableInterfaces[index]!!)
+}
+
+}
+
+
+}
+                
+            
+

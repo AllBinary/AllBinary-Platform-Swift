@@ -1,0 +1,208 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.graphics.form.item
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.CommandListener
+import javax.microedition.lcdui.Font
+import javax.microedition.lcdui.Graphics
+import org.allbinary.J2MEUtil
+import org.allbinary.game.displayable.canvas.GameCommandCanvas
+import org.allbinary.game.input.Input
+import org.allbinary.game.input.InputFactory
+import org.allbinary.game.input.PlatformKeyFactory
+import org.allbinary.game.input.event.RawKeyEventListener
+import org.allbinary.graphics.color.BasicColor
+import org.allbinary.graphics.form.item.validation.TextItemVisitor
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.string.CommonSeps
+
+open public class CustomTextBox : GameCommandCanvas
+                , RawKeyEventListener {
+        
+
+    private val textFieldItem: ABTextFieldItem
+public constructor (cmdListener: CommandListener, label: String, text: String, maxSize: Int, constraints: Int, font: Font, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
+
+                            : super(cmdListener, label, backgroundBasicColor, foregroundBasicColor){
+    //var cmdListener = cmdListener
+    //var label = label
+    //var text = text
+    //var maxSize = maxSize
+    //var constraints = constraints
+    //var font = font
+    //var backgroundBasicColor = backgroundBasicColor
+    //var foregroundBasicColor = foregroundBasicColor
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    var stringUtil: StringUtil = StringUtil.getInstance()!!
+
+
+    var textFieldItem: ABTextFieldItem = ABTextFieldItem(this, TextItemVisitor(), stringUtil!!.EMPTY_STRING, stringUtil!!.EMPTY_STRING, maxSize, 0, stringUtil!!.EMPTY_STRING, font, backgroundBasicColor, foregroundBasicColor)
+
+textFieldItem!!.setString(text)
+this.textFieldItem= textFieldItem
+this.setTitle(label)
+}
+
+
+    open fun submit()
+        //nullable = true from not(false or (false and true)) = true
+{
+}
+
+
+    private val inputFactory: InputFactory = InputFactory.getInstance()!!
+
+    override fun onEventRaw(keyCode: Int, deviceId: Int, repeated: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+    //var deviceId = deviceId
+    //var repeated = repeated
+this.logUtil!!.putF(StringMaker().
+                            append(this.commonStrings!!.START)!!.appendint(keyCode)!!.toString(), this, "onEvent")
+this.keyPressedByDevice(keyCode, deviceId)
+}
+
+
+    override fun keyPressed(keyCode: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+this.keyPressedByDevice(keyCode, 0)
+}
+
+
+    override fun keyReleased(keyCode: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+this.keyReleasedByDevice(keyCode, 0)
+}
+
+
+    override fun keyRepeated(keyCode: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+this.keyRepeatedByDevice(keyCode, 0)
+}
+
+
+    override fun keyPressedByDevice(keyCode: Int, deviceId: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+    //var deviceId = deviceId
+
+        try {
+            this.logUtil!!.putF(StringMaker().
+                            append(CommonSeps.getInstance()!!.SPACE)!!.appendint(keyCode)!!.toString(), this, this.gameInputStrings!!.KEY_PRESSED)
+
+    var platformKeyFactory: PlatformKeyFactory = PlatformKeyFactory.getInstance()!!
+
+
+    var input: Input = this.inputFactory!!.getInstanceById(keyCode)!!
+
+
+    
+                        if(platformKeyFactory!!.isSubmission(input))
+                        
+                                    {
+                                    this.submit()
+
+                                    }
+                                
+                        else {
+                            this.textFieldItem!!.keyPressed(keyCode)
+
+                        }
+                            
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.gameInputStrings!!.KEY_PRESSED, e)
+}
+
+}
+
+
+    override fun keyReleasedByDevice(keyCode: Int, deviceId: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var keyCode = keyCode
+    //var deviceId = deviceId
+}
+
+
+    override fun paint(graphics: Graphics)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var graphics = graphics
+graphics.setColor(this.backgroundColor)
+graphics.fillRect(0, 0, this.displayInfo!!.getLastWidth(), this.displayInfo!!.getLastHeight())
+graphics.setColor(this.foregroundColor)
+
+    
+                        if(!J2MEUtil.isJ2ME())
+                        
+                                    {
+                                    graphics.drawString(this.getTitle(), 8, 1, 0)
+
+                                    }
+                                
+this.paintXY(graphics, 8, graphics.getFont()!!.getHeight() +2)
+super.paint(graphics)
+}
+
+
+    open fun paintXY(graphics: Graphics, x: Int, y: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var graphics = graphics
+    //var x = x
+    //var y = y
+this.textFieldItem!!.paintXY(graphics, x, y)
+}
+
+
+    open fun getTextFieldItem()
+        //nullable = true from not(false or (false and true)) = true
+: ABTextFieldItem{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.textFieldItem
+}
+
+
+}
+                
+            
+

@@ -1,0 +1,825 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package views.admin.inventory.download
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+import org.allbinary.business.context.modules.storefront.StoreFrontFactory
+import org.allbinary.business.context.modules.storefront.StoreFrontInterface
+import org.allbinary.business.user.commerce.inventory.item.BasicItemData
+import org.allbinary.business.user.commerce.inventory.item.BasicItemValidation
+import org.allbinary.business.user.commerce.inventory.item.download.DownloadItemData
+import org.allbinary.business.user.commerce.inventory.item.download.DownloadableItem
+import org.allbinary.business.user.commerce.inventory.item.download.DownloadableItemValidation
+import org.allbinary.business.user.commerce.money.MoneyException
+import org.allbinary.data.tables.user.commerce.inventory.item.InventoryEntity
+import org.allbinary.data.tables.user.commerce.inventory.item.InventoryEntityFactory
+import org.allbinary.globals.GLOBALS2
+import org.allbinary.globals.URLGLOBALS
+import org.allbinary.logic.communication.http.file.upload.HttpFileUploadUtil
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.control.validate.ValidationComponentInterface
+import org.allbinary.logic.io.file.AbFile
+import org.allbinary.logic.io.file.FileData
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.logic.string.StringValidationUtil
+import org.allbinary.logic.visual.transform.info.TransformInfoInterface
+import org.allbinary.string.CommonStrings
+import org.apache.commons.fileupload.FileItem
+import org.w3c.dom.Document
+import org.w3c.dom.Node
+
+open public class UpdateFileValidationView : DownloadableInventoryItemView
+                , ValidationComponentInterface {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+public constructor (transformInfoInterface: TransformInfoInterface)                        
+
+                            : super(transformInfoInterface){
+var transformInfoInterface = transformInfoInterface
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+    open fun isValid()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+        try {
+            
+    var command: String = this.getRequestHashMap()!!.get(GLOBALS2.ADMINCOMMAND) as String
+
+
+    
+                        if(StringValidationUtil.getInstance()!!.isEmpty(command) || command.compareTo(this.commonStrings!!.UPDATE) != 0)
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("Invalid AdminCommand=" +command, this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+
+        try {
+            
+    var inventoryEntity: InventoryEntity = InventoryEntityFactory.getInstance()!!.getInventoryEntityInstance()!!
+
+this.itemInterface= inventoryEntity!!.getItem(this.id)
+} catch(e: MoneyException)
+            {
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.put("Existing Item With MoneyException", this, this.commonStrings!!.IS_VALID, e)
+
+                                    }
+                                
+}
+
+
+    
+                        if(this.itemInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("Item Does Not Exist", this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+
+    
+                        if(BasicItemValidation(this.itemInterface).
+                            isValid() == false)
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("BasicItem is not valid", this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+
+    var storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!!.getStoreName())!!
+
+
+    var fullCategory: String = StringMaker().
+                            append(URLGLOBALS.getWebappPath())!!.append(storeFrontInterface!!.getCurrentHostNamePath())!!.append(this.itemInterface!!.getCategory())!!.toString()!!
+
+
+    var categoryFile: AbFile = AbFile.createAbFile(fullCategory)!!
+
+
+    
+                        if(!categoryFile!!.isDirectory())
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("Category Does Not Exist: " +fullCategory, this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+
+    var downloadableFileObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.FILE)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(downloadableFileObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = downloadableFileObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+HttpFileUploadUtil.log(fileItem)
+
+    
+                        if(this.isValid(fileName, size) == false)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+                        else {
+                            this.processFile(fileItem)
+this.getRequestHashMap()!!.put(DownloadItemData.SIZE, (size).toString())
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            this.getRequestHashMap()!!.remove(DownloadItemData.FILE)
+
+                        }
+                            
+
+    var licenseFileObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.LICENSE_FILE)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(licenseFileObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = licenseFileObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+HttpFileUploadUtil.log(fileItem)
+
+    
+                        if(this.isValid(fileName, size) == false)
+                        
+                                    {
+                                    
+                                    }
+                                
+                        else {
+                            this.processFile(fileItem)
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            this.getRequestHashMap()!!.remove(DownloadItemData.LICENSE_FILE)
+
+                        }
+                            
+
+    var extraFilesObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.EXTRA_FILES)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(extraFilesObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = extraFilesObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+HttpFileUploadUtil.log(fileItem)
+
+    
+                        if(this.isValid(fileName, size) == false)
+                        
+                                    {
+                                    
+                                    }
+                                
+                        else {
+                            this.processFile(fileItem)
+this.unzip(fileItem)
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            this.getRequestHashMap()!!.remove(DownloadItemData.EXTRA_FILES)
+
+                        }
+                            
+
+    var hashMap: HashMap<Any, Any> = this.getRequestHashMap()!!
+
+hashMap!!.put(basicItemData!!.ID, this.itemInterface!!.getId())
+
+    var licenseObject: Any = hashMap!!.get(DownloadItemData.LICENSE_FILE)!!
+
+
+    
+                        if(licenseObject != 
+                                    null
+                                )
+                        
+                                    {
+                                    hashMap!!.put(DownloadItemData.LICENSE_FILE, (licenseObject as FileItem).getName())
+
+                                    }
+                                
+                        else {
+                            hashMap!!.put(DownloadItemData.LICENSE_FILE, StringUtil.getInstance()!!.EMPTY_STRING)
+
+                        }
+                            
+
+    var fileObject: Any = hashMap!!.get(DownloadItemData.FILE)!!
+
+
+    
+                        if(fileObject != 
+                                    null
+                                )
+                        
+                                    {
+                                    hashMap!!.put(DownloadItemData.FILE, (fileObject as FileItem).getName())
+
+                                    }
+                                
+                        else {
+                            hashMap!!.put(DownloadItemData.FILE, StringUtil.getInstance()!!.EMPTY_STRING)
+
+                        }
+                            
+this.downloadableItem= DownloadableItem(hashMap)
+
+    var downloadableItemValidation: DownloadableItemValidation = DownloadableItemValidation(this.downloadableItem)
+
+
+    
+                        if(downloadableItemValidation!!.isValid() == false)
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("DownloadableItem is not valid", this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+} catch(e: Exception)
+            {
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEWERROR))
+                        
+                                    {
+                                    this.logUtil!!.put("Exception in validation", this, this.commonStrings!!.IS_VALID, e)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+}
+
+
+    open fun toValidationInfoDoc()
+        //nullable = true from not(false or (false and true)) = true
+: Document?{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return null
+}
+
+
+    open fun toValidationInfoNode(document: Document)
+        //nullable = true from not(false or (false and false)) = true
+: Node?{
+var document = document
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return null
+}
+
+
+    open fun validationInfo()
+        //nullable = true from not(false or (false and true)) = true
+: String{
+
+        try {
+            
+    var stringBuffer: StringMaker = StringMaker()
+
+
+    var command: String = this.getRequestHashMap()!!.get(GLOBALS2.ADMINCOMMAND) as String
+
+
+    
+                        if(StringValidationUtil.getInstance()!!.isEmpty(command) || command.compareTo(this.commonStrings!!.UPDATE) != 0)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil.getInstance()!!.EMPTY_STRING
+
+                                    }
+                                
+
+    
+                        if(this.itemInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    var ITEM_NOT_FOUND: String = "Item Does Not Exist"
+
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF(ITEM_NOT_FOUND, this, "validationInfo()")
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ITEM_NOT_FOUND
+
+                                    }
+                                
+
+    var basicItemValidation: BasicItemValidation = BasicItemValidation(this.itemInterface)
+
+
+    
+                        if(basicItemValidation!!.isValid() == false)
+                        
+                                    {
+                                    stringBuffer!!.append(basicItemValidation!!.validationInfo())
+stringBuffer!!.append("<br/>")
+
+                                    }
+                                
+
+    var storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!!.getStoreName())!!
+
+
+    var fullCategory: String = StringMaker().
+                            append(URLGLOBALS.getWebappPath())!!.append(storeFrontInterface!!.getCurrentHostNamePath())!!.append(this.itemInterface!!.getCategory())!!.toString()!!
+
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF("Category: " +fullCategory, this, "validationInfo()")
+
+                                    }
+                                
+
+    var categoryFile: AbFile = AbFile.createAbFile(fullCategory)!!
+
+
+    
+                        if(!categoryFile!!.isDirectory())
+                        
+                                    {
+                                    stringBuffer!!.append("Category ")
+stringBuffer!!.append(this.itemInterface!!.getCategory())
+stringBuffer!!.append(" does not exist.")
+stringBuffer!!.append("<br />")
+
+                                    }
+                                
+
+    var downloadableFileObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.FILE)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(downloadableFileObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = downloadableFileObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+this.validationInfo(stringBuffer, fileName, size)
+
+                                    }
+                                
+                        else {
+                            stringBuffer!!.append("Download File Missing")
+stringBuffer!!.append("<br/>")
+
+                        }
+                            
+
+    var licenseFileObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.LICENSE_FILE)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(licenseFileObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = licenseFileObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+this.validationInfo(stringBuffer, fileName, size)
+
+                                    }
+                                
+                        else {
+                            
+                        }
+                            
+
+    var extraFilesObject: Any = this.getRequestHashMap()!!.get(DownloadItemData.EXTRA_FILES)!!
+
+
+    
+                        if(HttpFileUploadUtil.getInstance()!!.isValid(extraFilesObject))
+                        
+                                    {
+                                    
+    var fileItem: FileItem = extraFilesObject as FileItem
+
+
+    var fileName: String = fileItem!!.getName()!!
+
+
+    var size: Long = fileItem!!.getSize()
+
+this.validationInfo(stringBuffer, fileName, size)
+
+                                    }
+                                
+                        else {
+                            
+                        }
+                            
+
+    
+                        if(this.downloadableItem != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    var downloadableItemValidation: DownloadableItemValidation = DownloadableItemValidation(this.downloadableItem)
+
+
+    
+                        if(downloadableItemValidation!!.isValid() == false)
+                        
+                                    {
+                                    
+    var log: String = downloadableItemValidation!!.validationInfo()!!
+
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    this.logUtil!!.putF(log, this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+stringBuffer!!.append(log)
+stringBuffer!!.append("<br/>")
+
+                                    }
+                                
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!!.toString()
+} catch(e: Exception)
+            {
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEWERROR))
+                        
+                                    {
+                                    this.logUtil!!.put("Failed to generate validation error info", this, "validationInfo()", e)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return "Error Getting Validation Info"
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun isValid(fileName: String, size: Long)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+var fileName = fileName
+var size = size
+
+    var fileData: FileData = FileData.getInstance()!!
+
+
+    
+                        if(size > fileData!!.MINDOWNLOADABLEFILESIZE)
+                        
+                                    {
+                                    
+    
+                        if(size < fileData!!.MAXDOWNLOADABLEFILESIZE)
+                        
+                                    {
+                                    
+    
+                        if(!StringValidationUtil.getInstance()!!.isValidRequired(fileName, fileData!!.MINLEN, fileData!!.MAXLEN))
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append("File name is not valid: ")
+stringBuffer!!.append(fileName)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                                    }
+                                
+                        else {
+                            
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append("File Size To Large: ")
+stringBuffer!!.appendlong(size)
+stringBuffer!!.append(">")
+stringBuffer!!.appendint(fileData!!.MAXDOWNLOADABLEFILESIZE.toInt())
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.VIEW))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append("File Size To Small: ")
+stringBuffer!!.appendlong(size)
+stringBuffer!!.append(">")
+stringBuffer!!.appendint(fileData!!.MINDOWNLOADABLEFILESIZE.toInt())
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.IS_VALID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+
+                        }
+                            
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+}
+
+
+    open fun validationInfo(stringBuffer: StringMaker, fileName: String, size: Long)
+        //nullable = true from not(false or (false and false)) = true
+{
+var stringBuffer = stringBuffer
+var fileName = fileName
+var size = size
+
+    var fileData: FileData = FileData.getInstance()!!
+
+
+    
+                        if(size > fileData!!.MINDOWNLOADABLEFILESIZE)
+                        
+                                    {
+                                    
+    
+                        if(size < fileData!!.MAXDOWNLOADABLEFILESIZE)
+                        
+                                    {
+                                    
+    
+                        if(!StringValidationUtil.getInstance()!!.isValidRequired(fileName, fileData!!.MINLEN, fileData!!.MAXLEN))
+                        
+                                    {
+                                    stringBuffer!!.append("File Name must be more than ")
+stringBuffer!!.appendint(fileData!!.MINLEN.toInt())
+stringBuffer!!.append(" and less than ")
+stringBuffer!!.appendint(fileData!!.MAXLEN.toInt())
+stringBuffer!!.append(" characters in length: ")
+stringBuffer!!.append(fileName)
+stringBuffer!!.append("<br/>")
+
+                                    }
+                                
+                        else {
+                            
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            stringBuffer!!.append("File Is Not The Right Size. ")
+stringBuffer!!.appendint(fileData!!.MINDOWNLOADABLEFILESIZE.toInt())
+stringBuffer!!.append("< >")
+stringBuffer!!.appendint(fileData!!.MAXDOWNLOADABLEFILESIZE.toInt())
+stringBuffer!!.append("<br/>")
+
+                        }
+                            
+
+                                    }
+                                
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun getTransformInfoInterface()
+        //nullable = true from not(false or (false and true)) = true
+: TransformInfoInterface{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getTransformInfoInterface()
+}
+
+
+}
+                
+            
+

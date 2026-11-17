@@ -1,0 +1,85 @@
+
+        /* Generated Code Do Not Modify */
+        package org.apache.xmlrpc
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.io.IOException
+import java.net.MalformedURLException
+import java.net.URL
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.init.crypt.jcehelper.CryptInterface
+import org.allbinary.logic.NullUtil
+
+open public class XmlRpcClient
+            : Object
+        
+                , XmlRpcHandler {
+        
+
+    private val url: URL
+public constructor (url: String)
+            : super()
+        {
+var url = url
+this.url= URL(url)
+}
+
+
+    open fun getURL()
+        //nullable = true from not(false or (false and true)) = true
+: URL{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.url
+}
+
+
+    open fun setBasicAuthentication(user: String, password: String)
+        //nullable = true from not(false or (false and false)) = true
+{
+var user = user
+var password = password
+}
+
+
+                @Throws(XmlRpcException::class, IOException::class)
+            
+    override fun execute(method: String, params: BasicArrayList)
+        //nullable = true from not(false or (false and false)) = true
+: Any{
+var method = method
+var params = params
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullUtil.getInstance()!!.NULL_OBJECT
+}
+
+
+                @Throws(XmlRpcException::class, IOException::class)
+            
+    open fun executeWithCrypt(method: String, params: BasicArrayList, cryptInterface: CryptInterface)
+        //nullable = true from not(false or (false and false)) = true
+: Any{
+var method = method
+var params = params
+var cryptInterface = cryptInterface
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullUtil.getInstance()!!.NULL_OBJECT
+}
+
+
+}
+                
+            
+

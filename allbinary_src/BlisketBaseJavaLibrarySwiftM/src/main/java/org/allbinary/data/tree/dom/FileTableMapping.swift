@@ -1,0 +1,123 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.data.tree.dom
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.data.tables.TableMappingInterface
+import org.allbinary.logic.StdUtil
+import org.allbinary.logic.io.file.AbFile
+import org.allbinary.logic.io.file.FileData
+import org.allbinary.logic.io.path.AbPathData
+import org.allbinary.logic.io.path.PathUtil
+
+open public class FileTableMapping
+            : Object
+        
+                , TableMappingInterface {
+        
+
+    private var file: AbFile
+public constructor (file: AbFile)
+            : super()
+        {
+var file = file
+this.file= file
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getKey()
+        //nullable = true from not(false or (false and true)) = true
+: Any{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.file.getPath() as Object
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun toVector()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+    var filePropertyVector: BasicArrayList = BasicArrayListD()
+
+filePropertyVector!!.add(this.file.getAbsolutePath())
+filePropertyVector!!.add(this.file.getCanonicalPath())
+filePropertyVector!!.add(this.file.getName())
+filePropertyVector!!.add(this.file.getParent())
+filePropertyVector!!.add(this.file.getPath())
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return filePropertyVector
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun toHashMap()
+        //nullable = true from not(false or (false and true)) = true
+: HashMap<Any, Any>{
+
+    var filePropertyHashMap: HashMap<Any, Any> = StdUtil.getInstance()!!.createHashMap()!!
+
+
+    var pathData: AbPathData = AbPathData.getInstance()!!
+
+
+    var pathUtil: PathUtil = PathUtil.getInstance()!!
+
+
+    var rootFileName: String = pathData!!.getNameFromPath(pathUtil!!.getWithoutExtension(this.file.getPath()))!!
+
+
+    var fileData: FileData = FileData.getInstance()!!
+
+filePropertyHashMap!!.put(fileData!!.ROOT_NAME, rootFileName)
+filePropertyHashMap!!.put(fileData!!.ISFILE, Boolean.valueOf(this.file.isFile())!!.toString())
+filePropertyHashMap!!.put(fileData!!.ISDIRECTORY, Boolean.valueOf(this.file.isDirectory())!!.toString())
+filePropertyHashMap!!.put(fileData!!.ISHIDDEN, Boolean.valueOf(this.file.isHidden())!!.toString())
+filePropertyHashMap!!.put(fileData!!.ISABSOLUTE, Boolean.valueOf(this.file.isAbsolute())!!.toString())
+filePropertyHashMap!!.put(fileData!!.ABSOLUTE_PATH, file.getAbsolutePath())
+filePropertyHashMap!!.put(fileData!!.CANONICAL_PATH, file.getCanonicalPath())
+filePropertyHashMap!!.put(fileData!!.NAME, file.getName())
+filePropertyHashMap!!.put(fileData!!.PARENT, file.getParent())
+filePropertyHashMap!!.put(fileData!!.PATH, file.getPath())
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return filePropertyHashMap
+}
+
+
+}
+                
+            
+

@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>CombatGameJavaLibraryPOMSwift</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>CombatGameJavaLibraryPOMSwift</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+        <!--
+
+        -->
+
+        <module>../../games/TickableJavaLibrarySwiftM</module>
+
+        <module>../../games/CommonHeadsUpDisplayLibrarySwiftM</module>
+
+        <module>../../../physics/MovementJavaLibrarySwiftM</module>
+        <!--        -->
+        <module>../../games/PartsJavaLibrarySwiftM</module>
+        <module>../../games/PickupGameJavaLibrarySwiftM</module>
+
+        <module>../../../allbinary_src/licensing/HardCodedLicenseInitInfoJavaLibrarySwiftM</module>
+        <module>../../../allbinary_src/licensing/FileLicenseInitInfoJavaLibrarySwiftM</module>
+        <module>../../../allbinary_src/licensing/ClientInfoLicensingJavaLibrarySwiftM</module>
+
+        <module>../../games/licensing/PartnerJ2MEJavaLibrarySwiftM</module>
+        <!--<module>../../games/licensing/PartnerHTMLJavaLibrarySwiftM</module>-->
+        <!--<module>../../games/licensing/PartnerAndroidJavaLibrarySwiftM</module>-->
+        <module>../../games/licensing/NoGameLicensingJavaLibrarySwiftM</module>
+        <module>../../games/licensing/GameLicensingOnlyDemoJavaLibrarySwiftM</module>
+        <!--<module>../../games/licensing/GameLicensingOnlyNormalJavaLibrarySwiftM</module>-->
+        <module>../../games/licensing/GameLicensingBaseJavaLibrarySwiftM</module>
+
+        <!--
+        <module>../../games/GameScoresBaseLibrarySwiftM</module>
+        <module>../../games/GameScoresBaseHTMLLibrarySwiftM</module>
+        <module>../../games/GameScoresBaseJ2MELibrarySwiftM</module>
+        -->
+        <module>../../games/GameScoresLocalJavaLibrarySwiftM</module>
+        <!--<module>../../games/GameScoresRemoteAndLocalJavaLibrarySwiftM</module>-->
+
+        <module>../../../store/ThirdPartyStoreJavaLibrarySwiftM</module>
+        <module>../../../store/NoThirdPartyStoreJavaLibrarySwiftM</module>
+
+        <module>../../media/graphics/layer/CollisionLayerJavaLibrarySwiftM</module>
+        <module>../../games/CollisionLibrarySwiftM</module>
+
+        <module>../../games/multiplayer/AllBinaryGameClientBaseNullJavaLibrarySwiftM</module>
+
+        <module>../../games/PickupLayerJavaLibrarySwiftM</module>
+
+        <module>../../games/DamageGameJavaLibrarySwiftM</module>
+        <module>../../games/DropJavaLibrarySwiftM</module>
+        <module>../../games/WeaponLayerJavaLibrarySwiftM</module>
+
+        <module>../../games/CombatGameJavaLibrarySwiftM</module>
+        <module>../../games/LifeJavaLibrarySwiftM</module>
+
+        <module>../../games/CommonHeadsUpDisplayCombatGameLibrarySwiftM</module>
+        <module>../../games/LifeOrDeathDataJavaLibrarySwiftM</module>
+
+        <module>../../games/BasicWeaponPartsJavaLibrarySwiftM</module>
+        <module>../../games/weapon/WeaponPropertiesJavaLibrarySwiftM</module>
+
+        <module>../../games/weapon/WeaponMineJavaLibrarySwiftM</module>
+
+        <!--
+        <module>../../media/graphics/effects/fireworks/FireworksJavaLibrarySwiftM</module>
+        -->
+
+        <module>../../media/graphics/geography/map/TerrainEventJavaLibrarySwiftM</module>
+
+<!--
+        <module>../../media/graphics/geography/map/BasicPlatformGeographicMapJavaLibrarySwiftM</module>
+        -->
+
+        <!--
+        <module>../../media/graphics/geography/map/RaceTrackSwiftP</module>
+        -->
+
+        <!--
+        XmlRpcJavaLibrary
+        RemoteXmlRpcJavaLibrary
+
+        Since POMs are built before the other libs is it best to handle this differently
+        ../../
+        <module>../../../../workswift/j2me/games/strategy/rts/RTSGameJavaLibrarySwiftP</module>
+        -->
+
+        <module>../../media/graphics/OtherGraphicsMediaLibrarySwiftP</module>
+
+        <module>../../input/NoTouchButtonResourceAnimationJavaLibrarySwiftM</module>
+        <module>../../input/TouchButtonResourceAnimationJavaLibrarySwiftM</module>
+        <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibrarySwiftM</module>
+
+        <module>../../input/TrackingEventJavaLibrarySwiftM</module>
+        <module>../../../game/behavior/BehaviorLibrarySwiftP</module>
+
+        <module>../../media/sound/OtherSoundMediaLibrarySwiftP</module>
+
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibrarySwiftM</module>
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibrarySwiftM</module>
+        <module>../../input/AllBinaryMagneticFieldSensorJavaLibrarySwiftM</module>
+        <!--<module>../../android/VirtualKeyboardJavaLibrarySwiftM</module>-->
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

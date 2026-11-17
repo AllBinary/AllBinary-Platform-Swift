@@ -1,0 +1,292 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.input.mapping
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.Enumeration
+import org.allbinary.game.configuration.persistance.GamePersistanceStrings
+import org.allbinary.game.input.Input
+import org.allbinary.game.input.InputPersistance
+import org.allbinary.game.input.mapping.event.InputMappingEvent
+import org.allbinary.game.input.mapping.event.InputMappingEventListenerInterface
+import org.allbinary.game.input.mapping.event.NullInputMappingEventListener
+import org.allbinary.logic.NullUtil
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.communication.log.PreLogUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+import org.allbinary.string.CommonStrings
+import org.allbinary.util.ABHashtable
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.EnumerationUtil
+//GameInputPersistanceLibrary
+open public class PersistentInputMapping
+            : Object
+         {
+        
+companion object {
+            
+    var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
+
+    open fun getNullInstance()
+        //nullable = true from not(false or (false and true)) = true
+: PersistentInputMapping{
+
+    
+                        if(PersistentInputMapping.instance == NullUtil.getInstance()!!.NULL_OBJECT)
+                        
+                                    {
+                                    PersistentInputMapping.instance= PersistentInputMapping(GamePersistanceStrings.getInstance()!!.SAVED_INPUT_CONFIGURATION_RECORD_ID)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PersistentInputMapping.instance as PersistentInputMapping
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    private val enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!!
+
+    private val inputMapping: InputToGameKeyMapping = InputToGameKeyMapping()
+
+    private var inputMappingEventListenerInterface: InputMappingEventListenerInterface = NullInputMappingEventListener.NULL_INPUT_MAPPING_EVENT_LISTENER
+
+    private val inputPersistance: InputPersistance
+protected constructor (name: String)
+            : super()
+        {
+var name = name
+this.inputPersistance= InputPersistance(name)
+}
+
+
+    open fun getTotalMapped()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.getInputMapping()!!.getHashtable()!!.size
+}
+
+
+    open fun isDefaultNew()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    open fun getDefault()
+        //nullable = true from not(false or (false and true)) = true
+: InputToGameKeyMapping{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InputToGameKeyMapping.getNullInstance()
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun setDefault(abeClientInformation: AbeClientInformationInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var abeClientInformation = abeClientInformation
+this.getInputMapping()!!.removeAll()
+this.getInputMapping()!!.addMapping(this.getDefault())
+this.save(abeClientInformation)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun update(abeClientInformation: AbeClientInformationInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var abeClientInformation = abeClientInformation
+this.inputPersistance!!.deleteAll(abeClientInformation)
+this.save(abeClientInformation)
+}
+
+
+    private var inputMappingEvent: InputMappingEvent = InputMappingEvent(this)
+
+                @Throws(Exception::class)
+            
+    open fun save(abeClientInformation: AbeClientInformationInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var abeClientInformation = abeClientInformation
+this.inputPersistance!!.save(abeClientInformation, this.getInputMapping()!!.getHashtable())
+this.inputMappingEvent!!.setInputToGameKeyMapping(this.getInputMapping())
+
+    
+                        if(this.getInputMappingEventListenerInterface() != 
+                                    null
+                                )
+                        
+                                    {
+                                    this.getInputMappingEventListenerInterface()!!.onInputMappingEvent(this.inputMappingEvent)
+
+                                    }
+                                
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun init(abeClientInformation: AbeClientInformationInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var abeClientInformation = abeClientInformation
+this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.INIT)
+
+        try {
+            this.inputPersistance!!.loadAll(abeClientInformation)
+} catch(e: Exception)
+            {
+PreLogUtil.putOE(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.INIT, e)
+this.inputPersistance!!.deleteRecoreStore(abeClientInformation)
+this.setDefault(abeClientInformation)
+this.inputPersistance!!.loadAll(abeClientInformation)
+}
+
+
+    var list: BasicArrayList = this.inputPersistance!!.getList()!!
+
+
+    var totalMappedTo: Int = 0
+
+
+    var size: Int = list.size()
+
+
+    var hashtable: ABHashtable<Any, Any>
+
+
+    var enumeration: Enumeration<Any?>
+
+
+    var mappedToInput: Input
+
+
+    var gameActionInput: Input
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+hashtable= list.objectArray[index]!! as ABHashtable<Any, Any>
+enumeration= hashtable.keys()!!
+
+        while(this.enumerationUtil!!.hasMoreElements(enumeration))
+        {
+mappedToInput= this.enumerationUtil!!.nextElement(enumeration)!! as Input
+gameActionInput= hashtable.get(mappedToInput as Object) as Input
+totalMappedTo++
+this.getInputMapping()!!.add(gameActionInput, mappedToInput)
+}
+
+}
+
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append("End - Total Loaded Keys Mapped: ")
+stringBuffer!!.appendint(this.getTotalMapped())
+stringBuffer!!.append(" to: ")
+stringBuffer!!.appendint(totalMappedTo)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.INIT)
+}
+
+
+    open fun setInputMappingEventListenerInterface(inputMappingEventListenerInterface: InputMappingEventListenerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var inputMappingEventListenerInterface = inputMappingEventListenerInterface
+this.inputMappingEventListenerInterface= inputMappingEventListenerInterface
+}
+
+
+    open fun getInputMappingEventListenerInterface()
+        //nullable = true from not(false or (false and true)) = true
+: InputMappingEventListenerInterface{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.inputMappingEventListenerInterface
+}
+
+
+    open fun getInputMapping()
+        //nullable = true from not(false or (false and true)) = true
+: InputToGameKeyMapping{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.inputMapping
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun isDelete(input: Input)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+var input = input
+
+
+
+                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun isSystemInput(input: Input)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+var input = input
+
+
+
+                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
+}
+
+
+}
+                
+            
+

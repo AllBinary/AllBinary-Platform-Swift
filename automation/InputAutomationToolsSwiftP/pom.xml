@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>InputAutomationToolsSwift</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>InputAutomationToolsSwift</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        <!--
+        <module>../AllBinaryCoreJavaLibrarySwiftM</module>        
+        -->
+
+        <module>../../replace_these_stub_projects/osgi/YourOSGIComponentLibrarySwiftM</module>
+        <module>../../allbinary_src/AllBinaryOSGIJavaLibrarySwiftM</module>
+
+        <module>../../graphics/ColorJavaLibrarySwiftM</module>
+        <module>../../graphics/ImageJavaLibrarySwiftM</module>
+        <module>../../graphics/ImageComparisonJavaLibrarySwiftM</module>
+        <module>../../graphics/AdvancedImageJ2SEJavaLibrarySwiftM</module>
+        
+        <module>../InputAutomationModuleJavaLibrarySwiftM</module>
+        
+        <module>../InputAutomationActionScriptJavaLibrarySwiftM</module>
+        <module>../InputAutomationGenericModuleJavaLibrarySwiftM</module>
+        <module>../InputAutomationGeneric2ModuleJavaLibrarySwiftM</module>
+
+        <module>../../allbinary_src/HelpJavaLibrarySwiftM</module>
+        <module>../InputAutomationJavaLibrarySwiftM</module>
+
+        <module>../InputAutomationJavaApplicationSwiftM</module>
+        
+        <module>../../game/InputAutomationGameModulesJavaLibrarySwiftM</module>
+        
+        <module>../AllBinaryCoreJavaLibrarySwiftM</module>
+    </modules>
+
+</project>
+

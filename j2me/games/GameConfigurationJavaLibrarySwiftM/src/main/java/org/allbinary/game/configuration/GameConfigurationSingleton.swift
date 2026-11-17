@@ -1,0 +1,103 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.configuration
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.logic.StdUtil
+import org.allbinary.util.ABHashtable
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+
+open public class GameConfigurationSingleton
+            : Object
+         {
+        
+companion object {
+            
+    private var SINGLETON: GameConfigurationSingleton = GameConfigurationSingleton()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: GameConfigurationSingleton{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameConfigurationSingleton.SINGLETON
+}
+
+
+        }
+            
+    private var list: BasicArrayList
+
+    private var hashtable: ABHashtable<Any, Any>
+private constructor ()
+            : super()
+        {
+this.list= BasicArrayListD()
+this.hashtable= StdUtil.getInstance()!!.createHashtable()!!
+}
+
+
+    open fun getInstanceByName(name: String)
+        //nullable = true from not(false or (false and false)) = true
+: GameConfiguration{
+var name = name
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.hashtable.get(name as Object) as GameConfiguration
+}
+
+
+    open fun getOptionsBasicArrayList()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.list
+}
+
+
+    open fun add(gameConfiguration: GameConfiguration)
+        //nullable = true from not(false or (false and false)) = true
+{
+var gameConfiguration = gameConfiguration
+this.list.add(gameConfiguration)
+}
+
+
+    open fun getHashtable()
+        //nullable = true from not(false or (false and true)) = true
+: ABHashtable<Any, Any>{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.hashtable
+}
+
+
+}
+                
+            
+

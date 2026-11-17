@@ -1,0 +1,192 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>GameJ2MELibraryPOMSwift</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>GameJ2MELibraryPOMSwift</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+
+        <!--
+        NoGyroSensorLibrary
+
+        -->
+        <!--<module>../../android/AndroidUtilJavaLibrarySwiftM</module>-->
+
+        <module>../../../allbinary_src/security/SimpleCryptLibrarySwiftM</module>
+        <!--
+        <module>../../../../working_thirdpartyswift/security/BouncyCastleDESJavaLibrarySwiftM</module>
+        <module>../../../../working_thirdpartyswift/communication/XmlRpc/XmlRpcJavaLibrarySwiftM</module>
+        -->
+        <module>../../../allbinary_src/TokenizerJavaLibrarySwiftM</module>
+        <module>../../../allbinary_src/security/BasicSecurityJavaLibrarySwiftM</module>
+        <!--<module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibrarySwiftM</module>-->
+        <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibrarySwiftM</module>
+        <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibrarySwiftM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibrarySwiftM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MECompatibilityJavaLibrarySwiftM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibrarySwiftM</module>
+
+        <module>../../DebugJavaLibrarySwiftM</module>             
+        <module>../../ResourceLibrarySwiftM</module>
+        <module>../../ResourceJ2MEJavaLibrarySwiftM</module>
+        <!--<module>../../AndroidResourceLibrarySwiftM</module>-->
+        <!--<module>../../../allbinary_src/hardware/AndroidSystemJavaLibrarySwiftM</module>-->
+
+        <module>../../../game/behavior/ArtificialIntelligenceLibrarySwiftM</module>
+
+        <module>../../media/graphics/PlatformNullImageJavaLibrarySwiftM</module>
+        <module>../../media/graphics/ImageCacheBaseJ2MEJavaLibrarySwiftM</module>
+        <module>../../media/graphics/ImageCacheJ2MEJavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/OpenGLJ2MENoneJavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/OpenGLNoneJavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/OpenGLNoneOtherJavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/OpenGLNoneOther2JavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/OpenGLESBaseJ2MEJavaLibrarySwiftM</module>
+
+        <module>../../media/graphics/animation/AnimationLibrarySwiftM</module>
+        <module>../../media/graphics/animation/RotationAnimationJavaLibrarySwiftM</module>
+
+        <module>../../games/GameInputLibrarySwiftM</module>
+
+        <module>../../games/GameScoresBaseJavaLibrarySwiftM</module>
+        <module>../../games/GameScoresBaseJ2MELibrarySwiftM</module>
+
+        <module>../../statistics/ApplicationStatisticsHTMLLibrarySwiftM</module>
+        <!--
+        <module>../../games/GameConfigurationHTMLJavaLibrarySwiftM</module>
+        -->
+        <module>../../games/GameConfigurationJ2MEJavaLibrarySwiftM</module>   
+        <module>../../games/GameConfigurationJavaLibrarySwiftM</module>
+
+        <module>../../games/GameIntermissionLibrarySwiftM</module>
+
+        <module>../../GroupLibrarySwiftM</module>
+
+        <module>../../input/NoSensorJavaLibrarySwiftM</module>
+
+        <module>../../input/AllBinarySensorJavaLibrarySwiftM</module>
+
+        <module>../../input/platform/me/GameInputMEJavaLibrarySwiftM</module>
+        <module>../../input/platform/me/GameInputMEKeyOnlyJavaLibrarySwiftM</module>
+        <module>../../input/platform/me/GameInputMEMotionJavaLibrarySwiftM</module>
+        <module>../../input/platform/pc/GameInputPCBaseJavaLibrarySwiftM</module>
+        <module>../../input/platform/pc/GameInputPCJavaLibrarySwiftM</module>
+        <module>../../input/platform/pc/GameInputPCKeyOnlyJavaLibrarySwiftM</module>
+        <module>../../input/platform/pc/GameInputPCMotionJavaLibrarySwiftM</module>
+        <module>../../input/platform/pc/GameInputSwtJavaLibrarySwiftM</module>
+
+        <module>../../input/AllBinaryGyroSensorJavaLibrarySwiftM</module>
+        <module>../../input/MotionGestureJavaLibrarySwiftM</module>
+        
+        <module>../../input/MotionGestureBaseJavaLibrarySwiftM</module>
+
+        <module>../../games/GameInputPersistanceLibrarySwiftM</module>
+        <module>../../games/GameInputNoPersistanceLibrarySwiftM</module>
+        
+        <module>../../lib/VectorThreeDimensionalLibrarySwiftM</module>
+        <module>../../input/AllBinaryAccelerometerSensorJavaLibrarySwiftM</module>
+        <module>../../input/NoGyroSensorJavaLibrarySwiftM</module>
+        <!--<module>../../input/JSEGyroSensorJavaLibrarySwiftM</module>-->
+        <!--
+        <module>../../input/android/</module>
+        <module>../../input/platform/android/GameInputAndroidBaseJavaLibrarySwiftM</module>
+        -->
+
+        <module>../../media/sound/BasicPlayerJavaLibrarySwiftM</module>
+        <!--<module>../../media/sound/BasicPlayerMIDP2JavaLibrarySwiftM</module>-->
+        <module>../../media/sound/NoPlayerJavaLibrarySwiftM</module>
+        <module>../../media/sound/SoundJ2MELibrarySwiftM</module>
+
+        <module>../../media/motion/AllBinaryVibrationJavaLibrarySwiftM</module>
+        <module>../../media/motion/NoVibrateJavaLibrarySwiftM</module>
+        <!--<module>../../media/motion/VibrateAndroidJavaLibrarySwiftM</module>-->
+
+        <module>../../media/graphics/NullCustomUIJavaLibrarySwiftM</module>
+        <module>../../media/graphics/NullCustomUIBaseJavaLibrarySwiftM</module>
+
+        <module>../../media/graphics/FormValidationJavaLibrarySwiftM</module>
+        
+        <module>../../media/graphics/FormJavaLibrarySwiftM</module>
+        <module>../../media/graphics/FormBaseJavaLibrarySwiftM</module>
+        <!--
+        <module>../../media/graphics/FormJMEJavaLibrarySwiftM</module>
+        -->
+        <module>../../../j2me/media/graphics/FormJMEJavaLibrarySwiftM</module>
+
+        <module>../../media/graphics/animation/AnimationResourceJavaLibrarySwiftM</module>
+        <module>../../media/graphics/animation/TransitionAnimationJavaLibrarySwiftM</module>
+        <module>../../media/graphics/animation/NoTransitionAnimationJavaLibrarySwiftM</module>
+        <!--
+        AndroidTransitionAnimationJavaLibraryM
+        -->
+        <module>../../media/graphics/animation/GameAnimationJavaLibrarySwiftM</module>
+        <module>../../games/GameResourceJavaLibrarySwiftM</module>
+        <module>../../games/GameSoundsJavaLibrarySwiftM</module>
+
+        <module>../../input/TouchInputLibrarySwiftP</module>
+
+        <module>../../media/MediaDataSwiftM</module>
+        <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibrarySwiftM</module>
+
+        <module>../../../allbinary_src/content/ContentNoneJavaLibrarySwiftM</module>
+        <!--<module>../../../allbinary_src/content/ContentAndroidJavaLibrarySwiftM</module>-->
+
+        <module>../../games/GameConfigurationFormJavaLibrarySwiftM</module>
+
+        <module>../../FullScreenNoneJavaLibrarySwiftM</module>
+        <!--
+        <module>../../FullScreenJavaLibrarySwiftM</module>
+        -->
+
+        <module>../../../physics/VelocityLibrarySwiftM</module>
+
+        <module>../../games/weapon/SoundsBasicWeaponsJavaLibrarySwiftM</module>
+
+        <module>../../lib/TrigJ2MELibrarySwiftM</module>
+
+        <module>../../media/graphics/geography/map/LayerPlacementLibrarySwiftM</module>
+        <module>../../media/graphics/layer/AllBinaryLayerJavaLibrarySwiftM</module>
+
+        <module>../../ScreenCaptureNoneJavaLibrarySwiftM</module>
+        
+        <module>../licensing/GameLicensingNullJavaLibrarySwiftM</module>
+        
+        <module>../../business/advertisement/AllBinaryAdvertisementClientJavaLibrarySwiftM</module>
+        <module>../../business/advertisement/AdvertisementClientNoneJavaLibrarySwiftM</module>
+
+        <module>../GameNotificationJavaLibrarySwiftM</module>
+
+        <module>../../../graphics/opengl/NoSWTJavaLibrarySwiftM</module>
+        <module>../../../graphics/opengl/SWTWithoutJOGLJavaLibrarySwiftM</module>
+        <!--<module>../SWTJavaLibrarySwiftM</module>-->
+        <module>../GameJ2MELibrarySwiftM</module>
+        
+        <!--
+        <module>../GameJ2MEOptionalLibraryPOSwiftM</module>
+        -->
+    
+    </modules>
+
+</project>
+

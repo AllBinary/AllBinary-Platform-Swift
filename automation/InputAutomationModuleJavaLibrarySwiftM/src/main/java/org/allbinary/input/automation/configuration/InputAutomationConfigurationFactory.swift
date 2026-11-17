@@ -1,0 +1,153 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.input.automation.configuration
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.io.File
+import java.io.FileInputStream
+
+//import java.util.List
+import javax.xml.bind.JAXBContext
+import javax.xml.bind.JAXBElement
+import javax.xml.bind.Unmarshaller
+import javax.xml.transform.stream.StreamSource
+import org.allbinary.input.automation.module.configuration.InputAutomationModuleConfiguration
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+import org.allbinary.string.CommonStrings
+
+open public class InputAutomationConfigurationFactory
+            : Object
+         {
+        
+companion object {
+            
+    private val instance: InputAutomationConfigurationFactory = InputAutomationConfigurationFactory()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: InputAutomationConfigurationFactory{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InputAutomationConfigurationFactory.instance
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    var inputAutomationConfiguration: InputAutomationConfiguration? = 
+                null
+            
+private constructor ()
+            : super()
+        {
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun init(abeClientInformation: AbeClientInformationInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var abeClientInformation = abeClientInformation
+
+    var logUtil: LogUtil = LogUtil.getInstance()!!
+
+
+    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+
+    var INPUT_AUTOMATION_CONFIGURATION: String = "InputAutomationConfiguration"
+
+
+    var file: File = InputAutomationConfiguration.getFile()!!
+
+
+    
+                        if(file.isFile())
+                        
+                                    {
+                                    logUtil!!.putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!!.INIT)
+
+    var jaxbContext: JAXBContext = JAXBContext.newInstance(InputAutomationConfiguration::class)!!
+
+
+    var unmarshaller: Unmarshaller = jaxbContext!!.createUnmarshaller()!!
+
+
+    var root: JAXBElement<InputAutomationConfiguration> = unmarshaller.unmarshal(StreamSource(FileInputStream(file)), InputAutomationConfiguration::class)!!
+
+this.inputAutomationConfiguration= root.getValue() as InputAutomationConfiguration
+
+    var inputAutomationModuleConfigurationList: List<InputAutomationModuleConfiguration> = this.inputAutomationConfiguration!!.getInputAutomationModuleConfigurationList()!!
+
+logUtil!!.putF("isInstalled: " +this.inputAutomationConfiguration!!.isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings!!.INIT)
+
+    
+                        if(inputAutomationModuleConfigurationList != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    var size: Int = inputAutomationModuleConfigurationList!!.size
+
+
+    var inputAutomationModuleConfiguration: InputAutomationModuleConfiguration
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList!!.get(index)!!
+inputAutomationModuleConfiguration!!.init(abeClientInformation)
+}
+
+
+                                    }
+                                
+logUtil!!.putF("LoadedConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!!.INIT)
+
+                                    }
+                                
+                        else {
+                            logUtil!!.putF("New Configuration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!!.INIT)
+this.inputAutomationConfiguration= InputAutomationConfiguration()
+
+                        }
+                            
+}
+
+
+}
+                
+            
+

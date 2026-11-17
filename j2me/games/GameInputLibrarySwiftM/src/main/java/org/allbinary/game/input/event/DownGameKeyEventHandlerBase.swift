@@ -1,0 +1,183 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2011 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.input.event
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.game.input.PlayerGameInput
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.util.event.AllBinaryEventObject
+import org.allbinary.logic.util.event.EventListenerInterface
+import org.allbinary.logic.util.event.EventStrings
+import org.allbinary.logic.util.event.handler.BasicEventHandler
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+
+open public class DownGameKeyEventHandlerBase : BasicEventHandler {
+        
+companion object {
+            
+    private val TOTAL_LISTENERS: String = " Total PlayerGameInput Listeners: "
+
+    private val LISTENER_LABEL: String = " PlayerGameInput Listener: "
+
+        }
+            
+    private val list: BasicArrayList = BasicArrayListD()
+ constructor (){
+}
+
+
+    open fun addListener(playerGameInput: PlayerGameInput)
+        //nullable = true from not(false or (false and false)) = true
+{
+var playerGameInput = playerGameInput
+
+    
+                        if(!this.list.contains(playerGameInput))
+                        
+                                    {
+                                    this.list.add(playerGameInput)
+
+                                    }
+                                
+}
+
+
+    override fun removeAllListeners()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.list.clear()
+super.removeAllListeners()
+}
+
+
+    override fun removeListenerSingleThreaded(eventListenerInterface: EventListenerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var eventListenerInterface = eventListenerInterface
+this.list.remove(eventListenerInterface)
+super.removeListenerSingleThreaded(eventListenerInterface)
+}
+
+@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    override fun removeListener(eventListenerInterface: EventListenerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var eventListenerInterface = eventListenerInterface
+this.list.remove(eventListenerInterface)
+super.removeListener(eventListenerInterface)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun fireEvent(eventObject: AllBinaryEventObject)
+        //nullable = true from not(false or (false and false)) = true
+{
+var eventObject = eventObject
+
+
+
+
+                        for (index in this.list.size()!!  - 1  downTo 0)
+
+        {
+
+        try {
+            
+    var playerGameInput: PlayerGameInput = this.list.objectArray[index]!! as PlayerGameInput
+
+playerGameInput!!.onDownGameKeyEvent(eventObject as GameKeyEvent)
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
+}
+
+}
+
+super.fireEvent(eventObject)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun process(eventObject: AllBinaryEventObject, eventListenerInterface: EventListenerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var eventObject = eventObject
+var eventListenerInterface = eventListenerInterface
+
+    var downGameKeyEventListenerInterface: DownGameKeyEventListenerInterface = eventListenerInterface as DownGameKeyEventListenerInterface
+
+downGameKeyEventListenerInterface!!.onDownGameKeyEvent(eventObject as GameKeyEvent)
+}
+
+
+    override fun toString()
+        //nullable =  from not(false or (true and true)) = 
+: String{
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(super.toString())
+stringBuffer!!.append(DownGameKeyEventHandlerBase.TOTAL_LISTENERS)
+stringBuffer!!.appendint(this.list.size())
+
+    var eventListenerInterface: EventListenerInterface
+
+
+    var size: Int = this.list.size()
+
+
+    var index: Int = 0
+
+
+        while(index < size)
+        {
+
+        try {
+            eventListenerInterface= this.list.get(index) as EventListenerInterface
+stringBuffer!!.append(DownGameKeyEventHandlerBase.LISTENER_LABEL)
+stringBuffer!!.append(eventListenerInterface!!.toString())
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.TOSTRING, e)
+}
+
+index++
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!!.toString()
+}
+
+
+}
+                
+            
+

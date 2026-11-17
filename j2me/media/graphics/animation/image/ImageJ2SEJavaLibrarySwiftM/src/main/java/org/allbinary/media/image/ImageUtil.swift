@@ -1,0 +1,474 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.media.image
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.awt.Graphics2D
+import java.awt.GraphicsConfiguration
+import java.awt.GraphicsDevice
+import java.awt.GraphicsEnvironment
+import java.awt.Transparency
+import java.awt.geom.AffineTransform
+import java.awt.image.BufferedImage
+import javax.microedition.lcdui.Image
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.string.CommonLabels
+import org.allbinary.string.CommonSeps
+import org.allbinary.string.CommonStrings
+import org.microemu.device.j2se.J2SEImmutableImage
+import org.microemu.device.j2se.J2SEMutableImage
+
+open public class ImageUtil
+            : Object
+         {
+        
+companion object {
+            
+    private val instance: ImageUtil = ImageUtil()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: ImageUtil{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ImageUtil.instance
+}
+
+
+        }
+            
+    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    private val commonSeps: CommonSeps = CommonSeps.getInstance()!!
+
+    private var IIOIMAGE_POOL_NAME: String = "IIOIMAGE_POOL_NAME"
+
+    private val CREATE_BUFFERED_IMAGE: String = "createBufferedImage"
+private constructor ()
+            : super()
+        {
+}
+
+
+    open fun getDefaultConfiguration()
+        //nullable = true from not(false or (false and true)) = true
+: GraphicsConfiguration{
+
+    var ge: GraphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment()!!
+
+
+    var gd: GraphicsDevice = ge.getDefaultScreenDevice()!!
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return gd.getDefaultConfiguration()
+}
+
+
+    open fun create(width: Int, height: Int)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var width = width
+    //var height = height
+
+    var graphicsConfiguration: GraphicsConfiguration = this.getDefaultConfiguration()!!
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return graphicsConfiguration!!.createCompatibleImage(width, height, Transparency.TRANSLUCENT)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImageForResize(bufferedImageArray: Array<BufferedImage?>, percent: Int, scale: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+: Array<BufferedImage?>{
+    //var bufferedImageArray = bufferedImageArray
+    //var percent = percent
+    //var scale = scale
+
+    var size: Int = bufferedImageArray!!.size
+                
+
+
+    var scaledBufferedImageArray: Array<BufferedImage?> = arrayOfNulls(size)
+
+
+    var bufferedImage: BufferedImage
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+bufferedImage= bufferedImageArray[index]!!
+
+    var newWidth: Int = (bufferedImage!!.getWidth() *percent /100).toInt()
+
+
+    var newHeight: Int = (bufferedImage!!.getHeight() *percent /100).toInt()
+
+scaledBufferedImageArray[index]= this.createBufferedImage(bufferedImage, newWidth, newHeight, scale)!!
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return scaledBufferedImageArray
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImage2(bufferedImageArray: Array<BufferedImage?>, percent: Float, scale: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+: Array<BufferedImage?>{
+    //var bufferedImageArray = bufferedImageArray
+    //var percent = percent
+    //var scale = scale
+
+    var size: Int = bufferedImageArray!!.size
+                
+
+
+    var scaledBufferedImageArray: Array<BufferedImage?> = arrayOfNulls(size)
+
+
+    var bufferedImage: BufferedImage
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+bufferedImage= bufferedImageArray[index]!!
+
+    var newWidth: Int = (bufferedImage!!.getWidth() *percent).toInt()
+
+
+    var newHeight: Int = (bufferedImage!!.getHeight() *percent).toInt()
+
+scaledBufferedImageArray[index]= this.createBufferedImage(bufferedImage, newWidth, newHeight, scale)!!
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return scaledBufferedImageArray
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImage3(bufferedImageArray: Array<BufferedImage?>, width: Int, height: Int, scale: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+: Array<BufferedImage?>{
+    //var bufferedImageArray = bufferedImageArray
+    //var width = width
+    //var height = height
+    //var scale = scale
+
+    var size: Int = bufferedImageArray!!.size
+                
+
+
+    var scaledBufferedImageArray: Array<BufferedImage?> = arrayOfNulls(size)
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+scaledBufferedImageArray[index]= this.createBufferedImage(bufferedImageArray[index]!!, width, height, scale)!!
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return scaledBufferedImageArray
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImageForSave(bufferedImage: BufferedImage, newWidth: Int, newHeight: Int)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var bufferedImage = bufferedImage
+    //var newWidth = newWidth
+var newHeight = newHeight
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.createBufferedImage(bufferedImage, newWidth, newHeight, true)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImage(bufferedImage: BufferedImage, newWidth: Int, newHeight: Int, scale: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var bufferedImage = bufferedImage
+    //var newWidth = newWidth
+var newHeight = newHeight
+    //var scale = scale
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.createBufferedImageAllowTranslate(bufferedImage, newWidth, newHeight, scale, false)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImageAllowTranslate(bufferedImage: BufferedImage, newWidth: Int, newHeight: Int, scale: Boolean, allowTranslate: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var bufferedImage = bufferedImage
+    //var newWidth = newWidth
+var newHeight = newHeight
+    //var scale = scale
+    //var allowTranslate = allowTranslate
+
+    var width: Double = bufferedImage!!.getWidth()
+
+
+    var height: Double = bufferedImage!!.getHeight()
+
+
+    var d_newWidth: Double = newWidth.toDouble()
+
+
+    var d_newHeight: Double = newHeight.toDouble()
+
+
+    var widthRatio: Double = d_newWidth /width
+
+
+    var heightRatio: Double = d_newHeight /height
+
+
+    var ratioX: Double = 1.0
+
+
+    var ratioY: Double = 1.0
+
+
+    
+                        if(scale)
+                        
+                                    {
+                                    ratioX= widthRatio
+ratioY= heightRatio
+
+                                    }
+                                
+
+    var affineTransform: AffineTransform = AffineTransform.getScaleInstance(ratioX, ratioY)!!
+
+
+    
+                        if(!scale && allowTranslate)
+                        
+                                    {
+                                    
+    var dx: Double = (newWidth -width) /2
+
+
+    var dy: Double = (newHeight -height) /2
+
+affineTransform!!.translate(dx, dy)
+
+                                    }
+                                
+
+    var newBufferedImage: BufferedImage = BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB_PRE)
+
+
+    var graphics: Graphics2D = newBufferedImage!!.createGraphics()!!
+
+graphics.drawRenderedImage(bufferedImage, affineTransform)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return newBufferedImage
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun createBufferedImageWithLargerCanvas(bufferedImage: BufferedImage, newWidth: Int, newHeight: Int)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var bufferedImage = bufferedImage
+    //var newWidth = newWidth
+var newHeight = newHeight
+
+    var width: Double = bufferedImage!!.getWidth()
+
+
+    var height: Double = bufferedImage!!.getHeight()
+
+
+    var d_newWidth: Double = newWidth.toDouble()
+
+
+    var d_newHeight: Double = newHeight.toDouble()
+
+
+    var widthRatio: Double = d_newWidth /width
+
+
+    var heightRatio: Double = d_newHeight /height
+
+
+    var dx2: Int = (newWidth -width).toInt()
+
+
+    var dy2: Int = (newHeight -height).toInt()
+
+
+    var dx: Int = dx2.toInt() /2
+
+
+    var dy: Int = dy2.toInt() /2
+
+
+    var dx4: Int = dx2.toInt() /4
+
+
+    var dy4: Int = dy2.toInt() /4
+
+
+    var newBufferedImage: BufferedImage = BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB_PRE)
+
+
+    var graphics: Graphics2D = newBufferedImage!!.createGraphics()!!
+
+graphics.drawImage(bufferedImage, dx4, dy4, 
+                            null)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return newBufferedImage
+}
+
+
+    open fun convertToBufferedImage(toolkitImage: java.awt.Image)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage?{
+var toolkitImage = toolkitImage
+
+    
+                        if(toolkitImage == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return null
+
+                                    }
+                                
+
+    var bufferedImage: BufferedImage = BufferedImage(toolkitImage!!.getWidth(
+                            null), toolkitImage!!.getHeight(
+                            null), BufferedImage.TYPE_INT_ARGB)
+
+
+    var g2d: Graphics2D = bufferedImage!!.createGraphics()!!
+
+g2d.drawImage(toolkitImage, 0, 0, 
+                            null)
+g2d.dispose()
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return bufferedImage
+}
+
+
+    open fun getBufferedImage(image: Image)
+        //nullable = true from not(false or (false and false)) = true
+: BufferedImage{
+    //var image = image
+
+    var bufferedImage: BufferedImage
+
+
+    
+                        if(image.isMutable())
+                        
+                                    {
+                                    
+    var j2seImage: J2SEMutableImage = image as J2SEMutableImage
+
+bufferedImage= j2seImage!!.getImage() as BufferedImage
+
+                                    }
+                                
+                        else {
+                            
+    var j2seImage: J2SEImmutableImage = image as J2SEImmutableImage
+
+bufferedImage= j2seImage!!.getImage() as BufferedImage
+
+                        }
+                            
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return bufferedImage
+}
+
+
+    open fun toString(bufferedImage: BufferedImage)
+        //nullable = true from not(false or (true and false)) = true
+: String{
+var bufferedImage = bufferedImage
+
+    var commonLabels: CommonLabels = CommonLabels.getInstance()!!
+
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(" BufferedImage -")
+stringBuffer!!.append(commonLabels!!.WIDTH_LABEL)
+stringBuffer!!.appendint(bufferedImage!!.getWidth().toInt())
+stringBuffer!!.append(commonLabels!!.HEIGHT_LABEL)
+stringBuffer!!.appendint(bufferedImage!!.getHeight().toInt())
+stringBuffer!!.append(" Type: ")
+stringBuffer!!.appendint(bufferedImage!!.getType().toInt())
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!!.toString()
+}
+
+
+}
+                
+            
+

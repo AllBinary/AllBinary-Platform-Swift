@@ -1,0 +1,248 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.midlet
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.Command
+import javax.microedition.lcdui.CommandListener
+import javax.microedition.lcdui.Display
+import javax.microedition.lcdui.Displayable
+import javax.microedition.lcdui.NullCanvas
+import javax.microedition.midlet.MIDlet
+import javax.microedition.midlet.MIDletStateChangeException
+import org.allbinary.logic.StdUtil
+import org.allbinary.logic.communication.log.ForcedLogUtil
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.communication.log.PreLogUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.logic.util.event.EventStrings
+import org.allbinary.string.CommonLabels
+import org.allbinary.string.CommonStrings
+import org.allbinary.system.Memory
+import org.allbinary.logic.NullUtil
+import org.allbinary.util.ABHashtable
+
+open public class AllBinaryMidlet : MIDlet
+                , CommandListener {
+        
+companion object {
+            
+    private var NULL_ALLBINARY_MIDLET: Any = NullUtil.getInstance()!!.NULL_OBJECT
+
+    open fun getNullInstance()
+        //nullable = true from not(false or (false and true)) = true
+: AllBinaryMidlet{
+
+    
+                        if(AllBinaryMidlet.NULL_ALLBINARY_MIDLET == NullUtil.getInstance()!!.NULL_OBJECT)
+                        
+                                    {
+                                    AllBinaryMidlet.NULL_ALLBINARY_MIDLET= AllBinaryMidlet()
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AllBinaryMidlet.NULL_ALLBINARY_MIDLET as AllBinaryMidlet
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    private val SET_DISPLAY: String = "setDisplay"
+
+    private val SETTING_: String = "Setting: "
+
+    private val _DISPLAY_: String = " Display: "
+
+    private val SETTING_NO_TITLE: String = "Setting: No Title, Display: "
+
+    private var hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
+
+    private var midletDestroyed: Boolean= false
+public constructor (){
+this.logUtil!!.putF(this.commonStrings!!.CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet")
+}
+
+
+    open fun setDisplay(newDisplay: Displayable)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var newDisplay = newDisplay
+
+    var title: String = StringUtil.getInstance()!!.EMPTY_STRING
+
+
+    
+                        if(newDisplay != NullCanvas.NULL_CANVAS)
+                        
+                                    {
+                                    title= newDisplay!!.getTitle()!!
+this.logUtil!!.putF(StringMaker().
+                            append(this.SETTING_)!!.append(title)!!.append(this._DISPLAY_)!!.append(StringUtil.getInstance()!!.toString(newDisplay))!!.toString(), this, this.SET_DISPLAY)
+
+                                    }
+                                
+
+    var display: Display = this.getDisplay()!!
+
+display.setCurrent(newDisplay)
+}
+
+
+    open fun getDisplay()
+        //nullable = true from not(false or (false and true)) = true
+: Display{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Display.getDisplay(this)
+}
+
+
+    open fun getCurrentDisplayable()
+        //nullable = true from not(false or (false and true)) = true
+: Displayable{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Display.getDisplay(this)!!.getCurrent()
+}
+
+
+    open fun setDestroyed(destroyed: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+var destroyed = destroyed
+this.midletDestroyed= destroyed
+}
+
+
+    open fun isDestroyed()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.midletDestroyed
+}
+
+
+                @Throws(MIDletStateChangeException::class)
+            
+    override fun startApp()
+        //nullable = true from not(false or (false and true)) = true
+{
+ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
+}
+
+
+    override fun pauseApp()
+        //nullable = true from not(false or (false and true)) = true
+{
+ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
+}
+
+
+    open fun destroyAppInRunnable(unconditional: Boolean, isProgress: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var unconditional = unconditional
+    //var isProgress = isProgress
+}
+
+
+    override fun destroyApp(unconditional: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var unconditional = unconditional
+
+    var METHOD_NAME: String = "AllBinaryMidlet::destroyApp"
+
+
+        try {
+            this.logUtil!!.putF(this.commonStrings!!.START, this, METHOD_NAME)
+PreLogUtil.put(Memory.getInfo(), this, METHOD_NAME)
+this.setDestroyed(true)
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, METHOD_NAME, e)
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun setStartStateHashtable(hashtable: ABHashtable<Any, Any>)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var hashtable = hashtable
+this.logUtil!!.putF(StringMaker().
+                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(StringUtil.getInstance()!!.toString(hashtable))!!.toString(), this, "setStartStateHashtable")
+this.hashtable= hashtable
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getStartStateHashtable()
+        //nullable = true from not(false or (false and true)) = true
+: ABHashtable<Any, Any>{
+this.logUtil!!.putF(StringMaker().
+                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(StringUtil.getInstance()!!.toString(this.hashtable))!!.toString(), this, "getStartStateHashtable")
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.hashtable
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getCurrentStateHashtable()
+        //nullable = true from not(false or (false and true)) = true
+: ABHashtable<Any, Any>{
+this.logUtil!!.putF(this.commonStrings!!.START, this, "getStateHashtable")
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StdUtil.getInstance()!!.NULL_TABLE
+}
+
+
+    override fun commandAction(command: Command, displayable: Displayable)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var command = command
+    //var displayable = displayable
+}
+
+
+}
+                
+            
+

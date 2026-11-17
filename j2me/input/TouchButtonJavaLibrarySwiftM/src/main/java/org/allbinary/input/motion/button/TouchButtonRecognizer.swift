@@ -1,0 +1,239 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.input.motion.button
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.game.input.event.DownGameKeyEventHandler
+import org.allbinary.game.input.event.GameKeyEvent
+import org.allbinary.game.input.event.UpGameKeyEventHandler
+import org.allbinary.graphics.GPoint
+import org.allbinary.graphics.Rectangle
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.math.RectangleCollisionUtil
+import org.allbinary.util.BasicArrayList
+
+open public class TouchButtonRecognizer
+            : Object
+         {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private val rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!!
+
+    val upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!!
+
+    private val downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!!
+
+    private var lastPressedTouchButtonInput: TouchButtonInput = BasicTouchInputFactory.getInstance()!!.NONE
+
+    val currentlyPressedTouchButtonSingleton: CurrentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton.getInstance()!!
+
+    private val releaseHelper: ReleaseHelper
+public constructor ()
+            : super()
+        {
+
+    
+                        if(TouchScreenFactory.getInstance()!!.isMultiTouch())
+                        
+                                    {
+                                    this.releaseHelper= MultitouchReleaseHelper(this)
+
+                                    }
+                                
+                        else {
+                            this.releaseHelper= ReleaseHelper(this)
+
+                        }
+                            
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun processRelease(touchButtonInput: TouchButtonInput, deviceId: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var touchButtonInput = touchButtonInput
+var deviceId = deviceId
+this.releaseHelper!!.release(touchButtonInput, deviceId)
+
+    var gameKeyEvent: GameKeyEvent = touchButtonInput!!.getGameKeyEvent()!!
+
+this.upGameKeyEventHandler!!.fireEvent(gameKeyEvent)
+this.upGameKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEvent(gameKeyEvent)
+this.currentlyPressedTouchButtonSingleton!!.remove(touchButtonInput)
+}
+
+
+                @Throws(Exception::class)
+            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun releaseTouchButtonInput(x: Int, y: Int, deviceId: Int)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+var x = x
+var y = y
+var deviceId = deviceId
+
+    var touchButtonInput: TouchButtonInput = this.lastPressedTouchButtonInput
+
+
+    
+                        if(this.currentlyPressedTouchButtonSingleton!!.contains(touchButtonInput))
+                        
+                                    {
+                                    this.lastPressedTouchButtonInput= BasicTouchInputFactory.getInstance()!!.NONE
+this.processRelease(touchButtonInput, deviceId)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+                        else {
+                            
+    var list: BasicArrayList = TouchButtonFactory.getInstance()!!.getList()!!
+
+
+    var rectangle: Rectangle
+
+
+    var point: GPoint
+
+
+    var touchButton: TouchButton
+
+
+
+
+
+                        for (index in list.size() -1 downTo 0)
+
+        {
+touchButton= list.objectArray[index]!! as TouchButton
+rectangle= touchButton!!.getRectangle()!!
+point= rectangle.getPoint()!!
+
+    
+                        if(this.rectangleCollisionUtil!!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        
+                                    {
+                                    touchButtonInput= touchButton!!.getTouchButtonInput()!!
+this.processRelease(touchButtonInput, deviceId)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+}
+
+
+                        }
+                            
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+                @Throws(Exception::class)
+            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun pressTouchButtonInput(x: Int, y: Int, deviceId: Int)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+    //var x = x
+    //var y = y
+    //var deviceId = deviceId
+
+    var list: BasicArrayList = TouchButtonFactory.getInstance()!!.getList()!!
+
+
+    var rectangle: Rectangle
+
+
+    var point: GPoint
+
+
+    var touchButton: TouchButton
+
+
+    var touchButtonInput: TouchButtonInput
+
+
+    var gameKeyEvent: GameKeyEvent
+
+
+
+
+
+                        for (index in list.size() -1 downTo 0)
+
+        {
+touchButton= list.objectArray[index]!! as TouchButton
+rectangle= touchButton!!.getRectangle()!!
+point= rectangle.getPoint()!!
+
+    
+                        if(this.rectangleCollisionUtil!!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        
+                                    {
+                                    touchButtonInput= touchButton!!.getTouchButtonInput()!!
+
+    
+                        if(!this.currentlyPressedTouchButtonSingleton!!.contains(touchButtonInput))
+                        
+                                    {
+                                    this.releaseHelper!!.release(touchButtonInput, deviceId)
+this.lastPressedTouchButtonInput= touchButtonInput
+this.currentlyPressedTouchButtonSingleton!!.add(touchButtonInput)
+gameKeyEvent= touchButtonInput!!.getGameKeyEvent()!!
+this.downGameKeyEventHandler!!.fireEvent(gameKeyEvent)
+this.downGameKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEvent(gameKeyEvent)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+}
+                
+            
+

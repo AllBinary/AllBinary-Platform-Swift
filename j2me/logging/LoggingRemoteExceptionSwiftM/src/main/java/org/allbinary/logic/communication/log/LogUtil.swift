@@ -1,0 +1,233 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot   
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.logic.communication.log
+
+
+
+
+        import java.lang.Object        
+        
+        import java.lang.System
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.io.IOException
+import org.apache.xmlrpc.XmlRpcException
+import org.allbinary.string.CommonSeps
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+import org.allbinary.canvas.SpecialMessageUtil
+import org.allbinary.string.CommonStrings
+import org.allbinary.time.TimeDelayHelper
+import org.allbinary.util.ABHashtable
+//ActualPlatform
+/*actual*/ open public class LogUtil
+            : Object
+         {
+        
+/*actual*/ companion object {
+            
+    private val instance: LogUtil = LogUtil()
+
+    /*actual*/ open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: LogUtil{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LogUtil.instance
+}
+
+
+        }
+            
+    private val MESSAGE: String = "message"
+
+    private var isFirstException: Boolean = true
+
+    private var timeDelayHelper: TimeDelayHelper = TimeDelayHelper(200000)
+
+    var abeClientInformation: AbeClientInformationInterface
+private constructor ()
+            : super()
+        {
+}
+
+
+    private val stringBuffer: StringMaker = StringMaker()
+
+    /*actual*/ open fun putL(log: Log)
+        //nullable = true from not(false or (false and false)) = true
+{
+var log = log
+
+    
+                        if(log == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+
+    var specialMessage: String = log.getSpecialMessage()!!
+
+
+    var anyType: Any = log.getObject()!!
+
+
+    var functionName: String = log.getFunctionName()!!
+
+
+    var exception: Any = log.getThrowable()!!
+
+this.put(specialMessage, anyType, functionName, exception)
+}
+
+
+    /*actual*/ open fun putF(specialMessage: String, anyType: Any, functionName: String)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var specialMessage = specialMessage
+    //var anyType = anyType
+    //var functionName = functionName
+}
+
+
+    /*actual*/ open fun putFS(specialMessage: String, className: String, functionName: String)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var specialMessage = specialMessage
+    //var className = className
+    //var functionName = functionName
+}
+
+
+    /*actual*/ open fun put(specialMessage: String, anyType: Any, functionName: String, exception: Any)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var specialMessage = specialMessage
+    //var anyType = anyType
+    //var functionName = functionName
+    //var exception = exception
+
+    
+                        if(exception != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    
+                        if(exception::class.toString()!!.compareTo(XmlRpcException::class.toString()!!) == 0)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+
+    
+                        if(exception::class.toString()!!.compareTo(IOException::class.toString()!!) == 0)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+
+    
+                        if(this.isFirstException || this.timeDelayHelper!!.isTimeTNT())
+                        
+                                    {
+                                    
+    var className: String = CommonStrings.getInstance()!!.EMPTY
+
+this.isFirstException= false
+
+    
+                        if(anyType != 
+                                    null
+                                 && anyType!!::class.toString()!! != 
+                                    null
+                                )
+                        
+                                    {
+                                    className= anyType!!::class.toString()!!.toCharArray().concatToString()
+                                
+
+                                    }
+                                
+
+    var message: String = LogFormatUtil.getInstance()!!.get(className, functionName, specialMessage, exception)!!
+
+
+        try {
+            System.out.println("Eeeek")
+
+    
+                        if(this.abeClientInformation == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                            throw RuntimeException()
+
+                                    }
+                                
+
+    var hashtable: ABHashtable<Any, Any> = this.abeClientInformation!!.toHashtable()!!
+
+this.stringBuffer!!.delete(0, this.stringBuffer!!.length())
+this.stringBuffer!!.append(message)
+this.stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
+this.stringBuffer!!.append(SpecialMessageUtil.getInstance()!!.get())
+hashtable.put(this.MESSAGE, this.stringBuffer!!.toString())
+XmlRpcRemoteLogClient(this.abeClientInformation).
+                            get(hashtable)
+} catch(e: Throwable)
+            {
+System.out.println("Exception")
+e.printStackTrace()
+}
+
+
+                                    }
+                                
+
+                                    }
+                                
+}
+
+
+}
+                
+            
+

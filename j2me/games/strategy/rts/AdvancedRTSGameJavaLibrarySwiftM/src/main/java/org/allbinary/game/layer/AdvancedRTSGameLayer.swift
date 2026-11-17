@@ -1,0 +1,629 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2006 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.layer
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.Canvas
+import org.allbinary.animation.AnimationInterfaceFactoryInterface
+import org.allbinary.animation.NullAnimationFactory
+import org.allbinary.animation.NullIndexedAnimationFactory
+import org.allbinary.animation.ProceduralAnimationInterfaceFactoryInterface
+import org.allbinary.animation.transition.shake.ShakeAnimationListener
+import org.allbinary.direction.Direction
+import org.allbinary.direction.DirectionFactory
+import org.allbinary.game.GameTypeFactory
+import org.allbinary.game.combat.destroy.event.DestroyedEvent
+import org.allbinary.game.combat.destroy.event.DestroyedEventHandler
+import org.allbinary.game.combat.destroy.event.DestroyedEventListenerInterface
+import org.allbinary.game.health.Health
+import org.allbinary.game.identification.Group
+import org.allbinary.game.identification.GroupFactory
+import org.allbinary.game.input.event.GameKeyEventFactory
+import org.allbinary.game.input.form.NullRTSFormInputFactory
+import org.allbinary.game.input.form.RTSFormInput
+import org.allbinary.game.layer.building.event.BuildingEventHandler
+import org.allbinary.game.layer.waypoint.Waypoint2LogHelper
+import org.allbinary.game.layer.waypoint.Waypoint2SelectedLogHelper
+import org.allbinary.game.layer.waypoint.WaypointBase
+import org.allbinary.game.layer.waypoint.WaypointLogHelper
+import org.allbinary.game.layer.waypoint.WaypointRunnableLogHelper
+import org.allbinary.game.layer.waypoint.WaypointRunnableSelectedLogHelper
+import org.allbinary.game.layer.waypoint.WaypointSelectedLogHelper
+import org.allbinary.game.multiplayer.layer.RemoteInfo
+import org.allbinary.game.tick.NullTickable
+import org.allbinary.game.tick.TickableInterface
+import org.allbinary.game.view.TileLayerPositionIntoViewPosition
+import org.allbinary.graphics.Rectangle
+import org.allbinary.graphics.RectangleFactory
+import org.allbinary.layer.AllBinaryLayer
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.math.AngleInfo
+import org.allbinary.math.FrameUtil
+import org.allbinary.media.AllBinaryVibrationME
+import org.allbinary.media.graphics.geography.map.BasicGeographicMap
+import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
+import org.allbinary.media.graphics.geography.map.GeographicMapCompositeInterface
+import org.allbinary.media.graphics.geography.map.GeographicMapDirectionUtil
+import org.allbinary.util.BasicArrayList
+import org.allbinary.view.ViewPositionBase
+
+open public class AdvancedRTSGameLayer : RTSLayer
+                , DestroyedEventListenerInterface {
+        
+companion object {
+            
+                @Throws(Exception::class)
+            
+    open fun createSimulated()
+        //nullable = true from not(false or (false and true)) = true
+: AdvancedRTSGameLayer{
+
+    var nullAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface = NullAnimationFactory.getFactoryInstance()!!
+
+
+    var nullIndexedAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface = NullIndexedAnimationFactory.getFactoryInstance()!!
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AdvancedRTSGameLayer(RemoteInfo.REMOTE_INFO, NullPathFindingLayer.NULL_PATH_FINDING_LAYER, AdvancedRTSProperties.createPropertiesSimulated(), GroupFactory.getInstance()!!.NULL_GROUP_ARRAY, StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING, Health.NULL_HEALTH, NullRTSFormInputFactory.getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory.getFactoryInstance(), RectangleFactory.SINGLETON, 0, 0, TileLayerPositionIntoViewPosition())
+}
+
+
+        }
+            
+    val shakeListener: ShakeAnimationListener
+
+    val vibration: AllBinaryVibrationME
+
+    val duration: Int
+
+    private var parentLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER
+
+    var waypointBehaviorBase: TickableInterface = NullTickable.getInstance()!!
+public constructor (remoteInfo: RemoteInfo, parentLayer: PathFindingLayerInterface, advancedRTSProperties: AdvancedRTSProperties, groupInterface: Array<Group?>, rootName: String, name: String, healthInterface: Health, rtsFormInput: RTSFormInput, animationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface: ProceduralAnimationInterfaceFactoryInterface, rectangle: Rectangle, x: Int, y: Int, viewPosition: ViewPositionBase)                        
+
+                            : super(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
+    //var remoteInfo = remoteInfo
+    //var parentLayer = parentLayer
+    //var advancedRTSProperties = advancedRTSProperties
+    //var groupInterface = groupInterface
+    //var rootName = rootName
+    //var name = name
+    //var healthInterface = healthInterface
+    //var rtsFormInput = rtsFormInput
+    //var animationInterfaceFactoryInterface = animationInterfaceFactoryInterface
+    //var emptyAnimationInterfaceFactoryInterface = emptyAnimationInterfaceFactoryInterface
+    //var baseAnimationInterfaceFactoryInterface = baseAnimationInterfaceFactoryInterface
+    //var buildAnimationInterfaceFactoryInterface = buildAnimationInterfaceFactoryInterface
+    //var verticleBuildAnimationInterfaceFactoryInterface = verticleBuildAnimationInterfaceFactoryInterface
+    //var proceduralAnimationInterfaceFactoryInterface = proceduralAnimationInterfaceFactoryInterface
+    //var rectangle = rectangle
+    //var x = x
+    //var y = y
+    //var viewPosition = viewPosition
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.setVisible(false)
+this.setWaypointBehavior(WaypointBehaviorBase())
+this.shakeListener= advancedRTSProperties!!.shakeListener
+this.vibration= advancedRTSProperties!!.vibration
+this.duration= advancedRTSProperties!!.duration
+this.setParentLayer(parentLayer)
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun updateWaypointBehavior(geographicMapInterface: BasicGeographicMap)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var geographicMapInterface = geographicMapInterface
+super.updateWaypointBehavior(geographicMapInterface)
+this.getWaypointBehavior()!!.getWaypoint()!!.setAllBinaryGameLayerManager(this.allBinaryGameLayerManagerP)
+}
+
+
+    open fun initVisibility(rtsPlayerLayerInterface: RTSPlayerLayerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var rtsPlayerLayerInterface = rtsPlayerLayerInterface
+
+    var advancedRTSPlayerLayerInterface: AdvancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface
+
+
+    
+                        if(advancedRTSPlayerLayerInterface!!.isLocalPlayer() || advancedRTSPlayerLayerInterface!!.getGameType() == GameTypeFactory.getInstance()!!.BOT)
+                        
+                                    {
+                                    this.setVisible(true)
+
+                                    }
+                                
+                        else {
+                            this.setVisible(false)
+
+                        }
+                            
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun construct(rtsPlayerLayerInterface: RTSPlayerLayerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var rtsPlayerLayerInterface = rtsPlayerLayerInterface
+super.construct(rtsPlayerLayerInterface)
+this.initVisibility(rtsPlayerLayerInterface)
+BuildingEventHandler.getInstance()!!.addListenerInterface(this.getWaypointBehavior()!!.getWaypoint())
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun setDestroyed(destroyed: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+var destroyed = destroyed
+super.setDestroyed(destroyed)
+
+    
+                        if(this.isDestroyed())
+                        
+                                    {
+                                    BuildingEventHandler.getInstance()!!.removeListener(this.getWaypointBehavior()!!.getWaypoint())
+BuildingEventHandler.getInstance()!!.removeListener(this)
+DestroyedEventHandler.getInstance()!!.addListener(this)
+RTSLayerUtil.getInstance()!!.destroyAndClear(this.getWaypointBehavior()!!.getOwnedWaypointList())
+
+                                    }
+                                
+}
+
+
+    override fun getParentLayer()
+        //nullable = true from not(false or (false and true)) = true
+: PathFindingLayerInterface{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.parentLayer
+}
+
+
+    open fun setParentLayer(parentLayer: PathFindingLayerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var parentLayer = parentLayer
+this.parentLayer= parentLayer
+}
+
+
+    override fun getWaypointBehavior()
+        //nullable = true from not(false or (false and true)) = true
+: WaypointBehaviorBase{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.waypointBehaviorBase as WaypointBehaviorBase
+}
+
+
+    open fun setWaypointBehavior(unitWaypointHelper: WaypointBehaviorBase)
+        //nullable = true from not(false or (false and false)) = true
+{
+var unitWaypointHelper = unitWaypointHelper
+this.waypointBehaviorBase= unitWaypointHelper
+}
+
+
+    override fun getWaypointLogHelper()
+        //nullable = true from not(false or (false and true)) = true
+: WaypointLogHelper{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.waypointLogHelperP
+}
+
+
+    override fun getWaypoint2LogHelper()
+        //nullable = true from not(false or (false and true)) = true
+: Waypoint2LogHelper{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.waypoint2LogHelperP
+}
+
+
+    override fun getWaypointRunnableLogHelper()
+        //nullable = true from not(false or (false and true)) = true
+: WaypointRunnableLogHelper{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.waypointRunnableLogHelperP
+}
+
+
+    override fun shouldAddWaypointFromBuilding()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+    
+                        if(this.parentLayer != NullPathFindingLayer.NULL_PATH_FINDING_LAYER)
+                        
+                                    {
+                                    
+    var parentAdvancedRTSGameLayer: AdvancedRTSGameLayer = this.parentLayer as AdvancedRTSGameLayer
+
+
+    
+                        if(parentAdvancedRTSGameLayer!!.getType() != 1)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    override fun isWaypointListEmptyOrOnlyTargets()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+    
+                        if(this.getType() != 1)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun buildingChase(allbinaryLayer: AllBinaryLayer, cellPosition: GeographicMapCellPosition)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+    //var allbinaryLayer = allbinaryLayer
+    //var cellPosition = cellPosition
+
+    var geographicMapCellPosition: GeographicMapCellPosition = this.getCurrentGeographicMapCellPosition()!!
+
+
+    var buildingDirection: Direction = GeographicMapDirectionUtil.getInstance()!!.getDirectionFromCellPositionToAdjacentCellPosition(geographicMapCellPosition, cellPosition)!!
+
+
+    var angleInfo: AngleInfo = this.getRotationAnimationInterface()!!.getAngleInfoP()!!
+
+
+    var angle: Int = FrameUtil.getInstance()!!.adjustAngleToFrameAngle(angleInfo!!.getAngle() +90)
+
+
+    var gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!!
+
+
+    
+                        if(buildingDirection == DirectionFactory.getInstance()!!.UP)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingAbove(this)
+
+    
+                        if(angle > 180 && angle < 360)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingChaseLeft(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.LEFT))
+
+    
+                        if(angle <= 190)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.rtsLayer2LogHelper!!.buildingChaseRight(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.RIGHT))
+
+    
+                        if(angle >= 170)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                        }
+                            
+
+                                    }
+                                
+                             else 
+    
+                        if(buildingDirection == DirectionFactory.getInstance()!!.DOWN)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingDown(this)
+
+    
+                        if(angle > 180 && angle < 360)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingChaseLeft(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.RIGHT))
+
+    
+                        if(angle > 315)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.rtsLayer2LogHelper!!.buildingChaseRight(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.LEFT))
+
+    
+                        if(angle < 45)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                        }
+                            
+
+                                    }
+                                
+                             else 
+    
+                        if(buildingDirection == DirectionFactory.getInstance()!!.LEFT)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingLeft()
+
+    
+                        if(angle > 90 && angle < 270)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingChaseDown(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.LEFT))
+
+    
+                        if(angle < 135)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.rtsLayer2LogHelper!!.buildingChaseUp(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.RIGHT))
+
+    
+                        if(angle > 45)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                        }
+                            
+
+                                    }
+                                
+                             else 
+    
+                        if(buildingDirection == DirectionFactory.getInstance()!!.RIGHT)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingRight()
+
+    
+                        if(angle > 90 && angle < 270)
+                        
+                                    {
+                                    this.rtsLayer2LogHelper!!.buildingChaseDown(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.RIGHT))
+
+    
+                        if(angle > 225)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.rtsLayer2LogHelper!!.buildingChaseUp(this, angle)
+this.getGameKeyEventList()!!.add(gameKeyEventFactory!!.getInstanceForKey(this, Canvas.LEFT))
+
+    
+                        if(angle < 315 && angle > 180)
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                        }
+                            
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+                @Throws(Exception::class)
+            
+    override fun getSurroundingGeographicMapCellPositionList()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+    var geographicMapCompositeInterface: GeographicMapCompositeInterface = this.allBinaryGameLayerManagerP as GeographicMapCompositeInterface
+
+
+    var geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!!.getGeographicMapInterface()[0]!!
+
+this.geographicMapCellPositionAreaBase!!.update(geographicMapInterface)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.geographicMapCellPositionAreaBase!!.getSurroundingGeographicMapCellPositionList()
+}
+
+
+    override fun setSelected(selected: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+var selected = selected
+super.setSelected(selected)
+
+    
+                        if(this.debug)
+                        
+                                    {
+                                    
+    
+                        if(selected)
+                        
+                                    {
+                                    this.waypointLogHelperP= WaypointSelectedLogHelper.getInstance()
+this.waypoint2LogHelperP= Waypoint2SelectedLogHelper.getInstance()
+this.waypointRunnableLogHelperP= WaypointRunnableSelectedLogHelper.getInstance()
+
+                                    }
+                                
+                        else {
+                            this.waypointLogHelperP= WaypointLogHelper.getInstance()
+this.waypoint2LogHelperP= Waypoint2LogHelper.getInstance()
+this.waypointRunnableLogHelperP= WaypointRunnableLogHelper.getInstance()
+
+                        }
+                            
+
+                                    }
+                                
+}
+
+
+    override fun onDestroyed(destroyedEvent: DestroyedEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+var destroyedEvent = destroyedEvent
+
+        try {
+            
+    var layerInterface: AllBinaryLayer = destroyedEvent!!.getLayerInterface()!!
+
+
+    
+                        if(layerInterface == this)
+                        
+                                    {
+                                    DestroyedEventHandler.getInstance()!!.removeListener(this)
+
+    var waypoint: WaypointBase = this.getWaypointBehavior()!!.getWaypoint() as WaypointBase
+
+waypoint.reset()
+
+                                    }
+                                
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "onDestroyed", e)
+}
+
+}
+
+
+}
+                
+            
+

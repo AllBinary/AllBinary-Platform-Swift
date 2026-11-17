@@ -1,0 +1,332 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.logic.communication.sql.connection.pool
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.sql.Connection
+import java.sql.DriverManager
+import java.sql.SQLException
+import java.util.HashMap
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.logic.StdUtil
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.string.StringMaker
+
+open public class SqlConnectionPool
+            : Object
+         {
+        
+companion object {
+            
+    private val instance: SqlConnectionPool = SqlConnectionPool()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: SqlConnectionPool{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return SqlConnectionPool.instance
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    val stdUtil: StdUtil = StdUtil.getInstance()!!
+
+    private var connectionHashMap: HashMap<Any, Any>? = 
+                null
+            
+
+    private val FIRST_NEW_CONNECTION_CREATED: String = "First New Connection Created: "
+
+    private val FIRST: String = "First "
+
+    private val NEW_CONNECTION_FOR: String = "New Connection For "
+
+    private val CREATED: String = " Created"
+
+    private val NUMBER_OF_SQL_CONNECTIONS_FOR: String = "Number Of Sql Connections for: "
+
+    private val NUMBER_OF_SQL_CONNECTION_VECTORS: String = "Number Of Sql Connection Vectors: "
+
+    private val IS: String = " is "
+
+    private val CONNECTION_ALLREADY_CLOSED: String = "Connection AllReady Closed"
+
+    private val METHOD_GET: String = "get()"
+
+    private val METHOD_ADD: String = "add()"
+private constructor ()
+            : super()
+        {
+}
+
+
+                @Throws(SQLException::class)
+            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun get(url: String)
+        //nullable = true from not(false or (false and false)) = true
+: Connection{
+var url = url
+
+    
+                        if(this.connectionHashMap == 
+                                    null
+                                )
+                        
+                                    {
+                                    this.connectionHashMap= this.stdUtil!!.createHashMap()!!
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    this.logUtil!!.putF(this.FIRST_NEW_CONNECTION_CREATED +url, this, METHOD_GET)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DriverManager.getConnection(url)
+
+                                    }
+                                
+                        else {
+                            
+    var connectionVector: BasicArrayList = this.connectionHashMap!!.get(url as Object) as BasicArrayList
+
+
+    
+                        if(connectionVector == 
+                                    null
+                                )
+                        
+                                    {
+                                    connectionVector= BasicArrayListD()
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(this.FIRST)
+stringBuffer!!.append(this.NEW_CONNECTION_FOR)
+stringBuffer!!.append(url)
+stringBuffer!!.append(this.CREATED)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.METHOD_GET)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DriverManager.getConnection(url)
+
+                                    }
+                                
+                             else 
+    
+                        if(connectionVector!!.size() == 0)
+                        
+                                    {
+                                    
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    this.logUtil!!.putF(StringMaker().
+                            append(this.NEW_CONNECTION_FOR)!!.append(url)!!.append(this.CREATED)!!.toString(), this, METHOD_GET)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DriverManager.getConnection(url)
+
+                                    }
+                                
+                        else {
+                            
+    var stringBuffer: StringMaker = StringMaker()
+
+
+    var size: Int = connectionVector!!.size()
+
+
+
+
+
+                        for (i in 0 until size)
+
+        {
+
+    var sqlConnection: Connection = connectionVector!!.get(i) as Connection
+
+
+    
+                        if(!sqlConnection!!.isClosed())
+                        
+                                    {
+                                    connectionVector!!.remove(sqlConnection)
+this.connectionHashMap!!.put(url, connectionVector)
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    stringBuffer!!.delete(0, stringBuffer!!.length())
+stringBuffer!!.append(this.NUMBER_OF_SQL_CONNECTIONS_FOR)
+stringBuffer!!.append(url)
+stringBuffer!!.append(this.IS)
+stringBuffer!!.appendint(connectionVector!!.size())
+this.logUtil!!.putF(NUMBER_OF_SQL_CONNECTION_VECTORS +this.connectionHashMap!!.size, this, this.METHOD_GET)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, METHOD_GET)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return sqlConnection as Connection
+
+                                    }
+                                
+}
+
+
+                        }
+                            
+
+                        }
+                            
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(this.NEW_CONNECTION_FOR)
+stringBuffer!!.append(url)
+stringBuffer!!.append(this.CREATED)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.METHOD_GET)
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DriverManager.getConnection(url)
+}
+
+
+                @Throws(SQLException::class)
+            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun add(url: String, sqlConnection: Connection)
+        //nullable = true from not(false or (false and false)) = true
+{
+var url = url
+var sqlConnection = sqlConnection
+
+    
+                        if(!sqlConnection!!.isClosed())
+                        
+                                    {
+                                    
+    var connectionVector: BasicArrayList
+
+
+    
+                        if(this.connectionHashMap == 
+                                    null
+                                )
+                        
+                                    {
+                                    this.connectionHashMap= this.stdUtil!!.createHashMap()!!
+connectionVector= BasicArrayListD()
+connectionVector!!.add(sqlConnection)
+
+                                    }
+                                
+                        else {
+                            connectionVector= this.connectionHashMap!!.get(url as Object) as BasicArrayList
+
+    
+                        if(connectionVector == 
+                                    null
+                                )
+                        
+                                    {
+                                    connectionVector= BasicArrayListD()
+
+                                    }
+                                
+connectionVector!!.add(sqlConnection)
+this.connectionHashMap!!.put(url, connectionVector)
+
+                        }
+                            
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(this.NUMBER_OF_SQL_CONNECTIONS_FOR)
+stringBuffer!!.append(url)
+stringBuffer!!.append(this.IS)
+stringBuffer!!.appendint(connectionVector!!.size())
+this.logUtil!!.putF(this.NUMBER_OF_SQL_CONNECTION_VECTORS +this.connectionHashMap!!.size, this, this.METHOD_ADD)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.METHOD_ADD)
+
+                                    }
+                                
+
+                                    }
+                                
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGINGPOOL))
+                        
+                                    {
+                                    this.logUtil!!.putF(this.CONNECTION_ALLREADY_CLOSED, this, METHOD_ADD)
+
+                                    }
+                                
+}
+
+
+}
+                
+            
+

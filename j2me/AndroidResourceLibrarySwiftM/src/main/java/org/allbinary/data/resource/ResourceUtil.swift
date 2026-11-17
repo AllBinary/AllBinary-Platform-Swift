@@ -1,0 +1,269 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.data.resource
+
+
+
+
+        import java.lang.Object        
+        
+        import java.lang.Integer
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.io.InputStream
+import android.app.Activity
+import android.content.Context
+import android.content.res.Resources
+import org.allbinary.debug.DebugFactory
+import org.allbinary.debug.NoDebug
+import org.allbinary.logic.NullUtil
+import org.allbinary.logic.StdUtil
+import org.allbinary.logic.communication.log.ForcedLogUtil
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.communication.log.PreLogUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.string.CommonSeps
+import org.allbinary.string.CommonStrings
+import org.allbinary.util.ABHashtable
+import org.allbinary.util.HashtableUtil
+//Android
+open public class ResourceUtil
+            : Object
+         {
+        
+companion object {
+            
+    private val instance: ResourceUtil = ResourceUtil()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: ResourceUtil{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ResourceUtil.instance
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private var context: Any = NullUtil.getInstance()!!.NULL_OBJECT
+
+    private var resources: Any = NullUtil.getInstance()!!.NULL_OBJECT
+
+    private var hashMap: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
+private constructor ()
+            : super()
+        {
+}
+
+
+    open fun setLoadingPaths(path: String, ext: String)
+        //nullable = true from not(false or (false and false)) = true
+{
+var path = path
+var ext = ext
+this.logUtil!!.putF(CommonStrings.getInstance()!!.NOT_IMPLEMENTED, this, "setLoadingPaths")
+}
+
+
+    open fun getContext()
+        //nullable = true from not(false or (false and true)) = true
+: Context{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.context as Context
+}
+
+
+    open fun setContextFromActivity(activity: Activity)
+        //nullable = true from not(false or (false and false)) = true
+{
+var activity = activity
+this.context= activity
+}
+
+
+    open fun setContext(aContext: Context)
+        //nullable = true from not(false or (false and false)) = true
+{
+var aContext = aContext
+this.context= aContext
+}
+
+
+    open fun getResourceId(resource: String)
+        //nullable = true from not(false or (false and false)) = true
+: Integer{
+var resource = resource
+
+    var value: Integer = this.hashMap!!.get(resource as Object) as Integer
+
+
+    
+                        if(DebugFactory.getInstance() != NoDebug.getInstance())
+                        
+                                    {
+                                    PreLogUtil.put(StringMaker().
+                            append(resource)!!.append(CommonSeps.getInstance()!!.COLON)!!.append(value.toString())!!.toString(), this, "getResourceId")
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return value
+}
+
+
+    open fun addResource(resource: String, value: Integer)
+        //nullable = true from not(false or (false and false)) = true
+{
+var resource = resource
+var value = value
+
+    
+                        if(DebugFactory.getInstance() != NoDebug.getInstance())
+                        
+                                    {
+                                    PreLogUtil.put(StringMaker().
+                            append(resource)!!.append(CommonSeps.getInstance()!!.COLON)!!.append(value.toString())!!.toString(), this, "addResource")
+
+    
+                        if(this.containsDuplicate(resource, value))
+                        
+                                    {
+                                    ForcedLogUtil.log(StringMaker().
+                            append("Found Duplicate Resource: ")!!.append(resource)!!.toString(), this)
+
+                                    }
+                                
+
+                                    }
+                                
+this.hashMap!!.put(resource, value)
+}
+
+
+    open fun containsDuplicate(resource: String, value: Integer)
+        //nullable = true from not(false or (false and false)) = true
+: Boolean{
+var resource = resource
+var value = value
+
+    var objectArray: Array<Any?> = HashtableUtil.getInstance()!!.getKeysAsArray(this.hashMap)!!
+
+
+
+
+
+                        for (index in objectArray!!.size  - 1  downTo 0)
+
+        {
+
+    var integer: Integer = this.hashMap!!.get(objectArray[index]!! as Object) as Integer
+
+
+    
+                        if(resource != objectArray[index])
+                        
+                                    {
+                                    
+    
+                        if(value != integer)
+                        
+                                    {
+                                    
+    
+                        if(value.toInt() == integer.toInt())
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    open fun setResources(resources: Resources)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var resources = resources
+this.logUtil!!.putF(StringMaker().
+                            append("Resource Loader: ")!!.append(resources::class.toString()!!)!!.toString(), this, "setResources")
+this.resources= resources
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getResourceAsStream(resource: String)
+        //nullable = true from not(false or (false and false)) = true
+: InputStream{
+    //var resource = resource
+
+    var integer: Integer = this.hashMap!!.get(resource as Object) as Integer
+
+
+    var id: Int = integer.toInt()
+
+
+    var resources: Resources = (this.resources as Resources)
+
+
+    var inputStream: InputStream = resources.openRawResource(id)!!
+
+
+    
+                        if(inputStream != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return inputStream
+
+                                    }
+                                
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return inputStream
+}
+
+
+}
+                
+            
+

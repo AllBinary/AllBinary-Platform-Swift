@@ -1,0 +1,419 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2011 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.layer
+
+
+
+
+        import java.lang.Object        
+        
+        import java.lang.Integer
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.Graphics
+import org.allbinary.game.identification.BasicGroupFactory
+import org.allbinary.game.identification.Group
+import org.allbinary.graphics.GPoint
+import org.allbinary.graphics.Rectangle
+import org.allbinary.graphics.RectangleFactory
+import org.allbinary.graphics.opengles.OpenGLFeatureUtil
+import org.allbinary.TsUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.math.PositionStrings
+import org.allbinary.string.CommonLabels
+import org.allbinary.string.CommonSeps
+import org.allbinary.view.ViewPositionBase
+import org.allbinary.view.event.ViewPositionEvent
+
+open public class AllBinaryLayer : Layer
+                , LayerInterface {
+        
+companion object {
+            
+    val NULL_ALLBINARY_LAYER: AllBinaryLayer = AllBinaryLayer(StringUtil.getInstance()!!.EMPTY_STRING, RectangleFactory.SINGLETON, ViewPositionBase.NULL_VIEW_POSITION)
+
+    private val TYPE: String = "Type: "
+
+        }
+            
+    val viewPositionEvent: ViewPositionEvent = ViewPositionEvent(this)
+
+    private var halfWidth: Int= 0
+
+    private var halfHeight: Int= 0
+
+    private val name: String
+
+    private var viewPosition: ViewPositionBase = ViewPositionBase.NULL_VIEW_POSITION
+public constructor (name: String, rectangle: Rectangle, viewPosition: ViewPositionBase)                        
+
+                            : super(rectangle.getWidth(), rectangle.getHeight()){
+    //var name = name
+    //var rectangle = rectangle
+    //var viewPosition = viewPosition
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    var localName: String
+
+localName= StringMaker().
+                            append(name)!!.append(CommonSeps.getInstance()!!.COLON)!!.append(Integer.toHexString(TsUtil.getInstance()!!.hashCode(this)))!!.toString()!!
+this.name= localName
+
+    var point: GPoint = rectangle.getPoint()!!
+
+this.setPosition(point.getX(), point.getY(), point.getZ())
+this.setHalfWidth((this.getWidth() shr 1))
+this.setHalfHeight((this.getHeight() shr 1))
+this.viewPosition= viewPosition
+this.viewPosition!!.setAllbinaryLayer(this)
+}
+
+
+    override fun setPosition(x: Int, y: Int, z: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var x = x
+    //var y = y
+    //var z = z
+super.setPosition(x, y, z)
+}
+
+
+    override fun moveDXYZ(dx: Int, dy: Int, dz: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var dx = dx
+    //var dy = dy
+    //var dz = dz
+super.moveDXYZ(dx, dy, dz)
+}
+
+
+    override fun getXP()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getXP()
+}
+
+
+    override fun getYP()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getYP()
+}
+
+
+    override fun getZP()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getZP()
+}
+
+
+    override fun getWidth()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getWidth()
+}
+
+
+    override fun getHeight()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.getHeight()
+}
+
+
+    override fun setVisible(visible: Boolean)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var visible = visible
+super.setVisible(visible)
+}
+
+
+    override fun isVisible()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.isVisible()
+}
+
+
+    override fun paint(graphics: Graphics)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var graphics = graphics
+super.paint(graphics)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun onChangeEvent(layerManagerEvent: ViewPositionEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var layerManagerEvent = layerManagerEvent
+}
+
+
+    override fun paintThreed(graphics: Graphics)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var graphics = graphics
+}
+
+
+    override fun getX2()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.getXP() +this.getWidth()
+}
+
+
+    override fun getY2()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.getYP() +this.getHeight()
+}
+
+
+    override fun getZ2()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return (this.getZP() +this.getDepth()).toInt()
+}
+
+
+    override fun getName()
+        //nullable = true from not(false or (false and true)) = true
+: String{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.name
+}
+
+
+    open fun setHalfWidth(halfWidth: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var halfWidth = halfWidth
+this.halfWidth= halfWidth
+}
+
+
+    override fun getHalfWidth()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.halfWidth
+}
+
+
+    open fun setHalfHeight(halfHeight: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var halfHeight = halfHeight
+this.halfHeight= halfHeight
+}
+
+
+    override fun getHalfHeight()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.halfHeight
+}
+
+
+    open fun getHalfDepth()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.getDepth().toInt() /2
+}
+
+
+    open fun getViewPosition()
+        //nullable = true from not(false or (false and true)) = true
+: ViewPositionBase{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.viewPosition
+}
+
+
+    open fun setViewPosition(viewPosition: ViewPositionBase)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var viewPosition = viewPosition
+this.viewPosition= viewPosition
+}
+
+
+    override fun getGroupInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Array<Group?>{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return BasicGroupFactory.getInstance()!!.NONE_ARRAY
+}
+
+
+    override fun implmentsTickableInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    override fun implmentsGameInputInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    override fun implmentsArtificialIntelligenceCompositeInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    override fun implmentsCollidableInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false
+}
+
+
+    open fun implementsThreedInterface()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return OpenGLFeatureUtil.getInstance()!!.isAnyThreed()
+}
+
+
+    override fun getType()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return  -1
+}
+
+
+    open fun getMultiPlayerType()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return  -1
+}
+
+
+    override fun toStringAppend(stringBuffer: StringMaker)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var stringBuffer = stringBuffer
+
+    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
+
+
+    var positionStrings: PositionStrings = PositionStrings.getInstance()!!
+
+
+    var commonLabels: CommonLabels = CommonLabels.getInstance()!!
+
+stringBuffer!!.append(this.getName())
+stringBuffer!!.append(commonSeps!!.COLON)
+stringBuffer!!.append(AllBinaryLayer.TYPE)
+stringBuffer!!.appendint(this.getType())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(positionStrings!!.X_LABEL)
+stringBuffer!!.appendint(this.getXP())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(positionStrings!!.Y_LABEL)
+stringBuffer!!.appendint(this.getYP())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(positionStrings!!.Z_LABEL)
+stringBuffer!!.appendint(this.getZP())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(commonLabels!!.WIDTH_LABEL)
+stringBuffer!!.appendint(this.getWidth())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(commonLabels!!.HEIGHT_LABEL)
+stringBuffer!!.appendint(this.getHeight())
+}
+
+
+    override fun toString()
+        //nullable =  from not(false or (true and true)) = 
+: String{
+
+    var stringBuffer: StringMaker = StringMaker()
+
+this.toStringAppend(stringBuffer)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!!.toString()
+}
+
+
+}
+                
+            
+

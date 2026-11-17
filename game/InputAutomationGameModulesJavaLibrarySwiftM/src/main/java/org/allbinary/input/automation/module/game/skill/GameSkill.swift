@@ -1,0 +1,180 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.input.automation.module.game.skill
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.logic.StdUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.string.CommonSeps
+
+open public class GameSkill
+            : Object
+         {
+        
+companion object {
+            
+    private var hashMap: HashMap<Any, Any> = StdUtil.getInstance()!!.createHashMap()!!
+
+    open fun getInstance(gameSkillType: GameSkillType, extra: String)
+        //nullable =  from not(true or (false and false)) = 
+: GameSkill{
+var gameSkillType = gameSkillType
+var extra = extra
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameSkill.hashMap!!.get(StringMaker().
+                            append(gameSkillType!!.getName())!!.append(CommonSeps.getInstance()!!.SPACE)!!.append(extra)!!.toString()) as GameSkill
+}
+
+
+        }
+            
+    private var gameSkillType: GameSkillType
+
+    private var extra: String
+
+    private var time: Int= 0
+
+    private var vector: BasicArrayList
+
+    private val GAME_SKILL_LABEL: String = "GameSkill: "
+
+    private val EXTRA_LABEL: String = "Extra: "
+
+    private val TIME_LABEL: String = "Time: "
+public constructor (gameSkillType: GameSkillType, extra: String, time: Int)
+            : super()
+        {
+var gameSkillType = gameSkillType
+var extra = extra
+var time = time
+this.setGameSkillType(gameSkillType)
+this.setExtra(extra)
+this.setTime(time)
+this.vector= BasicArrayListD()
+GameSkill.hashMap!!.put(StringMaker().
+                            append(this.getGameSkillType()!!.getName())!!.append(CommonSeps.getInstance()!!.SPACE)!!.append(extra)!!.toString(), this)
+}
+
+
+    open fun getGameSkillType()
+        //nullable = true from not(false or (false and true)) = true
+: GameSkillType{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.gameSkillType
+}
+
+
+    open fun setGameSkillType(gameSkillType: GameSkillType)
+        //nullable = true from not(false or (false and false)) = true
+{
+var gameSkillType = gameSkillType
+this.gameSkillType= gameSkillType
+}
+
+
+    open fun getExtra()
+        //nullable = true from not(false or (false and true)) = true
+: String{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.extra
+}
+
+
+    open fun setExtra(extra: String)
+        //nullable = true from not(false or (false and false)) = true
+{
+var extra = extra
+this.extra= extra
+}
+
+
+    open fun getTime()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.time
+}
+
+
+    open fun setTime(time: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+var time = time
+this.time= time
+}
+
+
+    open fun addProperty(gameSkillPropertyInterface: GameSkillPropertyInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var gameSkillPropertyInterface = gameSkillPropertyInterface
+this.vector.add(gameSkillPropertyInterface)
+}
+
+
+    open fun getProperties()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.vector
+}
+
+
+    override fun toString()
+        //nullable =  from not(false or (true and true)) = 
+: String{
+
+    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
+
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(this.GAME_SKILL_LABEL)
+stringBuffer!!.append(this.getGameSkillType()!!.toString())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(this.EXTRA_LABEL)
+stringBuffer!!.append(this.getExtra())
+stringBuffer!!.append(commonSeps!!.SPACE)
+stringBuffer!!.append(this.TIME_LABEL)
+stringBuffer!!.appendlong(this.getTime().toLong())
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!!.toString()
+}
+
+
+}
+                
+            
+

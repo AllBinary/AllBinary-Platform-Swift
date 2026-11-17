@@ -1,0 +1,372 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2022 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.media.image
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.Graphics
+import javax.microedition.lcdui.Image
+import org.allbinary.graphics.Anchor
+import org.allbinary.graphics.color.BasicColor
+import org.allbinary.string.CommonStrings
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.string.StringMaker
+import org.microemu.device.playn.PlaynImage
+import org.microemu.device.ResourceCallbackStrings
+import playn.core.Callback
+import playn.core.Canvas
+import playn.core.CoreImage
+import playn.core.ImageImpl
+import playn.html.HTMLPlaynUtil
+
+open public class ImageModifierUtil
+            : Object
+         {
+        
+companion object {
+            
+    open fun getInstanceOrCreate()
+        //nullable = true from not(false or (false and true)) = true
+: ImageModifierUtil{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ImageModifierUtil()
+}
+
+
+        }
+            
+            //Auto Generated
+            public constructor() : super()
+            {
+            }            
+        
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    private val resourceCallbackStrings: ResourceCallbackStrings = ResourceCallbackStrings.getInstance()!!
+
+    private val playnUtil: HTMLPlaynUtil = HTMLPlaynUtil.getInstance()!!
+
+    private var alphaArray: BooleanArray
+
+    open fun setColor(unusedOriginalImage: Image, image: Image, imageIndex: Int, basicColor: BasicColor)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var unusedOriginalImage = unusedOriginalImage
+    //var image = image
+    //var imageIndex = imageIndex
+    //var basicColor = basicColor
+}
+
+
+    open fun changeColor(unusedOriginalImage: Image, image: Image, imageIndex: Int, basicColor: BasicColor)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var unusedOriginalImage = unusedOriginalImage
+    //var image = image
+    //var imageIndex = imageIndex
+    //var basicColor = basicColor
+}
+
+
+    open fun setAlpha(originalImage: Image, image: Image, imageIndex: Int, alpha: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var originalImage = originalImage
+    //var image = image
+    //var imageIndex = imageIndex
+    //var alpha = alpha
+
+    var alphaF: Float = alpha.toFloat()
+
+
+    var alphaFloat: Float = alphaF /255
+
+this.setAlphaF(originalImage, image, imageIndex, alphaFloat)
+}
+
+
+    open fun setAlphaF(originalImage: Image, image: Image, imageIndex: Int, alpha: Float)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var originalImage = originalImage
+    //var image = image
+    //var imageIndex = imageIndex
+    //var alpha = alpha
+
+    
+                        if(this.alphaArray[imageIndex])
+                        
+                                    {
+                                    this.alphaArray[imageIndex]= false
+this.setAlpha2(originalImage, image, imageIndex, alpha)
+
+                                    }
+                                
+}
+
+
+    open fun setAlpha2(originalImage: Image, image: Image, imageIndex: Int, alpha: Float)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var originalImage = originalImage
+    //var image = image
+    //var imageIndex = imageIndex
+    //var alpha = alpha
+
+    var htmlImage: PlaynImage = image as PlaynImage
+
+
+    var canvasImage: ImageImpl = htmlImage!!.getImage() as ImageImpl
+
+
+    var originalPlaynImage: CoreImage = (originalImage as PlaynImage).getImage() as CoreImage
+
+
+    var canvas: Canvas = this.playnUtil!!.getCanvas(canvasImage)!!
+
+canvas.clear()
+canvas.setAlpha(alpha)
+canvas.draw(originalPlaynImage, 0, 0)
+}
+
+
+    open fun setAlpha3(image: Image, alpha: Float)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var image = image
+    //var alpha = alpha
+
+    var alphaF: Float = alpha
+
+
+    var alphaFloat: Float = alphaF /255
+
+
+    var htmlImage: PlaynImage = image as PlaynImage
+
+
+    var canvasImage: ImageImpl = htmlImage!!.getImage() as ImageImpl
+
+
+    var canvas: Canvas = this.playnUtil!!.getCanvas(canvasImage)!!
+
+canvas.setAlpha(alphaFloat)
+}
+
+
+    open fun getImageArray(originalImageArray: Array<Image?>)
+        //nullable = true from not(false or (false and false)) = true
+: Array<Image?>{
+    //var originalImageArray = originalImageArray
+
+    var size: Int = originalImageArray!!.size
+                
+
+this.alphaArray= BooleanArray(size)
+
+    var imageArray: Array<Image?> = arrayOfNulls(size)
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+imageArray[index]= originalImageArray[index]!!
+this.handleImage(imageArray, index, originalImageArray[index]!!)
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return imageArray
+}
+
+
+open public inner class ImageCopyCallback
+            : Object
+        
+                , Callback {
+        
+/*Static stuff is not allowed for Kotlin inner classescompanion object {
+            *//*
+        }
+            */
+
+
+    private val imageModifierUtil: ImageModifierUtil
+
+    private val imageArray: Array<Image?>
+
+    private val index: Int
+
+    private val image: Image
+
+    private val image3: CoreImage
+ constructor (imageModifierUtil: ImageModifierUtil, imageArray: Array<Image?>, index: Int, image: Image, image3: CoreImage)
+            : super()
+        {
+    //var imageModifierUtil = imageModifierUtil
+    //var imageArray = imageArray
+    //var index = index
+    //var image = image
+    //var image3 = image3
+this.imageModifierUtil= imageModifierUtil
+this.imageArray= imageArray
+this.index= index
+this.image= image
+this.image3= image3
+}
+
+
+    override fun onSuccess(resource: Any)
+        //nullable = true from not(false or (false and false)) = true
+{
+var resource = resource
+
+    var logUtil: LogUtil = LogUtil.getInstance()!!
+
+
+    var resourceCallbackStrings: ResourceCallbackStrings = this.imageModifierUtil!!.resourceCallbackStrings
+
+logUtil!!.putF(resourceCallbackStrings!!.DONE +this.image.getName(), this, resourceCallbackStrings!!.HANDLE_IMAGE)
+this.imageModifierUtil!!.copy(this.imageArray, this.index, this.image, this.image3)
+}
+
+
+    override fun onFailure(e: Throwable)
+        //nullable = true from not(false or (false and false)) = true
+{
+var e = e
+
+    var logUtil: LogUtil = LogUtil.getInstance()!!
+
+
+    var resourceCallbackStrings: ResourceCallbackStrings = this.imageModifierUtil!!.resourceCallbackStrings
+
+logUtil!!.put(StringMaker().
+                            append(this.imageModifierUtil!!.commonStrings!!.EXCEPTION_LABEL)!!.append(resourceCallbackStrings!!.ERROR)!!.append(this.image.getName())!!.toString(), this, resourceCallbackStrings!!.HANDLE_IMAGE, e)
+}
+
+
+}
+                
+            
+    open fun handleImage(imageArray: Array<Image?>, index: Int, image: Image)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var imageArray = imageArray
+    //var index = index
+    //var image = image
+
+    var image3: CoreImage = (image as PlaynImage).getImage() as CoreImage
+
+
+    
+                        if(image3 != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    
+                        if(image3.isReady() || image3.width() +image3.height() <= 0 || image.getName() == this.resourceCallbackStrings!!.FROM_DATA)
+                        
+                                    {
+                                    this.copy(imageArray, index, image, image3)
+
+                                    }
+                                
+                        else {
+                            
+    var callback: Callback = ImageCopyCallback(this, imageArray, index, image, image3)
+
+image3.addCallback(callback)
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            this.logUtil!!.putF(this.resourceCallbackStrings!!.NULL +image.isMutable(), this, this.resourceCallbackStrings!!.HANDLE_IMAGE)
+
+                        }
+                            
+}
+
+
+    open fun copy(imageArray: Array<Image?>, index: Int, image: Image, image3: CoreImage)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var imageArray = imageArray
+    //var index = index
+    //var image = image
+    //var image3 = image3
+
+        try {
+            
+    var image2: Image = Image.createImageWH(image3.width().toInt(), image3.height().toInt())!!
+
+
+    var graphics: Graphics = image2.getGraphics()!!
+
+graphics.drawImage(image, 0, 0, Anchor.TOP_LEFT)
+imageArray[index]= image2
+} catch(e: Exception)
+            {
+this.logUtil!!.putF(this.commonStrings!!.EXCEPTION_LABEL +resourceCallbackStrings!!.DONE, this, resourceCallbackStrings!!.HANDLE_IMAGE)
+}
+
+}
+
+
+    open fun reset()
+        //nullable = true from not(false or (false and true)) = true
+{
+
+    var size: Int = this.alphaArray!!.size
+                
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+this.alphaArray[index]= true
+}
+
+}
+
+
+}
+                
+            
+

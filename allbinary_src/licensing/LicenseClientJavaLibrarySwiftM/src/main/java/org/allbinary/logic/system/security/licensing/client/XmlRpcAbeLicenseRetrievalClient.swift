@@ -1,0 +1,167 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.logic.system.security.licensing.client
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.logic.string.StringUtil
+import java.io.IOException
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.init.crypt.jcehelper.CryptInterface
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.communication.xmlrpc.XmlRpcAbeClient
+import org.allbinary.logic.java.exception.ExceptionUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+import org.allbinary.logic.system.security.licensing.AbeClientLicense
+import org.allbinary.logic.system.security.licensing.AbeLicenseInterface
+import org.allbinary.string.CommonLabels
+import org.allbinary.util.ABHashtable
+import org.apache.xmlrpc.XmlRpcClient
+import org.apache.xmlrpc.XmlRpcException
+
+open public class XmlRpcAbeLicenseRetrievalClient : XmlRpcAbeClient {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+public constructor (clientInfo: AbeClientInformationInterface)                        
+
+                            : super(clientInfo, "LicServ.getLicense"){
+var clientInfo = clientInfo
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun get(anyType: Any, cryptInterface: CryptInterface)
+        //nullable = true from not(false or (false and false)) = true
+: Any{
+    //var anyType = anyType
+    //var cryptInterface = cryptInterface
+
+        try {
+            
+    var server: String = getClientInfo()!!.getLicenseServer(this.getServer())!!
+
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(TRYING)
+stringBuffer!!.appendint(this.getServer().toInt())
+stringBuffer!!.append(SEP)
+stringBuffer!!.append(server)
+this.logUtil!!.putF(CommonLabels.getInstance()!!.START_LABEL +stringBuffer!!.toString(), this, this.commonStrings!!.GET)
+
+    var param: BasicArrayList = BasicArrayListD()
+
+
+    var xmlRpcClient: XmlRpcClient = XmlRpcClient(server)
+
+this.setClient(xmlRpcClient)
+xmlRpcClient!!.setBasicAuthentication(StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING)
+
+    var hashtable: ABHashtable<Any, Any> = this.getClientInfo()!!.toHashtable()!!
+
+this.logUtil!!.putF(CLIENT_INFO +hashtable.toString(), this, this.commonStrings!!.GET)
+param.add(hashtable)
+
+    var result: Any = xmlRpcClient!!.executeWithCrypt(this.getRemoteMethod(), param, cryptInterface)!!
+
+this.logUtil!!.putF(RESULT +result.toString(), this, this.commonStrings!!.GET)
+
+    var resultHashtable: ABHashtable<Any, Any> = result as ABHashtable<Any, Any>
+
+
+    
+                        if(!AbeClientLicense.hasRequiredKeys(resultHashtable))
+                        
+                                    {
+                                    this.logUtil!!.putF(INVALID, this, this.commonStrings!!.GET)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+
+                                    }
+                                
+
+    var abeLicenseInterface: AbeLicenseInterface = AbeClientLicense(resultHashtable)
+
+this.logUtil!!.putF(this.commonStrings!!.END +stringBuffer!!.toString(), this, this.commonStrings!!.GET)
+isOnline= true
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return abeLicenseInterface
+} catch(e: IOException)
+            {
+this.logUtil!!.put(EXCEPTION_IN_CLIENT, this, this.commonStrings!!.GET, e)
+this.logUtil!!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!!.getStackTrace(e), this, this.commonStrings!!.GET)
+
+    
+                        if(!e.getMessage()!!.startsWith(HOST_NOT_RESOLVED))
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+
+                                    }
+                                
+                        else {
+                            isOnline= false
+
+
+
+                            throw Exception(HOST_NOT_RESOLVED_MSG)
+
+                        }
+                            
+}
+ catch(e: XmlRpcException)
+            {
+this.logUtil!!.put(SERVER_REPORTED_ERROR, this, this.commonStrings!!.GET, e)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+}
+ catch(e: Exception)
+            {
+this.logUtil!!.put(UNKNOWN_ERROR, this, this.commonStrings!!.GET, e)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+}
+
+}
+
+
+}
+                
+            
+

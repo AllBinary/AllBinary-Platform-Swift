@@ -1,0 +1,243 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.input.automation.module.generic
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+
+//import java.util.Set
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.input.automation.module.AbstractInputAutomationWorker
+import org.allbinary.input.automation.module.InputAutomationActionInterface
+import org.allbinary.input.automation.module.generic.configuration.profile.GenericProfile
+import org.allbinary.input.automation.module.generic.configuration.profile.GenericProfileDataWorkerType
+import org.allbinary.input.automation.module.generic.configuration.profile.actions.GenericProfileAction
+import org.allbinary.input.automation.module.generic.configuration.profile.actions.script.GenericProfileActionScript
+import org.allbinary.input.media.image.capture.CapturedBufferedImagesCacheSingleton
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.util.cache.J2SECacheInterface
+import org.allbinary.media.image.comparison.ImageComparatorConstraintsInterface
+import org.allbinary.media.image.comparison.ImageComparisonWorker
+import org.allbinary.media.image.comparison.motion.MotionRectangleConstraintsInterface
+import org.allbinary.media.image.comparison.motion.MotionRectanglesWorker
+
+open public class GenericInputAutomationWorker : AbstractInputAutomationWorker {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    val PROCESS_DATA_WORKER_RESULTS: String = "processDataWorkerResults"
+
+    private var lastFrame: Long =  -1 as Long
+
+    private var frame: Long
+
+    private var genericProfile: GenericProfile
+public constructor (inputAutomationActionInterface: InputAutomationActionInterface, genericProfile: GenericProfile, motionRectangleConstraintsInterface: MotionRectangleConstraintsInterface, imageComparatorConstraintsInterface: ImageComparatorConstraintsInterface)                        
+
+                            : super(inputAutomationActionInterface){
+    //var inputAutomationActionInterface = inputAutomationActionInterface
+    //var genericProfile = genericProfile
+    //var motionRectangleConstraintsInterface = motionRectangleConstraintsInterface
+    //var imageComparatorConstraintsInterface = imageComparatorConstraintsInterface
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CONSTRUCTOR)
+this.setCaptureWorker(GenericProfileCaptureWorkerFactory.getInstance(genericProfile))
+this.setInputAutomationActionInterface(inputAutomationActionInterface)
+this.setImageComparisonWorker(ImageComparisonWorker(imageComparatorConstraintsInterface))
+this.setMotionRectanglesWorker(MotionRectanglesWorker(motionRectangleConstraintsInterface))
+this.setGenericProfile(genericProfile)
+
+    var vector: BasicArrayList = this.getGenericProfile()!!.getGenericProfileDataWorkerTypeVector()!!
+
+
+    var size: Int = vector.size()
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var genericProfileDataWorkerType: GenericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType
+
+this.logUtil!!.putF("Adding Listener: " +genericProfileDataWorkerType, this, this.commonStrings!!.CONSTRUCTOR)
+
+    
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.COMPARISON)
+                        
+                                    {
+                                    this.getCaptureWorker()!!.addListenerInterface(this.getImageComparisonWorker())
+
+                                    }
+                                
+                             else 
+    
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.MOTION)
+                        
+                                    {
+                                    this.getImageComparisonWorker()!!.addListenerInterface(this.getMotionRectanglesWorker())
+
+                                    }
+                                
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun processDataWorkerResults()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.logUtil!!.putF(this.commonStrings!!.START, this, this.PROCESS_DATA_WORKER_RESULTS)
+this.waitForDataWorkers()
+
+    var cacheInterface: J2SECacheInterface = CapturedBufferedImagesCacheSingleton.getInstance() as J2SECacheInterface
+
+
+    var keyArray: Array<Any?> = cacheInterface!!.keySet()!!.toTypedArray()!!
+
+
+    
+                        if(keyArray!!.size > 0)
+                        
+                                    {
+                                    this.logUtil!!.putF("Image Available", this, this.PROCESS_DATA_WORKER_RESULTS)
+this.setFrame(keyArray[keyArray!!.size -1]!! as Long)
+
+    
+                        if(getFrame() > this.lastFrame)
+                        
+                                    {
+                                    this.logUtil!!.putF("Processing new frame: " +getFrame(), this, this.PROCESS_DATA_WORKER_RESULTS)
+
+    var hashMap: HashMap<Any, Any> = this.getGenericProfile()!!.getGenericProfileActions()!!.getHashMap()!!
+
+
+    var set: Set = hashMap!!.keys!!
+
+this.logUtil!!.putF("Processing " +set.size() +"Actions", this, this.PROCESS_DATA_WORKER_RESULTS)
+
+    var actionNameArray: Array<Any?> = set.toTypedArray()!!
+
+
+    var size: Int = actionNameArray!!.size
+                
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var actionNameString: String = actionNameArray[index]!! as String
+
+this.logUtil!!.putF("Processing Action: " +actionNameString, this, this.PROCESS_DATA_WORKER_RESULTS)
+
+    var genericProfileAction: GenericProfileAction = hashMap!!.get(actionNameString as Object) as GenericProfileAction
+
+
+    var genericProfileActionScript: GenericProfileActionScript = genericProfileAction!!.getGenericProfileActionScript()!!
+
+
+    var vector: BasicArrayList = genericProfileActionScript!!.getProfileActionConditionInterfaceVector()!!
+
+CaptureWorkerUtil.processProfileActionConditions(vector, getFrame())
+}
+
+this.lastFrame= this.getFrame()!!
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.logUtil!!.putF("Image Not Available", this, this.PROCESS_DATA_WORKER_RESULTS)
+
+                        }
+                            
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun process()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.PROCESS)
+this.startDataWorkers()
+this.processDataWorkerResults()
+}
+
+
+    open fun getGenericProfile()
+        //nullable = true from not(false or (false and true)) = true
+: GenericProfile{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.genericProfile
+}
+
+
+    open fun setGenericProfile(genericProfile: GenericProfile)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var genericProfile = genericProfile
+this.genericProfile= genericProfile
+}
+
+
+    open fun getFrame()
+        //nullable = true from not(false or (false and true)) = true
+: Long{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.frame
+}
+
+
+    open fun setFrame(frame: Long)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var frame = frame
+this.frame= frame
+}
+
+
+}
+                
+            
+

@@ -1,0 +1,184 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.gui.dialog
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.thread.ARunnable
+import java.io.File
+import org.allbinary.logic.communication.log.LogUtil
+
+open public class FileJDialog : javax.swing.JDialog {
+        
+companion object {
+            
+    open fun main(args: Array<String?>)
+        //nullable = true from not(false or (false and false)) = true
+{
+var args = args
+java.awt.EventQueue.invokeLater(object: ARunnable()
+                                {
+                                
+                                
+    open fun run()
+        //nullable = true from not(false or (false and true)) = true
+{
+FileJDialog(javax.swing.JFrame(), true).
+                            setVisible(true)
+}
+
+                                }
+                            )
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private var finishedListenerInterface: FileJDialogListenerInterface
+public constructor ()                        
+
+                            : super(){
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.initComponents()
+this.getJFileChooser1()!!.setMultiSelectionEnabled(true)
+}
+
+public constructor (parent: java.awt.Frame, modal: Boolean)                        
+
+                            : super(parent, modal){
+var parent = parent
+var modal = modal
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.initComponents()
+this.getJFileChooser1()!!.setMultiSelectionEnabled(true)
+}
+
+
+    open fun addFinishedListener(finishedListenerInterface: FileJDialogListenerInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var finishedListenerInterface = finishedListenerInterface
+this.finishedListenerInterface= finishedListenerInterface
+}
+
+
+    open fun initComponents()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.jFileChooser1= javax.swing.JFileChooser()
+setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE)
+this.jFileChooser1!!.addActionListener(object: java.awt.event.ActionListener()
+                                {
+                                
+                                
+    open override fun actionPerformed(evt: java.awt.event.ActionEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+var evt = evt
+jFileChooser1ActionPerformed(evt)
+}
+
+                                }
+                            )
+
+    var layout: org.jdesktop.layout.GroupLayout = org.jdesktop.layout.GroupLayout(getContentPane())
+
+getContentPane()!!.setLayout(layout)
+layout.setHorizontalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)!!.add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()!!.addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)!!.add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)!!.addContainerGap()))
+layout.setVerticalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)!!.add(layout.createSequentialGroup()!!.addContainerGap()!!.add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)!!.addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+pack()
+}
+
+
+    open fun jFileChooser1ActionPerformed(evt: java.awt.event.ActionEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+var evt = evt
+this.logUtil!!.putF("Starting Action Command: " +evt.getActionCommand(), this, "ActionPerformed")
+
+    var files: Array<File?> = this.getJFileChooser1()!!.getSelectedFiles()!!
+
+
+    
+                        if(evt.getActionCommand() == this.getJFileChooser1()!!.CANCEL_SELECTION)
+                        
+                                    {
+                                    this.setVisible(false)
+
+                                    }
+                                
+
+    
+                        if(evt.getActionCommand() == this.getJFileChooser1()!!.APPROVE_SELECTION)
+                        
+                                    {
+                                    
+    
+                        if(files != 
+                                    null
+                                 && files.size > 0)
+                        
+                                    {
+                                    this.finishedListenerInterface!!.onFiles(files)
+
+                                    }
+                                
+
+                                    }
+                                
+}
+
+
+    open fun getJFileChooser1()
+        //nullable = true from not(false or (false and true)) = true
+: javax.swing.JFileChooser{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.jFileChooser1
+}
+
+
+    open fun setJFileChooser1(jFileChooser1: javax.swing.JFileChooser)
+        //nullable = true from not(false or (false and false)) = true
+{
+var jFileChooser1 = jFileChooser1
+this.jFileChooser1= jFileChooser1
+}
+
+
+    private var jFileChooser1: javax.swing.JFileChooser
+
+}
+                
+            
+

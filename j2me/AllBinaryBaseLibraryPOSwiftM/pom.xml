@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryBaseLibraryPOMSwift</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryBaseLibraryPOMSwift</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        <module>../CommonJavaLibrarySwiftM</module>
+        <module>../TempBaseJavaLibrarySwiftM</module>
+        
+        <module>../../allbinary_src/LogSwiftM</module>
+        <module>../../allbinary_src/allbinary_src_designpatterns_srcSwiftM</module>
+        <module>../../allbinary_src/data/BaseDataJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/cache/BaseCacheJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/logic/BasePreloaderJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/logic/BasePreloaderJ2MEJavaLibrarySwiftM</module>
+
+        <module>../ExceptionHTMLJavaLibrarySwiftM</module>
+        <module>../J2MEExceptionLibrarySwiftM</module>
+        <module>../../allbinary_src/J2SEExceptionLibrarySwiftM</module>
+        <module>../J2MEUtilJavaLibrarySwiftM</module>
+        <module>../J2MEColorJavaLibrarySwiftM</module>
+        <module>../EventJ2MELibrarySwiftM</module>
+
+        <module>../../allbinary_src/LogNoPlatformJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/LogJ2MEJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/LogJ2SEJavaLibrarySwiftM</module>
+        <!--<module>../../allbinary_src/LogAndroidJavaLibrarySwiftM</module>-->
+        <module>../logging/LoggingNoneSwiftM</module>
+        <module>../logging/LoggingJ2MEAllSwiftM</module>
+        <module>../logging/LoggingJ2MEExceptionSwiftM</module>
+        <!--<module>../logging/LoggingAndroidAllSwiftM</module>-->
+        <!--
+        //While it is a possible dependency option it really does not fit here
+        //as such it is actually build in the final POM builds instead
+        <module>../logging/LoggingRemoteExceptionSwiftM</module>  
+        -->
+        
+        <module>../J2MEWindowingJavaLibrarySwiftM</module>
+        
+        <module>../lib/BaseMathLibrarySwiftM</module>
+        <module>../lib/BasicMathLibrarySwiftM</module>
+        
+        <module>../../allbinary_src/ThreadLibrarySwiftM</module>
+        <!--<module>../../allbinary_src/ThreadHTMLLibrarySwiftM</module>-->
+        <module>../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/ThreadJ2MELibrarySwiftM</module>
+        <module>../time/TimeJavaLibrarySwiftM</module>
+
+        <module>../statistics/ApplicationStatisticsJ2SELibrarySwiftM</module>
+        <module>../statistics/ApplicationStatisticsJ2MELibrarySwiftM</module>
+        <module>../statistics/ApplicationStatisticsJavaLibrarySwiftM</module>
+
+        <module>../../allbinary_src/logging/BasicLogConfigTypeJavaLibrarySwiftM</module>
+        <module>../../allbinary_src/logging/LogConfigTypeGameClientJavaLibrarySwiftM</module>
+
+        <module>../../allbinary_src/hardware/HardwareLibraryPOSwiftM</module>
+
+        <module>../lib/TrigBaseLibrarySwiftM</module>
+
+    </modules>
+
+</project>
+

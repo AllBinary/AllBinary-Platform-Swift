@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPlatformWithIntegrationPOMSwift</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPlatformWithIntegrationPOMSwift</name>
+    <url>http://www.allbinary.com/</url>
+    
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+        <!--
+        -->
+        <module>../../AllBinary-Platform-Integration</module>
+        
+<!--        <module>../j2me/games/platform/j2se/AllBinaryOnJ2SEBasePlatformJavaLibrarySwiftM</module>-->
+        <module>../j2me/games/platform/j2se/AllBinaryOnJ2SEPlatformJavaLibrarySwiftM</module>
+        
+        <!--<module>../j2me/FullScreenJavaLibrarySwiftM</module>-->
+
+        <!--<module>../j2me/SWTToJ2MELibrarySwiftM</module>-->
+        
+        <module>../j2me/media/graphics/ImageCacheOpenGLESJavaLibrarySwiftM</module>
+        <module>../graphics/opengl/Min3dForNullJavaLibrarySwiftM</module>
+        <module>../graphics/opengl/OpenGLESFileConfigurationJavaLibrarySwiftM</module>
+        <module>../graphics/opengl/OpenGLESJavaLibrarySwiftM</module>
+        <module>../j2me/media/graphics/animation/vector/SVGToAllBinaryJavaLibrarySwiftM</module>
+        <!--<module>../j2me/media/graphics/animation/image/ImageSwtJ2SEJavaLibrarySwiftM</module>-->
+
+        <module>../j2me/media/graphics/layer/AllBinaryTiledLayerJavaLibrarySwiftM</module>        
+        <module>../j2me/media/graphics/geography/map/GeographicMapLibrarySwiftM</module>
+        <module>../j2me/media/graphics/geography/GeographicPathFindingLibrarySwiftM</module>
+        <module>../j2me/media/graphics/geography/map/RaceTrackGeographicMapLibrarySwiftM</module>
+        <module>../j2me/media/graphics/geography/map/BasicTopViewGeographicMapJavaLibrarySwiftM</module>
+        <module>../j2me/games/arcade/platformer/TopViewGameBehaviorJavaLibrarySwiftM</module>
+
+        <module>../j2me/games/GameJ2MEOptionalLibraryPOSwiftM</module>
+
+        <!--<module>../j2me/media/graphics/geography/map/GraphSwiftP</module>-->
+        <module>../j2me/games/strategy/rts/RTSGameJavaLibrarySwiftP</module>
+        
+        <!--<module>../j2me/android/AllBinaryPlatformAndroidLibraryPOSwiftM</module>-->
+
+    </modules>
+
+    <dependencies>
+        
+    </dependencies>
+
+</project>
+

@@ -1,0 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.time
+
+import J2SEForSwiftLibrary
+// import java.util.Calendar
+// import java.util.Date
+
+//NoPlatform
+open class TimeStampUtil: JObject {
+    fileprivate static let instance: TimeStampUtil! = TimeStampUtil()
+    
+
+    @discardableResult public static func getInstance() -> TimeStampUtil! {
+        return TimeStampUtil.instance
+    }
+    
+
+    public override init() {
+        super.init()
+    }
+    
+
+    @discardableResult open func getAsString() -> String! {
+        jThrow(JException("RuntimeException", ""))
+    }
+}
+

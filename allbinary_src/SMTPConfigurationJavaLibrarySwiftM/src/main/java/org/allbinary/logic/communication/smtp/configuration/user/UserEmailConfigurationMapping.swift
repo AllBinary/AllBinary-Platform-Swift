@@ -1,0 +1,90 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.logic.communication.smtp.configuration.user
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.data.tables.TableMappingInterface
+import org.allbinary.logic.StdUtil
+
+open public class UserEmailConfigurationMapping
+            : Object
+        
+                , TableMappingInterface {
+        
+
+    private var userEmailConfigurationInterface: UserEmailConfigurationInterface
+public constructor (userEmailConfigurationInterface: UserEmailConfigurationInterface)
+            : super()
+        {
+var userEmailConfigurationInterface = userEmailConfigurationInterface
+this.userEmailConfigurationInterface= userEmailConfigurationInterface
+}
+
+
+    open fun toHashMap()
+        //nullable = true from not(false or (false and true)) = true
+: HashMap<Any, Any>{
+
+    var hashMap: HashMap<Any, Any> = StdUtil.getInstance()!!.createHashMap()!!
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return hashMap
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getKey()
+        //nullable = true from not(false or (false and true)) = true
+: Any{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return UserEmailConfigurationData.NAME
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun toVector()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+    var vector: BasicArrayList = BasicArrayListD()
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return vector
+}
+
+
+}
+                
+            
+

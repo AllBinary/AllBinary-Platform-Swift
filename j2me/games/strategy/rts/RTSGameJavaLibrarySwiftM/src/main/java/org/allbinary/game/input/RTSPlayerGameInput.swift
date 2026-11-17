@@ -1,0 +1,500 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2003 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.input
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import javax.microedition.lcdui.Canvas
+import javax.microedition.lcdui.Graphics
+import org.allbinary.game.input.form.RTSFormInput
+import org.allbinary.game.layer.RTSLayer
+import org.allbinary.game.layer.RTSLayerInfoPaintable
+import org.allbinary.game.layer.RTSPlayerLayerInterface
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.game.configuration.feature.Features
+import org.allbinary.game.configuration.feature.InputFeatureFactory
+import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
+import org.allbinary.game.input.event.GameKeyEvent
+import org.allbinary.game.input.form.NullRTSFormInputFactory
+import org.allbinary.game.layer.AllBinaryGameLayerManager
+import org.allbinary.game.layer.AllBinaryTiledLayer
+import org.allbinary.game.layer.NullRTSLayer
+import org.allbinary.game.layer.special.CollidableDestroyableDamageableLayer
+import org.allbinary.graphics.GPoint
+import org.allbinary.graphics.color.BasicColorFactory
+import org.allbinary.graphics.displayable.event.DisplayChangeEvent
+import org.allbinary.input.motion.gesture.observer.MotionGestureEvent
+import org.allbinary.layer.AllBinaryLayer
+import org.allbinary.layer.AllBinaryLayerManager
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.media.audio.SecondaryPlayerQueueFactory
+import org.allbinary.media.audio.SelectSound
+import org.allbinary.media.graphics.geography.map.BasicGeographicMap
+import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
+import org.allbinary.media.graphics.geography.map.GeographicMapCompositeInterface
+import org.allbinary.media.graphics.geography.map.SimpleGeographicMapCellPositionFactory
+import org.allbinary.string.CommonLabels
+
+open public class RTSPlayerGameInput : PlayerGameInput {
+        
+
+    val inputProcessorArray: Array<GameInputProcessor?> = arrayOfNulls(InputFactory.getInstance()!!.MAX)
+
+    val removeInputProcessorArray: Array<GameInputProcessor?> = arrayOfNulls(InputFactory.getInstance()!!.MAX)
+
+    private val inputList: BasicArrayList
+
+    private val isSingleKeyProcessing: Boolean = Features.getInstance()!!.isFeature(InputFeatureFactory.getInstance()!!.SINGLE_KEY_REPEAT_PRESS) || Features.getInstance()!!.isFeature(InputFeatureFactory.getInstance()!!.SINGLE_KEY_PRESS)
+
+    private val gameCanvas: AllBinaryGameCanvas
+
+    private val motionGestureInputList: BasicArrayList = BasicArrayListD()
+
+    private val scrollPlayerGameInput: ScrollMapPlayerGameInput
+
+    private val selectedRTSLayerPlayerGameInput: SelectedRTSLayersPlayerGameInput
+
+    private val towerInfoPaintable: RTSLayerInfoPaintable
+
+    private val rtsPlayerLayerInterface: RTSPlayerLayerInterface
+
+    private val layerPositionFinderInterface: LayerPositionFinderInterface
+
+    private var selectedRtsFormInput: RTSFormInput = NullRTSFormInputFactory.getInstance()!!
+public constructor (gameCanvas: AllBinaryGameCanvas, inputList: BasicArrayList, playerInputId: Int, towerInfoPaintable: RTSLayerInfoPaintable, rtsPlayerLayerInterface: RTSPlayerLayerInterface, layerPositionFinderInterface: LayerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface: SelectRTSLayerVisitorFactoryInterface)                        
+
+                            : super(inputList, BasicArrayListD(), playerInputId){
+    //var gameCanvas = gameCanvas
+    //var inputList = inputList
+    //var playerInputId = playerInputId
+    //var towerInfoPaintable = towerInfoPaintable
+    //var rtsPlayerLayerInterface = rtsPlayerLayerInterface
+    //var layerPositionFinderInterface = layerPositionFinderInterface
+    //var selectRTSLayerVisitorFactoryInterface = selectRTSLayerVisitorFactoryInterface
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.initInputProcessors()
+this.gameCanvas= gameCanvas
+this.inputList= inputList
+this.towerInfoPaintable= towerInfoPaintable
+this.rtsPlayerLayerInterface= rtsPlayerLayerInterface
+this.selectedRTSLayerPlayerGameInput= SelectedRTSLayersPlayerGameInput(this.getRTSLayerInfoPaintable(), this.getRtsPlayerLayerInterface(), this.inputList, playerInputId, selectRTSLayerVisitorFactoryInterface)
+
+    
+                        if(this.rtsPlayerLayerInterface != NullRTSLayer.NULL_RTS_LAYER)
+                        
+                                    {
+                                    this.setSelectedRtsFormInput(this.rtsPlayerLayerInterface!!.getRTSFormInput())
+
+                                    }
+                                
+
+    var geographicMapCompositeInterface: GeographicMapCompositeInterface = this.gameCanvas!!.getLayerManager() as GeographicMapCompositeInterface
+
+
+    var geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!!.getGeographicMapInterface()[0]!!
+
+this.scrollPlayerGameInput= ScrollMapPlayerGameInput(geographicMapInterface, this.inputList, playerInputId)
+this.layerPositionFinderInterface= layerPositionFinderInterface
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun setAllBinaryGameLayerManager(allBinaryGameLayerManager: AllBinaryGameLayerManager)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var allBinaryGameLayerManager = allBinaryGameLayerManager
+this.selectedRTSLayerPlayerGameInput!!.setAllBinaryGameLayerManager(allBinaryGameLayerManager)
+
+    
+                        if(this.selectedRtsFormInput != NullRTSFormInputFactory.getInstance())
+                        
+                                    {
+                                    this.selectedRtsFormInput!!.setAllBinaryGameLayerManager(allBinaryGameLayerManager)
+
+                                    }
+                                
+}
+
+
+    open fun onDisplayChangeEvent(displayChangeEvent: DisplayChangeEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+var displayChangeEvent = displayChangeEvent
+
+        try {
+            this.logUtil!!.putF(this.commonStrings!!.START, this, "onDisplayChangeEvent")
+this.getRTSLayerInfoPaintable()!!.update()
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "onDisplayChangeEvent", e)
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun left()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.rtsPlayerLayerInterface!!.getCurrentScrollSelectionForm()!!.processInputKey(Canvas.LEFT)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun right()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.rtsPlayerLayerInterface!!.getCurrentScrollSelectionForm()!!.processInputKey(Canvas.RIGHT)
+}
+
+
+    open fun initInputProcessors()
+        //nullable = true from not(false or (false and true)) = true
+{
+this.inputProcessorArray[Canvas.LEFT]= RTSPlayerLeftGameInputProcessor(this)
+this.inputProcessorArray[Canvas.KEY_NUM0]= this.inputProcessorArray[Canvas.LEFT]!!
+this.inputProcessorArray[Canvas.RIGHT]= RTSPlayerRightGameInputProcessor(this)
+this.inputProcessorArray[Canvas.KEY_POUND]= this.inputProcessorArray[Canvas.RIGHT]!!
+this.removeInputProcessorArray[Canvas.KEY_NUM1]= RTSPlayerFireGameInputProcessor(this)
+this.removeInputProcessorArray[Canvas.KEY_NUM3]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+this.removeInputProcessorArray[Canvas.KEY_NUM3]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+this.removeInputProcessorArray[Canvas.LEFT]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+this.removeInputProcessorArray[Canvas.RIGHT]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+this.removeInputProcessorArray[Canvas.KEY_NUM0]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+this.removeInputProcessorArray[Canvas.KEY_POUND]= this.removeInputProcessorArray[Canvas.KEY_NUM1]!!
+GameInputProcessorUtil.init(this.inputProcessorArray)
+GameInputProcessorUtil.init(this.removeInputProcessorArray)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun processInput(layerManager: AllBinaryLayerManager)
+        //nullable = true from not(false or (false and false)) = true
+{
+var layerManager = layerManager
+
+        try {
+            this.processMotionInput(layerManager)
+
+    var size: Int = this.inputList!!.size()
+
+
+    var key: Int = 0
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var gameKeyEvent: GameKeyEvent = this.inputList!!.get(index) as GameKeyEvent
+
+key= gameKeyEvent!!.getKey()
+this.getScrollPlayerGameInput()!!.processInputKey(key)
+this.getSelectedBuildingPlayerGameInput()!!.processInputKey(key)
+this.inputProcessorArray[key]!!.processEvent(layerManager, gameKeyEvent)
+this.removeInputProcessorArray[key]!!.processEvent(layerManager, gameKeyEvent)
+}
+
+
+    
+                        if(this.isIsSingleKeyProcessing())
+                        
+                                    {
+                                    this.clear()
+
+                                    }
+                                
+                        else {
+                            this.update()
+
+                        }
+                            
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.gameInputStrings!!.PROCESS_INPUT, e)
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun processMotionInput(layerManager: AllBinaryLayerManager)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var layerManager = layerManager
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun select(motionGestureEvent: MotionGestureEvent)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var motionGestureEvent = motionGestureEvent
+
+    var point: GPoint = motionGestureEvent!!.getCurrentPoint()!!
+
+
+    var geographicMapCompositeInterface: GeographicMapCompositeInterface = this.gameCanvas!!.getLayerManager() as GeographicMapCompositeInterface
+
+
+    var geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!!.getGeographicMapInterface()[0]!!
+
+
+    var allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!!.getAllBinaryTiledLayer()!!
+
+
+    var x: Int = point.getX() +allBinaryTiledLayer!!.getXP()
+
+
+    var y: Int = point.getY() +allBinaryTiledLayer!!.getYP()
+
+
+    var geographicMapCellPosition: GeographicMapCellPosition = geographicMapInterface!!.getCellPositionAtXYNoThrow(x, y)!!
+
+
+    
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION)
+                        
+                                    {
+                                    SecondaryPlayerQueueFactory.getInstance()!!.add(SelectSound.getInstance())
+
+    var layer: AllBinaryLayer = this.layerPositionFinderInterface!!.getLayerInterface(geographicMapCellPosition)!!
+
+
+    
+                        if(layer == AllBinaryLayer.NULL_ALLBINARY_LAYER)
+                        
+                                    {
+                                    layer= CollidableDestroyableDamageableLayer.getNullInstance()!!
+
+                                    }
+                                
+                        else {
+                            geographicMapCellPosition= geographicMapInterface!!.getCellPositionAtXY(layer.getXP(), layer.getYP())!!
+
+                        }
+                            
+
+    var foundRTSLayer: CollidableDestroyableDamageableLayer = layer as CollidableDestroyableDamageableLayer
+
+this.setSelectedRTSLayer(foundRTSLayer, geographicMapCellPosition)
+
+                                    }
+                                
+                        else {
+                            
+    var commonLabels: CommonLabels = CommonLabels.getInstance()!!
+
+this.logUtil!!.putF(StringMaker().
+                            append("Off Of Map -")!!.append(commonLabels!!.WIDTH_LABEL)!!.appendint(allBinaryTiledLayer!!.getWidth().toInt())!!.append(commonLabels!!.HEIGHT_LABEL)!!.appendint(allBinaryTiledLayer!!.getHeight().toInt())!!.toString(), this, "select")
+
+                        }
+                            
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun setSelectedRTSLayer(rtsLayer: CollidableDestroyableDamageableLayer, geographicMapCellPosition: GeographicMapCellPosition)
+        //nullable = true from not(false or (false and false)) = true
+{
+var rtsLayer = rtsLayer
+var geographicMapCellPosition = geographicMapCellPosition
+this.getSelectedBuildingPlayerGameInput()!!.setSelectedRTSLayer(rtsLayer)
+}
+
+
+    open fun paint(graphics: Graphics)
+        //nullable = true from not(false or (false and false)) = true
+{
+var graphics = graphics
+
+    var geographicMapCellPosition: GeographicMapCellPosition = this.getSelectedRtsFormInput()!!.getSelectedGeographicCellPosition()!!
+
+
+    var geographicMapCompositeInterface: GeographicMapCompositeInterface = this.gameCanvas!!.getLayerManager() as GeographicMapCompositeInterface
+
+
+    var geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!!.getGeographicMapInterface()[0]!!
+
+
+    var allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!!.getAllBinaryTiledLayer()!!
+
+graphics.setColor(BasicColorFactory.getInstance()!!.GREEN.toInt())
+
+    var list: BasicArrayList = this.getSelectedBuildingPlayerGameInput()!!.getPaintSelectedRTSLayersList()!!
+
+
+    var width: Int = 0
+
+
+    var height: Int = 0
+
+
+    
+                        if(list.size() > 0)
+                        
+                                    {
+                                    
+
+
+
+                        for (index in list.size() -1 downTo 0)
+
+        {
+
+    var rtsLayer: RTSLayer = list.get(index) as RTSLayer
+
+width= rtsLayer!!.getWidth()
+height= rtsLayer!!.getHeight()
+graphics.drawRect(rtsLayer!!.getXP() -allBinaryTiledLayer!!.getXP(), rtsLayer!!.getYP() -allBinaryTiledLayer!!.getYP(), width, height)
+}
+
+
+                                    }
+                                
+                             else 
+    
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION)
+                        
+                                    {
+                                    
+    var point: GPoint = geographicMapCellPosition!!.getPoint()!!
+
+width= allBinaryTiledLayer!!.getCellWidth()
+height= allBinaryTiledLayer!!.getCellHeight()
+graphics.drawRect(point.getX() -allBinaryTiledLayer!!.getXP(), point.getY() -allBinaryTiledLayer!!.getYP(), width, height)
+
+                                    }
+                                
+}
+
+
+    open fun updatePaintable()
+        //nullable = true from not(false or (false and true)) = true
+{
+}
+
+
+    open fun getSelectedBuildingPlayerGameInput()
+        //nullable = true from not(false or (false and true)) = true
+: SelectedRTSLayersPlayerGameInput{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.selectedRTSLayerPlayerGameInput
+}
+
+
+    open fun getSelectedRtsFormInput()
+        //nullable = true from not(false or (false and true)) = true
+: RTSFormInput{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.selectedRtsFormInput
+}
+
+
+    open fun setSelectedRtsFormInput(selectedRtsFormInput: RTSFormInput)
+        //nullable = true from not(false or (false and false)) = true
+{
+var selectedRtsFormInput = selectedRtsFormInput
+this.logUtil!!.putF(StringMaker().
+                            append("RTSFormInput: ")!!.append(StringUtil.getInstance()!!.toString(selectedRtsFormInput))!!.toString(), this, "setSelectedRtsFormInput")
+this.selectedRtsFormInput= selectedRtsFormInput
+}
+
+
+    open fun getRtsPlayerLayerInterface()
+        //nullable = true from not(false or (false and true)) = true
+: RTSPlayerLayerInterface{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.rtsPlayerLayerInterface
+}
+
+
+    open fun getRTSLayerInfoPaintable()
+        //nullable = true from not(false or (false and true)) = true
+: RTSLayerInfoPaintable{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.towerInfoPaintable
+}
+
+
+    open fun getMotionGestureInputList()
+        //nullable = true from not(false or (false and true)) = true
+: BasicArrayList{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.motionGestureInputList
+}
+
+
+    open fun getGameCanvas()
+        //nullable = true from not(false or (false and true)) = true
+: AllBinaryGameCanvas{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.gameCanvas
+}
+
+
+    open fun isIsSingleKeyProcessing()
+        //nullable = true from not(false or (false and true)) = true
+: Boolean{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.isSingleKeyProcessing
+}
+
+
+    open fun getScrollPlayerGameInput()
+        //nullable = true from not(false or (false and true)) = true
+: ScrollMapPlayerGameInput{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.scrollPlayerGameInput
+}
+
+
+}
+                
+            
+

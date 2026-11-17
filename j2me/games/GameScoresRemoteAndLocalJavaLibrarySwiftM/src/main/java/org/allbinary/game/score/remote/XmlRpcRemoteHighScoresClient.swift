@@ -1,0 +1,153 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.game.score.remote
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.logic.string.StringUtil
+import java.io.IOException
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.init.crypt.jcehelper.CryptInterface
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.communication.xmlrpc.XmlRpcAbeClient
+import org.allbinary.logic.java.exception.ExceptionUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+import org.allbinary.util.ABHashtable
+import org.apache.xmlrpc.XmlRpcClient
+import org.apache.xmlrpc.XmlRpcException
+
+open public class XmlRpcRemoteHighScoresClient : XmlRpcAbeClient {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private var page: String
+public constructor (clientInfo: AbeClientInformationInterface, page: String, remoteMethod: String)                        
+
+                            : super(clientInfo, remoteMethod){
+var clientInfo = clientInfo
+var page = page
+var remoteMethod = remoteMethod
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.page= page
+this.setServer(0)
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun get(anyType: Any, cryptInterface: CryptInterface)
+        //nullable = true from not(false or (false and false)) = true
+: Any{
+    //var anyType = anyType
+    //var cryptInterface = cryptInterface
+
+        try {
+            
+    var param: BasicArrayList = BasicArrayListD()
+
+
+    var serverUrl: String = getClientInfo()!!.getLicenseServer(this.getServer())!!
+
+
+    var index: Int = serverUrl!!.lastIndexOf('/')
+
+serverUrl= serverUrl!!.substring(0, index +1) +this.page
+
+    var stringBuffer: StringMaker = StringMaker()
+
+stringBuffer!!.append(TRYING)
+stringBuffer!!.appendint(this.getServer().toInt())
+stringBuffer!!.append(SEP)
+stringBuffer!!.append(serverUrl)
+this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.GET)
+
+    var xmlRpcClient: XmlRpcClient = XmlRpcClient(serverUrl)
+
+this.setClient(xmlRpcClient)
+xmlRpcClient!!.setBasicAuthentication(StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING)
+
+    var hashtable: ABHashtable<Any, Any> = anyType as ABHashtable<Any, Any>
+
+this.logUtil!!.putF(CLIENT_INFO +hashtable.toString(), this, this.commonStrings!!.GET)
+param.add(hashtable)
+
+    var result: Any = xmlRpcClient!!.executeWithCrypt(this.getRemoteMethod(), param, cryptInterface)!!
+
+this.logUtil!!.putF(RESULT +result.toString(), this, this.commonStrings!!.GET)
+isOnline= true
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return result
+} catch(e: IOException)
+            {
+this.logUtil!!.put(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!!.getStackTrace(e), this, this.commonStrings!!.GET, e)
+
+    
+                        if(!e.getMessage()!!.startsWith(HOST_NOT_RESOLVED))
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+
+                                    }
+                                
+                        else {
+                            
+
+
+                            throw Exception(HOST_NOT_RESOLVED_MSG)
+
+                        }
+                            
+}
+ catch(e: XmlRpcException)
+            {
+this.logUtil!!.put(SERVER_REPORTED_ERROR, this, this.commonStrings!!.GET, e)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+}
+ catch(e: Exception)
+            {
+this.logUtil!!.put(UNKNOWN_ERROR, this, this.commonStrings!!.GET, e)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.tryAnother(anyType)
+}
+
+}
+
+
+}
+                
+            
+

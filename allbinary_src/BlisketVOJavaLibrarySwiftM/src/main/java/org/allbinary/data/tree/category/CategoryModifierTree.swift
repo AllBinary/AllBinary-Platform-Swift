@@ -1,0 +1,172 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.data.tree.category
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.business.category.CategoryFactoryInterface
+import org.allbinary.business.category.CategoryInterface
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.io.file.directory.Directory
+import org.allbinary.logic.io.path.AbPath
+import org.allbinary.logic.string.StringUtil
+import org.allbinary.string.CommonStrings
+
+open public class CategoryModifierTree : CategoryPrivateTree
+                , CategoryModifierTreeInterface {
+        
+
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    private val directory: Directory = Directory.getInstance()!!
+public constructor (categoryFactoryInterface: CategoryFactoryInterface)                        
+
+                            : super(categoryFactoryInterface){
+var categoryFactoryInterface = categoryFactoryInterface
+
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.CATEGORY))
+                        
+                                    {
+                                    this.logUtil!!.putF(this.commonStrings!!.START, this, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)")
+
+                                    }
+                                
+}
+
+@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun insert(parentCategoryInterface: CategoryInterface, newChildCategoryInterface: CategoryInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var parentCategoryInterface = parentCategoryInterface
+var newChildCategoryInterface = newChildCategoryInterface
+
+        try {
+            
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.CATEGORY))
+                        
+                                    {
+                                    this.logUtil!!.putF("Inserting", this, "insert()")
+
+                                    }
+                                
+
+    
+                        if(parentCategoryInterface!!.isValid())
+                        
+                                    {
+                                    parentCategoryInterface!!.addChild(newChildCategoryInterface)
+
+    var directoryToBeCreatedAbPath: AbPath = AbPath(newChildCategoryInterface!!.getRootFilePath()!!.toString() +newChildCategoryInterface!!.getPath()!!.toString(), StringUtil.getInstance()!!.EMPTY_STRING)
+
+this.directory.create(directoryToBeCreatedAbPath)
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.CATEGORY))
+                        
+                                    {
+                                    this.logUtil!!.putF("Saving", this, "insert()")
+
+                                    }
+                                
+this.save(parentCategoryInterface)
+this.save(newChildCategoryInterface)
+
+                                    }
+                                
+                             else { 
+                                    throw Exception("Will Not Add Null Category") }
+                            
+} catch(e: Exception)
+            {
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGING))
+                        
+                                    {
+                                    this.logUtil!!.put(this.commonStrings!!.FAILURE, this, "insert", e)
+
+                                    }
+                                
+}
+
+}
+
+@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
+
+    open fun delete(parentCategoryInterface: CategoryInterface, existingChildCategoryInterface: CategoryInterface)
+        //nullable = true from not(false or (false and false)) = true
+{
+var parentCategoryInterface = parentCategoryInterface
+var existingChildCategoryInterface = existingChildCategoryInterface
+
+        try {
+            
+    
+                        if(parentCategoryInterface!!.isValid())
+                        
+                                    {
+                                    parentCategoryInterface!!.addChild(existingChildCategoryInterface)
+
+    var directoryToBeDeletedAbPath: AbPath = AbPath(existingChildCategoryInterface!!.getRootFilePath()!!.toString() +existingChildCategoryInterface!!.getPath()!!.toString(), StringUtil.getInstance()!!.EMPTY_STRING)
+
+this.delete(existingChildCategoryInterface)
+parentCategoryInterface!!.removeChild(existingChildCategoryInterface)
+this.save(parentCategoryInterface)
+this.directory.remove(directoryToBeDeletedAbPath)
+
+                                    }
+                                
+                             else { 
+                                    throw Exception("Will Not Add Null Category") }
+                            
+} catch(e: Exception)
+            {
+
+    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!!.SQLLOGGING))
+                        
+                                    {
+                                    this.logUtil!!.put(this.commonStrings!!.FAILURE, this, this.commonStrings!!.delete, e)
+
+                                    }
+                                
+}
+
+}
+
+
+}
+                
+            
+

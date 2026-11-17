@@ -1,0 +1,313 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.animation.vector
+
+
+
+
+        import java.lang.Object        
+        
+        import java.lang.Integer
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import java.util.HashMap
+import org.allbinary.graphics.GPoint
+import org.allbinary.graphics.j2me.workarea.tools.GraphicItemInterface
+import org.allbinary.graphics.j2me.workarea.tools.LinesGraphicItem
+import org.allbinary.graphics.j2me.workarea.tools.Points
+import org.allbinary.graphics.pipeline.BasicGraphicsPipeline
+import org.allbinary.logic.communication.log.LogUtil
+import org.allbinary.logic.string.StringMaker
+import org.allbinary.string.CommonLabels
+import org.allbinary.string.CommonStrings
+import org.allbinary.util.BasicArrayList
+
+open public class VectorCenterGenerator
+            : Object
+         {
+        
+companion object {
+            
+                @Throws(Exception::class)
+            
+    open fun translate(list: BasicArrayList, x: Int, y: Int)
+        //nullable = true from not(false or (false and false)) = true
+: BasicArrayList{
+var list = list
+var x = x
+var y = y
+
+    var graphicsPipe: BasicGraphicsPipeline = BasicGraphicsPipeline(list)
+
+graphicsPipe!!.createMatrix()
+graphicsPipe!!.translate(x, y)
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return graphicsPipe!!.getMatrix()
+}
+
+
+        }
+            
+    val logUtil: LogUtil = LogUtil.getInstance()!!
+
+    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+
+    var minX: Int = Integer.MAX_VALUE
+
+    var minY: Int = Integer.MAX_VALUE
+
+    var maxX: Int = Integer.MIN_VALUE
+
+    var maxY: Int = Integer.MIN_VALUE
+
+    private var dx: Int = 0
+
+    private var dy: Int = 0
+
+    private var width: Int= 0
+
+    private var height: Int= 0
+public constructor ()
+            : super()
+        {
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun calculate(hashMap: HashMap<Any, Any>)
+        //nullable = true from not(false or (false and false)) = true
+{
+var hashMap = hashMap
+
+    var graphicItemArray: Array<Any?> = hashMap!!.keys.toTypedArray()!!
+
+
+    var size: Int = graphicItemArray!!.size
+                
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var item: GraphicItemInterface = hashMap!!.get(graphicItemArray[index]!!) as GraphicItemInterface
+
+
+    
+                        if(item.getName() == LinesGraphicItem.getStaticName())
+                        
+                                    {
+                                    this.getInstance(item.getPointsInterface()!!.getPoints())
+
+                                    }
+                                
+}
+
+this.logUtil!!.putF("minX: " +this.minX +" minY: " +this.minY +" maxX: " +this.maxX +" maxY: " +this.maxY, this, this.commonStrings!!.GET_INSTANCE)
+this.setWidth(this.maxX -this.minX)
+this.setHeight(this.maxY -this.minY)
+
+    var max: Int = this.getWidth()
+
+
+    
+                        if(getHeight() > max)
+                        
+                                    {
+                                    max= this.getHeight()
+
+                                    }
+                                
+
+    var middle: Int = max /2
+
+
+    var commonLabels: CommonLabels = CommonLabels.getInstance()!!
+
+
+    var s: String = StringMaker().
+                            append(commonLabels!!.WIDTH_LABEL)!!.appendint(getWidth())!!.append(commonLabels!!.HEIGHT_LABEL)!!.appendint(getHeight())!!.append(" max: ")!!.appendint(max)!!.append(" middle: ")!!.appendint(middle)!!.toString()!!
+
+this.logUtil!!.putF(s, this, this.commonStrings!!.GET_INSTANCE)
+
+    var currentMiddleX: Int = this.minX +this.getWidth() /2
+
+
+    var currentMiddleY: Int = this.minY +this.getHeight() /2
+
+this.dx= middle -currentMiddleX
+this.dy= middle -currentMiddleY
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun transform(hashMap: HashMap<Any, Any>)
+        //nullable = true from not(false or (false and false)) = true
+{
+var hashMap = hashMap
+this.calculate(hashMap)
+this.logUtil!!.putF(StringMaker().
+                            append(" dx: ")!!.appendint(this.dx)!!.append(" dy: ")!!.appendint(this.dy)!!.toString(), this, this.commonStrings!!.GET_INSTANCE)
+
+    var graphicItemArray: Array<Any?> = hashMap!!.keys.toTypedArray()!!
+
+
+    var size: Int = graphicItemArray!!.size
+                
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var item: GraphicItemInterface = hashMap!!.get(graphicItemArray[index]!!) as GraphicItemInterface
+
+
+    var list: BasicArrayList = VectorCenterGenerator.translate(item.getPointsInterface()!!.getPoints(), dx, dy)!!
+
+
+    var newPoints: Points = Points()
+
+newPoints!!.addPoints(list)
+item.setPointsInterface(newPoints)
+}
+
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getInstance(pointVector: BasicArrayList)
+        //nullable =  from not(true or (false and false)) = 
+{
+var pointVector = pointVector
+
+        try {
+            
+    var size: Int = pointVector!!.size()
+
+
+
+
+
+                        for (index in 0 until size)
+
+        {
+
+    var point: GPoint = pointVector!!.get(index) as GPoint
+
+
+    
+                        if(point.getX() < this.minX)
+                        
+                                    {
+                                    this.minX= point.getX()
+
+                                    }
+                                
+
+    
+                        if(point.getX() > this.maxX)
+                        
+                                    {
+                                    this.maxX= point.getX()
+
+                                    }
+                                
+
+    
+                        if(point.getY() < this.minY)
+                        
+                                    {
+                                    this.minY= point.getY()
+
+                                    }
+                                
+
+    
+                        if(point.getY() > this.maxY)
+                        
+                                    {
+                                    this.maxY= point.getY()
+
+                                    }
+                                
+}
+
+} catch(e: Exception)
+            {
+this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.GET_INSTANCE, e)
+
+
+
+                            throw e
+}
+
+}
+
+
+    open fun getWidth()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.width
+}
+
+
+    open fun setWidth(width: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+var width = width
+this.width= width
+}
+
+
+    open fun getHeight()
+        //nullable = true from not(false or (false and true)) = true
+: Int{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.height
+}
+
+
+    open fun setHeight(height: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+var height = height
+this.height= height
+}
+
+
+}
+                
+            
+

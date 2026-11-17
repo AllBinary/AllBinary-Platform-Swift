@@ -1,0 +1,277 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        package org.allbinary.media.graphics.geography.map.racetrack.drop
+
+
+
+
+        import java.lang.Object        
+        
+        
+        import kotlin.Array
+        import kotlin.reflect.KClass
+                    
+        
+import org.allbinary.game.identification.GroupCommonFactory
+import org.allbinary.util.BasicArrayList
+import org.allbinary.util.BasicArrayListD
+import org.allbinary.direction.Direction
+import org.allbinary.direction.DirectionFactory
+import org.allbinary.game.identification.BasicGroupFactory
+import org.allbinary.game.layer.AllBinaryGameLayerManager
+import org.allbinary.game.layer.geographic.map.LayerCoveringCellPositionsUtil
+import org.allbinary.graphics.GPoint
+import org.allbinary.layer.AllBinaryLayer
+import org.allbinary.layer.AllBinaryLayerManager
+import org.allbinary.logic.StdUtil
+import org.allbinary.media.graphics.geography.map.BasicGeographicMap
+import org.allbinary.media.graphics.geography.map.BasicGeographicMapCellPositionFactory
+import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
+import org.allbinary.media.graphics.geography.map.GeographicMapCellType
+import org.allbinary.media.graphics.geography.map.GeographicMapDirectionUtil
+import org.allbinary.media.graphics.geography.map.SimpleGeographicMapCellPositionFactory
+import org.allbinary.media.graphics.geography.map.drop.DropCellPositionGeneratorInterface
+import org.allbinary.media.graphics.geography.map.drop.DropCellPositionHistory
+import org.allbinary.media.graphics.geography.map.racetrack.BaseRaceTrackGeographicMap
+import org.allbinary.media.graphics.geography.map.racetrack.RaceTrackGeographicMapCellType
+import org.allbinary.media.graphics.geography.map.racetrack.RaceTrackGeographicMapCellTypeFactory
+import org.allbinary.util.ABHashtable
+
+open public class RaceTrackAdjacentDropCellPositionGenerator : RaceTrackDropCellPositionGenerator {
+        
+companion object {
+            
+    private var SINGLETON: RaceTrackAdjacentDropCellPositionGenerator = RaceTrackAdjacentDropCellPositionGenerator()
+
+    open fun getInstance()
+        //nullable =  from not(true or (false and true)) = 
+: DropCellPositionGeneratorInterface{
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return RaceTrackAdjacentDropCellPositionGenerator.SINGLETON
+}
+
+
+        }
+            
+    private val layerCoveringCellPositionsUtil: LayerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil.getInstance()!!
+
+    private val groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!!
+
+    private var surroundingCellPositions: Array<GeographicMapCellPosition?> = arrayOfNulls(4)
+private constructor (){
+}
+
+
+                @Throws(Exception::class)
+            
+    open fun getFirstNonRoadAdjacentCellPosition(column: Int, row: Int)
+        //nullable = true from not(false or (false and false)) = true
+: GeographicMapCellPosition{
+    //var column = column
+    //var row = row
+
+    var nonRoadGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION
+
+
+    var geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = this.raceTrackGeographicMap!!.getGeographicMapCellPositionFactory()!!
+
+this.surroundingCellPositions[0]= geographicMapCellPositionFactory!!.getAt(column, row -1)!!
+this.surroundingCellPositions[1]= geographicMapCellPositionFactory!!.getAt(column, row +1)!!
+this.surroundingCellPositions[2]= geographicMapCellPositionFactory!!.getAt(column -1, row)!!
+this.surroundingCellPositions[3]= geographicMapCellPositionFactory!!.getAt(column +1, row)!!
+
+    var baseRaceTrackGeographicMap: BaseRaceTrackGeographicMap = this.raceTrackGeographicMap as BaseRaceTrackGeographicMap
+
+
+    var raceTrackGeographicMapCellTypeFactory: RaceTrackGeographicMapCellTypeFactory = baseRaceTrackGeographicMap!!.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory
+
+
+    var geographicMapCellPosition: GeographicMapCellPosition
+
+
+    var raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType
+
+
+
+
+
+                        for (index in this.surroundingCellPositions!!.size  - 1  downTo 0)
+
+        {
+geographicMapCellPosition= this.surroundingCellPositions[index]!!
+raceTrackGeographicMapCellType= this.raceTrackGeographicMap!!.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType
+
+    
+                        if(!raceTrackGeographicMapCellTypeFactory!!.isPath(raceTrackGeographicMapCellType))
+                        
+                                    {
+                                    nonRoadGeographicMapCellPosition= geographicMapCellPosition
+break;
+
+                    
+
+                                    }
+                                
+}
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nonRoadGeographicMapCellPosition
+}
+
+
+    private val hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
+
+                @Throws(Exception::class)
+            
+    override fun update(allBinaryGameLayerManager: AllBinaryGameLayerManager, geographicMapInterface: BasicGeographicMap)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var allBinaryGameLayerManager = allBinaryGameLayerManager
+    //var geographicMapInterface = geographicMapInterface
+this.hashtable.put(AllBinaryGameLayerManager.ID, allBinaryGameLayerManager)
+super.update(allBinaryGameLayerManager, geographicMapInterface)
+}
+
+
+    private val geographicMapDirectionUtil: GeographicMapDirectionUtil = GeographicMapDirectionUtil.getInstance()!!
+
+                @Throws(Exception::class)
+            
+    override fun drop(allBinaryLayerManager: AllBinaryLayerManager, index: Int)
+        //nullable = true from not(false or (false and false)) = true
+{
+    //var allBinaryLayerManager = allBinaryLayerManager
+    //var index = index
+
+    var geographicMapCellPosition: GeographicMapCellPosition = this.list.get(index) as GeographicMapCellPosition
+
+
+    var randomGeographicMapCellPosition: GeographicMapCellPosition = this.getFirstNonRoadAdjacentCellPosition(geographicMapCellPosition!!.getColumn(), geographicMapCellPosition!!.getRow())!!
+
+
+    
+                        if(randomGeographicMapCellPosition == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+
+    var dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!!
+
+
+    
+                        if(!dropCellPositionHistory!!.isCellPositionWithDrop(geographicMapCellPosition))
+                        
+                                    {
+                                    
+    var direction: Direction = this.geographicMapDirectionUtil!!.getDirectionFromCellPositionToAdjacentCellPosition(randomGeographicMapCellPosition, geographicMapCellPosition)!!
+
+
+    var objectCanBeNull: Any? = this.hashtable.get(this.groupCommonFactory!!.ID)
+
+
+    
+                        if(objectCanBeNull != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                                    }
+                                
+                        else {
+                            this.hashtable.put(this.groupCommonFactory!!.ID, BasicGroupFactory.getInstance()!!.NONE_ARRAY)
+
+                        }
+                            
+this.hashtable.put(DirectionFactory.getInstance()!!.NAME, direction)
+
+    var point: GPoint = randomGeographicMapCellPosition!!.getPoint()!!
+
+
+    var x: Int = point.getX()
+
+
+    var y: Int = point.getY()
+
+
+    var z: Int = point.getZ()
+
+
+    var layerInterface: AllBinaryLayer = RaceTrackAdjacentDropLayerFactory.getInstance()!!.getRandomInstance()!!.getNextInstance(hashtable, x, y, z)!!
+
+
+    var baseRaceTrackGeographicMap: BaseRaceTrackGeographicMap = this.raceTrackGeographicMap as BaseRaceTrackGeographicMap
+
+
+    var list: BasicArrayList = this.layerCoveringCellPositionsUtil!!.getAll(baseRaceTrackGeographicMap, randomGeographicMapCellPosition, layerInterface, BasicArrayListD())!!
+
+
+    
+                        if(dropCellPositionHistory!!.anyCellPositionWithDrop(list))
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+
+    var geographicMapCellType: GeographicMapCellType
+
+
+
+
+
+                        for (index2 in list.size()!!  - 1  downTo 0)
+
+        {
+geographicMapCellType= this.raceTrackGeographicMap!!.getCellTypeAt(list.get(index2) as GeographicMapCellPosition)!!
+
+    
+                        if(this.raceTrackGeographicMapCellTypeFactory!!.isPath(geographicMapCellType))
+                        
+                                    {
+                                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 
+
+                                    }
+                                
+}
+
+dropCellPositionHistory!!.addAll(list, layerInterface)
+allBinaryLayerManager!!.append(layerInterface)
+
+                                    }
+                                
+}
+
+
+}
+                
+            
+

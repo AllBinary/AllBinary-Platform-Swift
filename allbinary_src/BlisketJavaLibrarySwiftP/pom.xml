@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary.business</groupId>
+    <artifactId>BlisketJavaLibraryPSwift</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>BlisketJavaLibraryPSwift</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <modules>
+
+        <!--
+        <module>../../j2me/AllBinaryJ2MELibrarySwiftP</module>
+        -->
+        <!--
+        <module>../data/DataJavaLibrarySwiftM</module>
+        -->
+
+        <module>../licensing/TestServiceClientInfoJavaLibrarySwiftM</module>        
+
+        <module>../data/DataTableInterfacesSwiftM</module>
+        
+        <module>../QueueJavaLibrarySwiftM</module>
+        
+        <!--
+        <module>../TokenizerJavaLibrarySwiftM</module>
+        -->
+
+        <module>../logging/LogConfigTypeFreeblisketJavaLibrarySwiftM</module>
+
+        <module>../JavaUtilLibrarySwiftM</module>
+        <module>../NullInitInfoJavaLibrarySwiftM</module>        
+        <module>../InitInfoJavaLibrarySwiftM</module>
+        <module>../PreLoaderHttpJavaLibrarySwiftM</module>
+        
+        <module>../TagsBaseJavaLibrarySwiftM</module>
+        <module>../CustomLoaderJavaLibrarySwiftM</module>
+        
+        <!--
+        <module>../logic/data/file/FileJ2SEJavaLibrarySwiftM</module>
+        <module>../logic/data/file/FileJavaLibrarySwiftM</module>
+        -->
+
+        <module>../data/SQLAllBinaryJavaLibrarySwiftM</module>
+
+        <!--
+        <module>../licensing/FileLicenseInitInfoJavaLibrarySwiftM</module>
+        -->
+
+        <module>../DocumentObjectModelJavaLibrarySwiftM</module>
+
+        <module>../VisualStyleJavaLibrarySwiftM</module>
+
+        <module>../ConfigurationJavaLibrarySwiftM</module>
+
+        <module>../VisualTransformBaseJavaLibrarySwiftM</module>
+
+        <module>../CategoryBaseJavaLibrarySwiftM</module>
+        <module>../CategoryJavaLibrarySwiftM</module>
+
+        <module>../UserJavaLibrarySwiftM</module>
+
+        <module>../PaymentGatewayBaseJavaLibrarySwiftM</module>
+
+        <module>../data/vo/EntitiesBlisketVOJavaLibrarySwiftM</module>
+        <module>../PaymentGatewayJavaLibrarySwiftM</module>
+        <module>../data/vo/EntitiesOrderHistoryVOJavaLibrarySwiftM</module>
+        <module>../data/vo/EntityPaymentGatewayVOJavaLibrarySwiftM</module>
+        <module>../data/vo/EntityStoreFrontVOJavaLibrarySwiftM</module>
+
+        <module>../data/EntitiesBlisketBaseInterfacesJavaLibrarySwiftM</module>
+        <module>../data/EntitiesBlisketBaseJavaLibrarySwiftM</module>
+        
+        <module>../data/EntitiesAdvertisementBaseJavaLibrarySwiftM</module>
+        <module>../data/EntityOrderHistoryJavaLibrarySwiftM</module>
+        <module>../data/EntityPaymentGatewayJavaLibrarySwiftM</module>
+        <module>../data/EntityVisualTransformJavaLibrarySwiftM</module>
+        <module>../data/EntityUserJavaLibrarySwiftM</module>
+        <module>../data/EntityWorkflowJavaLibrarySwiftM</module>
+
+        <module>../SMTPConfigurationJavaLibrarySwiftM</module>
+        <module>../SMTPBaseJavaLibrarySwiftM</module>
+
+        <module>../VisualTransformJavaLibrarySwiftM</module>
+
+        <module>../../replace_these_stub_projects/allbinary_src/YourRuntimeEnvironmentJavaLibrarySwiftM</module>
+        <module>../GatewayJavaLibrarySwiftM</module>
+        
+        <module>../WorkflowBaseJavaLibrarySwiftM</module>
+        <module>../WorkflowJavaLibrarySwiftM</module>
+
+        <module>../IdGeneratorUsingFilesJavaLibrarySwiftM</module>
+        <module>../BlisketPreVOJavaLibrarySwiftM</module>
+
+        <!-- 
+        EntitiesOrderHistoryVOJavaLibrary
+        UserJavaLibrary
+        -->
+        
+        <module>../BlisketVOJavaLibrarySwiftM</module>
+
+        <module>../UserCommerceJavaLibrarySwiftM</module>
+
+        <module>../CustomizerValidatorsJavaLibrarySwiftM</module>
+
+        <!-- 
+        AllBinaryCacheForShiftOneJavaLibrary
+        AllBinaryJSECacheJavaLibrary
+        ColorJavaLibrary
+        ImageJavaLibrary
+        -->
+        
+        <module>../logic/data/file/FileMediaJ2SEJavaLibrarySwiftM</module>
+        <module>../BlisketBaseJavaLibrarySwiftM</module>
+
+        <module>../logging/LoggingGAEAllSwiftM</module>
+        <module>../BlisketJavaLibrarySwiftM</module>
+        
+    </modules>
+
+</project>
+
