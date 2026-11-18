@@ -1,82 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class BasicArrayListResetablePool : AbstractArrayListPool {
-        
-public constructor (cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface)                        
-
-                            : super(cacheableInterfaceFactoryInterface){
-var cacheableInterfaceFactoryInterface = cacheableInterfaceFactoryInterface
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-    override fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun remove(key: Any)
-        //nullable = true from not(false or (false and false)) = true
-: CacheableInterface{
-var key = key
-
-    var size: Int = this.buffers.size()
-
-
+open class BasicArrayListResetablePool: AbstractArrayListPool {
     
-                        if(size > 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buffers.removeAt(size -1) as CacheableInterface
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheableInterfaceFactoryInterface!!.getInstance(key)
+    public override init(_ cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface!) {
+        super.init(cacheableInterfaceFactoryInterface)
+    }
+    
 
-                        }
-                            
+    open override func clear() {
+    }
+    
+
+    @discardableResult open override func remove(_ key: JObject!) -> CacheableInterface! {
+        let size: Int32 = self.buffers.size()
+        if (size > 0) {
+            return (self.buffers.removeAt(size &- 1) as! CacheableInterface)
+        } else {
+            return self.cacheableInterfaceFactoryInterface.getInstance(key)
+        }
+    }
 }
-
-
-}
-                
-            
 

@@ -1,110 +1,73 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.weapon
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat.weapon
+import J2SEForSwiftLibrary
 
+open class SimpleWeaponProperties: JObject {
+    fileprivate var damage: Int32 = 0
+    fileprivate var dissipation: Int16 = 0
+    fileprivate var range: Int32 = 0
 
+    private func initFields() {
+    self.damage = 0
+    self.dissipation = 0
+    self.range = 0
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func set(_ simpleWeaponProperties: SimpleWeaponProperties!) {
+        self.setDamage(simpleWeaponProperties.getDamage())
+        self.setDissipation(simpleWeaponProperties.getDissipation())
+        self.setRange(simpleWeaponProperties.getRange())
+    }
+    
 
-open public class SimpleWeaponProperties
-            : Object
-         {
-        
+    open func setDamage(_ damage: Int32) {
+        self.damage = damage
+    }
+    
 
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var damage: Int= 0
+    @discardableResult open func getDamage() -> Int32 {
+        return self.damage
+    }
+    
 
-    private var dissipation: Short= 0
+    open func setDissipation(_ dissipation: Int16) {
+        self.dissipation = dissipation
+    }
+    
 
-    private var range: Int= 0
+    @discardableResult open func getDissipation() -> Int16 {
+        return self.dissipation
+    }
+    
 
-    open fun set(simpleWeaponProperties: SimpleWeaponProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-var simpleWeaponProperties = simpleWeaponProperties
-this.setDamage(simpleWeaponProperties!!.getDamage())
-this.setDissipation(simpleWeaponProperties!!.getDissipation())
-this.setRange(simpleWeaponProperties!!.getRange())
+    @discardableResult open func getRange() -> Int32 {
+        return self.range
+    }
+    
+
+    open func setRange(_ range: Int32) {
+        self.range = range
+    }
 }
-
-
-    open fun setDamage(damage: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var damage = damage
-this.damage= damage
-}
-
-
-    open fun getDamage()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damage
-}
-
-
-    open fun setDissipation(dissipation: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dissipation = dissipation
-this.dissipation= dissipation
-}
-
-
-    open fun getDissipation()
-        //nullable = true from not(false or (false and true)) = true
-: Short{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dissipation
-}
-
-
-    open fun getRange()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.range
-}
-
-
-    open fun setRange(range: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var range = range
-this.range= range
-}
-
-
-}
-                
-            
 

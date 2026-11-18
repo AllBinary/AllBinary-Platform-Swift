@@ -1,424 +1,245 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.game.input.GameKeyFactory
+// import org.allbinary.game.input.Input
+// import org.allbinary.game.input.InputFactory
+// import org.allbinary.game.input.PlatformInputMappingFactory
+// import org.allbinary.game.input.mapping.InputMappingInterface
+// import org.allbinary.game.input.mapping.PersistentInputMapping
+// import org.allbinary.game.layer.AllBinaryGameLayerManager
+// import org.allbinary.game.paint.ColorFillBasePaintable
+// import org.allbinary.game.paint.ColorFillPaintableFactory
+// import org.allbinary.game.paint.help.HelpPaintable
+// import org.allbinary.game.paint.help.InputMappingHelpPaintable
+// import org.allbinary.graphics.paint.ProcessPaintable
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+// import org.allbinary.util.BasicArrayList
 
+open class GameInputMappingCanvas: GameCommandCanvas, InputMappingInterface {
+    public static let NAME: String! = "GameInputMappingCanvas"
+    public static let DISPLAY: Command! = Command("Controls", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 2)
+    public static let DEFAULT: Command! = Command("Default", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 2)
+    fileprivate var paintable: ProcessPaintable! = nil
+    fileprivate var helpPaintable: InputMappingHelpPaintable! = nil
+    public var colorFillPaintable: ColorFillBasePaintable! = nil
+    fileprivate var inputMapping: PersistentInputMapping! = nil
+    fileprivate var NONE: GameKey! = nil
+    fileprivate var abeClientInformation: AbeClientInformationInterface! = nil
+    fileprivate var selectedGameKey: GameKey! = nil
+    fileprivate var selectedInput: Input! = nil
+    fileprivate var inputFactory: InputFactory! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    self.NONE = GameKeyFactory.getInstance().NONE
+    
+    self.selectedGameKey = self.NONE
+    self.selectedInput = self.NONE
+    self.inputFactory = InputFactory.getInstance()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Graphics
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.game.input.GameKey
-import org.allbinary.game.input.GameKeyFactory
-import org.allbinary.game.input.Input
-import org.allbinary.game.input.InputFactory
-import org.allbinary.game.input.PlatformInputMappingFactory
-import org.allbinary.game.input.mapping.InputMappingInterface
-import org.allbinary.game.input.mapping.PersistentInputMapping
-import org.allbinary.game.layer.AllBinaryGameLayerManager
-import org.allbinary.game.paint.ColorFillBasePaintable
-import org.allbinary.game.paint.ColorFillPaintableFactory
-import org.allbinary.game.paint.help.HelpPaintable
-import org.allbinary.game.paint.help.InputMappingHelpPaintable
-import org.allbinary.graphics.paint.ProcessPaintable
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
-import org.allbinary.util.BasicArrayList
-
-open public class GameInputMappingCanvas : GameCommandCanvas
-                , InputMappingInterface {
-        
-companion object {
-            
-    val NAME: String = "GameInputMappingCanvas"
-
-    val DISPLAY: Command = Command("Controls", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 2)
-
-    val DEFAULT: Command = Command("Default", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 2)
-
+    public init(_ abeClientInformation: AbeClientInformationInterface!, _ commandListener: CommandListener!, _ allBinaryGameLayerManager: AllBinaryGameLayerManager!, _ helpPaintable: HelpPaintable!) {
+        super.init(commandListener, GameInputMappingCanvas.NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor())
+        self.initFields()
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CONSTRUCTOR)
+        if (helpPaintable == nil) {
+            jThrow(JException("Exception", "Help Paintable Exception"))
         }
-            
-    private val paintable: ProcessPaintable
-
-    private val helpPaintable: InputMappingHelpPaintable
-
-    val colorFillPaintable: ColorFillBasePaintable
-
-    private val inputMapping: PersistentInputMapping
-
-    private val NONE: GameKey = GameKeyFactory.getInstance()!!.NONE
-
-    private val abeClientInformation: AbeClientInformationInterface
-
-    private var selectedGameKey: GameKey = this.NONE
-
-    private var selectedInput: Input = this.NONE
-public constructor (abeClientInformation: AbeClientInformationInterface, commandListener: CommandListener, allBinaryGameLayerManager: AllBinaryGameLayerManager, helpPaintable: HelpPaintable)                        
-
-                            : super(commandListener, GameInputMappingCanvas.NAME, allBinaryGameLayerManager!!.getBackgroundBasicColor(), allBinaryGameLayerManager!!.getForegroundBasicColor()){
-    //var abeClientInformation = abeClientInformation
-    //var commandListener = commandListener
-    //var allBinaryGameLayerManager = allBinaryGameLayerManager
-    //var helpPaintable = helpPaintable
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CONSTRUCTOR)
-
+        self.abeClientInformation = abeClientInformation
+        self.helpPaintable = (helpPaintable as! InputMappingHelpPaintable)
+        self.inputMapping = PlatformInputMappingFactory.getInstance().getPersistentInputMappingInstance()
+        self.paintable = ProcessPaintable()
+        self.colorFillPaintable = ColorFillPaintableFactory.getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false)
+    }
     
-                        if(helpPaintable == 
-                                    null
-                                )
-                        
-                                    {
-                                    
 
-
-                            throw Exception("Help Paintable Exception")
-
-                                    }
-                                
-this.abeClientInformation= abeClientInformation
-this.helpPaintable= helpPaintable as InputMappingHelpPaintable
-this.inputMapping= PlatformInputMappingFactory.getInstance()!!.getPersistentInputMappingInstance()!!
-this.paintable= ProcessPaintable()
-this.colorFillPaintable= ColorFillPaintableFactory.getInstance()!!.getInstance(allBinaryGameLayerManager!!.getBackgroundBasicColor(), false)!!
-}
-
-
-    override fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-super.close()
-this.paintable.process()
-this.selectedGameKey= this.NONE
-this.selectedInput= this.NONE
-this.update()
-}
-
-
-    override fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var cmdListener = cmdListener
-this.removeAllCommands()
-this.addCommand(GameCommandsFactory.getInstance()!!.CLOSE_AND_SHOW_GAME_CANVAS)
-this.addCommand(GameInputMappingCanvas.DEFAULT)
-this.addCommand(GameInputMappingInstructionsCanvas.DISPLAY)
-this.setCommandListener(cmdListener)
-}
-
-
-    override fun keyPressed(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-this.keyPressedByDevice(keyCode, 0)
-}
-
-
-    override fun keyReleased(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-this.keyReleasedByDevice(keyCode, 0)
-}
-
-
-    override fun keyRepeated(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-this.keyRepeatedByDevice(keyCode, 0)
-}
-
-
-    override fun keyPressedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-this.addGameKey(keyCode, false)
-super.keyPressedByDevice(keyCode, 0)
-}
-
-
-    private val inputFactory: InputFactory = InputFactory.getInstance()!!
-
-    open fun addGameKey(keyCode: Int, repeated: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var repeated = repeated
-
-        try {
-            this.logUtil!!.putF(StringMaker().
-                            append("Raw Device Key Code: ")!!.append(Integer.toHexString(keyCode))!!.toString(), this, this.gameInputStrings!!.ADD_KEY_EVENT)
-
-    var gameKey: GameKey = this.inputToGameKeyMapping!!.getInstanceForCanvas(this, keyCode)!!
-
-
-    var input: Input = this.inputFactory!!.getInstanceById(keyCode)!!
-
-this.processInputMapping(gameKey, input)
-} catch(e: Exception)
-            {
-this.logUtil!!.put("Key Event Error", this, this.gameInputStrings!!.ADD_KEY_EVENT, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processInputMapping(gameKey: GameKey, input: Input)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKey = gameKey
-    //var input = input
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Start Passed GameKey: ")
-stringBuffer!!.append(this.stringUtil!!.toString(gameKey))
-stringBuffer!!.append(" Input: ")
-stringBuffer!!.append(this.stringUtil!!.toString(input))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.PROCESS)
-
+    open override func close() {
+        super.close()
+        self.paintable.process()
+        self.selectedGameKey = self.NONE
+        self.selectedInput = self.NONE
+        self.update()
+    }
     
-                        if(this.selectedGameKey != this.NONE)
-                        
-                                    {
-                                    this.gameActionCrud(gameKey, input)
 
-                                    }
-                                
-                        else {
-                            this.setSelectedAction(gameKey)
-
-                        }
-                            
-}
-
-
-    open fun setSelectedAction(gameKey: GameKey)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKey = gameKey
-this.logUtil!!.putF(StringMaker().
-                            append("Selected GameKey: ")!!.append(this.stringUtil!!.toString(gameKey))!!.toString(), this, "setSelectedAction")
-this.selectedGameKey= gameKey
-this.selectedInput= this.NONE
-this.helpPaintable!!.update(this.selectedGameKey, this.selectedInput)
-this.repaintBehavior!!.onChangeRepaint(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun gameActionCrud(gameKey: GameKey, input: Input)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKey = gameKey
-    //var input = input
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Start GameKey: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedGameKey))
-stringBuffer!!.append(" Input: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedInput))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, "gameActionCrud")
-
+    open override func initCommands(_ cmdListener: CommandListener!) {
+        self.removeAllCommands()
+        self.addCommand(GameCommandsFactory.getInstance().CLOSE_AND_SHOW_GAME_CANVAS)
+        self.addCommand(GameInputMappingCanvas.DEFAULT)
+        self.addCommand(GameInputMappingInstructionsCanvas.DISPLAY)
+        self.setCommandListener(cmdListener)
+    }
     
-                        if(this.selectedInput == this.NONE)
-                        
-                                    {
-                                    
-    var list: BasicArrayList = this.inputMapping!!.getInputMapping()!!.getMappedInput(this.selectedGameKey)!!
 
-
-    var isInputAlreadyMappedToSelectedAction: Boolean = list.contains(input)
-
-
+    open override func keyPressed(_ keyCode: Int32) {
+        self.keyPressedByDevice(keyCode, 0)
+    }
     
-                        if(isInputAlreadyMappedToSelectedAction)
-                        
-                                    {
-                                    this.logUtil!!.putF(StringMaker().
-                            append("Already Mapped Input: ")!!.append(this.stringUtil!!.toString(input))!!.toString(), this, "gameActionCrud")
-this.selectedInput= input
-this.helpPaintable!!.update(this.selectedGameKey, this.selectedInput)
-this.repaintBehavior!!.onChangeRepaint(this)
 
-                                    }
-                                
-                        else {
-                            this.addNewMapping(gameKey, input)
-
-                        }
-                            
-
-                                    }
-                                
-                             else 
+    open override func keyReleased(_ keyCode: Int32) {
+        self.keyReleasedByDevice(keyCode, 0)
+    }
     
-                        if(this.inputMapping!!.isDelete(input))
-                        
-                                    {
-                                    this.deleteCurrentMapping()
 
-                                    }
-                                
-                        else {
-                            this.setSelectedAction(gameKey)
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun addNewMapping(gameKey: GameKey, input: Input)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKey = gameKey
-    //var input = input
-
-    var METHOD_NAME: String = "addNewMapping"
-
-this.logUtil!!.putF(this.commonStrings!!.START, this, METHOD_NAME)
-
-    var isInputAlreadyMapped: Boolean = this.inputMapping!!.getInputMapping()!!.isMapped(input)
-
-
+    open override func keyRepeated(_ keyCode: Int32) {
+        self.keyRepeatedByDevice(keyCode, 0)
+    }
     
-                        if(!isInputAlreadyMapped && !this.inputMapping!!.isSystemInput(input))
-                        
-                                    {
-                                    
-    var stringBuffer: StringMaker = StringMaker()
 
-stringBuffer!!.append("Add Key Mapping : GameKey: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedGameKey))
-stringBuffer!!.append(" Input: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedInput))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, METHOD_NAME)
-this.inputMapping!!.getInputMapping()!!.add(this.selectedGameKey, input)
-this.selectedInput= input
-this.update()
-
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF("Unable to add Mapping since one already exists or is MENU, HOME, or BACK key and setting selected action to what it is already mapped to", this, METHOD_NAME)
-this.setSelectedAction(gameKey)
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun deleteCurrentMapping()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var METHOD_NAME: String = "deleteCurrentMapping"
-
-
-    var list: BasicArrayList = this.inputMapping!!.getInputMapping()!!.getMappedInput(this.selectedGameKey)!!
-
-
+    open override func keyPressedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+        self.addGameKey(keyCode, false)
+        super.keyPressedByDevice(keyCode, 0)
+    }
     
-                        if(list.size() > 1)
-                        
-                                    {
-                                    
-    var stringBuffer: StringMaker = StringMaker()
 
-stringBuffer!!.append("Start GameKey: ")
-stringBuffer!!.append("Remove Key Mapping: GameKey: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedGameKey))
-stringBuffer!!.append(" Input: ")
-stringBuffer!!.append(this.stringUtil!!.toString(this.selectedInput))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, METHOD_NAME)
-this.inputMapping!!.getInputMapping()!!.remove(this.selectedGameKey, this.selectedInput)
-this.selectedInput= this.NONE
-this.update()
+    fileprivate func addGameKey(_ keyCode: Int32, _ repeated: Bool) {
+        do {
+            self.logUtil.putF(StringMaker().append("Raw Device Key Code: ").append(Integer.toHexString(keyCode)).toString(), self, self.gameInputStrings.ADD_KEY_EVENT)
+            let gameKey: GameKey! = self.inputToGameKeyMapping.getInstanceForCanvas(self, keyCode)
+            let input: Input! = self.inputFactory.getInstanceById(keyCode)
+            self.processInputMapping(gameKey, input)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF("Can't Remove Last Key Mapping", this, METHOD_NAME)
+    open override func processInputMapping(_ gameKey: GameKey!, _ input: Input!) {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Start Passed GameKey: ")
+        stringBuffer.append(self.stringUtil.toString(gameKey))
+        stringBuffer.append(" Input: ")
+        stringBuffer.append(self.stringUtil.toString(input))
+        self.logUtil.putF(stringBuffer.toString(), self, self.commonStrings.PROCESS)
+        if (self.selectedGameKey !== self.NONE) {
+            self.gameActionCrud(gameKey, input)
+        } else {
+            self.setSelectedAction(gameKey)
+        }
+    }
+    
 
-                        }
-                            
+    fileprivate func setSelectedAction(_ gameKey: GameKey!) {
+        self.logUtil.putF(StringMaker().append("Selected GameKey: ").append(self.stringUtil.toString(gameKey)).toString(), self, "setSelectedAction")
+        self.selectedGameKey = gameKey
+        self.selectedInput = self.NONE
+        self.helpPaintable.update(self.selectedGameKey, self.selectedInput)
+        self.repaintBehavior.onChangeRepaint(self)
+    }
+    
+
+    fileprivate func gameActionCrud(_ gameKey: GameKey!, _ input: Input!) {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Start GameKey: ")
+        stringBuffer.append(self.stringUtil.toString(self.selectedGameKey))
+        stringBuffer.append(" Input: ")
+        stringBuffer.append(self.stringUtil.toString(self.selectedInput))
+        self.logUtil.putF(stringBuffer.toString(), self, "gameActionCrud")
+        if (self.selectedInput === self.NONE) {
+            let list: BasicArrayList! = self.inputMapping.getInputMapping().getMappedInput(self.selectedGameKey)
+            let isInputAlreadyMappedToSelectedAction: Bool = list.contains(input)
+            if (isInputAlreadyMappedToSelectedAction) {
+                self.logUtil.putF(StringMaker().append("Already Mapped Input: ").append(self.stringUtil.toString(input)).toString(), self, "gameActionCrud")
+                self.selectedInput = input
+                self.helpPaintable.update(self.selectedGameKey, self.selectedInput)
+                self.repaintBehavior.onChangeRepaint(self)
+            } else {
+                self.addNewMapping(gameKey, input)
+            }
+        } else if (self.inputMapping.isDelete(input)) {
+            self.deleteCurrentMapping()
+        } else {
+            self.setSelectedAction(gameKey)
+        }
+    }
+    
+
+    fileprivate func addNewMapping(_ gameKey: GameKey!, _ input: Input!) {
+        let METHOD_NAME: String! = "addNewMapping"
+        self.logUtil.putF(self.commonStrings.START, self, METHOD_NAME)
+        let isInputAlreadyMapped: Bool = self.inputMapping.getInputMapping().isMapped(input)
+        if (!isInputAlreadyMapped && !self.inputMapping.isSystemInput(input)) {
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append("Add Key Mapping : GameKey: ")
+            stringBuffer.append(self.stringUtil.toString(self.selectedGameKey))
+            stringBuffer.append(" Input: ")
+            stringBuffer.append(self.stringUtil.toString(self.selectedInput))
+            self.logUtil.putF(stringBuffer.toString(), self, METHOD_NAME)
+            self.inputMapping.getInputMapping().add(self.selectedGameKey, input)
+            self.selectedInput = input
+            self.update()
+        } else {
+            self.logUtil.putF("Unable to add Mapping since one already exists or is MENU, HOME, or BACK key and setting selected action to what it is already mapped to", self, METHOD_NAME)
+            self.setSelectedAction(gameKey)
+        }
+    }
+    
+
+    fileprivate func deleteCurrentMapping() {
+        let METHOD_NAME: String! = "deleteCurrentMapping"
+        let list: BasicArrayList! = self.inputMapping.getInputMapping().getMappedInput(self.selectedGameKey)
+        if (list.size() > 1) {
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append("Start GameKey: ")
+            stringBuffer.append("Remove Key Mapping: GameKey: ")
+            stringBuffer.append(self.stringUtil.toString(self.selectedGameKey))
+            stringBuffer.append(" Input: ")
+            stringBuffer.append(self.stringUtil.toString(self.selectedInput))
+            self.logUtil.putF(stringBuffer.toString(), self, METHOD_NAME)
+            self.inputMapping.getInputMapping().remove(self.selectedGameKey, self.selectedInput)
+            self.selectedInput = self.NONE
+            self.update()
+        } else {
+            self.logUtil.putF("Can't Remove Last Key Mapping", self, METHOD_NAME)
+        }
+    }
+    
+
+    open func setDefault() {
+        self.inputMapping.setDefault(self.abeClientInformation)
+        self.helpPaintable.update(self.NONE, self.NONE)
+        self.repaintBehavior.onChangeRepaint(self)
+    }
+    
+
+    open override func update() {
+        self.inputMapping.update(self.abeClientInformation)
+        self.helpPaintable.update(self.selectedGameKey, self.selectedInput)
+        self.repaintBehavior.onChangeRepaint(self)
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.colorFillPaintable.paint(graphics)
+        self.helpPaintable.paint(graphics)
+        self.paintable.paint(graphics)
+        super.paint(graphics)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun setDefault()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.inputMapping!!.setDefault(this.abeClientInformation)
-this.helpPaintable!!.update(this.NONE, this.NONE)
-this.repaintBehavior!!.onChangeRepaint(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.inputMapping!!.update(this.abeClientInformation)
-this.helpPaintable!!.update(this.selectedGameKey, this.selectedInput)
-this.repaintBehavior!!.onChangeRepaint(this)
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.colorFillPaintable!!.paint(graphics)
-this.helpPaintable!!.paint(graphics)
-this.paintable.paint(graphics)
-super.paint(graphics)
-}
-
-
-}
-                
-            
 

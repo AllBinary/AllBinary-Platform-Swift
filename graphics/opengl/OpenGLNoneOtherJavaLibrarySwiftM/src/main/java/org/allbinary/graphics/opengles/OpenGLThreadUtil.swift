@@ -1,62 +1,30 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles
+import J2SEForSwiftLibrary
 
+open class OpenGLThreadUtil: JObject {
+    fileprivate static let instance: OpenGLThreadUtil! = OpenGLThreadUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> OpenGLThreadUtil! {
+        return OpenGLThreadUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func set(_ glSurfaceView: JObject!) {
+    }
+    
 
-open public class OpenGLThreadUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: OpenGLThreadUtil = OpenGLThreadUtil()
+    open func onPause() {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLThreadUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLThreadUtil.instance
+    open func onResume() {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun set(glSurfaceView: Any)
-        //nullable = true from not(false or (false and false)) = true
-{
-var glSurfaceView = glSurfaceView
-}
-
-
-    open fun onPause()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun onResume()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

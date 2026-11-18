@@ -30,7 +30,7 @@ open class PointFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> PointFactory! {
+    @discardableResult open class func getInstance() -> PointFactory! {
         return PointFactory.instance
     }
     

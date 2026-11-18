@@ -1,123 +1,88 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.vector
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.vector
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.ColorCompositeInterface
+// import org.allbinary.layer.PositionInterface
+// import org.allbinary.logic.NullUtil
 
+open class LineAnimation: Animation, ColorCompositeInterface, PositionInterface {
+    fileprivate var newLine: JArray<JArray<Int32>?>! = nil
+    fileprivate var tempLine: JArray<JArray<Int32>?>! = nil
+    fileprivate var line: JArray<JArray<Int32>?>! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.newLine = JArray<JArray<Int32>?>(2, factory: { JArray<Int32>(2, 0) })
+    self.tempLine = NullUtil.getInstance().NULL_INT_ARRAY_ARRAY
+    self.line = JArray<JArray<Int32>?>(2, factory: { JArray<Int32>(2, 0) })
+    }
+    
 
+    public init(_ basicColor: BasicColor!) {
+        super.init()
+        self.initFields()
+        self.setBasicColorP(basicColor)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.ColorCompositeInterface
-import org.allbinary.layer.PositionInterface
-import org.allbinary.logic.NullUtil
+    open func `init`(_ x: Int32, _ y: Int32) {
+        self.newLine[0]![0] = x
+        self.newLine[0]![1] = y
+        self.newLine[1]![0] = x
+        self.newLine[1]![1] = y
+        self.tempLine = self.line
+        self.line = self.newLine
+        self.newLine = self.tempLine
+    }
+    
 
-open public class LineAnimation : Animation
-                , ColorCompositeInterface
-                , PositionInterface {
-        
+    open func setPosition(_ x: Int32, _ y: Int32, _ z: Int32) {
+        self.newLine[0]![0] = self.line[1]![0]
+        self.newLine[0]![1] = self.line[1]![1]
+        self.newLine[1]![0] = x
+        self.newLine[1]![1] = y
+        self.tempLine = self.line
+        self.line = self.newLine
+        self.newLine = self.tempLine
+    }
+    
 
-    private var newLine: Array<IntArray?> = Array(2) { IntArray(2) }
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        let currentLine: JArray<JArray<Int32>?>! = self.line
+        self.basicSetColorUtil.setBasicColorP3(graphics, self.getBasicColorP(), self.getColor())
+        graphics.drawLine(currentLine[0]![0], currentLine[0]![1], currentLine[1]![0], currentLine[1]![1])
+    }
+    
 
-    private var tempLine: Array<IntArray?> = NullUtil.getInstance()!!.NULL_INT_ARRAY_ARRAY
+    open override func nextFrame() {
+    }
+    
 
-    private var line: Array<IntArray?> = Array(2) { IntArray(2) }
-public constructor (basicColor: BasicColor){
-var basicColor = basicColor
-this.setBasicColorP(basicColor)
+    @discardableResult open override func getBasicColorP() -> BasicColor! {
+        return super.getBasicColorP()
+    }
+    
+
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        super.setBasicColorP(basicColor)
+    }
 }
-
-
-    open fun init(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-this.newLine[0]!![0]= x
-this.newLine[0]!![1]= y
-this.newLine[1]!![0]= x
-this.newLine[1]!![1]= y
-this.tempLine= this.line
-this.line= this.newLine
-this.newLine= this.tempLine
-}
-
-
-    override fun setPosition(x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-var z = z
-this.newLine[0]!![0]= this.line[1]!![0]!!
-this.newLine[0]!![1]= this.line[1]!![1]!!
-this.newLine[1]!![0]= x
-this.newLine[1]!![1]= y
-this.tempLine= this.line
-this.line= this.newLine
-this.newLine= this.tempLine
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-
-    var currentLine: Array<IntArray?> = this.line
-
-this.basicSetColorUtil!!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor())
-graphics.drawLine(currentLine[0]!![0]!!, currentLine[0]!![1]!!, currentLine[1]!![0]!!, currentLine[1]!![1]!!)
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getBasicColorP()
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-super.setBasicColorP(basicColor)
-}
-
-
-}
-                
-            
 

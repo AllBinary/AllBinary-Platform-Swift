@@ -31,7 +31,7 @@ open class CharArrayFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CharArrayFactory! {
+    @discardableResult open class func getInstance() -> CharArrayFactory! {
         return CharArrayFactory.instance
     }
     

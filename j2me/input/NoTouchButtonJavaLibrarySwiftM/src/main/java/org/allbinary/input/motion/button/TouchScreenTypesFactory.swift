@@ -1,65 +1,44 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
 
+open class TouchScreenTypesFactory: JObject {
+    fileprivate static let instance: TouchScreenTypesFactory! = TouchScreenTypesFactory()
+    public var FINGER: TouchScreenType! = nil
+    public var NOTOUCH: TouchScreenType! = nil
+    public var STYLUS: TouchScreenType! = nil
+    public var UNDEFINED: TouchScreenType! = nil
 
+    private func initFields() {
+    self.FINGER = TouchScreenType("Finger")
+    self.NOTOUCH = TouchScreenType("No Touch")
+    self.STYLUS = TouchScreenType("Stylus")
+    self.UNDEFINED = TouchScreenType("Undefined")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class TouchScreenTypesFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: TouchScreenTypesFactory = TouchScreenTypesFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: TouchScreenTypesFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypesFactory.instance
+    @discardableResult open class func getInstance() -> TouchScreenTypesFactory! {
+        return TouchScreenTypesFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val FINGER: TouchScreenType = TouchScreenType("Finger")
-
-    val NOTOUCH: TouchScreenType = TouchScreenType("No Touch")
-
-    val STYLUS: TouchScreenType = TouchScreenType("Stylus")
-
-    val UNDEFINED: TouchScreenType = TouchScreenType("Undefined")
-
-}
-                
-            
 

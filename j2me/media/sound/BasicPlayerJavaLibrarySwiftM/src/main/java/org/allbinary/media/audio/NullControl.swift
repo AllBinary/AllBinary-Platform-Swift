@@ -1,45 +1,27 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import javax.microedition.media.Control
 
+open class NullControl: JObject, Control {
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.media.Control
-
-open public class NullControl
-            : Object
-        
-                , Control {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    public override init() {
+        super.init()
+    }
 }
-                
-            
 

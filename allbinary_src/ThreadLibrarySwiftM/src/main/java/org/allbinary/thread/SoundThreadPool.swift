@@ -25,7 +25,7 @@ open class SoundThreadPool: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ThreadPool! {
+    @discardableResult open class func getInstance() -> ThreadPool! {
         return SoundThreadPool.instance
     }
 }

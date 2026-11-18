@@ -1,168 +1,86 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Screen
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringUtil
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Screen
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringUtil
-
-open public class ABCustomItem
-            : Object
-         {
-        
-companion object {
-            
-    var NULL_CUSTOM_ITEM: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullInstance()
-        //nullable = true from not(false or (false and true)) = true
-: ABCustomItem{
-
+open class ABCustomItem: JObject {
+    public static var NULL_CUSTOM_ITEM: JObject! = NullUtil.getInstance().NULL_OBJECT
     
-                        if(ABCustomItem.NULL_CUSTOM_ITEM == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    ABCustomItem.NULL_CUSTOM_ITEM= ABCustomItem(StringUtil.getInstance()!!.EMPTY_STRING, BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.NULL_CUSTOM_ITEM as ABCustomItem
-}
-
-
+    @discardableResult open class func getNullInstance() -> ABCustomItem! {
+        if (ABCustomItem.NULL_CUSTOM_ITEM === NullUtil.getInstance().NULL_OBJECT) {
+            ABCustomItem.NULL_CUSTOM_ITEM = ABCustomItem(StringUtil.getInstance().EMPTY_STRING, BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
         }
-            protected constructor (label: String, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)
-            : super()
-        {
-var label = label
-var backgroundBasicColor = backgroundBasicColor
-var foregroundBasicColor = foregroundBasicColor
+        return (ABCustomItem.NULL_CUSTOM_ITEM as! ABCustomItem)
+    }
+    
+
+    public init(_ label: String!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init()
+    }
+    
+
+    open func setOwner(_ owner: Screen!) {
+    }
+    
+
+    open func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+    }
+    
+
+    open func paintUnselected(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+    }
+    
+
+    @discardableResult open func isFocusable() -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open func getLabel() -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
+    
+
+    open func setLabel(_ label: String!) {
+    }
+    
+
+    @discardableResult open func getHeight() -> Int32 {
+        return 0
+    }
+    
+
+    open func setHeight(_ height: Int32) {
+    }
+    
+
+    @discardableResult open func getValue() -> Float {
+        return 0.0
+    }
+    
+
+    open func setValue(_ value: Float) {
+    }
+    
+
+    @discardableResult open func getMinimumWidth() -> Int32 {
+        return 0
+    }
+    
+
+    @discardableResult open func getMinimumHeight() -> Int32 {
+        return 0
+    }
+    
+
+    open func preMeasurement(_ graphics: Graphics!) {
+    }
 }
-
-
-    open fun setOwner(owner: Screen)
-        //nullable = true from not(false or (false and false)) = true
-{
-var owner = owner
-}
-
-
-    open fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-}
-
-
-    open fun paintUnselected(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-}
-
-
-    open fun isFocusable()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun getLabel()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-    open fun setLabel(label: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var label = label
-}
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun setHeight(height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var height = height
-}
-
-
-    open fun getValue()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0.0f
-}
-
-
-    open fun setValue(value: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-}
-
-
-    open fun getMinimumWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun getMinimumHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun preMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-}
-                
-            
 

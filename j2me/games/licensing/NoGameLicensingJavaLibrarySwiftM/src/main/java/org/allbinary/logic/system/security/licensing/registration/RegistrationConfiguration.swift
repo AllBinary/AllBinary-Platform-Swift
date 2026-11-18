@@ -1,105 +1,65 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.licensing.registration
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.licensing.registration
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
 
+open class RegistrationConfiguration: JObject {
+    fileprivate static let SINGLETON: RegistrationConfiguration! = RegistrationConfiguration()
+    fileprivate var registrationCode: String! = nil
+    public var NAME: String! = nil
 
+    private func initFields() {
+    self.registrationCode = "No Registration Code"
+    self.NAME = "registrationid"
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
+    @discardableResult open class func getInstance() -> RegistrationConfiguration! {
+        return RegistrationConfiguration.SINGLETON
+    }
+    
 
-open public class RegistrationConfiguration
-            : Object
-         {
-        
-companion object {
-            
-    private val SINGLETON: RegistrationConfiguration = RegistrationConfiguration()
+    fileprivate func read() {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: RegistrationConfiguration{
+    open func write() {
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration.SINGLETON
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append("Registration Code: ").append(self.getRegistrationCode()).toString()
+    }
+    
+
+    open func setRegistrationCode(_ registrationCode: String!) {
+        self.registrationCode = registrationCode
+    }
+    
+
+    @discardableResult open func getRegistrationCode() -> String! {
+        return self.registrationCode
+    }
 }
-
-
-        }
-            
-    private var registrationCode: String = "No Registration Code"
-
-    val NAME: String = "registrationid"
-private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun read()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun write()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append("Registration Code: ")!!.append(this.getRegistrationCode())!!.toString()
-}
-
-
-    open fun setRegistrationCode(registrationCode: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var registrationCode = registrationCode
-this.registrationCode= registrationCode
-}
-
-
-    open fun getRegistrationCode()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.registrationCode
-}
-
-
-}
-                
-            
 

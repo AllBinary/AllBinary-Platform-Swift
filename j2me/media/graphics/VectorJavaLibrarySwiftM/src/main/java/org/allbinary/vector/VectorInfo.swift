@@ -1,127 +1,83 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.vector
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.vector
+import J2SEForSwiftLibrary
 
+open class VectorInfo: JObject {
+    fileprivate var width: Int32 = 0
+    fileprivate var height: Int32 = 0
+    fileprivate var points: JArray<JArray<Int32>?>! = nil
+    fileprivate var totalFrames: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    
+    }
+    
 
+    public init(_ width: Int32, _ height: Int32, _ points: JArray<JArray<Int32>?>!, _ totalFrames: Int32) {
+        super.init()
+        self.initFields()
+        self.width = width
+        self.height = height
+        self.points = points
+        self.totalFrames = totalFrames
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getWidth() -> Int32 {
+        return self.width
+    }
+    
 
-open public class VectorInfo
-            : Object
-         {
-        
+    fileprivate func setWidth(_ width: Int32) {
+        self.width = width
+    }
+    
 
-    private var width: Int
+    @discardableResult open func getHeight() -> Int32 {
+        return self.height
+    }
+    
 
-    private var height: Int
+    fileprivate func setHeight(_ height: Int32) {
+        self.height = height
+    }
+    
 
-    private var points: Array<IntArray?>
+    @discardableResult open func getPoints() -> JArray<JArray<Int32>?>! {
+        return self.points
+    }
+    
 
-    private var totalFrames: Int
-public constructor (width: Int, height: Int, points: Array<IntArray?>, totalFrames: Int)
-            : super()
-        {
-var width = width
-var height = height
-var points = points
-var totalFrames = totalFrames
-this.width= width
-this.height= height
-this.points= points
-this.totalFrames= totalFrames
+    fileprivate func setPoints(_ points: JArray<JArray<Int32>?>!) {
+        self.points = points
+    }
+    
+
+    @discardableResult open func getTotalFrames() -> Int32 {
+        return self.totalFrames
+    }
+    
+
+    fileprivate func setTotalFrames(_ totalFrames: Int32) {
+        self.totalFrames = totalFrames
+    }
 }
-
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width
-}
-
-
-    open fun setWidth(width: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var width = width
-this.width= width
-}
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height
-}
-
-
-    open fun setHeight(height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var height = height
-this.height= height
-}
-
-
-    open fun getPoints()
-        //nullable = true from not(false or (false and true)) = true
-: Array<IntArray?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points
-}
-
-
-    open fun setPoints(points: Array<IntArray?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-var points = points
-this.points= points
-}
-
-
-    open fun getTotalFrames()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalFrames
-}
-
-
-    open fun setTotalFrames(totalFrames: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var totalFrames = totalFrames
-this.totalFrames= totalFrames
-}
-
-
-}
-                
-            
 

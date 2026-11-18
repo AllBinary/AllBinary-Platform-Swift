@@ -1,47 +1,34 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2026 AllBinary 
+ * 
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ * 
+ * Created By: Travis Berthelot 
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2026 AllBinary 
-                *  
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
 
+open class OpenGLBitmapConfig: JObject {
+    public var bitmapConfig: JObject! = nil
 
+    private func initFields() {
+    
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class OpenGLBitmapConfig
-            : Object
-         {
-        
-
-    val bitmapConfig: Any
-public constructor (bitmapConfig: Any)
-            : super()
-        {
-    //var bitmapConfig = bitmapConfig
-this.bitmapConfig= bitmapConfig
+    public init(_ bitmapConfig: JObject!) {
+        super.init()
+        self.initFields()
+        self.bitmapConfig = bitmapConfig
+    }
 }
-
-
-}
-                
-            
 

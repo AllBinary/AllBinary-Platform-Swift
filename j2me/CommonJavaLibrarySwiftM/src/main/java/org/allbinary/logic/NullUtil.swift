@@ -51,7 +51,7 @@ open class NullUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> NullUtil! {
+    @discardableResult open class func getInstance() -> NullUtil! {
         return NullUtil.instance
     }
 }

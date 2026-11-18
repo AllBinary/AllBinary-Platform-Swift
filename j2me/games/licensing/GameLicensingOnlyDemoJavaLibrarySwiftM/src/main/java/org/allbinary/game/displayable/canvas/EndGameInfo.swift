@@ -1,114 +1,74 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.game.GameInfo
+// import org.allbinary.graphics.displayable.MyCanvas
+// import org.allbinary.logic.string.StringUtil
 
+open class EndGameInfo: JObject {
+    public var NORMAL_GAME_OVER_WIN: String! = nil
+    fileprivate var TEASER_DEMO_GAME_END_LAST_LEVEL: String! = nil
+    fileprivate var TEASER_DEMO_GAME_END: String! = nil
+    fileprivate var gameOverStr: String! = nil
+    fileprivate var winStr: String! = nil
 
+    private func initFields() {
+    self.NORMAL_GAME_OVER_WIN = "You Won"
+    self.TEASER_DEMO_GAME_END_LAST_LEVEL = "End of Demo."
+    self.TEASER_DEMO_GAME_END = "Demo Game Over."
+    self.gameOverStr = StringUtil.getInstance().EMPTY_STRING
+    self.winStr = self.gameOverStr
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.GameInfo
-import org.allbinary.graphics.displayable.MyCanvas
-import org.allbinary.logic.string.StringUtil
-
-open public class EndGameInfo
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val NORMAL_GAME_OVER_WIN: String = "You Won"
-
-    private val TEASER_DEMO_GAME_END_LAST_LEVEL: String = "End of Demo."
-
-    private val TEASER_DEMO_GAME_END: String = "Demo Game Over."
-
-    private var gameOverStr: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var winStr: String = this.gameOverStr
-
-    open fun update(gameInfo: GameInfo, myCanvas: MyCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInfo = gameInfo
-    //var myCanvas = myCanvas
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(gameInfo!!.isLastLevel())
-                        
-                                    {
-                                    this.setWinStr(this.TEASER_DEMO_GAME_END_LAST_LEVEL)
-this.setGameOverStr(this.TEASER_DEMO_GAME_END_LAST_LEVEL)
 
-                                    }
-                                
-                        else {
-                            this.setWinStr(this.NORMAL_GAME_OVER_WIN)
-this.setGameOverStr(this.TEASER_DEMO_GAME_END)
+    public func update(_ gameInfo: GameInfo!, _ myCanvas: MyCanvas!) {
+        if (gameInfo.isLastLevel()) {
+            self.setWinStr(self.TEASER_DEMO_GAME_END_LAST_LEVEL)
+            self.setGameOverStr(self.TEASER_DEMO_GAME_END_LAST_LEVEL)
+        } else {
+            self.setWinStr(self.NORMAL_GAME_OVER_WIN)
+            self.setGameOverStr(self.TEASER_DEMO_GAME_END)
+        }
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getGameOverStr() -> String! {
+        return self.gameOverStr
+    }
+    
+
+    open func setGameOverStr(_ gameOverStr: String!) {
+        self.gameOverStr = gameOverStr
+    }
+    
+
+    @discardableResult open func getWinStr() -> String! {
+        return self.winStr
+    }
+    
+
+    open func setWinStr(_ winStr: String!) {
+        self.winStr = winStr
+    }
 }
-
-
-    open fun getGameOverStr()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameOverStr
-}
-
-
-    open fun setGameOverStr(gameOverStr: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameOverStr = gameOverStr
-this.gameOverStr= gameOverStr
-}
-
-
-    open fun getWinStr()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.winStr
-}
-
-
-    open fun setWinStr(winStr: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var winStr = winStr
-this.winStr= winStr
-}
-
-
-}
-                
-            
 

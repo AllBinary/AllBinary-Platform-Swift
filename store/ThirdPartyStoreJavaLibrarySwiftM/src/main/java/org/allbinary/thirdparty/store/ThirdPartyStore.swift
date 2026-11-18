@@ -1,83 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.thirdparty.store
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.thirdparty.store
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
 
+open class ThirdPartyStore: JObject {
+    fileprivate var authorized: Bool = false
+    fileprivate var name: String! = nil
 
+    private func initFields() {
+    self.authorized = false
+    
+    }
+    
 
+    public init(_ name: String!) {
+        super.init()
+        self.initFields()
+        self.name = name
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+    open func authorize(_ clientInformationInterface: AbeClientInformationInterface!) {
+    }
+    
 
-open public class ThirdPartyStore
-            : Object
-         {
-        
+    @discardableResult open func isAuthorized() -> Bool {
+        return self.authorized
+    }
+    
 
-    private var authorized: Boolean= false
+    open func setAuthorized(_ authorized: Bool) {
+        self.authorized = authorized
+    }
+    
 
-    private val name: String
-public constructor (name: String)
-            : super()
-        {
-var name = name
-this.name= name
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
 }
-
-
-    open fun authorize(clientInformationInterface: AbeClientInformationInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var clientInformationInterface = clientInformationInterface
-}
-
-
-    open fun isAuthorized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.authorized
-}
-
-
-    open fun setAuthorized(authorized: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var authorized = authorized
-this.authorized= authorized
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-}
-                
-            
 

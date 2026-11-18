@@ -1,204 +1,120 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.pickup
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.pickup
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.NullAnimationFactory
+// import org.allbinary.game.collision.CollidableAlwaysPickupNeverCollideBehaviorFactory
+// import org.allbinary.game.combat.destroy.DestroyedLayerProcessor
+// import org.allbinary.game.identification.BasicGroupFactory
+// import org.allbinary.game.multiplayer.layer.MultiPlayerGameLayer
+// import org.allbinary.game.multiplayer.layer.RemoteInfo
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
+// import org.allbinary.view.ViewPositionBase
 
+open class PickupLayer: MultiPlayerGameLayer, PickedUpLayerInterface, PickupableInterface {
+    fileprivate var pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface! = nil
+    fileprivate var destroyed: Bool = false
+    fileprivate var animationInterface: Animation! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.animation.NullAnimationFactory
-import org.allbinary.game.collision.CollidableAlwaysPickupNeverCollideBehaviorFactory
-import org.allbinary.game.combat.destroy.DestroyedLayerProcessor
-import org.allbinary.game.identification.BasicGroupFactory
-import org.allbinary.game.multiplayer.layer.MultiPlayerGameLayer
-import org.allbinary.game.multiplayer.layer.RemoteInfo
-import org.allbinary.graphics.Rectangle
-import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
-import org.allbinary.view.ViewPositionBase
-
-open public class PickupLayer : MultiPlayerGameLayer
-                , PickedUpLayerInterface
-                , PickupableInterface {
-        
-
-    private var pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY
-
-    private var destroyed: Boolean= false
-
-    private var animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!!.getInstance(0)!!
-public constructor (name: String, remoteInfo: RemoteInfo, total: Int, pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface, animationInterface: Animation, rectangle: Rectangle, viewPosition: ViewPositionBase)                        
-
-                            : super(remoteInfo, BasicGroupFactory.getInstance()!!.NONE_ARRAY, name, rectangle, viewPosition){
-    //var name = name
-    //var remoteInfo = remoteInfo
-    //var total = total
-    //var pickedUpLayerInterfaceFactoryInterface = pickedUpLayerInterfaceFactoryInterface
-    //var animationInterface = animationInterface
-    //var rectangle = rectangle
-    //var viewPosition = viewPosition
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.setCollidableInferface(CollidableAlwaysPickupNeverCollideBehaviorFactory.getInstance()!!.createBehavior())
-this.setLayerWidth(10)
-this.setLayerHeight(10)
-this.init(pickedUpLayerInterfaceFactoryInterface, animationInterface)
-}
-
-
-    open fun init(pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface, animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pickedUpLayerInterfaceFactoryInterface = pickedUpLayerInterfaceFactoryInterface
-    //var animationInterface = animationInterface
-this.pickedUpLayerInterfaceFactoryInterface= pickedUpLayerInterfaceFactoryInterface
-this.animationInterface= animationInterface
-this.setDestroyed(false)
-}
-
-
-    open fun initXYZ(x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-var z = z
-this.setPosition(x, y, z)
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-
-    var viewPosition: ViewPositionBase = this.getViewPosition()!!
-
-
-    var viewX: Int = viewPosition!!.getX()
-
-
-    var viewY: Int = viewPosition!!.getY()
-
-this.animationInterface!!.paintXY(graphics, viewX, viewY)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-
-    var viewPosition: ViewPositionBase = this.getViewPosition()!!
-
-
-    var viewX: Int = viewPosition!!.getX()
-
-
-    var viewY: Int = viewPosition!!.getY()
-
-this.animationInterface!!.paintThreedXYZ(graphics, viewX, viewY, 3)
-}
-
-
-    override fun getPickedUpLayerInterfaceFactoryInterface()
-        //nullable = true from not(false or (false and true)) = true
-: PickedUpLayerInterfaceFactoryInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pickedUpLayerInterfaceFactoryInterface
-}
-
-
-    override fun setPickedUp()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setDestroyed(true)
-}
-
-
-    override fun isDestroyed()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyed
-}
-
-
-    open fun setDestroyed(destroyed: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var destroyed = destroyed
-this.destroyed= destroyed
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY
+    self.destroyed = false
+    self.animationInterface = NullAnimationFactory.getFactoryInstance().getInstance(0)
+    }
     
-                        if(this.isDestroyed())
-                        
-                                    {
-                                    DestroyedLayerProcessor.getInstance()!!.add(this)
 
-                                    }
-                                
+    public init(_ name: String!, _ remoteInfo: RemoteInfo!, _ total: Int32, _ pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface!, _ animationInterface: Animation!, _ rectangle: Rectangle!, _ viewPosition: ViewPositionBase!) {
+        super.init(remoteInfo, BasicGroupFactory.getInstance().NONE_ARRAY, name, rectangle, viewPosition)
+        self.initFields()
+        self.setCollidableInferface(CollidableAlwaysPickupNeverCollideBehaviorFactory.getInstance().createBehavior())
+        self.setLayerWidth(10)
+        self.setLayerHeight(10)
+        self.`init`(pickedUpLayerInterfaceFactoryInterface, animationInterface)
+    }
+    
+
+    open func `init`(_ pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface!, _ animationInterface: Animation!) {
+        self.pickedUpLayerInterfaceFactoryInterface = pickedUpLayerInterfaceFactoryInterface
+        self.animationInterface = animationInterface
+        self.setDestroyed(false)
+    }
+    
+
+    open func initXYZ(_ x: Int32, _ y: Int32, _ z: Int32) {
+        self.setPosition(x, y, z)
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        let viewPosition: ViewPositionBase! = self.getViewPosition()
+        let viewX: Int32 = viewPosition.getX()
+        let viewY: Int32 = viewPosition.getY()
+        self.animationInterface.paintXY(graphics, viewX, viewY)
+    }
+    
+
+    open override func paintThreed(_ graphics: Graphics!) {
+        let viewPosition: ViewPositionBase! = self.getViewPosition()
+        let viewX: Int32 = viewPosition.getX()
+        let viewY: Int32 = viewPosition.getY()
+        self.animationInterface.paintThreedXYZ(graphics, viewX, viewY, 3)
+    }
+    
+
+    @discardableResult open func getPickedUpLayerInterfaceFactoryInterface() -> PickedUpLayerInterfaceFactoryInterface! {
+        return self.pickedUpLayerInterfaceFactoryInterface
+    }
+    
+
+    open func setPickedUp() {
+        self.setDestroyed(true)
+    }
+    
+
+    @discardableResult open override func isDestroyed() -> Bool {
+        return self.destroyed
+    }
+    
+
+    open func setDestroyed(_ destroyed: Bool) {
+        self.destroyed = destroyed
+        if (self.isDestroyed()) {
+            DestroyedLayerProcessor.getInstance().add(self)
+        }
+    }
+    
+
+    open override func damage(_ damage: Int32, _ damageType: Int32) {
+    }
+    
+
+    @discardableResult open override func getDamage(_ damageType: Int32) -> Int32 {
+        return 0
+    }
+    
+
+    open override func set(_ gl: GL!) {
+        let openGLSurfaceChangedInterface: OpenGLSurfaceChangedInterface! = (self.animationInterface as! OpenGLSurfaceChangedInterface)
+        openGLSurfaceChangedInterface.set(gl)
+    }
 }
-
-
-    override fun damage(damage: Int, damageType: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var damage = damage
-var damageType = damageType
-}
-
-
-    override fun getDamage(damageType: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var damageType = damageType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-
-    var openGLSurfaceChangedInterface: OpenGLSurfaceChangedInterface = this.animationInterface as OpenGLSurfaceChangedInterface
-
-openGLSurfaceChangedInterface!!.set(gl)
-}
-
-
-}
-                
-            
 

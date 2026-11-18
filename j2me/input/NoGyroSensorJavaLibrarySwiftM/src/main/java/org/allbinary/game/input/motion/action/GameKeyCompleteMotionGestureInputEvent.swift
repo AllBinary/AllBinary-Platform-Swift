@@ -1,108 +1,71 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.motion.action
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.motion.action
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.CompleteMotionGestureInputEvent
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.game.input.GameKeyEventSourceInterface
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.game.input.mapping.InputToGameKeyMapping
+// import org.allbinary.input.motion.gesture.MotionGestureInput
 
+open class GameKeyCompleteMotionGestureInputEvent: CompleteMotionGestureInputEvent, GameKeyEventSourceInterface {
+    fileprivate var gameKey: GameKey! = nil
+    fileprivate var gameKeyEvent: GameKeyEvent! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.gameKey = GameKey.NULL_GAME_KEY
+    self.gameKeyEvent = GameKeyEvent.NONE
+    }
+    
 
+    public init(_ name: String!, _ motionGestureInput: MotionGestureInput!, _ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        super.init(name, motionGestureInput)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.CompleteMotionGestureInputEvent
-import org.allbinary.game.input.GameKey
-import org.allbinary.game.input.GameKeyEventSourceInterface
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.game.input.mapping.InputToGameKeyMapping
-import org.allbinary.input.motion.gesture.MotionGestureInput
+    @discardableResult open func getSourceId() -> Int32 {
+        return 0
+    }
+    
 
-open public class GameKeyCompleteMotionGestureInputEvent : CompleteMotionGestureInputEvent
-                , GameKeyEventSourceInterface {
-        
+    open func update() {
+    }
+    
 
-    private var gameKey: GameKey = GameKey.NULL_GAME_KEY
+    open func setGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        self.gameKeyEvent = gameKeyEvent
+    }
+    
 
-    private var gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE
-public constructor (name: String, motionGestureInput: MotionGestureInput, inputToGameKeyMapping: InputToGameKeyMapping)                        
+    @discardableResult open func getGameKeyEvent() -> GameKeyEvent! {
+        return self.gameKeyEvent
+    }
+    
 
-                            : super(name, motionGestureInput){
-var name = name
-var motionGestureInput = motionGestureInput
-var inputToGameKeyMapping = inputToGameKeyMapping
+    open func setGameKey(_ gameKey: GameKey!) {
+        self.gameKey = gameKey
+    }
+    
 
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open func getGameKey() -> GameKey! {
+        return self.gameKey
+    }
 }
-
-
-    override fun getSourceId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun setGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-this.gameKeyEvent= gameKeyEvent
-}
-
-
-    open fun getGameKeyEvent()
-        //nullable = true from not(false or (false and true)) = true
-: GameKeyEvent{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEvent
-}
-
-
-    open fun setGameKey(gameKey: GameKey)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKey = gameKey
-this.gameKey= gameKey
-}
-
-
-    open fun getGameKey()
-        //nullable = true from not(false or (false and true)) = true
-: GameKey{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKey
-}
-
-
-}
-                
-            
 

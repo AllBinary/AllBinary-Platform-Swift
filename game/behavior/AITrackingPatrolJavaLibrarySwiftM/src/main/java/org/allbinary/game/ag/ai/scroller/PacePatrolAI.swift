@@ -1,273 +1,144 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai.scroller
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai.scroller
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import org.allbinary.direction.Direction
+// import org.allbinary.direction.DirectionCompositeInterface
+// import org.allbinary.direction.DirectionFactory
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.game.tracking.TrackingEvent
+// import org.allbinary.game.tracking.TrackingEventHandler
+// import org.allbinary.game.tracking.TrackingEventListenerInterface
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.layer.LayerInterface
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class PacePatrolAI: BasePatrolAI, TrackingEventListenerInterface {
+    fileprivate var trackingList: BasicArrayList! = nil
+    fileprivate var firingDistance: Int32 = 0
+    public var isFollowLimitedByTerrain: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Math
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import org.allbinary.direction.Direction
-import org.allbinary.direction.DirectionCompositeInterface
-import org.allbinary.direction.DirectionFactory
-import org.allbinary.game.input.GameInput
-import org.allbinary.game.tracking.TrackingEvent
-import org.allbinary.game.tracking.TrackingEventHandler
-import org.allbinary.game.tracking.TrackingEventListenerInterface
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.layer.LayerInterface
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class PacePatrolAI : BasePatrolAI
-                , TrackingEventListenerInterface {
-        
-
-    private var trackingList: BasicArrayList
-
-    private var firingDistance: Int= 0
-
-    var isFollowLimitedByTerrain: Boolean = false
-public constructor (hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(hashtable, ownerLayerInterface, gameInput){
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-TrackingEventHandler.getInstance()!!.addListenerInterface(this)
-this.trackingList= BasicArrayListD()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processAI(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryLayerManager = allBinaryLayerManager
-this.update()
-
-    var direction: Direction = this.setFiringDirectionForTargetIfInRange()!!
-
-
-    var directionFactory: DirectionFactory = DirectionFactory.getInstance()!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(direction == directionFactory!!.LEFT)
-                        
-                                    {
-                                    
+    self.firingDistance = 0
+    self.isFollowLimitedByTerrain = false
+    }
     
-                        if(this.lastKeyDirection != keyDirection || !this.isFollowLimitedByTerrain)
-                        
-                                    {
-                                    super.processKeyAI(Canvas.LEFT)
 
-                                    }
-                                
-keyDirection= Canvas.LEFT
-this.lastKeyDirection= keyDirection
-xTotalDistance= 0
-super.processKeyAI(Canvas.KEY_NUM1)
-
-                                    }
-                                
-                             else 
+    public override init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(hashtable, ownerLayerInterface, gameInput)
+        self.initFields()
+        TrackingEventHandler.getInstance().addListenerInterface(self)
+        self.trackingList = BasicArrayListD()
+    }
     
-                        if(direction == directionFactory!!.RIGHT)
-                        
-                                    {
-                                    
+
+    open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        self.update()
+        let direction: Direction! = self.setFiringDirectionForTargetIfInRange()
+        let directionFactory: DirectionFactory! = DirectionFactory.getInstance()
+        if (direction === directionFactory.LEFT) {
+            if (self.lastKeyDirection != self.keyDirection || !self.isFollowLimitedByTerrain) {
+                super.processKeyAI(Canvas.LEFT)
+            }
+            self.keyDirection = Canvas.LEFT
+            self.lastKeyDirection = self.keyDirection
+            self.xTotalDistance = 0
+            super.processKeyAI(Canvas.KEY_NUM1)
+        } else if (direction === directionFactory.RIGHT) {
+            if (self.lastKeyDirection != self.keyDirection || !self.isFollowLimitedByTerrain) {
+                super.processKeyAI(Canvas.RIGHT)
+            }
+            self.keyDirection = Canvas.RIGHT
+            self.lastKeyDirection = self.keyDirection
+            self.xTotalDistance = 0
+            super.processKeyAI(Canvas.KEY_NUM1)
+        } else {
+            super.processKeyAI(self.keyDirection)
+        }
+    }
     
-                        if(this.lastKeyDirection != keyDirection || !this.isFollowLimitedByTerrain)
-                        
-                                    {
-                                    super.processKeyAI(Canvas.RIGHT)
 
-                                    }
-                                
-keyDirection= Canvas.RIGHT
-this.lastKeyDirection= keyDirection
-xTotalDistance= 0
-super.processKeyAI(Canvas.KEY_NUM1)
-
-                                    }
-                                
-                        else {
-                            super.processKeyAI(this.keyDirection)
-
-                        }
-                            
-}
-
-
-    open fun setFiringDirectionForTargetIfInRange()
-        //nullable = true from not(false or (false and true)) = true
-: Direction{
-
-    var directionFactory: DirectionFactory = DirectionFactory.getInstance()!!
-
-
-    var ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!!
-
-
-    var direction: Direction = directionFactory!!.NOT_BORDERED_WITH
-
-
-    var lastTrackingEvent: TrackingEvent
-
-
-    var lastTrackingLayerInterface: LayerInterface
-
-
-    var directionCompositeInterface: DirectionCompositeInterface
-
-
-    var size: Int = this.trackingList!!.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-lastTrackingEvent= this.trackingList!!.get(0) as TrackingEvent
-lastTrackingLayerInterface= lastTrackingEvent!!.getLayerInterface()!!
-
-    var x: Int = lastTrackingLayerInterface!!.getXP()
-
-
-    var y: Int = lastTrackingLayerInterface!!.getYP()
-
-
-    var yDistance: Int = ownerLayerInterface!!.getYP() -y -ownerLayerInterface!!.getHeight()
-
-
-    var xDistance: Int = ownerLayerInterface!!.getXP() -x -ownerLayerInterface!!.getWidth()
-
-
-    var absXDistance: Int = Math.abs(xDistance)
-
-
-    var absYDistance: Int = Math.abs(yDistance)
-
-
+    @discardableResult fileprivate func setFiringDirectionForTargetIfInRange() -> Direction! {
+        let directionFactory: DirectionFactory! = DirectionFactory.getInstance()
+        let ownerLayerInterface: AllBinaryLayer! = self.getOwnerLayerInterface()
+        var direction: Direction! = directionFactory.NOT_BORDERED_WITH
+        var lastTrackingEvent: TrackingEvent! = nil
+        var lastTrackingLayerInterface: LayerInterface! = nil
+        var directionCompositeInterface: DirectionCompositeInterface! = nil
+        let size: Int32 = self.trackingList.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            lastTrackingEvent = (self.trackingList.get(0) as! TrackingEvent)
+            lastTrackingLayerInterface = lastTrackingEvent.getLayerInterface()
+            let x: Int32 = lastTrackingLayerInterface.getXP()
+            let y: Int32 = lastTrackingLayerInterface.getYP()
+            let yDistance: Int32 = ownerLayerInterface.getYP() &- y &- ownerLayerInterface.getHeight()
+            let xDistance: Int32 = ownerLayerInterface.getXP() &- x &- ownerLayerInterface.getWidth()
+            let absXDistance: Int32 = abs(xDistance)
+            let absYDistance: Int32 = abs(yDistance)
+            if (absYDistance <= 100) {
+                if (absXDistance < self.getFiringDistance() / 2) {
+                    directionCompositeInterface = (self.getOwnerLayerInterface() as! DirectionCompositeInterface)
+                    if (xDistance < 0 && directionCompositeInterface.getDirection() == directionFactory.RIGHT) {
+                        direction = directionFactory.RIGHT
+                    } else if (xDistance > 0 && directionCompositeInterface.getDirection() == directionFactory.LEFT) {
+                        direction = directionFactory.LEFT
+                    }
+                }
+            }
+            }
+        }
+        return direction
+    }
     
-                        if(absYDistance <= 100)
-                        
-                                    {
-                                    
+
+    open override func disable() {
+    }
     
-                        if(absXDistance < getFiringDistance() /2)
-                        
-                                    {
-                                    directionCompositeInterface= this.getOwnerLayerInterface() as DirectionCompositeInterface
 
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
     
-                        if(xDistance < 0 && directionCompositeInterface!!.getDirection() == directionFactory!!.RIGHT)
-                        
-                                    {
-                                    direction= directionFactory!!.RIGHT
 
-                                    }
-                                
-                             else 
+    open func onMovement(_ trackingEvent: TrackingEvent!) {
+        self.trackingList.clear()
+        self.trackingList.add(trackingEvent)
+    }
     
-                        if(xDistance > 0 && directionCompositeInterface!!.getDirection() == directionFactory!!.LEFT)
-                        
-                                    {
-                                    direction= directionFactory!!.LEFT
 
-                                    }
-                                
+    @discardableResult open func getFiringDistance() -> Int32 {
+        return self.firingDistance
+    }
+    
 
-                                    }
-                                
-
-                                    }
-                                
+    open func setFiringDistance(_ firingDistance: Int32) {
+        self.firingDistance = firingDistance
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return direction
-}
-
-
-    override fun disable()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-    override fun onMovement(trackingEvent: TrackingEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var trackingEvent = trackingEvent
-this.trackingList!!.clear()
-this.trackingList!!.add(trackingEvent)
-}
-
-
-    open fun getFiringDistance()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.firingDistance
-}
-
-
-    open fun setFiringDistance(firingDistance: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var firingDistance = firingDistance
-this.firingDistance= firingDistance
-}
-
-
-}
-                
-            
 

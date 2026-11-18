@@ -1,138 +1,87 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.game.input.event.GameKeyEventListenerInterface
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.util.BasicArrayList
 
+open class PlayerGameInput: GameInput, GameKeyEventListenerInterface {
+    public var gameInputStrings: GameInputStrings! = nil
+    fileprivate var playerInputId: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.gameInputStrings = GameInputStrings.getInstance()
+    
+    }
+    
 
+    public init(_ gameKeyEventList: BasicArrayList!, _ removalGameKeyEventList: BasicArrayList!, _ playerInputId: Int32) {
+        super.init(gameKeyEventList, removalGameKeyEventList)
+        self.initFields()
+        self.playerInputId = playerInputId
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.game.input.event.GameKeyEventListenerInterface
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.string.CommonLabels
-import org.allbinary.util.BasicArrayList
+    open func onPressGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        self.add(gameKeyEvent)
+        self.addForRemoval(gameKeyEvent)
+    }
+    
 
-open public class PlayerGameInput : GameInput
-                , GameKeyEventListenerInterface {
-        
+    open func onDownGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        self.add(gameKeyEvent)
+    }
+    
 
-    val gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!!
+    open func onDownKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        self.add(gameKeyEvent)
+        self.addForRemoval(gameKeyEvent)
+    }
+    
 
-    private val playerInputId: Int
-public constructor (gameKeyEventList: BasicArrayList, removalGameKeyEventList: BasicArrayList, playerInputId: Int)                        
+    open func onDownKey(_ gameKeyEvent: Int32!) {
+        PreLogUtil.put(StringMaker().append(CommonLabels.getInstance().START_LABEL).append(gameKeyEvent.toString()).toString(), self, self.gameInputStrings.ON_DOWN_GAME_KEY)
+    }
+    
 
-                            : super(gameKeyEventList, removalGameKeyEventList){
-    //var gameKeyEventList = gameKeyEventList
-    //var removalGameKeyEventList = removalGameKeyEventList
-    //var playerInputId = playerInputId
+    open func onUpGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        self.addForRemoval(gameKeyEvent)
+    }
+    
 
+    open func onUpKeyEvent(_ gameKeyEvent: Int32!) {
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.playerInputId= playerInputId
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
+    
+
+    @discardableResult open func getPlayerInputId() -> Int32 {
+        return self.playerInputId
+    }
 }
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onPressGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-this.add(gameKeyEvent)
-this.addForRemoval(gameKeyEvent)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onDownGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-this.add(gameKeyEvent)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun onDownKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-this.add(gameKeyEvent)
-this.addForRemoval(gameKeyEvent)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun onDownKey(gameKeyEvent: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-PreLogUtil.put(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(gameKeyEvent!!.toString())!!.toString(), this, this.gameInputStrings!!.ON_DOWN_GAME_KEY)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onUpGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-this.addForRemoval(gameKeyEvent)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun onUpKeyEvent(gameKeyEvent: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameKeyEvent = gameKeyEvent
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-    open fun getPlayerInputId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerInputId
-}
-
-
-}
-                
-            
 

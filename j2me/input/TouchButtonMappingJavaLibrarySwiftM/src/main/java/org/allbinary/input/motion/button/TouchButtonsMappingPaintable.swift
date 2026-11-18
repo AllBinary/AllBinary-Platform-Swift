@@ -1,152 +1,97 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.CellPositionFactory
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class TouchButtonsMappingPaintable: Paintable {
+    public var logUtil: LogUtil! = nil
+    public var foregroundColor: Int32 = 0
+    fileprivate var paintableTable: JArray<JArray<Paintable?>?>! = nil
+    fileprivate var touchButtonLocationHelper: TouchButtonLocationHelper! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    
+    self.paintableTable = JArray<JArray<Paintable?>?>(0, factory: { JArray<Paintable?>(0, nil) })
+    self.touchButtonLocationHelper = TouchButtonLocationHelper()
+    }
+    
 
+    public init(_ basicColor: BasicColor!) {
+        super.init()
+        self.initFields()
+        self.foregroundColor = basicColor.intValue()
+        self.`init`()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.CellPositionFactory
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
+    fileprivate func `init`() {
+        do {
+            self.paintableTable = self.createPaintableTable()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-open public class TouchButtonsMappingPaintable : Paintable {
-        
+    @discardableResult fileprivate func createPaintableTable() -> JArray<JArray<Paintable?>?>! {
+        let totalColumns: Int32 = self.touchButtonLocationHelper.getTotalColumns()
+        let totalRows: Int32 = self.touchButtonLocationHelper.getTotalRows()
+        let paintableTable: JArray<JArray<Paintable?>?>! = JArray<JArray<Paintable?>?>(totalColumns, factory: { JArray<Paintable?>(totalRows, nil) })
+        let cellPositionFactory: CellPositionFactory! = CellPositionFactory.getInstance()
+        let commonButtons: CommonButtons! = CommonButtons.getInstance()
+        do {
+            var index: Int32 = totalColumns &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            do {
+                var rowIndex: Int32 = totalRows &- 1
+                while (rowIndex >= 0) {
+                    defer { rowIndex &-= 1 }
+                self.paintableTable[index]![rowIndex] = TouchButton.createButton(BasicTouchInputFactory.getInstance().NONE, TouchButtonBlankResource.getInstance(), commonButtons.NORMAL_BUTTON, cellPositionFactory.getInstanceColRow(index, rowIndex), self.touchButtonLocationHelper.getColumnsRemainderHalf(), self.touchButtonLocationHelper.getRowsRemainderHalf())
+                }
+            }
+            }
+        }
+        return paintableTable
+    }
+    
 
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    var foregroundColor: Int
-
-    private var paintableTable: Array<Array<Paintable?>?> = Array(0) { arrayOfNulls<Paintable?>(0) }
-                                                            
-
-    private var touchButtonLocationHelper: TouchButtonLocationHelper = TouchButtonLocationHelper()
-public constructor (basicColor: BasicColor){
-var basicColor = basicColor
-this.foregroundColor= basicColor!!.toInt()
-this.init()
+    open override func paint(_ graphics: Graphics!) {
+        let totalColumns: Int32 = self.touchButtonLocationHelper.getTotalColumns()
+        let totalRows: Int32 = self.touchButtonLocationHelper.getTotalRows()
+        do {
+            var index: Int32 = totalColumns &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            do {
+                var rowIndex: Int32 = totalRows &- 1
+                while (rowIndex >= 0) {
+                    defer { rowIndex &-= 1 }
+                self.paintableTable[index]![rowIndex].paint(graphics)
+                }
+            }
+            }
+        }
+    }
 }
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.paintableTable= this.createPaintableTable()!!
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, "updateRectangle", e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createPaintableTable()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Array<Paintable?>?>{
-
-    var totalColumns: Int = this.touchButtonLocationHelper!!.getTotalColumns()
-
-
-    var totalRows: Int = this.touchButtonLocationHelper!!.getTotalRows()
-
-
-    var paintableTable: Array<Array<Paintable?>?> = Array(totalColumns) { arrayOfNulls<Paintable?>(totalRows) }
-                                                            
-
-
-    var cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!!
-
-
-    var commonButtons: CommonButtons = CommonButtons.getInstance()!!
-
-
-
-
-
-                        for (index in totalColumns -1 downTo 0)
-
-        {
-
-
-
-
-                        for (rowIndex in totalRows -1 downTo 0)
-
-        {
-this.paintableTable[index]!![rowIndex]= TouchButton.createButton(BasicTouchInputFactory.getInstance()!!.NONE, TouchButtonBlankResource.getInstance(), commonButtons!!.NORMAL_BUTTON, cellPositionFactory!!.getInstanceColRow(index, rowIndex), this.touchButtonLocationHelper!!.getColumnsRemainderHalf(), this.touchButtonLocationHelper!!.getRowsRemainderHalf())
-}
-
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return paintableTable
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-
-    var totalColumns: Int = this.touchButtonLocationHelper!!.getTotalColumns()
-
-
-    var totalRows: Int = this.touchButtonLocationHelper!!.getTotalRows()
-
-
-
-
-
-                        for (index in totalColumns -1 downTo 0)
-
-        {
-
-
-
-
-                        for (rowIndex in totalRows -1 downTo 0)
-
-        {
-this.paintableTable[index]!![rowIndex]!!.paint(graphics)
-}
-
-}
-
-}
-
-
-}
-                
-            
 

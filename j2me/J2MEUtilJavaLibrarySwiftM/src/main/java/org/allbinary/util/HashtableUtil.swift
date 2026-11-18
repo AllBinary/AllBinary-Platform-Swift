@@ -33,7 +33,7 @@ open class HashtableUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> HashtableUtil! {
+    @discardableResult open class func getInstance() -> HashtableUtil! {
         return HashtableUtil.instance
     }
     

@@ -1,95 +1,60 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
 
+open class RendererStateFactory: JObject {
+    fileprivate static let instance: RendererStateFactory! = RendererStateFactory()
+    fileprivate var loaded: Bool = false
+    fileprivate var surfaceChanged: Bool = false
 
+    private func initFields() {
+    self.loaded = false
+    self.surfaceChanged = false
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func getInstance() -> RendererStateFactory! {
+        return RendererStateFactory.instance
+    }
+    
 
-open public class RendererStateFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: RendererStateFactory = RendererStateFactory()
+    open func setLoaded(_ loaded: Bool) {
+        self.loaded = loaded
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: RendererStateFactory{
+    @discardableResult open func isLoaded() -> Bool {
+        return self.loaded
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererStateFactory.instance
+    open func setSurfaceChanged(_ initialized: Bool) {
+        self.surfaceChanged = initialized
+    }
+    
+
+    @discardableResult open func isSurfaceChanged() -> Bool {
+        return self.surfaceChanged
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var loaded: Boolean = false
-
-    private var surfaceChanged: Boolean = false
-
-    open fun setLoaded(loaded: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var loaded = loaded
-this.loaded= loaded
-}
-
-
-    open fun isLoaded()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loaded
-}
-
-
-    open fun setSurfaceChanged(initialized: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var initialized = initialized
-this.surfaceChanged= initialized
-}
-
-
-    open fun isSurfaceChanged()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.surfaceChanged
-}
-
-
-}
-                
-            
 

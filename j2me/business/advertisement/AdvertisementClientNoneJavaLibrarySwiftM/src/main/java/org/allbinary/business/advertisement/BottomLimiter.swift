@@ -1,122 +1,75 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.advertisement
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.business.advertisement
+import J2SEForSwiftLibrary
+// import org.allbinary.game.GameAdState
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
 
+open class BottomLimiter: JObject {
+    fileprivate static let instance: BottomLimiter! = BottomLimiter()
+    fileprivate var bottom: Int32 = 0
+    fileprivate var deltaY: Int32 = 0
+    fileprivate var lower: Int32 = 0
+    fileprivate var higher: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.GameAdState
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-
-open public class BottomLimiter
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: BottomLimiter = BottomLimiter()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BottomLimiter{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BottomLimiter.instance
-}
-
-
-        }
-            
-    private var bottom: Int= 0
-
-    private var deltaY: Int= 0
-
-    private var lower: Int= 0
-
-    private var higher: Int= 0
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun init(lower: Int, higher: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var lower = lower
-var higher = higher
-this.lower= lower
-this.higher= higher
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-
-    var gameAdState: GameAdState = GameAdStateFactory.getInstance()!!.getCurrentInstance()!!
-
-
+    private func initFields() {
+    self.bottom = 0
+    self.deltaY = 0
+    self.lower = 0
+    self.higher = 0
+    }
     
-                        if(gameAdState!!.isShowingAt())
-                        
-                                    {
-                                    this.deltaY= this.higher
 
-                                    }
-                                
-                        else {
-                            this.deltaY= this.lower
+    @discardableResult open class func getInstance() -> BottomLimiter! {
+        return BottomLimiter.instance
+    }
+    
 
-                        }
-                            
-this.bottom= displayInfo!!.getLastHeight() -this.deltaY
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func `init`(_ lower: Int32, _ higher: Int32) {
+        self.lower = lower
+        self.higher = higher
+    }
+    
+
+    open func update() {
+        let displayInfo: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        let gameAdState: GameAdState! = GameAdStateFactory.getInstance().getCurrentInstance()
+        if (gameAdState.isShowingAt()) {
+            self.deltaY = self.higher
+        } else {
+            self.deltaY = self.lower
+        }
+        self.bottom = displayInfo.getLastHeight() &- self.deltaY
+    }
+    
+
+    @discardableResult open func getDeltaY() -> Int32 {
+        return self.deltaY
+    }
+    
+
+    @discardableResult open func getBottom() -> Int32 {
+        return self.bottom
+    }
 }
-
-
-    open fun getDeltaY()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaY
-}
-
-
-    open fun getBottom()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bottom
-}
-
-
-}
-                
-            
 

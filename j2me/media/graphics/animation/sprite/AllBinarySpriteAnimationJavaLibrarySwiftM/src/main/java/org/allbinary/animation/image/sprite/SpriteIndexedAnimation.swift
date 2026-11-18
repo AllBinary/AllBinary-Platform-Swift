@@ -1,281 +1,157 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image.sprite
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.game.Sprite
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.ColorCompositeInterface
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonLabels
 
+open class SpriteIndexedAnimation: IndexedAnimation, ColorCompositeInterface {
+    public var sprite: Sprite! = nil
+    public var image: Image! = nil
+    fileprivate var basicColorArray: JArray<BasicColor?>! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.game.Sprite
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.ColorCompositeInterface
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonLabels
-
-open public class SpriteIndexedAnimation : IndexedAnimation
-                , ColorCompositeInterface {
-        
-
-    val sprite: Sprite
-
-    val image: Image
-
-    private val basicColorArray: Array<BasicColor?>
-public constructor (sprite: Sprite, image: Image, basicColorArray: Array<BasicColor?>, animationBehavior: AnimationBehavior)                        
-
-                            : super(animationBehavior){
-    //var sprite = sprite
-    //var image = image
-    //var basicColorArray = basicColorArray
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.sprite= sprite
-this.image= image
-this.basicColorArray= basicColorArray
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(this.basicColorArray!!.size != 0 && this.getSize() != this.basicColorArray!!.size)
-                        
-                                    {
-                                    
-
-
-                            throw Exception(StringMaker().
-                            append(CommonLabels.getInstance()!!.TOTAL_LABEL)!!.appendint(this.getSize())!!.append("!=")!!.appendint(this.basicColorArray!!.size)!!.toString())
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-
-
-
-
-                        for (index in 0 until this.basicColorArray!!.size)
-
-        {
-
     
-                        if(basicColor == this.basicColorArray[index])
-                        
-                                    {
-                                    this.setFrame(index)
-break;
-
-                    
-
-                                    }
-                                
-}
-
-}
-
-
-    override fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
     
-                        if(this.basicColorArray!!.size < this.getFrame())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColorArray[this.getFrame()]!!
-
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!!.WHITE
-
-                        }
-                            
-}
-
-
-    open fun paintFrame(graphics: Graphics, frame: Int, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var frame = frame
-    //var x = x
-    //var y = y
-this.setFrame(frame)
-this.sprite.setPosition(x, y)
-this.sprite.paint(graphics)
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.sprite.setPosition(x, y)
-this.sprite.paint(graphics)
-}
-
-
-    open fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.sprite.paint(graphics)
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.nextFrame()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.prevFrame()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getRawFrameCount()
-}
-
-
-    override fun setFrame(frame: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var frame = frame
-this.sprite.setFrame(frame)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getFrame()
-}
-
-
-    override fun isLastFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    }
     
-                        if(this.sprite.getFrame() == this.getSize() -1)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    public init(_ sprite: Sprite!, _ image: Image!, _ basicColorArray: JArray<BasicColor?>!, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.sprite = sprite
+        self.image = image
+        self.basicColorArray = basicColorArray
+        if (self.basicColorArray.length != 0 && self.getSize() != self.basicColorArray.length) {
+            jThrow(JException("Exception", StringMaker().append(CommonLabels.getInstance().TOTAL_LABEL).appendint(self.getSize()).append("!=").appendint(self.basicColorArray.length).toString()))
+        }
+    }
+    
 
-                        }
-                            
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
+
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        do {
+            var index: Int32 = 0
+            while (index < self.basicColorArray.length) {
+                defer { index &+= 1 }
+            if (basicColor === self.basicColorArray[index]) {
+                self.setFrame(index)
+                break
+            }
+            }
+        }
+    }
+    
+
+    @discardableResult open override func getBasicColorP() -> BasicColor! {
+        if (self.basicColorArray.length < self.getFrame()) {
+            return self.basicColorArray[self.getFrame()]
+        } else {
+            return BasicColorFactory.getInstance().WHITE
+        }
+    }
+    
+
+    open func paintFrame(_ graphics: Graphics!, _ frame: Int32, _ x: Int32, _ y: Int32) {
+        self.setFrame(frame)
+        self.sprite.setPosition(x, y)
+        self.sprite.paint(graphics)
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.sprite.setPosition(x, y)
+        self.sprite.paint(graphics)
+    }
+    
+
+    open func paint(_ graphics: Graphics!) {
+        self.sprite.paint(graphics)
+    }
+    
+
+    open override func nextFrame() {
+        self.sprite.nextFrame()
+    }
+    
+
+    open override func previousFrame() {
+        self.sprite.prevFrame()
+    }
+    
+
+    @discardableResult open override func getSize() -> Int32 {
+        return self.sprite.getRawFrameCount()
+    }
+    
+
+    open override func setFrame(_ frame: Int32) {
+        self.sprite.setFrame(frame)
+    }
+    
+
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.sprite.getFrame()
+    }
+    
+
+    @discardableResult open override func isLastFrame() -> Bool {
+        if (self.sprite.getFrame() == self.getSize() &- 1) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open func getLastFrame() -> Int32 {
+        return self.getSize()
+    }
+    
+
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
+
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
+
+    open func close() {
+    }
+    
+
+    open func finalize() {
+    }
 }
-
-
-    open fun getLastFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    open fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Throwable::class)
-            
-    override fun finalize()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

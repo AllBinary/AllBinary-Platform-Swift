@@ -22,7 +22,7 @@ open class SystemProperties: JObject {
     fileprivate static let instance: SystemProperties! = SystemProperties()
     
 
-    @discardableResult public static func getInstance() -> SystemProperties! {
+    @discardableResult open class func getInstance() -> SystemProperties! {
         return SystemProperties.instance
     }
     

@@ -1,50 +1,28 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package javax.microedition.lcdui
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package javax.microedition.lcdui
+import J2SEForSwiftLibrary
 
+open class NullImage: JObject {
+    public static let NULL_IMAGE_ARRAY: JArray<Image?>! = JArray<Image?>(0, nil)
+    public static let NULL_IMAGE: Image! = Image()
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class NullImage
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_IMAGE_ARRAY: Array<Image?> = arrayOfNulls(0)
-
-    val NULL_IMAGE: Image = Image()
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    public override init() {
+        super.init()
+    }
 }
-                
-            
 

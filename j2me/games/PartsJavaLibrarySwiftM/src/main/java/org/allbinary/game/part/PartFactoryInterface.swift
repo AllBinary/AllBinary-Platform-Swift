@@ -1,44 +1,26 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.part
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.part
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.RelativeRelationship
+// import org.allbinary.layer.AllBinaryLayer
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.RelativeRelationship
-import org.allbinary.layer.AllBinaryLayer
-
-interface PartFactoryInterface {
-        
-
-                @Throws(Exception::class)
-            
-    open fun getInstance(sourceLayerInterface: AllBinaryLayer, relativeRelationship: RelativeRelationship)
-        //nullable =  from not(true or (false and false)) = 
-: PartInterface
-
+public protocol PartFactoryInterface: AnyObject {
+    @discardableResult func getInstance(_ sourceLayerInterface: AllBinaryLayer!, _ relativeRelationship: RelativeRelationship!) -> PartInterface!
 }
-                
-            
+
 

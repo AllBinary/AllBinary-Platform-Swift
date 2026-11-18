@@ -1,136 +1,90 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.LocalPlayerInputIdFactory
+// import org.allbinary.logic.util.event.EventListenerInterface
 
+open class DownGameKeyEventHandler: DownGameKeyEventHandlerBase {
+    fileprivate static let instance: DownGameKeyEventHandler! = DownGameKeyEventHandler()
+    fileprivate static let instanceArray: JArray<DownGameKeyEventHandlerBase?>! = JArray<DownGameKeyEventHandlerBase?>([DownGameKeyEventHandlerBase(), DownGameKeyEventHandlerBase(), DownGameKeyEventHandlerBase(), DownGameKeyEventHandlerBase(), DownGameKeyEventHandlerBase(), DownGameKeyEventHandlerBase()])
+    fileprivate var playerInputIdFactory: LocalPlayerInputIdFactory! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.playerInputIdFactory = LocalPlayerInputIdFactory.getInstance()
+    }
+    
 
+    @discardableResult open class func getInstance() -> DownGameKeyEventHandler! {
+        return DownGameKeyEventHandler.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.LocalPlayerInputIdFactory
-import org.allbinary.logic.util.event.EventListenerInterface
+    @discardableResult open func getInstanceForDevice(_ deviceId: Int32) -> DownGameKeyEventHandlerBase! {
+        let playerInputId: Int32 = self.playerInputIdFactory.getPlayerForDevice(deviceId)
+        return DownGameKeyEventHandler.instanceArray[playerInputId]
+    }
+    
 
-open public class DownGameKeyEventHandler : DownGameKeyEventHandlerBase {
-        
-companion object {
-            
-    private val instance: DownGameKeyEventHandler = DownGameKeyEventHandler()
+    @discardableResult open func getInstanceForPlayer(_ playerInputId: Int32) -> DownGameKeyEventHandlerBase! {
+        return DownGameKeyEventHandler.instanceArray[playerInputId]
+    }
+    
 
-    private val instanceArray: Array<DownGameKeyEventHandlerBase?> = arrayOf(DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase())
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DownGameKeyEventHandler{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instance
-}
-
-
+    open override func removeAllListeners() {
+        super.removeAllListeners()
+        do {
+            var index: Int32 = DownGameKeyEventHandler.instanceArray.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            DownGameKeyEventHandler.instanceArray[index].removeAllListeners()
+            }
         }
-            
-    private val playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!!
+    }
+    
 
-    open fun getInstanceForDevice(deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: DownGameKeyEventHandlerBase{
-var deviceId = deviceId
+    open override func removeListenerSingleThreaded(_ eventListenerInterface: EventListenerInterface!) {
+        super.removeListenerSingleThreaded(eventListenerInterface)
+        do {
+            var index: Int32 = DownGameKeyEventHandler.instanceArray.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            DownGameKeyEventHandler.instanceArray[index].removeListenerSingleThreaded(eventListenerInterface)
+            }
+        }
+    }
+    
 
-    var playerInputId: Int = this.playerInputIdFactory!!.getPlayerForDevice(deviceId)
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instanceArray[playerInputId]!!
+    open override func removeListener(_ eventListenerInterface: EventListenerInterface!) {
+        super.removeListener(eventListenerInterface)
+        do {
+            var index: Int32 = DownGameKeyEventHandler.instanceArray.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            DownGameKeyEventHandler.instanceArray[index].removeListener(eventListenerInterface)
+            }
+        }
+    }
 }
-
-
-    open fun getInstanceForPlayer(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: DownGameKeyEventHandlerBase{
-var playerInputId = playerInputId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instanceArray[playerInputId]!!
-}
-
-private constructor (){
-}
-
-
-    override fun removeAllListeners()
-        //nullable = true from not(false or (false and true)) = true
-{
-super.removeAllListeners()
-
-
-
-
-                        for (index in DownGameKeyEventHandler.instanceArray!!.size -1 downTo 0)
-
-        {
-DownGameKeyEventHandler.instanceArray[index]!!.removeAllListeners()
-}
-
-}
-
-
-    override fun removeListenerSingleThreaded(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-super.removeListenerSingleThreaded(eventListenerInterface)
-
-
-
-
-                        for (index in DownGameKeyEventHandler.instanceArray!!.size -1 downTo 0)
-
-        {
-DownGameKeyEventHandler.instanceArray[index]!!.removeListenerSingleThreaded(eventListenerInterface)
-}
-
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun removeListener(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-super.removeListener(eventListenerInterface)
-
-
-
-
-                        for (index in DownGameKeyEventHandler.instanceArray!!.size -1 downTo 0)
-
-        {
-DownGameKeyEventHandler.instanceArray[index]!!.removeListener(eventListenerInterface)
-}
-
-}
-
-
-}
-                
-            
 

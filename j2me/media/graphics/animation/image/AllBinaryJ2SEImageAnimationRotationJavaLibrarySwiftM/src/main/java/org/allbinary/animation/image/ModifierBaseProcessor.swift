@@ -1,82 +1,43 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.media.image.ImageModifierUtil
 
+open class ModifierBaseProcessor: JObject {
+    fileprivate static let instance: ModifierBaseProcessor! = ModifierBaseProcessor()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> ModifierBaseProcessor! {
+        return ModifierBaseProcessor.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.media.image.ImageModifierUtil
+    open func updateColor(_ imageModifierUtil: ImageModifierUtil!, _ originalImage: Image!, _ imageToShow: Image!, _ index: Int32, _ basicColor: BasicColor!) {
+    }
+    
 
-open public class ModifierBaseProcessor
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ModifierBaseProcessor = ModifierBaseProcessor()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ModifierBaseProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierBaseProcessor.instance
+    open func updateAlpha(_ imageModifierUtil: ImageModifierUtil!, _ originalImage: Image!, _ imageToShow: Image!, _ index: Int32, _ alpha: Int32) {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun updateColor(imageModifierUtil: ImageModifierUtil, originalImage: Image, imageToShow: Image, index: Int, basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var imageModifierUtil = imageModifierUtil
-    //var originalImage = originalImage
-    //var imageToShow = imageToShow
-    //var index = index
-    //var basicColor = basicColor
-}
-
-
-    open fun updateAlpha(imageModifierUtil: ImageModifierUtil, originalImage: Image, imageToShow: Image, index: Int, alpha: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var imageModifierUtil = imageModifierUtil
-    //var originalImage = originalImage
-    //var imageToShow = imageToShow
-    //var index = index
-    //var alpha = alpha
-}
-
-
-}
-                
-            
 

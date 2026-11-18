@@ -1,268 +1,156 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import javax.microedition.media.Control
+// import javax.microedition.media.Controllable
+// import javax.microedition.media.Player
+// import javax.microedition.media.PlayerListener
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.time.GameTickTimeDelayHelper
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
+// import org.allbinary.time.TimeDelayHelper
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.media.Control
-import javax.microedition.media.Controllable
-import javax.microedition.media.Player
-import javax.microedition.media.PlayerListener
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.time.GameTickTimeDelayHelper
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-import org.allbinary.time.TimeDelayHelper
 //BasicPlayer
-open public class PlayerComposite
-            : Object
-        
-                , Controllable
-                , Player {
-        
+open class PlayerComposite: JObject, Controllable, Player {
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var player: Player! = nil
+    fileprivate var timeElapsedHelper: TimeDelayHelper! = nil
+    fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
 
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val player: Player
-
-    private val timeElapsedHelper: TimeDelayHelper = TimeDelayHelper(0)
-public constructor (player: Player, repeatTime: Int)
-            : super()
-        {
-    //var player = player
-    //var repeatTime = repeatTime
-this.player= player
-this.timeElapsedHelper!!.delay= repeatTime
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun addPlayerListener(playerListener: PlayerListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerListener = playerListener
-this.player.addPlayerListener(playerListener)
-}
-
-
-    override fun removePlayerListener(playerListener: PlayerListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerListener = playerListener
-this.player.removePlayerListener(playerListener)
-}
-
-
-    override fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.player.close()
-}
-
-
-    override fun deallocate()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.player.deallocate()
-}
-
-
-    override fun getContentType()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getContentType()
-}
-
-
-    override fun getDuration()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getDuration()
-}
-
-
-    override fun getMediaTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getMediaTime()
-}
-
-
-    override fun prefetch()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.player.prefetch()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "prefetch", e)
-}
-
-}
-
-
-    override fun realize()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.player.realize()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "realize", e)
-}
-
-}
-
-
-    override fun getState()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getState()
-}
-
-
-    override fun setLoopCount(count: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var count = count
-this.player.setLoopCount(count)
-}
-
-
-    override fun setMediaTime(now: Long)
-        //nullable = true from not(false or (false and false)) = true
-: Long{
-var now = now
-
-        try {
-            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.setMediaTime(now)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "setMediaTime", e)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ( -1).toLong()
-}
-
-}
-
-
-    private val gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!!
-
-    override fun start()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
     
-                        if(this.timeElapsedHelper!!.isTime(this.gameTickTimeDelayHelper!!.startTime))
-                        
-                                    {
-                                    this.player.start()
+    self.timeElapsedHelper = TimeDelayHelper(0)
+    self.gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()
+    }
+    
 
-                                    }
-                                
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.START_METHOD_NAME, e)
+    public init(_ player: Player!, _ repeatTime: Int32) {
+        super.init()
+        self.initFields()
+        self.player = player
+        self.timeElapsedHelper.delay = repeatTime
+    }
+    
+
+    open func addPlayerListener(_ playerListener: PlayerListener!) {
+        self.player.addPlayerListener(playerListener)
+    }
+    
+
+    open func removePlayerListener(_ playerListener: PlayerListener!) {
+        self.player.removePlayerListener(playerListener)
+    }
+    
+
+    open func close() {
+        self.player.close()
+    }
+    
+
+    open func deallocate() {
+        self.player.deallocate()
+    }
+    
+
+    @discardableResult open func getContentType() -> String! {
+        return self.player.getContentType()
+    }
+    
+
+    @discardableResult open func getDuration() -> Int64 {
+        return self.player.getDuration()
+    }
+    
+
+    @discardableResult open func getMediaTime() -> Int64 {
+        return self.player.getMediaTime()
+    }
+    
+
+    open func prefetch() {
+        do {
+            self.player.prefetch()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func realize() {
+        do {
+            self.player.realize()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open func getState() -> Int32 {
+        return self.player.getState()
+    }
+    
+
+    open func setLoopCount(_ count: Int32) {
+        self.player.setLoopCount(count)
+    }
+    
+
+    @discardableResult open func setMediaTime(_ now: Int64) -> Int64 {
+        do {
+            return self.player.setMediaTime(now)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func start() {
+        do {
+            if (self.timeElapsedHelper.isTime(self.gameTickTimeDelayHelper.startTime)) {
+                self.player.start()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func stop() {
+        do {
+            self.player.stop()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open func getControl(_ controlType: String!) -> Control! {
+        return self.player.getControl(controlType)
+    }
+    
+
+    @discardableResult open func getControls() -> JArray<Control?>! {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open func setVolume(_ leftVolume: Int32, _ rightVolume: Int32) {
+        let controllable2: Controllable2! = ((self.player as! Controllable2))
+        controllable2.setVolume(leftVolume, rightVolume)
+    }
+    
+
+    @discardableResult open func getPlayerP() -> Player! {
+        return self.player
+    }
 }
-
-}
-
-
-    override fun stop()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.player.stop()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "stop", e)
-}
-
-}
-
-
-    override fun getControl(controlType: String)
-        //nullable = true from not(false or (false and false)) = true
-: Control{
-var controlType = controlType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getControl(controlType)
-}
-
-
-    override fun getControls()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Control?>{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun setVolume(leftVolume: Int, rightVolume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var leftVolume = leftVolume
-    //var rightVolume = rightVolume
-
-    var controllable2: Controllable2 = (this.player as Controllable2)
-
-controllable2.setVolume(leftVolume, rightVolume)
-}
-
-
-    open fun getPlayerP()
-        //nullable = true from not(false or (false and true)) = true
-: Player{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player
-}
-
-
-}
-                
-            
 

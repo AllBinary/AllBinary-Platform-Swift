@@ -33,7 +33,7 @@ open class HttpData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> HttpData! {
+    @discardableResult open class func getInstance() -> HttpData! {
         return HttpData.instance
     }
     

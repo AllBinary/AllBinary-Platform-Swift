@@ -1,61 +1,38 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
 
+open class ScreenCapture: JObject {
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open func saveFrame() {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func startRecording() {
+    }
+    
 
-open public class ScreenCapture
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun saveFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
+    open func endRecording() {
+    }
 }
-
-
-    open fun startRecording()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun endRecording()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

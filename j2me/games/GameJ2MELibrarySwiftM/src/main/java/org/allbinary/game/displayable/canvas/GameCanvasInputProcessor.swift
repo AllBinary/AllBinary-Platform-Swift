@@ -1,171 +1,104 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.game.input.GameKeyEventSourceInterface
+// import org.allbinary.game.input.GameKeyFactory
+// import org.allbinary.game.input.InputProcessor
+// import org.allbinary.game.input.PlatformInputMappingFactory
+// import org.allbinary.game.input.event.DownGameKeyEventHandler
+// import org.allbinary.game.input.event.DownKeyEventHandler
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.game.input.event.GameKeyEventFactory
+// import org.allbinary.game.input.event.UpGameKeyEventHandler
+// import org.allbinary.game.input.mapping.InputToGameKeyMapping
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.logic.string.StringMaker
 
+open class GameCanvasInputProcessor: InputProcessor {
+    public var logUtil: LogUtil! = nil
+    fileprivate var allBinaryGameCanvas: AllBinaryGameCanvas! = nil
+    fileprivate var downGameKeyEventHandler: DownGameKeyEventHandler! = nil
+    fileprivate var upGameKeyEventHandler: UpGameKeyEventHandler! = nil
+    fileprivate var downKeyEventHandler: DownKeyEventHandler! = nil
+    fileprivate var smallIntegerSingletonFactory: SmallIntegerSingletonFactory! = nil
+    fileprivate var inputToGameKeyMapping: InputToGameKeyMapping! = nil
+    fileprivate var NONE: GameKey! = nil
+    fileprivate var gameKeyEventFactory: GameKeyEventFactory! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import org.allbinary.game.input.GameKey
-import org.allbinary.game.input.GameKeyEventSourceInterface
-import org.allbinary.game.input.GameKeyFactory
-import org.allbinary.game.input.InputProcessor
-import org.allbinary.game.input.PlatformInputMappingFactory
-import org.allbinary.game.input.event.DownGameKeyEventHandler
-import org.allbinary.game.input.event.DownKeyEventHandler
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.game.input.event.GameKeyEventFactory
-import org.allbinary.game.input.event.UpGameKeyEventHandler
-import org.allbinary.game.input.mapping.InputToGameKeyMapping
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.logic.string.StringMaker
-
-open public class GameCanvasInputProcessor : InputProcessor {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val allBinaryGameCanvas: AllBinaryGameCanvas
-
-    private val downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!!
-
-    private val upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!!
-
-    private val downKeyEventHandler: DownKeyEventHandler = DownKeyEventHandler.getInstance()!!
-
-    private val smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!!
-
-    private val inputToGameKeyMapping: InputToGameKeyMapping = PlatformInputMappingFactory.getInstance()!!.getPersistentInputMappingInstance()!!.getInputMapping()!!
-public constructor (allBinaryGameCanvas: AllBinaryGameCanvas){
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-this.allBinaryGameCanvas= allBinaryGameCanvas
-this.inputToGameKeyMapping!!.init(this.allBinaryGameCanvas)
-}
-
-
-    private val NONE: GameKey = GameKeyFactory.getInstance()!!.NONE
-
-    private val gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!!
-
-    override fun keyPressedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-
-        try {
-            
-    var gameKey: GameKey = this.inputToGameKeyMapping!!.getInstanceForCanvas(this.allBinaryGameCanvas, keyCode)!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(gameKey != this.NONE)
-                        
-                                    {
-                                    
-    var gameKeyEvent: GameKeyEvent = this.gameKeyEventFactory!!.getInstanceForInput(this.allBinaryGameCanvas, gameKey)!!
-
-this.downGameKeyEventHandler!!.fireEvent(gameKeyEvent)
-this.downGameKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEvent(gameKeyEvent)
-
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF(StringMaker().
-                            append(this.gameInputStrings!!.NO_KEY)!!.appendint(keyCode)!!.toString(), this, this.gameInputStrings!!.ADD_KEY_EVENT)
-
-                        }
-                            
-
-    var keyCodeAsInteger: Integer = this.smallIntegerSingletonFactory!!.getAtNoThrow(keyCode)!!
-
-this.downKeyEventHandler!!.fireEventI(keyCodeAsInteger)
-this.downKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEventI(keyCodeAsInteger)
-} catch(e: Exception)
-            {
-this.logUtil!!.put("Key Event Error", this, this.gameInputStrings!!.ADD_KEY_EVENT, e)
-}
-
-}
-
-
-    override fun keyReleasedByDevice(canvas: Canvas, keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-this.removeGameKeyEvent(canvas, keyCode, deviceId, false)
-}
-
-
-    open fun removeGameKeyEvent(canvas: Canvas, keyCode: Int, deviceId: Int, repeated: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-    //var repeated = repeated
-
-        try {
-            
-    var gameKey: GameKey = this.inputToGameKeyMapping!!.getInstanceForCanvas(canvas, keyCode)!!
-
-
+    self.downGameKeyEventHandler = DownGameKeyEventHandler.getInstance()
+    self.upGameKeyEventHandler = UpGameKeyEventHandler.getInstance()
+    self.downKeyEventHandler = DownKeyEventHandler.getInstance()
+    self.smallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()
+    self.inputToGameKeyMapping = PlatformInputMappingFactory.getInstance().getPersistentInputMappingInstance().getInputMapping()
+    self.NONE = GameKeyFactory.getInstance().NONE
+    self.gameKeyEventFactory = GameKeyEventFactory.getInstance()
+    }
     
-                        if(gameKey != this.NONE)
-                        
-                                    {
-                                    
-    var gameKeyEventSourceInterface: GameKeyEventSourceInterface = canvas as GameKeyEventSourceInterface
 
+    public init(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        super.init()
+        self.initFields()
+        self.allBinaryGameCanvas = allBinaryGameCanvas
+        self.inputToGameKeyMapping.`init`(self.allBinaryGameCanvas)
+    }
+    
 
-    var gameKeyEvent: GameKeyEvent = this.gameKeyEventFactory!!.getInstanceForInput(gameKeyEventSourceInterface, gameKey)!!
+    open override func keyPressedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+        do {
+            let gameKey: GameKey! = self.inputToGameKeyMapping.getInstanceForCanvas(self.allBinaryGameCanvas, keyCode)
+            if (gameKey !== self.NONE) {
+                let gameKeyEvent: GameKeyEvent! = self.gameKeyEventFactory.getInstanceForInput(self.allBinaryGameCanvas, gameKey)
+                self.downGameKeyEventHandler.fireEvent(gameKeyEvent)
+                self.downGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent)
+            } else {
+                self.logUtil.putF(StringMaker().append(self.gameInputStrings.NO_KEY).appendint(keyCode).toString(), self, self.gameInputStrings.ADD_KEY_EVENT)
+            }
+            let keyCodeAsInteger: Int32! = self.smallIntegerSingletonFactory.getAtNoThrow(keyCode)
+            self.downKeyEventHandler.fireEventI(keyCodeAsInteger)
+            self.downKeyEventHandler.getInstanceForDevice(deviceId).fireEventI(keyCodeAsInteger)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-this.upGameKeyEventHandler!!.fireEvent(gameKeyEvent)
-this.upGameKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEvent(gameKeyEvent)
+    open override func keyReleasedByDevice(_ canvas: Canvas!, _ keyCode: Int32, _ deviceId: Int32) {
+        self.removeGameKeyEvent(canvas, keyCode, deviceId, false)
+    }
+    
 
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF(StringMaker().
-                            append(this.gameInputStrings!!.NO_KEY)!!.appendint(keyCode)!!.toString(), this, this.gameInputStrings!!.REMOVE_KEY_EVENT)
-
-                        }
-                            
-} catch(e: Exception)
-            {
-this.logUtil!!.put("Key Event Error", this, this.gameInputStrings!!.REMOVE_KEY_EVENT, e)
+    fileprivate func removeGameKeyEvent(_ canvas: Canvas!, _ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool) {
+        do {
+            let gameKey: GameKey! = self.inputToGameKeyMapping.getInstanceForCanvas(canvas, keyCode)
+            if (gameKey !== self.NONE) {
+                let gameKeyEventSourceInterface: GameKeyEventSourceInterface! = (canvas as! GameKeyEventSourceInterface)
+                let gameKeyEvent: GameKeyEvent! = self.gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey)
+                self.upGameKeyEventHandler.fireEvent(gameKeyEvent)
+                self.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent)
+            } else {
+                self.logUtil.putF(StringMaker().append(self.gameInputStrings.NO_KEY).appendint(keyCode).toString(), self, self.gameInputStrings.REMOVE_KEY_EVENT)
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

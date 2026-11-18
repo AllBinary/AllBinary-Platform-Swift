@@ -91,7 +91,7 @@ open class BasicColorFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicColorFactory! {
+    @discardableResult open class func getInstance() -> BasicColorFactory! {
         return BasicColorFactory.instance
     }
     

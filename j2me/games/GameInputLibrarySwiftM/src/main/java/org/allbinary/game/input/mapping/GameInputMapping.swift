@@ -1,87 +1,59 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.mapping
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.mapping
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.logic.string.StringUtil
 
+open class GameInputMapping: JObject {
+    fileprivate var name: String! = nil
+    fileprivate var gameKey: GameKey! = nil
 
+    private func initFields() {
+    self.name = StringUtil.getInstance().EMPTY_STRING
+    self.gameKey = GameKey.NULL_GAME_KEY
+    }
+    
 
+    public init(_ name: String!, _ gameKey: GameKey!) {
+        super.init()
+        self.initFields()
+        self.setName(name)
+        self.setGameKey(gameKey)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameKey
-import org.allbinary.logic.string.StringUtil
+    fileprivate func setGameKey(_ gameKey: GameKey!) {
+        self.gameKey = gameKey
+    }
+    
 
-open public class GameInputMapping
-            : Object
-         {
-        
+    @discardableResult open func getGameKey() -> GameKey! {
+        return self.gameKey
+    }
+    
 
-    private var name: String = StringUtil.getInstance()!!.EMPTY_STRING
+    fileprivate func setName(_ name: String!) {
+        self.name = name
+    }
+    
 
-    private var gameKey: GameKey = GameKey.NULL_GAME_KEY
-public constructor (name: String, gameKey: GameKey)
-            : super()
-        {
-var name = name
-var gameKey = gameKey
-this.setName(name)
-this.setGameKey(gameKey)
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
 }
-
-
-    open fun setGameKey(gameKey: GameKey)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKey = gameKey
-this.gameKey= gameKey
-}
-
-
-    open fun getGameKey()
-        //nullable = true from not(false or (false and true)) = true
-: GameKey{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKey
-}
-
-
-    open fun setName(name: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var name = name
-this.name= name
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-}
-                
-            
 

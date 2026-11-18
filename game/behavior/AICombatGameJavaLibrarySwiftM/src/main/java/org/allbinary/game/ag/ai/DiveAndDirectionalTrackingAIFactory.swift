@@ -1,89 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.ai.ArtificialIntelligenceInterface
+// import org.allbinary.game.ag.ai.tactical.BasicRandomAIFactory
+// import org.allbinary.game.ai.ArtificialIntelligenceInterfaceFactoryInterface
+// import org.allbinary.game.ai.BasicAI
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.util.visitor.Visitor
+// import org.allbinary.util.ABHashtable
 
+open class DiveAndDirectionalTrackingAIFactory: JObject, ArtificialIntelligenceInterfaceFactoryInterface {
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.ai.ArtificialIntelligenceInterface
-import org.allbinary.game.ag.ai.tactical.BasicRandomAIFactory
-import org.allbinary.game.ai.ArtificialIntelligenceInterfaceFactoryInterface
-import org.allbinary.game.ai.BasicAI
-import org.allbinary.game.input.GameInput
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.util.visitor.Visitor
-import org.allbinary.util.ABHashtable
-
-open public class DiveAndDirectionalTrackingAIFactory
-            : Object
-        
-                , ArtificialIntelligenceInterfaceFactoryInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    override fun getInstance(hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)
-        //nullable =  from not(true or (false and false)) = 
-: ArtificialIntelligenceInterface{
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-    var visitorCanBeNull: Any? = hashtable.get(BasicAI.AI_VISITOR as Object)
-
-
+    public override init() {
+        super.init()
+    }
     
-                        if(visitorCanBeNull == 
-                                    null
-                                )
-                        
-                                    {
-                                    visitorCanBeNull= ThrustAIVisitorFactory.getInstance()
 
-                                    }
-                                
-
-    var hashtable2: ABHashtable<Any, Any> = BasicProbabilityAIDataFactory().
-                            getInstance()!!
-
-hashtable2.put(BasicAI.AI_VISITOR, LastKeyAIVisitorFactory.getInstance())
-
-    var artificialIntelligenceInterface: ArtificialIntelligenceInterface = BasicRandomAIFactory().
-                            getInstance(hashtable2, ownerLayerInterface, gameInput)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, visitorCanBeNull as Visitor)
+    @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
+        var visitorCanBeNull: JObject! = hashtable.get((BasicAI.AI_VISITOR as! JObject))
+        if (visitorCanBeNull == nil) {
+            visitorCanBeNull = ThrustAIVisitorFactory.getInstance()
+        }
+        let hashtable2: ABHashtable! = BasicProbabilityAIDataFactory().getInstance()
+        hashtable2.put(BasicAI.AI_VISITOR, LastKeyAIVisitorFactory.getInstance())
+        let artificialIntelligenceInterface: ArtificialIntelligenceInterface! = BasicRandomAIFactory().getInstance(hashtable2, ownerLayerInterface, gameInput)
+        return DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, (visitorCanBeNull as! Visitor))
+    }
 }
-
-
-}
-                
-            
 

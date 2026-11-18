@@ -1,187 +1,97 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image.sprite
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image.sprite
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.game.Sprite
+// import org.allbinary.game.layer.SpriteFactory
+// import org.allbinary.graphics.opengles.OpenGLUtil
+// import org.allbinary.image.ImageCache
+// import org.allbinary.image.ImageCacheFactory
+// import org.allbinary.image.opengles.OpenGLESImageExclusionUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.math.J2SEMath
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.media.image.ImageScaleUtil
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonStrings
 
+open class AnimationFactorySpriteScaleUtil: JObject {
+    fileprivate static let instance: AnimationFactorySpriteScaleUtil! = AnimationFactorySpriteScaleUtil()
+    fileprivate var imageCache: ImageCache! = nil
+    fileprivate var imageScaleUtil: ImageScaleUtil! = nil
+    fileprivate var openGLUtil: OpenGLUtil! = nil
+    fileprivate var j2seMath: J2SEMath! = nil
+    fileprivate var openGLESImageExclusionUtil: OpenGLESImageExclusionUtil! = nil
 
+    private func initFields() {
+    self.imageCache = ImageCacheFactory.getInstance()
+    self.imageScaleUtil = ImageScaleUtil.getInstance()
+    self.openGLUtil = OpenGLUtil.getInstance()
+    self.j2seMath = J2SEMath.getInstance()
+    self.openGLESImageExclusionUtil = OpenGLESImageExclusionUtil.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.game.Sprite
-import org.allbinary.game.layer.SpriteFactory
-import org.allbinary.graphics.opengles.OpenGLUtil
-import org.allbinary.image.ImageCache
-import org.allbinary.image.ImageCacheFactory
-import org.allbinary.image.opengles.OpenGLESImageExclusionUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.math.J2SEMath
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.media.image.ImageScaleUtil
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonStrings
+    @discardableResult open class func getInstance() -> AnimationFactorySpriteScaleUtil! {
+        return AnimationFactorySpriteScaleUtil.instance
+    }
+    
 
-open public class AnimationFactorySpriteScaleUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AnimationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AnimationFactorySpriteScaleUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFactorySpriteScaleUtil.instance
-}
-
-
+    @discardableResult open func createImage(_ image: Image!, _ width: Int32, _ height: Int32, _ scaleWidth: Int32, _ scaleHeight: Int32) -> Sprite! {
+        let spriteFactory: SpriteFactory! = SpriteFactory.getInstance()
+        var sprite: Sprite! = nil
+        var scaledImage: Image! = nil
+        if (scaleWidth != 0 && scaleHeight != 0) {
+            var scaleX: Float = (Float(scaleWidth)) / (Float(width))
+            var scaleY: Float = (Float(scaleHeight)) / (Float(height))
+            if ((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0)) {
+                scaledImage = self.openGLUtil.addImage(image)
+                sprite = spriteFactory.createSprite(scaledImage, width, height)
+            } else {
+                if (self.openGLESImageExclusionUtil.isCustomScaling(image)) {
+                    let width2: Int32 = self.j2seMath.round(Float((scaleWidth)) - 0.5)
+                    let height2: Int32 = self.j2seMath.round(Float((scaleHeight)) - 0.5)
+                    let multiplesOf16Width: Int32 = width2 / 16
+                    let by16Width: Int32 = multiplesOf16Width &* 16
+                    scaleX = (Float(by16Width)) / Float(width)
+                    let multiplesOf16Height: Int32 = height2 / 16
+                    let by16Height: Int32 = multiplesOf16Height &* 16
+                    scaleY = (Float(by16Height)) / Float(height)
+                    if (scaleWidth < width) {
+                        scaleX = scaleX * 2.35
+                    }
+                    if (scaleHeight < height) {
+                        scaleY = scaleY * 2.35
+                    }
+                }
+                scaledImage = self.imageScaleUtil.createImage2(self.imageCache, image, scaleX, 1.0, scaleY, 1.0, true)
+                sprite = spriteFactory.createSprite(scaledImage, JMath.toInt32(Double((Float(width) * scaleX))), JMath.toInt32(Double((Float(height) * scaleY))))
+            }
+        } else {
+            scaledImage = self.openGLUtil.addImage(image)
+            sprite = spriteFactory.createSprite(scaledImage, width, height)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val imageCache: ImageCache = ImageCacheFactory.getInstance()!!
-
-    private val imageScaleUtil: ImageScaleUtil = ImageScaleUtil.getInstance()!!
-
-    private val openGLUtil: OpenGLUtil = OpenGLUtil.getInstance()!!
-
-    private val j2seMath: J2SEMath = J2SEMath.getInstance()!!
-
-    private val openGLESImageExclusionUtil: OpenGLESImageExclusionUtil = OpenGLESImageExclusionUtil.getInstance()!!
-
-                @Throws(Exception::class)
-            
-    open fun createImage(image: Image, width: Int, height: Int, scaleWidth: Int, scaleHeight: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Sprite{
-    //var image = image
-    //var width = width
-    //var height = height
-    //var scaleWidth = scaleWidth
-    //var scaleHeight = scaleHeight
-
-    var spriteFactory: SpriteFactory = SpriteFactory.getInstance()!!
-
-
-    var sprite: Sprite
-
-
-    var scaledImage: Image
-
-
-    
-                        if(scaleWidth != 0 && scaleHeight != 0)
-                        
-                                    {
-                                    
-    var scaleX: Float = (scaleWidth.toFloat()) /(width.toFloat())
-
-
-    var scaleY: Float = (scaleHeight.toFloat()) /(height.toFloat())
-
-
-    
-                        if((scaleX == 1.0f && scaleY == 1.0f) || (scaleX == 0.0f || scaleY == 0.0f))
-                        
-                                    {
-                                    scaledImage= this.openGLUtil!!.addImage(image)!!
-sprite= spriteFactory!!.createSprite(scaledImage, width, height)!!
-
-                                    }
-                                
-                        else {
-                            
-    
-                        if(this.openGLESImageExclusionUtil!!.isCustomScaling(image))
-                        
-                                    {
-                                    
-    var width2: Int = this.j2seMath!!.round((scaleWidth) -0.5f)
-
-
-    var height2: Int = this.j2seMath!!.round((scaleHeight) -0.5f)
-
-
-    var multiplesOf16Width: Int = width2 /16
-
-
-    var by16Width: Int = multiplesOf16Width *16
-
-scaleX= (by16Width.toFloat()) /width
-
-    var multiplesOf16Height: Int = height2 /16
-
-
-    var by16Height: Int = multiplesOf16Height *16
-
-scaleY= (by16Height.toFloat()) /height
-
-    
-                        if(scaleWidth < width)
-                        
-                                    {
-                                    scaleX= scaleX *2.35f
-
-                                    }
-                                
-
-    
-                        if(scaleHeight < height)
-                        
-                                    {
-                                    scaleY= scaleY *2.35f
-
-                                    }
-                                
-
-                                    }
-                                
-scaledImage= this.imageScaleUtil!!.createImage2(this.imageCache, image, scaleX, 1.0f, scaleY, 1.0f, true)!!
-sprite= spriteFactory!!.createSprite(scaledImage, (width *scaleX).toInt(), (height *scaleY).toInt())!!
-
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            scaledImage= this.openGLUtil!!.addImage(image)!!
-sprite= spriteFactory!!.createSprite(scaledImage, width, height)!!
-
-                        }
-                            
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return sprite
+        return sprite
+    }
 }
-
-
-}
-                
-            
 

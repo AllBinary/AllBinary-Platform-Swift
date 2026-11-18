@@ -26,7 +26,7 @@ open class NoHardwareComponent: JObject, HardwareComponentInterface {
     }
     
 
-    @discardableResult public static func getInstance() -> NoHardwareComponent! {
+    @discardableResult open class func getInstance() -> NoHardwareComponent! {
         return NoHardwareComponent.instance
     }
     

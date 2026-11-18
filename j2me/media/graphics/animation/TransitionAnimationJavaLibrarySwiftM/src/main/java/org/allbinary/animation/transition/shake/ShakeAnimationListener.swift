@@ -1,77 +1,47 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.transition.shake
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.transition.shake
+import J2SEForSwiftLibrary
 
+open class ShakeAnimationListener: JObject {
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open func onSmallShakeEvent() {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func onMediumShakeEvent() {
+    }
+    
 
-open public class ShakeAnimationListener
-            : Object
-         {
-        
+    open func onLargeShakeEvent() {
+    }
+    
 
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun onSmallShakeEvent()
-        //nullable = true from not(false or (false and true)) = true
-{
+    open func onShakeEvent(_ shakeEvent: ShakeEvent!) {
+    }
+    
+
+    @discardableResult open func getType() -> Int32 {
+        return 0
+    }
 }
-
-
-    open fun onMediumShakeEvent()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun onLargeShakeEvent()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun onShakeEvent(shakeEvent: ShakeEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var shakeEvent = shakeEvent
-}
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

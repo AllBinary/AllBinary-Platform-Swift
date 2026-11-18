@@ -1,86 +1,52 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles.renderer
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles.renderer
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL10
+// import javax.microedition.lcdui.Image
+// import org.allbinary.image.opengles.OpenGLESImage
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class AllBinaryRendererBase3: JObject {
+    public var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL10
-import javax.microedition.lcdui.Image
-import org.allbinary.image.opengles.OpenGLESImage
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class AllBinaryRendererBase3
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val list: BasicArrayList = BasicArrayListD()
-
-                @Throws(Exception::class)
-            
-    open fun update(gl: GL10)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gl = gl
-
-        while(this.list.size() > 0)
-        {
-
-    var openGLESImage: OpenGLESImage = this.list.removeAt(0) as OpenGLESImage
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(openGLESImage != 
-                                    null
-                                )
-                        
-                                    {
-                                    openGLESImage!!.set(gl)
 
-                                    }
-                                
+    open func update(_ gl: GL10!) {
+        while (self.list.size() > 0) {
+            let openGLESImage: OpenGLESImage! = (self.list.removeAt(0) as! OpenGLESImage)
+            if (openGLESImage != nil) {
+                openGLESImage.set(gl)
+            }
+        }
+    }
+    
+
+    open func add(_ image: Image!) {
+        self.list.add(image)
+    }
 }
-
-}
-
-
-    open fun add(image: Image)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var image = image
-this.list.add(image)
-}
-
-
-}
-                
-            
 

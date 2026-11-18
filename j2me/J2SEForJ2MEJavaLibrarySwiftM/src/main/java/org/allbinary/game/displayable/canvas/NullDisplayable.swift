@@ -1,53 +1,36 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.canvas.BaseGameStatistics
+// import org.allbinary.canvas.GameStatisticsFactory
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import javax.microedition.lcdui.Graphics
-import org.allbinary.canvas.BaseGameStatistics
-import org.allbinary.canvas.GameStatisticsFactory
 //J2SEForJ2ME
-open public class NullDisplayable : Canvas {
-        
-companion object {
-            
-    private val SINGLETON: NullDisplayable = NullDisplayable()
+open class NullDisplayable: Canvas {
+    fileprivate static let SINGLETON: NullDisplayable! = NullDisplayable()
+    fileprivate var baseGameStatistics: BaseGameStatistics! = nil
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NullDisplayable{
+    // Each class has its own field initializers
+    private func initFields() {
+    self.baseGameStatistics = GameStatisticsFactory.getInstance()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullDisplayable.SINGLETON
+    @discardableResult open class func getInstance() -> NullDisplayable! {
+        return NullDisplayable.SINGLETON
+    }
+    
+
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.baseGameStatistics.nextRefresh()
+    }
 }
-
-
-        }
-            private constructor (){
-}
-
-
-    private val baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!!
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.baseGameStatistics!!.nextRefresh()
-}
-
-
-}
-                
-            
 

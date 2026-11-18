@@ -1,215 +1,122 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.NullCommandListener
+// import org.allbinary.game.init.BasicBuildGameInitializerFactory
+// import org.allbinary.game.layer.AllBinaryGameLayerManager
+// import org.allbinary.game.score.NoHighScoresFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class NullGameCanvas: AllBinaryGameCanvas {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public static let NO_GAME: String! = "No Background Game"
+    // TYPE is the static of the superclass
+    fileprivate var runningNull: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.NullCommandListener
-import org.allbinary.game.init.BasicBuildGameInitializerFactory
-import org.allbinary.game.layer.AllBinaryGameLayerManager
-import org.allbinary.game.score.NoHighScoresFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-
-open public class NullGameCanvas : AllBinaryGameCanvas {
-        
-companion object {
-            
-    open fun createNull()
-        //nullable = true from not(false or (false and true)) = true
-: NullGameCanvas{
-
-        try {
-            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas(AllBinaryGameLayerManager.getNullInstance())
-} catch(e: Exception)
-            {
-LogUtil.getInstance()!!.put(CommonStrings.getInstance()!!.EXCEPTION, "NullGameCanvas", CommonStrings.getInstance()!!.GET_INSTANCE, e)
-
-
-
-                            throw RuntimeException()
-}
-
-}
-
-
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NullGameCanvas{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.runningNull = true
+    }
     
-                        if(NullGameCanvas.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    NullGameCanvas.instance= NullGameCanvas.createNull()
 
-                                    }
-                                
+    @discardableResult fileprivate static func createNull() -> NullGameCanvas! {
+        do {
+            return NullGameCanvas(AllBinaryGameLayerManager.getNullInstance())
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas.instance as NullGameCanvas
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createCanvas(gameLayerManager: AllBinaryGameLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-: NullGameCanvas{
-    //var gameLayerManager = gameLayerManager
-
-    var nullGameCanvas: NullGameCanvas = NullGameCanvas(gameLayerManager)
-
-nullGameCanvas!!.setInitialized(true)
-nullGameCanvas!!.setTitle(NullGameCanvas.NO_GAME)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullGameCanvas
-}
-
-
-    val NO_GAME: String = "No Background Game"
-
-    val TYPE: Int = 1
-
+    @discardableResult open class func getInstance() -> NullGameCanvas! {
+        if (NullGameCanvas.instance === NullUtil.getInstance().NULL_OBJECT) {
+            NullGameCanvas.instance = NullGameCanvas.createNull()
         }
-            protected constructor (gameLayerManager: AllBinaryGameLayerManager)                        
+        return (NullGameCanvas.instance as! NullGameCanvas)
+    }
+    
 
-                            : super(NullCommandListener.NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory.getInstance(), BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
-    //var gameLayerManager = gameLayerManager
+    @discardableResult open class func createCanvas(_ gameLayerManager: AllBinaryGameLayerManager!) -> NullGameCanvas! {
+        let nullGameCanvas: NullGameCanvas! = NullGameCanvas(gameLayerManager)
+        nullGameCanvas.setInitialized(true)
+        nullGameCanvas.setTitle(NullGameCanvas.NO_GAME)
+        return nullGameCanvas
+    }
+    
 
+    public init(_ gameLayerManager: AllBinaryGameLayerManager!) {
+        super.init(NullCommandListener.NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory.getInstance(), BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false)
+        self.initFields()
+        super.setWait(1200)
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-super.setWait(1200)
+    @discardableResult open override func isGameOver() -> Bool {
+        return false
+    }
+    
+
+    open override func setRunning(_ running: Bool) {
+        self.runningNull = running
+    }
+    
+
+    @discardableResult open override func isRunning() -> Bool {
+        return self.runningNull
+    }
+    
+
+    open override func pause() {
+        self.setPaused(true)
+    }
+    
+
+    open override func unPause() {
+        self.setPaused(false)
+    }
+    
+
+    open override func initCommands(_ cmdListener: CommandListener!) {
+        self.removeAllCommands()
+        self.setCommandListener(cmdListener)
+    }
+    
+
+    open override func buildGameInit(_ isProgress: Bool) {
+    }
+    
+
+    open override func draw(_ graphics: Graphics!) {
+    }
+    
+
+    open override func run() {
+        do {
+            self.logUtil.putF(self.commonStrings.START_RUNNABLE, self, self.commonStrings.RUN)
+            self.logUtil.putF(self.commonStrings.END_RUNNABLE, self, self.commonStrings.RUN)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open override func getType() -> Int32 {
+        return NullGameCanvas.TYPE
+    }
 }
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun isGameOver()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    private var runningNull: Boolean = true
-
-    override fun setRunning(running: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var running = running
-this.runningNull= running
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun isRunning()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runningNull
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun pause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setPaused(true)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun unPause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setPaused(false)
-}
-
-
-    override fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var cmdListener = cmdListener
-this.removeAllCommands()
-this.setCommandListener(cmdListener)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun buildGameInit(isProgress: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var isProgress = isProgress
-}
-
-
-    override fun draw(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.logUtil!!.putF(this.commonStrings!!.START_RUNNABLE, this, this.commonStrings!!.RUN)
-this.logUtil!!.putF(this.commonStrings!!.END_RUNNABLE, this, this.commonStrings!!.RUN)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.RUN, e)
-}
-
-}
-
-
-    override fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas.TYPE
-}
-
-
-}
-                
-            
 

@@ -1,113 +1,74 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input
+import J2SEForSwiftLibrary
+// import org.allbinary.input.accelerometer.AccelerometerSensorFactory
+// import org.allbinary.input.gyro.GyroSensorFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class AllBinarySensorManager: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    public var ORIENTATION_SENSOR_INPUT: String! = nil
+    public var ORIENTATION_TYPE: String! = nil
+    fileprivate var list: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.input.accelerometer.AccelerometerSensorFactory
-import org.allbinary.input.gyro.GyroSensorFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class AllBinarySensorManager
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AllBinarySensorManager{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input"
+    self.ORIENTATION_TYPE = "Orientation Type"
+    self.list = BasicArrayListD()
+    }
     
-                        if(AllBinarySensorManager.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    AllBinarySensorManager.instance= AllBinarySensorManager()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinarySensorManager.instance as AllBinarySensorManager
-}
-
-
+    @discardableResult open class func getInstance() -> AllBinarySensorManager! {
+        if (AllBinarySensorManager.instance === NullUtil.getInstance().NULL_OBJECT) {
+            AllBinarySensorManager.instance = AllBinarySensorManager()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
+        return (AllBinarySensorManager.instance as! AllBinarySensorManager)
+    }
+    
 
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    public override init() {
+        super.init()
+        self.initFields()
+        do {
+            GyroSensorFactory.`init`()
+            AccelerometerSensorFactory.`init`()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-    val ORIENTATION_SENSOR_INPUT: String = "Orientation Sensor Input"
+    open func `init`() {
+    }
+    
 
-    val ORIENTATION_TYPE: String = "Orientation Type"
-private constructor ()
-            : super()
-        {
+    @discardableResult open func getSensorNamesList() -> BasicArrayList! {
+        return self.list
+    }
+    
 
-        try {
-            GyroSensorFactory.init()
-AccelerometerSensorFactory.init()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.CONSTRUCTOR, e)
+    open func shutdown() {
+    }
 }
-
-}
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    private val list: BasicArrayList = BasicArrayListD()
-
-    open fun getSensorNamesList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-    open fun shutdown()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

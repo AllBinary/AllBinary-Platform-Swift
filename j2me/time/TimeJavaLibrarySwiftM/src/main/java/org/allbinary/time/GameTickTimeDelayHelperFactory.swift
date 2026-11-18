@@ -21,7 +21,7 @@ open class GameTickTimeDelayHelperFactory: JObject {
     fileprivate static let instance: GameTickTimeDelayHelper! = GameTickTimeDelayHelper(-1)
     
 
-    @discardableResult public static func getInstance() -> GameTickTimeDelayHelper! {
+    @discardableResult open class func getInstance() -> GameTickTimeDelayHelper! {
         return GameTickTimeDelayHelperFactory.instance
     }
     

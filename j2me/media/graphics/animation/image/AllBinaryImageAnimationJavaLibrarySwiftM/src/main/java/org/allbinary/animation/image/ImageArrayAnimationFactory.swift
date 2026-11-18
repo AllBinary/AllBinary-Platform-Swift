@@ -1,101 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.AnimationBehaviorFactory
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.media.ScaleProperties
 
+open class ImageArrayAnimationFactory: JObject, AnimationInterfaceFactoryInterface {
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
+    fileprivate var imageArray: JArray<Image?>! = nil
+    fileprivate var animationBehaviorFactory: AnimationBehaviorFactory! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.AnimationBehaviorFactory
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.media.ScaleProperties
-
-open public class ImageArrayAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
-
-    private var dx: Int = 0
-
-    private var dy: Int = 0
-
-    private val imageArray: Array<Image?>
-
-    private val animationBehaviorFactory: AnimationBehaviorFactory
-public constructor (imageArray: Array<Image?>, dx: Int, dy: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var imageArray = imageArray
-    //var dx = dx
-    //var dy = dy
-    //var animationBehaviorFactory = animationBehaviorFactory
-this.imageArray= imageArray
-this.animationBehaviorFactory= animationBehaviorFactory
-this.dx= dx
-this.dy= dy
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
+    private func initFields() {
+    self.dx = 0
+    self.dy = 0
     
-                        if(this.dx != 0 || this.dy != 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageArrayAnimation(this.imageArray, this.dx, this.dy, this.animationBehaviorFactory!!.getOrCreateInstance())
+    
+    }
+    
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayAnimation(this.imageArray, AnimationBehavior.getInstance())
+    public init(_ imageArray: JArray<Image?>!, _ dx: Int32, _ dy: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        self.imageArray = imageArray
+        self.animationBehaviorFactory = animationBehaviorFactory
+        self.dx = dx
+        self.dy = dy
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        if (self.dx != 0 || self.dy != 0) {
+            return AdjustedImageArrayAnimation(self.imageArray, self.dx, self.dy, self.animationBehaviorFactory.getOrCreateInstance())
+        } else {
+            return ImageArrayAnimation(self.imageArray, AnimationBehavior.getInstance())
+        }
+    }
+    
+
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

@@ -1,93 +1,67 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.paint
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.paint
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.ColorCompositeInterface
+// import org.allbinary.graphics.paint.Paintable
 
+open class ColorFillBasePaintable: Paintable, ColorCompositeInterface {
+    public var basicColor: BasicColor! = nil
+    public var colorP: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.basicColor = BasicColorFactory.getInstance().WHITE
+    self.colorP = 0
+    }
+    
 
+    public init(_ basicColor: BasicColor!) {
+        super.init()
+        self.initFields()
+        self.setBasicColorP(basicColor)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.ColorCompositeInterface
-import org.allbinary.graphics.paint.Paintable
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        self.basicColor = basicColor
+        self.setColor(self.getBasicColorP().intValue())
+    }
+    
 
-open public class ColorFillBasePaintable : Paintable
-                , ColorCompositeInterface {
-        
+    @discardableResult open func getBasicColorP() -> BasicColor! {
+        return self.basicColor
+    }
+    
 
-    var basicColor: BasicColor = BasicColorFactory.getInstance()!!.WHITE
+    @discardableResult open func getColor() -> Int32 {
+        return self.colorP
+    }
+    
 
-    var colorP: Int= 0
-public constructor (basicColor: BasicColor){
-var basicColor = basicColor
-this.setBasicColorP(basicColor)
+    open func setColor(_ color: Int32) {
+        self.colorP = color
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+    }
 }
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var basicColor = basicColor
-this.basicColor= basicColor
-this.setColor(this.getBasicColorP()!!.toInt())
-}
-
-
-    override fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor
-}
-
-
-    open fun getColor()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorP
-}
-
-
-    open fun setColor(color: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var color = color
-this.colorP= color
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-}
-                
-            
 

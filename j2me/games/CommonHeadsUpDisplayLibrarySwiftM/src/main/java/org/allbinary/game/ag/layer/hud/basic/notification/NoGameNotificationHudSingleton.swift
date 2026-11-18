@@ -1,88 +1,54 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.hud.basic.notification
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.hud.basic.notification
+import J2SEForSwiftLibrary
+// import org.allbinary.game.graphics.hud.BasicHudFactory
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class NoGameNotificationHudSingleton: JObject {
+    fileprivate static let instance: NoGameNotificationHudSingleton! = NoGameNotificationHudSingleton()
+    public var logUtil: LogUtil! = nil
+    fileprivate var gameNotificationHud: GameNotificationHud! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.gameNotificationHud = GameNotificationHud.NULL_GAME_NOTIFICATION
+    }
+    
 
+    @discardableResult open class func getInstance() -> NoGameNotificationHudSingleton! {
+        return NoGameNotificationHudSingleton.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.graphics.hud.BasicHudFactory
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
+    public override init() {
+        super.init()
+        self.initFields()
+        do {
+            _ = BasicHudFactory.getInstance()
+            self.gameNotificationHud = NoGameGameNotificationHud()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-open public class NoGameNotificationHudSingleton
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: NoGameNotificationHudSingleton = NoGameNotificationHudSingleton()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NoGameNotificationHudSingleton{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoGameNotificationHudSingleton.instance
+    @discardableResult open func getGameNotificationHud() -> GameNotificationHud! {
+        return self.gameNotificationHud
+    }
 }
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var gameNotificationHud: GameNotificationHud = GameNotificationHud.NULL_GAME_NOTIFICATION
-private constructor ()
-            : super()
-        {
-
-        try {
-            
-    var basicHudFactory: BasicHudFactory = BasicHudFactory.getInstance()!!
-
-this.gameNotificationHud= NoGameGameNotificationHud()
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.CONSTRUCTOR, e)
-}
-
-}
-
-
-    open fun getGameNotificationHud()
-        //nullable = true from not(false or (false and true)) = true
-: GameNotificationHud{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameNotificationHud
-}
-
-
-}
-                
-            
 

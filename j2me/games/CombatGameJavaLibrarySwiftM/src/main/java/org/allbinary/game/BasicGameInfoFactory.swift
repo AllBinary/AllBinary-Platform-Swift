@@ -1,92 +1,50 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game
+import J2SEForSwiftLibrary
 
+open class BasicGameInfoFactory: JObject {
+    fileprivate static let SINGLETON: BasicGameInfoFactory! = BasicGameInfoFactory()
+    public var currentReleaseIndex: Int32 = 0
+    public var currentDestroyIndex: Int32 = 0
+    public var total: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class BasicGameInfoFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val SINGLETON: BasicGameInfoFactory = BasicGameInfoFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BasicGameInfoFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGameInfoFactory.SINGLETON
-}
-
-
-        }
-            
-    var currentReleaseIndex: Int= 0
-
-    var currentDestroyIndex: Int= 0
-
-    var total: Int= 0
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun init(total: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var total = total
-this.currentReleaseIndex= 0
-this.currentDestroyIndex= 0
-this.total= total
-}
-
-
-    open fun isPeaked()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    private func initFields() {
+    self.currentReleaseIndex = 0
+    self.currentDestroyIndex = 0
+    self.total = 0
+    }
     
-                        if(this.currentDestroyIndex >= this.total)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    @discardableResult open class func getInstance() -> BasicGameInfoFactory! {
+        return BasicGameInfoFactory.SINGLETON
+    }
+    
 
-                        }
-                            
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func `init`(_ total: Int32) {
+        self.currentReleaseIndex = 0
+        self.currentDestroyIndex = 0
+        self.total = total
+    }
+    
+
+    @discardableResult open func isPeaked() -> Bool {
+        if (self.currentDestroyIndex >= self.total) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open func howManyLeft() -> Int32 {
+        return self.total &- self.currentDestroyIndex
+    }
 }
-
-
-    open fun howManyLeft()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total -this.currentDestroyIndex
-}
-
-
-}
-                
-            
 

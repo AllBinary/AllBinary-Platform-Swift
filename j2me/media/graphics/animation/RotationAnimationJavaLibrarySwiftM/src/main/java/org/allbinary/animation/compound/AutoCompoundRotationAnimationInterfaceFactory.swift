@@ -1,71 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.compound
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.compound
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehaviorFactory
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.animation.RotationAnimation
 
+open class AutoCompoundRotationAnimationInterfaceFactory: CompoundAnimationInterfaceFactory {
+    
 
+    public override init(_ basicAnimationInterfaceFactoryInterfaceArray: JArray<AnimationInterfaceFactoryInterface?>!, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory)
+    }
+    
 
+    @discardableResult open override func createArray(_ size: Int32) -> JArray<Animation?>! {
+        return JArray<RotationAnimation?>(size, nil)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehaviorFactory
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.animation.RotationAnimation
-
-open public class AutoCompoundRotationAnimationInterfaceFactory : CompoundAnimationInterfaceFactory {
-        
-public constructor (basicAnimationInterfaceFactoryInterfaceArray: Array<AnimationInterfaceFactoryInterface?>, animationBehaviorFactory: AnimationBehaviorFactory)                        
-
-                            : super(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
-    //var basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray
-    //var animationBehaviorFactory = animationBehaviorFactory
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open override func createAnimation(_ animationInterfaceArray: JArray<Animation?>!) -> Animation! {
+        return AutoCompoundRotationAnimation((animationInterfaceArray as! JArray<RotationAnimation?>), self.animationBehaviorFactory.getOrCreateInstance())
+    }
 }
-
-
-    override fun createArray(size: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Array<Animation?>{
-    //var size = size
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return arrayOfNulls(size)
-}
-
-
-    override fun createAnimation(animationInterfaceArray: Array<Animation?>)
-        //nullable = true from not(false or (false and false)) = true
-: Animation{
-    //var animationInterfaceArray = animationInterfaceArray
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AutoCompoundRotationAnimation(animationInterfaceArray as Array<RotationAnimation?>, this.animationBehaviorFactory!!.getOrCreateInstance())
-}
-
-
-}
-                
-            
 

@@ -1,89 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.AndroidUtil
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.graphics.opengles.OpenGLFeatureFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class GameCanvasPauseRunnable: GameRunnable {
+    public var logUtil: LogUtil! = nil
+    fileprivate var allBinaryGameCanvas: AllBinaryGameCanvas! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.AndroidUtil
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.graphics.opengles.OpenGLFeatureFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-
-open public class GameCanvasPauseRunnable : GameRunnable {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val allBinaryGameCanvas: AllBinaryGameCanvas
-public constructor (allBinaryGameCanvas: AllBinaryGameCanvas){
-var allBinaryGameCanvas = allBinaryGameCanvas
-this.allBinaryGameCanvas= allBinaryGameCanvas
-}
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processLoopSleep()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var features: Features = Features.getInstance()!!
-
-
-    var isOpenGL: Boolean = features.isDefault(OpenGLFeatureFactory.getInstance()!!.OPENGL)
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(isOpenGL)
-                        
-                                    {
-                                    this.allBinaryGameCanvas!!.processSleep()
+    }
+    
 
-                                    }
-                                
-} catch(e: Exception)
-            {
+    public init(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        super.init()
+        self.initFields()
+        self.allBinaryGameCanvas = allBinaryGameCanvas
+    }
+    
 
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    open override func run() {
+    }
+    
 
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.RUN, e)
+    open override func processLoopSleep() {
+        do {
+            let features: Features! = Features.getInstance()
+            let isOpenGL: Bool = features.isDefault(OpenGLFeatureFactory.getInstance().OPENGL)
+            if (isOpenGL) {
+                self.allBinaryGameCanvas.processSleep()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

@@ -1,67 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.feature
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.feature
+import J2SEForSwiftLibrary
 
+open class MainFeatureFactory: JObject {
+    fileprivate static let instance: MainFeatureFactory! = MainFeatureFactory()
+    public var FULL_SCREEN: Feature! = nil
+    public var TITLE_BAR: Feature! = nil
+    public var STATIC: Feature! = nil
+    public var LOAD_ONDEMAND: Feature! = nil
+    public var LOAD_ALL: Feature! = nil
 
+    private func initFields() {
+    self.FULL_SCREEN = Feature("Full Screen")
+    self.TITLE_BAR = Feature("Title Bar")
+    self.STATIC = Feature("Static Dependent Feature")
+    self.LOAD_ONDEMAND = Feature("Load OnDemand")
+    self.LOAD_ALL = Feature("Load All")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class MainFeatureFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: MainFeatureFactory = MainFeatureFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: MainFeatureFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MainFeatureFactory.instance
+    @discardableResult open class func getInstance() -> MainFeatureFactory! {
+        return MainFeatureFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val FULL_SCREEN: Feature = Feature("Full Screen")
-
-    val TITLE_BAR: Feature = Feature("Title Bar")
-
-    val STATIC: Feature = Feature("Static Dependent Feature")
-
-    val LOAD_ONDEMAND: Feature = Feature("Load OnDemand")
-
-    val LOAD_ALL: Feature = Feature("Load All")
-
-}
-                
-            
 

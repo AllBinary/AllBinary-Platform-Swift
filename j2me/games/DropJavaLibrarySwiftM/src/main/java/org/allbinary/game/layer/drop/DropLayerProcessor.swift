@@ -1,92 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.drop
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.drop
+import J2SEForSwiftLibrary
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.layer.BasicLayerProcessor
+// import org.allbinary.util.BasicArrayList
 
+open class DropLayerProcessor: BasicLayerProcessor {
+    fileprivate static let LAYER_PROCESSOR: BasicLayerProcessor! = DropLayerProcessor()
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> BasicLayerProcessor! {
+        return DropLayerProcessor.LAYER_PROCESSOR
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.layer.BasicLayerProcessor
-import org.allbinary.util.BasicArrayList
-
-open public class DropLayerProcessor : BasicLayerProcessor {
-        
-companion object {
-            
-    private val LAYER_PROCESSOR: BasicLayerProcessor = DropLayerProcessor()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BasicLayerProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerProcessor.LAYER_PROCESSOR
-}
-
-
+    open override func process(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        let list: BasicArrayList! = self.getList()
+        let size: Int32 = list.size()
+        var layerInterface: AllBinaryLayer! = nil
+        var dropLayerInterface: DropLayerInterface! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            layerInterface = (list.objectArray[index] as! AllBinaryLayer)
+            dropLayerInterface = (layerInterface as! DropLayerInterface)
+            layerInterface = (dropLayerInterface.getDroppedLayer() as! AllBinaryLayer)
+            allBinaryLayerManager.append(layerInterface)
+            }
         }
-            private constructor (){
+        list.clear()
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun process(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-var allBinaryLayerManager = allBinaryLayerManager
-
-    var list: BasicArrayList = this.getList()!!
-
-
-    var size: Int = list.size()
-
-
-    var layerInterface: AllBinaryLayer
-
-
-    var dropLayerInterface: DropLayerInterface
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-layerInterface= list.objectArray[index]!! as AllBinaryLayer
-dropLayerInterface= layerInterface as DropLayerInterface
-layerInterface= dropLayerInterface!!.getDroppedLayer() as AllBinaryLayer
-allBinaryLayerManager!!.append(layerInterface)
-}
-
-list.clear()
-}
-
-
-}
-                
-            
 

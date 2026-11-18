@@ -1,45 +1,21 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class CompleteMotionGestureInputEventListener: JObject, CompleteMotionGestureInputEventListenerInterface {
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.util.event.AllBinaryEventObject
-
-open public class CompleteMotionGestureInputEventListener
-            : Object
-        
-                , CompleteMotionGestureInputEventListenerInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
+    open func onCompleteMotionGestureInputEvent(_ completeMotionGestureInputEvent: CompleteMotionGestureInputEvent!) {
+    }
 }
-
-
-    override fun onCompleteMotionGestureInputEvent(completeMotionGestureInputEvent: CompleteMotionGestureInputEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var completeMotionGestureInputEvent = completeMotionGestureInputEvent
-}
-
-
-}
-                
-            
 

@@ -48,7 +48,7 @@ open class PositionStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> PositionStrings! {
+    @discardableResult open class func getInstance() -> PositionStrings! {
         return PositionStrings.instance
     }
 }

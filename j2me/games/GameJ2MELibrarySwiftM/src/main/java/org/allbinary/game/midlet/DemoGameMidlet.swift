@@ -1,190 +1,100 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.midlet
+import J2SEForSwiftLibrary
+// import org.allbinary.game.displayable.canvas.GameCanvasRunnableInterface
+// import org.allbinary.game.layer.AllBinaryGameLayerManager
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.logic.system.security.licensing.ClientInformationFactory
+// import org.allbinary.thread.PrimaryThreadPool
+// import org.allbinary.game.displayable.canvas.NullGameCanvasRunnable
+// import org.allbinary.util.ABHashtable
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.displayable.canvas.GameCanvasRunnableInterface
-import org.allbinary.game.layer.AllBinaryGameLayerManager
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.logic.StdUtil
-import org.allbinary.logic.system.security.licensing.ClientInformationFactory
-import org.allbinary.thread.PrimaryThreadPool
-import org.allbinary.game.displayable.canvas.NullGameCanvasRunnable
-import org.allbinary.util.ABHashtable
-
-open public class DemoGameMidlet : GameMidlet {
-        
-public constructor (clientInformationFactory: ClientInformationFactory)                        
-
-                            : super(clientInformationFactory){
-    //var clientInformationFactory = clientInformationFactory
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun isContinue()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-    var hashtable: ABHashtable<Any, Any> = this.getStartStateHashtable()!!
-
-
+open class DemoGameMidlet: GameMidlet {
     
-                        if(hashtable != 
-                                    null
-                                 && hashtable.size > 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    public override init(_ clientInformationFactory: ClientInformationFactory!) {
+        super.init(clientInformationFactory)
+    }
+    
 
-                        }
-                            
+    @discardableResult open func isContinue() -> Bool {
+        let hashtable: ABHashtable! = self.getStartStateHashtable()
+        if (hashtable != nil && hashtable.size() > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open func getHighestLevel() -> Int32 {
+        return 1
+    }
+    
+
+    @discardableResult open func createDemoGameCanvasRunnableInterface() -> GameCanvasRunnableInterface! {
+        self.logUtil.putF(self.commonStrings.NOT_IMPLEMENTED, self, self.commonStrings.CREATE)
+        return NullGameCanvasRunnable.NULL_GAME_CANVAS_RUNNABLE
+    }
+    
+
+    @discardableResult open func createGameCanvasRunnable(_ allBinaryGameLayerManager: AllBinaryGameLayerManager!) -> GameCanvasRunnableInterface! {
+        jThrow(JException("Exception", self.commonStrings.NOT_IMPLEMENTED))
+    }
+    
+
+    @discardableResult open func createGameCanvasRunnableInterface() -> GameCanvasRunnableInterface! {
+        return self.createGameCanvasRunnable(self.createGameLayerManager())
+    }
+    
+
+    open func demoSetup() {
+    }
+    
+
+    open func postDemoSetup() {
+    }
+    
+
+    open override func setDemo() {
+        self.logUtil.putF(self.commonStrings.START, self, "setDemo")
+        let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+        progressCanvas.start()
+        PrimaryThreadPool.getInstance().runTask(DemoRunnable(self))
+    }
+    
+
+    open override func createGame() {
+        let CREATE_GAME: String! = "createGame"
+        self.logUtil.putF(self.commonStrings.START, self, CREATE_GAME)
+        let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+        progressCanvas.start()
+        let hashtable: ABHashtable! = self.getStartStateHashtable()
+        self.setStartStateHashtable(StdUtil.getInstance().NULL_TABLE)
+        PrimaryThreadPool.getInstance().runTask(CreateGameRunnable(self, hashtable))
+        self.logUtil.putF(self.commonStrings.END, self, CREATE_GAME)
+    }
+    
+
+    @discardableResult open func isReady() -> Bool {
+        return true
+    }
 }
-
-
-    open fun getHighestLevel()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 1
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createDemoGameCanvasRunnableInterface()
-        //nullable = true from not(false or (false and true)) = true
-: GameCanvasRunnableInterface{
-this.logUtil!!.putF(this.commonStrings!!.NOT_IMPLEMENTED, this, this.commonStrings!!.CREATE)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvasRunnable.NULL_GAME_CANVAS_RUNNABLE
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createGameCanvasRunnable(allBinaryGameLayerManager: AllBinaryGameLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-: GameCanvasRunnableInterface{
-var allBinaryGameLayerManager = allBinaryGameLayerManager
-
-
-
-                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createGameCanvasRunnableInterface()
-        //nullable = true from not(false or (false and true)) = true
-: GameCanvasRunnableInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createGameCanvasRunnable(this.createGameLayerManager())
-}
-
-
-    open fun demoSetup()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun postDemoSetup()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun setDemo()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, "setDemo")
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.start()
-PrimaryThreadPool.getInstance()!!.runTask(DemoRunnable(this))
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun createGame()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var CREATE_GAME: String = "createGame"
-
-this.logUtil!!.putF(this.commonStrings!!.START, this, CREATE_GAME)
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.start()
-
-    var hashtable: ABHashtable<Any, Any> = this.getStartStateHashtable()!!
-
-this.setStartStateHashtable(StdUtil.getInstance()!!.NULL_TABLE)
-PrimaryThreadPool.getInstance()!!.runTask(CreateGameRunnable(this, hashtable))
-this.logUtil!!.putF(this.commonStrings!!.END, this, CREATE_GAME)
-}
-
-
-    open fun isReady()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-}
-                
-            
 

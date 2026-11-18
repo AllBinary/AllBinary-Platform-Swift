@@ -1,133 +1,75 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.RectangleFactory
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.opengles.OpenGLFeatureFactory
+// import org.allbinary.graphics.threed.SWTJOGLProcessor
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class MyFormUtil: JObject {
+    fileprivate static let instance: MyFormUtil! = MyFormUtil()
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var popupMenuRectangle: Rectangle! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.popupMenuRectangle = RectangleFactory.SINGLETON
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.graphics.PointFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.RectangleFactory
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.opengles.OpenGLFeatureFactory
-import org.allbinary.graphics.threed.SWTJOGLProcessor
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
+    @discardableResult open class func getInstance() -> MyFormUtil! {
+        return MyFormUtil.instance
+    }
+    
 
-open public class MyFormUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: MyFormUtil = MyFormUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: MyFormUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFormUtil.instance
-}
-
-
+    open func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        let displayInfo: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        let features: Features! = Features.getInstance()
+        let isOpenGL: Bool = features.isDefault(OpenGLFeatureFactory.getInstance().OPENGL)
+        let TOTAL_CHAR_WIDTH: Int32 = (SWTJOGLProcessor.getInstance().isJOGL() && isOpenGL ? 2 : 3)
+        let width: Int32 = MyFontProcessor.defaultStringWidth(font, TOTAL_CHAR_WIDTH)
+        let pointFactory: PointFactory! = PointFactory.getInstance()
+        if (displayInfo.getLastHeight() < 320) {
+            self.popupMenuRectangle = Rectangle(pointFactory.createXY(0, 25), width, (font.getHeight() &* 4) &+ 2)
+        } else {
+            self.popupMenuRectangle = Rectangle(pointFactory.createXY(0, displayInfo.getLastHalfHeight() &- 70), width, (font.getHeight() &* 5))
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private var popupMenuRectangle: Rectangle = RectangleFactory.SINGLETON
-
-    open fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-
-    var displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-
-    var features: Features = Features.getInstance()!!
-
-
-    var isOpenGL: Boolean = features.isDefault(OpenGLFeatureFactory.getInstance()!!.OPENGL)
-
-
-    var TOTAL_CHAR_WIDTH: Int = if(SWTJOGLProcessor.getInstance()!!.isJOGL() && isOpenGL) {
-                            
-                            2
-                        
-                            } else {
-                            3
-                            }
+    }
     
 
-
-    var width: Int = MyFontProcessor.defaultStringWidth(font, TOTAL_CHAR_WIDTH)
-
-
-    var pointFactory: PointFactory = PointFactory.getInstance()!!
-
-
-    
-                        if(displayInfo!!.getLastHeight() < 320)
-                        
-                                    {
-                                    this.popupMenuRectangle= Rectangle(pointFactory!!.createXY(0, 25), width, (font.getHeight() *4) +2)
-
-                                    }
-                                
-                        else {
-                            this.popupMenuRectangle= Rectangle(pointFactory!!.createXY(0, displayInfo!!.getLastHalfHeight() -70), width, (font.getHeight() *5))
-
-                        }
-                            
+    @discardableResult open func getPopupMenuRectangle() -> Rectangle! {
+        return self.popupMenuRectangle
+    }
 }
-
-
-    open fun getPopupMenuRectangle()
-        //nullable = true from not(false or (false and true)) = true
-: Rectangle{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.popupMenuRectangle
-}
-
-
-}
-                
-            
 

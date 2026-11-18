@@ -55,7 +55,7 @@ open class AngleFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> AngleFactory! {
+    @discardableResult open class func getInstance() -> AngleFactory! {
         return AngleFactory.instance
     }
     
@@ -129,7 +129,7 @@ open class AngleFactory: JObject {
     }
     
 
-    public static func main(_ args: JArray<String?>!) {
+    open class func main(_ args: JArray<String?>!) {
         let stringMaker: StringMaker! = StringMaker()
         let angleFactory: AngleFactory! = AngleFactory.getInstance()
         do {

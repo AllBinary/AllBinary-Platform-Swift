@@ -1,65 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.midlet
+import J2SEForSwiftLibrary
 
+open class LicenseLoadingTypeFactory: JObject {
+    fileprivate static let instance: LicenseLoadingTypeFactory! = LicenseLoadingTypeFactory()
+    public var INITIAL_LOADING: LicenseLoadingType! = nil
+    public var GAME_START: LicenseLoadingType! = nil
+    public var LOGIN: LicenseLoadingType! = nil
+    public var OTHER: LicenseLoadingType! = nil
 
+    private func initFields() {
+    self.INITIAL_LOADING = LicenseLoadingType("Initial Loading")
+    self.GAME_START = LicenseLoadingType("Game Start")
+    self.LOGIN = LicenseLoadingType("Login")
+    self.OTHER = LicenseLoadingType("Other/Usually The First Non Demo Level")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class LicenseLoadingTypeFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LicenseLoadingTypeFactory = LicenseLoadingTypeFactory()
-
-    open fun getIntance()
-        //nullable = true from not(false or (false and true)) = true
-: LicenseLoadingTypeFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseLoadingTypeFactory.instance
+    @discardableResult open class func getIntance() -> LicenseLoadingTypeFactory! {
+        return LicenseLoadingTypeFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val INITIAL_LOADING: LicenseLoadingType = LicenseLoadingType("Initial Loading")
-
-    val GAME_START: LicenseLoadingType = LicenseLoadingType("Game Start")
-
-    val LOGIN: LicenseLoadingType = LicenseLoadingType("Login")
-
-    val OTHER: LicenseLoadingType = LicenseLoadingType("Other/Usually The First Non Demo Level")
-
-}
-                
-            
 

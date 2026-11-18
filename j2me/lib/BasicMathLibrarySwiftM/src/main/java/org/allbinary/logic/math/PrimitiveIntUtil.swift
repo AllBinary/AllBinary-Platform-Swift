@@ -26,12 +26,12 @@ open class PrimitiveIntUtil: JObject {
     }
     
 
-    @discardableResult public static func getArrayInstance() -> JArray<Int32>! {
+    @discardableResult open class func getArrayInstance() -> JArray<Int32>! {
         return NullUtil.getInstance().NULL_INT_ARRAY
     }
     
 
-    @discardableResult public static func getTwoDimensionalArrayInstance() -> JArray<JArray<Int32>?>! {
+    @discardableResult open class func getTwoDimensionalArrayInstance() -> JArray<JArray<Int32>?>! {
         return NullUtil.getInstance().NULL_INT_ARRAY_ARRAY
     }
 }

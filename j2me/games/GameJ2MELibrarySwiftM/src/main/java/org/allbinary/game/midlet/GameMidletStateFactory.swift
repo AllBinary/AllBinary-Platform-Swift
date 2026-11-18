@@ -1,72 +1,44 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.midlet
+import J2SEForSwiftLibrary
+// import org.allbinary.game.state.GameState
+// import org.allbinary.game.state.GameStateFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonLabels
 
+open class GameMidletStateFactory: JObject {
+    fileprivate static let INSTANCE: GameMidletStateFactory! = GameMidletStateFactory()
+    public var logUtil: LogUtil! = nil
+    fileprivate var currentGameState: GameState! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.currentGameState = GameStateFactory.getInstance().NO_GAME_STATE
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.state.GameState
-import org.allbinary.game.state.GameStateFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonLabels
+    @discardableResult open class func getInstance() -> GameMidletStateFactory! {
+        return GameMidletStateFactory.INSTANCE
+    }
+    
 
-open public class GameMidletStateFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val INSTANCE: GameMidletStateFactory = GameMidletStateFactory()
+    @discardableResult open func getCurrentGameState() -> GameState! {
+        return self.currentGameState
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameMidletStateFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletStateFactory.INSTANCE
+    open func setCurrentGameState(_ currentGameState: GameState!) {
+        self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().CURRENT).append(" GameState: ").append(StringUtil.getInstance().toString(currentGameState)).toString(), self, "setCurrentGameState")
+        self.currentGameState = currentGameState
+    }
 }
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var currentGameState: GameState = GameStateFactory.getInstance()!!.NO_GAME_STATE
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun getCurrentGameState()
-        //nullable = true from not(false or (false and true)) = true
-: GameState{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentGameState
-}
-
-
-    open fun setCurrentGameState(currentGameState: GameState)
-        //nullable = true from not(false or (false and false)) = true
-{
-var currentGameState = currentGameState
-this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.CURRENT)!!.append(" GameState: ")!!.append(StringUtil.getInstance()!!.toString(currentGameState))!!.toString(), this, "setCurrentGameState")
-this.currentGameState= currentGameState
-}
-
-
-}
-                
-            
 

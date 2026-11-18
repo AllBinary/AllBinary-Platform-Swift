@@ -1,54 +1,42 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.displayable.screen
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.displayable.screen
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Displayable
+// import org.allbinary.canvas.Processor
 
+open class ScreenRepaintProcessor: Processor {
+    fileprivate var displayable: Displayable! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ displayable: Displayable!) {
+        super.init()
+        self.initFields()
+        self.displayable = displayable
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Displayable
-import org.allbinary.canvas.Processor
-
-open public class ScreenRepaintProcessor : Processor {
-        
-
-    private val displayable: Displayable
-public constructor (displayable: Displayable){
-var displayable = displayable
-this.displayable= displayable
+    open override func process() {
+        ScreenRepaintUtil.repaint(self.displayable)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-ScreenRepaintUtil.repaint(this.displayable)
-}
-
-
-}
-                
-            
 

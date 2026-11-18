@@ -1,116 +1,74 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image.sprite
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.game.Sprite
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.direction.Direction
+// import org.allbinary.math.Angle
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.math.AngleInfo
 
+open class AllBinarySpriteRotationAnimation: HackRotationSpriteIndexedAnimation {
+    
 
+    public init(_ sprite: Sprite!, _ image: Image!, _ animationBehavior: AnimationBehavior!) {
+        super.init(sprite, image, AngleInfo.getInstance(Int16(truncatingIfNeeded: (Int32(AngleFactory.getInstance().TOTAL_ANGLE) / sprite.getRawFrameCount()))), animationBehavior)
+        self.angleInfo.adjustAngle(self.sprite.getFrame())
+    }
+    
 
+    open override func nextRotation() {
+        self.sprite.nextFrame()
+        self.angleInfo.adjustAngle(self.sprite.getFrame())
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.game.Sprite
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.direction.Direction
-import org.allbinary.math.Angle
-import org.allbinary.math.AngleFactory
-import org.allbinary.math.AngleInfo
+    open override func previousRotation() {
+        self.sprite.prevFrame()
+        self.angleInfo.adjustAngle(self.sprite.getFrame())
+    }
+    
 
-open public class AllBinarySpriteRotationAnimation : HackRotationSpriteIndexedAnimation {
-        
-public constructor (sprite: Sprite, image: Image, animationBehavior: AnimationBehavior)                        
+    open override func setFrameByDirection(_ direction: Direction!) {
+        let angle: Angle! = self.directionUtil.getFrameAngle(direction)
+        self.adjustFrameToAngle(angle)
+    }
+    
 
-                            : super(sprite, image, AngleInfo.getInstance((AngleFactory.getInstance()!!.TOTAL_ANGLE /sprite.getRawFrameCount()).toShort()), animationBehavior){
-    //var sprite = sprite
-    //var image = image
-    //var animationBehavior = animationBehavior
+    open override func setFrameToAngle(_ angle: Angle!) {
+        self.adjustFrameToAngle(angle)
+    }
+    
 
+    open override func setFrame(_ index: Int32) {
+        self.sprite.setFrame(index)
+        self.angleInfo.adjustAngle(self.getFrame())
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.angleInfo!!.adjustAngle(this.sprite.getFrame())
+    open override func adjustFrameToAngle(_ angle: Angle!) {
+        self.adjustFrame(angle.getValue())
+    }
+    
+
+    open override func adjustFrame(_ angle: Int16) {
+        self.setFrame(self.frameUtil.getFrameForAngle(angle, Int32(truncatingIfNeeded: self.angleInfo.getAngleIncrementInfo().getAngleIncrement())))
+    }
 }
-
-
-    override fun nextRotation()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.nextFrame()
-this.angleInfo!!.adjustAngle(this.sprite.getFrame())
-}
-
-
-    override fun previousRotation()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.prevFrame()
-this.angleInfo!!.adjustAngle(this.sprite.getFrame())
-}
-
-
-    override fun setFrameByDirection(direction: Direction)
-        //nullable = true from not(false or (false and false)) = true
-{
-var direction = direction
-
-    var angle: Angle = this.directionUtil!!.getFrameAngle(direction)!!
-
-this.adjustFrameToAngle(angle)
-}
-
-
-    override fun setFrameToAngle(angle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-{
-var angle = angle
-this.adjustFrameToAngle(angle)
-}
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-this.sprite.setFrame(index)
-this.angleInfo!!.adjustAngle(this.getFrame())
-}
-
-
-    override fun adjustFrameToAngle(angle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-{
-var angle = angle
-this.adjustFrame(angle.getValue())
-}
-
-
-    override fun adjustFrame(angle: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var angle = angle
-this.setFrame(this.frameUtil!!.getFrameForAngle(angle, this.angleInfo!!.getAngleIncrementInfo()!!.getAngleIncrement().toInt()))
-}
-
-
-}
-                
-            
 

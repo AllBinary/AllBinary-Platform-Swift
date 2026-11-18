@@ -1,170 +1,102 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.text
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.text
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.graphics.font.FontDebugFactory
+// import org.allbinary.logic.string.StringUtil
 
+open class CustomTextAnimation: TextAnimation, TextInterface {
+    public var fontDebugFactory: FontDebugFactory! = nil
+    public var fontSize: Int32 = 0
+    public var font: Font! = nil
+    fileprivate var lastText: String! = nil
+    public var hasChanged: Bool = false
+    fileprivate var textWidth: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.graphics.font.FontDebugFactory
-import org.allbinary.logic.string.StringUtil
-
-open public class CustomTextAnimation : TextAnimation
-                , TextInterface {
-        
-
-    val fontDebugFactory: FontDebugFactory = FontDebugFactory.getInstance()!!
-
-    val fontSize: Int
-
-    var font: Font
-
-    private var lastText: String = StringUtil.getInstance()!!.INIT_STRING
-
-    var hasChanged: Boolean = true
-public constructor (text: String, fontSize: Int, animationBehavior: AnimationBehavior)                        
-
-                            : super(text, animationBehavior){
-    //var text = text
-    //var fontSize = fontSize
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.fontSize= fontSize
-this.font= Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, fontSize)!!
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.myFontProcessor!!.process(graphics)
-
-    var existingFont: Font = graphics.getFont()!!
-
-this.fontDebugFactory!!.setFont(this.font, graphics)
-super.paintXYNoUpdate(graphics, x, y)
-this.fontDebugFactory!!.setFont(existingFont, graphics)
-}
-
-
-    override fun setScale(scaleX: Float, scaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleX = scaleX
-    //var scaleY = scaleY
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.fontDebugFactory = FontDebugFactory.getInstance()
     
-                        if(scaleX != scaleY)
-                        
-                                    {
-                                    
-
-
-                            throw RuntimeException()
-
-                                    }
-                                
-this.hasChanged= true
-this.font= Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, (this.fontSize *scaleX).toInt())!!
-}
-
-
-    override fun setTextWithOnMeasure(text: String, textChangeListener: TextChangeListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var text = text
-    //var textChangeListener = textChangeListener
-super.setTextWithOnMeasure(text, textChangeListener)
-}
-
-
-    override fun setText(text: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var text = text
-
     
-                        if(this.lastText != text)
-                        
-                                    {
-                                    this.hasChanged= true
-this.lastText= text
-super.setText(text)
-
-                                    }
-                                
-}
-
-
-    override fun getText()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastText
-}
-
-
-    private var textWidth: Int= 0
-
-    override fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
+    self.lastText = StringUtil.getInstance().INIT_STRING
+    self.hasChanged = true
+    self.textWidth = 0
+    }
     
-                        if(this.hasChanged)
-                        
-                                    {
-                                    this.textWidth= this.font.stringWidth(this.textArrayP[0]!!)
-this.hasChanged= false
 
-                                    }
-                                
+    public init(_ text: String!, _ fontSize: Int32, _ animationBehavior: AnimationBehavior!) {
+        super.init(text, animationBehavior)
+        self.initFields()
+        self.fontSize = fontSize
+        self.font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, fontSize)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.textWidth
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.myFontProcessor.process(graphics)
+        let existingFont: Font! = graphics.getFont()
+        self.fontDebugFactory.setFont(self.font, graphics)
+        super.paintXYNoUpdate(graphics, x, y)
+        self.fontDebugFactory.setFont(existingFont, graphics)
+    }
+    
+
+    open override func setScale(_ scaleX: Float, _ scaleY: Float) {
+        if (scaleX != scaleY) {
+            jThrow(JException("RuntimeException", ""))
+        }
+        self.hasChanged = true
+        self.font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, JMath.toInt32(Double((Float(self.fontSize) * scaleX))))
+    }
+    
+
+    open override func setTextWithOnMeasure(_ text: String!, _ textChangeListener: TextChangeListener!) {
+        super.setTextWithOnMeasure(text, textChangeListener)
+    }
+    
+
+    open override func setText(_ text: String!) {
+        if (self.lastText != text) {
+            self.hasChanged = true
+            self.lastText = text
+            super.setText(text)
+        }
+    }
+    
+
+    @discardableResult open func getText() -> String! {
+        return self.lastText
+    }
+    
+
+    @discardableResult open override func getWidth() -> Int32 {
+        if (self.hasChanged) {
+            self.textWidth = self.font.stringWidth(self.textArrayP[0])
+            self.hasChanged = false
+        }
+        return self.textWidth
+    }
+    
+
+    @discardableResult open override func getFontHeight() -> Int32 {
+        return self.font.getHeight()
+    }
 }
-
-
-    override fun getFontHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.font.getHeight()
-}
-
-
-}
-                
-            
 

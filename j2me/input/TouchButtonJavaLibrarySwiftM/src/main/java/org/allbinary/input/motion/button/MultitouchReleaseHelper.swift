@@ -1,88 +1,48 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ *
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ *
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ *
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                * 
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                * 
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                * 
-                *  Created By: Travis Berthelot 
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.event.GameKeyEvent
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.event.GameKeyEvent
-
-open public class MultitouchReleaseHelper : ReleaseHelper {
-        
-public constructor (touchButtonRecognizer: TouchButtonRecognizer)                        
-
-                            : super(touchButtonRecognizer){
-    //var touchButtonRecognizer = touchButtonRecognizer
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun release(touchButtonInput: TouchButtonInput, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var touchButtonInput = touchButtonInput
-    //var deviceId = deviceId
-
-    var cancelTouchButtonInput: TouchButtonInput = CancelTouchButtonInputFactory.getInstance()!!.getCancel(touchButtonInput)!!
-
-
-    var nextTouchButtonInput: TouchButtonInput
-
-
-    var gameKeyEvent: GameKeyEvent
-
-
-
-
-
-                        for (index in this.touchButtonRecognizer!!.currentlyPressedTouchButtonSingleton!!.size() -1 downTo 0)
-
-        {
-nextTouchButtonInput= this.touchButtonRecognizer!!.currentlyPressedTouchButtonSingleton!!.get(index)!!
-
+open class MultitouchReleaseHelper: ReleaseHelper {
     
-                        if(cancelTouchButtonInput == nextTouchButtonInput)
-                        
-                                    {
-                                    gameKeyEvent= nextTouchButtonInput!!.getGameKeyEvent()!!
-this.touchButtonRecognizer!!.upGameKeyEventHandler!!.fireEvent(gameKeyEvent)
-this.touchButtonRecognizer!!.upGameKeyEventHandler!!.getInstanceForDevice(deviceId)!!.fireEvent(gameKeyEvent)
-this.touchButtonRecognizer!!.currentlyPressedTouchButtonSingleton!!.removeAt(index)
 
-                                    }
-                                
+    public override init(_ touchButtonRecognizer: TouchButtonRecognizer!) {
+        super.init(touchButtonRecognizer)
+    }
+    
+
+    open override func release(_ touchButtonInput: TouchButtonInput!, _ deviceId: Int32) {
+        let cancelTouchButtonInput: TouchButtonInput! = CancelTouchButtonInputFactory.getInstance().getCancel(touchButtonInput)
+        var nextTouchButtonInput: TouchButtonInput! = nil
+        var gameKeyEvent: GameKeyEvent! = nil
+        do {
+            var index: Int32 = self.touchButtonRecognizer.currentlyPressedTouchButtonSingleton.size() &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            nextTouchButtonInput = self.touchButtonRecognizer.currentlyPressedTouchButtonSingleton.get(index)
+            if (cancelTouchButtonInput === nextTouchButtonInput) {
+                gameKeyEvent = nextTouchButtonInput.getGameKeyEvent()
+                self.touchButtonRecognizer.upGameKeyEventHandler.fireEvent(gameKeyEvent)
+                self.touchButtonRecognizer.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent)
+                self.touchButtonRecognizer.currentlyPressedTouchButtonSingleton.removeAt(index)
+            }
+            }
+        }
+    }
 }
-
-}
-
-
-}
-                
-            
 

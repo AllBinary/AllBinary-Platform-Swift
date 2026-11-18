@@ -1,113 +1,65 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer
+import J2SEForSwiftLibrary
+// import org.allbinary.string.CommonStrings
 
+open class LayerProcessor: JObject, LayerProcessorInterface {
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var layerManager: LayerManager! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    
+    }
+    
 
+    public init(_ layerManager: LayerManager!) {
+        super.init()
+        self.initFields()
+        self.layerManager = layerManager
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.string.CommonStrings
+    open func processAt(_ allBinaryLayerManager: AllBinaryLayerManager!, _ layerInterface: AllBinaryLayer!, _ index: Int32) {
+        jThrow(JException("Exception", self.commonStrings.NOT_IMPLEMENTED))
+    }
+    
 
-open public class LayerProcessor
-            : Object
-        
-                , LayerProcessorInterface {
-        
+    @discardableResult open func isProcessorLayer(_ layerInterface: AllBinaryLayer!) -> Bool {
+        jThrow(JException("Exception", self.commonStrings.NOT_IMPLEMENTED))
+    }
+    
 
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    @discardableResult open func getLayerManager() -> LayerManager! {
+        return self.layerManager
+    }
+    
 
-    private val layerManager: LayerManager
-public constructor (layerManager: LayerManager)
-            : super()
-        {
-    //var layerManager = layerManager
-this.layerManager= layerManager
+    open func process(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        let layerManager: LayerManager! = self.getLayerManager()
+        let size: Int32 = layerManager.getSize()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            self.processAt(allBinaryLayerManager, (layerManager.getLayerAt(index) as! AllBinaryLayer), index)
+            }
+        }
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun processAt(allBinaryLayerManager: AllBinaryLayerManager, layerInterface: AllBinaryLayer, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var allBinaryLayerManager = allBinaryLayerManager
-var layerInterface = layerInterface
-var index = index
-
-
-
-                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun isProcessorLayer(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var layerInterface = layerInterface
-
-
-
-                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
-}
-
-
-    override fun getLayerManager()
-        //nullable = true from not(false or (false and true)) = true
-: LayerManager{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerManager
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun process(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-var allBinaryLayerManager = allBinaryLayerManager
-
-    var layerManager: LayerManager = this.getLayerManager()!!
-
-
-    var size: Int = layerManager!!.getSize()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-this.processAt(allBinaryLayerManager, layerManager!!.getLayerAt(index) as AllBinaryLayer, index)
-}
-
-}
-
-
-}
-                
-            
 

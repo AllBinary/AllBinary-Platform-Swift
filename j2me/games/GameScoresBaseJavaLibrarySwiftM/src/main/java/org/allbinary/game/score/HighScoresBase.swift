@@ -1,83 +1,50 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.game.GameInfo
+// import org.allbinary.string.CommonStrings
 
+open class HighScoresBase: JObject, HighScoresFactoryInterface {
+    public var commonStrings: CommonStrings! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.GameInfo
-import org.allbinary.string.CommonStrings
+    open func fetchHighScores(_ gameInfo: GameInfo!, _ highScoresResultsListener: HighScoresResultsListener!) {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-open public class HighScoresBase
-            : Object
-        
-                , HighScoresFactoryInterface {
-        
+    open func fetchHighScoresPreload(_ gameInfo: GameInfo!, _ highScoresResultsListener: HighScoresResultsListener!, _ preload: Bool) {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-protected constructor ()
-            : super()
-        {
+    @discardableResult open func createHighScoresHelper() -> HighScoresHelperBaseInterface! {
+        jThrow(JException("RuntimeException", ""))
+    }
 }
-
-
-    override fun fetchHighScores(gameInfo: GameInfo, highScoresResultsListener: HighScoresResultsListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInfo = gameInfo
-    //var highScoresResultsListener = highScoresResultsListener
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun fetchHighScoresPreload(gameInfo: GameInfo, highScoresResultsListener: HighScoresResultsListener, preload: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInfo = gameInfo
-    //var highScoresResultsListener = highScoresResultsListener
-    //var preload = preload
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun createHighScoresHelper()
-        //nullable = true from not(false or (false and true)) = true
-: HighScoresHelperBaseInterface{
-
-
-
-                            throw RuntimeException()
-}
-
-
-}
-                
-            
 

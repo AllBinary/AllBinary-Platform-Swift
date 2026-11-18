@@ -30,7 +30,7 @@ open class LogConfigTypeFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> LogConfigTypeFactory! {
+    @discardableResult open class func getInstance() -> LogConfigTypeFactory! {
         return LogConfigTypeFactory.instance
     }
     

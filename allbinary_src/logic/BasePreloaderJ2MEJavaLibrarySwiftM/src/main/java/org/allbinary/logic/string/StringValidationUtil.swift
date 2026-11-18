@@ -29,7 +29,7 @@ open class StringValidationUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> StringValidationUtil! {
+    @discardableResult open class func getInstance() -> StringValidationUtil! {
         return StringValidationUtil.instance
     }
     

@@ -26,12 +26,12 @@ open class Memory: JObject {
     }
     
 
-    @discardableResult public static func getInfo() -> String! {
+    @discardableResult open class func getInfo() -> String! {
         let stringBuffer: StringMaker! = StringMaker()
         stringBuffer.append("Memory: Free: ")
-        stringBuffer.appendlong(Int64(truncatingIfNeeded: Runtime.getRuntime().freeMemory()))
+        stringBuffer.appendlong(Runtime.getRuntime().freeMemory())
         stringBuffer.append(" Total: ")
-        stringBuffer.appendlong(Int64(truncatingIfNeeded: Runtime.getRuntime().totalMemory()))
+        stringBuffer.appendlong(Runtime.getRuntime().totalMemory())
         return stringBuffer.toString()
     }
 }

@@ -1,166 +1,106 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.paint
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.paint
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.AppletUtil
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.input.motion.button.TouchScreenFactory
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.time.TimeDelayHelper
 
+open class PressStartMenuPaintable: Paintable, UpdateMyFontInterface {
+    fileprivate var displayInfo: DisplayInfoSingleton! = nil
+    fileprivate var PRESS_START: String! = nil
+    fileprivate var KEY_START: String! = nil
+    fileprivate var MENU_START: String! = nil
+    fileprivate var myFontProcessor: MyFontProcessor! = nil
+    fileprivate var startString: String! = nil
+    fileprivate var timeDelayHelper: TimeDelayHelper! = nil
+    fileprivate var flash: Bool = false
+    fileprivate var anchor: Int32 = 0
+    fileprivate var beginWidth: Int32 = 0
+    fileprivate var line: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.AppletUtil
-import org.allbinary.graphics.Anchor
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.input.motion.button.TouchScreenFactory
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.time.TimeDelayHelper
-
-open public class PressStartMenuPaintable : Paintable
-                , UpdateMyFontInterface {
-        
-
-    private val displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-    private val PRESS_START: String = "Press Screen To Start"
-
-    private val KEY_START: String = "Press or Click F2 To Begin"
-
-    private val MENU_START: String = "Press Start From The Menu To Begin"
-
-    private var myFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    private var startString: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var timeDelayHelper: TimeDelayHelper = TimeDelayHelper(1100)
-
-    private var flash: Boolean= false
-public constructor (){
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.displayInfo = DisplayInfoSingleton.getInstance()
+    self.PRESS_START = "Press Screen To Start"
+    self.KEY_START = "Press or Click F2 To Begin"
+    self.MENU_START = "Press Start From The Menu To Begin"
+    self.myFontProcessor = UpdateMyFontProcessor(self)
+    self.startString = StringUtil.getInstance().EMPTY_STRING
+    self.timeDelayHelper = TimeDelayHelper(1100)
+    self.flash = false
+    self.anchor = Anchor.TOP_LEFT
+    self.beginWidth = 0
+    self.line = 0
+    }
     
-                        if(TouchScreenFactory.getInstance()!!.isTouch())
-                        
-                                    {
-                                    this.startString= this.PRESS_START
 
-                                    }
-                                
-                             else 
+    public override init() {
+        super.init()
+        self.initFields()
+        if (TouchScreenFactory.getInstance().isTouch()) {
+            self.startString = self.PRESS_START
+        } else if (AppletUtil.isAppletLoader(self)) {
+            self.startString = self.KEY_START
+        } else {
+            self.startString = self.MENU_START
+        }
+    }
     
-                        if(AppletUtil.isAppletLoader(this))
-                        
-                                    {
-                                    this.startString= this.KEY_START
 
-                                    }
-                                
-                        else {
-                            this.startString= this.MENU_START
-
-                        }
-                            
-}
-
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-    private var beginWidth: Int= 0
-
-    private var line: Int= 0
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-this.beginWidth= (graphics.getFont()!!.stringWidth(this.startString) shr 1)
-this.line= (4 *MyFontProcessor.defaultCharWidth(font)) +(font.getHeight() shr 1)
-this.myFontProcessor= MyFontProcessor.getInstance()!!
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-
+    open func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        self.beginWidth = (graphics.getFont().stringWidth(self.startString) >> 1)
+        self.line = (4 &* MyFontProcessor.defaultCharWidth(font)) + (font.getHeight() >> 1)
+        self.myFontProcessor = MyFontProcessor.getInstance()
+    }
     
-                        if(this.timeDelayHelper!!.isTimeTNT())
-                        
-                                    {
-                                    
+
+    open override func paint(_ graphics: Graphics!) {
+        if (self.timeDelayHelper.isTimeTNT()) {
+            if (self.isFlash()) {
+                self.setFlash(false)
+            } else {
+                self.setFlash(true)
+            }
+        }
+        if (self.isFlash()) {
+            self.myFontProcessor.process(graphics)
+            graphics.drawString(self.startString, self.displayInfo.getLastHalfWidth() &- self.beginWidth, self.displayInfo.getLastHeight() &- self.line, self.anchor)
+        }
+    }
     
-                        if(this.isFlash())
-                        
-                                    {
-                                    this.setFlash(false)
 
-                                    }
-                                
-                        else {
-                            this.setFlash(true)
-
-                        }
-                            
-
-                                    }
-                                
-
+    fileprivate func setFlash(_ flash: Bool) {
+        self.flash = flash
+    }
     
-                        if(this.isFlash())
-                        
-                                    {
-                                    this.myFontProcessor!!.process(graphics)
-graphics.drawString(this.startString, displayInfo!!.getLastHalfWidth() -beginWidth, displayInfo!!.getLastHeight() -line, this.anchor)
 
-                                    }
-                                
+    @discardableResult fileprivate func isFlash() -> Bool {
+        return self.flash
+    }
 }
-
-
-    open fun setFlash(flash: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var flash = flash
-this.flash= flash
-}
-
-
-    open fun isFlash()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.flash
-}
-
-
-}
-                
-            
 

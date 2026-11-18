@@ -1,74 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
 
+open class EarlySoundsFactory: BaseSoundsFactory {
+    fileprivate static let instance: EarlySoundsFactory! = EarlySoundsFactory()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open override func getSoundInterfaceArray() -> JArray<Sound?>! {
+        let soundInterfaceArray: JArray<Sound?>! = JArray<Sound?>(2, nil)
+        var index: Int32 = 0
+        soundInterfaceArray[jPostIncrement(&index)] = SelectSound.getInstance()
+        soundInterfaceArray[jPostIncrement(&index)] = ErrorSound.getInstance()
+        return soundInterfaceArray
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class EarlySoundsFactory : BaseSoundsFactory {
-        
-companion object {
-            
-    private val instance: EarlySoundsFactory = EarlySoundsFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: EarlySoundsFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return EarlySoundsFactory.instance
+    @discardableResult open class func getInstance() -> EarlySoundsFactory! {
+        return EarlySoundsFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    override fun getSoundInterfaceArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Sound?>{
-
-    var soundInterfaceArray: Array<Sound?> = arrayOfNulls(2)
-
-
-    var index: Int = 0
-
-soundInterfaceArray[index++]= SelectSound.getInstance()!!
-soundInterfaceArray[index++]= ErrorSound.getInstance()!!
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return soundInterfaceArray
-}
-
-
-}
-                
-            
 

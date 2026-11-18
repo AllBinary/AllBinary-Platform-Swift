@@ -1,142 +1,100 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.damage
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat.damage
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.game.rand.MyRandomFactory
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorArrayIndexer
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.BasicColorSetUtil
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.java.character.CharArrayFactory
+// import org.allbinary.logic.math.PrimitiveLongUtil
+// import org.allbinary.util.CircularIndexUtil
+// import org.allbinary.view.ViewPosition
+// import org.allbinary.view.ViewPositionBase
 
+open class PtsDamageFloaters: DamageFloaters {
+    fileprivate static let basicColorArrayIndexer: BasicColorArrayIndexer! = BasicColorArrayIndexer(JArray<BasicColor?>([BasicColorFactory.getInstance().WHITE, BasicColorFactory.getInstance().RED, BasicColorFactory.getInstance().YELLOW, BasicColorFactory.getInstance().BLUE]))
+    public var basicSetColorUtil: BasicColorSetUtil! = nil
+    fileprivate var layerInterface: AllBinaryLayer! = nil
+    fileprivate var lastDamage: JArray<Int32>! = nil
+    fileprivate var lastDamageString: JArray<JArray<UInt16>?>! = nil
+    fileprivate var lastDamageStringSizeArray: JArray<Int32>! = nil
+    fileprivate var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var primitiveLongUtil: PrimitiveLongUtil! = nil
+    fileprivate var myRandomFactory: MyRandomFactory! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.game.rand.MyRandomFactory
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorArrayIndexer
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.BasicColorSetUtil
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.java.character.CharArrayFactory
-import org.allbinary.logic.math.PrimitiveLongUtil
-import org.allbinary.util.CircularIndexUtil
-import org.allbinary.view.ViewPosition
-import org.allbinary.view.ViewPositionBase
-
-open public class PtsDamageFloaters : DamageFloaters {
-        
-companion object {
-            
-    private val basicColorArrayIndexer: BasicColorArrayIndexer = BasicColorArrayIndexer(arrayOf(BasicColorFactory.getInstance()!!.WHITE,BasicColorFactory.getInstance()!!.RED,BasicColorFactory.getInstance()!!.YELLOW,BasicColorFactory.getInstance()!!.BLUE))
-
-        }
-            
-    val basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!!
-
-    private var layerInterface: AllBinaryLayer
-
-    private var lastDamage: IntArray = IntArray(5)
-
-    private var lastDamageString: Array<CharArray?> = Array(5) { CharArray(0) }
-
-    private var lastDamageStringSizeArray: IntArray = IntArray(5)
-
-    private var circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(5)!!
-
-    private val primitiveLongUtil: PrimitiveLongUtil
-public constructor (layerInterface: AllBinaryLayer){
-var layerInterface = layerInterface
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(100000)!!
-this.layerInterface= layerInterface
-
-    var CHAR_ARRAY: CharArray = CharArrayFactory.getInstance()!!.getZeroCharArray()!!
-
-
-
-
-
-                        for (index in this.lastDamageString!!.size -1 downTo 0)
-
-        {
-this.lastDamageString[index]= CHAR_ARRAY
-}
-
-}
-
-
-    override fun add(damage: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var damage = damage
-
-    var index: Int = this.circularIndexUtil!!.getIndex()
-
-this.lastDamage[index]= damage
-this.lastDamageString[index]= this.primitiveLongUtil!!.getCharArray(this.lastDamage[index]!!)!!
-this.lastDamageStringSizeArray[index]= this.primitiveLongUtil!!.getCurrentTotalDigits()
-this.circularIndexUtil!!.next()
-}
-
-
-    private val myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!!
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-
-    var viewPosition: ViewPositionBase = this.layerInterface!!.getViewPosition()!!
-
-
-    var x: Int = viewPosition!!.getX()
-
-
-    var y: Int = viewPosition!!.getY()
-
-
-
-
-
-                        for (index in this.lastDamage!!.size -1 downTo 0)
-
-        {
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.basicSetColorUtil = BasicColorSetUtil.getInstance()
     
-                        if(this.lastDamage[index] != 0)
-                        
-                                    {
-                                    
-    var delta: Int = 10 *(index +2)
+    self.lastDamage = JArray<Int32>(5, 0)
+    self.lastDamageString = JArray<JArray<UInt16>?>(5, factory: { JArray<UInt16>(0, 0) })
+    self.lastDamageStringSizeArray = JArray<Int32>(5, 0)
+    self.circularIndexUtil = CircularIndexUtil.createInstance(5)
+    
+    self.myRandomFactory = MyRandomFactory.getInstance()
+    }
+    
 
-this.basicSetColorUtil!!.setBasicColorP(graphics, PtsDamageFloaters.basicColorArrayIndexer!!.get())
-graphics.drawChars(this.lastDamageString[index]!!, 0, this.lastDamageStringSizeArray[index]!!, x -this.myRandomFactory!!.getNextInt(delta), y -delta, 0)
-PtsDamageFloaters.basicColorArrayIndexer!!.next()
+    public init(_ layerInterface: AllBinaryLayer!) {
+        super.init()
+        self.initFields()
+        self.primitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(100000)
+        self.layerInterface = layerInterface
+        let CHAR_ARRAY: JArray<UInt16>! = CharArrayFactory.getInstance().getZeroCharArray()
+        do {
+            var index: Int32 = self.lastDamageString.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            self.lastDamageString[index] = CHAR_ARRAY
+            }
+        }
+    }
+    
 
-                                    }
-                                
-this.lastDamage[index]= 0
+    open override func add(_ damage: Int32) {
+        let index: Int32 = self.circularIndexUtil.getIndex()
+        self.lastDamage[index] = damage
+        self.lastDamageString[index] = self.primitiveLongUtil.getCharArray(self.lastDamage[index])
+        self.lastDamageStringSizeArray[index] = self.primitiveLongUtil.getCurrentTotalDigits()
+        self.circularIndexUtil.next()
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        let viewPosition: ViewPositionBase! = self.layerInterface.getViewPosition()
+        let x: Int32 = viewPosition.getX()
+        let y: Int32 = viewPosition.getY()
+        do {
+            var index: Int32 = self.lastDamage.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (self.lastDamage[index] != 0) {
+                let delta: Int32 = 10 &* (index &+ 2)
+                self.basicSetColorUtil.setBasicColorP(graphics, PtsDamageFloaters.basicColorArrayIndexer.get())
+                graphics.drawChars(self.lastDamageString[index], 0, self.lastDamageStringSizeArray[index], x &- self.myRandomFactory.getNextInt(delta), y &- delta, 0)
+                PtsDamageFloaters.basicColorArrayIndexer.next()
+            }
+            self.lastDamage[index] = 0
+            }
+        }
+    }
 }
-
-}
-
-
-}
-                
-            
 

@@ -1,123 +1,67 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.init.crypt.jcehelper
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.init.crypt.jcehelper
+import J2SEForSwiftLibrary
+// import java.io.ByteArrayInputStream
+// import java.io.ByteArrayOutputStream
+// import java.io.InputStream
+// import org.allbinary.TsUtil
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class BasicCryptUtil: JObject {
+    fileprivate static let instance: BasicCryptUtil! = BasicCryptUtil()
+    public var logUtil: LogUtil! = nil
+    fileprivate var tsUtil: TsUtil! = nil
+    fileprivate var XML_START: String! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.tsUtil = TsUtil.getInstance()
+    self.XML_START = "<?xml"
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import org.allbinary.TsUtil
-import org.allbinary.logic.communication.log.LogUtil
+    @discardableResult open class func getInstance() -> BasicCryptUtil! {
+        return BasicCryptUtil.instance
+    }
+    
 
-open public class BasicCryptUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: BasicCryptUtil = BasicCryptUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BasicCryptUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicCryptUtil.instance
-}
-
-
+    @discardableResult open func getDecryptedInputStream(_ inputStream: InputStream!, _ cryptInterface: CryptInterface!) -> InputStream! {
+        let buffer: ByteArrayOutputStream! = ByteArrayOutputStream()
+        var ch: Int32 = 0
+        while (true) {
+            ch = inputStream.read()
+            if (ch == -1) {
+                break
+            }
+            buffer.write(ch)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val tsUtil: TsUtil = TsUtil.getInstance()!!
-
-    private val XML_START: String = "<?xml"
-
-                @Throws(Exception::class)
-            
-    open fun getDecryptedInputStream(inputStream: InputStream, cryptInterface: CryptInterface)
-        //nullable = true from not(false or (false and false)) = true
-: InputStream{
-var inputStream = inputStream
-var cryptInterface = cryptInterface
-
-    var buffer: ByteArrayOutputStream = ByteArrayOutputStream()
-
-
-    var ch: Int= 0
-
-
-        while(true)
-        {
-ch= inputStream!!.read()
-
-    
-                        if(ch ==  -1)
-                        
-                                    {
-                                    break;
-
-                    
-
-                                    }
-                                
-buffer.write(ch)
+        let decrypted: JArray<Int8>! = cryptInterface.decrypt(buffer.toByteArray())
+        var decryptedString: String! = JString.fromBytes(decrypted)
+        let index: Int32 = JString.indexOf(decryptedString, self.XML_START)
+        if (index > 0) {
+            decryptedString = JString.substring(decryptedString, index)
+        }
+        return ByteArrayInputStream(self.tsUtil.getByteArray(decryptedString))
+    }
 }
-
-
-    var decrypted: ByteArray = cryptInterface!!.decrypt(buffer.toByteArray())!!
-
-
-    var decryptedString: String = decrypted.decodeToString()
-
-
-    var index: Int = decryptedString!!.indexOf(this.XML_START)
-
-
-    
-                        if(index > 0)
-                        
-                                    {
-                                    decryptedString= decryptedString!!.substring(index)!!
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ByteArrayInputStream(this.tsUtil!!.getByteArray(decryptedString))
-}
-
-
-}
-                
-            
 

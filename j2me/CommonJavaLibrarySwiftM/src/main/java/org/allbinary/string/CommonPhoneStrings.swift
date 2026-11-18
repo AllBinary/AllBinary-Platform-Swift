@@ -64,7 +64,7 @@ open class CommonPhoneStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CommonPhoneStrings! {
+    @discardableResult open class func getInstance() -> CommonPhoneStrings! {
         return CommonPhoneStrings.instance
     }
 }

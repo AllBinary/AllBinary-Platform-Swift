@@ -1,106 +1,66 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.part.weapon
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.part.weapon
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.Animation
+// import org.allbinary.game.combat.weapon.WeaponProperties
+// import org.allbinary.game.layer.weapon.WeaponLayer
+// import org.allbinary.game.layer.weapon.WeaponLayerCircularPool
+// import org.allbinary.game.score.ScoreableInterface
+// import org.allbinary.graphics.RelativeRelationship
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.math.AngleFactory
 
+open class ArcedMultiBeamWeaponPart: BasicWeaponPart {
+    fileprivate var weaponLayerCircularStaticPool: WeaponLayerCircularPool! = nil
+    fileprivate var total: Int32 = 0
+    fileprivate var TOTAL_ANGLE: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    self.TOTAL_ANGLE = Int32(truncatingIfNeeded: AngleFactory.getInstance().TOTAL_ANGLE)
+    }
+    
 
+    public init(_ animationInterface: Animation!, _ sourceLayerInterface: AllBinaryLayer!, _ weaponLayerCircularStaticPool: WeaponLayerCircularPool!, _ total: Int32, _ weaponProperties: WeaponProperties!, _ scoreableInterface: ScoreableInterface!, _ relativeRelationship: RelativeRelationship!) {
+        super.init(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship)
+        self.initFields()
+        self.total = total
+        self.weaponLayerCircularStaticPool = weaponLayerCircularStaticPool
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.Animation
-import org.allbinary.game.combat.weapon.WeaponProperties
-import org.allbinary.game.layer.weapon.WeaponLayer
-import org.allbinary.game.layer.weapon.WeaponLayerCircularPool
-import org.allbinary.game.score.ScoreableInterface
-import org.allbinary.graphics.RelativeRelationship
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.math.AngleFactory
-
-open public class ArcedMultiBeamWeaponPart : BasicWeaponPart {
-        
-
-    private val weaponLayerCircularStaticPool: WeaponLayerCircularPool
-
-    private val total: Int
-public constructor (animationInterface: Animation, sourceLayerInterface: AllBinaryLayer, weaponLayerCircularStaticPool: WeaponLayerCircularPool, total: Int, weaponProperties: WeaponProperties, scoreableInterface: ScoreableInterface, relativeRelationship: RelativeRelationship)                        
-
-                            : super(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
-    //var animationInterface = animationInterface
-    //var sourceLayerInterface = sourceLayerInterface
-    //var weaponLayerCircularStaticPool = weaponLayerCircularStaticPool
-    //var total = total
-    //var weaponProperties = weaponProperties
-    //var scoreableInterface = scoreableInterface
-    //var relativeRelationship = relativeRelationship
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.total= total
-this.weaponLayerCircularStaticPool= weaponLayerCircularStaticPool
+    open override func processScore(_ allbinaryLayerManager: AllBinaryLayerManager!, _ angle: Int16, _ otherAngle: Int16, _ weaponProperties: WeaponProperties!, _ scoreableInterface: ScoreableInterface!) {
+        let increment: Int16 = Int16(truncatingIfNeeded: ((self.total &- 1) / self.TOTAL_ANGLE))
+        let minAngle: Int16 = Int16(truncatingIfNeeded: (Int32(Int32(truncatingIfNeeded: angle)) &- ((Int32(Int32(truncatingIfNeeded: increment)) &* self.total) >> 1)))
+        var next: Int32 = 0
+        var weaponLayer: WeaponLayer! = nil
+        do {
+            var index: Int32 = 0
+            while (index < self.total) {
+                defer { index &+= 1 }
+            weaponLayer = self.weaponLayerCircularStaticPool.getInstanceWeaponLayer(self.getOwnerLayerInterface(), self.relativeRelationship.getX(), self.relativeRelationship.getY(), 0, (Int32(minAngle) &+ Int32(increment)), Int32(truncatingIfNeeded: otherAngle), weaponProperties, scoreableInterface)
+            allbinaryLayerManager.append(weaponLayer)
+            next = next &+ Int32(truncatingIfNeeded: increment)
+            }
+        }
+    }
 }
-
-
-    private val TOTAL_ANGLE: Int = AngleFactory.getInstance()!!.TOTAL_ANGLE.toInt()
-
-                @Throws(Exception::class)
-            
-    override fun processScore(allbinaryLayerManager: AllBinaryLayerManager, angle: Short, otherAngle: Short, weaponProperties: WeaponProperties, scoreableInterface: ScoreableInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var angle = angle
-    //var otherAngle = otherAngle
-    //var weaponProperties = weaponProperties
-    //var scoreableInterface = scoreableInterface
-
-    var increment: Short = ((this.total -1) /this.TOTAL_ANGLE).toShort()
-
-
-    var minAngle: Short = (angle -((increment *this.total) shr 1)).toShort()
-
-
-    var next: Int = 0
-
-
-    var weaponLayer: WeaponLayer
-
-
-
-
-
-                        for (index in 0 until this.total)
-
-        {
-weaponLayer= this.weaponLayerCircularStaticPool!!.getInstanceWeaponLayer(this.getOwnerLayerInterface(), this.relativeRelationship!!.getX(), this.relativeRelationship!!.getY(), 0, (minAngle +increment).toInt(), otherAngle.toInt(), weaponProperties, scoreableInterface)!!
-allbinaryLayerManager!!.append(weaponLayer)
-next += increment
-}
-
-}
-
-
-}
-                
-            
 

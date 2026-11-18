@@ -1,59 +1,34 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
 //Use 8hz16bitmono for most J2ME
-open public class SelectSound : CompositeSound {
-        
-companion object {
-            
-    private var soundInterface: Sound = SelectSound()
+open class SelectSound: CompositeSound {
+    fileprivate static var soundInterface: Sound! = SelectSound()
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: Sound{
+    public init() {
+        super.init("resource:/wav/select.wav")
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectSound.soundInterface
+    @discardableResult open class func getInstance() -> Sound! {
+        return SelectSound.soundInterface
+    }
 }
-
-
-        }
-            private constructor ()                        
-
-                            : super("resource:/wav/select.wav"){
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-}
-                
-            
 

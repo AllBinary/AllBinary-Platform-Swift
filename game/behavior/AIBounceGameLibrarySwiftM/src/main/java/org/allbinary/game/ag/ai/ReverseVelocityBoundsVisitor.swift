@@ -1,119 +1,83 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.bounds.BoundsVisitorInterface
+// import org.allbinary.game.physics.velocity.VelocityInterface
+// import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
+// import org.allbinary.layer.LayerInterface
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class ReverseVelocityBoundsVisitor: JObject, BoundsVisitorInterface {
+    public var logUtil: LogUtil! = nil
+    public var velocityInterface: VelocityInterface! = nil
+    fileprivate var layerInterface: LayerInterface! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.bounds.BoundsVisitorInterface
-import org.allbinary.game.physics.velocity.VelocityInterface
-import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
-import org.allbinary.layer.LayerInterface
-import org.allbinary.logic.communication.log.LogUtil
-
-open public class ReverseVelocityBoundsVisitor
-            : Object
-        
-                , BoundsVisitorInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    var velocityInterface: VelocityInterface
-
-    private var layerInterface: LayerInterface
-public constructor (layerInterface: LayerInterface)
-            : super()
-        {
-var layerInterface = layerInterface
-this.layerInterface= layerInterface
-
-    var velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = layerInterface as VelocityInterfaceCompositeInterface
-
-this.velocityInterface= velocityInterfaceCompositeInterface!!.getVelocityProperties() as VelocityInterface
-}
-
-
-    override fun getX()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface!!.getXP()
-}
-
-
-    override fun getY()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface!!.getYP()
-}
-
-
-    override fun minX()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(this.velocityInterface!!.getVelocityXBasicDecimalP()!!.getUnscaled() < 0)
-                        this.velocityInterface!!.getVelocityXBasicDecimalP()!!.multiplyint( -1)
-}
-
-
-    override fun maxX()
-        //nullable = true from not(false or (false and true)) = true
-{
-
     
-                        if(this.velocityInterface!!.getVelocityXBasicDecimalP()!!.getUnscaled() > 0)
-                        this.velocityInterface!!.getVelocityXBasicDecimalP()!!.multiplyint( -1)
-}
-
-
-    override fun minY()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    }
     
-                        if(this.velocityInterface!!.getVelocityYBasicDecimalP()!!.getUnscaled() < 0)
-                        this.velocityInterface!!.getVelocityYBasicDecimalP()!!.multiplyint( -1)
-}
 
-
-    override fun maxY()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    public init(_ layerInterface: LayerInterface!) {
+        super.init()
+        self.initFields()
+        self.layerInterface = layerInterface
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (layerInterface as! VelocityInterfaceCompositeInterface)
+        self.velocityInterface = (velocityInterfaceCompositeInterface.getVelocityProperties() as! VelocityInterface)
+    }
     
-                        if(this.velocityInterface!!.getVelocityYBasicDecimalP()!!.getUnscaled() > 0)
-                        this.velocityInterface!!.getVelocityYBasicDecimalP()!!.multiplyint( -1)
-}
 
+    @discardableResult open func getX() -> Int32 {
+        return self.layerInterface.getXP()
+    }
+    
 
+    @discardableResult open func getY() -> Int32 {
+        return self.layerInterface.getYP()
+    }
+    
+
+    open func minX() {
+        if (self.velocityInterface.getVelocityXBasicDecimalP().getUnscaled() < 0) {
+            self.velocityInterface.getVelocityXBasicDecimalP().multiplyint(-1)
+        }
+    }
+    
+
+    open func maxX() {
+        if (self.velocityInterface.getVelocityXBasicDecimalP().getUnscaled() > 0) {
+            self.velocityInterface.getVelocityXBasicDecimalP().multiplyint(-1)
+        }
+    }
+    
+
+    open func minY() {
+        if (self.velocityInterface.getVelocityYBasicDecimalP().getUnscaled() < 0) {
+            self.velocityInterface.getVelocityYBasicDecimalP().multiplyint(-1)
+        }
+    }
+    
+
+    open func maxY() {
+        if (self.velocityInterface.getVelocityYBasicDecimalP().getUnscaled() > 0) {
+            self.velocityInterface.getVelocityYBasicDecimalP().multiplyint(-1)
+        }
+    }
 }
-                
-            
 

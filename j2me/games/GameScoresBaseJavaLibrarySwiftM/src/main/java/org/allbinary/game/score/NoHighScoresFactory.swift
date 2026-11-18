@@ -1,78 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.game.GameInfo
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class NoHighScoresFactory: HighScoresBase {
+    fileprivate static let instance: NoHighScoresFactory! = NoHighScoresFactory()
+    public var logUtil: LogUtil! = nil
+    public var NO_HIGH_SCORES: JArray<HighScores?>! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.NO_HIGH_SCORES = JArray<HighScores?>(0, nil)
+    }
+    
 
+    @discardableResult open class func getInstance() -> NoHighScoresFactory! {
+        return NoHighScoresFactory.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.GameInfo
-import org.allbinary.logic.communication.log.LogUtil
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class NoHighScoresFactory : HighScoresBase {
-        
-companion object {
-            
-    private val instance: NoHighScoresFactory = NoHighScoresFactory()
+    open override func fetchHighScores(_ gameInfo: GameInfo!, _ highScoresResultsListener: HighScoresResultsListener!) {
+        self.logUtil.putF("Getting No HighScores", self, "fetchHighScores")
+        highScoresResultsListener.setHighScoresArray(self.NO_HIGH_SCORES)
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NoHighScoresFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHighScoresFactory.instance
+    @discardableResult open override func createHighScoresHelper() -> HighScoresHelperBaseInterface! {
+        return HighScoresHelperBase()
+    }
 }
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val NO_HIGH_SCORES: Array<HighScores?> = arrayOfNulls(0)
-private constructor (){
-}
-
-
-    override fun fetchHighScores(gameInfo: GameInfo, highScoresResultsListener: HighScoresResultsListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInfo = gameInfo
-    //var highScoresResultsListener = highScoresResultsListener
-this.logUtil!!.putF("Getting No HighScores", this, "fetchHighScores")
-highScoresResultsListener!!.setHighScoresArray(this.NO_HIGH_SCORES)
-}
-
-
-    override fun createHighScoresHelper()
-        //nullable = true from not(false or (false and true)) = true
-: HighScoresHelperBaseInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoresHelperBase()
-}
-
-
-}
-                
-            
 

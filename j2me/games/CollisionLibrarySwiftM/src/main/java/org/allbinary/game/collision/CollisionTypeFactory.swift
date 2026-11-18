@@ -1,65 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.collision
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.collision
+import J2SEForSwiftLibrary
 
+open class CollisionTypeFactory: JObject {
+    fileprivate static var SINGLETON: CollisionTypeFactory! = CollisionTypeFactory()
+    public var NONE: CollisionType! = nil
+    public var DAMAGE: CollisionType! = nil
+    public var PICKUP: CollisionType! = nil
+    public var COLLISION: CollisionType! = nil
 
+    private func initFields() {
+    self.NONE = CollisionType("None")
+    self.DAMAGE = CollisionType("Damage")
+    self.PICKUP = CollisionType("Pickup")
+    self.COLLISION = CollisionType("Collision")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class CollisionTypeFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var SINGLETON: CollisionTypeFactory = CollisionTypeFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CollisionTypeFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollisionTypeFactory.SINGLETON
+    @discardableResult open class func getInstance() -> CollisionTypeFactory! {
+        return CollisionTypeFactory.SINGLETON
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var NONE: CollisionType = CollisionType("None")
-
-    var DAMAGE: CollisionType = CollisionType("Damage")
-
-    var PICKUP: CollisionType = CollisionType("Pickup")
-
-    var COLLISION: CollisionType = CollisionType("Collision")
-
-}
-                
-            
 

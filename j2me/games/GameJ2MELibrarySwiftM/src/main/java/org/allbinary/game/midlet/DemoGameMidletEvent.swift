@@ -1,76 +1,51 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.midlet
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class DemoGameMidletEvent: AllBinaryEventObject {
+    fileprivate var demoGameMidletState: DemoGameMidletState! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ anyType: JObject!, _ demoGameMidletState: DemoGameMidletState!) {
+        super.init(anyType)
+        self.initFields()
+        self.demoGameMidletState = demoGameMidletState
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.util.event.AllBinaryEventObject
+    open func `init`(_ anyType: JObject!) {
+        self.setSource(anyType)
+    }
+    
 
-open public class DemoGameMidletEvent : AllBinaryEventObject {
-        
+    open func setDemoGameMidletState(_ demoGameMidletState: DemoGameMidletState!) {
+        self.demoGameMidletState = demoGameMidletState
+    }
+    
 
-    private var demoGameMidletState: DemoGameMidletState
-public constructor (anyType: Any, demoGameMidletState: DemoGameMidletState)                        
-
-                            : super(anyType){
-var anyType = anyType
-var demoGameMidletState = demoGameMidletState
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.demoGameMidletState= demoGameMidletState
+    @discardableResult open func getDemoGameMidletState() -> DemoGameMidletState! {
+        return self.demoGameMidletState
+    }
 }
-
-
-    open fun init(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-{
-var anyType = anyType
-this.setSource(anyType)
-}
-
-
-    open fun setDemoGameMidletState(demoGameMidletState: DemoGameMidletState)
-        //nullable = true from not(false or (false and false)) = true
-{
-var demoGameMidletState = demoGameMidletState
-this.demoGameMidletState= demoGameMidletState
-}
-
-
-    open fun getDemoGameMidletState()
-        //nullable = true from not(false or (false and true)) = true
-: DemoGameMidletState{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.demoGameMidletState
-}
-
-
-}
-                
-            
 

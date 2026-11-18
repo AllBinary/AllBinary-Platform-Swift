@@ -27,7 +27,7 @@ open class ColorChangeEventHandler: BasicEventHandler {
     }
     
 
-    @discardableResult public static func getInstance() -> ColorChangeEventHandler! {
+    @discardableResult open class func getInstance() -> ColorChangeEventHandler! {
         return ColorChangeEventHandler.eventHandler
     }
 }

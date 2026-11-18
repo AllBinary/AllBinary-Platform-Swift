@@ -1,196 +1,124 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.ColorChangeEvent
+// import org.allbinary.graphics.color.ColorChangeListener
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.util.BasicArrayList
 
+open class HighScoresPaintable: Paintable, ColorChangeListener, UpdateMyFontInterface {
+    fileprivate var displayInfoSingleton: DisplayInfoSingleton! = nil
+    fileprivate var myFontProcessor: MyFontProcessor! = nil
+    fileprivate var basicColor: BasicColor! = nil
+    fileprivate var highScores: HighScores! = nil
+    fileprivate var anchor: Int32 = 0
+    fileprivate var charHeight: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.Anchor
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.ColorChangeEvent
-import org.allbinary.graphics.color.ColorChangeListener
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.util.BasicArrayList
-
-open public class HighScoresPaintable : Paintable
-                , ColorChangeListener
-                , UpdateMyFontInterface {
-        
-
-    private val displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-    private var myFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    private var basicColor: BasicColor = BasicColorFactory.getInstance()!!.WHITE
-
-    private var highScores: HighScores = NullHighScoresSingletonFactory.getInstance()!!
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-    private var charHeight: Int= 0
-public constructor (){
-}
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-this.charHeight= font.getHeight()
-this.myFontProcessor= MyFontProcessor.getInstance()!!
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventObject = eventObject
-
-    var colorChangeEvent: ColorChangeEvent = eventObject as ColorChangeEvent
-
-this.basicColor= colorChangeEvent!!.getBasicColorP()!!
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-
-    var width: Int = this.displayInfoSingleton!!.getLastWidth()
-
-
-    var height: Int = this.displayInfoSingleton!!.getLastHeight()
-
-graphics.setColor(this.getBasicColorP()!!.toInt())
-
-    var heading: String = this.highScores!!.getHeading()!!
-
-
-    var topScoresWidth: Int = (graphics.getFont()!!.stringWidth(heading) shr 1)
-
-
-    var charHeight: Int = this.charHeight
-
-graphics.drawString(heading, (width shr 1) -topScoresWidth, charHeight, this.anchor)
-graphics.drawString(this.highScores!!.getColumnOneHeading(), 10, charHeight *3, this.anchor)
-
-    var columnTwoHeading: String = this.highScores!!.getColumnTwoHeading()!!
-
-
-    var columnTwoHeadingWidth: Int = graphics.getFont()!!.stringWidth(columnTwoHeading)
-
-graphics.drawString(columnTwoHeading, width -10 -columnTwoHeadingWidth, charHeight *3, this.anchor)
-
-    var index: Int = 4
-
-
-    var largestSecondColumnWidth: Int = columnTwoHeadingWidth
-
-
-    var list: BasicArrayList = this.highScores!!.getList()!!
-
-
-    var size: Int = list.size()
-
-
-    var vectorIndex: Int = 0
-
-
-    var highScore: HighScore
-
-
-        while(vectorIndex < size && charHeight *index < height -(charHeight *2))
-        {
-highScore= list.objectArray[vectorIndex]!! as HighScore
-
-    var nextScoreWidth: Int = graphics.getFont()!!.stringWidth(highScore!!.getScoreString())
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.displayInfoSingleton = DisplayInfoSingleton.getInstance()
+    self.myFontProcessor = UpdateMyFontProcessor(self)
+    self.basicColor = BasicColorFactory.getInstance().WHITE
+    self.highScores = NullHighScoresSingletonFactory.getInstance()
+    self.anchor = Anchor.TOP_LEFT
+    self.charHeight = 0
+    }
     
-                        if(nextScoreWidth > largestSecondColumnWidth)
-                        
-                                    {
-                                    largestSecondColumnWidth= nextScoreWidth
 
-                                    }
-                                
-vectorIndex++
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        self.charHeight = font.getHeight()
+        self.myFontProcessor = MyFontProcessor.getInstance()
+    }
+    
+
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+        let colorChangeEvent: ColorChangeEvent! = (eventObject as! ColorChangeEvent)
+        self.basicColor = colorChangeEvent.getBasicColorP()
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        let width: Int32 = self.displayInfoSingleton.getLastWidth()
+        let height: Int32 = self.displayInfoSingleton.getLastHeight()
+        graphics.setColor(self.getBasicColorP().intValue())
+        let heading: String! = self.highScores.getHeading()
+        let topScoresWidth: Int32 = (graphics.getFont().stringWidth(heading) >> 1)
+        let charHeight: Int32 = self.charHeight
+        graphics.drawString(heading, (width >> 1) &- topScoresWidth, charHeight, self.anchor)
+        graphics.drawString(self.highScores.getColumnOneHeading(), 10, charHeight &* 3, self.anchor)
+        let columnTwoHeading: String! = self.highScores.getColumnTwoHeading()
+        let columnTwoHeadingWidth: Int32 = graphics.getFont().stringWidth(columnTwoHeading)
+        graphics.drawString(columnTwoHeading, width &- 10 &- columnTwoHeadingWidth, charHeight &* 3, self.anchor)
+        var index: Int32 = 4
+        var largestSecondColumnWidth: Int32 = columnTwoHeadingWidth
+        let list: BasicArrayList! = self.highScores.getList()
+        let size: Int32 = list.size()
+        var vectorIndex: Int32 = 0
+        var highScore: HighScore! = nil
+        while (vectorIndex < size && charHeight &* index < height &- (charHeight &* 2)) {
+            highScore = (list.objectArray[vectorIndex] as! HighScore)
+            let nextScoreWidth: Int32 = graphics.getFont().stringWidth(highScore.getScoreString())
+            if (nextScoreWidth > largestSecondColumnWidth) {
+                largestSecondColumnWidth = nextScoreWidth
+            }
+            vectorIndex &+= 1
+        }
+        vectorIndex = 0
+        while (vectorIndex < size && charHeight &* index < height &- (charHeight &* 2)) {
+            highScore = (list.objectArray[vectorIndex] as! HighScore)
+            graphics.drawString(highScore.getName(), 10, charHeight &* index, self.anchor)
+            graphics.drawString(highScore.getScoreString(), width &- 10 &- largestSecondColumnWidth, charHeight &* index, self.anchor)
+            index &+= 1
+            vectorIndex &+= 1
+        }
+    }
+    
+
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        self.basicColor = basicColor
+    }
+    
+
+    @discardableResult open func getBasicColorP() -> BasicColor! {
+        return self.basicColor
+    }
+    
+
+    open func setHighScores(_ highScores: HighScores!) {
+        self.highScores = highScores
+    }
 }
-
-vectorIndex= 0
-
-        while(vectorIndex < size && charHeight *index < height -(charHeight *2))
-        {
-highScore= list.objectArray[vectorIndex]!! as HighScore
-graphics.drawString(highScore!!.getName(), 10, charHeight *index, this.anchor)
-graphics.drawString(highScore!!.getScoreString(), width -10 -largestSecondColumnWidth, charHeight *index, this.anchor)
-index++
-vectorIndex++
-}
-
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var basicColor = basicColor
-this.basicColor= basicColor
-}
-
-
-    open fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor
-}
-
-
-    open fun setHighScores(highScores: HighScores)
-        //nullable = true from not(false or (false and false)) = true
-{
-var highScores = highScores
-this.highScores= highScores
-}
-
-
-}
-                
-            
 

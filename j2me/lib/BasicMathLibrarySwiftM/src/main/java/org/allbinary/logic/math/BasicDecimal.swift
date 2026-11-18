@@ -32,7 +32,7 @@ open class BasicDecimal: JObject {
     }
     
 
-    @discardableResult public static func createBigDecimal(_ bigDecimal: BasicDecimal!) -> BasicDecimal! {
+    @discardableResult open class func createBigDecimal(_ bigDecimal: BasicDecimal!) -> BasicDecimal! {
         return BasicDecimal(bigDecimal.getUnscaled())
     }
     

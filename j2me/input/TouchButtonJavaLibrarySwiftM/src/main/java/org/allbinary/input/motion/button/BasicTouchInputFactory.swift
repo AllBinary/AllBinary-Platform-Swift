@@ -1,194 +1,139 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.InputFactory
+// import org.allbinary.game.input.mapping.InputToGameKeyMapping
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class BasicTouchInputFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    public var SPECIAL_BUTTON_SEVEN_TESTING_ONLY: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_EIGHT_TESTING_ONLY: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_SIX: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_FIVE: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_FOUR: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_THREE: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_TWO: TouchButtonInput! = nil
+    public var SPECIAL_BUTTON_ONE: TouchButtonInput! = nil
+    public var UP: TouchButtonInput! = nil
+    public var LEFT: TouchButtonInput! = nil
+    public var RIGHT: TouchButtonInput! = nil
+    public var DOWN: TouchButtonInput! = nil
+    public var NONE: TouchButtonInput! = nil
+    fileprivate var initialized: Bool = false
+    fileprivate var list: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.InputFactory
-import org.allbinary.game.input.mapping.InputToGameKeyMapping
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonLabels
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class BasicTouchInputFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BasicTouchInputFactory{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(BasicTouchInputFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    BasicTouchInputFactory.instance= BasicTouchInputFactory()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    self.initialized = false
+    self.list = BasicArrayListD()
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTouchInputFactory.instance as BasicTouchInputFactory
-}
-
-
+    @discardableResult open class func getInstance() -> BasicTouchInputFactory! {
+        if (BasicTouchInputFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            BasicTouchInputFactory.instance = BasicTouchInputFactory()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val SPECIAL_BUTTON_SEVEN_TESTING_ONLY: TouchButtonInput
-
-    val SPECIAL_BUTTON_EIGHT_TESTING_ONLY: TouchButtonInput
-
-    val SPECIAL_BUTTON_SIX: TouchButtonInput
-
-    val SPECIAL_BUTTON_FIVE: TouchButtonInput
-
-    val SPECIAL_BUTTON_FOUR: TouchButtonInput
-
-    val SPECIAL_BUTTON_THREE: TouchButtonInput
-
-    val SPECIAL_BUTTON_TWO: TouchButtonInput
-
-    val SPECIAL_BUTTON_ONE: TouchButtonInput
-
-    val UP: TouchButtonInput
-
-    val LEFT: TouchButtonInput
-
-    val RIGHT: TouchButtonInput
-
-    val DOWN: TouchButtonInput
-
-    val NONE: TouchButtonInput
-
-    private var initialized: Boolean = false
-
-    private val list: BasicArrayList = BasicArrayListD()
-private constructor ()
-            : super()
-        {
-
-    var MAX: Int = InputFactory.getInstance()!!.MAX
-
-this.SPECIAL_BUTTON_SEVEN_TESTING_ONLY= TouchButtonInput(MAX -41, "Button 7 - Testing Only May Cross Over Key Values")
-this.SPECIAL_BUTTON_EIGHT_TESTING_ONLY= TouchButtonInput(MAX -42, "Button 8 - Testing Only May Cross Over Key Values")
-this.SPECIAL_BUTTON_SIX= TouchButtonInput(MAX -30, "Button 6")
-this.SPECIAL_BUTTON_FIVE= TouchButtonInput(MAX -31, "Button 5")
-this.SPECIAL_BUTTON_FOUR= TouchButtonInput(MAX -32, "Button 4")
-this.SPECIAL_BUTTON_THREE= TouchButtonInput(MAX -33, "Button 3")
-this.SPECIAL_BUTTON_TWO= TouchButtonInput(MAX -34, "Button 2")
-this.SPECIAL_BUTTON_ONE= TouchButtonInput(MAX -35, "Button 1")
-this.UP= TouchButtonInput(MAX -36, "Up Button")
-this.LEFT= TouchButtonInput(MAX -37, "Left Button")
-this.RIGHT= TouchButtonInput(MAX -38, "Right Button")
-this.DOWN= TouchButtonInput(MAX -39, "Down Button")
-this.NONE= TouchButtonInput(MAX -40, "No Button")
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun init(inputToGameKeyMapping: InputToGameKeyMapping)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var inputToGameKeyMapping = inputToGameKeyMapping
-
+        return (BasicTouchInputFactory.instance as! BasicTouchInputFactory)
+    }
     
-                        if(!this.initialized)
-                        
-                                    {
-                                    this.initialized= true
-this.list.add(this.UP)
-this.list.add(this.LEFT)
-this.list.add(this.RIGHT)
-this.list.add(this.DOWN)
-this.list.add(this.SPECIAL_BUTTON_TWO)
-this.list.add(this.SPECIAL_BUTTON_FOUR)
-this.list.add(this.SPECIAL_BUTTON_THREE)
-this.list.add(this.SPECIAL_BUTTON_ONE)
-this.list.add(this.SPECIAL_BUTTON_FIVE)
-this.list.add(this.SPECIAL_BUTTON_SIX)
-this.list.add(this.SPECIAL_BUTTON_SIX)
-this.list.add(this.SPECIAL_BUTTON_SEVEN_TESTING_ONLY)
-this.list.add(this.SPECIAL_BUTTON_EIGHT_TESTING_ONLY)
-this.updateAllFromList(this.list, inputToGameKeyMapping)
 
-                                    }
-                                
+    public override init() {
+        super.init()
+        self.initFields()
+        let MAX: Int32 = InputFactory.getInstance().MAX
+        self.SPECIAL_BUTTON_SEVEN_TESTING_ONLY = TouchButtonInput(MAX &- 41, "Button 7 - Testing Only May Cross Over Key Values")
+        self.SPECIAL_BUTTON_EIGHT_TESTING_ONLY = TouchButtonInput(MAX &- 42, "Button 8 - Testing Only May Cross Over Key Values")
+        self.SPECIAL_BUTTON_SIX = TouchButtonInput(MAX &- 30, "Button 6")
+        self.SPECIAL_BUTTON_FIVE = TouchButtonInput(MAX &- 31, "Button 5")
+        self.SPECIAL_BUTTON_FOUR = TouchButtonInput(MAX &- 32, "Button 4")
+        self.SPECIAL_BUTTON_THREE = TouchButtonInput(MAX &- 33, "Button 3")
+        self.SPECIAL_BUTTON_TWO = TouchButtonInput(MAX &- 34, "Button 2")
+        self.SPECIAL_BUTTON_ONE = TouchButtonInput(MAX &- 35, "Button 1")
+        self.UP = TouchButtonInput(MAX &- 36, "Up Button")
+        self.LEFT = TouchButtonInput(MAX &- 37, "Left Button")
+        self.RIGHT = TouchButtonInput(MAX &- 38, "Right Button")
+        self.DOWN = TouchButtonInput(MAX &- 39, "Down Button")
+        self.NONE = TouchButtonInput(MAX &- 40, "No Button")
+    }
+    
+
+    open func `init`(_ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        if (!self.initialized) {
+            self.initialized = true
+            self.list.add(self.UP)
+            self.list.add(self.LEFT)
+            self.list.add(self.RIGHT)
+            self.list.add(self.DOWN)
+            self.list.add(self.SPECIAL_BUTTON_TWO)
+            self.list.add(self.SPECIAL_BUTTON_FOUR)
+            self.list.add(self.SPECIAL_BUTTON_THREE)
+            self.list.add(self.SPECIAL_BUTTON_ONE)
+            self.list.add(self.SPECIAL_BUTTON_FIVE)
+            self.list.add(self.SPECIAL_BUTTON_SIX)
+            self.list.add(self.SPECIAL_BUTTON_SIX)
+            self.list.add(self.SPECIAL_BUTTON_SEVEN_TESTING_ONLY)
+            self.list.add(self.SPECIAL_BUTTON_EIGHT_TESTING_ONLY)
+            self.updateAllFromList(self.list, inputToGameKeyMapping)
+        }
+    }
+    
+
+    open func updateAll(_ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        self.updateAllFromList(self.list, inputToGameKeyMapping)
+    }
+    
+
+    open func updateAllFromList(_ list: BasicArrayList!, _ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().START_LABEL).appendint(list.size()).toString(), self, "updateAll")
+        var touchButtonInput: TouchButtonInput! = nil
+        do {
+            var index: Int32 = list.size() &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            touchButtonInput = (list.objectArray[index] as! TouchButtonInput)
+            touchButtonInput.update(inputToGameKeyMapping)
+            }
+        }
+    }
+    
+
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.list
+    }
 }
-
-
-    open fun updateAll(inputToGameKeyMapping: InputToGameKeyMapping)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var inputToGameKeyMapping = inputToGameKeyMapping
-this.updateAllFromList(this.list, inputToGameKeyMapping)
-}
-
-
-    open fun updateAllFromList(list: BasicArrayList, inputToGameKeyMapping: InputToGameKeyMapping)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var list = list
-    //var inputToGameKeyMapping = inputToGameKeyMapping
-this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.appendint(list.size())!!.toString(), this, "updateAll")
-
-    var touchButtonInput: TouchButtonInput
-
-
-
-
-
-                        for (index in list.size() -1 downTo 0)
-
-        {
-touchButtonInput= list.objectArray[index]!! as TouchButtonInput
-touchButtonInput!!.update(inputToGameKeyMapping)
-}
-
-}
-
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-}
-                
-            
 

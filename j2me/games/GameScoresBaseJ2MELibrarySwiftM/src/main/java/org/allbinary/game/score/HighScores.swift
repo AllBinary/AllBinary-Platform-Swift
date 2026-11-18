@@ -1,164 +1,105 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class HighScores: JObject, HighScoresInterface {
+    fileprivate var orderedHighScoresList: BasicArrayList! = nil
+    fileprivate var name: String! = nil
+    fileprivate var heading: String! = nil
+    fileprivate var columnOneHeading: String! = nil
+    fileprivate var columnTwoHeading: String! = nil
 
+    private func initFields() {
+    self.orderedHighScoresList = BasicArrayListD()
+    
+    
+    self.columnOneHeading = "Name"
+    
+    }
+    
 
+    public init(_ name: String!, _ heading: String!, _ columnTwoHeading: String!) {
+        super.init()
+        self.initFields()
+        self.name = name
+        self.heading = heading
+        self.columnTwoHeading = columnTwoHeading
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    open func setList(_ orderedHighScoresList: BasicArrayList!) {
+        self.orderedHighScoresList = orderedHighScoresList
+    }
+    
 
-open public class HighScores
-            : Object
-        
-                , HighScoresInterface {
-        
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.orderedHighScoresList
+    }
+    
 
-    private var orderedHighScoresList: BasicArrayList = BasicArrayListD()
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
 
-    private val name: String
+    @discardableResult open func getTotal() -> Int32 {
+        return self.getList().size()
+    }
+    
 
-    private val heading: String
+    open func addHighScore(_ newHighScore: HighScore!) {
+        self.orderedHighScoresList.add(newHighScore)
+    }
+    
 
-    private val columnOneHeading: String = "Name"
+    @discardableResult open func getHeading() -> String! {
+        return self.heading
+    }
+    
 
-    private val columnTwoHeading: String
-public constructor (name: String, heading: String, columnTwoHeading: String)
-            : super()
-        {
-var name = name
-var heading = heading
-var columnTwoHeading = columnTwoHeading
-this.name= name
-this.heading= heading
-this.columnTwoHeading= columnTwoHeading
+    @discardableResult open func getColumnOneHeading() -> String! {
+        return self.columnOneHeading
+    }
+    
+
+    @discardableResult open func getColumnTwoHeading() -> String! {
+        return self.columnTwoHeading
+    }
+    
+
+    @discardableResult open func isBestScore(_ newHighScore: HighScore!) -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("HighScores: ")
+        stringBuffer.append(self.heading)
+        stringBuffer.append(CommonSeps.getInstance().SPACE)
+        stringBuffer.append(CommonLabels.getInstance().TOTAL_LABEL)
+        stringBuffer.appendint(self.orderedHighScoresList.size())
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun setList(orderedHighScoresList: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var orderedHighScoresList = orderedHighScoresList
-this.orderedHighScoresList= orderedHighScoresList
-}
-
-
-    override fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.orderedHighScoresList
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    override fun getTotal()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getList()!!.size()
-}
-
-
-    override fun addHighScore(newHighScore: HighScore)
-        //nullable = true from not(false or (false and false)) = true
-{
-var newHighScore = newHighScore
-this.orderedHighScoresList!!.add(newHighScore)
-}
-
-
-    open fun getHeading()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.heading
-}
-
-
-    open fun getColumnOneHeading()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnOneHeading
-}
-
-
-    open fun getColumnTwoHeading()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnTwoHeading
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun isBestScore(newHighScore: HighScore)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var newHighScore = newHighScore
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("HighScores: ")
-stringBuffer!!.append(this.heading)
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(CommonLabels.getInstance()!!.TOTAL_LABEL)
-stringBuffer!!.appendint(this.orderedHighScoresList!!.size())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

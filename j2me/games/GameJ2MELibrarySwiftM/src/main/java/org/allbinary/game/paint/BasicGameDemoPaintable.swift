@@ -1,131 +1,84 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.paint
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.paint
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.paint.NullPaintable
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.graphics.paint.StatePaintable
 
+open class BasicGameDemoPaintable: StatePaintable {
+    fileprivate var mainDemoStatePaintable: Paintable! = nil
+    fileprivate var ownershipPaintable: Paintable! = nil
+    fileprivate var helpPaintableInterface: Paintable! = nil
+    fileprivate var currentStatePaintable: Paintable! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.paint.NullPaintable
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.graphics.paint.StatePaintable
-
-open public class BasicGameDemoPaintable : StatePaintable {
-        
-
-    private val mainDemoStatePaintable: Paintable
-
-    private val ownershipPaintable: Paintable
-
-    private val helpPaintableInterface: Paintable
-
-    private var currentStatePaintable: Paintable = NullPaintable.getInstance()!!
-public constructor (mainDemoStatePaintable: Paintable, ownershipPaintable: Paintable, helpPaintableInterface: Paintable){
-var mainDemoStatePaintable = mainDemoStatePaintable
-var ownershipPaintable = ownershipPaintable
-var helpPaintableInterface = helpPaintableInterface
-this.mainDemoStatePaintable= mainDemoStatePaintable
-this.setCurrentStatePaintable(NullPaintable.getInstance())
-this.ownershipPaintable= ownershipPaintable
-this.helpPaintableInterface= helpPaintableInterface
-}
-
-
-    override fun setState(state: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var state = state
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(state == 0)
-                        
-                                    {
-                                    this.setCurrentStatePaintable(this.getMainDemoStatePaintable())
-
-                                    }
-                                
-                             else 
     
-                        if(state == 1)
-                        
-                                    {
-                                    this.setCurrentStatePaintable(this.helpPaintableInterface)
+    
+    self.currentStatePaintable = NullPaintable.getInstance()
+    }
+    
 
-                                    }
-                                
-                        else {
-                            this.setCurrentStatePaintable(this.ownershipPaintable)
+    public init(_ mainDemoStatePaintable: Paintable!, _ ownershipPaintable: Paintable!, _ helpPaintableInterface: Paintable!) {
+        super.init()
+        self.initFields()
+        self.mainDemoStatePaintable = mainDemoStatePaintable
+        self.setCurrentStatePaintable(NullPaintable.getInstance())
+        self.ownershipPaintable = ownershipPaintable
+        self.helpPaintableInterface = helpPaintableInterface
+    }
+    
 
-                        }
-                            
+    open override func setState(_ state: Int32) {
+        if (state == 0) {
+            self.setCurrentStatePaintable(self.getMainDemoStatePaintable())
+        } else if (state == 1) {
+            self.setCurrentStatePaintable(self.helpPaintableInterface)
+        } else {
+            self.setCurrentStatePaintable(self.ownershipPaintable)
+        }
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.getCurrentStatePaintable().paint(graphics)
+    }
+    
+
+    @discardableResult open func getHelpPaintableInterface() -> Paintable! {
+        return self.helpPaintableInterface
+    }
+    
+
+    open func setCurrentStatePaintable(_ currentStatePaintable: Paintable!) {
+        self.currentStatePaintable = currentStatePaintable
+    }
+    
+
+    @discardableResult open func getCurrentStatePaintable() -> Paintable! {
+        return self.currentStatePaintable
+    }
+    
+
+    @discardableResult open func getMainDemoStatePaintable() -> Paintable! {
+        return self.mainDemoStatePaintable
+    }
 }
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.getCurrentStatePaintable()!!.paint(graphics)
-}
-
-
-    open fun getHelpPaintableInterface()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.helpPaintableInterface
-}
-
-
-    open fun setCurrentStatePaintable(currentStatePaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-var currentStatePaintable = currentStatePaintable
-this.currentStatePaintable= currentStatePaintable
-}
-
-
-    open fun getCurrentStatePaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentStatePaintable
-}
-
-
-    open fun getMainDemoStatePaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainDemoStatePaintable
-}
-
-
-}
-                
-            
 

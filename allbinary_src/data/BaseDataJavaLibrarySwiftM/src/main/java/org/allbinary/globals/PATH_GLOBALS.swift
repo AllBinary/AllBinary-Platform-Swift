@@ -37,7 +37,7 @@ open class PATH_GLOBALS: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> PATH_GLOBALS! {
+    @discardableResult open class func getInstance() -> PATH_GLOBALS! {
         return PATH_GLOBALS.instance
     }
     

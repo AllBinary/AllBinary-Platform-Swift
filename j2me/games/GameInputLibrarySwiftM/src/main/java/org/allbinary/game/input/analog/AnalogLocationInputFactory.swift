@@ -1,95 +1,49 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.analog
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.analog
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class AnalogLocationInputFactory: JObject {
+    fileprivate static let instance: AnalogLocationInputFactory! = AnalogLocationInputFactory()
+    fileprivate var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
+    
 
+    @discardableResult open class func getInstance() -> AnalogLocationInputFactory! {
+        return AnalogLocationInputFactory.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class AnalogLocationInputFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AnalogLocationInputFactory = AnalogLocationInputFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AnalogLocationInputFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogLocationInputFactory.instance
-}
-
-
+    open func addPlayer(_ playerInputId: Int32) {
+        var analogLocationInput: AnalogLocationInput! = AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT
+        if (playerInputId < self.list.size()) {
+            analogLocationInput = (self.list.get(playerInputId) as! AnalogLocationInput)
         }
-            
-    private val list: BasicArrayList = BasicArrayListD()
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun addPlayer(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerInputId = playerInputId
-
-    var analogLocationInput: AnalogLocationInput = AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT
-
-
+        if (analogLocationInput === AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT) {
+            analogLocationInput = AnalogLocationInput(playerInputId)
+            self.list.add(analogLocationInput)
+        }
+    }
     
-                        if(playerInputId < this.list.size())
-                        
-                                    {
-                                    analogLocationInput= this.list.get(playerInputId) as AnalogLocationInput
 
-                                    }
-                                
-
+    @discardableResult open func getInstanceForPlayer(_ playerInputId: Int32) -> AnalogLocationInput! {
+        return (self.list.get(playerInputId) as! AnalogLocationInput)
+    }
     
-                        if(analogLocationInput == AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT)
-                        
-                                    {
-                                    analogLocationInput= AnalogLocationInput(playerInputId)
-this.list.add(analogLocationInput)
 
-                                    }
-                                
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.list
+    }
 }
-
-
-    open fun getInstanceForPlayer(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: AnalogLocationInput{
-var playerInputId = playerInputId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.get(playerInputId) as AnalogLocationInput
-}
-
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-}
-                
-            
 

@@ -30,7 +30,7 @@ open class TimeStampUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> TimeStampUtil! {
+    @discardableResult open class func getInstance() -> TimeStampUtil! {
         return TimeStampUtil.instance
     }
     

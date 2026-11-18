@@ -1,57 +1,33 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.paint
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.paint
+import J2SEForSwiftLibrary
 
+open class ProcessPaintableSingletonFactory: JObject {
+    fileprivate static let SINGLETON: ProcessPaintable! = ProcessPaintable()
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class ProcessPaintableSingletonFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val SINGLETON: ProcessPaintable = ProcessPaintable()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ProcessPaintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProcessPaintableSingletonFactory.SINGLETON
+    @discardableResult open class func getInstance() -> ProcessPaintable! {
+        return ProcessPaintableSingletonFactory.SINGLETON
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-}
-                
-            
 

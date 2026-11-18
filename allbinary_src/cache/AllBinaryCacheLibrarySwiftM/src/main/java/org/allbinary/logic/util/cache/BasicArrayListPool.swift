@@ -1,138 +1,69 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-
-open public class BasicArrayListPool : AbstractArrayListPool {
-        
-public constructor (cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface)                        
-
-                            : super(cacheableInterfaceFactoryInterface){
-var cacheableInterfaceFactoryInterface = cacheableInterfaceFactoryInterface
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-    override fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.buffers.clear()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun remove(key: Any)
-        //nullable = true from not(false or (false and false)) = true
-: CacheableInterface{
-var key = key
-
-    var size: Int = this.buffers.size()
-
-
+open class BasicArrayListPool: AbstractArrayListPool {
     
-                        if(size > 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buffers.removeAt(size -1) as CacheableInterface
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheableInterfaceFactoryInterface!!.getInstance(key)
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun addAll(usedList: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var usedList = usedList
-
-
-
-
-                        for (index in usedList!!.size()!!  - 1  downTo 0)
-
-        {
-
-    var anyType: CacheableInterface = usedList!!.objectArray[index]!! as CacheableInterface
-
-this.add(anyType)
-}
-
-usedList!!.clear()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun releaseUsedBackToPool(usedList: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var usedList = usedList
-
-
-
-
-                        for (index in usedList!!.size()!!  - 1  downTo 0)
-
-        {
-
-    var list: BasicArrayListCacheable = usedList!!.objectArray[index]!! as BasicArrayListCacheable
-
-
+    public override init(_ cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface!) {
+        super.init(cacheableInterfaceFactoryInterface)
+    }
     
-                        if(list.size() == 0)
-                        
-                                    {
-                                    usedList!!.removeAt(index)
-this.add(list)
 
-                                    }
-                                
+    open override func clear() {
+        self.buffers.clear()
+    }
+    
+
+    @discardableResult open override func remove(_ key: JObject!) -> CacheableInterface! {
+        let size: Int32 = self.buffers.size()
+        if (size > 0) {
+            return (self.buffers.removeAt(size &- 1) as! CacheableInterface)
+        } else {
+            return self.cacheableInterfaceFactoryInterface.getInstance(key)
+        }
+    }
+    
+
+    open func addAll(_ usedList: BasicArrayList!) {
+        do {
+            var index: Int32 = usedList.size()
+            while (jPreDecrement(&index) >= 0) {
+            let anyType: CacheableInterface! = (usedList.objectArray[index] as! CacheableInterface)
+            self.add(anyType)
+            }
+        }
+        usedList.clear()
+    }
+    
+
+    open func releaseUsedBackToPool(_ usedList: BasicArrayList!) {
+        do {
+            var index: Int32 = usedList.size()
+            while (jPreDecrement(&index) >= 0) {
+            let list: BasicArrayListCacheable! = (usedList.objectArray[index] as! BasicArrayListCacheable)
+            if (list.size() == 0) {
+                usedList.removeAt(index)
+                self.add(list)
+            }
+            }
+        }
+    }
 }
-
-}
-
-
-}
-                
-            
 

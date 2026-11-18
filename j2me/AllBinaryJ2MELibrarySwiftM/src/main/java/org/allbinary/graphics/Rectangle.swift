@@ -1,150 +1,100 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
 
+open class Rectangle: JObject {
+    fileprivate var point: GPoint! = nil
+    fileprivate var width: Int32 = 0
+    fileprivate var height: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    }
+    
 
+    public init(_ point: GPoint!, _ width: Int32, _ height: Int32) {
+        super.init()
+        self.initFields()
+        self.point = point
+        self.width = width
+        self.height = height
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
+    @discardableResult open func getPoint() -> GPoint! {
+        return self.point
+    }
+    
 
-open public class Rectangle
-            : Object
-         {
-        
+    open func setPoint(_ point: GPoint!) {
+        self.point = point
+    }
+    
 
-    private var point: GPoint
+    @discardableResult open func getMaxX() -> Int32 {
+        return self.point.getX() &+ self.width
+    }
+    
 
-    private var width: Int
+    @discardableResult open func getMaxY() -> Int32 {
+        return self.point.getY() &+ self.height
+    }
+    
 
-    private var height: Int
-public constructor (point: GPoint, width: Int, height: Int)
-            : super()
-        {
-var point = point
-var width = width
-var height = height
-this.point= point
-this.width= width
-this.height= height
+    @discardableResult open func getWidth() -> Int32 {
+        return self.width
+    }
+    
+
+    open func setWidth(_ width: Int32) {
+        self.width = width
+    }
+    
+
+    @discardableResult open func getHeight() -> Int32 {
+        return self.height
+    }
+    
+
+    open func setHeight(_ height: Int32) {
+        self.height = height
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(self.getPoint().toString())
+        stringBuffer.append(CommonSeps.getInstance().SPACE)
+        stringBuffer.append(CommonLabels.getInstance().WIDTH_LABEL)
+        stringBuffer.appendint(self.getWidth())
+        stringBuffer.append(CommonSeps.getInstance().SPACE)
+        stringBuffer.append(CommonLabels.getInstance().HEIGHT_LABEL)
+        stringBuffer.appendint(self.getHeight())
+        stringBuffer.append(" MaxX: ")
+        stringBuffer.appendint(self.getMaxX())
+        stringBuffer.append(" MaxY: ")
+        stringBuffer.appendint(self.getMaxY())
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun getPoint()
-        //nullable = true from not(false or (false and true)) = true
-: GPoint{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point
-}
-
-
-    open fun setPoint(point: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var point = point
-this.point= point
-}
-
-
-    open fun getMaxX()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point.getX() +this.width
-}
-
-
-    open fun getMaxY()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point.getY() +this.height
-}
-
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width
-}
-
-
-    open fun setWidth(width: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var width = width
-this.width= width
-}
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height
-}
-
-
-    open fun setHeight(height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var height = height
-this.height= height
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(this.getPoint()!!.toString())
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(CommonLabels.getInstance()!!.WIDTH_LABEL)
-stringBuffer!!.appendint(this.getWidth())
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(CommonLabels.getInstance()!!.HEIGHT_LABEL)
-stringBuffer!!.appendint(this.getHeight())
-stringBuffer!!.append(" MaxX: ")
-stringBuffer!!.appendint(this.getMaxX())
-stringBuffer!!.append(" MaxY: ")
-stringBuffer!!.appendint(this.getMaxY())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

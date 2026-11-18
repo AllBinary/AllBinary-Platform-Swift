@@ -1,92 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.weapon.mine
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.weapon.mine
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.resources.BasicGameResources
+// import org.allbinary.logic.NullUtil
 
+open class MineWeaponResources: BasicGameResources {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var DROP_TEXT_RESOURCE: String! = nil
+    public var DROP_RESOURCE: String! = nil
+    public var DROP_ICON_RESOURCE: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.resources.BasicGameResources
-import org.allbinary.logic.NullUtil
-
-open public class MineWeaponResources : BasicGameResources {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: MineWeaponResources{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.DROP_TEXT_RESOURCE = "/mine_drop_text_20_by_20.png"
+    self.DROP_RESOURCE = "/mine_drop_20_by_20.png"
+    self.DROP_ICON_RESOURCE = "/mine_drop_icon_20_by_20.png"
+    }
     
-                        if(MineWeaponResources.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    MineWeaponResources.instance= MineWeaponResources()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineWeaponResources.instance as MineWeaponResources
-}
-
-
+    @discardableResult open class func getInstance() -> MineWeaponResources! {
+        if (MineWeaponResources.instance === NullUtil.getInstance().NULL_OBJECT) {
+            MineWeaponResources.instance = MineWeaponResources()
         }
-            
-    val DROP_TEXT_RESOURCE: String = "/mine_drop_text_20_by_20.png"
+        return (MineWeaponResources.instance as! MineWeaponResources)
+    }
+    
 
-    val DROP_RESOURCE: String = "/mine_drop_20_by_20.png"
-
-    val DROP_ICON_RESOURCE: String = "/mine_drop_icon_20_by_20.png"
-protected constructor (){
-
-    var ROOT: String = "/mine"
-
-
-    var SMALL: String = "_20_by_20.png"
-
-
-    var MEDIUM: String = SMALL
-
-
-    var SIZE_FOUR: String = SMALL
-
-
-    var SIZE_FIVE: String = SMALL
-
-
-    var SIZE_SIX: String = SMALL
-
-
-    var SIZE: Array<String?> = arrayOf(SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX)
-
-super.init(ROOT, SIZE)
+    public override init() {
+        super.init()
+        self.initFields()
+        let ROOT: String! = "/mine"
+        let SMALL: String! = "_20_by_20.png"
+        let MEDIUM: String! = SMALL
+        let SIZE_FOUR: String! = SMALL
+        let SIZE_FIVE: String! = SMALL
+        let SIZE_SIX: String! = SMALL
+        let SIZE: JArray<String?>! = JArray<String?>([SMALL, MEDIUM, SIZE_FOUR, SIZE_FIVE, SIZE_SIX])
+        super.`init`(ROOT, SIZE)
+    }
 }
-
-
-}
-                
-            
 

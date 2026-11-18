@@ -29,7 +29,7 @@ open class BooleanUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BooleanUtil! {
+    @discardableResult open class func getInstance() -> BooleanUtil! {
         return BooleanUtil.instance
     }
     

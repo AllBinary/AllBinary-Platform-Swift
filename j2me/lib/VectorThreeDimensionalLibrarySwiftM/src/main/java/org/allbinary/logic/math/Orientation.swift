@@ -1,96 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.math
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.math
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
 
+open class Orientation: JObject {
+    public static var NONE: Orientation! = Orientation(0, 0, 0)
+    fileprivate static var SINGLETON: Orientation! = Orientation(0, 0, 0)
+    public var yaw: BasicDecimal! = nil
+    public var pitch: BasicDecimal! = nil
+    public var roll: BasicDecimal! = nil
 
+    private func initFields() {
+    self.yaw = BasicDecimal(0)
+    self.pitch = BasicDecimal(0)
+    self.roll = BasicDecimal(0)
+    }
+    
 
+    @discardableResult open class func getInstance(_ yaw: Int32, _ pitch: Int32, _ roll: Int32) -> Orientation! {
+        Orientation.SINGLETON.yaw.setint(yaw)
+        Orientation.SINGLETON.pitch.setint(pitch)
+        Orientation.SINGLETON.roll.setint(roll)
+        return Orientation.SINGLETON
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
+    public init(_ yaw: Int32, _ pitch: Int32, _ roll: Int32) {
+        super.init()
+        self.initFields()
+        self.yaw.setint(yaw)
+        self.pitch.setint(pitch)
+        self.roll.setint(roll)
+    }
+    
 
-open public class Orientation
-            : Object
-         {
-        
-companion object {
-            
-    var NONE: Orientation = Orientation(0, 0, 0)
-
-    private var SINGLETON: Orientation = Orientation(0, 0, 0)
-
-    open fun getInstance(yaw: Int, pitch: Int, roll: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Orientation{
-var yaw = yaw
-var pitch = pitch
-var roll = roll
-Orientation.SINGLETON.yaw.setint(yaw)
-Orientation.SINGLETON.pitch.setint(pitch)
-Orientation.SINGLETON.roll.setint(roll)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Orientation.SINGLETON
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Y: ")
+        stringBuffer.append(self.yaw.toString())
+        stringBuffer.append(" P: ")
+        stringBuffer.append(self.pitch.toString())
+        stringBuffer.append(" R: ")
+        stringBuffer.append(self.roll.toString())
+        return stringBuffer.toString()
+    }
 }
-
-
-        }
-            
-    var yaw: BasicDecimal = BasicDecimal(0)
-
-    var pitch: BasicDecimal = BasicDecimal(0)
-
-    var roll: BasicDecimal = BasicDecimal(0)
-private constructor (yaw: Int, pitch: Int, roll: Int)
-            : super()
-        {
-var yaw = yaw
-var pitch = pitch
-var roll = roll
-this.yaw.setint(yaw)
-this.pitch.setint(pitch)
-this.roll.setint(roll)
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Y: ")
-stringBuffer!!.append(this.yaw.toString())
-stringBuffer!!.append(" P: ")
-stringBuffer!!.append(this.pitch.toString())
-stringBuffer!!.append(" R: ")
-stringBuffer!!.append(this.roll.toString())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

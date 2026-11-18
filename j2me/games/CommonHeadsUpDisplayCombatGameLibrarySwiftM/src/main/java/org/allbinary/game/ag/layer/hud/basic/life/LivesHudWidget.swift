@@ -1,144 +1,96 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.hud.basic.life
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.hud.basic.life
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.game.ag.life.Life
+// import org.allbinary.game.graphics.hud.BasicHud
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.displayable.event.DisplayChangeEvent
+// import org.allbinary.graphics.paint.PaintableInterface
 
+open class LivesHudWidget: BasicHud, PaintableInterface {
+    fileprivate var lifeInterface: Life! = nil
+    fileprivate var xArray: JArray<Int32>! = nil
+    fileprivate var animationInterface: Animation! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    }
+    
 
+    public init(_ animationInterface: Animation!, _ lifeInterface: Life!, _ location: Int32, _ direction: Int32) {
+        super.init(location, direction, 2, BasicColorFactory.getInstance().WHITE)
+        self.initFields()
+        self.lifeInterface = lifeInterface
+        let size: Int32 = Int32(truncatingIfNeeded: self.getLifeInterface().getMaxlives())
+        self.xArray = JArray<Int32>(size, 0)
+        self.animationInterface = animationInterface
+        self.updateMaxWidth = Int32(Int32(truncatingIfNeeded: self.lifeInterface.getMaxlives())) &* 16
+        self.updateMaxHeight = 16
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.game.ag.life.Life
-import org.allbinary.game.graphics.hud.BasicHud
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.displayable.event.DisplayChangeEvent
-import org.allbinary.graphics.paint.PaintableInterface
+    open override func updateMeasurement(_ graphics: Graphics!) {
+        super.updateMeasurement(graphics)
+        let maxLives: Int32 = Int32(truncatingIfNeeded: self.getLifeInterface().getMaxlives())
+        do {
+            var index: Int32 = 0
+            while (index < maxLives) {
+                defer { index &+= 1 }
+            self.xArray[index] = self.getX() &+ (index &* 16)
+            }
+        }
+    }
+    
 
-open public class LivesHudWidget : BasicHud
-                , PaintableInterface {
-        
+    open override func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+        super.onDisplayChangeEvent(displayChangeEvent)
+        self.myFontProcessor = self.updateMyFontProcessor
+    }
+    
 
-    private val lifeInterface: Life
+    open override func setX(_ x: Int32) {
+        super.setX(x)
+        self.myFontProcessor = self.updateMyFontProcessor
+    }
+    
 
-    private val xArray: IntArray
+    open func paint(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        do {
+            var index: Int32 = Int32(truncatingIfNeeded: self.getLifeInterface().get())
+            while (jPreDecrement(&index) >= 0) {
+            self.animationInterface.paintXY(graphics, self.xArray[index], self.getY())
+            }
+        }
+    }
+    
 
-    private val animationInterface: Animation
-public constructor (animationInterface: Animation, lifeInterface: Life, location: Int, direction: Int)                        
+    open func paintThreed(_ graphics: Graphics!) {
+    }
+    
 
-                            : super(location, direction, 2, BasicColorFactory.getInstance()!!.WHITE){
-var animationInterface = animationInterface
-var lifeInterface = lifeInterface
-var location = location
-var direction = direction
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.lifeInterface= lifeInterface
-
-    var size: Int = this.getLifeInterface()!!.getMaxlives().toInt()
-
-this.xArray= IntArray(size)
-this.animationInterface= animationInterface
-this.updateMaxWidth= this.lifeInterface!!.getMaxlives() *16
-this.updateMaxHeight= 16
+    @discardableResult open func getLifeInterface() -> Life! {
+        return self.lifeInterface
+    }
 }
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-super.updateMeasurement(graphics)
-
-    var maxLives: Int = this.getLifeInterface()!!.getMaxlives().toInt()
-
-
-
-
-
-                        for (index in 0 until maxLives)
-
-        {
-this.xArray[index]= this.getX() +(index *16)
-}
-
-}
-
-
-    override fun onDisplayChangeEvent(displayChangeEvent: DisplayChangeEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var displayChangeEvent = displayChangeEvent
-super.onDisplayChangeEvent(displayChangeEvent)
-this.myFontProcessor= this.updateMyFontProcessor
-}
-
-
-    override fun setX(x: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-super.setX(x)
-this.myFontProcessor= this.updateMyFontProcessor
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-
-
-
-
-                        for (index in this.getLifeInterface()!!.get().toInt()  - 1  downTo 0)
-
-        {
-this.animationInterface!!.paintXY(graphics, this.xArray[index]!!, this.getY())
-}
-
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun getLifeInterface()
-        //nullable = true from not(false or (false and true)) = true
-: Life{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lifeInterface
-}
-
-
-}
-                
-            
 

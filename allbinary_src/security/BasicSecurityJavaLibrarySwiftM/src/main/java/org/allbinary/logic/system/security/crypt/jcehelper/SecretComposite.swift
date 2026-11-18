@@ -1,114 +1,76 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.crypt.jcehelper
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.crypt.jcehelper
+import J2SEForSwiftLibrary
+// import javax.crypto.Cipher
+// import javax.crypto.SecretKey
+// import org.allbinary.logic.java.byteutil.ByteUtil
 
+open class SecretComposite: BaseSecretComposite {
+    fileprivate var byteUtil: ByteUtil! = nil
+    fileprivate var cipher: Cipher! = nil
+    fileprivate var secretKey: SecretKey! = nil
+    fileprivate var key: JArray<Int8>! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.crypto.Cipher
-import javax.crypto.SecretKey
-import org.allbinary.logic.java.byteutil.ByteUtil
-
-open public class SecretComposite : BaseSecretComposite {
-        
-
-    private val byteUtil: ByteUtil = ByteUtil.getInstance()!!
-
-    private val cipher: Cipher
-
-    private val secretKey: SecretKey
-
-    private var key: ByteArray
-public constructor (secretKey: SecretKey, cipher: Cipher, key: ByteArray){
-    //var secretKey = secretKey
-    //var cipher = cipher
-    //var key = key
-this.secretKey= secretKey
-this.cipher= cipher
-this.key= key
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun encrypt(array: ByteArray)
-        //nullable = true from not(false or (false and false)) = true
-: ByteArray{
-var array = array
-array= this.mutilate(array)!!
-this.cipher.init(Cipher.ENCRYPT_MODE, this.secretKey)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cipher.doFinal(array)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun decrypt(array: ByteArray)
-        //nullable = true from not(false or (false and false)) = true
-: ByteArray{
-var array = array
-this.cipher.init(Cipher.DECRYPT_MODE, this.secretKey)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mutilate(this.cipher.doFinal(array))
-}
-
-
-    open fun mutilate(array: ByteArray)
-        //nullable = true from not(false or (false and false)) = true
-: ByteArray{
-var array = array
-
-
-
-
-                        for (index in 0 until this.key.size)
-
-        {
-
-    var value: Byte = this.key[index]!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.byteUtil = ByteUtil.getInstance()
     
-                        if(value < 8 && value > 0)
-                        
-                                    {
-                                    array= this.byteUtil!!.xorByte(array, value.toInt())!!
+    
+    
+    }
+    
 
-                                    }
-                                
+    public init(_ secretKey: SecretKey!, _ cipher: Cipher!, _ key: JArray<Int8>!) {
+        super.init()
+        self.initFields()
+        self.secretKey = secretKey
+        self.cipher = cipher
+        self.key = key
+    }
+    
+
+    @discardableResult open override func encrypt(_ array: JArray<Int8>!) -> JArray<Int8>! {
+        var array: JArray<Int8>! = array
+        array = self.mutilate(array)
+        self.cipher.`init`(Cipher.ENCRYPT_MODE, self.secretKey)
+        return self.cipher.doFinal(array)
+    }
+    
+
+    @discardableResult open override func decrypt(_ array: JArray<Int8>!) -> JArray<Int8>! {
+        self.cipher.`init`(Cipher.DECRYPT_MODE, self.secretKey)
+        return self.mutilate(self.cipher.doFinal(array))
+    }
+    
+
+    @discardableResult fileprivate func mutilate(_ array: JArray<Int8>!) -> JArray<Int8>! {
+        var array: JArray<Int8>! = array
+        do {
+            var index: Int32 = 0
+            while (index < self.key.length) {
+                defer { index &+= 1 }
+            let value: Int8 = self.key[index]
+            if (Int32(Int32(truncatingIfNeeded: value)) < 8 && Int32(Int32(truncatingIfNeeded: value)) > 0) {
+                array = self.byteUtil.xorByte(array, Int32(truncatingIfNeeded: value))
+            }
+            }
+        }
+        return array
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return array
-}
-
-
-}
-                
-            
 

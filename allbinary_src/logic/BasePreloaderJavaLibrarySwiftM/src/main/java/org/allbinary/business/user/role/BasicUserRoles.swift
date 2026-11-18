@@ -33,7 +33,7 @@ open class BasicUserRoles: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicUserRoles! {
+    @discardableResult open class func getInstance() -> BasicUserRoles! {
         return BasicUserRoles.instance
     }
     

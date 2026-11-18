@@ -1,68 +1,45 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2007 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2007 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
 
+open class PoolType: JObject {
+    fileprivate var cacheType: CacheType! = nil
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ cacheType: CacheType!) {
+        super.init()
+        self.initFields()
+        self.cacheType = cacheType
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getCacheType() -> CacheType! {
+        return self.cacheType
+    }
+    
 
-open public class PoolType
-            : Object
-         {
-        
-
-    private val cacheType: CacheType
-public constructor (cacheType: CacheType)
-            : super()
-        {
-var cacheType = cacheType
-this.cacheType= cacheType
+    @discardableResult open override func toString() -> String! {
+        let POOL_TYPE: String! = "PoolType: "
+        return jstr(POOL_TYPE) + jstr(self.getCacheType().toString())
+    }
 }
-
-
-    open fun getCacheType()
-        //nullable = true from not(false or (false and true)) = true
-: CacheType{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheType
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var POOL_TYPE: String = "PoolType: "
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return POOL_TYPE +this.getCacheType()!!.toString()
-}
-
-
-}
-                
-            
 

@@ -1,135 +1,91 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class OpenGLCapabilities: JObject {
+    fileprivate static let instance: OpenGLCapabilities! = OpenGLCapabilities()
+    public var CUSTOM_GL_SURFACE_VIEW: Bool = false
+    public var VERSION_1_0: String! = nil
+    public var VERSION_1_1: String! = nil
+    public var VERSION_2_0: String! = nil
+    public var VERSION_3_0: String! = nil
+    public var VERSION_3_1: String! = nil
+    public var VERSION_3_2: String! = nil
+    public var VERSION_HIGHER_THAN_EXISTS: String! = nil
+    fileprivate var glVersion: String! = nil
+    public var shaderVersion: Int32 = 0
+    public var glInstanceVersion: String! = nil
+    public var maxTextureSize: Int32 = 0
 
+    private func initFields() {
+    self.CUSTOM_GL_SURFACE_VIEW = true
+    self.VERSION_1_0 = "1.0"
+    self.VERSION_1_1 = "1.1"
+    self.VERSION_2_0 = "2.0"
+    self.VERSION_3_0 = "3.0"
+    self.VERSION_3_1 = "3.1"
+    self.VERSION_3_2 = "3.2"
+    self.VERSION_HIGHER_THAN_EXISTS = "999.999"
+    self.glVersion = StringUtil.getInstance().EMPTY_STRING
+    self.shaderVersion = 0
+    self.glInstanceVersion = StringUtil.getInstance().EMPTY_STRING
+    self.maxTextureSize = 64
+    }
+    
 
+    @discardableResult open class func getInstance() -> OpenGLCapabilities! {
+        return OpenGLCapabilities.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class OpenGLCapabilities
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: OpenGLCapabilities = OpenGLCapabilities()
+    @discardableResult open func isInitialized() -> Bool {
+        return true
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLCapabilities{
+    open func initCapabilities(_ gl: JObject!) {
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLCapabilities.instance
+    @discardableResult open func isGlExtensionDrawTexture() -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open func getGlVersion() -> String! {
+        return self.glVersion
+    }
+    
+
+    @discardableResult open func isVertexBufferObjectSupport() -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open func isTextureSizeValid(_ widthAndHeight: Int32) -> Bool {
+        return true
+    }
 }
-
-
-        }
-            
-    val CUSTOM_GL_SURFACE_VIEW: Boolean = true
-
-    val VERSION_1_0: String = "1.0"
-
-    val VERSION_1_1: String = "1.1"
-
-    val VERSION_2_0: String = "2.0"
-
-    val VERSION_3_0: String = "3.0"
-
-    val VERSION_3_1: String = "3.1"
-
-    val VERSION_3_2: String = "3.2"
-
-    val VERSION_HIGHER_THAN_EXISTS: String = "999.999"
-
-    private var glVersion: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    var shaderVersion: Int = 0
-
-    var glInstanceVersion: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    var maxTextureSize: Int = 64
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun isInitialized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-    open fun initCapabilities(gl: Any)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-}
-
-
-    open fun isGlExtensionDrawTexture()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun getGlVersion()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glVersion
-}
-
-
-    open fun isVertexBufferObjectSupport()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isTextureSizeValid(widthAndHeight: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var widthAndHeight = widthAndHeight
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-}
-                
-            
 

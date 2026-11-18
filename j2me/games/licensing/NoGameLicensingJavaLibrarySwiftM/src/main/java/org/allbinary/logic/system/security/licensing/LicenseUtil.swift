@@ -1,92 +1,51 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.licensing
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.licensing
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.CommandListener
 
+open class LicenseUtil: JObject {
+    fileprivate static let instance: LicenseUtil! = LicenseUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> LicenseUtil! {
+        return LicenseUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.CommandListener
+    open func `init`() {
+    }
+    
 
-open public class LicenseUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LicenseUtil = LicenseUtil()
+    @discardableResult open func isRunning() -> Bool {
+        return false
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LicenseUtil{
+    open func setRunning(_ running: Bool) {
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseUtil.instance
+    @discardableResult open func shouldWait(_ commandListener: CommandListener!) -> Bool {
+        return self.isRunning()
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun isRunning()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun setRunning(running: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var running = running
-}
-
-
-    open fun shouldWait(commandListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var commandListener = commandListener
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRunning()
-}
-
-
-}
-                
-            
 

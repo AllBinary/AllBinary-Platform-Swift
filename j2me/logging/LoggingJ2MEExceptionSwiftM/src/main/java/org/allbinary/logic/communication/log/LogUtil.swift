@@ -30,7 +30,7 @@ open class LogUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> LogUtil! {
+    @discardableResult open class func getInstance() -> LogUtil! {
         return LogUtil.instance
     }
     

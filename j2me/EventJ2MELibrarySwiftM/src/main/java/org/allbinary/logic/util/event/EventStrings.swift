@@ -37,7 +37,7 @@ open class EventStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> EventStrings! {
+    @discardableResult open class func getInstance() -> EventStrings! {
         return EventStrings.instance
     }
 }

@@ -1,104 +1,61 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.GPoint
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.RectangleFactory
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.displayable.CanvasStrings
+// import org.allbinary.graphics.form.item.ABCustomItem
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringUtil
 
+open class PaintableForm: ABCustomForm {
+    fileprivate static var NULL_PAINTABLE_FORM: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var canvasStrings: CanvasStrings! = nil
+    public var rectangle: Rectangle! = nil
+    public var x: Int32 = 0
+    public var y: Int32 = 0
+    public var formType: FormType! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.GPoint
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.RectangleFactory
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.displayable.CanvasStrings
-import org.allbinary.graphics.form.item.ABCustomItem
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringUtil
-
-open public class PaintableForm : ABCustomForm {
-        
-companion object {
-            
-    private var NULL_PAINTABLE_FORM: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullPaintableForm()
-        //nullable = true from not(false or (false and true)) = true
-: PaintableForm{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.canvasStrings = CanvasStrings.getInstance()
+    self.rectangle = RectangleFactory.SINGLETON
+    self.x = 0
+    self.y = 0
+    self.formType = FormTypeFactory.getInstance().NULL_FORM_TYPE
+    }
     
-                        if(PaintableForm.NULL_PAINTABLE_FORM == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    PaintableForm.NULL_PAINTABLE_FORM= PaintableForm(StringUtil.getInstance()!!.EMPTY_STRING, arrayOfNulls(0), BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm.NULL_PAINTABLE_FORM as PaintableForm
-}
-
-
+    @discardableResult open class func getNullPaintableForm() -> PaintableForm! {
+        if (PaintableForm.NULL_PAINTABLE_FORM === NullUtil.getInstance().NULL_OBJECT) {
+            PaintableForm.NULL_PAINTABLE_FORM = PaintableForm(StringUtil.getInstance().EMPTY_STRING, JArray<ABCustomItem?>(0, nil), BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
         }
-            
-    val canvasStrings: CanvasStrings = CanvasStrings.getInstance()!!
+        return (PaintableForm.NULL_PAINTABLE_FORM as! PaintableForm)
+    }
+    
 
-    var rectangle: Rectangle = RectangleFactory.SINGLETON
+    public override init(_ title: String!, _ items: JArray<ABCustomItem?>!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(title, items, backgroundBasicColor, foregroundBasicColor)
+        self.initFields()
+        self.setSelectedIndex(0)
+    }
+    
 
-    var x: Int= 0
+    open func `init`(_ rectangle: Rectangle!, _ formType: FormType!) {
+        self.rectangle = rectangle
+        let point: GPoint! = self.rectangle.getPoint()
+        self.x = point.getX()
+        self.y = point.getY()
+        self.formType = formType
+    }
+    
 
-    var y: Int= 0
-
-    var formType: FormType = FormTypeFactory.getInstance()!!.NULL_FORM_TYPE
-public constructor (title: String, items: Array<ABCustomItem?>, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(title, items, backgroundBasicColor, foregroundBasicColor){
-    //var title = title
-    //var items = items
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.setSelectedIndex(0)
+    @discardableResult open override func getWidth() -> Int32 {
+        return self.rectangle.getWidth()
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun init(rectangle: Rectangle, formType: FormType)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var rectangle = rectangle
-    //var formType = formType
-this.rectangle= rectangle
-
-    var point: GPoint = this.rectangle.getPoint()!!
-
-this.x= point.getX()
-this.y= point.getY()
-this.formType= formType
-}
-
-
-    override fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangle.getWidth()
-}
-
-
-}
-                
-            
 

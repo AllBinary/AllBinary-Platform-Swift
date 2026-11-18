@@ -1,86 +1,54 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.destroy.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat.destroy.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.util.event.AllBinaryEventCircularPool
 
+open class DestroyEventCircularStaticPool: JObject {
+    fileprivate static let instance: DestroyEventCircularStaticPool! = DestroyEventCircularStaticPool()
+    fileprivate var EVENT_POOL: AllBinaryEventCircularPool! = nil
 
+    private func initFields() {
+    self.EVENT_POOL = AllBinaryEventCircularPool(20)
+    }
+    
 
+    @discardableResult open class func getInstance() -> DestroyEventCircularStaticPool! {
+        return DestroyEventCircularStaticPool.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.util.event.AllBinaryEventCircularPool
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class DestroyEventCircularStaticPool
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: DestroyEventCircularStaticPool = DestroyEventCircularStaticPool()
+    open func `init`(_ combatGameCanvas: AllBinaryGameCanvas!) {
+        self.EVENT_POOL.initAllBinaryEventCircularPool(DestroyEventFactory(combatGameCanvas))
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DestroyEventCircularStaticPool{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyEventCircularStaticPool.instance
+    @discardableResult open func getInstanceForLayer(_ layerInterface: AllBinaryLayer!) -> DestroyedEvent! {
+        let destroyedEvent: DestroyedEvent! = (self.EVENT_POOL.getNextInstance() as! DestroyedEvent)
+        destroyedEvent.setLayerInterfaceForCircularStaticPool(layerInterface)
+        return destroyedEvent
+    }
 }
-
-
-        }
-            
-    private var EVENT_POOL: AllBinaryEventCircularPool = AllBinaryEventCircularPool(20)
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun init(combatGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-var combatGameCanvas = combatGameCanvas
-this.EVENT_POOL.initAllBinaryEventCircularPool(DestroyEventFactory(combatGameCanvas))
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getInstanceForLayer(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-: DestroyedEvent{
-var layerInterface = layerInterface
-
-    var destroyedEvent: DestroyedEvent = this.EVENT_POOL.getNextInstance() as DestroyedEvent
-
-destroyedEvent!!.setLayerInterfaceForCircularStaticPool(layerInterface)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return destroyedEvent
-}
-
-
-}
-                
-            
 

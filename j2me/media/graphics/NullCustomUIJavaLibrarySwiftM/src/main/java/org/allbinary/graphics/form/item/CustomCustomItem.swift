@@ -1,51 +1,31 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
 
+open class CustomCustomItem: ABCustomItem, UpdateMyFontInterface {
+    public var updateMyFontProcessor: MyFontProcessor! = nil
+    public var myFontProcessor: MyFontProcessor! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.updateMyFontProcessor = UpdateMyFontProcessor(self)
+    self.myFontProcessor = self.updateMyFontProcessor
+    }
+    
 
+    public override init(_ label: String!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(label, backgroundBasicColor, foregroundBasicColor)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-
-open public class CustomCustomItem : ABCustomItem
-                , UpdateMyFontInterface {
-        
-
-    val updateMyFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    var myFontProcessor: MyFontProcessor = this.updateMyFontProcessor
-protected constructor (label: String, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(label, backgroundBasicColor, foregroundBasicColor){
-var label = label
-var backgroundBasicColor = backgroundBasicColor
-var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    open func updateMeasurement(_ graphics: Graphics!) {
+    }
 }
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-}
-                
-            
 

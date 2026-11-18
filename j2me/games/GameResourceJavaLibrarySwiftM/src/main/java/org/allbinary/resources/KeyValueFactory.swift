@@ -1,82 +1,48 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.resources
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.resources
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABHashtable
 
+open class KeyValueFactory: JObject {
+    fileprivate static let instance: KeyValueFactory! = KeyValueFactory()
+    public var MAP: ABHashtable! = nil
 
+    private func initFields() {
+    self.MAP = StdUtil.getInstance().createHashtable()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABHashtable
-
-open public class KeyValueFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: KeyValueFactory = KeyValueFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: KeyValueFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeyValueFactory.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val MAP: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-
-    open fun get(key: String)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var key = key
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(!this.MAP.containsKey(key as Object))
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return key
 
-                                    }
-                                
+    @discardableResult open class func getInstance() -> KeyValueFactory! {
+        return KeyValueFactory.instance
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.MAP.get(key as Object) as String
+    @discardableResult open func get(_ key: String!) -> String! {
+        if (!self.MAP.containsKey(jBoxString(key))) {
+            return key
+        }
+        return jUnboxString(self.MAP.get(jBoxString(key)))
+    }
 }
-
-
-}
-                
-            
 

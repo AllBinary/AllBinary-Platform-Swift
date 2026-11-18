@@ -25,7 +25,7 @@ open class PrimitiveFloatUtil: JObject {
     }
     
 
-    @discardableResult public static func getArrayInstance() -> JArray<Float>! {
+    @discardableResult open class func getArrayInstance() -> JArray<Float>! {
         return JArray<Float>(0, 0.0)
     }
 }

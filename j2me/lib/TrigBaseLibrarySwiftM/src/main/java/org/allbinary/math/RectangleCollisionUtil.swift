@@ -24,7 +24,7 @@ open class RectangleCollisionUtil: JObject {
     fileprivate static let instance: RectangleCollisionUtil! = RectangleCollisionUtil()
     
 
-    @discardableResult public static func getInstance() -> RectangleCollisionUtil! {
+    @discardableResult open class func getInstance() -> RectangleCollisionUtil! {
         return RectangleCollisionUtil.instance
     }
     

@@ -33,7 +33,7 @@ open class ScaleFactorFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ScaleFactorFactory! {
+    @discardableResult open class func getInstance() -> ScaleFactorFactory! {
         return ScaleFactorFactory.instance
     }
 }

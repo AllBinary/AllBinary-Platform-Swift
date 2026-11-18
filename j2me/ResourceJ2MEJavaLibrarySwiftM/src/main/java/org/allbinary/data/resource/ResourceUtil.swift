@@ -1,291 +1,124 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.data.resource
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.data.resource
+import J2SEForSwiftLibrary
+// import java.io.InputStream
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
 
-
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.InputStream
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
 //J2ME
-open public class ResourceUtil
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: ResourceUtil = ResourceUtil()
+open class ResourceUtil: JObject {
+    fileprivate static var instance: ResourceUtil! = ResourceUtil()
+    public var logUtil: LogUtil! = nil
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ResourceUtil{
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil.instance
-}
+    @discardableResult open class func getInstance() -> ResourceUtil! {
+        return ResourceUtil.instance
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
+    open func setLoadingPaths(_ path: String!, _ ext: String!) {
+        self.logUtil.putF(CommonStrings.getInstance().NOT_IMPLEMENTED, self, "setLoadingPaths")
+    }
+    
+
+    @discardableResult open func getResourceAsStream(_ resource: String!) -> InputStream! {
+        var inputStream: InputStream! = "String".getResourceAsStream(resource)
+        if (inputStream == nil) {
+            inputStream = self.getResourceAsStreamAtStart(resource, 2)
+            if (inputStream == nil) {
+                inputStream = self.getResourceAsStreamAtStart(resource, 1)
+                if (inputStream == nil) {
+                    let stringMaker: StringMaker! = StringMaker()
+                    let index: Int32 = JString.lastIndexOf(resource, UInt16(("/" as Unicode.Scalar).value))
+                    var resourcePath: String! = JString.substring(resource, index &+ 1)
+                    inputStream = "String".getResourceAsStream(resourcePath)
+                    if (inputStream == nil) {
+                        resourcePath = JString.substring(resource, index)
+                        inputStream = "String".getResourceAsStream(resourcePath)
+                        if (inputStream == nil) {
+                            let RES: String! = "res"
+                            resourcePath = stringMaker.append(RES).append(JString.substring(resource, index)).toString()
+                            inputStream = "String".getResourceAsStream(resourcePath)
+                            if (inputStream == nil) {
+                                stringMaker.delete(0, stringMaker.length())
+                                resourcePath = stringMaker.append("/").append(RES).append(JString.substring(resource, index)).toString()
+                                inputStream = "String".getResourceAsStream(resourcePath)
+                                let COLON: String! = CommonSeps.getInstance().COLON
+                                if (inputStream == nil) {
+                                    stringMaker.delete(0, stringMaker.length())
+                                    resourcePath = stringMaker.append(RES).append(COLON).append(JString.substring(resource, index)).toString()
+                                    inputStream = "String".getResourceAsStream(resourcePath)
+                                    if (inputStream == nil) {
+                                        stringMaker.delete(0, stringMaker.length())
+                                        resourcePath = stringMaker.append(RES).append(COLON).append(JString.substring(resource, index &+ 1)).toString()
+                                        inputStream = "String".getResourceAsStream(resourcePath)
+                                        if (inputStream == nil) {
+                                            let RESOURCE_STRING: String! = "resource"
+                                            stringMaker.delete(0, stringMaker.length())
+                                            resourcePath = stringMaker.append(RESOURCE_STRING).append(COLON).append(JString.substring(resource, index)).toString()
+                                            inputStream = "String".getResourceAsStream(resourcePath)
+                                            if (inputStream == nil) {
+                                                stringMaker.delete(0, stringMaker.length())
+                                                resourcePath = stringMaker.append(RESOURCE_STRING).append(COLON).append(JString.substring(resource, index &+ 1)).toString()
+                                                inputStream = "String".getResourceAsStream(resourcePath)
+                                                if (inputStream == nil) {
+                                                    stringMaker.delete(0, stringMaker.length())
+                                                    jThrow(JException("Exception", stringMaker.append("Unable to obtain: ").append(resource).toString()))
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-private constructor ()
-            : super()
-        {
+        return inputStream
+    }
+    
+
+    @discardableResult fileprivate func getResourceAsStreamAtStart(_ resource: String!, _ startIndex: Int32) -> InputStream! {
+        _ = StringMaker()
+        let index: Int32 = JString.indexOf(resource, CommonSeps.getInstance().COLON)
+        let resourcePath: String! = JString.substring(resource, index &+ startIndex)
+        let inputStream: InputStream! = "String".getResourceAsStream(resourcePath)
+        if (inputStream != nil) {
+            return inputStream
+        }
+        return inputStream
+    }
+    
+
+    open func addResource(_ resource: String!, _ value: Int32!) {
+    }
 }
-
-
-    open fun setLoadingPaths(path: String, ext: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var path = path
-var ext = ext
-this.logUtil!!.putF(CommonStrings.getInstance()!!.NOT_IMPLEMENTED, this, "setLoadingPaths")
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getResourceAsStream(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: InputStream{
-var resource = resource
-
-    var inputStream: InputStream = resource.javaClass.getResourceAsStream(resource)!!
-
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    inputStream= this.getResourceAsStreamAtStart(resource, 2)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    inputStream= this.getResourceAsStreamAtStart(resource, 1)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var stringMaker: StringMaker = StringMaker()
-
-
-    var index: Int = resource.lastIndexOf('/')
-
-
-    var resourcePath: String = resource.substring(index +1)!!
-
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    resourcePath= resource.substring(index)!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var RES: String = "res"
-
-resourcePath= stringMaker!!.append(RES)!!.append(resource.substring(index))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-resourcePath= stringMaker!!.append("/")!!.append(RES)!!.append(resource.substring(index))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    var COLON: String = CommonSeps.getInstance()!!.COLON
-
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-resourcePath= stringMaker!!.append(RES)!!.append(COLON)!!.append(resource.substring(index))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-resourcePath= stringMaker!!.append(RES)!!.append(COLON)!!.append(resource.substring(index +1))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var RESOURCE_STRING: String = "resource"
-
-stringMaker!!.delete(0, stringMaker!!.length())
-resourcePath= stringMaker!!.append(RESOURCE_STRING)!!.append(COLON)!!.append(resource.substring(index))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-resourcePath= stringMaker!!.append(RESOURCE_STRING)!!.append(COLON)!!.append(resource.substring(index +1))!!.toString()!!
-inputStream= resource.javaClass.getResourceAsStream(resourcePath)!!
-
-    
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-
-
-
-                            throw Exception(stringMaker!!.append("Unable to obtain: ")!!.append(resource)!!.toString())
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputStream
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getResourceAsStreamAtStart(resource: String, startIndex: Int)
-        //nullable = true from not(false or (false and false)) = true
-: InputStream{
-var resource = resource
-var startIndex = startIndex
-
-    var stringMaker: StringMaker = StringMaker()
-
-
-    var index: Int = resource.indexOf(CommonSeps.getInstance()!!.COLON)
-
-
-    var resourcePath: String = resource.substring(index +startIndex)!!
-
-
-    var inputStream: InputStream = resource.javaClass.getResourceAsStream(resourcePath)!!
-
-
-    
-                        if(inputStream != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputStream
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputStream
-}
-
-
-    open fun addResource(resource: String, value: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resource = resource
-    //var value = value
-}
-
-
-}
-                
-            
 

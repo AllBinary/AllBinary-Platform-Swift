@@ -1,43 +1,18 @@
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
 
+open class NullIndexedAnimation: IndexedAnimation {
+    
 
+    public override init(_ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class NullIndexedAnimation : IndexedAnimation {
-        
-public constructor (animationBehavior: AnimationBehavior)                        
-
-                            : super(animationBehavior){
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return 0
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

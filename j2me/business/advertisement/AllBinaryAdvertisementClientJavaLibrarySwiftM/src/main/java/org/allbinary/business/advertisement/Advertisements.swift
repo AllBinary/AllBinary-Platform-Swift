@@ -1,219 +1,121 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.advertisement
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.business.advertisement
+import J2SEForSwiftLibrary
+// import org.allbinary.game.rand.MyRandomFactory
+// import org.allbinary.logic.system.security.licensing.LockedUtil
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class Advertisements: JObject {
+    fileprivate var bannerList: BasicArrayList! = nil
+    fileprivate var pageList: BasicArrayList! = nil
+    fileprivate var myRandomFactory: MyRandomFactory! = nil
 
+    private func initFields() {
+    self.bannerList = BasicArrayListD()
+    self.pageList = BasicArrayListD()
+    self.myRandomFactory = MyRandomFactory.getInstance()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.rand.MyRandomFactory
-import org.allbinary.logic.system.security.licensing.LockedUtil
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class Advertisements
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val bannerList: BasicArrayList = BasicArrayListD()
-
-    private val pageList: BasicArrayList = BasicArrayListD()
-
-    open fun addPage(advertisementProcessorInterface: AdvertisementProcessorInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var advertisementProcessorInterface = advertisementProcessorInterface
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(!this.pageList!!.contains(advertisementProcessorInterface))
-                        
-                                    {
-                                    this.pageList!!.add(advertisementProcessorInterface)
 
-                                    }
-                                
-}
-
-
-    open fun startRandomPage()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var size: Int = this.pageList!!.size()
-
-
+    open func addPage(_ advertisementProcessorInterface: AdvertisementProcessorInterface!) {
+        if (!self.pageList.contains(advertisementProcessorInterface)) {
+            self.pageList.add(advertisementProcessorInterface)
+        }
+    }
     
-                        if(size > 0)
-                        
-                                    {
-                                    
-    var random: Int = this.myRandomFactory!!.getAbsoluteNextInt(size)
 
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!!.objectArray[random]!! as AdvertisementProcessorInterface
-
-advertisementProcessorInterface!!.start()
-
-                                    }
-                                
-}
-
-
-    private val myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!!
-
-    open fun processRandomPage()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open func startRandomPage() {
+        let size: Int32 = self.pageList.size()
+        if (size > 0) {
+            let random: Int32 = self.myRandomFactory.getAbsoluteNextInt(size)
+            let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.pageList.objectArray[random] as! AdvertisementProcessorInterface)
+            advertisementProcessorInterface.start()
+        }
+    }
     
-                        if(LockedUtil.getInstance()!!.isLocked())
-                        
-                                    {
-                                    
-    var size: Int = this.pageList!!.size()
 
-
+    open func processRandomPage() {
+        if (LockedUtil.getInstance().isLocked()) {
+            let size: Int32 = self.pageList.size()
+            if (size > 0) {
+                let random: Int32 = self.myRandomFactory.getAbsoluteNextInt(size)
+                let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.pageList.objectArray[random] as! AdvertisementProcessorInterface)
+                advertisementProcessorInterface.process()
+            }
+        }
+    }
     
-                        if(size > 0)
-                        
-                                    {
-                                    
-    var random: Int = this.myRandomFactory!!.getAbsoluteNextInt(size)
 
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!!.objectArray[random]!! as AdvertisementProcessorInterface
-
-advertisementProcessorInterface!!.process()
-
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-    open fun stopAllPage()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-
-
-
-                        for (index in this.pageList!!.size()!!  - 1  downTo 0)
-
-        {
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!!.objectArray[index]!! as AdvertisementProcessorInterface
-
-advertisementProcessorInterface!!.stop()
-}
-
-}
-
-
-    open fun addBanner(advertisementProcessorInterface: AdvertisementProcessorInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var advertisementProcessorInterface = advertisementProcessorInterface
-
+    open func stopAllPage() {
+        do {
+            var index: Int32 = self.pageList.size()
+            while (jPreDecrement(&index) >= 0) {
+            let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.pageList.objectArray[index] as! AdvertisementProcessorInterface)
+            advertisementProcessorInterface.stop()
+            }
+        }
+    }
     
-                        if(!this.bannerList!!.contains(advertisementProcessorInterface))
-                        
-                                    {
-                                    this.bannerList!!.add(advertisementProcessorInterface)
 
-                                    }
-                                
+    open func addBanner(_ advertisementProcessorInterface: AdvertisementProcessorInterface!) {
+        if (!self.bannerList.contains(advertisementProcessorInterface)) {
+            self.bannerList.add(advertisementProcessorInterface)
+        }
+    }
+    
+
+    open func startAll() {
+        do {
+            var index: Int32 = self.bannerList.size()
+            while (jPreDecrement(&index) >= 0) {
+            let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.bannerList.objectArray[index] as! AdvertisementProcessorInterface)
+            advertisementProcessorInterface.start()
+            }
+        }
+    }
+    
+
+    open func stopAllBanner() {
+        do {
+            var index: Int32 = self.bannerList.size()
+            while (jPreDecrement(&index) >= 0) {
+            let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.bannerList.objectArray[index] as! AdvertisementProcessorInterface)
+            advertisementProcessorInterface.stop()
+            }
+        }
+    }
+    
+
+    @discardableResult open func getBanner(_ index: Int32) -> AdvertisementProcessorInterface! {
+        let advertisementProcessorInterface: AdvertisementProcessorInterface! = (self.bannerList.objectArray[index] as! AdvertisementProcessorInterface)
+        return advertisementProcessorInterface
+    }
+    
+
+    open func stopAll() {
+        self.stopAllBanner()
+        self.stopAllPage()
+    }
 }
-
-
-    open fun startAll()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-
-
-
-                        for (index in this.bannerList!!.size()!!  - 1  downTo 0)
-
-        {
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!!.objectArray[index]!! as AdvertisementProcessorInterface
-
-advertisementProcessorInterface!!.start()
-}
-
-}
-
-
-    open fun stopAllBanner()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-
-
-
-                        for (index in this.bannerList!!.size()!!  - 1  downTo 0)
-
-        {
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!!.objectArray[index]!! as AdvertisementProcessorInterface
-
-advertisementProcessorInterface!!.stop()
-}
-
-}
-
-
-    open fun getBanner(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: AdvertisementProcessorInterface{
-var index = index
-
-    var advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!!.objectArray[index]!! as AdvertisementProcessorInterface
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return advertisementProcessorInterface
-}
-
-
-    open fun stopAll()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.stopAllBanner()
-this.stopAllPage()
-}
-
-
-}
-                
-            
 

@@ -1,374 +1,192 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.NullImage
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.util.CircularIndexUtil
 
+open class VectorAnimation: IndexedAnimation, VectorAnimationInterface {
+    fileprivate var currentPoints: JArray<JArray<JArray<Int32>?>?>! = nil
+    fileprivate var circularIndexUtil: CircularIndexUtil! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.currentPoints = NullUtil.getInstance().NULL_INT_ARRAY_ARRAY_ARRAY
+    self.circularIndexUtil = CircularIndexUtil.createInstance(0)
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.NullImage
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.util.CircularIndexUtil
-
-open public class VectorAnimation : IndexedAnimation
-                , VectorAnimationInterface {
-        
-companion object {
-            
-    open fun createVectorAnimation(currentPoints2: Array<IntArray?>, basicColor: BasicColor, animationBehavior: AnimationBehavior)
-        //nullable = true from not(false or (false and false)) = true
-: VectorAnimation{
-    //var currentPoints2 = currentPoints2
-    //var basicColor = basicColor
-    //var animationBehavior = animationBehavior
-
-    var currentPoints: Array<Array<IntArray?>?> = Array(1) { Array(currentPoints2!!.size) { IntArray(2) } }
-
-
-    var size: Int = currentPoints2!!.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-currentPoints[0]!![index]!![0]= currentPoints2[index]!![0]!!
-currentPoints[0]!![index]!![1]= currentPoints2[index]!![1]!!
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorAnimation(currentPoints, basicColor, animationBehavior)
-}
-
-
+    @discardableResult open class func createVectorAnimation(_ currentPoints2: JArray<JArray<Int32>?>!, _ basicColor: BasicColor!, _ animationBehavior: AnimationBehavior!) -> VectorAnimation! {
+        let currentPoints: JArray<JArray<JArray<Int32>?>?>! = JArray<JArray<JArray<Int32>?>?>(1, factory: { JArray<JArray<Int32>?>(currentPoints2.length, factory: { JArray<Int32>(2, 0) }) })
+        let size: Int32 = currentPoints2.length
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            currentPoints[0]![index]![0] = currentPoints2[index]![0]
+            currentPoints[0]![index]![1] = currentPoints2[index]![1]
+            }
         }
-            
-    private var currentPoints: Array<Array<IntArray?>?> = NullUtil.getInstance()!!.NULL_INT_ARRAY_ARRAY_ARRAY
-
-    private var circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(0)!!
-public constructor (currentPoints: Array<Array<IntArray?>?>, basicColor: BasicColor, animationBehavior: AnimationBehavior)                        
-
-                            : super(animationBehavior){
-    //var currentPoints = currentPoints
-    //var basicColor = basicColor
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.setPoints(currentPoints)
-this.setBasicColorP(basicColor)
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-
-    var changed: Boolean = false
-
-
+        return VectorAnimation(currentPoints, basicColor, animationBehavior)
+    }
     
-                        if(this.getBasicColorP() == 
-                                    null
-                                 || this.getBasicColorP()!!.toInt() != basicColor!!.toInt())
-                        
-                                    {
-                                    changed= true
 
-                                    }
-                                
-super.setBasicColorP(basicColor)
-
+    public init(_ currentPoints: JArray<JArray<JArray<Int32>?>?>!, _ basicColor: BasicColor!, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.setPoints(currentPoints)
+        self.setBasicColorP(basicColor)
+    }
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
 
-                                    }
-                                
-}
-
-
-    override fun changeBasicColor(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-
-    var changed: Boolean = false
-
-
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        var changed: Bool = false
+        if (self.getBasicColorP() == nil || self.getBasicColorP().intValue() != basicColor.intValue()) {
+            changed = true
+        }
+        super.setBasicColorP(basicColor)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
     
-                        if(this.getChangeBasicColor() == 
-                                    null
-                                 || this.getChangeBasicColor()!!.toInt() != basicColor!!.toInt())
-                        
-                                    {
-                                    changed= true
 
-                                    }
-                                
-super.changeBasicColor(basicColor)
-
+    open override func changeBasicColor(_ basicColor: BasicColor!) {
+        var changed: Bool = false
+        if (self.getChangeBasicColor() == nil || self.getChangeBasicColor().intValue() != basicColor.intValue()) {
+            changed = true
+        }
+        super.changeBasicColor(basicColor)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
 
-                                    }
-                                
-}
-
-
-    override fun setAlpha(alpha: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var alpha = alpha
-
-    var changed: Boolean = false
-
-
+    open override func setAlpha(_ alpha: Int32) {
+        var changed: Bool = false
+        if (self.alphaP != alpha) {
+            changed = true
+        }
+        super.setAlpha(alpha)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
     
-                        if(this.alphaP != alpha)
-                        
-                                    {
-                                    changed= true
 
-                                    }
-                                
-super.setAlpha(alpha)
-
+    open override func setScale(_ scaleX: Float, _ scaleY: Float) {
+    }
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
 
-                                    }
-                                
-}
-
-
-    override fun setScale(scaleX: Float, scaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleX = scaleX
-    //var scaleY = scaleY
-}
-
-
-    override fun setMaxScale(maxScaleX: Float, maxScaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var maxScaleX = maxScaleX
-    //var maxScaleY = maxScaleY
-}
-
-
-    open fun updateModifiers()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPoints!!.size
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.next()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.previous()
-}
-
-
-    open fun paintVectors(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-
-        try {
-            
-    var nextPointX: Int = 0
-
-
-    var nextPointY: Int = 0
-
-
-    var nextPoint: IntArray
-
-
-    var point: IntArray
-
-
-    var currentPointsFrame: Array<IntArray?> = this.currentPoints[this.circularIndexUtil!!.getIndex()]!!
-
-
-    var size: Int = currentPointsFrame!!.size
-                
-
-
-    var index: Int = size -2
-
-
-        while(--index >= 0)
-        {
-nextPoint= currentPointsFrame[index]!!
-point= currentPointsFrame[index +1]!!
-nextPointX= nextPoint[0]!!
-nextPointY= nextPoint[1]!!
-
+    open override func setMaxScale(_ maxScaleX: Float, _ maxScaleY: Float) {
+    }
     
-                        if(nextPointX != 1000)
-                        
-                                    {
-                                    graphics.drawLine(point[0] +x, point[1] +y, nextPointX +x, nextPointY +y)
 
-                                    }
-                                
-                        else {
-                            index--
+    fileprivate func updateModifiers() {
+    }
+    
 
-                        }
-                            
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
+
+    @discardableResult open override func getSize() -> Int32 {
+        return self.currentPoints.length
+    }
+    
+
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
+
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
+
+    open override func nextFrame() {
+        self.circularIndexUtil.next()
+    }
+    
+
+    open override func previousFrame() {
+        self.circularIndexUtil.previous()
+    }
+    
+
+    open func paintVectors(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        do {
+            var nextPointX: Int32 = 0
+            var nextPointY: Int32 = 0
+            var nextPoint: JArray<Int32>! = nil
+            var point: JArray<Int32>! = nil
+            let currentPointsFrame: JArray<JArray<Int32>?>! = self.currentPoints[self.circularIndexUtil.getIndex()]
+            let size: Int32 = currentPointsFrame.length
+            var index: Int32 = size &- 2
+            while (jPreDecrement(&index) >= 0) {
+                nextPoint = currentPointsFrame[index]
+                point = currentPointsFrame[index &+ 1]
+                nextPointX = nextPoint[0]
+                nextPointY = nextPoint[1]
+                if (nextPointX != 1000) {
+                    graphics.drawLine(point[0] &+ x, point[1] &+ y, nextPointX &+ x, nextPointY &+ y)
+                } else {
+                    index &-= 1
+                }
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.basicSetColorUtil.setBasicColorP(graphics, self.basicColor)
+        self.paintVectors(graphics, x, y)
+    }
+    
+
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.circularIndexUtil.getIndex()
+    }
+    
+
+    open override func setFrame(_ index: Int32) {
+        self.circularIndexUtil.setIndex(index)
+    }
+    
+
+    @discardableResult open func getPoints(_ frame: Int32) -> JArray<JArray<Int32>?>! {
+        return self.currentPoints[frame]
+    }
+    
+
+    open func setPoints(_ currentPoints: JArray<JArray<JArray<Int32>?>?>!) {
+        self.currentPoints = currentPoints
+        self.circularIndexUtil = CircularIndexUtil.createInstance(currentPoints.length)
+    }
+    
+
+    @discardableResult open override func getBasicColorP() -> BasicColor! {
+        return super.getBasicColorP()
+    }
 }
-
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "paintVectors", e)
-}
-
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-this.basicSetColorUtil!!.setBasicColorP(graphics, this.basicColor)
-this.paintVectors(graphics, x, y)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!!.getIndex()
-}
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-this.circularIndexUtil!!.setIndex(index)
-}
-
-
-    override fun getPoints(frame: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Array<IntArray?>{
-var frame = frame
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPoints[frame]!!
-}
-
-
-    open fun setPoints(currentPoints: Array<Array<IntArray?>?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-var currentPoints = currentPoints
-this.currentPoints= currentPoints
-this.circularIndexUtil= CircularIndexUtil.createInstance(currentPoints!!.size)!!
-}
-
-
-    override fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getBasicColorP()
-}
-
-
-}
-                
-            
 

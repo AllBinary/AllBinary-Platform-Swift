@@ -1,128 +1,86 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
 
+open class Line: JObject {
+    fileprivate var p1: GPoint! = nil
+    fileprivate var p2: GPoint! = nil
+    fileprivate var deltaX: Double = 0.0
+    fileprivate var deltaY: Double = 0.0
 
+    private func initFields() {
+    
+    
+    self.deltaX = 0.0
+    self.deltaY = 0.0
+    }
+    
 
+    public init(_ p1: GPoint!, _ p2: GPoint!) {
+        super.init()
+        self.initFields()
+        self.p1 = PointFactory.getInstance().ZERO_ZERO
+        self.p2 = self.p1
+        self.setP1(p1)
+        self.setP2(p2)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getGradient() -> Double {
+        return self.getDeltaY() / self.getDeltaX()
+    }
+    
 
-open public class Line
-            : Object
-         {
-        
+    fileprivate func update() {
+        self.deltaX = Double(self.getP1().getX()) - Double(self.getP2().getX())
+        self.deltaY = Double(self.getP1().getY()) - Double(self.getP2().getY())
+    }
+    
 
-    private var p1: GPoint
+    @discardableResult open func getDeltaX() -> Double {
+        return self.deltaX
+    }
+    
 
-    private var p2: GPoint
+    @discardableResult open func getDeltaY() -> Double {
+        return self.deltaY
+    }
+    
 
-    private var deltaX: Double= 0.0
+    @discardableResult open func getP1() -> GPoint! {
+        return self.p1
+    }
+    
 
-    private var deltaY: Double= 0.0
-public constructor (p1: GPoint, p2: GPoint)
-            : super()
-        {
-var p1 = p1
-var p2 = p2
-this.p1= PointFactory.getInstance()!!.ZERO_ZERO
-this.p2= this.p1
-this.setP1(p1)
-this.setP2(p2)
+    @discardableResult open func getP2() -> GPoint! {
+        return self.p2
+    }
+    
+
+    open func setP1(_ p1: GPoint!) {
+        self.p1 = p1
+        self.update()
+    }
+    
+
+    open func setP2(_ p2: GPoint!) {
+        self.p2 = p2
+        self.update()
+    }
 }
-
-
-    open fun getGradient()
-        //nullable = true from not(false or (false and true)) = true
-: Double{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getDeltaY() /this.getDeltaX()
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.deltaX= this.getP1()!!.getX().toDouble() -this.getP2()!!.getX()
-this.deltaY= this.getP1()!!.getY().toDouble() -this.getP2()!!.getY()
-}
-
-
-    open fun getDeltaX()
-        //nullable = true from not(false or (false and true)) = true
-: Double{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaX
-}
-
-
-    open fun getDeltaY()
-        //nullable = true from not(false or (false and true)) = true
-: Double{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaY
-}
-
-
-    open fun getP1()
-        //nullable = true from not(false or (false and true)) = true
-: GPoint{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.p1
-}
-
-
-    open fun getP2()
-        //nullable = true from not(false or (false and true)) = true
-: GPoint{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.p2
-}
-
-
-    open fun setP1(p1: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-{
-var p1 = p1
-this.p1= p1
-this.update()
-}
-
-
-    open fun setP2(p2: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-{
-var p2 = p2
-this.p2= p2
-this.update()
-}
-
-
-}
-                
-            
 

@@ -64,7 +64,7 @@ open class OperatingSystems: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> OperatingSystems! {
+    @discardableResult open class func getInstance() -> OperatingSystems! {
         return OperatingSystems.instance
     }
 }

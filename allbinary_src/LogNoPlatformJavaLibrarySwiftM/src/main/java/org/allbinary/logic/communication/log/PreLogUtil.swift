@@ -27,17 +27,17 @@ open class PreLogUtil: JObject {
     }
     
 
-    public static func put(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) {
+    open class func put(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) {
         PreLogUtil.putOE(specialMessage, anyType, functionName, NullUtil.getInstance().NULL_OBJECT)
     }
     
 
-    public static func putOE(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) {
+    open class func putOE(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) {
         jThrow(JException("RuntimeException", ""))
     }
     
 
-    public static func putSE(_ specialMessage: String!, _ className: String!, _ functionName: String!, _ exception: JObject!) {
+    open class func putSE(_ specialMessage: String!, _ className: String!, _ functionName: String!, _ exception: JObject!) {
         jThrow(JException("RuntimeException", ""))
     }
 }

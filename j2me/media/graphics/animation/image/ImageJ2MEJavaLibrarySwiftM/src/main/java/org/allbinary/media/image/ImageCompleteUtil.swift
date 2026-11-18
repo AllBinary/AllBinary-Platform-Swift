@@ -1,68 +1,37 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
 
+open class ImageCompleteUtil: JObject {
+    fileprivate static let instance: ImageCompleteUtil! = ImageCompleteUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> ImageCompleteUtil! {
+        return ImageCompleteUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-
-open public class ImageCompleteUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ImageCompleteUtil = ImageCompleteUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ImageCompleteUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil.instance
+    open func waitForImage(_ image: Image!, _ name: String!) {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    open fun waitForImage(image: Image, name: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var image = image
-var name = name
-}
-
-
-}
-                
-            
 

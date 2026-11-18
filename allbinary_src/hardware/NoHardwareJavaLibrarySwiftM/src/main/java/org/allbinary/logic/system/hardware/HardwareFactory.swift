@@ -27,7 +27,7 @@ open class HardwareFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> HardwareFactory! {
+    @discardableResult open class func getInstance() -> HardwareFactory! {
         return HardwareFactory.instance
     }
     

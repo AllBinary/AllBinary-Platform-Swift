@@ -1,95 +1,62 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game
+import J2SEForSwiftLibrary
+// import org.allbinary.time.TimeDelayHelper
 
+open class Intermission: JObject, IntermissionInterface {
+    fileprivate var enabled: Bool = false
+    fileprivate var timeElapsedHelper: TimeDelayHelper! = nil
+    fileprivate var intermissionEnableListener: IntermissionEnableListenerInterface! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.time.TimeDelayHelper
-
-open public class Intermission
-            : Object
-        
-                , IntermissionInterface {
-        
-
-    private var enabled: Boolean= false
-
-    private val timeElapsedHelper: TimeDelayHelper = TimeDelayHelper(0)
-
-    private var intermissionEnableListener: IntermissionEnableListenerInterface = NullIntermissionEnableListener.getInstance()!!
-public constructor ()
-            : super()
-        {
-}
-
-
-    override fun setListener(enableListener: IntermissionEnableListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var enableListener = enableListener
-this.intermissionEnableListener= enableListener
-}
-
-
-    override fun getTimeDelayHelper()
-        //nullable = true from not(false or (false and true)) = true
-: TimeDelayHelper{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeElapsedHelper
-}
-
-
-    override fun setEnabled(enabled: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var enabled = enabled
-this.enabled= enabled
-
+    private func initFields() {
+    self.enabled = false
+    self.timeElapsedHelper = TimeDelayHelper(0)
+    self.intermissionEnableListener = NullIntermissionEnableListener.getInstance()
+    }
     
-                        if(this.isEnabled())
-                        
-                                    {
-                                    this.getTimeDelayHelper()!!.setStartTimeTNT()
 
-                                    }
-                                
-this.intermissionEnableListener!!.notifyIntermission(enabled)
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func setListener(_ enableListener: IntermissionEnableListenerInterface!) {
+        self.intermissionEnableListener = enableListener
+    }
+    
+
+    @discardableResult open func getTimeDelayHelper() -> TimeDelayHelper! {
+        return self.timeElapsedHelper
+    }
+    
+
+    open func setEnabled(_ enabled: Bool) {
+        self.enabled = enabled
+        if (self.isEnabled()) {
+            self.getTimeDelayHelper().setStartTimeTNT()
+        }
+        self.intermissionEnableListener.notifyIntermission(enabled)
+    }
+    
+
+    @discardableResult open func isEnabled() -> Bool {
+        return self.enabled
+    }
 }
-
-
-    override fun isEnabled()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.enabled
-}
-
-
-}
-                
-            
 

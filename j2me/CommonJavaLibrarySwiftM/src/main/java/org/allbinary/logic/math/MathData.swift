@@ -38,7 +38,7 @@ open class MathData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> MathData! {
+    @discardableResult open class func getInstance() -> MathData! {
         return MathData.instance
     }
     

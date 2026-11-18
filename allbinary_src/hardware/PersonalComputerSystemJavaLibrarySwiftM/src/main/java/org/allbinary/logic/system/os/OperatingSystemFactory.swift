@@ -43,7 +43,7 @@ open class OperatingSystemFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> OperatingSystemFactory! {
+    @discardableResult open class func getInstance() -> OperatingSystemFactory! {
         return OperatingSystemFactory.instance
     }
     

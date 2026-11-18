@@ -1,168 +1,85 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item.validation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item.validation
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.form.item.ABTextFieldItem
+// import org.allbinary.logic.control.validate.ValidatorBase
+// import org.allbinary.logic.java.bool.BooleanFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class TextFieldItemValidator: ValidatorBase {
+    fileprivate var textFieldItem: ABTextFieldItem! = nil
+    fileprivate var min: Int32 = 0
+    fileprivate var max: Int32 = 0
+    fileprivate var allowOnEmpty: Bool = false
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    }
+    
 
+    public init(_ textFieldItem: ABTextFieldItem!, _ min: Int32, _ max: Int32, _ allowOnEmpty: Bool) {
+        super.init()
+        self.initFields()
+        self.textFieldItem = textFieldItem
+        self.min = min
+        self.max = max
+        self.allowOnEmpty = allowOnEmpty
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.form.item.ABTextFieldItem
-import org.allbinary.logic.control.validate.ValidatorBase
-import org.allbinary.logic.java.bool.BooleanFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    @discardableResult open override func isValid() -> Bool! {
+        let booleanFactory: BooleanFactory! = BooleanFactory.getInstance()
+        var result: Bool! = booleanFactory.TRUE
+        let string: String! = self.textFieldItem.getString()
+        let textLength: Int32 = JString.length(string)
+        if ((textLength == 0 && self.allowOnEmpty) || textLength > self.min && textLength < self.max) {
+        } else {
+            if (textLength < self.min) {
+                result = booleanFactory.FALSE
+            } else if (textLength > self.max) {
+                result = booleanFactory.FALSE
+            }
+        }
+        return result
+    }
+    
 
-open public class TextFieldItemValidator : ValidatorBase {
-        
-
-    private val textFieldItem: ABTextFieldItem
-
-    private var min: Int
-
-    private var max: Int
-
-    private var allowOnEmpty: Boolean
-public constructor (textFieldItem: ABTextFieldItem, min: Int, max: Int, allowOnEmpty: Boolean){
-var textFieldItem = textFieldItem
-var min = min
-var max = max
-var allowOnEmpty = allowOnEmpty
-this.textFieldItem= textFieldItem
-this.min= min
-this.max= max
-this.allowOnEmpty= allowOnEmpty
+    @discardableResult open override func toList() -> BasicArrayList! {
+        let list: BasicArrayList! = BasicArrayListD()
+        let string: String! = self.textFieldItem.getString()
+        let textLength: Int32 = JString.length(string)
+        if (textLength > self.min && textLength < self.max) {
+        } else {
+            let label: String! = self.textFieldItem.getLabel()
+            let name: String! = JString.substring(label, 0, JString.length(label) &- 2)
+            if (textLength < self.min) {
+                list.add(jBoxString(StringMaker().append(name).append(" is to short").toString()))
+            } else if (textLength > self.max) {
+                list.add(jBoxString(StringMaker().append(name).append(" is to long").toString()))
+            }
+        }
+        return list
+    }
 }
-
-
-    override fun isValid()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-    var booleanFactory: BooleanFactory = BooleanFactory.getInstance()!!
-
-
-    var result: Boolean = booleanFactory!!.TRUE
-
-
-    var string: String = this.textFieldItem!!.getString()!!
-
-
-    var textLength: Int = string.length
-
-
-    
-                        if((textLength == 0 && this.allowOnEmpty) || textLength > this.min && textLength < this.max)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
-    
-                        if(textLength < this.min)
-                        
-                                    {
-                                    result= booleanFactory!!.FALSE
-
-                                    }
-                                
-                             else 
-    
-                        if(textLength > this.max)
-                        
-                                    {
-                                    result= booleanFactory!!.FALSE
-
-                                    }
-                                
-
-                        }
-                            
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return result
-}
-
-
-    override fun toList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-    var list: BasicArrayList = BasicArrayListD()
-
-
-    var string: String = this.textFieldItem!!.getString()!!
-
-
-    var textLength: Int = string.length
-
-
-    
-                        if(textLength > this.min && textLength < this.max)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
-    var label: String = this.textFieldItem!!.getLabel()!!
-
-
-    var name: String = label.substring(0, label.length -2)!!
-
-
-    
-                        if(textLength < this.min)
-                        
-                                    {
-                                    list.add(StringMaker().
-                            append(name)!!.append(" is to short")!!.toString())
-
-                                    }
-                                
-                             else 
-    
-                        if(textLength > this.max)
-                        
-                                    {
-                                    list.add(StringMaker().
-                            append(name)!!.append(" is to long")!!.toString())
-
-                                    }
-                                
-
-                        }
-                            
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return list
-}
-
-
-}
-                
-            
 

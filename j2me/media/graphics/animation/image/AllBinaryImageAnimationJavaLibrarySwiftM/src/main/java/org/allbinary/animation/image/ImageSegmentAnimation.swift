@@ -1,204 +1,133 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.util.CircularIndexUtil
 
+open class ImageSegmentAnimation: ImageAnimation {
+    fileprivate var startX: Int32 = 0
+    fileprivate var startY: Int32 = 0
+    fileprivate var drawWidth: Int32 = 0
+    fileprivate var drawHeight: Int32 = 0
+    fileprivate var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var sequenceArray: JArray<Int32>! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    
+    
+    }
+    
 
+    public init(_ image: Image!, _ sequenceArray: JArray<Int32>!, _ animationBehavior: AnimationBehavior!) {
+        super.init(image, animationBehavior)
+        self.initFields()
+        self.startX = 0
+        self.startY = 0
+        self.drawWidth = self.getImage().getWidth()
+        self.drawHeight = self.getImage().getHeight()
+        self.circularIndexUtil = CircularIndexUtil.createInstance(self.drawHeight)
+        self.sequenceArray = sequenceArray
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.util.CircularIndexUtil
+    open override func nextFrame() {
+        self.circularIndexUtil.next()
+    }
+    
 
-open public class ImageSegmentAnimation : ImageAnimation {
-        
+    open override func previousFrame() {
+        self.circularIndexUtil.previous()
+    }
+    
 
-    private var startX: Int
+    open override func setFrame(_ index: Int32) {
+        self.circularIndexUtil.setIndex(index)
+    }
+    
 
-    private var startY: Int
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.circularIndexUtil.getIndex()
+    }
+    
 
-    private var drawWidth: Int
+    @discardableResult open override func getSize() -> Int32 {
+        return self.circularIndexUtil.getSize()
+    }
+    
 
-    private var drawHeight: Int
+    open override func setSequence(_ sequenceArray: JArray<Int32>!) {
+        self.sequenceArray = sequenceArray
+    }
+    
 
-    private var circularIndexUtil: CircularIndexUtil
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return self.sequenceArray
+    }
+    
 
-    private var sequenceArray: IntArray
-protected constructor (image: Image, sequenceArray: IntArray, animationBehavior: AnimationBehavior)                        
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+    }
+    
 
-                            : super(image, animationBehavior){
-    //var image = image
-    //var sequenceArray = sequenceArray
-    //var animationBehavior = animationBehavior
+    @discardableResult open func getStartX() -> Int32 {
+        return self.startX
+    }
+    
 
+    open func setStartX(_ startX: Int32) {
+        self.startX = startX
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.startX= 0
-this.startY= 0
-this.drawWidth= this.getImage()!!.getWidth()
-this.drawHeight= this.getImage()!!.getHeight()
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.drawHeight)!!
-this.sequenceArray= sequenceArray
+    @discardableResult open func getStartY() -> Int32 {
+        return self.startY
+    }
+    
+
+    open func setStartY(_ startY: Int32) {
+        self.startY = startY
+    }
+    
+
+    @discardableResult open func getDrawWidth() -> Int32 {
+        return self.drawWidth
+    }
+    
+
+    open func setDrawWidth(_ drawWidth: Int32) {
+        self.drawWidth = drawWidth
+    }
+    
+
+    @discardableResult open func getDrawHeight() -> Int32 {
+        return self.drawHeight
+    }
+    
+
+    open func setDrawHeight(_ drawHeight: Int32) {
+        self.drawHeight = drawHeight
+    }
 }
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.next()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.previous()
-}
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-this.circularIndexUtil!!.setIndex(index)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!!.getIndex()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!!.getSize()
-}
-
-
-    override fun setSequence(sequenceArray: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sequenceArray = sequenceArray
-this.sequenceArray= sequenceArray
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sequenceArray
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-}
-
-
-    open fun getStartX()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startX
-}
-
-
-    open fun setStartX(startX: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var startX = startX
-this.startX= startX
-}
-
-
-    open fun getStartY()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startY
-}
-
-
-    open fun setStartY(startY: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var startY = startY
-this.startY= startY
-}
-
-
-    open fun getDrawWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drawWidth
-}
-
-
-    open fun setDrawWidth(drawWidth: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var drawWidth = drawWidth
-this.drawWidth= drawWidth
-}
-
-
-    open fun getDrawHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drawHeight
-}
-
-
-    open fun setDrawHeight(drawHeight: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var drawHeight = drawHeight
-this.drawHeight= drawHeight
-}
-
-
-}
-                
-            
 

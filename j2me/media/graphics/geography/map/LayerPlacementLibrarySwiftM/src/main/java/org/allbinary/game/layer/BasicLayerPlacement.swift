@@ -1,90 +1,60 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer
+import J2SEForSwiftLibrary
 
+open class BasicLayerPlacement: JObject {
+    fileprivate var layerType: LayerPlacementType! = nil
+    fileprivate var width: Int32 = 0
+    fileprivate var height: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    }
+    
 
+    public init(_ layerType: LayerPlacementType!, _ width: Int32, _ height: Int32) {
+        super.init()
+        self.initFields()
+        self.layerType = layerType
+        self.width = width
+        self.height = height
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getWidth() -> Int32 {
+        return self.width
+    }
+    
 
-open public class BasicLayerPlacement
-            : Object
-         {
-        
+    @discardableResult open func getHeight() -> Int32 {
+        return self.height
+    }
+    
 
-    private var layerType: LayerPlacementType
+    @discardableResult open func getLayerType() -> LayerPlacementType! {
+        return self.layerType
+    }
+    
 
-    private var width: Int
-
-    private var height: Int
-public constructor (layerType: LayerPlacementType, width: Int, height: Int)
-            : super()
-        {
-var layerType = layerType
-var width = width
-var height = height
-this.layerType= layerType
-this.width= width
-this.height= height
+    open func setLayerType(_ layerType: LayerPlacementType!) {
+        self.layerType = layerType
+    }
 }
-
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width
-}
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height
-}
-
-
-    open fun getLayerType()
-        //nullable = true from not(false or (false and true)) = true
-: LayerPlacementType{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerType
-}
-
-
-    open fun setLayerType(layerType: LayerPlacementType)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layerType = layerType
-this.layerType= layerType
-}
-
-
-}
-                
-            
 

@@ -25,7 +25,7 @@ open class HardwareFactory: JObject {
     fileprivate static let instance: HardwareFactory! = HardwareFactory()
     
 
-    @discardableResult public static func getInstance() -> HardwareFactory! {
+    @discardableResult open class func getInstance() -> HardwareFactory! {
         return HardwareFactory.instance
     }
     
@@ -35,7 +35,7 @@ open class HardwareFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance(_ os: GenericOperatingSystem!) -> HardwareInterface! {
+    @discardableResult open class func getInstance(_ os: GenericOperatingSystem!) -> HardwareInterface! {
         do {
             let operatingSystems: OperatingSystems! = OperatingSystems.getInstance()
             if (JString.compareTo(os.getName(), operatingSystems.LINUX) == 0) {

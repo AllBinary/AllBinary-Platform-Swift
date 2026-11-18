@@ -1,118 +1,71 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class CurrentlyPressedTouchButtonSingleton: JObject {
+    fileprivate static let instance: CurrentlyPressedTouchButtonSingleton! = CurrentlyPressedTouchButtonSingleton()
+    public var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
+    
 
+    @discardableResult open class func getInstance() -> CurrentlyPressedTouchButtonSingleton! {
+        return CurrentlyPressedTouchButtonSingleton.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class CurrentlyPressedTouchButtonSingleton
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: CurrentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton()
+    @discardableResult open func size() -> Int32 {
+        return self.list.size()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CurrentlyPressedTouchButtonSingleton{
+    @discardableResult open func removeAt(_ index: Int32) -> TouchButtonInput! {
+        return (self.list.removeAt(index) as! TouchButtonInput)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CurrentlyPressedTouchButtonSingleton.instance
+    @discardableResult open func remove(_ touchButtonInput: TouchButtonInput!) -> Bool {
+        return self.list.remove(touchButtonInput)
+    }
+    
+
+    @discardableResult open func get(_ index: Int32) -> TouchButtonInput! {
+        return (self.list.objectArray[index] as! TouchButtonInput)
+    }
+    
+
+    @discardableResult open func contains(_ touchButtonInput: TouchButtonInput!) -> Bool {
+        return self.list.contains(touchButtonInput)
+    }
+    
+
+    open func add(_ touchButtonInput: TouchButtonInput!) {
+        self.list.add(touchButtonInput)
+    }
 }
-
-
-        }
-            
-    val list: BasicArrayList = BasicArrayListD()
-protected constructor ()
-            : super()
-        {
-}
-
-
-    open fun size()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size()
-}
-
-
-    open fun removeAt(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: TouchButtonInput{
-var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.removeAt(index) as TouchButtonInput
-}
-
-
-    open fun remove(touchButtonInput: TouchButtonInput)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var touchButtonInput = touchButtonInput
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.remove(touchButtonInput)
-}
-
-
-    open fun get(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: TouchButtonInput{
-var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.objectArray[index]!! as TouchButtonInput
-}
-
-
-    open fun contains(touchButtonInput: TouchButtonInput)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var touchButtonInput = touchButtonInput
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(touchButtonInput)
-}
-
-
-    open fun add(touchButtonInput: TouchButtonInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-var touchButtonInput = touchButtonInput
-this.list.add(touchButtonInput)
-}
-
-
-}
-                
-            
 

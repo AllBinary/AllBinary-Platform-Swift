@@ -1,69 +1,40 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai.scroller
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai.scroller
+import J2SEForSwiftLibrary
+// import org.allbinary.ai.ArtificialIntelligenceInterface
+// import org.allbinary.game.ag.ai.ArrayAI
+// import org.allbinary.game.ai.ArtificialIntelligenceInterfaceFactoryInterface
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.util.ABHashtable
 
+open class RandomPatrolFlockingFiringAIFactory: JObject, ArtificialIntelligenceInterfaceFactoryInterface {
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.ai.ArtificialIntelligenceInterface
-import org.allbinary.game.ag.ai.ArrayAI
-import org.allbinary.game.ai.ArtificialIntelligenceInterfaceFactoryInterface
-import org.allbinary.game.input.GameInput
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.util.ABHashtable
-
-open public class RandomPatrolFlockingFiringAIFactory
-            : Object
-        
-                , ArtificialIntelligenceInterfaceFactoryInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    override fun getInstance(hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)
-        //nullable =  from not(true or (false and false)) = 
-: ArtificialIntelligenceInterface{
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-    var artificialIntelligenceInterface: Array<ArtificialIntelligenceInterface?> = arrayOfNulls(2)
-
-artificialIntelligenceInterface[0]= RandomPatrolAI(hashtable, ownerLayerInterface, gameInput)
-artificialIntelligenceInterface[1]= TimedFireAI(1800, ownerLayerInterface, gameInput)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArrayAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput)
+    @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
+        let artificialIntelligenceInterface: JArray<ArtificialIntelligenceInterface?>! = JArray<ArtificialIntelligenceInterface?>(2, nil)
+        artificialIntelligenceInterface[0] = RandomPatrolAI(hashtable, ownerLayerInterface, gameInput)
+        artificialIntelligenceInterface[1] = TimedFireAI(1800, ownerLayerInterface, gameInput)
+        return ArrayAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput)
+    }
 }
-
-
-}
-                
-            
 

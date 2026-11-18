@@ -1,125 +1,99 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.commands
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.commands
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import org.allbinary.graphics.displayable.CanvasStrings
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
+open class GameCommandsFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var TOGGLE_FULLSCREEN: Command! = nil
+    public var TOGGLE_KEYBOARD: Command! = nil
+    public var SET_MENU_DISPLAYABLE: Command! = nil
+    public var APPLICATION_UPDATE: Command! = nil
+    public var DISPLAY_ABOUT: Command! = nil
+    public var OPEN_WEB_URL: Command! = nil
+    public var CLOSE_OPTIONS: Command! = nil
+    public var DISPLAY_OPTIONS: Command! = nil
+    public var START_TRACE: Command! = nil
+    public var STOP_TRACE: Command! = nil
+    public var DEFAULT_OPTIONS: Command! = nil
+    public var SHOW_GAME_CANVAS: Command! = nil
+    public var CLOSE_AND_SHOW_GAME_CANVAS: Command! = nil
+    public var QUIT_COMMAND: Command! = nil
+    public var RESTART_COMMAND: Command! = nil
+    public var DISPLAY_SAVE_FORM: Command! = nil
+    public var SAVE: Command! = nil
+    public var DISPLAY_LOAD_FORM: Command! = nil
+    public var LOAD_FILE: Command! = nil
+    public var DELETE_FILE: Command! = nil
+    public var EXIT_COMMAND: Command! = nil
+    public var EXIT_WITHOUT_PROGRESS_COMMAND: Command! = nil
+    public var START_COMMAND: Command! = nil
+    public var CONTINUE_COMMAND: Command! = nil
+    public var SELECT_COMMAND: Command! = nil
+    public var FEATURE_UPDATE: Command! = nil
+    public var BUY_COMMAND: Command! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import org.allbinary.graphics.displayable.CanvasStrings
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-
-open public class GameCommandsFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameCommandsFactory{
-
+    private func initFields() {
+    self.TOGGLE_FULLSCREEN = Command("Toggle FullScreen", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.TOGGLE_KEYBOARD = Command("Keyboard", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.SET_MENU_DISPLAYABLE = Command("Set Menu Displayable", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.APPLICATION_UPDATE = Command(CommonStrings.getInstance().UPDATE, StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.DISPLAY_ABOUT = Command(CanvasStrings.getInstance().ABOUT, StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 2)
+    self.OPEN_WEB_URL = Command("Open Web URL", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 2)
+    self.CLOSE_OPTIONS = Command("Back", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.DISPLAY_OPTIONS = Command(CanvasStrings.getInstance().OPTIONS, StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 2)
+    self.START_TRACE = Command("Start Trace", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.STOP_TRACE = Command("Stop Trace", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.DEFAULT_OPTIONS = Command("Default", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.SHOW_GAME_CANVAS = Command("Back to Game", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.CLOSE_AND_SHOW_GAME_CANVAS = Command("Back", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.QUIT_COMMAND = Command("Quit", StringUtil.getInstance().EMPTY_STRING, Command.STOP, 1)
+    self.RESTART_COMMAND = Command("Restart", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 0)
+    self.DISPLAY_SAVE_FORM = Command("Save To", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 3)
+    self.SAVE = Command("Save", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 3)
+    self.DISPLAY_LOAD_FORM = Command("Load", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 3)
+    self.LOAD_FILE = Command("Load File", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 3)
+    self.DELETE_FILE = Command("Delete File", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.EXIT_COMMAND = Command("Exit", StringUtil.getInstance().EMPTY_STRING, Command.EXIT, 2)
+    self.EXIT_WITHOUT_PROGRESS_COMMAND = Command("Exit Without Progress", StringUtil.getInstance().EMPTY_STRING, Command.EXIT, 2)
+    self.START_COMMAND = Command(CommonStrings.getInstance().START, StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.CONTINUE_COMMAND = Command("Continue", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.SELECT_COMMAND = Command("Select", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.FEATURE_UPDATE = Command("Feature Update", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    self.BUY_COMMAND = Command("BUY", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    }
     
-                        if(GameCommandsFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    GameCommandsFactory.instance= GameCommandsFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameCommandsFactory.instance as GameCommandsFactory
-}
-
-
+    @discardableResult open class func getInstance() -> GameCommandsFactory! {
+        if (GameCommandsFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            GameCommandsFactory.instance = GameCommandsFactory()
         }
-            
-    val TOGGLE_FULLSCREEN: Command = Command("Toggle FullScreen", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
+        return (GameCommandsFactory.instance as! GameCommandsFactory)
+    }
+    
 
-    val TOGGLE_KEYBOARD: Command = Command("Keyboard", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val SET_MENU_DISPLAYABLE: Command = Command("Set Menu Displayable", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val APPLICATION_UPDATE: Command = Command(CommonStrings.getInstance()!!.UPDATE, StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val DISPLAY_ABOUT: Command = Command(CanvasStrings.getInstance()!!.ABOUT, StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 2)
-
-    val OPEN_WEB_URL: Command = Command("Open Web URL", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 2)
-
-    val CLOSE_OPTIONS: Command = Command("Back", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val DISPLAY_OPTIONS: Command = Command(CanvasStrings.getInstance()!!.OPTIONS, StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 2)
-
-    val START_TRACE: Command = Command("Start Trace", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val STOP_TRACE: Command = Command("Stop Trace", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val DEFAULT_OPTIONS: Command = Command("Default", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val SHOW_GAME_CANVAS: Command = Command("Back to Game", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val CLOSE_AND_SHOW_GAME_CANVAS: Command = Command("Back", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val QUIT_COMMAND: Command = Command("Quit", StringUtil.getInstance()!!.EMPTY_STRING, Command.STOP, 1)
-
-    val RESTART_COMMAND: Command = Command("Restart", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 0)
-
-    val DISPLAY_SAVE_FORM: Command = Command("Save To", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 3)
-
-    val SAVE: Command = Command("Save", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 3)
-
-    val DISPLAY_LOAD_FORM: Command = Command("Load", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 3)
-
-    val LOAD_FILE: Command = Command("Load File", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 3)
-
-    val DELETE_FILE: Command = Command("Delete File", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val EXIT_COMMAND: Command = Command("Exit", StringUtil.getInstance()!!.EMPTY_STRING, Command.EXIT, 2)
-
-    val EXIT_WITHOUT_PROGRESS_COMMAND: Command = Command("Exit Without Progress", StringUtil.getInstance()!!.EMPTY_STRING, Command.EXIT, 2)
-
-    val START_COMMAND: Command = Command(CommonStrings.getInstance()!!.START, StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val CONTINUE_COMMAND: Command = Command("Continue", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val SELECT_COMMAND: Command = Command("Select", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val FEATURE_UPDATE: Command = Command("Feature Update", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-    val BUY_COMMAND: Command = Command("BUY", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-protected constructor ()
-            : super()
-        {
+    public override init() {
+        super.init()
+        self.initFields()
+    }
 }
-
-
-}
-                
-            
 

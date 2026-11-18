@@ -1,63 +1,30 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
 
+open class ABStringComponent: JObject {
+    public static let NULL_STRING_COMPONENT: ABStringComponent! = ABStringComponent(BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
+    
 
+    @discardableResult open func getBackgroundBasicColor() -> BasicColor! {
+        return BasicColorFactory.getInstance().WHITE
+    }
+    
 
+    public init(_ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
+    @discardableResult open func getForegroundBasicColor() -> BasicColor! {
+        return BasicColorFactory.getInstance().WHITE
+    }
+    
 
-open public class ABStringComponent
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_STRING_COMPONENT: ABStringComponent = ABStringComponent(BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
-
-        }
-            
-    open fun getBackgroundBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!!.WHITE
+    open func setForegroundBasicColor(_ foregroundBasicColor: BasicColor!) {
+    }
 }
-
-public constructor (backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)
-            : super()
-        {
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-}
-
-
-    open fun getForegroundBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!!.WHITE
-}
-
-
-    open fun setForegroundBasicColor(foregroundBasicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var foregroundBasicColor = foregroundBasicColor
-}
-
-
-}
-                
-            
 

@@ -1,101 +1,48 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
 
+open class ABTextItem: CustomCustomItem, ABCustomItemInterface {
+    
 
+    public init(_ label: String!, _ layout: Int32, _ altText: String!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(label, backgroundBasicColor, foregroundBasicColor)
+    }
+    
 
+    open func keyPressed(_ keyCode: Int32) {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
+    open override func paintUnselected(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+    }
+    
 
-open public class ABTextItem : CustomCustomItem
-                , ABCustomItemInterface {
-        
-public constructor (label: String, layout: Int, altText: String, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
+    @discardableResult open func getLabelStringComponent() -> ABStringComponent! {
+        return ABStringComponent.NULL_STRING_COMPONENT
+    }
+    
 
-                            : super(label, backgroundBasicColor, foregroundBasicColor){
-var label = label
-var layout = layout
-var altText = altText
-var backgroundBasicColor = backgroundBasicColor
-var foregroundBasicColor = foregroundBasicColor
+    @discardableResult open override func getMinimumWidth() -> Int32 {
+        return super.getMinimumWidth()
+    }
+    
 
+    @discardableResult open override func getMinimumHeight() -> Int32 {
+        return super.getMinimumHeight()
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open override func getLabel() -> String! {
+        return super.getLabel()
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        super.paintXY(graphics, x, y)
+    }
 }
-
-
-    open fun keyPressed(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-}
-
-
-    override fun paintUnselected(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-}
-
-
-    open fun getLabelStringComponent()
-        //nullable = true from not(false or (false and true)) = true
-: ABStringComponent{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABStringComponent.NULL_STRING_COMPONENT
-}
-
-
-    override fun getMinimumWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getMinimumWidth()
-}
-
-
-    override fun getMinimumHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getMinimumHeight()
-}
-
-
-    override fun getLabel()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getLabel()
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-super.paintXY(graphics, x, y)
-}
-
-
-}
-                
-            
 

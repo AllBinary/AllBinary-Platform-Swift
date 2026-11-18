@@ -1,68 +1,47 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class GameTypeFactory: JObject {
+    fileprivate static let instance: GameTypeFactory! = GameTypeFactory()
+    public var NULL_GAME_TYPE_ARRAY: JArray<GameType?>! = nil
+    public var NONE: GameType! = nil
+    public var SINGLE_PLAYER: GameType! = nil
+    public var MULTI_PLAYER: GameType! = nil
+    public var BOT: GameType! = nil
 
+    private func initFields() {
+    self.NULL_GAME_TYPE_ARRAY = JArray<GameType?>(0, nil)
+    self.NONE = GameType(StringUtil.getInstance().NULL_STRING)
+    self.SINGLE_PLAYER = GameType("Single Player")
+    self.MULTI_PLAYER = GameType("Multi Player")
+    self.BOT = GameType("Artificial Player")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
-
-open public class GameTypeFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: GameTypeFactory = GameTypeFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameTypeFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTypeFactory.instance
+    @discardableResult open class func getInstance() -> GameTypeFactory! {
+        return GameTypeFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var NULL_GAME_TYPE_ARRAY: Array<GameType?> = arrayOfNulls(0)
-
-    var NONE: GameType = GameType(StringUtil.getInstance()!!.NULL_STRING)
-
-    var SINGLE_PLAYER: GameType = GameType("Single Player")
-
-    var MULTI_PLAYER: GameType = GameType("Multi Player")
-
-    var BOT: GameType = GameType("Artificial Player")
-
-}
-                
-            
 

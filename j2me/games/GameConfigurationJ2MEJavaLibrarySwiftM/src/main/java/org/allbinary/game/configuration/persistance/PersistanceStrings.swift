@@ -1,79 +1,58 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.persistance
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.persistance
+import J2SEForSwiftLibrary
 
+open class PersistanceStrings: JObject {
+    fileprivate static let instance: PersistanceStrings! = PersistanceStrings()
+    public var SAVING: String! = nil
+    public var NUMBER_OF_RECORDS: String! = nil
+    public var LOADING_ID: String! = nil
+    public var LOAD_ALL: String! = nil
+    public var DELETING_WITH_ID: String! = nil
+    public var CLOSING_RECORDSTORE: String! = nil
+    public var NOT_SAVING: String! = nil
+    public var ERROR_LOADING: String! = nil
+    public var ERROR_LOADING_ID: String! = nil
+    public var ID: String! = nil
+    public var GAME_ACTION_INPUT: String! = nil
 
+    private func initFields() {
+    self.SAVING = "Saving: "
+    self.NUMBER_OF_RECORDS = "Number of records: "
+    self.LOADING_ID = "Loading data with id: "
+    self.LOAD_ALL = "loadAll"
+    self.DELETING_WITH_ID = "Deleting data with id: "
+    self.CLOSING_RECORDSTORE = "Closing RecordStore"
+    self.NOT_SAVING = "Not Saving: "
+    self.ERROR_LOADING = "Error Loading gameActionInput: "
+    self.ERROR_LOADING_ID = "Error Loading id: "
+    self.ID = " id: "
+    self.GAME_ACTION_INPUT = " GameActionInput: "
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class PersistanceStrings
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: PersistanceStrings = PersistanceStrings()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: PersistanceStrings{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistanceStrings.instance
+    @discardableResult open class func getInstance() -> PersistanceStrings! {
+        return PersistanceStrings.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val SAVING: String = "Saving: "
-
-    val NUMBER_OF_RECORDS: String = "Number of records: "
-
-    val LOADING_ID: String = "Loading data with id: "
-
-    val LOAD_ALL: String = "loadAll"
-
-    val DELETING_WITH_ID: String = "Deleting data with id: "
-
-    val CLOSING_RECORDSTORE: String = "Closing RecordStore"
-
-    val NOT_SAVING: String = "Not Saving: "
-
-    val ERROR_LOADING: String = "Error Loading gameActionInput: "
-
-    val ERROR_LOADING_ID: String = "Error Loading id: "
-
-    val ID: String = " id: "
-
-    val GAME_ACTION_INPUT: String = " GameActionInput: "
-
-}
-                
-            
 

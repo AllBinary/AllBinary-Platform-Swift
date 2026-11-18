@@ -1,67 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.mapping.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.mapping.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.mapping.InputToGameKeyMapping
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class InputMappingEvent: AllBinaryEventObject {
+    fileprivate var inputToGameKeyMapping: InputToGameKeyMapping! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.inputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()
+    }
+    
 
+    public override init(_ anyType: JObject!) {
+        super.init(anyType)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.mapping.InputToGameKeyMapping
-import org.allbinary.logic.util.event.AllBinaryEventObject
+    open func setInputToGameKeyMapping(_ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        self.inputToGameKeyMapping = inputToGameKeyMapping
+    }
+    
 
-open public class InputMappingEvent : AllBinaryEventObject {
-        
-
-    private var inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!!
-public constructor (anyType: Any)                        
-
-                            : super(anyType){
-var anyType = anyType
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open func getInputToGameKeyMapping() -> InputToGameKeyMapping! {
+        return self.inputToGameKeyMapping
+    }
 }
-
-
-    open fun setInputToGameKeyMapping(inputToGameKeyMapping: InputToGameKeyMapping)
-        //nullable = true from not(false or (false and false)) = true
-{
-var inputToGameKeyMapping = inputToGameKeyMapping
-this.inputToGameKeyMapping= inputToGameKeyMapping
-}
-
-
-    open fun getInputToGameKeyMapping()
-        //nullable = true from not(false or (false and true)) = true
-: InputToGameKeyMapping{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputToGameKeyMapping
-}
-
-
-}
-                
-            
 

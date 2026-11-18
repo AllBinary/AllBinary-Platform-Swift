@@ -1,70 +1,40 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.weapon.mine
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.weapon.mine
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.weapon.WeaponLayerCircularPool
+// import org.allbinary.view.ViewPositionFactoryInterface
 
+open class MineLayerCircularStaticPool: JObject {
+    fileprivate static var WEAPON_LAYER_CIRCULAR_STATIC_POOL: WeaponLayerCircularPool! = WeaponLayerCircularPool()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open class func `init`(_ viewPositionFactoryInterface: ViewPositionFactoryInterface!) {
+        MineCountedPickedUpLayerInterfaceFactory.`init`()
+        MineLayerCircularStaticPool.WEAPON_LAYER_CIRCULAR_STATIC_POOL.initAllBinaryLayerCircularPool(MineLayerFactory(viewPositionFactoryInterface), 20)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.weapon.WeaponLayerCircularPool
-import org.allbinary.view.ViewPositionFactoryInterface
-
-open public class MineLayerCircularStaticPool
-            : Object
-         {
-        
-companion object {
-            
-    private var WEAPON_LAYER_CIRCULAR_STATIC_POOL: WeaponLayerCircularPool = WeaponLayerCircularPool()
-
-                @Throws(Exception::class)
-            
-    open fun init(viewPositionFactoryInterface: ViewPositionFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var viewPositionFactoryInterface = viewPositionFactoryInterface
-MineCountedPickedUpLayerInterfaceFactory.init()
-MineLayerCircularStaticPool.WEAPON_LAYER_CIRCULAR_STATIC_POOL.initAllBinaryLayerCircularPool(MineLayerFactory(viewPositionFactoryInterface), 20)
+    @discardableResult open class func getInstance() -> WeaponLayerCircularPool! {
+        return MineLayerCircularStaticPool.WEAPON_LAYER_CIRCULAR_STATIC_POOL
+    }
 }
-
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: WeaponLayerCircularPool{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineLayerCircularStaticPool.WEAPON_LAYER_CIRCULAR_STATIC_POOL
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-}
-                
-            
 

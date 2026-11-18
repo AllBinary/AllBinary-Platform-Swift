@@ -28,7 +28,7 @@ open class ErrorData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ErrorData! {
+    @discardableResult open class func getInstance() -> ErrorData! {
         return ErrorData.instance
     }
     

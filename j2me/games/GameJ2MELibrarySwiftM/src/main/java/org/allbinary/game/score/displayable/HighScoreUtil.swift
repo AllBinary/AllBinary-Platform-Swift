@@ -1,171 +1,114 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score.displayable
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score.displayable
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.CommandListener
+// import org.allbinary.game.GameInfo
+// import org.allbinary.game.score.HighScore
+// import org.allbinary.game.score.HighScoreNamePersistanceSingleton
+// import org.allbinary.game.score.HighScores
+// import org.allbinary.game.score.HighScoresFactoryInterface
+// import org.allbinary.game.score.HighScoresHelperBaseInterface
+// import org.allbinary.game.score.HighScoresResultsListener
+// import org.allbinary.graphics.displayable.MyCanvas
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+// import org.allbinary.string.CommonStrings
 
+open class HighScoreUtil: JObject, HighScoresResultsListener {
+    public static let SUBMIT_TEXTBOX_COMMAND: Command! = Command("Submit", StringUtil.getInstance().EMPTY_STRING, Command.SCREEN, 1)
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var highScoresFactoryInterface: HighScoresFactoryInterface! = nil
+    fileprivate var highScoresArray: JArray<HighScores?>! = nil
+    fileprivate var highScore: HighScore! = nil
+    fileprivate var abeClientInformation: AbeClientInformationInterface! = nil
+    fileprivate var gameInfo: GameInfo! = nil
+    fileprivate var highScoresHelper: HighScoresHelperBaseInterface! = nil
+    fileprivate var firstTime: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.CommandListener
-import org.allbinary.game.GameInfo
-import org.allbinary.game.score.HighScore
-import org.allbinary.game.score.HighScoreNamePersistanceSingleton
-import org.allbinary.game.score.HighScores
-import org.allbinary.game.score.HighScoresFactoryInterface
-import org.allbinary.game.score.HighScoresHelperBaseInterface
-import org.allbinary.game.score.HighScoresResultsListener
-import org.allbinary.graphics.displayable.MyCanvas
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
-import org.allbinary.string.CommonStrings
-
-open public class HighScoreUtil
-            : Object
-        
-                , HighScoresResultsListener {
-        
-companion object {
-            
-    val SUBMIT_TEXTBOX_COMMAND: Command = Command("Submit", StringUtil.getInstance()!!.EMPTY_STRING, Command.SCREEN, 1)
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val highScoresFactoryInterface: HighScoresFactoryInterface
-
-    private var highScoresArray: Array<HighScores?>
-
-    private val highScore: HighScore
-
-    private val abeClientInformation: AbeClientInformationInterface
-
-    private val gameInfo: GameInfo
-
-    private val highScoresHelper: HighScoresHelperBaseInterface
-
-    private var firstTime: Boolean = true
-public constructor (highScoresFactoryInterface: HighScoresFactoryInterface, highScoresHelper: HighScoresHelperBaseInterface, abeClientInformation: AbeClientInformationInterface, gameInfo: GameInfo, cmdListener: CommandListener, name: String, highScore: HighScore)
-            : super()
-        {
-    //var highScoresFactoryInterface = highScoresFactoryInterface
-    //var highScoresHelper = highScoresHelper
-    //var abeClientInformation = abeClientInformation
-    //var gameInfo = gameInfo
-    //var cmdListener = cmdListener
-    //var name = name
-    //var highScore = highScore
-this.highScoresFactoryInterface= highScoresFactoryInterface
-this.highScoresHelper= highScoresHelper
-this.highScoresArray= this.highScoresHelper!!.getHighScoresArray()!!
-this.highScore= highScore
-this.abeClientInformation= abeClientInformation
-this.gameInfo= gameInfo
-}
-
-
-    override fun setHighScoresArray(highScoresArray: Array<HighScores?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var highScoresArray = highScoresArray
-this.highScoresArray= highScoresArray
-this.firstTime= false
-this.saveHighScore()
-}
-
-
-    open fun update(name: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var name = name
-HighScoreNamePersistanceSingleton.getInstance()!!.save(this.abeClientInformation, this.gameInfo, name)
-this.highScore!!.setName(name)
-}
-
-
-    open fun saveHighScore()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(StringMaker().
-                            append(this.commonStrings!!.START)!!.append(StringUtil.getInstance()!!.toString(this.highScore))!!.toString(), this, "saveHighScore")
-
-    var size: Int = this.highScoresArray!!.size
-                
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
     
-                        if(this.firstTime && size == 0)
-                        
-                                    {
-                                    this.logUtil!!.putF("Games canvas did not give us any HighScores", this, "saveHighScore")
-this.highScoresFactoryInterface!!.fetchHighScores(this.gameInfo, this)
+    
+    
+    
+    
+    
+    self.firstTime = true
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
+    public init(_ highScoresFactoryInterface: HighScoresFactoryInterface!, _ highScoresHelper: HighScoresHelperBaseInterface!, _ abeClientInformation: AbeClientInformationInterface!, _ gameInfo: GameInfo!, _ cmdListener: CommandListener!, _ name: String!, _ highScore: HighScore!) {
+        super.init()
+        self.initFields()
+        self.highScoresFactoryInterface = highScoresFactoryInterface
+        self.highScoresHelper = highScoresHelper
+        self.highScoresArray = self.highScoresHelper.getHighScoresArray()
+        self.highScore = highScore
+        self.abeClientInformation = abeClientInformation
+        self.gameInfo = gameInfo
+    }
+    
 
-                                    }
-                                
+    open func setHighScoresArray(_ highScoresArray: JArray<HighScores?>!) {
+        self.highScoresArray = highScoresArray
+        self.firstTime = false
+        self.saveHighScore()
+    }
+    
 
-    var highScores: HighScores
+    open func update(_ name: String!) {
+        HighScoreNamePersistanceSingleton.getInstance().save(self.abeClientInformation, self.gameInfo, name)
+        self.highScore.setName(name)
+    }
+    
 
+    open func saveHighScore() {
+        self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(StringUtil.getInstance().toString(self.highScore)).toString(), self, "saveHighScore")
+        let size: Int32 = self.highScoresArray.length
+        if (self.firstTime && size == 0) {
+            self.logUtil.putF("Games canvas did not give us any HighScores", self, "saveHighScore")
+            self.highScoresFactoryInterface.fetchHighScores(self.gameInfo, self)
+            return
+        }
+        var highScores: HighScores! = nil
+        var highScoresAsString: String! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            highScores = self.highScoresArray[index]
+            highScores.addHighScore(self.highScore)
+            highScoresAsString = highScores.toString()
+            self.logUtil.putF(StringMaker().append("Added/Adding Score: ").append(highScoresAsString).toString(), self, "saveHighScore")
+            }
+        }
+        self.highScoresHelper.setHighScoresArray(self.highScoresArray)
+    }
+    
 
-    var highScoresAsString: String
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-highScores= this.highScoresArray[index]!!
-highScores!!.addHighScore(this.highScore)
-highScoresAsString= highScores!!.toString()!!
-this.logUtil!!.putF(StringMaker().
-                            append("Added/Adding Score: ")!!.append(highScoresAsString)!!.toString(), this, "saveHighScore")
+    open func submit(_ myCanvas: MyCanvas!) {
+        let commandListener: CommandListener! = myCanvas.getCustomCommandListener()
+        commandListener.commandAction(HighScoreUtil.SUBMIT_TEXTBOX_COMMAND, myCanvas)
+    }
 }
-
-this.highScoresHelper!!.setHighScoresArray(this.highScoresArray)
-}
-
-
-    open fun submit(myCanvas: MyCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var myCanvas = myCanvas
-
-    var commandListener: CommandListener = myCanvas!!.getCustomCommandListener()!!
-
-commandListener!!.commandAction(HighScoreUtil.SUBMIT_TEXTBOX_COMMAND, myCanvas)
-}
-
-
-}
-                
-            
 

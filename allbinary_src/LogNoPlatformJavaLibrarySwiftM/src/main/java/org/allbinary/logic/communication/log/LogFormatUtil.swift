@@ -29,7 +29,7 @@ open class LogFormatUtil: JObject {
     fileprivate static let instance: LogFormatUtil! = LogFormatUtil()
     
 
-    @discardableResult public static func getInstance() -> LogFormatUtil! {
+    @discardableResult open class func getInstance() -> LogFormatUtil! {
         return LogFormatUtil.instance
     }
     

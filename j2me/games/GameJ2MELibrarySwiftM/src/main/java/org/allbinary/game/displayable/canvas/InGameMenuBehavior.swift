@@ -1,113 +1,63 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.displayable.event.DisplayChangeEvent
 
+open class InGameMenuBehavior: BaseMenuBehavior {
+    fileprivate static let instanceC: InGameMenuBehavior! = InGameMenuBehavior()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open override class func getInstance() -> InGameMenuBehavior! {
+        return InGameMenuBehavior.instanceC
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.displayable.event.DisplayChangeEvent
+    open override func onDisplayChangeEvent(_ allBinaryGameCanvas: AllBinaryGameCanvas!, _ displayChangeEvent: DisplayChangeEvent!) {
+        allBinaryGameCanvas.updateMenuFromEvent(displayChangeEvent)
+    }
+    
 
-open public class InGameMenuBehavior : BaseMenuBehavior {
-        
-companion object {
-            
-    private val instanceC: InGameMenuBehavior = InGameMenuBehavior()
+    open override func initSpecialPaint(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        allBinaryGameCanvas.setNonBotPaintableP(GameCanvasNonBotPaintable(allBinaryGameCanvas))
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: InGameMenuBehavior{
+    open override func initMenu(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        allBinaryGameCanvas.initMenu2()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameMenuBehavior.instanceC
+    open override func updateMenu(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        allBinaryGameCanvas.initMenu2()
+    }
+    
+
+    open override func popupMenu(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        allBinaryGameCanvas.popupMenu2()
+    }
+    
+
+    open override func closeMenu(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        allBinaryGameCanvas.closeMenu2()
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    override fun onDisplayChangeEvent(allBinaryGameCanvas: AllBinaryGameCanvas, displayChangeEvent: DisplayChangeEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-    //var displayChangeEvent = displayChangeEvent
-allBinaryGameCanvas!!.updateMenuFromEvent(displayChangeEvent)
-}
-
-
-    override fun initSpecialPaint(allBinaryGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-allBinaryGameCanvas!!.setNonBotPaintableP(GameCanvasNonBotPaintable(allBinaryGameCanvas))
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun initMenu(allBinaryGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-allBinaryGameCanvas!!.initMenu2()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun updateMenu(allBinaryGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-allBinaryGameCanvas!!.initMenu2()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun popupMenu(allBinaryGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-allBinaryGameCanvas!!.popupMenu2()
-}
-
-
-    override fun closeMenu(allBinaryGameCanvas: AllBinaryGameCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryGameCanvas = allBinaryGameCanvas
-allBinaryGameCanvas!!.closeMenu2()
-}
-
-
-}
-                
-            
 

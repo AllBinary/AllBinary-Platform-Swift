@@ -35,7 +35,7 @@ open class ThreadPoolStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ThreadPoolStrings! {
+    @discardableResult open class func getInstance() -> ThreadPoolStrings! {
         return ThreadPoolStrings.instance
     }
 }

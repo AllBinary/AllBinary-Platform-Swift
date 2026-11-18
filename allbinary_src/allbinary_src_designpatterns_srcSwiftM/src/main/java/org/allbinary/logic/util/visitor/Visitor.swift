@@ -37,7 +37,7 @@ open class Visitor: JObject, VisitorInterface {
     }
     
 
-    @discardableResult public static func getInstance() -> Visitor! {
+    @discardableResult open class func getInstance() -> Visitor! {
         return Visitor.instance
     }
 }

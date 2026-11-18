@@ -1,63 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
 
+open class InputProcessor: JObject {
+    public var gameInputStrings: GameInputStrings! = nil
 
+    private func initFields() {
+    self.gameInputStrings = GameInputStrings.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
+    open func keyPressedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+    }
+    
 
-open public class InputProcessor
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!!
-
-    open fun keyPressedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
+    open func keyReleasedByDevice(_ canvas: Canvas!, _ keyCode: Int32, _ deviceId: Int32) {
+    }
 }
-
-
-    open fun keyReleasedByDevice(canvas: Canvas, keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-}
-
-
-}
-                
-            
 

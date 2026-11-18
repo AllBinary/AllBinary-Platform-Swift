@@ -1,231 +1,139 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.compound
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.compound
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.util.CircularIndexUtil
 
+open class CompoundIndexedAnimation: IndexedAnimation, CompoundAnimationInterface {
+    fileprivate var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var animationInterfaceArray: JArray<Animation?>! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    }
+    
 
+    public init(_ animationInterfaceArray: JArray<Animation?>!, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.animationInterfaceArray = animationInterfaceArray
+        self.circularIndexUtil = CircularIndexUtil.createInstance(self.animationInterfaceArray.length)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.util.CircularIndexUtil
+    open override func setFrame(_ index: Int32) {
+        let indexedAnimation: IndexedAnimation! = (self.animationInterfaceArray[self.circularIndexUtil.getIndex()] as! IndexedAnimation)
+        indexedAnimation.setFrame(index)
+    }
+    
 
-open public class CompoundIndexedAnimation : IndexedAnimation
-                , CompoundAnimationInterface {
-        
+    @discardableResult open override func getFrame() -> Int32 {
+        let indexedAnimation: IndexedAnimation! = (self.animationInterfaceArray[self.circularIndexUtil.getIndex()] as! IndexedAnimation)
+        return indexedAnimation.getFrame()
+    }
+    
 
-    private var circularIndexUtil: CircularIndexUtil
+    @discardableResult open override func getSize() -> Int32 {
+        let indexedAnimation: IndexedAnimation! = (self.animationInterfaceArray[self.circularIndexUtil.getIndex()] as! IndexedAnimation)
+        return indexedAnimation.getSize()
+    }
+    
 
-    private var animationInterfaceArray: Array<Animation?>
-public constructor (animationInterfaceArray: Array<Animation?>, animationBehavior: AnimationBehavior)                        
+    open override func previousFrame() {
+        let indexedAnimation: IndexedAnimation! = (self.animationInterfaceArray[self.circularIndexUtil.getIndex()] as! IndexedAnimation)
+        indexedAnimation.previousFrame()
+    }
+    
 
-                            : super(animationBehavior){
-    //var animationInterfaceArray = animationInterfaceArray
-    //var animationBehavior = animationBehavior
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
 
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.animationInterfaceArray= animationInterfaceArray
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.animationInterfaceArray!!.size)!!
+    open override func nextFrame() {
+        self.animationInterfaceArray[self.circularIndexUtil.getIndex()]!.nextFrame()
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.animationInterfaceArray[self.circularIndexUtil.getIndex()]!.paintXY(graphics, x, y)
+    }
+    
+
+    open override func paintThreedXYZ(_ graphics: Graphics!, _ x: Int32, _ y: Int32, _ z: Int32) {
+        self.animationInterfaceArray[self.circularIndexUtil.getIndex()]!.paintThreedXYZ(graphics, x, y, z)
+    }
+    
+
+    @discardableResult open func getCurrentAnimation() -> IndexedAnimation! {
+        return (self.animationInterfaceArray[self.circularIndexUtil.getIndex()] as! IndexedAnimation)
+    }
+    
+
+    open func nextAnimation() {
+        let frame: Int32 = self.getFrame()
+        self.circularIndexUtil.next()
+        self.setFrame(frame)
+    }
+    
+
+    open func previousAnimation() {
+        let frame: Int32 = self.getFrame()
+        self.circularIndexUtil.previous()
+        self.setFrame(frame)
+    }
+    
+
+    open func setAnimation(_ index: Int32) {
+        let frame: Int32 = self.getFrame()
+        self.circularIndexUtil.setIndex(index)
+        self.setFrame(frame)
+    }
+    
+
+    @discardableResult open func getAnimationInterfaceArray() -> JArray<Animation?>! {
+        return self.animationInterfaceArray
+    }
+    
+
+    open func setAnimationInterfaceArray(_ animationInterfaceArray: JArray<Animation?>!) {
+        self.animationInterfaceArray = animationInterfaceArray
+    }
+    
+
+    open override func set(_ gl: GL!) {
+        do {
+            var index: Int32 = self.animationInterfaceArray.length
+            while (jPreDecrement(&index) >= 0) {
+            self.animationInterfaceArray[index]!.set(gl)
+            }
+        }
+    }
 }
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var index = index
-
-    var indexedAnimation: IndexedAnimation = this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!! as IndexedAnimation
-
-indexedAnimation!!.setFrame(index)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-    var indexedAnimation: IndexedAnimation = this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!! as IndexedAnimation
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation!!.getFrame()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-    var indexedAnimation: IndexedAnimation = this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!! as IndexedAnimation
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation!!.getSize()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var indexedAnimation: IndexedAnimation = this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!! as IndexedAnimation
-
-indexedAnimation!!.previousFrame()
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!!.nextFrame()
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!!.paintXY(graphics, x, y)
-}
-
-
-    override fun paintThreedXYZ(graphics: Graphics, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-    //var z = z
-this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!!.paintThreedXYZ(graphics, x, y, z)
-}
-
-
-    override fun getCurrentAnimation()
-        //nullable = true from not(false or (false and true)) = true
-: IndexedAnimation{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!!.getIndex()]!! as IndexedAnimation
-}
-
-
-    override fun nextAnimation()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var frame: Int = this.getFrame()
-
-this.circularIndexUtil!!.next()
-this.setFrame(frame)
-}
-
-
-    override fun previousAnimation()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var frame: Int = this.getFrame()
-
-this.circularIndexUtil!!.previous()
-this.setFrame(frame)
-}
-
-
-    override fun setAnimation(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var index = index
-
-    var frame: Int = this.getFrame()
-
-this.circularIndexUtil!!.setIndex(index)
-this.setFrame(frame)
-}
-
-
-    open fun getAnimationInterfaceArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Animation?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray
-}
-
-
-    open fun setAnimationInterfaceArray(animationInterfaceArray: Array<Animation?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var animationInterfaceArray = animationInterfaceArray
-this.animationInterfaceArray= animationInterfaceArray
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gl = gl
-
-
-
-
-                        for (index in this.animationInterfaceArray!!.size  - 1  downTo 0)
-
-        {
-this.animationInterfaceArray[index]!!.set(gl)
-}
-
-}
-
-
-}
-                
-            
 

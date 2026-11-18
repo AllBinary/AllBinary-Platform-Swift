@@ -1,56 +1,28 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.debug
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.debug
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-interface DebugInterface {
-        
-
-    open fun start()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun stop()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun getStartTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long
-
-    open fun getMaxTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long
-
-    open fun isRunning()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
+public protocol DebugInterface: AnyObject {
+    func start()
+    func stop()
+    @discardableResult func getStartTime() -> Int64
+    @discardableResult func getMaxTime() -> Int64
+    @discardableResult func isRunning() -> Bool
 }
-                
-            
+
 

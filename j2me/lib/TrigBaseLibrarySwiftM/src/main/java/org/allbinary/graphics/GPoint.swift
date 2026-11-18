@@ -36,7 +36,7 @@ open class GPoint: JObject {
     }
     
 
-    @discardableResult public static func getInstance(_ point: GPoint!) -> GPoint! {
+    @discardableResult open class func getInstance(_ point: GPoint!) -> GPoint! {
         return GPoint(point.getX(), point.getY(), point.getZ())
     }
     
@@ -85,7 +85,7 @@ open class GPoint: JObject {
     }
     
 
-    @discardableResult public static func toStringStatic(_ x: Int32, _ y: Int32, _ z: Int32) -> String! {
+    @discardableResult open class func toStringStatic(_ x: Int32, _ y: Int32, _ z: Int32) -> String! {
         let stringBuffer: StringMaker! = StringMaker()
         let positionStrings: PositionStrings! = PositionStrings.getInstance()
         stringBuffer.append(GPoint.POINT_LABEL)

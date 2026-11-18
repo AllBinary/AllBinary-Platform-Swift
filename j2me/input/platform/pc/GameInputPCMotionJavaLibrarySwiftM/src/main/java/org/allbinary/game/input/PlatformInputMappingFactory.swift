@@ -1,92 +1,53 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.mapping.PersistentInputMapping
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class PlatformInputMappingFactory: JObject {
+    fileprivate static let instance: PlatformInputMappingFactory! = PlatformInputMappingFactory()
+    public var logUtil: LogUtil! = nil
+    fileprivate var inputToGameKeyMapping: PersistentInputMapping! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.inputToGameKeyMapping = PersistentInputMapping.getNullInstance()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.mapping.PersistentInputMapping
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-
-open public class PlatformInputMappingFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: PlatformInputMappingFactory = PlatformInputMappingFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: PlatformInputMappingFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformInputMappingFactory.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var inputToGameKeyMapping: PersistentInputMapping = PersistentInputMapping.getNullInstance()!!
-
-    open fun getPersistentInputMappingInstance()
-        //nullable = true from not(false or (false and true)) = true
-: PersistentInputMapping{
-
-        try {
-            
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(this.inputToGameKeyMapping == PersistentInputMapping.getNullInstance())
-                        
-                                    {
-                                    this.inputToGameKeyMapping= MotionLaptopGameInputMapping()
 
-                                    }
-                                
-} catch(e: Exception)
-            {
+    @discardableResult open class func getInstance() -> PlatformInputMappingFactory! {
+        return PlatformInputMappingFactory.instance
+    }
+    
 
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.GET_INSTANCE, e)
+    @discardableResult open func getPersistentInputMappingInstance() -> PersistentInputMapping! {
+        do {
+            if (self.inputToGameKeyMapping === PersistentInputMapping.getNullInstance()) {
+                self.inputToGameKeyMapping = MotionLaptopGameInputMapping()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+        return self.inputToGameKeyMapping
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputToGameKeyMapping
-}
-
-
-}
-                
-            
 

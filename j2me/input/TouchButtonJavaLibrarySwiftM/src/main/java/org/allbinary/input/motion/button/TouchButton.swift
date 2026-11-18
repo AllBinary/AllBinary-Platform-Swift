@@ -1,210 +1,139 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.FeaturedAnimationInterfaceFactoryInterfaceFactory
+// import org.allbinary.graphics.CellPosition
+// import org.allbinary.graphics.GPoint
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.RectangleFactory
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
+open class TouchButton: Paintable {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var touchButtonInput: TouchButtonInput! = nil
+    fileprivate var animationInterface: Animation! = nil
+    fileprivate var hintAnimationInterface: Animation! = nil
+    public var rawRectangle: Rectangle! = nil
+    public var xBorder: Int32 = 0
+    public var yBorder: Int32 = 0
+    public var rectangleP: Rectangle! = nil
+    public var cellPositionP: CellPosition! = nil
+    public var animationX: Int32 = 0
+    public var animationY: Int32 = 0
+    public var hintAnimationY: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    
+    
+    
+    
+    
+    
+    self.rectangleP = RectangleFactory.SINGLETON
+    
+    self.animationX = 0
+    self.animationY = 0
+    self.hintAnimationY = 0
+    }
+    
 
+    @discardableResult open class func createButton(_ touchButtonInput: TouchButtonInput!, _ touchButtonResource: TouchButtonResource!, _ rawRectangle: Rectangle!, _ cellPosition: CellPosition!, _ xBorder: Int32, _ yBorder: Int32) -> TouchButton! {
+        return TouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance().get(touchButtonResource.RESOURCE).getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance().get(touchButtonResource.HINT).getInstance(0), rawRectangle, cellPosition, xBorder, yBorder)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.animation.FeaturedAnimationInterfaceFactoryInterfaceFactory
-import org.allbinary.graphics.CellPosition
-import org.allbinary.graphics.GPoint
-import org.allbinary.graphics.PointFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.RectangleFactory
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
+    public init(_ touchButtonInput: TouchButtonInput!, _ animationInterface: Animation!, _ hintAnimationInterface: Animation!, _ rawRectangle: Rectangle!, _ cellPosition: CellPosition!, _ xBorder: Int32, _ yBorder: Int32) {
+        super.init()
+        self.initFields()
+        self.touchButtonInput = touchButtonInput
+        self.animationInterface = animationInterface
+        self.hintAnimationInterface = hintAnimationInterface
+        self.rawRectangle = rawRectangle
+        self.cellPositionP = cellPosition
+        self.xBorder = xBorder
+        self.yBorder = yBorder
+        self.updateRectangle()
+        self.logUtil.putF(StringMaker().append("Created: ").append(self.toString()).toString(), self, self.commonStrings.CONSTRUCTOR)
+    }
+    
 
-open public class TouchButton : Paintable {
-        
-companion object {
-            
-                @Throws(Exception::class)
-            
-    open fun createButton(touchButtonInput: TouchButtonInput, touchButtonResource: TouchButtonResource, rawRectangle: Rectangle, cellPosition: CellPosition, xBorder: Int, yBorder: Int)
-        //nullable = true from not(false or (false and false)) = true
-: TouchButton{
-    //var touchButtonInput = touchButtonInput
-    //var touchButtonResource = touchButtonResource
-    //var rawRectangle = rawRectangle
-    //var cellPosition = cellPosition
-    //var xBorder = xBorder
-    //var yBorder = yBorder
+    open func paintHint(_ graphics: Graphics!) {
+        self.hintAnimationInterface.paintXY(graphics, self.animationX, self.hintAnimationY)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!!.get(touchButtonResource!!.RESOURCE)!!.getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!!.get(touchButtonResource!!.HINT)!!.getInstance(0), rawRectangle, cellPosition, xBorder, yBorder)
+    open override func paint(_ graphics: Graphics!) {
+        self.animationInterface.paintXY(graphics, self.animationX, self.animationY)
+    }
+    
+
+    open func updateRectangle() {
+        do {
+            let pointFactory: PointFactory! = PointFactory.getInstance()
+            let x: Int32 = self.rawRectangle.getWidth() &* self.cellPositionP.getColumn()
+            let y: Int32 = self.rawRectangle.getHeight() &* self.cellPositionP.getRow()
+            self.rectangleP = Rectangle(pointFactory.createXY(x &+ self.xBorder, y &+ self.yBorder), self.rawRectangle.getWidth(), self.rawRectangle.getHeight())
+            let point: GPoint! = self.rectangleP.getPoint()
+            self.animationX = point.getX()
+            self.animationY = point.getY()
+            self.hintAnimationY = self.animationY &- 32
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open func getCellPosition() -> CellPosition! {
+        return self.cellPositionP
+    }
+    
+
+    @discardableResult open func getRectangle() -> Rectangle! {
+        return self.rectangleP
+    }
+    
+
+    @discardableResult open func getTouchButtonInput() -> TouchButtonInput! {
+        return self.touchButtonInput
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        let stringUtil: StringUtil! = StringUtil.getInstance()
+        stringBuffer.append("TouchButton: ")
+        stringBuffer.append(stringUtil.toString(self.getRectangle()))
+        stringBuffer.append(" CellPosition: ")
+        stringBuffer.append(stringUtil.toString(self.cellPositionP))
+        stringBuffer.append(" xBorder: ")
+        stringBuffer.appendint(self.xBorder)
+        stringBuffer.append(" yBorder: ")
+        stringBuffer.appendint(self.yBorder)
+        return stringBuffer.toString()
+    }
 }
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val touchButtonInput: TouchButtonInput
-
-    private val animationInterface: Animation
-
-    private val hintAnimationInterface: Animation
-
-    val rawRectangle: Rectangle
-
-    val xBorder: Int
-
-    val yBorder: Int
-
-    var rectangleP: Rectangle = RectangleFactory.SINGLETON
-
-    val cellPositionP: CellPosition
-
-    var animationX: Int= 0
-
-    var animationY: Int= 0
-
-    var hintAnimationY: Int= 0
-public constructor (touchButtonInput: TouchButtonInput, animationInterface: Animation, hintAnimationInterface: Animation, rawRectangle: Rectangle, cellPosition: CellPosition, xBorder: Int, yBorder: Int){
-    //var touchButtonInput = touchButtonInput
-    //var animationInterface = animationInterface
-    //var hintAnimationInterface = hintAnimationInterface
-    //var rawRectangle = rawRectangle
-    //var cellPosition = cellPosition
-    //var xBorder = xBorder
-    //var yBorder = yBorder
-this.touchButtonInput= touchButtonInput
-this.animationInterface= animationInterface
-this.hintAnimationInterface= hintAnimationInterface
-this.rawRectangle= rawRectangle
-this.cellPositionP= cellPosition
-this.xBorder= xBorder
-this.yBorder= yBorder
-this.updateRectangle()
-this.logUtil!!.putF(StringMaker().
-                            append("Created: ")!!.append(this.toString())!!.toString(), this, this.commonStrings!!.CONSTRUCTOR)
-}
-
-
-    open fun paintHint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.hintAnimationInterface!!.paintXY(graphics, this.animationX, this.hintAnimationY)
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.animationInterface!!.paintXY(graphics, this.animationX, this.animationY)
-}
-
-
-    open fun updateRectangle()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var pointFactory: PointFactory = PointFactory.getInstance()!!
-
-
-    var x: Int = this.rawRectangle!!.getWidth() *this.cellPositionP!!.getColumn()
-
-
-    var y: Int = this.rawRectangle!!.getHeight() *this.cellPositionP!!.getRow()
-
-this.rectangleP= Rectangle(pointFactory!!.createXY(x +this.xBorder, y +this.yBorder), this.rawRectangle!!.getWidth(), this.rawRectangle!!.getHeight())
-
-    var point: GPoint = this.rectangleP!!.getPoint()!!
-
-this.animationX= point.getX()
-this.animationY= point.getY()
-this.hintAnimationY= this.animationY -32
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "updateRectangle", e)
-}
-
-}
-
-
-    open fun getCellPosition()
-        //nullable = true from not(false or (false and true)) = true
-: CellPosition{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPositionP
-}
-
-
-    open fun getRectangle()
-        //nullable = true from not(false or (false and true)) = true
-: Rectangle{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleP
-}
-
-
-    open fun getTouchButtonInput()
-        //nullable = true from not(false or (false and true)) = true
-: TouchButtonInput{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchButtonInput
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-
-    var stringUtil: StringUtil = StringUtil.getInstance()!!
-
-stringBuffer!!.append("TouchButton: ")
-stringBuffer!!.append(stringUtil!!.toString(this.getRectangle()))
-stringBuffer!!.append(" CellPosition: ")
-stringBuffer!!.append(stringUtil!!.toString(this.cellPositionP))
-stringBuffer!!.append(" xBorder: ")
-stringBuffer!!.appendint(this.xBorder)
-stringBuffer!!.append(" yBorder: ")
-stringBuffer!!.appendint(this.yBorder)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

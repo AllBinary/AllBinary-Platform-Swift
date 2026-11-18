@@ -1,84 +1,51 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.terrain
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.terrain
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.util.event.AllBinaryEventCircularPool
 
+open class TerrainEventCircularStaticPool: JObject {
+    fileprivate static let instance: TerrainEventCircularStaticPool! = TerrainEventCircularStaticPool()
+    fileprivate var EVENT_POOL: AllBinaryEventCircularPool! = nil
 
+    private func initFields() {
+    self.EVENT_POOL = AllBinaryEventCircularPool(20)
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.util.event.AllBinaryEventCircularPool
+    @discardableResult open class func getInstance() -> TerrainEventCircularStaticPool! {
+        return TerrainEventCircularStaticPool.instance
+    }
+    
 
-open public class TerrainEventCircularStaticPool
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: TerrainEventCircularStaticPool = TerrainEventCircularStaticPool()
+    open func `init`() {
+        self.EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory())
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: TerrainEventCircularStaticPool{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TerrainEventCircularStaticPool.instance
+    @discardableResult open func getNext(_ basicTerrainInfo: BasicTerrainInfo!) -> TerrainEvent! {
+        let trackingEvent: TerrainEvent! = (self.EVENT_POOL.getNextInstance() as! TerrainEvent)
+        trackingEvent.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo)
+        return trackingEvent
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var EVENT_POOL: AllBinaryEventCircularPool = AllBinaryEventCircularPool(20)
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory())
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun getNext(basicTerrainInfo: BasicTerrainInfo)
-        //nullable = true from not(false or (false and false)) = true
-: TerrainEvent{
-var basicTerrainInfo = basicTerrainInfo
-
-    var trackingEvent: TerrainEvent = this.EVENT_POOL.getNextInstance() as TerrainEvent
-
-trackingEvent!!.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return trackingEvent
-}
-
-
-}
-                
-            
 

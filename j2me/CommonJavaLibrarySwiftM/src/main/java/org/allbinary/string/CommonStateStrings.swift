@@ -53,7 +53,7 @@ open class CommonStateStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CommonStateStrings! {
+    @discardableResult open class func getInstance() -> CommonStateStrings! {
         return CommonStateStrings.instance
     }
 }

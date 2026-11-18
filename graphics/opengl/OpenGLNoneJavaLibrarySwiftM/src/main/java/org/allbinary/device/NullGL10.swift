@@ -1,1156 +1,502 @@
-
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.device
-
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL10
-import java.nio.Buffer
-import java.nio.FloatBuffer
-import java.nio.IntBuffer
-import org.allbinary.logic.string.StringUtil
-
-open public class NullGL10
-            : Object
-        
-                , GL10 {
-        
-companion object {
-            
-    val NULL_GL10: NullGL10 = NullGL10()
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    override fun glActiveTexture(texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var texture = texture
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glAlphaFunc(func: Int, ref: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var func = func
-    //var ref = ref
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glBindTexture(target: Int, texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var texture = texture
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glBlendFunc(sfactor: Int, dfactor: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sfactor = sfactor
-    //var dfactor = dfactor
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glClear(mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mask = mask
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glClearColor(red: Float, green: Float, blue: Float, alpha: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var red = red
-    //var green = green
-    //var blue = blue
-    //var alpha = alpha
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glClearDepthf(depth: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var depth = depth
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glClearStencil(s: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var s = s
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glClientActiveTexture(texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var texture = texture
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glColor4f(red: Float, green: Float, blue: Float, alpha: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var red = red
-    //var green = green
-    //var blue = blue
-    //var alpha = alpha
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glColorMask(red: Boolean, green: Boolean, blue: Boolean, alpha: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var red = red
-    //var green = green
-    //var blue = blue
-    //var alpha = alpha
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glColorPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var size = size
-    //var type = type
-    //var stride = stride
-    //var pointer = pointer
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glCompressedTexImage2D(target: Int, level: Int, internalformat: Int, width: Int, height: Int, border: Int, imageSize: Int, data: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var internalformat = internalformat
-    //var width = width
-    //var height = height
-    //var border = border
-    //var imageSize = imageSize
-    //var data = data
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glCompressedTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, width: Int, height: Int, format: Int, imageSize: Int, data: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var xoffset = xoffset
-    //var yoffset = yoffset
-    //var width = width
-    //var height = height
-    //var format = format
-    //var imageSize = imageSize
-    //var data = data
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glCopyTexImage2D(target: Int, level: Int, internalformat: Int, x: Int, y: Int, width: Int, height: Int, border: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var internalformat = internalformat
-    //var x = x
-    //var y = y
-    //var width = width
-    //var height = height
-    //var border = border
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glCopyTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var xoffset = xoffset
-    //var yoffset = yoffset
-    //var x = x
-    //var y = y
-    //var width = width
-    //var height = height
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glCullFace(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDeleteTextures(n: Int, textures: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var n = n
-    //var textures = textures
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDeleteTextures(n: Int, textures: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var n = n
-    //var textures = textures
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDepthFunc(func: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var func = func
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDepthMask(flag: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var flag = flag
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDepthRangef(zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var zNear = zNear
-    //var zFar = zFar
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDisable(cap: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var cap = cap
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDisableClientState(array: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var array = array
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDrawArrays(mode: Int, first: Int, count: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-    //var first = first
-    //var count = count
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glDrawElements(mode: Int, count: Int, type: Int, indices: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-    //var count = count
-    //var type = type
-    //var indices = indices
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glEnable(cap: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var cap = cap
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glEnableClientState(array: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var array = array
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFinish()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFlush()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFogf(pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFogfv(pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFogfv(pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFrontFace(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glFrustumf(left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var left = left
-    //var right = right
-    //var bottom = bottom
-    //var top = top
-    //var zNear = zNear
-    //var zFar = zFar
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glGenTextures(n: Int, textures: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var n = n
-    //var textures = textures
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glGenTextures(n: Int, textures: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var n = n
-    //var textures = textures
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glGetError()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    override fun glGetIntegerv(pname: Int, params: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glGetIntegerv(pname: Int, params: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glGetString(name: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-    //var name = name
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-    override fun glHint(target: Int, mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var mode = mode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightModelf(pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightModelfv(pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightModelfv(pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightf(light: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var light = light
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightfv(light: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var light = light
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLightfv(light: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var light = light
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLineWidth(width: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var width = width
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLoadIdentity()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLoadMatrixf(m: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var m = m
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLoadMatrixf(m: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var m = m
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glLogicOp(opcode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var opcode = opcode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMaterialf(face: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var face = face
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMaterialfv(face: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var face = face
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMaterialfv(face: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var face = face
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMatrixMode(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMultMatrixf(m: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var m = m
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMultMatrixf(m: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var m = m
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glMultiTexCoord4f(target: Int, s: Float, t: Float, r: Float, q: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var s = s
-    //var t = t
-    //var r = r
-    //var q = q
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glNormal3f(nx: Float, ny: Float, nz: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var nx = nx
-    //var ny = ny
-    //var nz = nz
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glNormalPointer(type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var type = type
-    //var stride = stride
-    //var pointer = pointer
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glOrthof(left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var left = left
-    //var right = right
-    //var bottom = bottom
-    //var top = top
-    //var zNear = zNear
-    //var zFar = zFar
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPixelStorei(pname: Int, param: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPointSize(size: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var size = size
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPolygonOffset(factor: Float, units: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var factor = factor
-    //var units = units
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPopMatrix()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPushMatrix()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glReadPixels(x: Int, y: Int, width: Int, height: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var width = width
-    //var height = height
-    //var format = format
-    //var type = type
-    //var pixels = pixels
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glRotatef(angle: Float, x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var angle = angle
-    //var x = x
-    //var y = y
-    //var z = z
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glRotatex(angle: Int, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var angle = angle
-    //var x = x
-    //var y = y
-    //var z = z
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glSampleCoverage(value: Float, invert: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var value = value
-    //var invert = invert
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glScalef(x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var z = z
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glScalex(x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var z = z
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glScissor(x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var width = width
-    //var height = height
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glShadeModel(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mode = mode
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glStencilFunc(func: Int, ref: Int, mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var func = func
-    //var ref = ref
-    //var mask = mask
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glStencilMask(mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mask = mask
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glStencilOp(fail: Int, zfail: Int, zpass: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var fail = fail
-    //var zfail = zfail
-    //var zpass = zpass
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexCoordPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var size = size
-    //var type = type
-    //var stride = stride
-    //var pointer = pointer
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexEnvf(target: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexEnvfv(target: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var pname = pname
-    //var params = params
-    //var offset = offset
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexEnvfv(target: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var pname = pname
-    //var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexImage2D(target: Int, level: Int, internalformat: Int, width: Int, height: Int, border: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var internalformat = internalformat
-    //var width = width
-    //var height = height
-    //var border = border
-    //var format = format
-    //var type = type
-    //var pixels = pixels
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexParameterf(target: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexParameteri(target: Int, pname: Int, param: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var pname = pname
-    //var param = param
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, width: Int, height: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var target = target
-    //var level = level
-    //var xoffset = xoffset
-    //var yoffset = yoffset
-    //var width = width
-    //var height = height
-    //var format = format
-    //var type = type
-    //var pixels = pixels
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glTranslatef(x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var z = z
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glVertexPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var size = size
-    //var type = type
-    //var stride = stride
-    //var pointer = pointer
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glViewport(x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var width = width
-    //var height = height
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glBegin(i: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var i = i
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glEnd()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glVertex3f(f: Float, f2: Float, f3: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var f = f
-    //var f2 = f2
-    //var f3 = f3
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
-    override fun glPolygonMode(i: Int, i1: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var i = i
-    //var i1 = i1
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-}
-
-
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.device
+
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL10
+// import java.nio.Buffer
+// import java.nio.FloatBuffer
+// import java.nio.IntBuffer
+// import org.allbinary.logic.string.StringUtil
+
+open class NullGL10: JObject, GL10 {
+    public static let NULL_GL10: NullGL10! = NullGL10()
+
+    public override init() {
+        super.init()
+    }
+    
+
+    open func glActiveTexture(_ texture: Int32) {
+        return
+    }
+    
+
+    open func glAlphaFunc(_ `func`: Int32, _ ref: Float) {
+        return
+    }
+    
+
+    open func glBindTexture(_ target: Int32, _ texture: Int32) {
+        return
+    }
+    
+
+    open func glBlendFunc(_ sfactor: Int32, _ dfactor: Int32) {
+        return
+    }
+    
+
+    open func glClear(_ mask: Int32) {
+        return
+    }
+    
+
+    open func glClearColor(_ red: Float, _ green: Float, _ blue: Float, _ alpha: Float) {
+        return
+    }
+    
+
+    open func glClearDepthf(_ depth: Float) {
+        return
+    }
+    
+
+    open func glClearStencil(_ s: Int32) {
+        return
+    }
+    
+
+    open func glClientActiveTexture(_ texture: Int32) {
+        return
+    }
+    
+
+    open func glColor4f(_ red: Float, _ green: Float, _ blue: Float, _ alpha: Float) {
+        return
+    }
+    
+
+    open func glColorMask(_ red: Bool, _ green: Bool, _ blue: Bool, _ alpha: Bool) {
+        return
+    }
+    
+
+    open func glColorPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!) {
+        return
+    }
+    
+
+    open func glCompressedTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ width: Int32, _ height: Int32, _ border: Int32, _ imageSize: Int32, _ data: Buffer!) {
+        return
+    }
+    
+
+    open func glCompressedTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ imageSize: Int32, _ data: Buffer!) {
+        return
+    }
+    
+
+    open func glCopyTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32, _ border: Int32) {
+        return
+    }
+    
+
+    open func glCopyTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32) {
+        return
+    }
+    
+
+    open func glCullFace(_ mode: Int32) {
+        return
+    }
+    
+
+    open func glDeleteTextures(_ n: Int32, _ textures: JArray<Int32>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glDeleteTextures(_ n: Int32, _ textures: IntBuffer!) {
+        return
+    }
+    
+
+    open func glDepthFunc(_ `func`: Int32) {
+        return
+    }
+    
+
+    open func glDepthMask(_ flag: Bool) {
+        return
+    }
+    
+
+    open func glDepthRangef(_ zNear: Float, _ zFar: Float) {
+        return
+    }
+    
+
+    open func glDisable(_ cap: Int32) {
+        return
+    }
+    
+
+    open func glDisableClientState(_ array: Int32) {
+        return
+    }
+    
+
+    open func glDrawArrays(_ mode: Int32, _ first: Int32, _ count: Int32) {
+        return
+    }
+    
+
+    open func glDrawElements(_ mode: Int32, _ count: Int32, _ type: Int32, _ indices: Buffer!) {
+        return
+    }
+    
+
+    open func glEnable(_ cap: Int32) {
+        return
+    }
+    
+
+    open func glEnableClientState(_ array: Int32) {
+        return
+    }
+    
+
+    open func glFinish() {
+        return
+    }
+    
+
+    open func glFlush() {
+        return
+    }
+    
+
+    open func glFogf(_ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glFogfv(_ pname: Int32, _ params: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glFogfv(_ pname: Int32, _ params: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glFrontFace(_ mode: Int32) {
+        return
+    }
+    
+
+    open func glFrustumf(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ zNear: Float, _ zFar: Float) {
+        return
+    }
+    
+
+    open func glGenTextures(_ n: Int32, _ textures: JArray<Int32>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glGenTextures(_ n: Int32, _ textures: IntBuffer!) {
+        return
+    }
+    
+
+    @discardableResult open func glGetError() -> Int32 {
+        return 0
+    }
+    
+
+    open func glGetIntegerv(_ pname: Int32, _ params: JArray<Int32>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glGetIntegerv(_ pname: Int32, _ params: IntBuffer!) {
+        return
+    }
+    
+
+    @discardableResult open func glGetString(_ name: Int32) -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
+    
+
+    open func glHint(_ target: Int32, _ mode: Int32) {
+        return
+    }
+    
+
+    open func glLightModelf(_ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glLightModelfv(_ pname: Int32, _ params: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glLightModelfv(_ pname: Int32, _ params: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glLightf(_ light: Int32, _ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glLightfv(_ light: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glLightfv(_ light: Int32, _ pname: Int32, _ params: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glLineWidth(_ width: Float) {
+        return
+    }
+    
+
+    open func glLoadIdentity() {
+        return
+    }
+    
+
+    open func glLoadMatrixf(_ m: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glLoadMatrixf(_ m: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glLogicOp(_ opcode: Int32) {
+        return
+    }
+    
+
+    open func glMaterialf(_ face: Int32, _ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glMaterialfv(_ face: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glMaterialfv(_ face: Int32, _ pname: Int32, _ params: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glMatrixMode(_ mode: Int32) {
+        return
+    }
+    
+
+    open func glMultMatrixf(_ m: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glMultMatrixf(_ m: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glMultiTexCoord4f(_ target: Int32, _ s: Float, _ t: Float, _ r: Float, _ q: Float) {
+        return
+    }
+    
+
+    open func glNormal3f(_ nx: Float, _ ny: Float, _ nz: Float) {
+        return
+    }
+    
+
+    open func glNormalPointer(_ type: Int32, _ stride: Int32, _ pointer: Buffer!) {
+        return
+    }
+    
+
+    open func glOrthof(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ zNear: Float, _ zFar: Float) {
+        return
+    }
+    
+
+    open func glPixelStorei(_ pname: Int32, _ param: Int32) {
+        return
+    }
+    
+
+    open func glPointSize(_ size: Float) {
+        return
+    }
+    
+
+    open func glPolygonOffset(_ factor: Float, _ units: Float) {
+        return
+    }
+    
+
+    open func glPopMatrix() {
+        return
+    }
+    
+
+    open func glPushMatrix() {
+        return
+    }
+    
+
+    open func glReadPixels(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!) {
+        return
+    }
+    
+
+    open func glRotatef(_ angle: Float, _ x: Float, _ y: Float, _ z: Float) {
+        return
+    }
+    
+
+    open func glRotatex(_ angle: Int32, _ x: Int32, _ y: Int32, _ z: Int32) {
+        return
+    }
+    
+
+    open func glSampleCoverage(_ value: Float, _ invert: Bool) {
+        return
+    }
+    
+
+    open func glScalef(_ x: Float, _ y: Float, _ z: Float) {
+        return
+    }
+    
+
+    open func glScalex(_ x: Int32, _ y: Int32, _ z: Int32) {
+        return
+    }
+    
+
+    open func glScissor(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32) {
+        return
+    }
+    
+
+    open func glShadeModel(_ mode: Int32) {
+        return
+    }
+    
+
+    open func glStencilFunc(_ `func`: Int32, _ ref: Int32, _ mask: Int32) {
+        return
+    }
+    
+
+    open func glStencilMask(_ mask: Int32) {
+        return
+    }
+    
+
+    open func glStencilOp(_ fail: Int32, _ zfail: Int32, _ zpass: Int32) {
+        return
+    }
+    
+
+    open func glTexCoordPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!) {
+        return
+    }
+    
+
+    open func glTexEnvf(_ target: Int32, _ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glTexEnvfv(_ target: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32) {
+        return
+    }
+    
+
+    open func glTexEnvfv(_ target: Int32, _ pname: Int32, _ params: FloatBuffer!) {
+        return
+    }
+    
+
+    open func glTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ width: Int32, _ height: Int32, _ border: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!) {
+        return
+    }
+    
+
+    open func glTexParameterf(_ target: Int32, _ pname: Int32, _ param: Float) {
+        return
+    }
+    
+
+    open func glTexParameteri(_ target: Int32, _ pname: Int32, _ param: Int32) {
+        return
+    }
+    
+
+    open func glTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!) {
+        return
+    }
+    
+
+    open func glTranslatef(_ x: Float, _ y: Float, _ z: Float) {
+        return
+    }
+    
+
+    open func glVertexPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!) {
+        return
+    }
+    
+
+    open func glViewport(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32) {
+        return
+    }
+    
+
+    open func glBegin(_ i: Int32) {
+        return
+    }
+    
+
+    open func glEnd() {
+        return
+    }
+    
+
+    open func glVertex3f(_ f: Float, _ f2: Float, _ f3: Float) {
+        return
+    }
+    
+
+    open func glPolygonMode(_ i: Int32, _ i1: Int32) {
+        return
+    }
 }
-                
-            
 

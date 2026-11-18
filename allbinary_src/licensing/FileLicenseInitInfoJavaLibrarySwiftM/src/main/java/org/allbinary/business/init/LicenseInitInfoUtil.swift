@@ -1,280 +1,137 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.init
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.business.init
+import J2SEForSwiftLibrary
+// import org.allbinary.TsUtil
+// import org.allbinary.globals.PATH_GLOBALS
+// import org.allbinary.globals.URLGLOBALS
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.io.AbDataInputStream
+// import org.allbinary.logic.io.AbDataOutputStream
+// import org.allbinary.logic.io.AbFileInputStream
+// import org.allbinary.logic.io.DataOutputStreamFactory
+// import org.allbinary.logic.io.FileStreamFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.system.security.crypt.DatabaseEncoder
+// import org.allbinary.logic.system.security.crypt.WeakCrypt
+// import org.allbinary.string.CommonLabels
 
+open class LicenseInitInfoUtil: JObject {
+    fileprivate static let instance: LicenseInitInfoUtil! = LicenseInitInfoUtil()
+    public var logUtil: LogUtil! = nil
+    fileprivate var stringUtil: StringUtil! = nil
+    public var INITFILENAME: String! = nil
+    public var ABOUT: String! = nil
+    public var PRIVACY_POLICY: String! = nil
+    fileprivate var filePath: String! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.stringUtil = StringUtil.getInstance()
+    self.INITFILENAME = "licenseinitdata.dat"
+    self.ABOUT = "about"
+    self.PRIVACY_POLICY = "privacy_policy"
+    self.filePath = self.stringUtil.EMPTY_STRING
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.TsUtil
-import org.allbinary.globals.PATH_GLOBALS
-import org.allbinary.globals.URLGLOBALS
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.io.AbDataInputStream
-import org.allbinary.logic.io.AbDataOutputStream
-import org.allbinary.logic.io.AbFileInputStream
-import org.allbinary.logic.io.DataOutputStreamFactory
-import org.allbinary.logic.io.FileStreamFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.system.security.crypt.DatabaseEncoder
-import org.allbinary.logic.system.security.crypt.WeakCrypt
-import org.allbinary.string.CommonLabels
+    @discardableResult open class func getInstance() -> LicenseInitInfoUtil! {
+        return LicenseInitInfoUtil.instance
+    }
+    
 
-open public class LicenseInitInfoUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LicenseInitInfoUtil = LicenseInitInfoUtil()
+    open func setFilePath(_ filePath: String!) {
+        self.filePath = filePath
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LicenseInitInfoUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseInitInfoUtil.instance
-}
-
-
+    open func write(_ initData: LicenseInitInfo!) {
+        if (self.filePath == self.stringUtil.EMPTY_STRING) {
+            self.filePath = jstr(URLGLOBALS.getMainPath()) + jstr(PATH_GLOBALS.getInstance().INIT_PATH)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val stringUtil: StringUtil = StringUtil.getInstance()!!
-
-    val INITFILENAME: String = "licenseinitdata.dat"
-
-    val ABOUT: String = "about"
-
-    val PRIVACY_POLICY: String = "privacy_policy"
-
-    private var filePath: String = this.stringUtil!!.EMPTY_STRING
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun setFilePath(filePath: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var filePath = filePath
-this.filePath= filePath
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun write(initData: LicenseInitInfo)
-        //nullable = true from not(false or (false and false)) = true
-{
-var initData = initData
-
+        do {
+            let tsUtil: TsUtil! = TsUtil.getInstance()
+            let dataOutputStream: AbDataOutputStream! = DataOutputStreamFactory.getInstance().getInstance(self.filePath, self.INITFILENAME)
+            let licenseIdCrypted: JArray<Int8>! = tsUtil.getByteArray(WeakCrypt(1).encrypt(initData.getLicenseId()))
+            dataOutputStream.writeUTF(DatabaseEncoder.encode(licenseIdCrypted))
+            let numberOfLicenseServers: Int32 = initData.getNumberOfServers()
+            dataOutputStream.writeInt(numberOfLicenseServers)
+            var licenseServerCrypted: JArray<Int8>! = nil
+            do {
+                var index: Int32 = 0
+                while (index < numberOfLicenseServers) {
+                    defer { index &+= 1 }
+                licenseServerCrypted = tsUtil.getByteArray(WeakCrypt(3).encrypt(initData.getServer(index)))
+                dataOutputStream.writeUTF(DatabaseEncoder.encode(licenseServerCrypted))
+                }
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.filePath == this.stringUtil!!.EMPTY_STRING)
-                        
-                                    {
-                                    this.filePath= URLGLOBALS.getMainPath() +PATH_GLOBALS.getInstance()!!.INIT_PATH
 
-                                    }
-                                
-
-        try {
-            
-    var tsUtil: TsUtil = TsUtil.getInstance()!!
-
-
-    var dataOutputStream: AbDataOutputStream = DataOutputStreamFactory.getInstance()!!.getInstance(this.filePath, this.INITFILENAME)!!
-
-
-    var licenseIdCrypted: ByteArray = tsUtil!!.getByteArray(WeakCrypt(1).
-                            encrypt(initData!!.getLicenseId()))!!
-
-dataOutputStream!!.writeUTF(DatabaseEncoder.encode(licenseIdCrypted))
-
-    var numberOfLicenseServers: Int = initData!!.getNumberOfServers()
-
-dataOutputStream!!.writeInt(numberOfLicenseServers)
-
-    var licenseServerCrypted: ByteArray
-
-
-
-
-
-                        for (index in 0 until numberOfLicenseServers)
-
-        {
-licenseServerCrypted= tsUtil!!.getByteArray(WeakCrypt(3).
-                            encrypt(initData!!.getServer(index)))!!
-dataOutputStream!!.writeUTF(DatabaseEncoder.encode(licenseServerCrypted))
-}
-
-} catch(e: Exception)
-            {
-this.logUtil!!.put("Command Failed: " +this.INITFILENAME, this, "write", e)
-FileStreamFactory.getInstance()!!.delete(this.filePath, this.INITFILENAME)
-
-
-
-                            throw e
-}
-
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun read()
-        //nullable = true from not(false or (false and true)) = true
-: LicenseInitInfo{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readAgain(0)
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun readAgain(initializeCounter: Int)
-        //nullable = true from not(false or (false and false)) = true
-: LicenseInitInfo{
-var initializeCounter = initializeCounter
-
-    var METHOD_NAME: String = "readAgain"
-
-
+    @discardableResult open func read() -> LicenseInitInfo! {
+        return self.readAgain(0)
+    }
     
-                        if(this.filePath == this.stringUtil!!.EMPTY_STRING)
-                        
-                                    {
-                                    this.filePath= URLGLOBALS.getMainPath() +PATH_GLOBALS.getInstance()!!.INIT_PATH
 
-                                    }
-                                
-
-        try {
-            this.logUtil!!.putF("LicenseInitInfo File: " +this.INITFILENAME, this, METHOD_NAME)
-
-    var fileStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!!
-
-
-    var iFile: AbFileInputStream = fileStreamFactory!!.getFileInputStreamInstance(this.filePath, this.INITFILENAME)!!
-
-
+    @discardableResult open func readAgain(_ initializeCounter: Int32) -> LicenseInitInfo! {
+        let METHOD_NAME: String! = "readAgain"
+        if (self.filePath == self.stringUtil.EMPTY_STRING) {
+            self.filePath = jstr(URLGLOBALS.getMainPath()) + jstr(PATH_GLOBALS.getInstance().INIT_PATH)
+        }
+        do {
+            self.logUtil.putF(jstr("LicenseInitInfo File: ") + jstr(self.INITFILENAME), self, METHOD_NAME)
+            let fileStreamFactory: FileStreamFactory! = FileStreamFactory.getInstance()
+            let iFile: AbFileInputStream! = fileStreamFactory.getFileInputStreamInstance(self.filePath, self.INITFILENAME)
+            if (iFile != nil) {
+                let iData: AbDataInputStream! = AbDataInputStream(iFile)
+                let initInfo: LicenseInitInfo! = LicenseInitInfo()
+                var decodedByteArray: JArray<Int8>! = DatabaseEncoder.decode(iData.readUTF())
+                let licenseIdDecoded: String! = JString.fromBytes(decodedByteArray)
+                initInfo.setLicenseId(WeakCrypt(1).decrypt(licenseIdDecoded))
+                let numberOfLicenseServers: Int32 = iData.readInt()
+                let NEXT_FILE: String! = StringMaker().append(CommonLabels.getInstance().NEXT).append(" License Server From File: ").toString()
+                var licenseServerDecoded: String! = nil
+                do {
+                    var index: Int32 = 0
+                    while (index < numberOfLicenseServers) {
+                        defer { index &+= 1 }
+                    decodedByteArray = DatabaseEncoder.decode(iData.readUTF())
+                    licenseServerDecoded = JString.fromBytes(decodedByteArray)
+                    initInfo.setServer(WeakCrypt(3).decrypt(licenseServerDecoded), index)
+                    self.logUtil.putF(jstr(NEXT_FILE) + jstr(initInfo.getServer(index)), self, METHOD_NAME)
+                    }
+                }
+                return initInfo
+            } else {
+                jThrow(JException("Exception", jstr("Could Not Load License InitInfo: ") + jstr(self.INITFILENAME)))
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(iFile != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var iData: AbDataInputStream = AbDataInputStream(iFile)
 
-
-    var initInfo: LicenseInitInfo = LicenseInitInfo()
-
-
-    var decodedByteArray: ByteArray = DatabaseEncoder.decode(iData!!.readUTF())!!
-
-
-    var licenseIdDecoded: String = decodedByteArray.decodeToString()
-
-initInfo!!.setLicenseId(WeakCrypt(1).
-                            decrypt(licenseIdDecoded))
-
-    var numberOfLicenseServers: Int = iData!!.readInt()
-
-
-    var NEXT_FILE: String = StringMaker().
-                            append(CommonLabels.getInstance()!!.NEXT)!!.append(" License Server From File: ")!!.toString()!!
-
-
-    var licenseServerDecoded: String
-
-
-
-
-
-                        for (index in 0 until numberOfLicenseServers)
-
-        {
-decodedByteArray= DatabaseEncoder.decode(iData!!.readUTF())!!
-licenseServerDecoded= decodedByteArray.decodeToString()
-initInfo!!.setServer(WeakCrypt(3).
-                            decrypt(licenseServerDecoded), index)
-this.logUtil!!.putF(NEXT_FILE +initInfo!!.getServer(index), this, METHOD_NAME)
+    @discardableResult open func getFilePath() -> String! {
+        return self.filePath
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return initInfo
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("Could Not Load License InitInfo: " +this.INITFILENAME)
-
-                        }
-                            
-} catch(e: Exception)
-            {
-
-        try {
-            this.logUtil!!.put("Command Failed: " +this.INITFILENAME, this, METHOD_NAME, e)
-} catch(e2: Exception)
-            {
-this.logUtil!!.put("LicenseInitInfo Read Retry: " +this.INITFILENAME, this, "readAgain()", e2)
-}
-
-
-
-
-                            throw Exception("LicenseInitInfo Read Error: " +this.INITFILENAME)
-}
-
-}
-
-
-    open fun getFilePath()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.filePath
-}
-
-
-}
-                
-            
 

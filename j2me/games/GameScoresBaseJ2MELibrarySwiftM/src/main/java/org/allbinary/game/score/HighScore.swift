@@ -1,152 +1,96 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import java.io.ByteArrayOutputStream
+// import java.io.DataOutputStream
+// import org.allbinary.game.GameInfo
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonSeps
 
+open class HighScore: JObject {
+    fileprivate var id: Int32 = 0
+    fileprivate var name: String! = nil
+    fileprivate var gameInfo: GameInfo! = nil
+    fileprivate var score: Int64 = 0
+    fileprivate var scoreString: String! = nil
 
+    private func initFields() {
+    
+    
+    
+    
+    
+    }
+    
 
+    public init(_ id: Int32, _ name: String!, _ gameInfo: GameInfo!, _ score: Int64) {
+        super.init()
+        self.initFields()
+        self.id = id
+        self.name = name
+        self.gameInfo = gameInfo
+        self.score = score
+        self.scoreString = jstr(self.score)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.ByteArrayOutputStream
-import java.io.DataOutputStream
-import org.allbinary.game.GameInfo
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonSeps
+    @discardableResult open func getId() -> Int32 {
+        return self.id
+    }
+    
 
-open public class HighScore
-            : Object
-         {
-        
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
 
-    private val id: Int
+    @discardableResult open func getScore() -> Int64 {
+        return self.score
+    }
+    
 
-    private var name: String
+    @discardableResult open func getAsBytes() -> JArray<Int8>! {
+        let byteArrayOutputStream: ByteArrayOutputStream! = ByteArrayOutputStream()
+        let outputStream: DataOutputStream! = DataOutputStream(byteArrayOutputStream)
+        outputStream.writeUTF(self.getName())
+        outputStream.writeLong(self.getScore())
+        return byteArrayOutputStream.toByteArray()
+    }
+    
 
-    private val gameInfo: GameInfo
+    @discardableResult open func getGameInfo() -> GameInfo! {
+        return self.gameInfo
+    }
+    
 
-    private val score: Long
+    @discardableResult open func getScoreString() -> String! {
+        return self.scoreString
+    }
+    
 
-    private val scoreString: String
-public constructor (id: Int, name: String, gameInfo: GameInfo, score: Long)
-            : super()
-        {
-var id = id
-var name = name
-var gameInfo = gameInfo
-var score = score
-this.id= id
-this.name= name
-this.gameInfo= gameInfo
-this.score= score
-this.scoreString= (this.score).toString()!!
+    open func setName(_ name: String!) {
+        self.name = name
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let commonSeps: CommonSeps! = CommonSeps.getInstance()
+        return StringMaker().append(self.name).append(commonSeps.COLON).appendlong(self.score).append(commonSeps.FORWARD_SLASH).append(self.scoreString).toString()
+    }
 }
-
-
-    open fun getId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    open fun getScore()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.score
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getAsBytes()
-        //nullable = true from not(false or (false and true)) = true
-: ByteArray{
-
-    var byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
-
-
-    var outputStream: DataOutputStream = DataOutputStream(byteArrayOutputStream)
-
-outputStream!!.writeUTF(this.getName())
-outputStream!!.writeLong(this.getScore())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream!!.toByteArray()
-}
-
-
-    open fun getGameInfo()
-        //nullable = true from not(false or (false and true)) = true
-: GameInfo{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInfo
-}
-
-
-    open fun getScoreString()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scoreString
-}
-
-
-    open fun setName(name: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var name = name
-this.name= name
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append(this.name)!!.append(commonSeps!!.COLON)!!.appendlong(this.score)!!.append(commonSeps!!.FORWARD_SLASH)!!.append(this.scoreString)!!.toString()
-}
-
-
-}
-                
-            
 

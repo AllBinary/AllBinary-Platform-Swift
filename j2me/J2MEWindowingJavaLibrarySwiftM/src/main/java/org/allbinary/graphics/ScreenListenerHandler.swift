@@ -31,7 +31,7 @@ open class ScreenListenerHandler: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ScreenListenerHandler! {
+    @discardableResult open class func getInstance() -> ScreenListenerHandler! {
         return ScreenListenerHandler.instance
     }
     

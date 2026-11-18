@@ -1,114 +1,53 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.licensing
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.licensing
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.system.security.licensing.registration.RegistrationConfiguration
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.ABHashtable
 
+open class MobileClientInformation: AbeClientInformation {
+    public static let DESC: String! = "Mobile"
+    public static let ANDROID_DESC: String! = jstr("Android") + jstr(MobileClientInformation.DESC)
+    
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.system.security.licensing.registration.RegistrationConfiguration
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.ABHashtable
-
-open public class MobileClientInformation : AbeClientInformation {
-        
-companion object {
-            
-    val DESC: String = "Mobile"
-
-    val ANDROID_DESC: String = "Android" +MobileClientInformation.DESC
-
+    public override init(_ name: String!, _ version: String!, _ specialName: String!, _ shortName: String!) {
+        super.init(name, version, StringMaker().append(specialName).append(CommonSeps.getInstance().SPACE).append(PartnerIdentifierFileUtil.getInstance().get()).toString(), shortName)
+        let string: String! = self.getSpecialName()
+        let number: String! = JString.substring(string, JString.length(string) &- 1)
+        if (Integer.getInteger(number) == nil) {
+            self.setHardSale(false)
         }
-            public constructor (name: String, version: String, specialName: String, shortName: String)                        
-
-                            : super(name, version, StringMaker().
-                            append(specialName)!!.append(CommonSeps.getInstance()!!.SPACE)!!.append(PartnerIdentifierFileUtil.getInstance()!!.get())!!.toString(), shortName){
-    //var name = name
-    //var version = version
-    //var specialName = specialName
-    //var shortName = shortName
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    var string: String = this.getSpecialName()!!
-
-
-    var number: String = string.substring(string.length -1)!!
-
-
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        if (self.isHardSale()) {
+            self.logUtil.putF("Use Hard Coded Selling", self, commonStrings.CONSTRUCTOR)
+        } else {
+            self.logUtil.putF("Don't Use Hard Coded Selling", self, commonStrings.CONSTRUCTOR)
+        }
+    }
     
-                        if(Integer.getInteger(number) == 
-                                    null
-                                )
-                        
-                                    {
-                                    this.setHardSale(false)
 
-                                    }
-                                
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
-    
-                        if(this.isHardSale())
-                        
-                                    {
-                                    this.logUtil!!.putF("Use Hard Coded Selling", this, commonStrings!!.CONSTRUCTOR)
-
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF("Don't Use Hard Coded Selling", this, commonStrings!!.CONSTRUCTOR)
-
-                        }
-                            
+    @discardableResult open override func toHashtable() -> ABHashtable! {
+        let hashtable: ABHashtable! = super.toHashtable()
+        let registrationConfiguration: RegistrationConfiguration! = RegistrationConfiguration.getInstance()
+        hashtable.put(jBoxString(registrationConfiguration.NAME), jBoxString(registrationConfiguration.getRegistrationCode()))
+        return hashtable
+    }
 }
-
-
-    override fun toHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-    var hashtable: ABHashtable<Any, Any> = super.toHashtable()!!
-
-
-    var registrationConfiguration: RegistrationConfiguration = RegistrationConfiguration.getInstance()!!
-
-hashtable.put(registrationConfiguration!!.NAME, registrationConfiguration!!.getRegistrationCode())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashtable
-}
-
-
-}
-                
-            
 

@@ -1,82 +1,53 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.form.ScreenInfo
+// import org.allbinary.logic.java.bool.BooleanFactory
+// import org.allbinary.logic.util.visitor.Visitor
 
+open class LimitCommandsVisitor: Visitor {
+    fileprivate var isNotSmallDisplay: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.form.ScreenInfo
-import org.allbinary.logic.java.bool.BooleanFactory
-import org.allbinary.logic.util.visitor.Visitor
-
-open public class LimitCommandsVisitor : Visitor {
-        
-
-    private val isNotSmallDisplay: Boolean
-public constructor (){
-
-    var displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-this.isNotSmallDisplay= (displayInfo!!.isPortrait() && displayInfo!!.getLastHeight() > ScreenInfo.getInstance()!!.SMALL_WIDTH) || (!displayInfo!!.isPortrait() && displayInfo!!.getLastHeight() > ScreenInfo.getInstance()!!.SMALL_HEIGHT)
-}
-
-
-    override fun visit(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Any{
-var anyType = anyType
-
-    var command: Command = anyType as Command
-
-
-    var booleanFactory: BooleanFactory = BooleanFactory.getInstance()!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(this.isNotSmallDisplay || command.getPriority() == 1 || command == GameCommandsFactory.getInstance()!!.EXIT_COMMAND || command == GameCommandsFactory.getInstance()!!.EXIT_WITHOUT_PROGRESS_COMMAND)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory!!.TRUE
+    }
+    
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory!!.FALSE
+    public override init() {
+        super.init()
+        self.initFields()
+        let displayInfo: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        self.isNotSmallDisplay = (displayInfo.isPortrait() && displayInfo.getLastHeight() > ScreenInfo.getInstance().SMALL_WIDTH) || (!displayInfo.isPortrait() && displayInfo.getLastHeight() > ScreenInfo.getInstance().SMALL_HEIGHT)
+    }
+    
 
-                        }
-                            
+    @discardableResult open override func visit(_ anyType: JObject!) -> JObject! {
+        let command: Command! = (anyType as! Command)
+        let booleanFactory: BooleanFactory! = BooleanFactory.getInstance()
+        if (self.isNotSmallDisplay || command.getPriority() == 1 || command === GameCommandsFactory.getInstance().EXIT_COMMAND || command === GameCommandsFactory.getInstance().EXIT_WITHOUT_PROGRESS_COMMAND) {
+            return booleanFactory.TRUE
+        } else {
+            return booleanFactory.FALSE
+        }
+    }
 }
-
-
-}
-                
-            
 

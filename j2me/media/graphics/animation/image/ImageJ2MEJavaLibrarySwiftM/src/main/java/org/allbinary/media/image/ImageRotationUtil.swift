@@ -1,74 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.graphics.Anchor
 
+open class ImageRotationUtil: JObject {
+    fileprivate static let instance: ImageRotationUtil! = ImageRotationUtil()
+    fileprivate var anchor: Int32 = 0
 
+    private func initFields() {
+    self.anchor = Anchor.TOP_LEFT
+    }
+    
 
+    @discardableResult open class func getInstance() -> ImageRotationUtil! {
+        return ImageRotationUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.graphics.Anchor
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class ImageRotationUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ImageRotationUtil = ImageRotationUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ImageRotationUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance
+    @discardableResult open func createRotatedImage(_ originalImage: Image!, _ rotationInDegrees: Int32) -> Image! {
+        return originalImage
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-                @Throws(Exception::class)
-            
-    open fun createRotatedImage(originalImage: Image, rotationInDegrees: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var originalImage = originalImage
-    //var rotationInDegrees = rotationInDegrees
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return originalImage
-}
-
-
-}
-                
-            
 

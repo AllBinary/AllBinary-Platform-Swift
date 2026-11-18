@@ -1,103 +1,62 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.opengles.OpenGLFeatureFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.thread.NullRunnable
 
+open class AlwaysRepaintBehavior: RepaintBehavior {
+    fileprivate static let instanceC: AlwaysRepaintBehavior! = AlwaysRepaintBehavior()
+    fileprivate var NAME: String! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.NAME = "AlwaysRepaintBehavior"
+    }
 
-
-        import java.lang.Object        
-        
-        import java.lang.Thread
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.opengles.OpenGLFeatureFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.thread.NullRunnable
-
-open public class AlwaysRepaintBehavior : RepaintBehavior {
-        
-companion object {
-            
-    private val instanceC: AlwaysRepaintBehavior = AlwaysRepaintBehavior()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AlwaysRepaintBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlwaysRepaintBehavior.instanceC
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val NAME: String = "AlwaysRepaintBehavior"
-
-    override fun repaint(canvas: Canvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-
-    var features: Features = Features.getInstance()!!
-
-
-    var openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!!
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(features.isFeature(openGLFeatureFactory!!.OPENGL))
-                        
-                                    {
-                                    DisplayInfoSingleton.getInstance()!!.process()
 
-                                    }
-                                
-                        else {
-                            
-    var thread: Thread = Thread(RepaintRunnable(canvas), this.NAME)
+    @discardableResult open override class func getInstance() -> AlwaysRepaintBehavior! {
+        return AlwaysRepaintBehavior.instanceC
+    }
+    
 
-thread.start()
+    open override func repaint(_ canvas: Canvas!) {
+        let features: Features! = Features.getInstance()
+        let openGLFeatureFactory: OpenGLFeatureFactory! = OpenGLFeatureFactory.getInstance()
+        if (features.isFeature(openGLFeatureFactory.OPENGL)) {
+            DisplayInfoSingleton.getInstance().process()
+        } else {
+            let thread: Thread! = Thread(RepaintRunnable(canvas), self.NAME)
+            thread.start()
+        }
+    }
+    
 
-                        }
-                            
+    open override func onChangeRepaint(_ canvas: Canvas!) {
+    }
 }
-
-
-    override fun onChangeRepaint(canvas: Canvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-}
-
-
-}
-                
-            
 

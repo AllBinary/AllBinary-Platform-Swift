@@ -1,59 +1,38 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
 
+open class CustomItemUtil: JObject {
+    fileprivate static let instance: CustomItemUtil! = CustomItemUtil()
+    public var CUSTOM_ITEM_ARRAY: JArray<ABCustomItem?>! = nil
 
+    private func initFields() {
+    self.CUSTOM_ITEM_ARRAY = JArray<ABCustomItem?>(0, nil)
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class CustomItemUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: CustomItemUtil = CustomItemUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CustomItemUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomItemUtil.instance
+    @discardableResult open class func getInstance() -> CustomItemUtil! {
+        return CustomItemUtil.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val CUSTOM_ITEM_ARRAY: Array<ABCustomItem?> = arrayOfNulls(0)
-
-}
-                
-            
 

@@ -1,247 +1,134 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.event
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.event
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class RawKeyEventHandler: JObject {
+    fileprivate static let instance: RawKeyEventHandler! = RawKeyEventHandler()
+    fileprivate static let TOTAL_LISTENERS: String! = "Total Listeners: "
+    fileprivate static let LISTENER_LABEL: String! = " Listener: "
+    public var logUtil: LogUtil! = nil
+    public var eventListenerInterfaceList: BasicArrayList! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    
+    }
+    
 
+    @discardableResult open class func getInstance() -> RawKeyEventHandler! {
+        return RawKeyEventHandler.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    public override init() {
+        super.init()
+        self.initFields()
+        self.eventListenerInterfaceList = BasicArrayListD()
+    }
+    
 
-open public class RawKeyEventHandler
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: RawKeyEventHandler = RawKeyEventHandler()
+    open func removeAllListeners() {
+        self.eventListenerInterfaceList = BasicArrayListD()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: RawKeyEventHandler{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RawKeyEventHandler.instance
-}
-
-
-    private val TOTAL_LISTENERS: String = "Total Listeners: "
-
-    private val LISTENER_LABEL: String = " Listener: "
-
+    open func addListeners(_ vector: BasicArrayList!) {
+        var eventListenerInterface: RawKeyEventListener! = nil
+        let size: Int32 = vector.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            eventListenerInterface = (vector.get(index) as! RawKeyEventListener)
+            self.addListener(eventListenerInterface)
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    var eventListenerInterfaceList: BasicArrayList
-public constructor ()
-            : super()
-        {
-this.eventListenerInterfaceList= BasicArrayListD()
-}
-
-
-    open fun removeAllListeners()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.eventListenerInterfaceList= BasicArrayListD()
-}
-
-
-    open fun addListeners(vector: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var vector = vector
-
-    var eventListenerInterface: RawKeyEventListener
-
-
-    var size: Int = vector.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-eventListenerInterface= vector.get(index) as RawKeyEventListener
-this.addListener(eventListenerInterface)
-}
-
-}
-
-
-    open fun addListenerSingleThreaded(eventListenerInterface: RawKeyEventListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventListenerInterface = eventListenerInterface
-
+    }
     
-                        if(!this.eventListenerInterfaceList!!.contains(eventListenerInterface))
-                        
-                                    {
-                                    this.eventListenerInterfaceList!!.add(eventListenerInterface)
 
-                                    }
-                                
-}
-
-
-    open fun addListener(eventListenerInterface: RawKeyEventListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventListenerInterface = eventListenerInterface
-
+    open func addListenerSingleThreaded(_ eventListenerInterface: RawKeyEventListener!) {
+        if (!self.eventListenerInterfaceList.contains((eventListenerInterface as? JObject))) {
+            self.eventListenerInterfaceList.add((eventListenerInterface as? JObject))
+        }
+    }
     
-                        if(!this.eventListenerInterfaceList!!.contains(eventListenerInterface))
-                        
-                                    {
-                                    this.eventListenerInterfaceList!!.add(eventListenerInterface)
 
-                                    }
-                                
+    open func addListener(_ eventListenerInterface: RawKeyEventListener!) {
+        if (!self.eventListenerInterfaceList.contains((eventListenerInterface as? JObject))) {
+            self.eventListenerInterfaceList.add((eventListenerInterface as? JObject))
+        }
+    }
+    
+
+    open func removeListenerSingleThreaded(_ eventListenerInterface: RawKeyEventListener!) {
+        self.eventListenerInterfaceList.remove((eventListenerInterface as? JObject))
+    }
+    
+
+    open func removeListener(_ eventListenerInterface: RawKeyEventListener!) {
+        self.eventListenerInterfaceList.remove((eventListenerInterface as? JObject))
+    }
+    
+
+    open func fireEvent(_ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool) {
+        var eventListenerInterface: RawKeyEventListener! = nil
+        var index: Int32 = 0
+        while (index < self.eventListenerInterfaceList.size()) {
+            do {
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! RawKeyEventListener)
+                self.process(keyCode, deviceId, repeated, eventListenerInterface)
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            index &+= 1
+        }
+    }
+    
+
+    open func process(_ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool, _ eventListenerInterface: RawKeyEventListener!) {
+        eventListenerInterface.onEventRaw(keyCode, deviceId, repeated)
+    }
+    
+
+    @discardableResult open func getEventListenerInterfaceListP() -> BasicArrayList! {
+        return self.eventListenerInterfaceList
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(RawKeyEventHandler.TOTAL_LISTENERS)
+        stringBuffer.appendint(self.eventListenerInterfaceList.size())
+        var eventListenerInterface: RawKeyEventListener! = nil
+        var index: Int32 = 0
+        while (index < self.eventListenerInterfaceList.size()) {
+            do {
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! RawKeyEventListener)
+                stringBuffer.append(RawKeyEventHandler.LISTENER_LABEL)
+                stringBuffer.append(jstr(eventListenerInterface))
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            index &+= 1
+        }
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun removeListenerSingleThreaded(eventListenerInterface: RawKeyEventListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventListenerInterface = eventListenerInterface
-this.eventListenerInterfaceList!!.remove(eventListenerInterface)
-}
-
-
-    open fun removeListener(eventListenerInterface: RawKeyEventListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventListenerInterface = eventListenerInterface
-this.eventListenerInterfaceList!!.remove(eventListenerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun fireEvent(keyCode: Int, deviceId: Int, repeated: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-    //var repeated = repeated
-
-    var eventListenerInterface: RawKeyEventListener
-
-
-    var index: Int = 0
-
-
-        while(index < this.eventListenerInterfaceList!!.size())
-        {
-
-        try {
-            eventListenerInterface= this.eventListenerInterfaceList!!.get(index) as RawKeyEventListener
-this.process(keyCode, deviceId, repeated, eventListenerInterface)
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
-}
-
-index++
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process(keyCode: Int, deviceId: Int, repeated: Boolean, eventListenerInterface: RawKeyEventListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-    //var repeated = repeated
-    //var eventListenerInterface = eventListenerInterface
-eventListenerInterface!!.onEventRaw(keyCode, deviceId, repeated)
-}
-
-
-    open fun getEventListenerInterfaceListP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.eventListenerInterfaceList
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(RawKeyEventHandler.TOTAL_LISTENERS)
-stringBuffer!!.appendint(this.eventListenerInterfaceList!!.size())
-
-    var eventListenerInterface: RawKeyEventListener
-
-
-    var index: Int = 0
-
-
-        while(index < this.eventListenerInterfaceList!!.size())
-        {
-
-        try {
-            eventListenerInterface= this.eventListenerInterfaceList!!.get(index) as RawKeyEventListener
-stringBuffer!!.append(RawKeyEventHandler.LISTENER_LABEL)
-stringBuffer!!.append(eventListenerInterface!!.toString())
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.TOSTRING, e)
-}
-
-index++
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

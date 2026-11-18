@@ -24,7 +24,7 @@ open class ABCharacter: JObject {
     }
     
 
-    @discardableResult public static func toString(_ ch: UInt16) -> String! {
+    @discardableResult open class func toString(_ ch: UInt16) -> String! {
         return jstr(ch)
     }
 }

@@ -25,17 +25,17 @@ open class J2MEUtil: JObject {
     }
     
 
-    @discardableResult public static func isJ2ME() -> Bool {
+    @discardableResult open class func isJ2ME() -> Bool {
         return false
     }
     
 
-    @discardableResult public static func isJ2SE() -> Bool {
+    @discardableResult open class func isJ2SE() -> Bool {
         return false
     }
     
 
-    @discardableResult public static func isHTML() -> Bool {
+    @discardableResult open class func isHTML() -> Bool {
         return false
     }
 }

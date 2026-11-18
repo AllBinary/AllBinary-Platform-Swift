@@ -21,7 +21,7 @@ open class ByteUtil: JObject {
     fileprivate static let instance: ByteUtil! = ByteUtil()
     
 
-    @discardableResult public static func getInstance() -> ByteUtil! {
+    @discardableResult open class func getInstance() -> ByteUtil! {
         return ByteUtil.instance
     }
     

@@ -1,95 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer.event
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class ScrollMapEvent: AllBinaryEventObject {
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.dx = 0
+    self.dy = 0
+    }
+    
 
+    public override init(_ anyType: JObject!) {
+        super.init(anyType)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.util.event.AllBinaryEventObject
+    open func setDx(_ dx: Int32) {
+        self.dx = dx
+    }
+    
 
-open public class ScrollMapEvent : AllBinaryEventObject {
-        
+    @discardableResult open func getDx() -> Int32 {
+        return self.dx
+    }
+    
 
-    private var dx: Int= 0
+    open func setDy(_ dy: Int32) {
+        self.dy = dy
+    }
+    
 
-    private var dy: Int= 0
-public constructor (anyType: Any)                        
+    @discardableResult open func getDy() -> Int32 {
+        return self.dy
+    }
+    
 
-                            : super(anyType){
-var anyType = anyType
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    open func setDxDy(_ dx: Int32, _ dy: Int32) {
+        self.dx = dx
+        self.dy = dy
+    }
 }
-
-
-    open fun setDx(dx: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dx = dx
-this.dx= dx
-}
-
-
-    open fun getDx()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx
-}
-
-
-    open fun setDy(dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dy = dy
-this.dy= dy
-}
-
-
-    open fun getDy()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy
-}
-
-
-    open fun setDxDy(dx: Int, dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dx = dx
-var dy = dy
-this.dx= dx
-this.dy= dy
-}
-
-
-}
-                
-            
 

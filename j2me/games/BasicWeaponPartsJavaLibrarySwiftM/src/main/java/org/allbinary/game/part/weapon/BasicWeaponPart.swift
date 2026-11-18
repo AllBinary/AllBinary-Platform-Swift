@@ -1,207 +1,121 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.part.weapon
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.part.weapon
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.NullAnimationFactory
+// import org.allbinary.game.combat.weapon.WeaponProperties
+// import org.allbinary.game.part.PartInterface
+// import org.allbinary.game.score.NoScoreable
+// import org.allbinary.game.score.ScoreableInterface
+// import org.allbinary.graphics.RelativeRelationship
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.view.ViewPositionBase
 
+open class BasicWeaponPart: JObject, PartInterface, SalvoInterface {
+    public static let NULL_BASIC_WEAPON_PART: BasicWeaponPart! = BasicWeaponPart.createBasicWeaponPart(NullAnimationFactory.getFactoryInstance().getInstance(0))
+    fileprivate var animationInterface: Animation! = nil
+    fileprivate var ownerLayerInterface: AllBinaryLayer! = nil
+    fileprivate var weaponProperties: WeaponProperties! = nil
+    fileprivate var scoreableInterface: ScoreableInterface! = nil
+    public var relativeRelationship: RelativeRelationship! = nil
 
+    private func initFields() {
+    self.animationInterface = NullAnimationFactory.getFactoryInstance().getInstance(0)
+    self.ownerLayerInterface = AllBinaryLayer.NULL_ALLBINARY_LAYER
+    self.weaponProperties = WeaponProperties.NULL_WEAPON_PROPERTIES
+    self.scoreableInterface = NoScoreable.getInstance()
+    self.relativeRelationship = RelativeRelationship.NULL_RELATIVE_RELATIONSHIP
+    }
+    
 
+    @discardableResult open class func createBasicWeaponPart(_ animationInterface: Animation!) -> BasicWeaponPart! {
+        return BasicWeaponPart(animationInterface, AllBinaryLayer.NULL_ALLBINARY_LAYER, WeaponProperties.NULL_WEAPON_PROPERTIES, NoScoreable.getInstance(), RelativeRelationship.NULL_RELATIVE_RELATIONSHIP)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.animation.NullAnimationFactory
-import org.allbinary.game.combat.weapon.WeaponProperties
-import org.allbinary.game.part.PartInterface
-import org.allbinary.game.score.NoScoreable
-import org.allbinary.game.score.ScoreableInterface
-import org.allbinary.graphics.RelativeRelationship
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.string.CommonStrings
-import org.allbinary.view.ViewPositionBase
+    public init(_ animationInterface: Animation!, _ sourceLayerInterface: AllBinaryLayer!, _ weaponProperties: WeaponProperties!, _ scoreableInterface: ScoreableInterface!, _ relativeRelationship: RelativeRelationship!) {
+        super.init()
+        self.initFields()
+        self.`init`(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship)
+        self.setAnimationInterface(animationInterface)
+    }
+    
 
-open public class BasicWeaponPart
-            : Object
-        
-                , PartInterface
-                , SalvoInterface {
-        
-companion object {
-            
-    open fun createBasicWeaponPart(animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: BasicWeaponPart{
-    //var animationInterface = animationInterface
+    open func `init`(_ sourceLayerInterface: AllBinaryLayer!, _ weaponProperties: WeaponProperties!, _ scoreableInterface: ScoreableInterface!, _ relativeRelationship: RelativeRelationship!) {
+        self.setOwnerLayerInterface(sourceLayerInterface)
+        self.setWeaponProperties(weaponProperties)
+        self.scoreableInterface = scoreableInterface
+        self.relativeRelationship = relativeRelationship
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicWeaponPart(animationInterface, AllBinaryLayer.NULL_ALLBINARY_LAYER, WeaponProperties.NULL_WEAPON_PROPERTIES, NoScoreable.getInstance(), RelativeRelationship.NULL_RELATIVE_RELATIONSHIP)
+    open func process(_ allbinaryLayerManager: AllBinaryLayerManager!, _ angle: Int16, _ otherAngle: Int16) {
+        self.processScore(allbinaryLayerManager, angle, otherAngle, self.getWeaponProperties(), self.scoreableInterface)
+    }
+    
+
+    open func processScore(_ allbinaryLayerManager: AllBinaryLayerManager!, _ angle: Int16, _ otherAngle: Int16, _ weaponProperties: WeaponProperties!, _ scoreableInterface: ScoreableInterface!) {
+        jThrow(JException("Exception", CommonStrings.getInstance().NOT_IMPLEMENTED))
+    }
+    
+
+    @discardableResult open func getOwnerLayerInterface() -> AllBinaryLayer! {
+        return self.ownerLayerInterface
+    }
+    
+
+    open func setOwnerLayerInterface(_ ownerLayerInterface: AllBinaryLayer!) {
+        self.ownerLayerInterface = ownerLayerInterface
+    }
+    
+
+    @discardableResult open func getAnimationInterface() -> Animation! {
+        return self.animationInterface
+    }
+    
+
+    open func setAnimationInterface(_ animationInterface: Animation!) {
+        self.animationInterface = animationInterface
+    }
+    
+
+    open func paint(_ graphics: Graphics!) {
+        let viewPosition: ViewPositionBase! = self.getOwnerLayerInterface().getViewPosition()
+        let viewX: Int32 = viewPosition.getX()
+        let viewY: Int32 = viewPosition.getY()
+        self.animationInterface.paintXY(graphics, viewX, viewY)
+    }
+    
+
+    open func paintThreed(_ graphics: Graphics!) {
+    }
+    
+
+    @discardableResult open func getWeaponProperties() -> WeaponProperties! {
+        return self.weaponProperties
+    }
+    
+
+    open func setWeaponProperties(_ weaponProperties: WeaponProperties!) {
+        self.weaponProperties = weaponProperties
+    }
 }
-
-
-    val NULL_BASIC_WEAPON_PART: BasicWeaponPart = BasicWeaponPart.createBasicWeaponPart(NullAnimationFactory.getFactoryInstance()!!.getInstance(0))!!
-
-        }
-            
-    private var animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!!.getInstance(0)!!
-
-    private var ownerLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER
-
-    private var weaponProperties: WeaponProperties = WeaponProperties.NULL_WEAPON_PROPERTIES
-
-    private var scoreableInterface: ScoreableInterface = NoScoreable.getInstance()!!
-
-    var relativeRelationship: RelativeRelationship = RelativeRelationship.NULL_RELATIVE_RELATIONSHIP
-public constructor (animationInterface: Animation, sourceLayerInterface: AllBinaryLayer, weaponProperties: WeaponProperties, scoreableInterface: ScoreableInterface, relativeRelationship: RelativeRelationship)
-            : super()
-        {
-    //var animationInterface = animationInterface
-    //var sourceLayerInterface = sourceLayerInterface
-    //var weaponProperties = weaponProperties
-    //var scoreableInterface = scoreableInterface
-    //var relativeRelationship = relativeRelationship
-this.init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship)
-this.setAnimationInterface(animationInterface)
-}
-
-
-    open fun init(sourceLayerInterface: AllBinaryLayer, weaponProperties: WeaponProperties, scoreableInterface: ScoreableInterface, relativeRelationship: RelativeRelationship)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sourceLayerInterface = sourceLayerInterface
-    //var weaponProperties = weaponProperties
-    //var scoreableInterface = scoreableInterface
-    //var relativeRelationship = relativeRelationship
-this.setOwnerLayerInterface(sourceLayerInterface)
-this.setWeaponProperties(weaponProperties)
-this.scoreableInterface= scoreableInterface
-this.relativeRelationship= relativeRelationship
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun process(allbinaryLayerManager: AllBinaryLayerManager, angle: Short, otherAngle: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var angle = angle
-    //var otherAngle = otherAngle
-this.processScore(allbinaryLayerManager, angle, otherAngle, this.getWeaponProperties(), this.scoreableInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processScore(allbinaryLayerManager: AllBinaryLayerManager, angle: Short, otherAngle: Short, weaponProperties: WeaponProperties, scoreableInterface: ScoreableInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var angle = angle
-    //var otherAngle = otherAngle
-    //var weaponProperties = weaponProperties
-    //var scoreableInterface = scoreableInterface
-
-
-
-                            throw Exception(CommonStrings.getInstance()!!.NOT_IMPLEMENTED)
-}
-
-
-    open fun getOwnerLayerInterface()
-        //nullable = true from not(false or (false and true)) = true
-: AllBinaryLayer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ownerLayerInterface
-}
-
-
-    open fun setOwnerLayerInterface(ownerLayerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var ownerLayerInterface = ownerLayerInterface
-this.ownerLayerInterface= ownerLayerInterface
-}
-
-
-    override fun getAnimationInterface()
-        //nullable = true from not(false or (false and true)) = true
-: Animation{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface
-}
-
-
-    open fun setAnimationInterface(animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var animationInterface = animationInterface
-this.animationInterface= animationInterface
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var viewPosition: ViewPositionBase = this.getOwnerLayerInterface()!!.getViewPosition()!!
-
-
-    var viewX: Int = viewPosition!!.getX()
-
-
-    var viewY: Int = viewPosition!!.getY()
-
-this.animationInterface!!.paintXY(graphics, viewX, viewY)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-    open fun getWeaponProperties()
-        //nullable = true from not(false or (false and true)) = true
-: WeaponProperties{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.weaponProperties
-}
-
-
-    open fun setWeaponProperties(weaponProperties: WeaponProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var weaponProperties = weaponProperties
-this.weaponProperties= weaponProperties
-}
-
-
-}
-                
-            
 

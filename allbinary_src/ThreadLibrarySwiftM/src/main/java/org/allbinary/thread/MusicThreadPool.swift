@@ -24,7 +24,7 @@ open class MusicThreadPool: ThreadPool {
     fileprivate static let THREAD_POOL: ThreadPool! = ThreadPool("Music", 2, ThreadPool.NORMAL_PRIORITY)
     
 
-    @discardableResult public static func getInstance() -> ThreadPool! {
+    @discardableResult open class func getInstance() -> ThreadPool! {
         return MusicThreadPool.THREAD_POOL
     }
     

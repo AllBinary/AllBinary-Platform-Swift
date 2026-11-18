@@ -1,65 +1,39 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
 //import org.allbinary.logic.communication.log.PreLogUtil;
-open public class AppletUtil
-            : Object
-         {
-        
-companion object {
-            
-    private var applet: Boolean = false
+open class AppletUtil: JObject {
+    fileprivate static var applet: Bool = false
+    
 
-    open fun setApplet()
-        //nullable = true from not(false or (false and true)) = true
-{
-AppletUtil.applet= true
+    public override init() {
+        super.init()
+    }
+    
+
+    open class func setApplet() {
+        AppletUtil.applet = true
+    }
+    
+
+    @discardableResult open class func isAppletLoader(_ anyType: JObject!) -> Bool {
+        return AppletUtil.applet
+    }
 }
-
-
-    open fun isAppletLoader(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var anyType = anyType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AppletUtil.applet
-}
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-}
-                
-            
 

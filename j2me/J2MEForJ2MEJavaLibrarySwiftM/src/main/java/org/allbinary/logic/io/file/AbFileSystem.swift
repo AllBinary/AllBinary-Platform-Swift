@@ -1,154 +1,83 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2026 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io.file
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2026 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io.file
+import J2SEForSwiftLibrary
+// import java.io.InputStream
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.InputStream
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
 //J2MEForJ2ME
-open public class AbFileSystem
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AbFileSystem = AbFileSystem()
+open class AbFileSystem: JObject {
+    fileprivate static let instance: AbFileSystem! = AbFileSystem()
+    fileprivate var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AbFileSystem{
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    }
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileSystem.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    open fun isDirectoryOrFile(path: String)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var path = path
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isDirectory(path: String)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var path = path
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun getFilesAsStringArrayForPath(currentDirPath: String)
-        //nullable = true from not(false or (false and false)) = true
-: Array<String?>{
-    //var currentDirPath = currentDirPath
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.getArrayInstance()
-}
-
-
-    open fun readAsString(fileName: String)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-    //var fileName = fileName
-
-    var bytes: ByteArray = ByteArray(1000000)
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readAsString(fileName, bytes)
-}
-
-
-    open fun readAsString(fileName: String, bytes: ByteArray)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-    //var fileName = fileName
-    //var bytes = bytes
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-    open fun close(closeable: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var closeable = closeable
-
-        try {
-            
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(closeable != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var inputStream: InputStream = (closeable as InputStream)
 
-inputStream!!.close()
+    @discardableResult open class func getInstance() -> AbFileSystem! {
+        return AbFileSystem.instance
+    }
+    
 
-                                    }
-                                
+    @discardableResult open func isDirectoryOrFile(_ path: String!) -> Bool {
+        return false
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.CLOSE, e)
+    @discardableResult open func isDirectory(_ path: String!) -> Bool {
+        return false
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    @discardableResult open func getFilesAsStringArrayForPath(_ currentDirPath: String!) -> JArray<String?>! {
+        return StringUtil.getInstance().getArrayInstance()
+    }
+    
+
+    @discardableResult open func readAsString(_ fileName: String!) -> String! {
+        let bytes: JArray<Int8>! = JArray<Int8>(1000000, 0)
+        return self.readAsString(fileName, bytes)
+    }
+    
+
+    @discardableResult open func readAsString(_ fileName: String!, _ bytes: JArray<Int8>!) -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
+    
+
+    @discardableResult open func close(_ closeable: JObject!) -> Bool {
+        do {
+            if (closeable != nil) {
+                let inputStream: InputStream! = ((closeable as! InputStream))
+                inputStream.close()
+            }
+            return true
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

@@ -1,41 +1,25 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.color.ColorCompositeInterface
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.color.ColorCompositeInterface
-
-interface VectorAnimationInterface : IndexedAnimationInterface, ColorCompositeInterface {
-        
-
-    open fun getPoints(frame: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Array<IntArray?>
-
+public protocol VectorAnimationInterface: AnyObject, IndexedAnimationInterface, ColorCompositeInterface {
+    @discardableResult func getPoints(_ frame: Int32) -> JArray<JArray<Int32>?>!
 }
-                
-            
+
 

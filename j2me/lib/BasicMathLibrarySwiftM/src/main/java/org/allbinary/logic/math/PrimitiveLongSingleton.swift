@@ -40,7 +40,7 @@ open class PrimitiveLongSingleton: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> PrimitiveLongSingleton! {
+    @discardableResult open class func getInstance() -> PrimitiveLongSingleton! {
         return PrimitiveLongSingleton.instance
     }
     

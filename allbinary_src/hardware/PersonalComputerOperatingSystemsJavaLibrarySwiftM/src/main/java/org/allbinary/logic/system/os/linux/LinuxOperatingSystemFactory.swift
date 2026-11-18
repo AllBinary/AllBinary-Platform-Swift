@@ -34,7 +34,7 @@ open class LinuxOperatingSystemFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> LinuxOperatingSystemFactory! {
+    @discardableResult open class func getInstance() -> LinuxOperatingSystemFactory! {
         return LinuxOperatingSystemFactory.instance
     }
     

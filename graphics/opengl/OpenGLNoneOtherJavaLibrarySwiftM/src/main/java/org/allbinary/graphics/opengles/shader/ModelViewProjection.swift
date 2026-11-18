@@ -1,67 +1,38 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles.shader
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles.shader
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
 
+open class ModelViewProjection: JObject {
+    fileprivate static let instance: ModelViewProjection! = ModelViewProjection()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> ModelViewProjection! {
+        return ModelViewProjection.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-
-open public class ModelViewProjection
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ModelViewProjection = ModelViewProjection()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ModelViewProjection{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModelViewProjection.instance
+    @discardableResult open func get() -> JArray<Float>! {
+        return NullUtil.getInstance().NULL_FLOAT_ARRAY
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun get()
-        //nullable = true from not(false or (false and true)) = true
-: FloatArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_FLOAT_ARRAY
-}
-
-
-}
-                
-            
 

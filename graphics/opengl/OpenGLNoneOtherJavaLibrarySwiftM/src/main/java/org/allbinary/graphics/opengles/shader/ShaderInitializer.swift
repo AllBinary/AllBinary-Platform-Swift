@@ -1,73 +1,45 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles.shader
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles.shader
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL10
+// import org.allbinary.string.CommonStrings
 
+open class ShaderInitializer: JObject {
+    fileprivate static let instance: ShaderInitializer! = ShaderInitializer()
+    public var commonStrings: CommonStrings! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL10
-import org.allbinary.string.CommonStrings
+    @discardableResult open class func getInstance() -> ShaderInitializer! {
+        return ShaderInitializer.instance
+    }
+    
 
-open public class ShaderInitializer
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ShaderInitializer = ShaderInitializer()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ShaderInitializer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderInitializer.instance
+    @discardableResult open func `init`(_ gl: GL10!, _ shader: JArray<Shader?>!, _ attributeArray: JArray<String?>!) -> Int32 {
+        return -1
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    open fun init(gl: GL10, shader: Array<Shader?>, attributeArray: Array<String?>)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var gl = gl
-    //var shader = shader
-    //var attributeArray = attributeArray
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-}
-                
-            
 

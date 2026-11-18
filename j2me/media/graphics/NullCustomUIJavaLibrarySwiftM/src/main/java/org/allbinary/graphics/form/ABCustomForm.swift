@@ -1,148 +1,87 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.form.item.ABCustomItem
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
+open class ABCustomForm: CustomScreen {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    }
+    
 
+    public init(_ title: String!, _ items: JArray<ABCustomItem?>!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.form.item.ABCustomItem
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
+    @discardableResult open func getAllitems() -> JArray<ABCustomItem?>! {
+        return JArray<ABCustomItem?>(0, nil)
+    }
+    
 
-open public class ABCustomForm : CustomScreen {
-        
+    @discardableResult open func size() -> Int32 {
+        return 0
+    }
+    
 
-    val logUtil: LogUtil = LogUtil.getInstance()!!
+    open func setSelectedIndex(_ index: Int32) {
+    }
+    
 
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-public constructor (title: String, items: Array<ABCustomItem?>, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor){
-var title = title
-var items = items
-var backgroundBasicColor = backgroundBasicColor
-var foregroundBasicColor = foregroundBasicColor
+    @discardableResult open func getSelectedIndex() -> Int32 {
+        return 0
+    }
+    
+
+    open func deleteAll() {
+    }
+    
+
+    open func delete(_ itemNum: Int32) {
+    }
+    
+
+    @discardableResult open func append(_ item: ABCustomItem!) -> Int32 {
+        return -1
+    }
+    
+
+    open func insert(_ itemNum: Int32, _ item: ABCustomItem!) {
+    }
+    
+
+    open func set(_ itemNum: Int32, _ item: ABCustomItem!) {
+    }
+    
+
+    @discardableResult open func get(_ itemNum: Int32) -> ABCustomItem! {
+        return ABCustomItem.getNullInstance()
+    }
+    
+
+    @discardableResult open func getWidth() -> Int32 {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open func paint(_ graphics: Graphics!) {
+    }
+    
+
+    @discardableResult open func getTitle() -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
 }
-
-
-    open fun getAllitems()
-        //nullable = true from not(false or (false and true)) = true
-: Array<ABCustomItem?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return arrayOfNulls(0)
-}
-
-
-    open fun size()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun setSelectedIndex(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-}
-
-
-    open fun getSelectedIndex()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun deleteAll()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun delete(itemNum: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var itemNum = itemNum
-}
-
-
-    open fun append(item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var item = item
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-    open fun insert(itemNum: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-var itemNum = itemNum
-var item = item
-}
-
-
-    open fun set(itemNum: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-var itemNum = itemNum
-var item = item
-}
-
-
-    open fun get(itemNum: Int)
-        //nullable = true from not(false or (false and false)) = true
-: ABCustomItem{
-var itemNum = itemNum
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.getNullInstance()
-}
-
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun getTitle()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-}
-                
-            
 

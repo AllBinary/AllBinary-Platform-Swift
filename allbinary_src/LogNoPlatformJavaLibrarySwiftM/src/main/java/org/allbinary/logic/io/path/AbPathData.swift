@@ -33,7 +33,7 @@ open class AbPathData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> AbPathData! {
+    @discardableResult open class func getInstance() -> AbPathData! {
         return AbPathData.instance
     }
     

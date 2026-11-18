@@ -1,198 +1,98 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.draw
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.draw
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.AndroidUtil
+// import org.allbinary.J2MEUtil
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.graphics.opengles.OpenGLFeatureUtil
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
 
+open class DrawStringUtil: JObject {
+    fileprivate static let instance: DrawStringUtil! = DrawStringUtil()
+    fileprivate var EMPTY_STRING: String! = nil
+    fileprivate var anchor: Int32 = 0
 
+    private func initFields() {
+    self.EMPTY_STRING = StringUtil.getInstance().EMPTY_STRING
+    self.anchor = Anchor.TOP_LEFT
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.AndroidUtil
-import org.allbinary.J2MEUtil
-import org.allbinary.graphics.Anchor
-import org.allbinary.graphics.opengles.OpenGLFeatureUtil
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
+    @discardableResult open class func getInstance() -> DrawStringUtil! {
+        return DrawStringUtil.instance
+    }
+    
 
-open public class DrawStringUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: DrawStringUtil = DrawStringUtil()
+    open func drawCenterString(_ graphics: Graphics!, _ string: String!, _ offset: Int32, _ length: Int32, _ x: Int32, _ y: Int32) {
+        let width: Int32 = (graphics.getFont().substringWidth(string, offset, length) >> 1)
+        do {
+            graphics.drawSubstring(string, offset, length, x &- width, y, self.anchor)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DrawStringUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DrawStringUtil.instance
-}
-
-
+    open func drawCenterStrings(_ graphics: Graphics!, _ stringArray: JArray<String?>!, _ maxWidth: Int32, _ charHeight: Int32, _ x: Int32, _ y: Int32) {
+        var extraLines: Int32 = 0
+        do {
+            var index: Int32 = 0
+            while (index < stringArray.length) {
+                defer { index &+= 1 }
+            let string: String! = stringArray[index]
+            if (string != self.EMPTY_STRING) {
+                let width: Int32 = graphics.getFont().stringWidth(string)
+                var minTotalLines: Int32 = 1
+                if (width > maxWidth) {
+                    minTotalLines = (width / maxWidth) &+ 1
+                }
+                let linePortion: Int32 = JString.length(string) / minTotalLines
+                var offset: Int32 = 0
+                var currentLength: Int32 = linePortion
+                let size: Int32 = JString.length(string)
+                while (offset < size) {
+                    if (offset &+ currentLength > size) {
+                        currentLength = size &- offset
+                    }
+                    if (offset &+ currentLength != size) {
+                        while (currentLength > 0 && stringArray[index]!.charAt(offset &+ currentLength) != UInt16((" " as Unicode.Scalar).value)) {
+                            currentLength &-= 1
+                        }
+                        if (currentLength <= 4) {
+                            currentLength = linePortion
+                        }
+                    }
+                    self.drawCenterString(graphics, string, offset, currentLength, x, y &+ ((index &+ jPostIncrement(&extraLines)) &* charHeight))
+                    offset = offset &+ currentLength
+                    currentLength = linePortion
+                }
+                extraLines &-= 1
+            }
+            }
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val EMPTY_STRING: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-    open fun drawCenterString(graphics: Graphics, string: String, offset: Int, length: Int, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var string = string
-    //var offset = offset
-var length = length
-var x = x
-var y = y
-
-    var width: Int = (graphics.getFont()!!.substringWidth(string, offset, length) shr 1)
-
-
-        try {
-            graphics.drawSubstring(string, offset, length, x -width, y, this.anchor)
-} catch(e: Exception)
-            {
-PreLogUtil.put(StringMaker().
-                            append("Exception: stringLength: ")!!.appendint(string.length)!!.append(" offset: ")!!.appendint(offset)!!.append(" currentLength: ")!!.appendint(length)!!.toString(), this, "drawCenterString")
+    }
 }
-
-}
-
-
-    open fun drawCenterStrings(graphics: Graphics, stringArray: Array<String?>, maxWidth: Int, charHeight: Int, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var stringArray = stringArray
-    //var maxWidth = maxWidth
-    //var charHeight = charHeight
-    //var x = x
-    //var y = y
-
-    var extraLines: Int = 0
-
-
-
-
-
-                        for (index in 0 until stringArray!!.size)
-
-        {
-
-    var string: String = stringArray[index]!!
-
-
-    
-                        if(string != this.EMPTY_STRING)
-                        
-                                    {
-                                    
-    var width: Int = graphics.getFont()!!.stringWidth(string)
-
-
-    var minTotalLines: Int = 1
-
-
-    
-                        if(width > maxWidth)
-                        
-                                    {
-                                    minTotalLines= (width /maxWidth) +1
-
-                                    }
-                                
-
-    var linePortion: Int = string.length /minTotalLines
-
-
-    var offset: Int = 0
-
-
-    var currentLength: Int = linePortion
-
-
-    var size: Int = string.length
-
-
-        while(offset < size)
-        {
-
-    
-                        if(offset +currentLength > size)
-                        
-                                    {
-                                    currentLength= size -offset
-
-                                    }
-                                
-
-    
-                        if(offset +currentLength != size)
-                        
-                                    {
-                                    
-        while(currentLength > 0 && stringArray[index]!![offset +currentLength] != ' ')
-        {
-currentLength--
-}
-
-
-    
-                        if(currentLength <= 4)
-                        
-                                    {
-                                    currentLength= linePortion
-
-                                    }
-                                
-
-                                    }
-                                
-this.drawCenterString(graphics, string, offset, currentLength, x, y +((index +extraLines++) *charHeight))
-offset= offset +currentLength
-currentLength= linePortion
-}
-
-extraLines--
-
-                                    }
-                                
-}
-
-}
-
-
-}
-                
-            
 

@@ -35,7 +35,7 @@ open class ItemColorFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ItemColorFactory! {
+    @discardableResult open class func getInstance() -> ItemColorFactory! {
         return ItemColorFactory.instance
     }
 }

@@ -1,70 +1,45 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.form.item.CommandTextItemArrayFactory
+// import org.allbinary.graphics.form.item.LimitCommandsVisitor
 
+open class GameLimitedCommandTextItemArrayFactory: JObject {
+    fileprivate static let instance: GameLimitedCommandTextItemArrayFactory! = GameLimitedCommandTextItemArrayFactory()
+    fileprivate var commandTextItemArrayFactory: CommandTextItemArrayFactory! = nil
 
+    private func initFields() {
+    self.commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor())
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.form.item.CommandTextItemArrayFactory
-import org.allbinary.graphics.form.item.LimitCommandsVisitor
+    @discardableResult open class func getInstance() -> GameLimitedCommandTextItemArrayFactory! {
+        return GameLimitedCommandTextItemArrayFactory.instance
+    }
+    
 
-open public class GameLimitedCommandTextItemArrayFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: GameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameLimitedCommandTextItemArrayFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLimitedCommandTextItemArrayFactory.instance
+    @discardableResult open func getCommandTextItemArrayFactory() -> CommandTextItemArrayFactory! {
+        return self.commandTextItemArrayFactory
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val commandTextItemArrayFactory: CommandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor())
-
-    open fun getCommandTextItemArrayFactory()
-        //nullable = true from not(false or (false and true)) = true
-: CommandTextItemArrayFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandTextItemArrayFactory
-}
-
-
-}
-                
-            
 

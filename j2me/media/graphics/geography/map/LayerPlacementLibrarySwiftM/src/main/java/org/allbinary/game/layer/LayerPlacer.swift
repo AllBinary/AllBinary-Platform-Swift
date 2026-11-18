@@ -1,208 +1,106 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer
+import J2SEForSwiftLibrary
+// import java.util.Enumeration
+// import org.allbinary.graphics.GPoint
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.LayerInterfaceFactory
+// import org.allbinary.layer.LayerInterfaceVisitor
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.EnumerationUtil
 
+open class LayerPlacer: JObject {
+    fileprivate var enumerationUtil: EnumerationUtil! = nil
+    public var layerInterfaceVisitor: LayerInterfaceVisitor! = nil
+    fileprivate var dimension: GPoint! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.util.Enumeration
-import org.allbinary.graphics.GPoint
-import org.allbinary.graphics.PointFactory
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.LayerInterfaceFactory
-import org.allbinary.layer.LayerInterfaceVisitor
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.EnumerationUtil
-
-open public class LayerPlacer
-            : Object
-         {
-        
-
-    private val enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!!
-
-    val layerInterfaceVisitor: LayerInterfaceVisitor
-
-    private val dimension: GPoint
-public constructor (layerInterfaceVisitor: LayerInterfaceVisitor, dimension: GPoint)
-            : super()
-        {
-    //var layerInterfaceVisitor = layerInterfaceVisitor
-    //var dimension = dimension
-this.layerInterfaceVisitor= layerInterfaceVisitor
-this.dimension= dimension
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processList(list: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var list = list
-
-    var size: Int = list.size()
-
-
-    var layerPlacementInterface: LayerPlacementInterface
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-layerPlacementInterface= list.objectArray[index]!! as LayerPlacementInterface
-this.process(layerPlacementInterface)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process(layerPlacementInterface: LayerPlacementInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerPlacementInterface = layerPlacementInterface
-
-    var relativePoint: GPoint = this.getPoint(layerPlacementInterface)!!
-
-
-    var layerInterfaceFactory: LayerInterfaceFactory = LayerInterfaceFactory.getInstance()!!
-
-
-    var hashtable: ABHashtable<Any, Any> = layerPlacementInterface!!.getInstance()!!
-
-
-    var enumeration: Enumeration<Any?> = hashtable.keys()!!
-
-
-    var point: GPoint
-
-
-    var layerHashtable: ABHashtable<Any, Any>
-
-
-    var x: Int= 0
-
-
-    var y: Int= 0
-
-
-    var z: Int= 0
-
-
-    var layerInterface: AllBinaryLayer
-
-
-        while(this.enumerationUtil!!.hasMoreElements(enumeration))
-        {
-point= this.enumerationUtil!!.nextElement(enumeration)!! as GPoint
-layerHashtable= hashtable.get(point as Object) as ABHashtable<Any, Any>
-x= point.getX() +relativePoint!!.getX()
-y= point.getY() +relativePoint!!.getY()
-z= point.getZ() +relativePoint!!.getZ()
-layerInterface= layerInterfaceFactory!!.getNexInstance(layerHashtable, x, y, z)!!
-this.layerInterfaceVisitor!!.visit(layerInterface)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getPoint(layerPlacementInterface: LayerPlacementInterface)
-        //nullable = true from not(false or (false and false)) = true
-: GPoint{
-    //var layerPlacementInterface = layerPlacementInterface
-
-    var pointFactory: PointFactory = PointFactory.getInstance()!!
-
-
-    var layerPlacementType: LayerPlacementType = layerPlacementInterface!!.getLayerType()!!
-
-
+    private func initFields() {
+    self.enumerationUtil = EnumerationUtil.getInstance()
     
-                        if(layerPlacementType == LayerPlacementTypeFactory.getInstance()!!.MAP)
-                        
-                                    {
-                                    
-    var width: Int = layerPlacementInterface!!.getWidth()
-
-
-    var height: Int = layerPlacementInterface!!.getHeight()
-
-
-    var x: Int = ((this.dimension.getX() -width) /2)
-
-
-    var y: Int = ((this.dimension.getY() -height) /2)
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return pointFactory!!.createXY(x, y)
-
-                                    }
-                                
-                             else 
     
-                        if(layerPlacementType == LayerPlacementTypeFactory.getInstance()!!.UP)
-                        
-                                    {
-                                    
-    var width: Int = layerPlacementInterface!!.getWidth()
+    }
+    
 
+    public init(_ layerInterfaceVisitor: LayerInterfaceVisitor!, _ dimension: GPoint!) {
+        super.init()
+        self.initFields()
+        self.layerInterfaceVisitor = layerInterfaceVisitor
+        self.dimension = dimension
+    }
+    
 
-    var height: Int = layerPlacementInterface!!.getHeight()
+    open func processList(_ list: BasicArrayList!) {
+        let size: Int32 = list.size()
+        var layerPlacementInterface: LayerPlacementInterface! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            layerPlacementInterface = (list.objectArray[index] as! LayerPlacementInterface)
+            self.process(layerPlacementInterface)
+            }
+        }
+    }
+    
 
+    open func process(_ layerPlacementInterface: LayerPlacementInterface!) {
+        let relativePoint: GPoint! = self.getPoint(layerPlacementInterface)
+        let layerInterfaceFactory: LayerInterfaceFactory! = LayerInterfaceFactory.getInstance()
+        let hashtable: ABHashtable! = layerPlacementInterface.getInstance()
+        let enumeration: Enumeration! = hashtable.keys()
+        var point: GPoint! = nil
+        var layerHashtable: ABHashtable! = nil
+        var x: Int32 = 0
+        var y: Int32 = 0
+        var z: Int32 = 0
+        var layerInterface: AllBinaryLayer! = nil
+        while (self.enumerationUtil.hasMoreElements(enumeration)) {
+            point = (self.enumerationUtil.nextElement(enumeration) as! GPoint)
+            layerHashtable = (hashtable.get(point) as! ABHashtable)
+            x = point.getX() &+ relativePoint.getX()
+            y = point.getY() &+ relativePoint.getY()
+            z = point.getZ() &+ relativePoint.getZ()
+            layerInterface = layerInterfaceFactory.getNexInstance(layerHashtable, x, y, z)
+            self.layerInterfaceVisitor.visit(layerInterface)
+        }
+    }
+    
 
-    var x: Int = ((this.dimension.getX() -width) /2)
-
-
-    var y: Int =  -height
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return pointFactory!!.createXY(x, y)
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("PlacementType Not Recognized")
-
-                        }
-                            
+    @discardableResult open func getPoint(_ layerPlacementInterface: LayerPlacementInterface!) -> GPoint! {
+        let pointFactory: PointFactory! = PointFactory.getInstance()
+        let layerPlacementType: LayerPlacementType! = layerPlacementInterface.getLayerType()
+        if (layerPlacementType === LayerPlacementTypeFactory.getInstance().MAP) {
+            let width: Int32 = layerPlacementInterface.getWidth()
+            let height: Int32 = layerPlacementInterface.getHeight()
+            let x: Int32 = ((self.dimension.getX() &- width) / 2)
+            let y: Int32 = ((self.dimension.getY() &- height) / 2)
+            return pointFactory.createXY(x, y)
+        } else if (layerPlacementType === LayerPlacementTypeFactory.getInstance().UP) {
+            let width: Int32 = layerPlacementInterface.getWidth()
+            let height: Int32 = layerPlacementInterface.getHeight()
+            let x: Int32 = ((self.dimension.getX() &- width) / 2)
+            let y: Int32 = -height
+            return pointFactory.createXY(x, y)
+        } else {
+            jThrow(JException("Exception", "PlacementType Not Recognized"))
+        }
+    }
 }
-
-
-}
-                
-            
 

@@ -1,178 +1,96 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import java.io.InputStream
+// import javax.microedition.media.Player
+// import org.allbinary.TsUtil
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.InputStream
-import javax.microedition.media.Player
-import org.allbinary.TsUtil
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
 //NotDeviceSpecificNoMediaMIDP1Library
-open public class AllBinaryMediaManager
-            : Object
-         {
-        
-companion object {
-            
-    private val THIS: String = "AllBinaryMediaManagerNoMediaMIDP1"
+open class AllBinaryMediaManager: JObject {
+    fileprivate static let THIS: String! = "AllBinaryMediaManagerNoMediaMIDP1"
+    
 
-    open fun isMuted()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
+    public override init() {
+        super.init()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    @discardableResult open class func isMuted() -> Bool {
+        return false
+    }
+    
+
+    open class func setMuted(_ aMuted: Bool) {
+    }
+    
+
+    @discardableResult open class func update() -> Bool {
+        return true
+    }
+    
+
+    open class func `init`(_ soundsFactoryInterface: SoundsFactoryInterface!) {
+        let logUtil: LogUtil! = LogUtil.getInstance()
+        let commonString: CommonStrings! = CommonStrings.getInstance()
+        logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), commonString.INIT)
+        ProgressCanvasFactory.getInstance().addNormalPortion(50, "Media Manager")
+        Sounds(soundsFactoryInterface).`init`()
+    }
+    
+
+    open class func shutdown(_ soundsFactoryInterface: SoundsFactoryInterface!) {
+        Sounds(soundsFactoryInterface).stopAll()
+        Sounds(soundsFactoryInterface).closeAll()
+        TsUtil.getInstance().gc()
+    }
+    
+
+    @discardableResult open class func createPlayerFromInputStream(_ stream: InputStream!, _ type: String!) -> Player! {
+        let logUtil: LogUtil! = LogUtil.getInstance()
+        let commonString: CommonStrings! = CommonStrings.getInstance()
+        logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), "creatPlayer(InputStream)")
+        return (NoPlayer.NO_PLAYER as! Player)
+    }
+    
+
+    @discardableResult open class func createPlayer(_ locator: String!) -> Player! {
+        let logUtil: LogUtil! = LogUtil.getInstance()
+        let commonString: CommonStrings! = CommonStrings.getInstance()
+        logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), "creatPlayer(locator)")
+        return (NoPlayer.NO_PLAYER as! Player)
+    }
+    
+
+    open class func playTone(_ frequency: Int32, _ time: Int32, _ volume: Int32) {
+    }
+    
+
+    @discardableResult open class func getSupportedContentTypes(_ `protocol`: String!) -> JArray<String?>! {
+        return StringUtil.getInstance().getArrayInstance()
+    }
+    
+
+    @discardableResult open class func getSupportedProtocols(_ content_type: String!) -> JArray<String?>! {
+        return StringUtil.getInstance().getArrayInstance()
+    }
 }
-
-
-    open fun setMuted(aMuted: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var aMuted = aMuted
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun init(soundsFactoryInterface: SoundsFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var soundsFactoryInterface = soundsFactoryInterface
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-
-    var commonString: CommonStrings = CommonStrings.getInstance()!!
-
-logUtil!!.putF(commonString!!.START, AllBinaryMediaManager.THIS, commonString!!.INIT)
-ProgressCanvasFactory.getInstance()!!.addNormalPortion(50, "Media Manager")
-Sounds(soundsFactoryInterface).
-                            init()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun shutdown(soundsFactoryInterface: SoundsFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var soundsFactoryInterface = soundsFactoryInterface
-Sounds(soundsFactoryInterface).
-                            stopAll()
-Sounds(soundsFactoryInterface).
-                            closeAll()
-TsUtil.getInstance()!!.gc()
-}
-
-
-    open fun createPlayerFromInputStream(stream: InputStream, type: String)
-        //nullable = true from not(false or (false and false)) = true
-: Player{
-var stream = stream
-var type = type
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-
-    var commonString: CommonStrings = CommonStrings.getInstance()!!
-
-logUtil!!.putF(commonString!!.START, AllBinaryMediaManager.THIS, "creatPlayer(InputStream)")
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER as Player
-}
-
-
-    open fun createPlayer(locator: String)
-        //nullable = true from not(false or (false and false)) = true
-: Player{
-var locator = locator
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-
-    var commonString: CommonStrings = CommonStrings.getInstance()!!
-
-logUtil!!.putF(commonString!!.START, AllBinaryMediaManager.THIS, "creatPlayer(locator)")
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER as Player
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun playTone(frequency: Int, time: Int, volume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var frequency = frequency
-var time = time
-var volume = volume
-}
-
-
-    open fun getSupportedContentTypes(protocol: String)
-        //nullable = true from not(false or (false and false)) = true
-: Array<String?>{
-var protocol = protocol
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.getArrayInstance()
-}
-
-
-    open fun getSupportedProtocols(content_type: String)
-        //nullable = true from not(false or (false and false)) = true
-: Array<String?>{
-var content_type = content_type
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.getArrayInstance()
-}
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-}
-                
-            
 

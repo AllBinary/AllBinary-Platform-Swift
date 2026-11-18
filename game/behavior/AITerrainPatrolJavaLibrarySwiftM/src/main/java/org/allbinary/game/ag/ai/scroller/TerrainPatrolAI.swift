@@ -1,124 +1,79 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai.scroller
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai.scroller
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.game.terrain.BasicTerrainInfo
+// import org.allbinary.game.terrain.TerrainEvent
+// import org.allbinary.game.terrain.TerrainEventCircularStaticPool
+// import org.allbinary.game.terrain.TerrainEventHandler
+// import org.allbinary.game.terrain.TerrainEventListener
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.math.Angle
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
 
+open class TerrainPatrolAI: PacePatrolAI {
+    fileprivate var terrainEventListener: TerrainEventListener! = nil
+    fileprivate var DOWN: Angle! = nil
+    fileprivate var CLIFF: BasicTerrainInfo! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameInput
-import org.allbinary.game.terrain.BasicTerrainInfo
-import org.allbinary.game.terrain.TerrainEvent
-import org.allbinary.game.terrain.TerrainEventCircularStaticPool
-import org.allbinary.game.terrain.TerrainEventHandler
-import org.allbinary.game.terrain.TerrainEventListener
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.math.Angle
-import org.allbinary.math.AngleFactory
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-
-open public class TerrainPatrolAI : PacePatrolAI {
-        
-
-    private val terrainEventListener: TerrainEventListener = TerrainEventListener()
-
-    private val DOWN: Angle = AngleFactory.getInstance()!!.DOWN
-
-    private val CLIFF: BasicTerrainInfo = BasicTerrainInfo(this.DOWN)
-public constructor (hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(hashtable, ownerLayerInterface, gameInput){
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-TerrainEventHandler.getInstance(ownerLayerInterface)!!.addListener(this.terrainEventListener)
-this.terrainEventListener!!.onTerrainEvent(TerrainEventCircularStaticPool.getInstance()!!.getNext(this.CLIFF))
-}
-
-
-    override fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-super.update()
-this.changeDirectionIfCliffReached()
-}
-
-
-    open fun changeDirectionIfCliffReached()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var list: BasicArrayList = this.terrainEventListener!!.getList()!!
-
-
-    var size: Int = list.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-
-    var terrainEvent: TerrainEvent = list.removeAt(index) as TerrainEvent
-
-
-    var basicTerrainInfo: BasicTerrainInfo = terrainEvent!!.getBasicTerrainInfo()!!
-
-
-    var angle: Angle = basicTerrainInfo!!.getAngle()!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.terrainEventListener = TerrainEventListener()
+    self.DOWN = AngleFactory.getInstance().DOWN
+    self.CLIFF = BasicTerrainInfo(self.DOWN)
+    }
     
-                        if(angle == this.DOWN)
-                        
-                                    {
-                                    this.nextDirection()
 
+    public override init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(hashtable, ownerLayerInterface, gameInput)
+        self.initFields()
+        TerrainEventHandler.getInstance(ownerLayerInterface).addListener(self.terrainEventListener)
+        self.terrainEventListener.onTerrainEvent(TerrainEventCircularStaticPool.getInstance().getNext(self.CLIFF))
+    }
     
-                        if(!this.isFollowLimitedByTerrain)
-                        
-                                    {
-                                    this.logUtil!!.putF("Following Limited", this, "onTerrainEvent")
-this.isFollowLimitedByTerrain= true
 
-                                    }
-                                
+    open override func update() {
+        super.update()
+        self.changeDirectionIfCliffReached()
+    }
+    
 
-                                    }
-                                
+    fileprivate func changeDirectionIfCliffReached() {
+        let list: BasicArrayList! = self.terrainEventListener.getList()
+        let size: Int32 = list.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            let terrainEvent: TerrainEvent! = (list.removeAt(index) as! TerrainEvent)
+            let basicTerrainInfo: BasicTerrainInfo! = terrainEvent.getBasicTerrainInfo()
+            let angle: Angle! = basicTerrainInfo.getAngle()
+            if (angle === self.DOWN) {
+                self.nextDirection()
+                if (!self.isFollowLimitedByTerrain) {
+                    self.logUtil.putF("Following Limited", self, "onTerrainEvent")
+                    self.isFollowLimitedByTerrain = true
+                }
+            }
+            }
+        }
+    }
 }
-
-}
-
-
-}
-                
-            
 

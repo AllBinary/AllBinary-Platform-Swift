@@ -1,175 +1,89 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.data.resource
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.data.resource
+import J2SEForSwiftLibrary
+// import java.io.ByteArrayInputStream
+// import java.io.ByteArrayOutputStream
+// import java.io.FileInputStream
+// import java.io.InputStream
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.io.StreamUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
 
-
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        import java.lang.ClassLoader
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.FileInputStream
-import java.io.InputStream
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.io.StreamUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
 //J2SE - PC
-open public class ResourceUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ResourceUtil = ResourceUtil()
+open class ResourceUtil: JObject {
+    fileprivate static let instance: ResourceUtil! = ResourceUtil()
+    public var logUtil: LogUtil! = nil
+    fileprivate var path: String! = nil
+    fileprivate var ext: String! = nil
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ResourceUtil{
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.path = StringUtil.getInstance().EMPTY_STRING
+    self.ext = StringUtil.getInstance().EMPTY_STRING
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil.instance
-}
+    @discardableResult open class func getInstance() -> ResourceUtil! {
+        return ResourceUtil.instance
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
+    open func setLoadingPaths(_ path: String!, _ ext: String!) {
+        self.path = path
+        self.ext = ext
+    }
+    
+
+    open func setClassLoader(_ classLoader: ClassLoader!) {
+    }
+    
+
+    @discardableResult open func getResourceAsStream(_ resource: String!) -> InputStream! {
+        var inputStream: InputStream! = self.getResourceAsStreamAtStart(resource, 2)
+        if (inputStream == nil) {
+            inputStream = self.getResourceAsStreamAtStart(resource, 1)
+            if (inputStream == nil) {
+                jThrow(JException("Exception", StringMaker().append("Unable to obtain: ").append(resource).toString()))
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var path: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var ext: String = StringUtil.getInstance()!!.EMPTY_STRING
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun setLoadingPaths(path: String, ext: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var path = path
-var ext = ext
-this.path= path
-this.ext= ext
-}
-
-
-    open fun setClassLoader(classLoader: ClassLoader)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var classLoader = classLoader
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getResourceAsStream(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: InputStream{
-    //var resource = resource
-
-    var inputStream: InputStream = this.getResourceAsStreamAtStart(resource, 2)!!
-
-
+        return inputStream
+    }
     
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    inputStream= this.getResourceAsStreamAtStart(resource, 1)!!
 
+    @discardableResult fileprivate func getResourceAsStreamAtStart(_ resource: String!, _ startIndex: Int32) -> InputStream! {
+        let inputStream: InputStream! = FileInputStream(StringMaker().append(self.path).append(resource).append(self.ext).toString())
+        if (inputStream != nil) {
+            let byteArray: JArray<Int8>! = JArray<Int8>(inputStream.available(), 0)
+            StreamUtil.getInstance().getByteArray(inputStream, ByteArrayOutputStream(), byteArray)
+            return ByteArrayInputStream(byteArray)
+        }
+        return inputStream
+    }
     
-                        if(inputStream == 
-                                    null
-                                )
-                        
-                                    {
-                                    
 
-
-                            throw Exception(StringMaker().
-                            append("Unable to obtain: ")!!.append(resource)!!.toString())
-
-                                    }
-                                
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputStream
+    open func addResource(_ resource: String!, _ value: Int32!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun getResourceAsStreamAtStart(resource: String, startIndex: Int)
-        //nullable = true from not(false or (false and false)) = true
-: InputStream{
-    //var resource = resource
-    //var startIndex = startIndex
-
-    var inputStream: InputStream = FileInputStream(StringMaker().
-                            append(this.path)!!.append(resource)!!.append(this.ext)!!.toString())
-
-
-    
-                        if(inputStream != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var byteArray: ByteArray = ByteArray(inputStream!!.available())
-
-StreamUtil.getInstance()!!.getByteArray(inputStream, ByteArrayOutputStream(), byteArray)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ByteArrayInputStream(byteArray)
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputStream
-}
-
-
-    open fun addResource(resource: String, value: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resource = resource
-    //var value = value
-}
-
-
-}
-                
-            
 

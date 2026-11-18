@@ -22,7 +22,7 @@ open class PathFindingThreadPool: ThreadPool {
     fileprivate static let instance: ThreadPool! = PathFindingThreadPool("PathFinding", 1, 1)
     
 
-    @discardableResult public static func getInstance() -> ThreadPool! {
+    @discardableResult open class func getInstance() -> ThreadPool! {
         return PathFindingThreadPool.instance
     }
     

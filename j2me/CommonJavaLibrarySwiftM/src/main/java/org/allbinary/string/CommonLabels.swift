@@ -62,7 +62,7 @@ open class CommonLabels: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CommonLabels! {
+    @discardableResult open class func getInstance() -> CommonLabels! {
         return CommonLabels.instance
     }
 }

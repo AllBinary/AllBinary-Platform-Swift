@@ -1,85 +1,46 @@
+// Generated Code Do Not Modify
+// package org.apache.xmlrpc
 
-        /* Generated Code Do Not Modify */
-        package org.apache.xmlrpc
+import J2SEForSwiftLibrary
+// import java.io.IOException
+// import java.net.MalformedURLException
+// import java.net.URL
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.init.crypt.jcehelper.CryptInterface
+// import org.allbinary.logic.NullUtil
 
+open class XmlRpcClient: JObject, XmlRpcHandler {
+    fileprivate var url: URL! = nil
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ url: String!) {
+        super.init()
+        self.initFields()
+        self.url = URL(url)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.IOException
-import java.net.MalformedURLException
-import java.net.URL
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.init.crypt.jcehelper.CryptInterface
-import org.allbinary.logic.NullUtil
+    @discardableResult open func getURL() -> URL! {
+        return self.url
+    }
+    
 
-open public class XmlRpcClient
-            : Object
-        
-                , XmlRpcHandler {
-        
+    open func setBasicAuthentication(_ user: String!, _ password: String!) {
+    }
+    
 
-    private val url: URL
-public constructor (url: String)
-            : super()
-        {
-var url = url
-this.url= URL(url)
+    @discardableResult open func execute(_ method: String!, _ params: BasicArrayList!) -> JObject! {
+        return NullUtil.getInstance().NULL_OBJECT
+    }
+    
+
+    @discardableResult open func executeWithCrypt(_ method: String!, _ params: BasicArrayList!, _ cryptInterface: CryptInterface!) -> JObject! {
+        return NullUtil.getInstance().NULL_OBJECT
+    }
 }
-
-
-    open fun getURL()
-        //nullable = true from not(false or (false and true)) = true
-: URL{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.url
-}
-
-
-    open fun setBasicAuthentication(user: String, password: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var user = user
-var password = password
-}
-
-
-                @Throws(XmlRpcException::class, IOException::class)
-            
-    override fun execute(method: String, params: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-: Any{
-var method = method
-var params = params
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_OBJECT
-}
-
-
-                @Throws(XmlRpcException::class, IOException::class)
-            
-    open fun executeWithCrypt(method: String, params: BasicArrayList, cryptInterface: CryptInterface)
-        //nullable = true from not(false or (false and false)) = true
-: Any{
-var method = method
-var params = params
-var cryptInterface = cryptInterface
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_OBJECT
-}
-
-
-}
-                
-            
 

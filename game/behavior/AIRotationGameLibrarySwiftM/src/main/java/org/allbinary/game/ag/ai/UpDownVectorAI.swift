@@ -1,109 +1,65 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.game.ai.BasicAI
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.game.physics.velocity.BasicVelocityProperties
+// import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.logic.math.BasicDecimal
 
+open class UpDownVectorAI: BasicAI {
+    fileprivate var velocityInterface: BasicVelocityProperties! = nil
+    fileprivate var index: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.ai.BasicAI
-import org.allbinary.game.input.GameInput
-import org.allbinary.game.physics.velocity.BasicVelocityProperties
-import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.logic.math.BasicDecimal
-
-open public class UpDownVectorAI : BasicAI {
-        
-
-    private val velocityInterface: BasicVelocityProperties
-
-    private var index: Int = 0
-public constructor (ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(ownerLayerInterface, gameInput){
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    var velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = this.getOwnerLayerInterface() as VelocityInterfaceCompositeInterface
-
-this.velocityInterface= velocityInterfaceCompositeInterface!!.getVelocityProperties()!!
-this.velocityInterface!!.getVelocityYBasicDecimalP()!!.setint(0)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processAI(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryLayerManager = allBinaryLayerManager
-
-    var y: Int = this.getOwnerLayerInterface()!!.getHeight() *270
-
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(this.index < 5)
-                        
-                                    {
-                                    
-    var basicDecimal: BasicDecimal = this.velocityInterface!!.getVelocityYBasicDecimalP()!!
-
-basicDecimal!!.setint(0)
-basicDecimal!!.addint(y)
-this.index++
-
-                                    }
-                                
-                             else 
+    self.index = 0
+    }
     
-                        if(this.index < 10)
-                        
-                                    {
-                                    
-    var basicDecimal: BasicDecimal = this.velocityInterface!!.getVelocityYBasicDecimalP()!!
 
-basicDecimal!!.setint(0)
-basicDecimal!!.subtractint(y)
-this.index++
+    public override init(_ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(ownerLayerInterface, gameInput)
+        self.initFields()
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        self.velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties()
+        self.velocityInterface.getVelocityYBasicDecimalP().setint(0)
+    }
+    
 
-                                    }
-                                
-                        else {
-                            this.index= 0
-this.processAI(allBinaryLayerManager)
-
-                        }
-                            
+    open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        let y: Int32 = self.getOwnerLayerInterface().getHeight() &* 270
+        if (self.index < 5) {
+            let basicDecimal: BasicDecimal! = self.velocityInterface.getVelocityYBasicDecimalP()
+            basicDecimal.setint(0)
+            basicDecimal.addint(y)
+            self.index &+= 1
+        } else if (self.index < 10) {
+            let basicDecimal: BasicDecimal! = self.velocityInterface.getVelocityYBasicDecimalP()
+            basicDecimal.setint(0)
+            basicDecimal.subtractint(y)
+            self.index &+= 1
+        } else {
+            self.index = 0
+            self.processAI(allBinaryLayerManager)
+        }
+    }
 }
-
-
-}
-                
-            
 

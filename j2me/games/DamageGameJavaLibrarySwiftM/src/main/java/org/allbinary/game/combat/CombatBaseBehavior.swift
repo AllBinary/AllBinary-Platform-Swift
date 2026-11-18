@@ -1,95 +1,62 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat
+import J2SEForSwiftLibrary
+// import org.allbinary.game.combat.damage.DamageableBaseBehavior
+// import org.allbinary.game.combat.destroy.DestroyableBaseBehavior
 
+open class CombatBaseBehavior: JObject {
+    public static let NULL_COMBAT_BEHAVIOR: CombatBaseBehavior! = CombatBaseBehavior(DamageableBaseBehavior.getInstance(), DestroyableBaseBehavior.getInstance())
+    fileprivate var damageableBaseBehavior: DamageableBaseBehavior! = nil
+    fileprivate var destroyableBaseBehavior: DestroyableBaseBehavior! = nil
+    fileprivate var readyForExplosion: Bool = false
 
+    private func initFields() {
+    
+    
+    self.readyForExplosion = false
+    }
+    
 
+    public init(_ damageableBaseBehavior: DamageableBaseBehavior!, _ destroyableBaseBehavior: DestroyableBaseBehavior!) {
+        super.init()
+        self.initFields()
+        self.damageableBaseBehavior = damageableBaseBehavior
+        self.destroyableBaseBehavior = destroyableBaseBehavior
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.combat.damage.DamageableBaseBehavior
-import org.allbinary.game.combat.destroy.DestroyableBaseBehavior
+    @discardableResult open func getDamageableBaseBehavior() -> DamageableBaseBehavior! {
+        return self.damageableBaseBehavior
+    }
+    
 
-open public class CombatBaseBehavior
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_COMBAT_BEHAVIOR: CombatBaseBehavior = CombatBaseBehavior(DamageableBaseBehavior.getInstance(), DestroyableBaseBehavior.getInstance())
+    @discardableResult open func getDestroyableBaseBehavior() -> DestroyableBaseBehavior! {
+        return self.destroyableBaseBehavior
+    }
+    
 
-        }
-            
-    private val damageableBaseBehavior: DamageableBaseBehavior
+    @discardableResult public func isReadyForExplosion() -> Bool {
+        return self.readyForExplosion
+    }
+    
 
-    private val destroyableBaseBehavior: DestroyableBaseBehavior
-
-    private var readyForExplosion: Boolean= false
-public constructor (damageableBaseBehavior: DamageableBaseBehavior, destroyableBaseBehavior: DestroyableBaseBehavior)
-            : super()
-        {
-var damageableBaseBehavior = damageableBaseBehavior
-var destroyableBaseBehavior = destroyableBaseBehavior
-this.damageableBaseBehavior= damageableBaseBehavior
-this.destroyableBaseBehavior= destroyableBaseBehavior
+    public func setReadyForExplosion(_ readyForExplosion: Bool) {
+        self.readyForExplosion = readyForExplosion
+    }
 }
-
-
-    open fun getDamageableBaseBehavior()
-        //nullable = true from not(false or (false and true)) = true
-: DamageableBaseBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damageableBaseBehavior
-}
-
-
-    open fun getDestroyableBaseBehavior()
-        //nullable = true from not(false or (false and true)) = true
-: DestroyableBaseBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyableBaseBehavior
-}
-
-
-    open fun isReadyForExplosion()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readyForExplosion
-}
-
-
-    open fun setReadyForExplosion(readyForExplosion: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var readyForExplosion = readyForExplosion
-this.readyForExplosion= readyForExplosion
-}
-
-
-}
-                
-            
 

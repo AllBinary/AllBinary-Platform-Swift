@@ -29,7 +29,7 @@ open class ExceptionUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ExceptionUtil! {
+    @discardableResult open class func getInstance() -> ExceptionUtil! {
         return ExceptionUtil.instance
     }
     

@@ -1,87 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.state
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.state
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
 
+open class GameStateFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    fileprivate var index: Int32 = 0
+    public var NO_GAME_STATE: GameState! = nil
+    public var PLAYING_GAME_STATE: GameState! = nil
+    public var SHOW_END_RESULT_GAME_STATE: GameState! = nil
+    public var SHOW_HIGH_SCORE_GAME_STATE: GameState! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-
-open public class GameStateFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameStateFactory{
-
+    private func initFields() {
+    self.index = 0
+    self.NO_GAME_STATE = self.createGameState("NO_GAME_STATE")
+    self.PLAYING_GAME_STATE = self.createGameState("PLAYING_GAME_STATE")
+    self.SHOW_END_RESULT_GAME_STATE = self.createGameState("SHOW_END_RESULT_GAME_STATE")
+    self.SHOW_HIGH_SCORE_GAME_STATE = self.createGameState("SHOW_HIGH_SCORE_GAME_STATE")
+    }
     
-                        if(GameStateFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    GameStateFactory.instance= GameStateFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStateFactory.instance as GameStateFactory
-}
-
-
+    @discardableResult open class func getInstance() -> GameStateFactory! {
+        if (GameStateFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            GameStateFactory.instance = GameStateFactory()
         }
-            
-    private var index: Int = 0
+        return (GameStateFactory.instance as! GameStateFactory)
+    }
+    
 
-    val NO_GAME_STATE: GameState = this.createGameState("NO_GAME_STATE")!!
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-    val PLAYING_GAME_STATE: GameState = this.createGameState("PLAYING_GAME_STATE")!!
-
-    val SHOW_END_RESULT_GAME_STATE: GameState = this.createGameState("SHOW_END_RESULT_GAME_STATE")!!
-
-    val SHOW_HIGH_SCORE_GAME_STATE: GameState = this.createGameState("SHOW_HIGH_SCORE_GAME_STATE")!!
-private constructor ()
-            : super()
-        {
+    @discardableResult open func createGameState(_ name: String!) -> GameState! {
+        return GameState(name, jPostIncrement(&self.index))
+    }
 }
-
-
-    open fun createGameState(name: String)
-        //nullable = true from not(false or (false and false)) = true
-: GameState{
-var name = name
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameState(name, this.index++)
-}
-
-
-}
-                
-            
 

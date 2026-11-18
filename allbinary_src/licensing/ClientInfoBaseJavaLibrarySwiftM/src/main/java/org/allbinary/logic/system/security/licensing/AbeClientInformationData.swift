@@ -1,89 +1,69 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.licensing
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.licensing
+import J2SEForSwiftLibrary
 
+open class AbeClientInformationData: JObject {
+    fileprivate static let instance: AbeClientInformationData! = AbeClientInformationData()
+    public var KEY: String! = nil
+    public var NAME: String! = nil
+    public var VERSION: String! = nil
+    public var SPECIALNAME: String! = nil
+    public var LICENSEID: String! = nil
+    public var LICENSE_TYPE: String! = nil
+    public var PREVIOUSLICENSEID: String! = nil
+    public var OSNAME: String! = nil
+    public var OSARCH: String! = nil
+    public var OSVERSION: String! = nil
+    public var OS: String! = nil
+    public var HARDWARE: String! = nil
+    public var LICENSESERVERS: String! = nil
+    public var NEWLICENSE: String! = nil
+    public var ISNEW: String! = nil
+    public var SPECIAL: String! = nil
 
+    private func initFields() {
+    self.KEY = "KEY"
+    self.NAME = "NAME"
+    self.VERSION = "VERSION"
+    self.SPECIALNAME = "SPECIALNAME"
+    self.LICENSEID = "LICENSEID"
+    self.LICENSE_TYPE = "LICENSETYPE"
+    self.PREVIOUSLICENSEID = "PREVIOUSLICENSEID"
+    self.OSNAME = "OSNAME"
+    self.OSARCH = "OSARCH"
+    self.OSVERSION = "OSVERSION"
+    self.OS = "OS"
+    self.HARDWARE = "HARDWARE"
+    self.LICENSESERVERS = "LICENSESERVERS"
+    self.NEWLICENSE = "NEWLICENSE"
+    self.ISNEW = "ISNEW"
+    self.SPECIAL = "SPECIAL"
+    }
+    
 
+    @discardableResult open class func getInstance() -> AbeClientInformationData! {
+        return AbeClientInformationData.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class AbeClientInformationData
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AbeClientInformationData = AbeClientInformationData()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AbeClientInformationData{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeClientInformationData.instance
+    public override init() {
+        super.init()
+        self.initFields()
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-    val KEY: String = "KEY"
-
-    val NAME: String = "NAME"
-
-    val VERSION: String = "VERSION"
-
-    val SPECIALNAME: String = "SPECIALNAME"
-
-    val LICENSEID: String = "LICENSEID"
-
-    val LICENSE_TYPE: String = "LICENSETYPE"
-
-    val PREVIOUSLICENSEID: String = "PREVIOUSLICENSEID"
-
-    val OSNAME: String = "OSNAME"
-
-    val OSARCH: String = "OSARCH"
-
-    val OSVERSION: String = "OSVERSION"
-
-    val OS: String = "OS"
-
-    val HARDWARE: String = "HARDWARE"
-
-    val LICENSESERVERS: String = "LICENSESERVERS"
-
-    val NEWLICENSE: String = "NEWLICENSE"
-
-    val ISNEW: String = "ISNEW"
-
-    val SPECIAL: String = "SPECIAL"
-
-}
-                
-            
 

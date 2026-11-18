@@ -1,97 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.debug
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.debug
+import J2SEForSwiftLibrary
 
+open class NoDebug: JObject, DebugInterface {
+    fileprivate static var SINGLETON: DebugInterface! = NoDebug()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> DebugInterface! {
+        return NoDebug.SINGLETON
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func start() {
+    }
+    
 
-open public class NoDebug
-            : Object
-        
-                , DebugInterface {
-        
-companion object {
-            
-    private var SINGLETON: DebugInterface = NoDebug()
+    open func stop() {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DebugInterface{
+    @discardableResult open func getMaxTime() -> Int64 {
+        return 10000
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoDebug.SINGLETON
+    @discardableResult open func getStartTime() -> Int64 {
+        return 0
+    }
+    
+
+    @discardableResult open func isRunning() -> Bool {
+        return false
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    override fun start()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun stop()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun getMaxTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 10000
-}
-
-
-    override fun getStartTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    override fun isRunning()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-}
-                
-            
 

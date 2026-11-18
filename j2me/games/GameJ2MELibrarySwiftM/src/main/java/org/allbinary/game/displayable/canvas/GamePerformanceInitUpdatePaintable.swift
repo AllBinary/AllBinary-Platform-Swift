@@ -1,129 +1,91 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.canvas.GameStatisticsFactory
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
+// import org.allbinary.graphics.paint.InitUpdatePaintable
 
+open class GamePerformanceInitUpdatePaintable: InitUpdatePaintable, UpdateMyFontInterface {
+    fileprivate var halfHeight: Int32 = 0
+    fileprivate var yArray: JArray<Int32>! = nil
+    fileprivate var myFontProcessor: MyFontProcessor! = nil
+    fileprivate var baseRefreshHelperCharArray: JArray<JArray<UInt16>?>! = nil
+    fileprivate var defaultStringWidth: Int32 = 0
+    fileprivate var RED: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.halfHeight = DisplayInfoSingleton.getInstance().getLastHalfHeight()
+    self.yArray = JArray<Int32>([self.halfHeight &+ 30, self.halfHeight &+ 30, self.halfHeight &+ 30 &+ 15, self.halfHeight &+ 30 &+ 15, self.halfHeight &+ 30 &+ 30, self.halfHeight &+ 30 &+ 30, self.halfHeight &+ 30 &+ 45, self.halfHeight &+ 30 &+ 45])
+    self.myFontProcessor = UpdateMyFontProcessor(self)
+    self.baseRefreshHelperCharArray = JArray<JArray<UInt16>?>(0, factory: { JArray<UInt16>(0, 0) })
+    self.defaultStringWidth = 0
+    self.RED = BasicColorFactory.getInstance().RED.intValue()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.canvas.GameStatisticsFactory
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-import org.allbinary.graphics.paint.InitUpdatePaintable
-
-open public class GamePerformanceInitUpdatePaintable : InitUpdatePaintable
-                , UpdateMyFontInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val halfHeight: Int = DisplayInfoSingleton.getInstance()!!.getLastHalfHeight()
-
-    private val yArray: IntArray = intArrayOf(this.halfHeight +30,this.halfHeight +30,this.halfHeight +30 +15,this.halfHeight +30 +15,this.halfHeight +30 +30,this.halfHeight +30 +30,this.halfHeight +30 +45,this.halfHeight +30 +45)
-
-    private var myFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    private var baseRefreshHelperCharArray: Array<CharArray?> = Array(0) { CharArray(0) }
-
-    private var defaultStringWidth: Int= 0
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-this.defaultStringWidth= MyFontProcessor.defaultStringWidth(font, 2)
-this.myFontProcessor= MyFontProcessor.getInstance()!!
-}
-
-
-    override fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.baseRefreshHelperCharArray= GameStatisticsFactory.getInstance()!!.to2DCharArray()!!
-}
-
-
-    private val RED: Int = BasicColorFactory.getInstance()!!.RED.toInt()
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-graphics.setColor(this.RED)
-
-    var charArray: CharArray
-
-
-    var charArray2: CharArray
-
-
-    var size2: Int= 0
-
-
-    var size3: Int= 0
-
-
-    var size: Int = this.baseRefreshHelperCharArray!!.size -2
-
-
-        run {
-        
-    var index: Int = size
-
-        while (index >= 0) {
-        charArray= this.baseRefreshHelperCharArray[index]!!
-charArray2= this.baseRefreshHelperCharArray[index +1]!!
-size2= charArray!!.size
-size3= charArray2!!.size
-graphics.drawChars(charArray, 0, size2, 0, this.yArray[index]!!, 0)
-graphics.drawChars(charArray2, 0, size3, size2 *this.defaultStringWidth, this.yArray[index +1]!!, 0)
-
-index -= 2
-        }
-        }
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-}
 
+    open func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        self.defaultStringWidth = MyFontProcessor.defaultStringWidth(font, 2)
+        self.myFontProcessor = MyFontProcessor.getInstance()
+    }
+    
 
+    open override func `init`() {
+    }
+    
+
+    open override func update() {
+        self.baseRefreshHelperCharArray = GameStatisticsFactory.getInstance().to2DCharArray()
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        graphics.setColor(self.RED)
+        var charArray: JArray<UInt16>! = nil
+        var charArray2: JArray<UInt16>! = nil
+        var size2: Int32 = 0
+        var size3: Int32 = 0
+        let size: Int32 = self.baseRefreshHelperCharArray.length &- 2
+        do {
+            var index: Int32 = size
+            while (index >= 0) {
+                defer { index = index &- 2 }
+            charArray = self.baseRefreshHelperCharArray[index]
+            charArray2 = self.baseRefreshHelperCharArray[index &+ 1]
+            size2 = charArray.length
+            size3 = charArray2.length
+            graphics.drawChars(charArray, 0, size2, 0, self.yArray[index], 0)
+            graphics.drawChars(charArray2, 0, size3, size2 &* self.defaultStringWidth, self.yArray[index &+ 1], 0)
+            }
+        }
+    }
 }
-                
-            
 

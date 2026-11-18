@@ -1,29 +1,11 @@
+// Generated Code Do Not Modify
+// package org.allbinary.image.opengles
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image.opengles
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-
-interface OpenGLSurfaceChangedInterface {
-        
-
-                @Throws(Exception::class)
-            
-    open fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-
-
+public protocol OpenGLSurfaceChangedInterface: AnyObject {
+    func set(_ gl: GL!)
 }
-                
-            
+
 

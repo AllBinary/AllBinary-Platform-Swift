@@ -1,110 +1,66 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.damage
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat.damage
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.CollidableCompositeLayer
+// import org.allbinary.game.layer.special.CollidableDestroyableDamageableLayer
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
 
+open class DamageUtil: JObject {
+    fileprivate static let instance: DamageUtil! = DamageUtil()
+    public var logUtil: LogUtil! = nil
+    public var COLLIDE: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.CollidableCompositeLayer
-import org.allbinary.game.layer.special.CollidableDestroyableDamageableLayer
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-
-open public class DamageUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: DamageUtil = DamageUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DamageUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageUtil.instance
-}
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val COLLIDE: String = "collide"
-private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process(damageableInterface: DamageableInterface, damageableInterface2: DamageableInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var damageableInterface = damageableInterface
-var damageableInterface2 = damageableInterface2
-damageableInterface!!.damage(damageableInterface2!!.getDamage(0), 0)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun debugDamage(collidableInterfaceCompositeInterface1: CollidableCompositeLayer, collidableInterfaceCompositeInterface: CollidableCompositeLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-var collidableInterfaceCompositeInterface1 = collidableInterfaceCompositeInterface1
-var collidableInterfaceCompositeInterface = collidableInterfaceCompositeInterface
-
-    var collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer
-
-
-    var damage: Int = collidableDestroyableDamageableLayer!!.getDamage(0)
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.COLLIDE = "collide"
+    }
     
-                        if(damage > 20000)
-                        
-                                    {
-                                    
-    var stringBuffer: StringMaker = StringMaker()
 
-stringBuffer!!.append("Collision ")
-stringBuffer!!.append(collidableInterfaceCompositeInterface1!!.toString())
-stringBuffer!!.append(" with: ")
-stringBuffer!!.append(collidableInterfaceCompositeInterface!!.toString())
-stringBuffer!!.append(" damage: ")
-stringBuffer!!.appendint(damage)
-this.logUtil!!.putF(stringBuffer!!.toString(), collidableInterfaceCompositeInterface1, this.COLLIDE)
+    @discardableResult open class func getInstance() -> DamageUtil! {
+        return DamageUtil.instance
+    }
+    
 
-                                    }
-                                
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func process(_ damageableInterface: DamageableInterface!, _ damageableInterface2: DamageableInterface!) {
+        damageableInterface.damage(damageableInterface2.getDamage(0), 0)
+    }
+    
+
+    open func debugDamage(_ collidableInterfaceCompositeInterface1: CollidableCompositeLayer!, _ collidableInterfaceCompositeInterface: CollidableCompositeLayer!) {
+        let collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer! = (collidableInterfaceCompositeInterface as! CollidableDestroyableDamageableLayer)
+        let damage: Int32 = collidableDestroyableDamageableLayer.getDamage(0)
+        if (damage > 20000) {
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append("Collision ")
+            stringBuffer.append(collidableInterfaceCompositeInterface1.toString())
+            stringBuffer.append(" with: ")
+            stringBuffer.append(collidableInterfaceCompositeInterface.toString())
+            stringBuffer.append(" damage: ")
+            stringBuffer.appendint(damage)
+            self.logUtil.putF(stringBuffer.toString(), collidableInterfaceCompositeInterface1, self.COLLIDE)
+        }
+    }
 }
-
-
-}
-                
-            
 

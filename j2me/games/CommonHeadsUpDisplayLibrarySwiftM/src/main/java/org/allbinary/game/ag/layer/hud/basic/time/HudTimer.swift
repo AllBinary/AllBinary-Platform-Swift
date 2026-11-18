@@ -1,168 +1,104 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.hud.basic.time
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.hud.basic.time
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.math.PrimitiveLongSingleton
+// import org.allbinary.logic.math.PrimitiveLongUtil
+// import org.allbinary.time.GameTickTimeDelayHelper
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
 
+open class HudTimer: JObject {
+    fileprivate var startTime: Int64 = 0
+    fileprivate var hundredthTime: Int64 = 0
+    fileprivate var maxTime: Int64 = 0
+    fileprivate var modifier: Int64 = 0
+    fileprivate var hundrethsString: JArray<UInt16>! = nil
+    fileprivate var totalDigits: Int32 = 0
+    fileprivate var primitiveLongUtil: PrimitiveLongUtil! = nil
+    fileprivate var MAX: JArray<UInt16>! = nil
+    fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.math.PrimitiveLongSingleton
-import org.allbinary.logic.math.PrimitiveLongUtil
-import org.allbinary.time.GameTickTimeDelayHelper
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-
-open public class HudTimer
-            : Object
-         {
-        
-
-    private var startTime: Long = ( -1).toLong()
-
-    private var hundredthTime: Long= 0
-
-    private var maxTime: Long
-
-    private var modifier: Long= 0
-
-    private var hundrethsString: CharArray = PrimitiveLongSingleton.getInstance()!!.ZERO
-
-    private var totalDigits: Int = 1
-
-    private var primitiveLongUtil: PrimitiveLongUtil
-
-    private val MAX: CharArray = charArrayOf('L','O','L')
-
-    private val gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!!
-public constructor (maxTime: Int)
-            : super()
-        {
-var maxTime = maxTime
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(maxTime)!!
-this.maxTime= maxTime.toLong()
-}
-
-
-    open fun start()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.hundredthTime= 0
-this.startTime= this.gameTickTimeDelayHelper!!.startTime
-}
-
-
-    open fun get()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hundredthTime
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var lastLowerTime: Long = this.hundredthTime
-
-
-    var currentTime: Long = ((this.modifier +this.gameTickTimeDelayHelper!!.startTime) -this.startTime)
-
-
+    private func initFields() {
+    self.startTime = Int64(truncatingIfNeeded: -1)
+    self.hundredthTime = 0
     
-                        if(currentTime < 0)
-                        
-                                    {
-                                    currentTime= 0
-
-                                    }
-                                
-this.hundredthTime= currentTime /100
-
+    self.modifier = 0
+    self.hundrethsString = PrimitiveLongSingleton.getInstance().ZERO
+    self.totalDigits = 1
     
-                        if(this.hundredthTime >= this.maxTime)
-                        
-                                    {
-                                    
+    self.MAX = JArray<UInt16>([UInt16(("L" as Unicode.Scalar).value), UInt16(("O" as Unicode.Scalar).value), UInt16(("L" as Unicode.Scalar).value)])
+    self.gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()
+    }
     
-                        if(this.startTime > 0)
-                        
-                                    {
-                                    this.hundrethsString= this.MAX
 
-                                    }
-                                
-
-                                    }
-                                
-                             else 
+    public init(_ maxTime: Int32) {
+        super.init()
+        self.initFields()
+        self.primitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(maxTime)
+        self.maxTime = Int64(truncatingIfNeeded: maxTime)
+    }
     
-                        if(lastLowerTime != this.hundredthTime)
-                        
-                                    {
-                                    this.hundrethsString= this.primitiveLongUtil!!.getCharArray(this.hundredthTime.toInt())!!
-this.totalDigits= this.primitiveLongUtil!!.getCurrentTotalDigits()
 
-                                    }
-                                
+    open func start() {
+        self.hundredthTime = 0
+        self.startTime = self.gameTickTimeDelayHelper.startTime
+    }
+    
+
+    @discardableResult open func get() -> Int64 {
+        return self.hundredthTime
+    }
+    
+
+    open func update() {
+        let lastLowerTime: Int64 = self.hundredthTime
+        var currentTime: Int64 = ((self.modifier + self.gameTickTimeDelayHelper.startTime) - self.startTime)
+        if (currentTime < 0) {
+            currentTime = 0
+        }
+        self.hundredthTime = currentTime / 100
+        if (self.hundredthTime >= self.maxTime) {
+            if (self.startTime > 0) {
+                self.hundrethsString = self.MAX
+            }
+        } else if (lastLowerTime != self.hundredthTime) {
+            self.hundrethsString = self.primitiveLongUtil.getCharArray(Int32(truncatingIfNeeded: self.hundredthTime))
+            self.totalDigits = self.primitiveLongUtil.getCurrentTotalDigits()
+        }
+    }
+    
+
+    open func reduce(_ value: Int32) {
+        self.modifier = self.modifier &- Int64(truncatingIfNeeded: value)
+    }
+    
+
+    open func add(_ value: Int32) {
+        self.modifier = self.modifier &+ Int64(truncatingIfNeeded: value)
+    }
+    
+
+    @discardableResult open func getTimeChars() -> JArray<UInt16>! {
+        return self.hundrethsString
+    }
+    
+
+    @discardableResult open func getCurrentTotalDigits() -> Int32 {
+        return self.totalDigits
+    }
 }
-
-
-    open fun reduce(value: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-this.modifier -= value
-}
-
-
-    open fun add(value: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-this.modifier += value
-}
-
-
-    open fun getTimeChars()
-        //nullable = true from not(false or (false and true)) = true
-: CharArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hundrethsString
-}
-
-
-    open fun getCurrentTotalDigits()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalDigits
-}
-
-
-}
-                
-            
 

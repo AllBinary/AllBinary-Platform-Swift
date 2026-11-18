@@ -35,7 +35,7 @@ open class IndexedBasicArrayListCache: BaseBasicArrayListCache, CacheInterface {
     }
     
 
-    @discardableResult public static func createCache(_ size: Int32) -> IndexedBasicArrayListCache! {
+    @discardableResult open class func createCache(_ size: Int32) -> IndexedBasicArrayListCache! {
         let indexedBasicArrayListCache: IndexedBasicArrayListCache! = IndexedBasicArrayListCache()
         indexedBasicArrayListCache.`init`(size)
         return indexedBasicArrayListCache

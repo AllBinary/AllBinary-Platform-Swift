@@ -24,7 +24,7 @@ open class FrameUtil: JObject {
     fileprivate static let instance: FrameUtil! = FrameUtil()
     
 
-    @discardableResult public static func getInstance() -> FrameUtil! {
+    @discardableResult open class func getInstance() -> FrameUtil! {
         return FrameUtil.instance
     }
     
@@ -46,7 +46,7 @@ open class FrameUtil: JObject {
     
 
     @discardableResult open func adjustAngleToFrameAngle(_ currentAngle: Int32) -> Int32 {
-        var currentAngle = currentAngle
+        var currentAngle: Int32 = currentAngle
         let angleFactory: AngleFactory! = AngleFactory.getInstance()
         if (currentAngle > 359) {
             currentAngle = (currentAngle &- Int32(Int32(truncatingIfNeeded: angleFactory.TOTAL_ANGLE)))

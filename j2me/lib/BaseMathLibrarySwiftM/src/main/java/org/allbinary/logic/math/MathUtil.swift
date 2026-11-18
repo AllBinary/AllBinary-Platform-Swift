@@ -18,13 +18,13 @@ open class MathUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> MathUtil! {
+    @discardableResult open class func getInstance() -> MathUtil! {
         return MathUtil.instance
     }
     
 
     @discardableResult open func getTotalDigits(_ digits: Int32) -> Int32 {
-        var digits = digits
+        var digits: Int32 = digits
         var total: Int32 = 0
         while (digits > 0) {
             digits = digits / 10

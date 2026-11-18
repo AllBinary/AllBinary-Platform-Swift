@@ -26,7 +26,7 @@ open class VectorUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> VectorUtil! {
+    @discardableResult open class func getInstance() -> VectorUtil! {
         return VectorUtil.instance
     }
     

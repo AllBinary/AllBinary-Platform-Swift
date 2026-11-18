@@ -1,137 +1,87 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.init
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.business.init
+import J2SEForSwiftLibrary
+// import org.allbinary.debug.DebugFactory
+// import org.allbinary.debug.NoDebug
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class LicenseInitInfo: JObject {
+    fileprivate var id: String! = nil
+    fileprivate var serverList: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.debug.DebugFactory
-import org.allbinary.debug.NoDebug
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class LicenseInitInfo
-            : Object
-         {
-        
-
-    private var id: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var serverList: BasicArrayList = BasicArrayListD()
- constructor ()
-            : super()
-        {
-}
-
-
-    open fun getLicenseId()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id
-}
-
-
-    open fun getServer(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList!!.get(index) as String
-}
-
-
-    open fun getNumberOfServers()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList!!.size()
-}
-
-
-    open fun setLicenseId(value: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-this.id= value
-}
-
-
-    open fun clearServers()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.serverList!!.clear()
-}
-
-
-    open fun setServer(value: String, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-var index = index
-this.serverList!!.addAt(index, value)
-}
-
-
-    open fun addServer(value: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-this.serverList!!.add(value)
-}
-
-
-    open fun getServerList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList
-}
-
-
-    open fun setServerList(servers: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var servers = servers
-
+    private func initFields() {
+    self.id = StringUtil.getInstance().EMPTY_STRING
+    self.serverList = BasicArrayListD()
+    }
     
-                        if(DebugFactory.getInstance() == NoDebug.getInstance())
-                        
-                                    {
-                                    this.serverList= servers
 
-                                    }
-                                
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    @discardableResult open func getLicenseId() -> String! {
+        return self.id
+    }
+    
+
+    @discardableResult open func getServer(_ index: Int32) -> String! {
+        return jUnboxString(self.serverList.get(index))
+    }
+    
+
+    @discardableResult open func getNumberOfServers() -> Int32 {
+        return self.serverList.size()
+    }
+    
+
+    open func setLicenseId(_ value: String!) {
+        self.id = value
+    }
+    
+
+    open func clearServers() {
+        self.serverList.clear()
+    }
+    
+
+    open func setServer(_ value: String!, _ index: Int32) {
+        self.serverList.addAt(index, jBoxString(value))
+    }
+    
+
+    open func addServer(_ value: String!) {
+        self.serverList.add(jBoxString(value))
+    }
+    
+
+    @discardableResult open func getServerList() -> BasicArrayList! {
+        return self.serverList
+    }
+    
+
+    open func setServerList(_ servers: BasicArrayList!) {
+        if (DebugFactory.getInstance() == NoDebug.getInstance()) {
+            self.serverList = servers
+        }
+    }
 }
-
-
-}
-                
-            
 

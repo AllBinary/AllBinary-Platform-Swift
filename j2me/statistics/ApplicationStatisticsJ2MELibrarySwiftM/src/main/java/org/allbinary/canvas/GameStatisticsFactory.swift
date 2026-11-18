@@ -34,7 +34,7 @@ open class GameStatisticsFactory: BaseGameStatistics {
     }
     
 
-    @discardableResult public static func getInstance() -> GameStatisticsFactory! {
+    @discardableResult open class func getInstance() -> GameStatisticsFactory! {
         return GameStatisticsFactory.instance
     }
     

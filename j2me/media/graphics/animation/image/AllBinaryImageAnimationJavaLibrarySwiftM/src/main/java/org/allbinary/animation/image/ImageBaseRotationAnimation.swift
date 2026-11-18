@@ -1,143 +1,90 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.DisposalUtil
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.RotationAnimation
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.math.AngleInfo
+// import org.allbinary.util.CircularIndexUtil
 
+open class ImageBaseRotationAnimation: RotationAnimation {
+    fileprivate var image: Image! = nil
+    public var anchor: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    self.anchor = Anchor.TOP_LEFT
+    }
+    
 
+    public init(_ image: Image!, _ angleInfo: AngleInfo!, _ totalAngle: Int16, _ animationBehavior: AnimationBehavior!) {
+        super.init(angleInfo, CircularIndexUtil.createInstance(Int32(totalAngle) / Int32(angleInfo.getAngleIncrementInfo().getAngleIncrement())), animationBehavior)
+        self.initFields()
+        self.image = image
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.DisposalUtil
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.RotationAnimation
-import org.allbinary.graphics.Anchor
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.math.AngleInfo
-import org.allbinary.util.CircularIndexUtil
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
 
-open public class ImageBaseRotationAnimation : RotationAnimation {
-        
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
 
-    private val image: Image
-public constructor (image: Image, angleInfo: AngleInfo, totalAngle: Short, animationBehavior: AnimationBehavior)                        
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
 
-                            : super(angleInfo, CircularIndexUtil.createInstance(totalAngle /angleInfo!!.getAngleIncrementInfo()!!.getAngleIncrement()), animationBehavior){
-    //var image = image
-    //var angleInfo = angleInfo
-    //var totalAngle = totalAngle
-    //var animationBehavior = animationBehavior
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        graphics.drawImage(self.image, x, y, self.anchor)
+    }
+    
 
+    @discardableResult open func getImage() -> Image! {
+        return self.image
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.image= image
+    @discardableResult open override func getWidth() -> Int32 {
+        return self.image.getWidth()
+    }
+    
+
+    @discardableResult open override func getHeight() -> Int32 {
+        return self.image.getHeight()
+    }
+    
+
+    open func close() {
+        DisposalUtil.getInstance().disposeImage(self.image)
+    }
+    
+
+    open func finalize() {
+        DisposalUtil.getInstance().disposeImage(self.image)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    var anchor: Int = Anchor.TOP_LEFT
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-graphics.drawImage(this.image, x, y, this.anchor)
-}
-
-
-    open fun getImage()
-        //nullable = true from not(false or (false and true)) = true
-: Image{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image
-}
-
-
-    override fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image.getWidth()
-}
-
-
-    override fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image.getHeight()
-}
-
-
-    open fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-DisposalUtil.getInstance()!!.disposeImage(this.image)
-}
-
-
-                @Throws(Throwable::class)
-            
-    override fun finalize()
-        //nullable = true from not(false or (false and true)) = true
-{
-DisposalUtil.getInstance()!!.disposeImage(this.image)
-}
-
-
-}
-                
-            
 

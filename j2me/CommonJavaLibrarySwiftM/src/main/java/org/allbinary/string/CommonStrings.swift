@@ -136,7 +136,7 @@ open class CommonStrings: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CommonStrings! {
+    @discardableResult open class func getInstance() -> CommonStrings! {
         return CommonStrings.instance
     }
 }

@@ -1,83 +1,46 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
+// import java.io.IOException
+// import java.io.InputStream
+// import javax.microedition.lcdui.Image
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.platform.graphics.PlatformBitmapBase
+// import org.allbinary.platform.graphics.PlatformBitmapBaseFactory
 
+open class OpenGLBitmapFactory: PlatformBitmapBaseFactory {
+    fileprivate static let instance: OpenGLBitmapFactory! = OpenGLBitmapFactory()
+    public var ARGB_8888: OpenGLBitmapConfig! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.ARGB_8888 = OpenGLBitmapConfig(NullUtil.getInstance().NULL_OBJECT)
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.IOException
-import java.io.InputStream
-import javax.microedition.lcdui.Image
-import org.allbinary.logic.NullUtil
-import org.allbinary.platform.graphics.PlatformBitmapBase
-import org.allbinary.platform.graphics.PlatformBitmapBaseFactory
+    @discardableResult open class func getInstance() -> OpenGLBitmapFactory! {
+        return OpenGLBitmapFactory.instance
+    }
+    
 
-open public class OpenGLBitmapFactory : PlatformBitmapBaseFactory {
-        
-companion object {
-            
-    private val instance: OpenGLBitmapFactory = OpenGLBitmapFactory()
+    @discardableResult open func createBitmap(_ width: Int32, _ height: Int32, _ config: OpenGLBitmapConfig!) -> OpenGLBitmap! {
+        return OpenGLBitmap(NullUtil.getInstance().NULL_OBJECT)
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLBitmapFactory{
+    @discardableResult open func decodeStream(_ inputStream: InputStream!) -> OpenGLBitmap! {
+        return OpenGLBitmap(NullUtil.getInstance().NULL_OBJECT)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmapFactory.instance
+    @discardableResult open override func createBitmap(_ image: Image!) -> PlatformBitmapBase! {
+        return OpenGLBitmap(NullUtil.getInstance().NULL_OBJECT)
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val ARGB_8888: OpenGLBitmapConfig = OpenGLBitmapConfig(NullUtil.getInstance()!!.NULL_OBJECT)
-
-    open fun createBitmap(width: Int, height: Int, config: OpenGLBitmapConfig)
-        //nullable = true from not(false or (false and false)) = true
-: OpenGLBitmap{
-var width = width
-var height = height
-var config = config
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(NullUtil.getInstance()!!.NULL_OBJECT)
-}
-
-
-                @Throws(IOException::class)
-            
-    open fun decodeStream(inputStream: InputStream)
-        //nullable = true from not(false or (false and false)) = true
-: OpenGLBitmap{
-var inputStream = inputStream
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(NullUtil.getInstance()!!.NULL_OBJECT)
-}
-
-
-    override fun createBitmap(image: Image)
-        //nullable = true from not(false or (false and false)) = true
-: PlatformBitmapBase{
-    //var image = image
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(NullUtil.getInstance()!!.NULL_OBJECT)
-}
-
-
-}
-                
-            
 

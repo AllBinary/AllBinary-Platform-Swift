@@ -1,62 +1,42 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gesture.observer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.gesture.observer
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
 
+open class NullCompleteMotionGestureReceiver: JObject, CompleteMotionGestureListenerInterface {
+    public var logUtil: LogUtil! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        self.logUtil.putF("Null Gesture Reciever", self, commonStrings.CONSTRUCTOR)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-
-open public class NullCompleteMotionGestureReceiver
-            : Object
-        
-                , CompleteMotionGestureListenerInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-public constructor ()
-            : super()
-        {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.putF("Null Gesture Reciever", this, commonStrings!!.CONSTRUCTOR)
+    open func onMotionGestureCompleted(_ list: BasicArrayList!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun onMotionGestureCompleted(list: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var list = list
-}
-
-
-}
-                
-            
 

@@ -1,126 +1,81 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
+// import org.allbinary.graph.V
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonSeps
 
+open class CellPosition: V {
+    fileprivate var id: Int32 = 0
+    fileprivate var column: Int32 = 0
+    fileprivate var row: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    }
+    
 
+    public init(_ column: Int32, _ row: Int32, _ columns: Int32, _ rows: Int32) {
+        super.init()
+        self.initFields()
+        self.column = column
+        self.row = row
+        self.id = (row &* columns) &+ column
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graph.V
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonSeps
+    @discardableResult open func getColumn() -> Int32 {
+        return self.column
+    }
+    
 
-open public class CellPosition : V {
-        
-companion object {
-            
-    open fun toStringCellPosition(basicGeographicMapCellPosition: CellPosition)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var basicGeographicMapCellPosition = basicGeographicMapCellPosition
+    @discardableResult open func getRow() -> Int32 {
+        return self.row
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPosition.toStringColRow(basicGeographicMapCellPosition!!.getColumn(), basicGeographicMapCellPosition!!.getRow())
+    @discardableResult open override func toString() -> String! {
+        return CellPosition.toStringColRow(self.getColumn(), self.getRow())
+    }
+    
+
+    @discardableResult open class func toStringCellPosition(_ basicGeographicMapCellPosition: CellPosition!) -> String! {
+        return CellPosition.toStringColRow(basicGeographicMapCellPosition.getColumn(), basicGeographicMapCellPosition.getRow())
+    }
+    
+
+    @discardableResult open class func toStringColRow(_ i_column: Int32, _ i_row: Int32) -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        let commonSeps: CommonSeps! = CommonSeps.getInstance()
+        stringBuffer.append(commonSeps.PARENTHESIS_OPEN)
+        stringBuffer.appendint(i_column)
+        stringBuffer.append(commonSeps.COMMA)
+        stringBuffer.appendint(i_row)
+        stringBuffer.append(commonSeps.PARENTHESIS_CLOSE)
+        return stringBuffer.toString()
+    }
+    
+
+    @discardableResult open override func getId() -> Int32 {
+        return self.id
+    }
 }
-
-
-    open fun toStringColRow(i_column: Int, i_row: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var i_column = i_column
-var i_row = i_row
-
-    var stringBuffer: StringMaker = StringMaker()
-
-
-    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
-
-stringBuffer!!.append(commonSeps!!.PARENTHESIS_OPEN)
-stringBuffer!!.appendint(i_column)
-stringBuffer!!.append(commonSeps!!.COMMA)
-stringBuffer!!.appendint(i_row)
-stringBuffer!!.append(commonSeps!!.PARENTHESIS_CLOSE)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-        }
-            
-    private val id: Int
-
-    private val column: Int
-
-    private val row: Int
-public constructor (column: Int, row: Int, columns: Int, rows: Int){
-var column = column
-var row = row
-var columns = columns
-var rows = rows
-this.column= column
-this.row= row
-this.id= (row *columns) +column
-}
-
-
-    open fun getColumn()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.column
-}
-
-
-    open fun getRow()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.row
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPosition.toStringColRow(this.getColumn(), this.getRow())
-}
-
-
-    override fun getId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id
-}
-
-
-}
-                
-            
 

@@ -23,7 +23,7 @@ open class ArrayUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ArrayUtil! {
+    @discardableResult open class func getInstance() -> ArrayUtil! {
         return ArrayUtil.instance
     }
     

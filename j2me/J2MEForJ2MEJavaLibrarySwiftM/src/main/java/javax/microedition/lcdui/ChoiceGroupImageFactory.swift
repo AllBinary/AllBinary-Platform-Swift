@@ -1,110 +1,82 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package javax.microedition.lcdui
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package javax.microedition.lcdui
+import J2SEForSwiftLibrary
+// import org.allbinary.MIDPUtil
 
+open class ChoiceGroupImageFactory: JObject {
+    fileprivate static let instance: ChoiceGroupImageFactory! = ChoiceGroupImageFactory()
+    fileprivate var multiOff: JArray<Int8>! = nil
+    fileprivate var multiOn: JArray<Int8>! = nil
+    fileprivate var radioOff: JArray<Int8>! = nil
+    fileprivate var radioOn: JArray<Int8>! = nil
+    fileprivate var midpUtil: MIDPUtil! = nil
+    fileprivate var imgMultiOffO: Image! = nil
+    fileprivate var imgMultiOnO: Image! = nil
+    fileprivate var imgRadioOffO: Image! = nil
+    fileprivate var imgRadioOnO: Image! = nil
+    public var imgMultiOff: Image! = nil
+    public var imgMultiOn: Image! = nil
+    public var imgRadioOff: Image! = nil
+    public var imgRadioOn: Image! = nil
+    fileprivate var imageArray: JArray<Image?>! = nil
 
+    private func initFields() {
+    self.multiOff = JArray<Int8>([Int8(truncatingIfNeeded: -119), 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 10, 0, 0, 0, 11, 2, 3, 0, 0, 0, 59, 0, Int8(truncatingIfNeeded: -12), Int8(truncatingIfNeeded: -117), 0, 0, 0, 6, 80, 76, 84, 69, Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -57), 75, Int8(truncatingIfNeeded: -33), Int8(truncatingIfNeeded: -8), 0, 0, 0, 30, 73, 68, 65, 84, 120, Int8(truncatingIfNeeded: -38), 99, 96, 96, 96, 96, 12, 101, Int8(truncatingIfNeeded: -8), Int8(truncatingIfNeeded: -51), Int8(truncatingIfNeeded: -32), Int8(truncatingIfNeeded: -64), 32, Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -60), Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -128), 11, 51, Int8(truncatingIfNeeded: -122), 50, Int8(truncatingIfNeeded: -4), 6, 0, 63, 116, 3, 1, 53, Int8(truncatingIfNeeded: -108), 39, Int8(truncatingIfNeeded: -26), 0, 0, 0, 0, 73, 69, 78, 68, Int8(truncatingIfNeeded: -82), 66, 96, Int8(truncatingIfNeeded: -126)])
+    self.multiOn = JArray<Int8>([Int8(truncatingIfNeeded: -119), 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 10, 0, 0, 0, 11, 2, 3, 0, 0, 0, 59, 0, Int8(truncatingIfNeeded: -12), Int8(truncatingIfNeeded: -117), 0, 0, 0, 12, 80, 76, 84, 69, Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), 106, 106, 106, 2, 2, 2, 106, Int8(truncatingIfNeeded: -103), 14, Int8(truncatingIfNeeded: -47), 0, 0, 0, 53, 73, 68, 65, 84, 120, Int8(truncatingIfNeeded: -38), 99, 96, 96, 124, Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -16), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -77), 3, Int8(truncatingIfNeeded: -45), 65, Int8(truncatingIfNeeded: -111), 15, 76, 12, 108, 12, 76, 12, Int8(truncatingIfNeeded: -4), 12, 76, 12, 18, 12, 76, Int8(truncatingIfNeeded: -68), 127, 24, Int8(truncatingIfNeeded: -104), 126, 45, 96, 96, Int8(truncatingIfNeeded: -7), Int8(truncatingIfNeeded: -11), Int8(truncatingIfNeeded: -109), Int8(truncatingIfNeeded: -127), Int8(truncatingIfNeeded: -23), Int8(truncatingIfNeeded: -65), 3, 3, Int8(truncatingIfNeeded: -29), 127, Int8(truncatingIfNeeded: -122), Int8(truncatingIfNeeded: -113), 0, 5, 37, 12, Int8(truncatingIfNeeded: -34), 1, Int8(truncatingIfNeeded: -99), Int8(truncatingIfNeeded: -83), 100, 0, 0, 0, 0, 73, 69, 78, 68, Int8(truncatingIfNeeded: -82), 66, 96, Int8(truncatingIfNeeded: -126)])
+    self.radioOff = JArray<Int8>([Int8(truncatingIfNeeded: -119), 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 11, 0, 0, 0, 11, 2, 3, 0, 0, 0, Int8(truncatingIfNeeded: -44), Int8(truncatingIfNeeded: -62), Int8(truncatingIfNeeded: -97), Int8(truncatingIfNeeded: -75), 0, 0, 0, 9, 80, 76, 84, 69, Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), 106, 106, 106, Int8(truncatingIfNeeded: -44), 13, Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -24), 0, 0, 0, 42, 73, 68, 65, 84, 120, Int8(truncatingIfNeeded: -38), 99, 96, 90, Int8(truncatingIfNeeded: -59), Int8(truncatingIfNeeded: -64), 32, Int8(truncatingIfNeeded: -63), 48, Int8(truncatingIfNeeded: -127), 65, Int8(truncatingIfNeeded: -127), 65, Int8(truncatingIfNeeded: -127), 41, Int8(truncatingIfNeeded: -127), Int8(truncatingIfNeeded: -31), 5, 19, 3, 3, 3, 50, 102, 80, 96, 80, 96, Int8(truncatingIfNeeded: -6), Int8(truncatingIfNeeded: -63), 80, Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -64), Int8(truncatingIfNeeded: -76), Int8(truncatingIfNeeded: -118), 1, 0, 113, 24, 5, 61, 73, Int8(truncatingIfNeeded: -68), Int8(truncatingIfNeeded: -100), 98, 0, 0, 0, 0, 73, 69, 78, 68, Int8(truncatingIfNeeded: -82), 66, 96, Int8(truncatingIfNeeded: -126)])
+    self.radioOn = JArray<Int8>([Int8(truncatingIfNeeded: -119), 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 11, 0, 0, 0, 11, 2, 3, 0, 0, 0, Int8(truncatingIfNeeded: -44), Int8(truncatingIfNeeded: -62), Int8(truncatingIfNeeded: -97), Int8(truncatingIfNeeded: -75), 0, 0, 0, 12, 80, 76, 84, 69, Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -1), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), Int8(truncatingIfNeeded: -69), 106, 106, 106, 2, 2, 2, 106, Int8(truncatingIfNeeded: -103), 14, Int8(truncatingIfNeeded: -47), 0, 0, 0, 50, 73, 68, 65, 84, 120, Int8(truncatingIfNeeded: -38), 5, Int8(truncatingIfNeeded: -63), 65, 13, 0, 32, 12, 4, Int8(truncatingIfNeeded: -63), Int8(truncatingIfNeeded: -19), Int8(truncatingIfNeeded: -11), Int8(truncatingIfNeeded: -117), 1, 18, 68, Int8(truncatingIfNeeded: -100), 10, 52, 19, 94, 72, 64, 17, 101, Int8(truncatingIfNeeded: -122), 44, Int8(truncatingIfNeeded: -44), Int8(truncatingIfNeeded: -29), 98, Int8(truncatingIfNeeded: -52), 89, 77, Int8(truncatingIfNeeded: -102), 40, 2, 85, Int8(truncatingIfNeeded: -95), Int8(truncatingIfNeeded: -73), Int8(truncatingIfNeeded: -63), Int8(truncatingIfNeeded: -104), Int8(truncatingIfNeeded: -63), 37, Int8(truncatingIfNeeded: -117), 15, Int8(truncatingIfNeeded: -40), 119, 10, 41, 78, 26, Int8(truncatingIfNeeded: -79), 59, 0, 0, 0, 0, 73, 69, 78, 68, Int8(truncatingIfNeeded: -82), 66, 96, Int8(truncatingIfNeeded: -126)])
+    self.midpUtil = MIDPUtil.getInstance()
+    self.imgMultiOffO = self.midpUtil.createImageFromByteArray(self.multiOff, 0, self.multiOff.length)
+    self.imgMultiOnO = self.midpUtil.createImageFromByteArray(self.multiOn, 0, self.multiOn.length)
+    self.imgRadioOffO = self.midpUtil.createImageFromByteArray(self.radioOff, 0, self.radioOff.length)
+    self.imgRadioOnO = self.midpUtil.createImageFromByteArray(self.radioOn, 0, self.radioOn.length)
+    self.imgMultiOff = self.imgMultiOffO
+    self.imgMultiOn = self.imgMultiOnO
+    self.imgRadioOff = self.imgRadioOffO
+    self.imgRadioOn = self.imgRadioOnO
+    self.imageArray = JArray<Image?>([self.imgMultiOff, self.imgMultiOn, self.imgRadioOff, self.imgRadioOn])
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.MIDPUtil
+    @discardableResult open class func getInstance() -> ChoiceGroupImageFactory! {
+        return ChoiceGroupImageFactory.instance
+    }
+    
 
-open public class ChoiceGroupImageFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ChoiceGroupImageFactory = ChoiceGroupImageFactory()
+    @discardableResult open func getImageArray() -> JArray<Image?>! {
+        return self.imageArray
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ChoiceGroupImageFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChoiceGroupImageFactory.instance
+    open func `init`(_ imageArray: JArray<Image?>!) {
+        self.imgMultiOff = imageArray[0]
+        self.imageArray[0] = self.imgMultiOff
+        self.imgMultiOn = imageArray[1]
+        self.imageArray[1] = self.imgMultiOn
+        self.imgRadioOff = imageArray[2]
+        self.imageArray[2] = self.imgRadioOff
+        self.imgRadioOn = imageArray[3]
+        self.imageArray[3] = self.imgRadioOn
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val multiOff: ByteArray = byteArrayOf( -119,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,10,0,0,0,11,2,3,0,0,0,59,0, -12, -117,0,0,0,6,80,76,84,69, -1, -1, -1, -69, -69, -69, -57,75, -33, -8,0,0,0,30,73,68,65,84,120, -38,99,96,96,96,96,12,101, -8, -51, -32, -64,32, -64, -60, -64, -64, -128,11,51, -122,50, -4,6,0,63,116,3,1,53, -108,39, -26,0,0,0,0,73,69,78,68, -82,66,96, -126)
-
-    private val multiOn: ByteArray = byteArrayOf( -119,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,10,0,0,0,11,2,3,0,0,0,59,0, -12, -117,0,0,0,12,80,76,84,69, -1, -1, -1, -69, -69, -69,106,106,106,2,2,2,106, -103,14, -47,0,0,0,53,73,68,65,84,120, -38,99,96,96,124, -64, -16, -1, -77,3, -45,65, -111,15,76,12,108,12,76,12, -4,12,76,12,18,12,76, -68,127,24, -104,126,45,96,96, -7, -11, -109, -127, -23, -65,3,3, -29,127, -122, -113,0,5,37,12, -34,1, -99, -83,100,0,0,0,0,73,69,78,68, -82,66,96, -126)
-
-    private val radioOff: ByteArray = byteArrayOf( -119,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,11,0,0,0,11,2,3,0,0,0, -44, -62, -97, -75,0,0,0,9,80,76,84,69, -1, -1, -1, -69, -69, -69,106,106,106, -44,13, -1, -24,0,0,0,42,73,68,65,84,120, -38,99,96,90, -59, -64,32, -63,48, -127,65, -127,65, -127,41, -127, -31,5,19,3,3,3,50,102,80,96,80,96, -6, -63,80, -64, -64, -76, -118,1,0,113,24,5,61,73, -68, -100,98,0,0,0,0,73,69,78,68, -82,66,96, -126)
-
-    private val radioOn: ByteArray = byteArrayOf( -119,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,11,0,0,0,11,2,3,0,0,0, -44, -62, -97, -75,0,0,0,12,80,76,84,69, -1, -1, -1, -69, -69, -69,106,106,106,2,2,2,106, -103,14, -47,0,0,0,50,73,68,65,84,120, -38,5, -63,65,13,0,32,12,4, -63, -19, -11, -117,1,18,68, -100,10,52,19,94,72,64,17,101, -122,44, -44, -29,98, -52,89,77, -102,40,2,85, -95, -73, -63, -104, -63,37, -117,15, -40,119,10,41,78,26, -79,59,0,0,0,0,73,69,78,68, -82,66,96, -126)
-
-    private val midpUtil: MIDPUtil = MIDPUtil.getInstance()!!
-
-    private val imgMultiOffO: Image = this.midpUtil!!.createImageFromByteArray(this.multiOff, 0, this.multiOff!!.size)!!
-
-    private val imgMultiOnO: Image = this.midpUtil!!.createImageFromByteArray(this.multiOn, 0, this.multiOn!!.size)!!
-
-    private val imgRadioOffO: Image = this.midpUtil!!.createImageFromByteArray(this.radioOff, 0, this.radioOff!!.size)!!
-
-    private val imgRadioOnO: Image = this.midpUtil!!.createImageFromByteArray(this.radioOn, 0, this.radioOn!!.size)!!
-
-    var imgMultiOff: Image = this.imgMultiOffO
-
-    var imgMultiOn: Image = this.imgMultiOnO
-
-    var imgRadioOff: Image = this.imgRadioOffO
-
-    var imgRadioOn: Image = this.imgRadioOnO
-
-    private val imageArray: Array<Image?> = arrayOf(this.imgMultiOff,this.imgMultiOn,this.imgRadioOff,this.imgRadioOn)
-
-    open fun getImageArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Image?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageArray
-}
-
-
-    open fun init(imageArray: Array<Image?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var imageArray = imageArray
-this.imgMultiOff= imageArray[0]!!
-this.imageArray[0]= this.imgMultiOff
-this.imgMultiOn= imageArray[1]!!
-this.imageArray[1]= this.imgMultiOn
-this.imgRadioOff= imageArray[2]!!
-this.imageArray[2]= this.imgRadioOff
-this.imgRadioOn= imageArray[3]!!
-this.imageArray[3]= this.imgRadioOn
-}
-
-
-}
-                
-            
 

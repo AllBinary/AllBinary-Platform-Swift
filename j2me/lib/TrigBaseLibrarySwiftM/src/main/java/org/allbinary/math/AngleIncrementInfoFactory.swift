@@ -31,7 +31,7 @@ open class AngleIncrementInfoFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> AngleIncrementInfoFactory! {
+    @discardableResult open class func getInstance() -> AngleIncrementInfoFactory! {
         return AngleIncrementInfoFactory.instance
     }
     

@@ -1,29 +1,13 @@
+// Generated Code Do Not Modify
+// package java.lang
 
-        /* Generated Code Do Not Modify */
-        package java.lang
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
 //J2SE to J2ME compatibility
-open public class Deprecated
-            : Object
-         {
-        
+open class Deprecated: JObject {
 
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    public override init() {
+        super.init()
+    }
 }
-                
-            
 

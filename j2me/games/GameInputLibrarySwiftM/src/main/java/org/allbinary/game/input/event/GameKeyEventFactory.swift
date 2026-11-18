@@ -1,145 +1,84 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameKeyEventSourceInterface
+// import org.allbinary.game.input.Input
+// import org.allbinary.game.input.InputFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class GameKeyEventFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    public var TOUCH_BUTTON_SOURCE_ID: Int32 = 0
+    public var MOTION_GESTURE_SOURCE_ID: Int32 = 0
+    fileprivate var MAX_SOURCES: Int32 = 0
+    fileprivate var ARRAY: JArray<JArray<GameKeyEvent?>?>! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameKeyEventSourceInterface
-import org.allbinary.game.input.Input
-import org.allbinary.game.input.InputFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-
-open public class GameKeyEventFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameKeyEventFactory{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.TOUCH_BUTTON_SOURCE_ID = 2
+    self.MOTION_GESTURE_SOURCE_ID = 3
+    self.MAX_SOURCES = 4
+    self.ARRAY = JArray<JArray<GameKeyEvent?>?>(self.MAX_SOURCES, factory: { JArray<GameKeyEvent?>(InputFactory.getInstance().MAX, nil) })
+    }
     
-                        if(GameKeyEventFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    GameKeyEventFactory.instance= GameKeyEventFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventFactory.instance as GameKeyEventFactory
-}
-
-
+    @discardableResult open class func getInstance() -> GameKeyEventFactory! {
+        if (GameKeyEventFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            GameKeyEventFactory.instance = GameKeyEventFactory()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
+        return (GameKeyEventFactory.instance as! GameKeyEventFactory)
+    }
+    
 
-    val TOUCH_BUTTON_SOURCE_ID: Int = 2
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-    val MOTION_GESTURE_SOURCE_ID: Int = 3
+    open func `init`() {
+        let nullUtil: NullUtil! = NullUtil.getInstance()
+        let size: Int32 = InputFactory.getInstance().MAX
+        do {
+            var index: Int32 = self.MAX_SOURCES
+            while (jPreDecrement(&index) >= 0) {
+            do {
+                var index2: Int32 = size
+                while (jPreDecrement(&index2) >= 0) {
+                self.ARRAY[index]![index2] = GameKeyEvent.createEvent(nullUtil.NULL_OBJECT, index, index2)
+                }
+            }
+            }
+        }
+    }
+    
 
-    private val MAX_SOURCES: Int = 4
+    @discardableResult open func getInstanceForKey(_ anyType: GameKeyEventSourceInterface!, _ key: Int32) -> GameKeyEvent! {
+        let gameKeyEvent: GameKeyEvent! = self.ARRAY[anyType.getSourceId()]![key]
+        return gameKeyEvent
+    }
+    
 
-    private var ARRAY: Array<Array<GameKeyEvent?>?> = Array(this.MAX_SOURCES) { arrayOfNulls<GameKeyEvent?>(InputFactory.getInstance()!!.MAX) }
-                                                            
-private constructor ()
-            : super()
-        {
+    @discardableResult open func getInstanceForInput(_ anyType: GameKeyEventSourceInterface!, _ input: Input!) -> GameKeyEvent! {
+        let gameKeyEvent: GameKeyEvent! = self.ARRAY[anyType.getSourceId()]![input.getId()]
+        return gameKeyEvent
+    }
 }
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var nullUtil: NullUtil = NullUtil.getInstance()!!
-
-
-    var size: Int = InputFactory.getInstance()!!.MAX
-
-
-
-
-
-                        for (index in this.MAX_SOURCES  - 1  downTo 0)
-
-        {
-
-
-
-
-                        for (index2 in size  - 1  downTo 0)
-
-        {
-this.ARRAY[index]!![index2]= GameKeyEvent.createEvent(nullUtil!!.NULL_OBJECT, index, index2)
-}
-
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getInstanceForKey(anyType: GameKeyEventSourceInterface, key: Int)
-        //nullable = true from not(false or (false and false)) = true
-: GameKeyEvent{
-    //var anyType = anyType
-    //var key = key
-
-    var gameKeyEvent: GameKeyEvent = this.ARRAY[anyType!!.getSourceId()]!![key]!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return gameKeyEvent
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getInstanceForInput(anyType: GameKeyEventSourceInterface, input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: GameKeyEvent{
-    //var anyType = anyType
-    //var input = input
-
-    var gameKeyEvent: GameKeyEvent = this.ARRAY[anyType!!.getSourceId()]!![input.getId()]!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return gameKeyEvent
-}
-
-
-}
-                
-            
 

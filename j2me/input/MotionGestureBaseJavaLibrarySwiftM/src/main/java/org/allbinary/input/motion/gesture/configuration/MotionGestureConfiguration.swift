@@ -1,210 +1,139 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gesture.configuration
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.gesture.configuration
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.CompleteMotionGestureInputEvent
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.input.motion.gesture.MotionGestureToMotionGestureActionAssociation
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class MotionGestureConfiguration: JObject {
+    fileprivate var diagonalMotionGestureAllowed: Bool = false
+    fileprivate var diagonalTolerance: Int32 = 0
+    fileprivate var minimumMotionGesture: Int32 = 0
+    fileprivate var button: String! = nil
+    fileprivate var color: BasicColor! = nil
+    fileprivate var executingActions: Bool = false
+    fileprivate var mouseButtonMask: Int32 = 0
+    fileprivate var activeCommands: BasicArrayList! = nil
 
+    private func initFields() {
+    self.diagonalMotionGestureAllowed = true
+    self.diagonalTolerance = 7
+    self.minimumMotionGesture = 9
+    self.button = StringUtil.getInstance().EMPTY_STRING
+    self.color = BasicColorFactory.getInstance().BLUE
+    self.executingActions = true
+    self.mouseButtonMask = 0
+    self.activeCommands = BasicArrayListD()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.CompleteMotionGestureInputEvent
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.input.motion.gesture.MotionGestureToMotionGestureActionAssociation
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    open func addMotionGestureAction(_ list: BasicArrayList!, _ commandAction: CompleteMotionGestureInputEvent!) {
+        self.activeCommands.add(MotionGestureToMotionGestureActionAssociation(list, commandAction))
+    }
+    
 
-open public class MotionGestureConfiguration
-            : Object
-         {
-        
+    open func clearMotionGestureAction() {
+        self.activeCommands.clear()
+    }
+    
 
-    private var diagonalMotionGestureAllowed: Boolean = true
+    @discardableResult open func getAssociateCommandActionsList() -> BasicArrayList! {
+        return self.activeCommands
+    }
+    
 
-    private var diagonalTolerance: Int = 7
+    @discardableResult open func isDiagonalMotionGestureAllowed() -> Bool {
+        return self.diagonalMotionGestureAllowed
+    }
+    
 
-    private var minimumMotionGesture: Int = 9
+    @discardableResult open func isExecutingActionsAllowed() -> Bool {
+        return self.executingActions
+    }
+    
 
-    private var button: String = StringUtil.getInstance()!!.EMPTY_STRING
+    open func setExecutingActionsAllowed(_ executingActionAllowed: Bool) {
+        self.executingActions = executingActionAllowed
+    }
+    
 
-    private var color: BasicColor = BasicColorFactory.getInstance()!!.BLUE
+    open func setDiagonalMotionGestureAllowed(_ diagonalMotionGestureAllowed: Bool) {
+        self.diagonalMotionGestureAllowed = diagonalMotionGestureAllowed
+    }
+    
 
-    private var executingActions: Boolean = true
+    @discardableResult open func getDiagonalTolerance() -> Int32 {
+        return self.diagonalTolerance
+    }
+    
 
-    private var mouseButtonMask: Int = 0
+    open func setDiagonalTolerance(_ diagonalTolerance: Int32) {
+        self.diagonalTolerance = diagonalTolerance
+    }
+    
 
-    private var activeCommands: BasicArrayList = BasicArrayListD()
-public constructor ()
-            : super()
-        {
+    @discardableResult open func getMinimumMotionGesture() -> Int32 {
+        return self.minimumMotionGesture
+    }
+    
+
+    open func setMinimumMotionGesture(_ minimumMotionGesture: Int32) {
+        self.minimumMotionGesture = minimumMotionGesture
+    }
+    
+
+    @discardableResult open func getButton() -> String! {
+        return self.button
+    }
+    
+
+    open func setButton(_ button: String!) {
+        self.button = button
+    }
+    
+
+    @discardableResult open func getColor() -> BasicColor! {
+        return self.color
+    }
+    
+
+    open func setColor(_ color: BasicColor!) {
+        self.color = color
+    }
+    
+
+    @discardableResult open func getMouseButtonMask() -> Int32 {
+        return self.mouseButtonMask
+    }
+    
+
+    open func setMouseButtonMask(_ mouseButtonMask: Int32) {
+        self.mouseButtonMask = mouseButtonMask
+    }
 }
-
-
-    open fun addMotionGestureAction(list: BasicArrayList, commandAction: CompleteMotionGestureInputEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var list = list
-var commandAction = commandAction
-this.activeCommands!!.add(MotionGestureToMotionGestureActionAssociation(list, commandAction))
-}
-
-
-    open fun clearMotionGestureAction()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.activeCommands!!.clear()
-}
-
-
-    open fun getAssociateCommandActionsList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.activeCommands
-}
-
-
-    open fun isDiagonalMotionGestureAllowed()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.diagonalMotionGestureAllowed
-}
-
-
-    open fun isExecutingActionsAllowed()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.executingActions
-}
-
-
-    open fun setExecutingActionsAllowed(executingActionAllowed: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var executingActionAllowed = executingActionAllowed
-this.executingActions= executingActionAllowed
-}
-
-
-    open fun setDiagonalMotionGestureAllowed(diagonalMotionGestureAllowed: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var diagonalMotionGestureAllowed = diagonalMotionGestureAllowed
-this.diagonalMotionGestureAllowed= diagonalMotionGestureAllowed
-}
-
-
-    open fun getDiagonalTolerance()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.diagonalTolerance
-}
-
-
-    open fun setDiagonalTolerance(diagonalTolerance: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var diagonalTolerance = diagonalTolerance
-this.diagonalTolerance= diagonalTolerance
-}
-
-
-    open fun getMinimumMotionGesture()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minimumMotionGesture
-}
-
-
-    open fun setMinimumMotionGesture(minimumMotionGesture: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var minimumMotionGesture = minimumMotionGesture
-this.minimumMotionGesture= minimumMotionGesture
-}
-
-
-    open fun getButton()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.button
-}
-
-
-    open fun setButton(button: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var button = button
-this.button= button
-}
-
-
-    open fun getColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color
-}
-
-
-    open fun setColor(color: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var color = color
-this.color= color
-}
-
-
-    open fun getMouseButtonMask()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mouseButtonMask
-}
-
-
-    open fun setMouseButtonMask(mouseButtonMask: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var mouseButtonMask = mouseButtonMask
-this.mouseButtonMask= mouseButtonMask
-}
-
-
-}
-                
-            
 

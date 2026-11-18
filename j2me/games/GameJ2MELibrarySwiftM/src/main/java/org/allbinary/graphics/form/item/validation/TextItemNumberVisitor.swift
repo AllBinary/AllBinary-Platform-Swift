@@ -1,104 +1,58 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item.validation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item.validation
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.TextNotificationUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.java.bool.BooleanFactory
+// import org.allbinary.logic.string.StringValidationUtil
+// import org.allbinary.logic.util.visitor.Visitor
+// import org.allbinary.string.CommonStrings
 
+open class TextItemNumberVisitor: Visitor {
+    public var logUtil: LogUtil! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.TextNotificationUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.java.bool.BooleanFactory
-import org.allbinary.logic.string.StringValidationUtil
-import org.allbinary.logic.util.visitor.Visitor
-import org.allbinary.string.CommonStrings
-
-open public class TextItemNumberVisitor : Visitor {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-public constructor (){
-}
-
-
-    override fun visit(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Any{
-var anyType = anyType
-
-    var value: String = anyType as String
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    }
     
-                        if(value.length < 2)
-                        
-                                    {
-                                    
-    var stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!!
 
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(stringValidationUtil!!.isNumber(value))
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!!.TRUE
 
-                                    }
-                                
-                        else {
-                            
-        try {
-            TextNotificationUtil.getInstance()!!.fireError("Numbers Only")
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.VISIT, e)
+    @discardableResult open override func visit(_ anyType: JObject!) -> JObject! {
+        let value: String! = jUnboxString(anyType)
+        if (JString.length(value) < 2) {
+            let stringValidationUtil: StringValidationUtil! = StringValidationUtil.getInstance()
+            if (stringValidationUtil.isNumber(value)) {
+                return BooleanFactory.getInstance().TRUE
+            } else {
+                do {
+                    TextNotificationUtil.getInstance().fireError("Numbers Only")
+                } /* catch (Exception e): a thrown Java exception stops the program */
+                return BooleanFactory.getInstance().FALSE
+            }
+        } else {
+            return BooleanFactory.getInstance().FALSE
+        }
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!!.FALSE
-
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!!.FALSE
-
-                        }
-                            
-}
-
-
-}
-                
-            
 

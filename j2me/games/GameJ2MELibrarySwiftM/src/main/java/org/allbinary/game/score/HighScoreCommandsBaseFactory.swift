@@ -1,115 +1,67 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import org.allbinary.J2MEUtil
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class HighScoreCommandsBaseFactory: JObject {
+    public var logUtil: LogUtil! = nil
+    public var HIGH_SCORE_COMMANDS: JArray<Command?>! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import org.allbinary.J2MEUtil
-import org.allbinary.logic.communication.log.LogUtil
-
-open public class HighScoreCommandsBaseFactory
-            : Object
-         {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val HIGH_SCORE_COMMANDS: Array<Command?>
-protected constructor (HIGH_SCORE_COMMANDS: Array<Command?>)
-            : super()
-        {
-var HIGH_SCORE_COMMANDS = HIGH_SCORE_COMMANDS
-this.HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS
-}
-
-
-    open fun isHighScoreCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var command = command
-
-
-
-
-                        for (index in this.HIGH_SCORE_COMMANDS.size -1 downTo 0)
-
-        {
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(command == this.HIGH_SCORE_COMMANDS[index])
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                                    }
-                                
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getIndex(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var command = command
-
-
-
-
-                        for (index in this.HIGH_SCORE_COMMANDS.size -1 downTo 0)
-
-        {
-
+    }
     
-                        if(command == this.HIGH_SCORE_COMMANDS[index])
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return index
 
-                                    }
-                                
+    public init(_ HIGH_SCORE_COMMANDS: JArray<Command?>!) {
+        super.init()
+        self.initFields()
+        self.HIGH_SCORE_COMMANDS = HIGH_SCORE_COMMANDS
+    }
+    
+
+    @discardableResult open func isHighScoreCommand(_ command: Command!) -> Bool {
+        do {
+            var index: Int32 = self.HIGH_SCORE_COMMANDS.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (command === self.HIGH_SCORE_COMMANDS[index]) {
+                return true
+            }
+            }
+        }
+        return false
+    }
+    
+
+    @discardableResult open func getIndex(_ command: Command!) -> Int32 {
+        do {
+            var index: Int32 = self.HIGH_SCORE_COMMANDS.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (command === self.HIGH_SCORE_COMMANDS[index]) {
+                return index
+            }
+            }
+        }
+        jThrow(JException("Exception", "No Such Command"))
+    }
 }
-
-
-
-
-                            throw Exception("No Such Command")
-}
-
-
-}
-                
-            
 

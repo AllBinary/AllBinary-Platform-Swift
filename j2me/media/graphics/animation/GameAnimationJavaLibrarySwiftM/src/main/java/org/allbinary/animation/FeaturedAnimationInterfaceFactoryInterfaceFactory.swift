@@ -1,318 +1,157 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.resource.FeatureResourceAnimationInterfaceFactoryInterface
+// import org.allbinary.game.configuration.GameConfigurationCentral
+// import org.allbinary.game.resource.FeaturedResourceFactory
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.RectangleFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFactory {
+    fileprivate static var INSTANCE: FeaturedAnimationInterfaceFactoryInterfaceFactory! = FeaturedAnimationInterfaceFactoryInterfaceFactory()
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> FeaturedAnimationInterfaceFactoryInterfaceFactory! {
+        return FeaturedAnimationInterfaceFactoryInterfaceFactory.INSTANCE
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.resource.FeatureResourceAnimationInterfaceFactoryInterface
-import org.allbinary.game.configuration.GameConfigurationCentral
-import org.allbinary.game.resource.FeaturedResourceFactory
-import org.allbinary.graphics.PointFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.RectangleFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonSeps
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    @discardableResult open func getRectangle(_ resource: String!) -> Rectangle! {
+        return self.getRectangleXY(resource, 0, 0)
+    }
+    
 
-open public class FeaturedAnimationInterfaceFactoryInterfaceFactory : FeaturedResourceFactory {
-        
-companion object {
-            
-    private var INSTANCE: FeaturedAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: FeaturedAnimationInterfaceFactoryInterfaceFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedAnimationInterfaceFactoryInterfaceFactory.INSTANCE
-}
-
-
+    @discardableResult open func getRectangleXY(_ resource: String!, _ x: Int32, _ y: Int32) -> Rectangle! {
+        let pointFactory: PointFactory! = PointFactory.getInstance()
+        let list: BasicArrayList! = self.getList()
+        let scale: Int32 = GameConfigurationCentral.getInstance().SCALE.getValue().intValue()
+        let size: Int32 = self.getList().size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            let featureInterface: FeatureResourceAnimationInterfaceFactoryInterface! = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+            if (featureInterface.isFeature()) {
+                let rectangle: Rectangle! = featureInterface.getRectangle(resource)
+                if (rectangle !== RectangleFactory.SINGLETON) {
+                    return Rectangle(pointFactory.createXY(x, y), ((rectangle.getWidth() &* scale) >> 1), ((rectangle.getHeight() &* scale) >> 1))
+                }
+            }
+            }
         }
-            private constructor (){
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getRectangle(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: Rectangle{
-var resource = resource
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRectangleXY(resource, 0, 0)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getRectangleXY(resource: String, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Rectangle{
-    //var resource = resource
-    //var x = x
-    //var y = y
-
-    var pointFactory: PointFactory = PointFactory.getInstance()!!
-
-
-    var list: BasicArrayList = this.getList()!!
-
-
-    var scale: Int = GameConfigurationCentral.getInstance()!!.SCALE.getValue()!!.toInt()
-
-
-    var size: Int = this.getList()!!.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-
-    var featureInterface: FeatureResourceAnimationInterfaceFactoryInterface = list.objectArray[index]!! as FeatureResourceAnimationInterfaceFactoryInterface
-
-
+        jThrow(JException("Exception", StringMaker().append("No rectangle available for current feature selection or Resource: ").append(resource).toString()))
+    }
     
-                        if(featureInterface!!.isFeature())
-                        
-                                    {
-                                    
-    var rectangle: Rectangle = featureInterface!!.getRectangle(resource)!!
 
-
+    @discardableResult open func getProcedural(_ resource: String!) -> ProceduralAnimationInterfaceFactoryInterface! {
+        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as! ProceduralAnimationInterfaceFactoryInterface)
+    }
     
-                        if(rectangle != RectangleFactory.SINGLETON)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Rectangle(pointFactory!!.createXY(x, y), ((rectangle.getWidth() *scale) shr 1), ((rectangle.getHeight() *scale) shr 1))
 
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-
-
-                            throw Exception(StringMaker().
-                            append("No rectangle available for current feature selection or Resource: ")!!.append(resource)!!.toString())
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getProcedural(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: ProceduralAnimationInterfaceFactoryInterface{
-var resource = resource
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getBasicAnimationInterfaceFactoryInstance(resource) as ProceduralAnimationInterfaceFactoryInterface
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun get(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: AnimationInterfaceFactoryInterface{
-var resource = resource
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getBasicAnimationInterfaceFactoryInstance(resource) as AnimationInterfaceFactoryInterface
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getBasicAnimationInterfaceFactoryInstance(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: BasicAnimationInterfaceFactoryInterface{
-    //var resource = resource
-
-    var list: BasicArrayList = this.getList()!!
-
-
-    var resourceTypeAvailableList: BasicArrayList = BasicArrayListD()
-
-
-    var size: Int = this.getList()!!.size()
-
-
-    var featureInterface: FeatureResourceAnimationInterfaceFactoryInterface
-
-
-    var animationInterfaceFactoryInterface: BasicAnimationInterfaceFactoryInterface
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-featureInterface= list.objectArray[index]!! as FeatureResourceAnimationInterfaceFactoryInterface
-
+    @discardableResult open func get(_ resource: String!) -> AnimationInterfaceFactoryInterface! {
+        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as! AnimationInterfaceFactoryInterface)
+    }
     
-                        if(featureInterface!!.isFeature())
-                        
-                                    {
-                                    resourceTypeAvailableList!!.add(featureInterface)
-animationInterfaceFactoryInterface= featureInterface!!.getBasicAnimationInterfaceFactoryInstance(resource)!!
 
-    
-                        if(animationInterfaceFactoryInterface != NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return animationInterfaceFactoryInterface
-
-                                    }
-                                
-
-                                    }
-                                
+    @discardableResult fileprivate func getBasicAnimationInterfaceFactoryInstance(_ resource: String!) -> BasicAnimationInterfaceFactoryInterface! {
+        let list: BasicArrayList! = self.getList()
+        let resourceTypeAvailableList: BasicArrayList! = BasicArrayListD()
+        let size: Int32 = self.getList().size()
+        var featureInterface: FeatureResourceAnimationInterfaceFactoryInterface! = nil
+        var animationInterfaceFactoryInterface: BasicAnimationInterfaceFactoryInterface! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+            if (featureInterface.isFeature()) {
+                resourceTypeAvailableList.add((featureInterface as? JObject))
+                animationInterfaceFactoryInterface = featureInterface.getBasicAnimationInterfaceFactoryInstance(resource)
+                if (animationInterfaceFactoryInterface !== NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY) {
+                    return animationInterfaceFactoryInterface
+                }
+            }
+            }
+        }
+        if (resourceTypeAvailableList.size() > 0) {
+            let NO_ANIMATION_AVAILABLE_FROM: String! = "No animation available from: "
+            let FOR_FACTORIES: String! = " factories: "
+            let FOR_RESOURCE: String! = " for Resource: "
+            let HAS_KEY: String! = " has: "
+            let RESOURCES_LABEL: String! = " resources "
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append(NO_ANIMATION_AVAILABLE_FROM)
+            stringBuffer.appendint(resourceTypeAvailableList.size())
+            stringBuffer.append(CommonSeps.getInstance().FORWARD_SLASH)
+            stringBuffer.appendint(size)
+            stringBuffer.append(FOR_FACTORIES)
+            let size2: Int32 = resourceTypeAvailableList.size()
+            do {
+                var index: Int32 = 0
+                while (index < size2) {
+                    defer { index &+= 1 }
+                stringBuffer.append(resourceTypeAvailableList.get(index).toString())
+                stringBuffer.append(CommonSeps.getInstance().COMMA_SEP)
+                }
+            }
+            stringBuffer.append(FOR_RESOURCE)
+            stringBuffer.append(resource)
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                stringBuffer.append(CommonSeps.getInstance().NEW_LINE)
+                featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+                if (featureInterface.isFeature()) {
+                    stringBuffer.append(StringUtil.getInstance().toString((featureInterface as? JObject)))
+                    stringBuffer.append(HAS_KEY)
+                    stringBuffer.appendint(featureInterface.getHashtable().size())
+                    stringBuffer.append(RESOURCES_LABEL)
+                }
+                }
+            }
+            jThrow(JException("Exception", stringBuffer.toString()))
+        } else {
+            let stringBuffer: StringMaker! = StringMaker()
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+                stringBuffer.append(jstr(featureInterface))
+                stringBuffer.append(CommonSeps.getInstance().SPACE)
+                }
+            }
+            let result: String! = stringBuffer.toString()
+            stringBuffer.delete(0, stringBuffer.length())
+            jThrow(JException("Exception", stringBuffer.append("No feature resource type available for Resource: ").append(resource).append(" Resource Factories Available: ").append(result).toString()))
+        }
+    }
 }
-
-
-    
-                        if(resourceTypeAvailableList!!.size() > 0)
-                        
-                                    {
-                                    
-    var NO_ANIMATION_AVAILABLE_FROM: String = "No animation available from: "
-
-
-    var FOR_FACTORIES: String = " factories: "
-
-
-    var FOR_RESOURCE: String = " for Resource: "
-
-
-    var HAS_KEY: String = " has: "
-
-
-    var RESOURCES_LABEL: String = " resources "
-
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(NO_ANIMATION_AVAILABLE_FROM)
-stringBuffer!!.appendint(resourceTypeAvailableList!!.size())
-stringBuffer!!.append(CommonSeps.getInstance()!!.FORWARD_SLASH)
-stringBuffer!!.appendint(size)
-stringBuffer!!.append(FOR_FACTORIES)
-
-    var size2: Int = resourceTypeAvailableList!!.size()
-
-
-
-
-
-                        for (index in 0 until size2)
-
-        {
-stringBuffer!!.append(resourceTypeAvailableList!!.get(index)!!.toString())
-stringBuffer!!.append(CommonSeps.getInstance()!!.COMMA_SEP)
-}
-
-stringBuffer!!.append(FOR_RESOURCE)
-stringBuffer!!.append(resource)
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-stringBuffer!!.append(CommonSeps.getInstance()!!.NEW_LINE)
-featureInterface= list.objectArray[index]!! as FeatureResourceAnimationInterfaceFactoryInterface
-
-    
-                        if(featureInterface!!.isFeature())
-                        
-                                    {
-                                    stringBuffer!!.append(StringUtil.getInstance()!!.toString(featureInterface))
-stringBuffer!!.append(HAS_KEY)
-stringBuffer!!.appendint(featureInterface!!.getHashtable()!!.size)
-stringBuffer!!.append(RESOURCES_LABEL)
-
-                                    }
-                                
-}
-
-
-
-
-                            throw Exception(stringBuffer!!.toString())
-
-                                    }
-                                
-                        else {
-                            
-    var stringBuffer: StringMaker = StringMaker()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-featureInterface= list.objectArray[index]!! as FeatureResourceAnimationInterfaceFactoryInterface
-stringBuffer!!.append(featureInterface!!.toString())
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-}
-
-
-    var result: String = stringBuffer!!.toString()!!
-
-stringBuffer!!.delete(0, stringBuffer!!.length())
-
-
-
-                            throw Exception(stringBuffer!!.append("No feature resource type available for Resource: ")!!.append(resource)!!.append(" Resource Factories Available: ")!!.append(result)!!.toString())
-
-                        }
-                            
-}
-
-
-}
-                
-            
 

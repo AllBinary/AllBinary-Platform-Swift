@@ -29,7 +29,7 @@ open class EnumerationUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> EnumerationUtil! {
+    @discardableResult open class func getInstance() -> EnumerationUtil! {
         return EnumerationUtil.instance
     }
     

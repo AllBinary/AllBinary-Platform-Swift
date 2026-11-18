@@ -1,231 +1,110 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Displayable
+// import javax.microedition.lcdui.Form
+// import javax.microedition.rms.InvalidRecordIDException
+// import javax.microedition.rms.RecordStore
+// import javax.microedition.rms.RecordStoreException
+// import javax.microedition.rms.RecordStoreNotOpenException
+// import org.allbinary.logic.NullUtil
 
-
-
-
-        import java.lang.Object        
-        
-        import java.lang.System
-        
-        import java.lang.InterruptedException
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Displayable
-import javax.microedition.lcdui.Form
-import javax.microedition.rms.InvalidRecordIDException
-import javax.microedition.rms.RecordStore
-import javax.microedition.rms.RecordStoreException
-import javax.microedition.rms.RecordStoreNotOpenException
-import org.allbinary.logic.NullUtil
 //J2ME
-open public class TsUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: TsUtil = TsUtil()
+open class TsUtil: JObject {
+    fileprivate static let instance: TsUtil! = TsUtil()
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: TsUtil{
+    public override init() {
+        super.init()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TsUtil.instance
-}
+    @discardableResult open class func getInstance() -> TsUtil! {
+        return TsUtil.instance
+    }
+    
 
+    @discardableResult open func hashCode(_ anyType: JObject!) -> Int32 {
+        return anyType.hashCode()
+    }
+    
 
+    open func waitFor(_ `any`: JObject!, _ timeoutMillis: Int64) {
+        let anyType: JObject! = `any`
+        anyType.wait(timeoutMillis)
+    }
+    
+
+    @discardableResult open func getRecord(_ anyType: JObject!, _ recordId: Int32) -> JArray<Int8>! {
+        let recordStore: RecordStore! = (anyType as! RecordStore)
+        var data: JArray<Int8>! = nil
+        do {
+            data = JArray<Int8>(recordStore.getRecordSize(recordId), 0)
+            recordStore.getRecord(recordId, data, 0)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun hashCode(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var anyType = anyType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType!!.hashCode()
-}
-
-
-                @Throws(InterruptedException::class)
-            
-    open fun waitFor(any: Any, timeoutMillis: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var any = any
-    //var timeoutMillis = timeoutMillis
-
-    var anyType: Object = any as Object
-
-anyType!!.wait(timeoutMillis)
-}
-
-
-                @Throws(RecordStoreNotOpenException::class, InvalidRecordIDException::class, RecordStoreException::class)
-            
-    open fun getRecord(anyType: Any, recordId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: ByteArray{
-    //var anyType = anyType
-    //var recordId = recordId
-
-    var recordStore: RecordStore = anyType as RecordStore
-
-
-    var data: ByteArray
-
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this) 
-
-        //mutex.withLock
-        {
-data= ByteArray(recordStore!!.getRecordSize(recordId))
-recordStore!!.getRecord(recordId, data, 0)
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return if(data.size < 1) {
-                            
-                            NullUtil.getInstance()!!.NULL_BYTE_ARRAY
-                        
-                            } else {
-                            data
-                            }
+        return (data.length < 1 ? NullUtil.getInstance().NULL_BYTE_ARRAY : data)
+    }
     
-}
 
-
-    open fun compareTo(a: String, b: String)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var a = a
-    //var b = b
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return a.compareTo(b)
-}
-
-
-    open fun equalIgnoreCase(a: String, b: String)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var a = a
-    //var b = b
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return a.equals(b, ignoreCase = true)
-}
-
-
-    open fun equalsNotstring(anyType: Any?, object2: Any?)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var anyType = anyType
-    //var object2 = object2
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType!!.equals(object2)
-}
-
-
-    open fun toNumberFromChar(value: Char)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var value = value
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return value.code
-}
-
-
-    open fun toNumber(value: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var value = value
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return value
-}
-
-
-    open fun getByteArray(string: String)
-        //nullable = true from not(false or (false and false)) = true
-: ByteArray{
-    //var string = string
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return string.encodeToByteArray()
-}
-
-
-    open fun isItemListener(owner: Displayable)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var owner = owner
-
+    @discardableResult open func compareTo(_ a: String!, _ b: String!) -> Int32 {
+        return JString.compareTo(a, b)
+    }
     
-                        if(owner is Form)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    @discardableResult open func equalIgnoreCase(_ a: String!, _ b: String!) -> Bool {
+        return JString.equalsIgnoreCase(a, b)
+    }
+    
 
-                        }
-                            
+    @discardableResult open func equalsNotstring(_ anyType: JObject!, _ object2: JObject!) -> Bool {
+        return anyType.equals(object2)
+    }
+    
+
+    @discardableResult open func toNumberFromChar(_ value: UInt16) -> Int32 {
+        return Int32(truncatingIfNeeded: value)
+    }
+    
+
+    @discardableResult open func toNumber(_ value: Int32) -> Int32 {
+        return value
+    }
+    
+
+    @discardableResult open func getByteArray(_ string: String!) -> JArray<Int8>! {
+        return JString.getBytes(string)
+    }
+    
+
+    @discardableResult open func isItemListener(_ owner: Displayable!) -> Bool {
+        if ((owner is Form)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    open func printAvailableMethods(_ anyType: JObject!) {
+    }
+    
+
+    open func gc() {
+        ()
+    }
 }
-
-
-    open fun printAvailableMethods(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-{
-var anyType = anyType
-}
-
-
-    open fun gc()
-        //nullable = true from not(false or (false and true)) = true
-{
-System.gc()
-}
-
-
-}
-                
-            
 

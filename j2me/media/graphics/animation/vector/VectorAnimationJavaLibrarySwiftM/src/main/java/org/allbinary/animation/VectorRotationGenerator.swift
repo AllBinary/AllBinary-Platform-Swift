@@ -1,173 +1,94 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.graphics.pipeline.BasicGraphicsPipeline
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.math.Angle
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListS
+// import org.allbinary.vector.VectorInfo
 
+open class VectorRotationGenerator: JObject {
+    fileprivate static let instance: VectorRotationGenerator! = VectorRotationGenerator()
+    public var logUtil: LogUtil! = nil
+    fileprivate var vectorAnimationUtil: VectorAnimationUtil! = nil
+    fileprivate var angleFactory: AngleFactory! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.vectorAnimationUtil = VectorAnimationUtil.getInstance()
+    self.angleFactory = AngleFactory.getInstance()
+    }
+    
 
+    @discardableResult open class func getInstance() -> VectorRotationGenerator! {
+        return VectorRotationGenerator.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.PointFactory
-import org.allbinary.graphics.pipeline.BasicGraphicsPipeline
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.math.Angle
-import org.allbinary.math.AngleFactory
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListS
-import org.allbinary.vector.VectorInfo
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class VectorRotationGenerator
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: VectorRotationGenerator = VectorRotationGenerator()
+    @discardableResult open func getInstance(_ vectorRotationInfo: VectorInfo!) -> JArray<JArray<JArray<Int32>?>?>! {
+        return self.getInstanceFrames(vectorRotationInfo.getWidth(), vectorRotationInfo.getHeight(), vectorRotationInfo.getPoints(), vectorRotationInfo.getTotalFrames())
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: VectorRotationGenerator{
+    @discardableResult open func getInstanceFrames(_ width: Int32, _ height: Int32, _ points: JArray<JArray<Int32>?>!, _ frames: Int32) -> JArray<JArray<JArray<Int32>?>?>! {
+        do {
+            let totalAngle: Int16 = self.angleFactory.TOTAL_ANGLE
+            let angleIncrement: Int32 = Int32(Int32(truncatingIfNeeded: totalAngle)) / frames
+            let pointsBasicArrayList: BasicArrayList! = BasicArrayListS(Int32(Int32(truncatingIfNeeded: totalAngle)) / angleIncrement)
+            let pointBasicArrayList: BasicArrayList! = BasicArrayListS(points.length)
+            let pointFactory: PointFactory! = PointFactory.getInstance()
+            let size: Int32 = points.length
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                pointBasicArrayList.add(pointFactory.createXY(points[index]![0], points[index]![1]))
+                }
+            }
+            var index: Int32 = 0
+            while (index < Int32(Int32(truncatingIfNeeded: totalAngle))) {
+                pointsBasicArrayList.add(self.getListAtAngle(width, height, pointBasicArrayList, self.angleFactory.getAt(index)))
+                index = index &+ angleIncrement
+            }
+            let newPoints: JArray<JArray<JArray<Int32>?>?>! = self.vectorAnimationUtil.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, pointBasicArrayList.size())
+            return newPoints
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationGenerator.instance
+    @discardableResult open func getListAtAngle(_ width: Int32, _ height: Int32, _ pointBasicArrayList: BasicArrayList!, _ angle: Angle!) -> BasicArrayList! {
+        let graphicsPipe: BasicGraphicsPipeline! = BasicGraphicsPipeline(pointBasicArrayList)
+        graphicsPipe.createMatrix()
+        graphicsPipe.translate(-(width >> 1), -(height >> 1))
+        graphicsPipe.rotateToAngle(angle)
+        graphicsPipe.translate((width >> 1), (height >> 1))
+        return graphicsPipe.getMatrix()
+    }
 }
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!!
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun getInstance(vectorRotationInfo: VectorInfo)
-        //nullable =  from not(true or (false and false)) = 
-: Array<Array<IntArray?>?>{
-    //var vectorRotationInfo = vectorRotationInfo
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstanceFrames(vectorRotationInfo!!.getWidth(), vectorRotationInfo!!.getHeight(), vectorRotationInfo!!.getPoints(), vectorRotationInfo!!.getTotalFrames())
-}
-
-
-    private val angleFactory: AngleFactory = AngleFactory.getInstance()!!
-
-    open fun getInstanceFrames(width: Int, height: Int, points: Array<IntArray?>, frames: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Array<Array<IntArray?>?>{
-    //var width = width
-    //var height = height
-    //var points = points
-    //var frames = frames
-
-        try {
-            
-    var totalAngle: Short = this.angleFactory!!.TOTAL_ANGLE
-
-
-    var angleIncrement: Int = totalAngle /frames
-
-
-    var pointsBasicArrayList: BasicArrayList = BasicArrayListS(totalAngle /angleIncrement)
-
-
-    var pointBasicArrayList: BasicArrayList = BasicArrayListS(points.size)
-
-
-    var pointFactory: PointFactory = PointFactory.getInstance()!!
-
-
-    var size: Int = points.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-pointBasicArrayList!!.add(pointFactory!!.createXY(points[index]!![0]!!, points[index]!![1]!!))
-}
-
-
-    var index: Int = 0
-
-
-        while(index < totalAngle)
-        {
-pointsBasicArrayList!!.add(this.getListAtAngle(width, height, pointBasicArrayList, this.angleFactory!!.getAt(index)))
-index += angleIncrement
-}
-
-
-    var newPoints: Array<Array<IntArray?>?> = this.vectorAnimationUtil!!.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, pointBasicArrayList!!.size())!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return newPoints
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.GET_INSTANCE, e)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_INT_ARRAY_ARRAY_ARRAY
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getListAtAngle(width: Int, height: Int, pointBasicArrayList: BasicArrayList, angle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-    //var width = width
-    //var height = height
-    //var pointBasicArrayList = pointBasicArrayList
-    //var angle = angle
-
-    var graphicsPipe: BasicGraphicsPipeline = BasicGraphicsPipeline(pointBasicArrayList)
-
-graphicsPipe!!.createMatrix()
-graphicsPipe!!.translate( -(width shr 1),  -(height shr 1))
-graphicsPipe!!.rotateToAngle(angle)
-graphicsPipe!!.translate((width shr 1), (height shr 1))
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe!!.getMatrix()
-}
-
-
-}
-                
-            
 

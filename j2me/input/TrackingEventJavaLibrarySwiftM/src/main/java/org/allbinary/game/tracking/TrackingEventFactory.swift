@@ -1,55 +1,34 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.tracking
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.tracking
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.AllBinaryEventObjectFactoryInterface
 
+open class TrackingEventFactory: JObject, AllBinaryEventObjectFactoryInterface {
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.AllBinaryEventObjectFactoryInterface
-
-open public class TrackingEventFactory
-            : Object
-        
-                , AllBinaryEventObjectFactoryInterface {
-        
-public constructor ()
-            : super()
-        {
+    @discardableResult open func getInstance() -> AllBinaryEventObject! {
+        return TrackingEvent(TrackingEventHandler.getInstance())
+    }
 }
-
-
-    override fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AllBinaryEventObject{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEvent(TrackingEventHandler.getInstance())
-}
-
-
-}
-                
-            
 

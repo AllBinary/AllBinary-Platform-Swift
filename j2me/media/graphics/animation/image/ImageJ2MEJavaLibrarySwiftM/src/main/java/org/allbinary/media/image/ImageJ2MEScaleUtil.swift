@@ -1,151 +1,75 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2023 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2023 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
 
+open class ImageJ2MEScaleUtil: JObject {
+    fileprivate static let instance: ImageJ2MEScaleUtil! = ImageJ2MEScaleUtil()
+    
 
+    @discardableResult open class func getInstance() -> ImageJ2MEScaleUtil! {
+        return ImageJ2MEScaleUtil.instance
+    }
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-
-open public class ImageJ2MEScaleUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ImageJ2MEScaleUtil = ImageJ2MEScaleUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ImageJ2MEScaleUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2MEScaleUtil.instance
-}
-
-
+    @discardableResult open func scaleArray(_ images: JArray<Image?>!, _ width: Int32, _ height: Int32) -> JArray<Image?>! {
+        let scaledImages: JArray<Image?>! = JArray<Image?>(images.length, nil)
+        do {
+            var index: Int32 = images.length
+            while (jPreDecrement(&index) >= 0) {
+            scaledImages[index] = self.scale(images[index], width, height)
+            }
         }
-            private constructor ()
-            : super()
-        {
+        return scaledImages
+    }
+    
+
+    @discardableResult open func scale(_ image: Image!, _ width: Int32, _ height: Int32) -> Image! {
+        let sourceWidth: Int32 = image.getWidth()
+        let sourceHeight: Int32 = image.getHeight()
+        let originalData: JArray<Int32>! = JArray<Int32>(image.getWidth() * image.getHeight(), 0)
+        image.getRGB(originalData, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight())
+        let scaledData: JArray<Int32>! = JArray<Int32>(width &* height, 0)
+        let heightRatioFactor: Int32 = (8 &* sourceHeight) / height
+        let widthRatioFactor: Int32 = (8 &* sourceWidth) / width
+        var scaledIndex: Int32 = scaledData.length &- 1
+        var dx: Int32 = 0
+        var dy: Int32 = 0
+        do {
+            var index: Int32 = height
+            while (jPreDecrement(&index) >= 0) {
+            dy = (index &* heightRatioFactor) >> 3
+            do {
+                var index2: Int32 = width
+                while (jPreDecrement(&index2) >= 0) {
+                dx = (index2 &* widthRatioFactor) >> 3
+                scaledData[jPostDecrement(&scaledIndex)] = originalData[(sourceWidth &* dy) &+ dx]
+                }
+            }
+            }
+        }
+        let scaledImage: Image! = Image.createRGBImage(scaledData, width, height, true)
+        return scaledImage
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun scaleArray(images: Array<Image?>, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Array<Image?>{
-    //var images = images
-    //var width = width
-    //var height = height
-
-    var scaledImages: Array<Image?> = arrayOfNulls(images.size)
-
-
-
-
-
-                        for (index in images.size  - 1  downTo 0)
-
-        {
-scaledImages[index]= this.scale(images[index]!!, width, height)!!
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return scaledImages
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun scale(image: Image, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var image = image
-    //var width = width
-    //var height = height
-
-    var sourceWidth: Int = image.getWidth()
-
-
-    var sourceHeight: Int = image.getHeight()
-
-
-    var originalData: IntArray = IntArray(image.getWidth() *image.getHeight())
-
-image.getRGB(originalData, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight())
-
-    var scaledData: IntArray = IntArray(width *height)
-
-
-    var heightRatioFactor: Int = (8 *sourceHeight) /height
-
-
-    var widthRatioFactor: Int = (8 *sourceWidth) /width
-
-
-    var scaledIndex: Int = scaledData!!.size -1
-
-
-    var dx: Int= 0
-
-
-    var dy: Int= 0
-
-
-
-
-
-                        for (index in height  - 1  downTo 0)
-
-        {
-dy= (index *heightRatioFactor) shr 3
-
-
-
-
-                        for (index2 in width  - 1  downTo 0)
-
-        {
-dx= (index2 *widthRatioFactor) shr 3
-scaledData[scaledIndex--]= originalData[(sourceWidth *dy) +dx]!!
-}
-
-}
-
-
-    var scaledImage: Image = Image.createRGBImage(scaledData, width, height, true)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return scaledImage
-}
-
-
-}
-                
-            
 

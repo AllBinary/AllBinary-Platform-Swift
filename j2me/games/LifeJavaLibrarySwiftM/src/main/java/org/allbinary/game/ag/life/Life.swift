@@ -1,247 +1,121 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.life
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.life
+import J2SEForSwiftLibrary
 
+open class Life: JObject, LifeInterface {
+    public static let NO_LIFE: Life! = Life.createLife()
+    fileprivate var lives: Int16 = 0
+    fileprivate var startLives: Int16 = 0
+    fileprivate var maxlives: Int16 = 0
 
+    private func initFields() {
+    
+    
+    
+    }
+    
 
+    @discardableResult open class func createLife() -> Life! {
+        do {
+            return Life(Int16(truncatingIfNeeded: 0), Int16(truncatingIfNeeded: 0))
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class Life
-            : Object
-        
-                , LifeInterface {
-        
-companion object {
-            
-    open fun createLife()
-        //nullable = true from not(false or (false and true)) = true
-: Life{
-
-        try {
-            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Life(0.toShort(), 0.toShort())
-} catch(e: Exception)
-            {
-
-
-
-                            throw RuntimeException()
-}
-
-}
-
-
-    val NO_LIFE: Life = Life.createLife()!!
-
+    public init(_ lives: Int16, _ maxlives: Int16) {
+        super.init()
+        self.initFields()
+        self.maxlives = maxlives
+        if (Int32(lives) > Int32(self.maxlives)) {
+            jThrow(JException("Exception", "To Many Lives"))
         }
-            
-    private var lives: Short
-
-    private var startLives: Short
-
-    private var maxlives: Short
-public constructor (lives: Short, maxlives: Short)
-            : super()
-        {
-var lives = lives
-var maxlives = maxlives
-this.maxlives= maxlives
-
+        self.lives = lives
+        self.startLives = lives
+    }
     
-                        if(lives > this.maxlives)
-                        
-                                    {
-                                    
 
-
-                            throw Exception("To Many Lives")
-
-                                    }
-                                
-this.lives= lives
-this.startLives= lives
-}
-
-
-    override fun get()
-        //nullable = true from not(false or (false and true)) = true
-: Short{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lives
-}
-
-
-    override fun set(lives: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var lives = lives
-this.lives= lives
-}
-
-
-    override fun reset()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.lives= this.startLives
-}
-
-
-    override fun add(lives: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var lives = lives
-
+    @discardableResult open func get() -> Int16 {
+        return self.lives
+    }
     
-                        if(!this.reachedLimit())
-                        
-                                    {
-                                    
+
+    open func set(_ lives: Int16) {
+        self.lives = lives
+    }
     
-                        if(this.lives +lives <= this.getMaxlives())
-                        
-                                    {
-                                    this.lives= (this.lives +lives).toShort()
 
-                                    }
-                                
-                        else {
-                            this.lives= this.getMaxlives()
-
-                        }
-                            
-
-                                    }
-                                
-}
-
-
-    override fun isAlive()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func reset() {
+        self.lives = self.startLives
+    }
     
-                        if(this.lives <= 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                        }
-                            
-}
-
-
-    override fun getMaxlives()
-        //nullable = true from not(false or (false and true)) = true
-: Short{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxlives
-}
-
-
-    open fun reachedLimit()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func add(_ lives: Int16) {
+        if (!self.reachedLimit()) {
+            if (Int32(self.lives) &+ Int32(lives) <= Int32(Int32(truncatingIfNeeded: self.getMaxlives()))) {
+                self.lives = Int16(truncatingIfNeeded: (Int32(self.lives) &+ Int32(lives)))
+            } else {
+                self.lives = self.getMaxlives()
+            }
+        }
+    }
     
-                        if(this.lives > this.maxlives || this.lives < 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-    override fun deaths(lives: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var lives = lives
-
+    @discardableResult open func isAlive() -> Bool {
+        if (Int32(Int32(truncatingIfNeeded: self.lives)) <= 0) {
+            return false
+        } else {
+            return true
+        }
+    }
     
-                        if(!this.reachedLimit())
-                        
-                                    {
-                                    
+
+    @discardableResult open func getMaxlives() -> Int16 {
+        return self.maxlives
+    }
     
-                        if(this.lives -lives >= 0)
-                        
-                                    {
-                                    this.lives= (this.lives -lives).toShort()
 
-                                    }
-                                
-                        else {
-                            this.lives= 0
+    @discardableResult fileprivate func reachedLimit() -> Bool {
+        if (Int32(self.lives) > Int32(self.maxlives) || Int32(Int32(truncatingIfNeeded: self.lives)) < 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 
-                        }
-                            
+    open func deaths(_ lives: Int16) {
+        if (!self.reachedLimit()) {
+            if (Int32(self.lives) &- Int32(lives) >= 0) {
+                self.lives = Int16(truncatingIfNeeded: (Int32(self.lives) &- Int32(lives)))
+            } else {
+                self.lives = 0
+            }
+        }
+    }
+    
 
-                                    }
-                                
+    @discardableResult open func getStartLives() -> Int16 {
+        return self.startLives
+    }
+    
+
+    open func setStartLives(_ startLives: Int16) {
+        self.startLives = startLives
+    }
 }
-
-
-    open fun getStartLives()
-        //nullable = true from not(false or (false and true)) = true
-: Short{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startLives
-}
-
-
-    open fun setStartLives(startLives: Short)
-        //nullable = true from not(false or (false and false)) = true
-{
-var startLives = startLives
-this.startLives= startLives
-}
-
-
-}
-                
-            
 

@@ -1,110 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.Animation
 
+open class AnimationFrameToImageUtil: JObject {
+    fileprivate static let instance: AnimationFrameToImageUtil! = AnimationFrameToImageUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> AnimationFrameToImageUtil! {
+        return AnimationFrameToImageUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.Animation
+    @discardableResult open func getInstanceTranslate(_ width: Int32, _ height: Int32, _ animationInterface: Animation!) -> Image! {
+        let image: Image! = GameFeatureImageCacheFactory.getInstance().get(JObject.className(AnimationFrameToImageUtil.instance), ((width &* 3) >> 1), ((height &* 3) >> 1))
+        let graphics: Graphics! = image.getGraphics()
+        let tranlateX: Int32 = (width >> 2)
+        let tranlateY: Int32 = (height >> 2)
+        graphics.translate(tranlateX, tranlateY)
+        animationInterface.paintXY(graphics, 0, 0)
+        graphics.translate(-tranlateX, -tranlateY)
+        return image
+    }
+    
 
-open public class AnimationFrameToImageUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AnimationFrameToImageUtil = AnimationFrameToImageUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AnimationFrameToImageUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFrameToImageUtil.instance
+    @discardableResult open func getInstanceWH(_ width: Int32, _ height: Int32, _ animationInterface: Animation!) -> Image! {
+        let image: Image! = GameFeatureImageCacheFactory.getInstance().get(JObject.className(AnimationFrameToImageUtil.instance), width, height)
+        let graphics: Graphics! = image.getGraphics()
+        animationInterface.paintXY(graphics, 0, 0)
+        return image
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    open fun getInstanceTranslate(width: Int, height: Int, animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-var width = width
-var height = height
-var animationInterface = animationInterface
-
-    var image: Image = GameFeatureImageCacheFactory.getInstance()!!.get(AnimationFrameToImageUtil.instance::class.toString()!!, ((width *3) shr 1), ((height *3) shr 1))!!
-
-
-    var graphics: Graphics = image.getGraphics()!!
-
-
-    var tranlateX: Int = (width shr 2)
-
-
-    var tranlateY: Int = (height shr 2)
-
-graphics.translate(tranlateX, tranlateY)
-animationInterface!!.paintXY(graphics, 0, 0)
-graphics.translate( -tranlateX,  -tranlateY)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getInstanceWH(width: Int, height: Int, animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-var width = width
-var height = height
-var animationInterface = animationInterface
-
-    var image: Image = GameFeatureImageCacheFactory.getInstance()!!.get(AnimationFrameToImageUtil.instance::class.toString()!!, width, height)!!
-
-
-    var graphics: Graphics = image.getGraphics()!!
-
-animationInterface!!.paintXY(graphics, 0, 0)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
-}
-
-
-}
-                
-            
 

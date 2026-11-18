@@ -1,158 +1,96 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai.scroller
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai.scroller
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import org.allbinary.game.ai.BasicAI
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.game.physics.velocity.BasicVelocityProperties
+// import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.math.MathUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.util.ABHashtable
 
+open class BasePatrolAI: BasicAI {
+    public static let MAX_DISTANCE: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(2)
+    public static let DIRECTION_ARRAY: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(3)
+    public static let FIRING_DISTANCE: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(4)
+    public static var SPEED: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(5)
+    public var maxDistance: Int32! = nil
+    public var currentDistance: Int32 = 0
+    public var xTotalDistance: Int32 = 0
+    public var lastKeyDirection: Int32 = 0
+    public var keyDirection: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    self.xTotalDistance = 0
+    self.lastKeyDirection = Canvas.RIGHT
+    self.keyDirection = Canvas.RIGHT
+    }
+    
 
+    public init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(ownerLayerInterface, gameInput)
+        self.initFields()
+        self.maxDistance = jUnboxValue(hashtable.get(BasePatrolAI.MAX_DISTANCE), Int32.self)
+        self.currentDistance = self.maxDistance.intValue()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import org.allbinary.game.ai.BasicAI
-import org.allbinary.game.input.GameInput
-import org.allbinary.game.physics.velocity.BasicVelocityProperties
-import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.math.MathUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.util.ABHashtable
+    open func update() {
+        self.updateTotalDistance()
+        self.changeDirectionIfReachedPacingAreaMax()
+    }
+    
 
-open public class BasePatrolAI : BasicAI {
-        
-companion object {
-            
-    val MAX_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(2)!!
+    fileprivate func updateTotalDistance() {
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        let velocityProperties: BasicVelocityProperties! = velocityInterfaceCompositeInterface.getVelocityProperties()
+        self.xTotalDistance = self.xTotalDistance &+ velocityProperties.getVelocityXBasicDecimalP().getScaled()
+    }
+    
 
-    val DIRECTION_ARRAY: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(3)!!
-
-    val FIRING_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(4)!!
-
-    var SPEED: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(5)!!
-
+    fileprivate func changeDirectionIfReachedPacingAreaMax() {
+        let mathUtil: MathUtil! = MathUtil.getInstance()
+        let totalDistance: Int32 = mathUtil.abs(self.xTotalDistance)
+        if (totalDistance > self.currentDistance) {
+            self.nextDirection()
         }
-            
-    var maxDistance: Integer
-
-    var currentDistance: Int
-
-    var xTotalDistance: Int= 0
-
-    var lastKeyDirection: Int = Canvas.RIGHT
-
-    var keyDirection: Int = Canvas.RIGHT
-public constructor (hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(ownerLayerInterface, gameInput){
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.maxDistance= hashtable.get(BasePatrolAI.MAX_DISTANCE) as Integer
-this.currentDistance= this.maxDistance!!.toInt()
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.updateTotalDistance()
-this.changeDirectionIfReachedPacingAreaMax()
-}
-
-
-    open fun updateTotalDistance()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = this.getOwnerLayerInterface() as VelocityInterfaceCompositeInterface
-
-
-    var velocityProperties: BasicVelocityProperties = velocityInterfaceCompositeInterface!!.getVelocityProperties()!!
-
-this.xTotalDistance += velocityProperties!!.getVelocityXBasicDecimalP()!!.getScaled()
-}
-
-
-    open fun changeDirectionIfReachedPacingAreaMax()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var mathUtil: MathUtil = MathUtil.getInstance()!!
-
-
-    var totalDistance: Int = mathUtil!!.abs(this.xTotalDistance)
-
-
+    }
     
-                        if(totalDistance > this.currentDistance)
-                        
-                                    {
-                                    this.nextDirection()
 
-                                    }
-                                
-}
-
-
-    open fun nextDirection()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open func nextDirection() {
+        if (self.lastKeyDirection == Canvas.LEFT) {
+            self.keyDirection = Canvas.RIGHT
+            self.lastKeyDirection = self.keyDirection
+            self.xTotalDistance = 0
+        } else if (self.lastKeyDirection == Canvas.RIGHT) {
+            self.keyDirection = Canvas.LEFT
+            self.lastKeyDirection = self.keyDirection
+            self.xTotalDistance = 0
+        }
+    }
     
-                        if(this.lastKeyDirection == Canvas.LEFT)
-                        
-                                    {
-                                    this.keyDirection= Canvas.RIGHT
-this.lastKeyDirection= this.keyDirection
-this.xTotalDistance= 0
 
-                                    }
-                                
-                             else 
-    
-                        if(this.lastKeyDirection == Canvas.RIGHT)
-                        
-                                    {
-                                    this.keyDirection= Canvas.LEFT
-this.lastKeyDirection= this.keyDirection
-this.xTotalDistance= 0
-
-                                    }
-                                
+    open func disable() {
+    }
 }
-
-
-    open fun disable()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

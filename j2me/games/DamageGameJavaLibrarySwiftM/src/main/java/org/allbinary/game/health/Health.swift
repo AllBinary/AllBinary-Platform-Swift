@@ -1,267 +1,138 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.health
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.health
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonSeps
 
+open class Health: JObject, HealthInterface {
+    public static let NULL_HEALTH: Health! = Health(0)
+    public static let NAME: String! = "Health Resource"
+    fileprivate static let HEALTH_LABEL: String! = "Health: "
+    fileprivate static let MAX_HEALTH_LABEL: String! = " Max: "
+    fileprivate var health: Int32 = 0
+    fileprivate var maxHealth: Int32 = 0
+    fileprivate var healthListenerInterface: HealthListenerInterface! = nil
 
+    private func initFields() {
+    self.health = 0
+    self.maxHealth = 0
+    self.healthListenerInterface = NullHealthListener.NULL_HEALTH_LISTENER
+    }
+    
 
+    public init(_ maxHealth: Int32) {
+        super.init()
+        self.initFields()
+        self.setMaxHealth(maxHealth)
+        self.setHealth(maxHealth)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonSeps
-
-open public class Health
-            : Object
-        
-                , HealthInterface {
-        
-companion object {
-            
-    val NULL_HEALTH: Health = Health(0)
-
-    val NAME: String = "Health Resource"
-
-    private val HEALTH_LABEL: String = "Health: "
-
-    private val MAX_HEALTH_LABEL: String = " Max: "
-
+    open func heal(_ ahealth: Int32) {
+        let newHealth: Int32 = self.getHealth() &+ ahealth
+        if (newHealth > self.getMaxHealth()) {
+            self.setHealth(self.getMaxHealth())
+        } else {
+            self.setHealth(newHealth)
         }
-            
-    private var health: Int= 0
-
-    private var maxHealth: Int= 0
-
-    private var healthListenerInterface: HealthListenerInterface = NullHealthListener.NULL_HEALTH_LISTENER
-public constructor (maxHealth: Int)
-            : super()
-        {
-var maxHealth = maxHealth
-this.setMaxHealth(maxHealth)
-this.setHealth(maxHealth)
-}
-
-
-    override fun heal(ahealth: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ahealth = ahealth
-
-    var newHealth: Int = this.getHealth() +ahealth
-
-
+    }
     
-                        if(newHealth > this.getMaxHealth())
-                        
-                                    {
-                                    this.setHealth(this.getMaxHealth())
 
-                                    }
-                                
-                        else {
-                            this.setHealth(newHealth)
-
-                        }
-                            
-}
-
-
-    override fun healMax()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setHealth(this.getMaxHealth())
-}
-
-
-    open fun isDamaged()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func healMax() {
+        self.setHealth(self.getMaxHealth())
+    }
     
-                        if(this.getHealth() != this.getMaxHealth())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-    override fun damage(ahealth: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ahealth = ahealth
-
+    @discardableResult open func isDamaged() -> Bool {
+        if (self.getHealth() != self.getMaxHealth()) {
+            return true
+        } else {
+            return false
+        }
+    }
     
-                        if(ahealth < 0)
-                        
-                                    {
-                                    
-    var stringBuffer: StringMaker = StringMaker()
 
-stringBuffer!!.append("******* Trying to heal when damaging. Damage: ")
-stringBuffer!!.appendint(ahealth)
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(this.toString())
-ForcedLogUtil.log(stringBuffer!!.toString(), this)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-
-    var health: Int = this.getHealth() -ahealth
-
-this.setHealth(health)
-}
-
-
-    override fun isAlive()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func damage(_ ahealth: Int32) {
+        if (ahealth < 0) {
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append("******* Trying to heal when damaging. Damage: ")
+            stringBuffer.appendint(ahealth)
+            stringBuffer.append(CommonSeps.getInstance().SPACE)
+            stringBuffer.append(self.toString())
+            ForcedLogUtil.log(stringBuffer.toString(), self)
+            return
+        }
+        let health: Int32 = self.getHealth() &- ahealth
+        self.setHealth(health)
+    }
     
-                        if(this.getHealth() <= 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                        }
-                            
-}
-
-
-    override fun getMaxHealth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxHealth
-}
-
-
-    override fun setMaxHealth(maxHealth: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var maxHealth = maxHealth
-this.maxHealth= maxHealth
-}
-
-
-    open fun setHealth(health: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var health = health
-
+    @discardableResult open func isAlive() -> Bool {
+        if (self.getHealth() <= 0) {
+            return false
+        } else {
+            return true
+        }
+    }
     
-                        if(health > this.getMaxHealth())
-                        
-                                    {
-                                    this.health= this.getMaxHealth()
 
-                                    }
-                                
-                             else 
+    @discardableResult open func getMaxHealth() -> Int32 {
+        return self.maxHealth
+    }
     
-                        if(health < 0)
-                        
-                                    {
-                                    this.health= 0
 
-                                    }
-                                
-                        else {
-                            this.health= health
-
-                        }
-                            
-
+    open func setMaxHealth(_ maxHealth: Int32) {
+        self.maxHealth = maxHealth
+    }
     
-                        if(this.healthListenerInterface != 
-                                    null
-                                )
-                        
-                                    {
-                                    this.healthListenerInterface!!.onHealthChange()
 
-                                    }
-                                
+    open func setHealth(_ health: Int32) {
+        if (health > self.getMaxHealth()) {
+            self.health = self.getMaxHealth()
+        } else if (health < 0) {
+            self.health = 0
+        } else {
+            self.health = health
+        }
+        if (self.healthListenerInterface != nil) {
+            self.healthListenerInterface.onHealthChange()
+        }
+    }
+    
+
+    @discardableResult open func getHealth() -> Int32 {
+        return self.health
+    }
+    
+
+    open func addListener(_ healthGraphic: HealthListenerInterface!) {
+        self.healthListenerInterface = healthGraphic
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(Health.HEALTH_LABEL)
+        stringBuffer.appendint(self.health)
+        stringBuffer.append(Health.MAX_HEALTH_LABEL)
+        stringBuffer.appendint(self.maxHealth)
+        return stringBuffer.toString()
+    }
 }
-
-
-    override fun getHealth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.health
-}
-
-
-    override fun addListener(healthGraphic: HealthListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var healthGraphic = healthGraphic
-this.healthListenerInterface= healthGraphic
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(Health.HEALTH_LABEL)
-stringBuffer!!.appendint(this.health)
-stringBuffer!!.append(Health.MAX_HEALTH_LABEL)
-stringBuffer!!.appendint(this.maxHealth)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

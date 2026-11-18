@@ -1,154 +1,86 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.resource
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.resource
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.RelativeRelationship
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.util.BasicArrayListUtil
 
+open class ResourceRelativeRelationshipFactory: JObject, ResourceRelativeRelationshipFactoryInterface {
+    fileprivate var basicArrayListUtil: BasicArrayListUtil! = nil
+    fileprivate var hashtable: ABHashtable! = nil
+    fileprivate var initialized: Bool = false
 
+    private func initFields() {
+    self.basicArrayListUtil = BasicArrayListUtil.getInstance()
+    self.hashtable = StdUtil.getInstance().createHashtable()
+    self.initialized = false
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.RelativeRelationship
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.util.BasicArrayListUtil
-
-open public class ResourceRelativeRelationshipFactory
-            : Object
-        
-                , ResourceRelativeRelationshipFactoryInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!!
-
-    private val hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-
-    private var initialized: Boolean= false
-
-                @Throws(Exception::class)
-            
-    override fun init(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var level = level
-this.setInitialized(true)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getResourceRelativeRelationshipList(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-var resource = resource
-
-    var listCanBeNull: Any? = this.hashtable.get(resource as Object)
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(listCanBeNull == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!!.getImmutableInstance()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return listCanBeNull as BasicArrayList
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun addResourceRelativeRelationship(resource: String, hardPoint: RelativeRelationship)
-        //nullable = true from not(false or (false and false)) = true
-{
-var resource = resource
-var hardPoint = hardPoint
-
-    var list: BasicArrayList = this.getResourceRelativeRelationshipList(resource)!!
-
-
+    open func `init`(_ level: Int32) {
+        self.setInitialized(true)
+    }
     
-                        if(list == this.basicArrayListUtil!!.getImmutableInstance())
-                        
-                                    {
-                                    list= BasicArrayListD()
 
-                                    }
-                                
-list.add(hardPoint)
-this.hashtable.put(resource, list)
+    @discardableResult open func getResourceRelativeRelationshipList(_ resource: String!) -> BasicArrayList! {
+        let listCanBeNull: JObject! = self.hashtable.get(jBoxString(resource))
+        if (listCanBeNull == nil) {
+            return self.basicArrayListUtil.getImmutableInstance()
+        }
+        return (listCanBeNull as! BasicArrayList)
+    }
+    
+
+    open func addResourceRelativeRelationship(_ resource: String!, _ hardPoint: RelativeRelationship!) {
+        var list: BasicArrayList! = self.getResourceRelativeRelationshipList(resource)
+        if (list === self.basicArrayListUtil.getImmutableInstance()) {
+            list = BasicArrayListD()
+        }
+        list.add(hardPoint)
+        self.hashtable.put(jBoxString(resource), list)
+    }
+    
+
+    @discardableResult open func isLoadingLevel(_ level: Int32) -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open func isFeature() -> Bool {
+        return false
+    }
+    
+
+    open func setInitialized(_ initialized: Bool) {
+        self.initialized = initialized
+    }
+    
+
+    @discardableResult open func isInitialized() -> Bool {
+        return self.initialized
+    }
 }
-
-
-    override fun isLoadingLevel(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var level = level
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    override fun isFeature()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun setInitialized(initialized: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var initialized = initialized
-this.initialized= initialized
-}
-
-
-    open fun isInitialized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized
-}
-
-
-}
-                
-            
 

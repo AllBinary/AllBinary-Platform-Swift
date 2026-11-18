@@ -28,7 +28,7 @@ open class BasicColorCacheFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicColorCacheFactory! {
+    @discardableResult open class func getInstance() -> BasicColorCacheFactory! {
         return BasicColorCacheFactory.instance
     }
     

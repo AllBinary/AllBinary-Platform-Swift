@@ -1,91 +1,58 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.feature
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.feature
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
 
+open class InGameFeatureChoiceGroups: JObject {
+    fileprivate static var gameFeatureChoiceGroupsExclusive: InGameFeatureChoiceGroups! = InGameFeatureChoiceGroups()
+    fileprivate static var gameFeatureChoiceGroupsMultiple: InGameFeatureChoiceGroups! = InGameFeatureChoiceGroups()
+    fileprivate var hashtable: ABHashtable! = nil
 
+    private func initFields() {
+    self.hashtable = StdUtil.getInstance().createHashtable()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
+    @discardableResult open class func getExclusiveInstance() -> InGameFeatureChoiceGroups! {
+        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsExclusive
+    }
+    
 
-open public class InGameFeatureChoiceGroups
-            : Object
-         {
-        
-companion object {
-            
-    private var gameFeatureChoiceGroupsExclusive: InGameFeatureChoiceGroups = InGameFeatureChoiceGroups()
+    @discardableResult open class func getMultipleInstance() -> InGameFeatureChoiceGroups! {
+        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsMultiple
+    }
+    
 
-    private var gameFeatureChoiceGroupsMultiple: InGameFeatureChoiceGroups = InGameFeatureChoiceGroups()
+    @discardableResult open func get() -> ABHashtable! {
+        return self.hashtable
+    }
+    
 
-    open fun getExclusiveInstance()
-        //nullable = true from not(false or (false and true)) = true
-: InGameFeatureChoiceGroups{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsExclusive
+    open func add(_ name: String!, _ list: BasicArrayList!) {
+        self.hashtable.put(jBoxString(name), list)
+    }
 }
-
-
-    open fun getMultipleInstance()
-        //nullable = true from not(false or (false and true)) = true
-: InGameFeatureChoiceGroups{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsMultiple
-}
-
-
-        }
-            
-    private var hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun get()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable
-}
-
-
-    open fun add(name: String, list: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-var name = name
-var list = list
-this.hashtable.put(name, list)
-}
-
-
-}
-                
-            
 

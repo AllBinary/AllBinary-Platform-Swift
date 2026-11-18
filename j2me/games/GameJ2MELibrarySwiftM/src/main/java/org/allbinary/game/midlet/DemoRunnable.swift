@@ -1,85 +1,61 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.midlet
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.graphics.displayable.command.MyCommandsFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonStrings
 
+open class DemoRunnable: JObject, Runnable {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var demoGameMidlet: DemoGameMidlet! = nil
+    fileprivate var startDemoGameMidletEvent: DemoGameMidletEvent! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    
+    
+    }
+    
 
+    public init(_ demoGameMidlet: DemoGameMidlet!) {
+        super.init()
+        self.initFields()
+        self.demoGameMidlet = demoGameMidlet
+        self.startDemoGameMidletEvent = DemoGameMidletEvent(self.demoGameMidlet, DemoGameMidletStateFactory.getInstance().START_DEMO)
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Runnable
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.graphics.displayable.command.MyCommandsFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonStrings
-
-open public class DemoRunnable
-            : Object
-        
-                , Runnable {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val demoGameMidlet: DemoGameMidlet
-
-    private val startDemoGameMidletEvent: DemoGameMidletEvent
-public constructor (demoGameMidlet: DemoGameMidlet)
-            : super()
-        {
-var demoGameMidlet = demoGameMidlet
-this.demoGameMidlet= demoGameMidlet
-this.startDemoGameMidletEvent= DemoGameMidletEvent(this.demoGameMidlet, DemoGameMidletStateFactory.getInstance()!!.START_DEMO)
+    open func run() {
+        do {
+            self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().START_LABEL).append("GameCanvasRunnableInterface").toString(), self, self.commonStrings.RUN)
+            self.demoGameMidlet.commandAction(MyCommandsFactory.getInstance().SET_DISPLAYABLE, ProgressCanvasFactory.getInstance())
+            self.demoGameMidlet.setGameCanvasRunnableInterface(self.demoGameMidlet.createDemoGameCanvasRunnableInterface())
+            self.demoGameMidlet.demoSetup()
+            DemoGameMidletEventHandler.getInstance().fireEvent(self.startDemoGameMidletEvent)
+            self.demoGameMidlet.startGameCanvasRunnableInterface()
+            self.demoGameMidlet.postDemoSetup()
+            self.logUtil.putF(self.commonStrings.END_RUNNABLE, self, self.commonStrings.RUN)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append("GameCanvasRunnableInterface")!!.toString(), this, this.commonStrings!!.RUN)
-this.demoGameMidlet!!.commandAction(MyCommandsFactory.getInstance()!!.SET_DISPLAYABLE, ProgressCanvasFactory.getInstance())
-this.demoGameMidlet!!.setGameCanvasRunnableInterface(this.demoGameMidlet!!.createDemoGameCanvasRunnableInterface())
-this.demoGameMidlet!!.demoSetup()
-DemoGameMidletEventHandler.getInstance()!!.fireEvent(this.startDemoGameMidletEvent)
-this.demoGameMidlet!!.startGameCanvasRunnableInterface()
-this.demoGameMidlet!!.postDemoSetup()
-this.logUtil!!.putF(this.commonStrings!!.END_RUNNABLE, this, this.commonStrings!!.RUN)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.RUN, e)
-}
-
-}
-
-
-}
-                
-            
 

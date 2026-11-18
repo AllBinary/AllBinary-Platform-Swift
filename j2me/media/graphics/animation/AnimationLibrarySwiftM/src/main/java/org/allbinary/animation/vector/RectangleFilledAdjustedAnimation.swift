@@ -1,111 +1,72 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.vector
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.vector
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.ColorCompositeInterface
 
+open class RectangleFilledAdjustedAnimation: RectangleFilledAnimation, ColorCompositeInterface {
+    fileprivate var offsetX: Int32 = 0
+    fileprivate var offsetY: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    }
+    
 
+    public init(_ width: Int32, _ height: Int32, _ offsetX: Int32, _ offsetY: Int32, _ basicColor: BasicColor!) {
+        super.init(width, height, basicColor)
+        self.initFields()
+        self.offsetX = offsetX
+        self.offsetY = offsetY
+        self.setBasicColorP(basicColor)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.ColorCompositeInterface
+    open override func nextFrame() {
+    }
+    
 
-open public class RectangleFilledAdjustedAnimation : RectangleFilledAnimation
-                , ColorCompositeInterface {
-        
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.basicSetColorUtil.setBasicColorP3(graphics, self.getBasicColorP(), self.getColor())
+        super.paintXY(graphics, x &+ self.offsetX, y &+ self.offsetY)
+    }
+    
 
-    private var offsetX: Int
+    open func setOffsetX(_ offsetX: Int32) {
+        self.offsetX = offsetX
+    }
+    
 
-    private var offsetY: Int
-public constructor (width: Int, height: Int, offsetX: Int, offsetY: Int, basicColor: BasicColor)                        
+    open func setOffsetY(_ offsetY: Int32) {
+        self.offsetY = offsetY
+    }
+    
 
-                            : super(width, height, basicColor){
-    //var width = width
-    //var height = height
-    //var offsetX = offsetX
-    //var offsetY = offsetY
-    //var basicColor = basicColor
+    @discardableResult open override func getBasicColorP() -> BasicColor! {
+        return super.getBasicColorP()
+    }
+    
 
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.offsetX= offsetX
-this.offsetY= offsetY
-this.setBasicColorP(basicColor)
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        super.setBasicColorP(basicColor)
+    }
 }
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.basicSetColorUtil!!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor())
-super.paintXY(graphics, x +this.offsetX, y +this.offsetY)
-}
-
-
-    open fun setOffsetX(offsetX: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var offsetX = offsetX
-this.offsetX= offsetX
-}
-
-
-    open fun setOffsetY(offsetY: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var offsetY = offsetY
-this.offsetY= offsetY
-}
-
-
-    override fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getBasicColorP()
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-super.setBasicColorP(basicColor)
-}
-
-
-}
-                
-            
 

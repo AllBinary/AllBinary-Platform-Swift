@@ -1,68 +1,43 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.physics.movement
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.physics.movement
+import J2SEForSwiftLibrary
 
+open class NoMovementFactory: JObject {
+    fileprivate static let instance: NoMovementFactory! = NoMovementFactory()
+    fileprivate var movement: Movement! = nil
 
+    private func initFields() {
+    self.movement = Movement()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func getInstance() -> NoMovementFactory! {
+        return NoMovementFactory.instance
+    }
+    
 
-open public class NoMovementFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: NoMovementFactory = NoMovementFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NoMovementFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMovementFactory.instance
+    @discardableResult public func getMovmentInstance() -> Movement! {
+        return self.movement
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val movement: Movement = Movement()
-
-    open fun getMovmentInstance()
-        //nullable = true from not(false or (false and true)) = true
-: Movement{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movement
-}
-
-
-}
-                
-            
 

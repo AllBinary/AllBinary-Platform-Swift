@@ -1,206 +1,132 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer
+import J2SEForSwiftLibrary
+// import org.allbinary.game.GameInfo
+// import org.allbinary.game.input.NullPlayerGameInputComposite
+// import org.allbinary.game.input.PlayerGameInputCompositeInterface
+// import org.allbinary.graphics.ItemColorFactory
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.layer.LayerProcessor
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.util.BasicArrayList
 
+open class AllBinaryGameLayerManager: AllBinaryLayerManager {
+    fileprivate static var NULL_ALLBINARY_LAYER_MANAGER: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public static let ID: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(22)
+    fileprivate var backgroundBasicColor: BasicColor! = nil
+    fileprivate var foregroundBasicColor: BasicColor! = nil
+    fileprivate var gameInfo: GameInfo! = nil
+    fileprivate var playerGameInputCompositeInterface: PlayerGameInputCompositeInterface! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.GameInfo
-import org.allbinary.game.input.NullPlayerGameInputComposite
-import org.allbinary.game.input.PlayerGameInputCompositeInterface
-import org.allbinary.graphics.ItemColorFactory
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.layer.LayerProcessor
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.util.BasicArrayList
-
-open public class AllBinaryGameLayerManager : AllBinaryLayerManager {
-        
-companion object {
-            
-    private var NULL_ALLBINARY_LAYER_MANAGER: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullInstance()
-        //nullable = true from not(false or (false and true)) = true
-: AllBinaryGameLayerManager{
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER= AllBinaryGameLayerManager(BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE, GameInfo.NONE)
+    
+    
+    self.playerGameInputCompositeInterface = NullPlayerGameInputComposite.NULL_PLAYER_GAME_INPUT_COMPOSITE
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER as AllBinaryGameLayerManager
-}
-
-
-    val ID: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(22)!!
-
+    @discardableResult open class func getNullInstance() -> AllBinaryGameLayerManager! {
+        if (AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER === NullUtil.getInstance().NULL_OBJECT) {
+            AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER = AllBinaryGameLayerManager(BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE, GameInfo.NONE)
         }
-            
-    private var backgroundBasicColor: BasicColor
+        return (AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER as! AllBinaryGameLayerManager)
+    }
+    
 
-    private var foregroundBasicColor: BasicColor
+    public init(_ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!, _ gameInfo: GameInfo!) {
+        super.init()
+        self.initFields()
+        self.backgroundBasicColor = backgroundBasicColor
+        self.foregroundBasicColor = foregroundBasicColor
+        let itemColorFactory: ItemColorFactory! = ItemColorFactory.getInstance()
+        itemColorFactory.INVERT_PAINT = self.backgroundBasicColor.intValue()
+        itemColorFactory.PAINT = self.foregroundBasicColor.intValue()
+        self.gameInfo = gameInfo
+    }
+    
 
-    private var gameInfo: GameInfo
+    @discardableResult open func getLayerManager() -> AllBinaryLayerManager! {
+        return self
+    }
+    
 
-    private var playerGameInputCompositeInterface: PlayerGameInputCompositeInterface = NullPlayerGameInputComposite.NULL_PLAYER_GAME_INPUT_COMPOSITE
-public constructor (backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor, gameInfo: GameInfo){
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-    //var gameInfo = gameInfo
-this.backgroundBasicColor= backgroundBasicColor
-this.foregroundBasicColor= foregroundBasicColor
+    open func `init`() {
+    }
+    
 
-    var itemColorFactory: ItemColorFactory = ItemColorFactory.getInstance()!!
+    @discardableResult open func getBackgroundBasicColor() -> BasicColor! {
+        return self.backgroundBasicColor
+    }
+    
 
-itemColorFactory!!.INVERT_PAINT= this.backgroundBasicColor!!.toInt()
-itemColorFactory!!.PAINT= this.foregroundBasicColor!!.toInt()
-this.gameInfo= gameInfo
+    open func setBackgroundBasicColor(_ backgroundBasicColor: BasicColor!) {
+        self.backgroundBasicColor = backgroundBasicColor
+        ItemColorFactory.getInstance().INVERT_PAINT = self.backgroundBasicColor.intValue()
+    }
+    
+
+    @discardableResult open func getForegroundBasicColor() -> BasicColor! {
+        return self.foregroundBasicColor
+    }
+    
+
+    open func setForegroundBasicColor(_ foregroundBasicColor: BasicColor!) {
+        self.foregroundBasicColor = foregroundBasicColor
+        ItemColorFactory.getInstance().PAINT = self.foregroundBasicColor.intValue()
+    }
+    
+
+    @discardableResult open func getGameInfo() -> GameInfo! {
+        return self.gameInfo
+    }
+    
+
+    open func setGameInfo(_ gameInfo: GameInfo!) {
+        self.gameInfo = gameInfo
+    }
+    
+
+    open func setLayerProcessorList(_ list: BasicArrayList!) {
+        let layerProcessorInterfaceArray: JArray<LayerProcessor?>! = JArray<LayerProcessor?>(list.size(), nil)
+        let size: Int32 = layerProcessorInterfaceArray.length
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            layerProcessorInterfaceArray[index] = (list.objectArray[index] as! LayerProcessor)
+            }
+        }
+        self.setLayerProcessorArray(layerProcessorInterfaceArray)
+    }
+    
+
+    open func setPlayerGameInputCompositeInterface(_ playerGameInputCompositeInterface: PlayerGameInputCompositeInterface!) {
+        self.playerGameInputCompositeInterface = playerGameInputCompositeInterface
+    }
+    
+
+    @discardableResult open func getPlayerGameInputCompositeInterface() -> PlayerGameInputCompositeInterface! {
+        return self.playerGameInputCompositeInterface
+    }
 }
-
-
-    open fun getLayerManager()
-        //nullable = true from not(false or (false and true)) = true
-: AllBinaryLayerManager{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this
-}
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun getBackgroundBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.backgroundBasicColor
-}
-
-
-    open fun setBackgroundBasicColor(backgroundBasicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var backgroundBasicColor = backgroundBasicColor
-this.backgroundBasicColor= backgroundBasicColor
-ItemColorFactory.getInstance()!!.INVERT_PAINT= this.backgroundBasicColor!!.toInt()
-}
-
-
-    open fun getForegroundBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.foregroundBasicColor
-}
-
-
-    open fun setForegroundBasicColor(foregroundBasicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var foregroundBasicColor = foregroundBasicColor
-this.foregroundBasicColor= foregroundBasicColor
-ItemColorFactory.getInstance()!!.PAINT= this.foregroundBasicColor!!.toInt()
-}
-
-
-    open fun getGameInfo()
-        //nullable = true from not(false or (false and true)) = true
-: GameInfo{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInfo
-}
-
-
-    open fun setGameInfo(gameInfo: GameInfo)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInfo = gameInfo
-this.gameInfo= gameInfo
-}
-
-
-    open fun setLayerProcessorList(list: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var list = list
-
-    var layerProcessorInterfaceArray: Array<LayerProcessor?> = arrayOfNulls(list.size())
-
-
-    var size: Int = layerProcessorInterfaceArray!!.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-layerProcessorInterfaceArray[index]= list.objectArray[index]!! as LayerProcessor
-}
-
-this.setLayerProcessorArray(layerProcessorInterfaceArray)
-}
-
-
-    open fun setPlayerGameInputCompositeInterface(playerGameInputCompositeInterface: PlayerGameInputCompositeInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var playerGameInputCompositeInterface = playerGameInputCompositeInterface
-this.playerGameInputCompositeInterface= playerGameInputCompositeInterface
-}
-
-
-    open fun getPlayerGameInputCompositeInterface()
-        //nullable = true from not(false or (false and true)) = true
-: PlayerGameInputCompositeInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerGameInputCompositeInterface
-}
-
-
-}
-                
-            
 

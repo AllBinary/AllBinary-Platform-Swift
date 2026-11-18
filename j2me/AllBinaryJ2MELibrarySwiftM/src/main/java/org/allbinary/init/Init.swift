@@ -1,55 +1,37 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.init
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.init
+import J2SEForSwiftLibrary
+// import org.allbinary.string.CommonStrings
 
+open class Init: JObject, InitInterface {
+    public var commonStrings: CommonStrings! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.string.CommonStrings
-
-open public class Init
-            : Object
-        
-                , InitInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-                @Throws(Exception::class)
-            
-    override fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
+    open func `init`() {
+    }
 }
-
-
-}
-                
-            
 

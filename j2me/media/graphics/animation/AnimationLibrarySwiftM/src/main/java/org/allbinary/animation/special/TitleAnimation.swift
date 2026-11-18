@@ -1,324 +1,188 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.special
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.special
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.animation.IndexedAnimationBehavior
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.logic.ABSystemWrapper
+// import org.allbinary.logic.math.PrimitiveIntUtil
 
+open class TitleAnimation: SpecialAnimation {
+    public var systemWrapper: ABSystemWrapper! = nil
+    public var deltaX: Float = 0.0
+    public var deltaY: Float = 0.0
+    public var deltaZ: Float = 0.0
+    public var basicColorArray: JArray<BasicColor?>! = nil
+    public var dxArray: JArray<Int32>! = nil
+    public var dyArray: JArray<Int32>! = nil
+    public var widthP: Int32 = 0
+    public var animationInterfaceArray: JArray<IndexedAnimation?>! = nil
+    public var sizeP: Int32 = 0
+    public var y: Int32 = 0
+    fileprivate var lastFrameStartTime: Int64 = 0
+    fileprivate var displayInfoSingleton: DisplayInfoSingleton! = nil
+    public var CLEAR_COLOR: BasicColor! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.systemWrapper = ABSystemWrapper.getInstance()
+    self.deltaX = 0.0
+    self.deltaY = 0.0
+    self.deltaZ = 0.0
+    
+    
+    
+    
+    
+    
+    
+    
+    self.displayInfoSingleton = DisplayInfoSingleton.getInstance()
+    self.CLEAR_COLOR = BasicColorFactory.getInstance().CLEAR_COLOR
+    }
+    
 
+    @discardableResult open class func createAnimation(_ animationInterfaceArray: JArray<IndexedAnimation?>!, _ basicColorArray: JArray<BasicColor?>!, _ dxArray: JArray<Int32>!, _ dyArray: JArray<Int32>!, _ y: Int32, _ width: Int32) -> TitleAnimation! {
+        return TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, IndexedAnimationBehavior(1, 250))
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.animation.IndexedAnimationBehavior
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.logic.ABSystemWrapper
-import org.allbinary.logic.math.PrimitiveIntUtil
+    public init(_ animationInterfaceArray: JArray<IndexedAnimation?>!, _ basicColorArray: JArray<BasicColor?>!, _ dxArray: JArray<Int32>!, _ dyArray: JArray<Int32>!, _ y: Int32, _ width: Int32, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.lastFrameStartTime = self.systemWrapper.currentTimeMillis()
+        self.animationInterfaceArray = animationInterfaceArray
+        self.sizeP = self.animationInterfaceArray.length
+        self.basicColorArray = basicColorArray
+        self.dxArray = dxArray
+        self.dyArray = dyArray
+        self.y = y
+        self.widthP = width
+        self.reset()
+    }
+    
 
-open public class TitleAnimation : SpecialAnimation {
-        
-companion object {
-            
-    open fun createAnimation(animationInterfaceArray: Array<IndexedAnimation?>, basicColorArray: Array<BasicColor?>, dxArray: IntArray, dyArray: IntArray, y: Int, width: Int)
-        //nullable = true from not(false or (false and false)) = true
-: TitleAnimation{
-    //var animationInterfaceArray = animationInterfaceArray
-    //var basicColorArray = basicColorArray
-    //var dxArray = dxArray
-    //var dyArray = dyArray
-    //var y = y
-    //var width = width
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, IndexedAnimationBehavior(1, 250))
-}
-
-
+    open override func nextFrame() {
+        let currentTime: Int64 = self.systemWrapper.currentTimeMillis()
+        let totalTimeElapsed: Int64 = currentTime &- self.lastFrameStartTime
+        let indexedAnimationBehavior: IndexedAnimationBehavior! = (self.getAnimationBehavior() as! IndexedAnimationBehavior)
+        if (totalTimeElapsed > indexedAnimationBehavior.frameDelayTime) {
+            self.previousFrame()
+            self.lastFrameStartTime = currentTime
         }
-            
-    val systemWrapper: ABSystemWrapper = ABSystemWrapper.getInstance()!!
-
-    var deltaX: Float= 0.0f
-
-    var deltaY: Float= 0.0f
-
-    var deltaZ: Float= 0.0f
-
-    val basicColorArray: Array<BasicColor?>
-
-    val dxArray: IntArray
-
-    val dyArray: IntArray
-
-    val widthP: Int
-
-    val animationInterfaceArray: Array<IndexedAnimation?>
-
-    val sizeP: Int
-
-    val y: Int
-
-    private var lastFrameStartTime: Long
-
-    private val displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-public constructor (animationInterfaceArray: Array<IndexedAnimation?>, basicColorArray: Array<BasicColor?>, dxArray: IntArray, dyArray: IntArray, y: Int, width: Int, animationBehavior: AnimationBehavior)                        
-
-                            : super(animationBehavior){
-    //var animationInterfaceArray = animationInterfaceArray
-    //var basicColorArray = basicColorArray
-    //var dxArray = dxArray
-    //var dyArray = dyArray
-    //var y = y
-    //var width = width
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.lastFrameStartTime= this.systemWrapper!!.currentTimeMillis()
-this.animationInterfaceArray= animationInterfaceArray
-this.sizeP= this.animationInterfaceArray!!.size
-this.basicColorArray= basicColorArray
-this.dxArray= dxArray
-this.dyArray= dyArray
-this.y= y
-this.widthP= width
-this.reset()
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var currentTime: Long = this.systemWrapper!!.currentTimeMillis()
-
-
-    var totalTimeElapsed: Long = currentTime -this.lastFrameStartTime
-
-
-    var indexedAnimationBehavior: IndexedAnimationBehavior = this.getAnimationBehavior() as IndexedAnimationBehavior
-
-
+        if (self.animationInterfaceArray[0]!.getFrame() == 0) {
+            indexedAnimationBehavior.loopIndex &+= 1
+        }
+    }
     
-                        if(totalTimeElapsed > indexedAnimationBehavior!!.frameDelayTime)
-                        
-                                    {
-                                    this.previousFrame()
-this.lastFrameStartTime= currentTime
 
-                                    }
-                                
-
+    @discardableResult open override func isComplete() -> Bool {
+        let indexedAnimationBehavior: IndexedAnimationBehavior! = (self.getAnimationBehavior() as! IndexedAnimationBehavior)
+        if (indexedAnimationBehavior.loopTotal == -1 || indexedAnimationBehavior.loopIndex < indexedAnimationBehavior.loopTotal || self.getFrame() != 0) {
+            return false
+        } else {
+            return true
+        }
+    }
     
-                        if(this.animationInterfaceArray[0]!!.getFrame() == 0)
-                        
-                                    {
-                                    indexedAnimationBehavior!!.loopIndex++
 
-                                    }
-                                
-}
-
-
-    override fun isComplete()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-    var indexedAnimationBehavior: IndexedAnimationBehavior = this.getAnimationBehavior() as IndexedAnimationBehavior
-
-
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
     
-                        if(indexedAnimationBehavior!!.loopTotal ==  -1 || indexedAnimationBehavior!!.loopIndex < indexedAnimationBehavior!!.loopTotal || this.getFrame() != 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                        }
-                            
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!!.getSize()
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!!.getFrame()
-}
-
-
-    override fun setFrame(frame: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var frame = frame
-
-
-
-
-                        for (index in 0 until this.sizeP)
-
-        {
-this.animationInterfaceArray[index]!!.setFrame(frame)
-}
-
-}
-
-
-    override fun setLastFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setFrame(this.getSize() -1)
-}
-
-
-    override fun reset()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setLastFrame()
-
-    var indexedAnimationBehavior: IndexedAnimationBehavior = (this.getAnimationBehavior() as IndexedAnimationBehavior)
-
-indexedAnimationBehavior!!.reset()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-
-
-
-                        for (index in 0 until this.sizeP)
-
-        {
-this.animationInterfaceArray[index]!!.previousFrame()
-}
-
-}
-
-
-    open fun paintFrameXY(graphics: Graphics, frame: Int, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var frame = frame
-    //var x = x
-    //var y = y
-this.setFrame(frame)
-this.paintXY(graphics, x, y)
-}
-
-
-    val CLEAR_COLOR: BasicColor = BasicColorFactory.getInstance()!!.CLEAR_COLOR
-
-    override fun paintXY(graphics: Graphics, ax: Int, ay: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var ax = ax
-    //var ay = ay
-
-    var x: Int = 0
-
-
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
     
-                        if(this.widthP != Integer.MIN_VALUE)
-                        
-                                    {
-                                    x= ((this.displayInfoSingleton!!.getLastWidth() -this.widthP) /2)
 
-                                    }
-                                
-
-    var deltaX: Int= 0
-
-
-    var deltaY: Int= 0
-
-
-
-
-
-                        for (index in 0 until this.sizeP)
-
-        {
-deltaX= this.dxArray[index] +x
-deltaY= this.dyArray[index] +this.y
-
+    @discardableResult open override func getSize() -> Int32 {
+        return self.animationInterfaceArray[0]!.getSize()
+    }
     
-                        if(this.basicColorArray[index] != this.CLEAR_COLOR)
-                        
-                                    {
-                                    this.basicSetColorUtil!!.setBasicColorP(graphics, this.basicColorArray[index]!!)
 
-                                    }
-                                
-this.animationInterfaceArray[index]!!.paintXY(graphics, deltaX, deltaY)
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.animationInterfaceArray[0]!.getFrame()
+    }
+    
+
+    open override func setFrame(_ frame: Int32) {
+        do {
+            var index: Int32 = 0
+            while (index < self.sizeP) {
+                defer { index &+= 1 }
+            self.animationInterfaceArray[index]!.setFrame(frame)
+            }
+        }
+    }
+    
+
+    open override func setLastFrame() {
+        self.setFrame(self.getSize() &- 1)
+    }
+    
+
+    open override func reset() {
+        self.setLastFrame()
+        let indexedAnimationBehavior: IndexedAnimationBehavior! = ((self.getAnimationBehavior() as! IndexedAnimationBehavior))
+        indexedAnimationBehavior.reset()
+    }
+    
+
+    open override func previousFrame() {
+        do {
+            var index: Int32 = 0
+            while (index < self.sizeP) {
+                defer { index &+= 1 }
+            self.animationInterfaceArray[index]!.previousFrame()
+            }
+        }
+    }
+    
+
+    open func paintFrameXY(_ graphics: Graphics!, _ frame: Int32, _ x: Int32, _ y: Int32) {
+        self.setFrame(frame)
+        self.paintXY(graphics, x, y)
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ ax: Int32, _ ay: Int32) {
+        var x: Int32 = 0
+        if (self.widthP != Integer.MIN_VALUE) {
+            x = ((self.displayInfoSingleton.getLastWidth() &- self.widthP) / 2)
+        }
+        var deltaX: Int32 = 0
+        var deltaY: Int32 = 0
+        do {
+            var index: Int32 = 0
+            while (index < self.sizeP) {
+                defer { index &+= 1 }
+            deltaX = self.dxArray[index] &+ x
+            deltaY = self.dyArray[index] &+ self.y
+            if (self.basicColorArray[index] !== self.CLEAR_COLOR) {
+                self.basicSetColorUtil.setBasicColorP(graphics, self.basicColorArray[index])
+            }
+            self.animationInterfaceArray[index]!.paintXY(graphics, deltaX, deltaY)
+            }
+        }
+    }
 }
-
-}
-
-
-}
-                
-            
 

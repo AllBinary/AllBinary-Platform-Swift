@@ -1,44 +1,21 @@
+// Generated Code Do Not Modify
+// package org.eclipse.swt.graphics
 
-        /* Generated Code Do Not Modify */
-        package org.eclipse.swt.graphics
+import J2SEForSwiftLibrary
 
+open class Resource: JObject {
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open func dispose() {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class Resource
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun dispose()
-        //nullable = true from not(false or (false and true)) = true
-{
+    @discardableResult open func isDisposed() -> Bool {
+        return false
+    }
 }
-
-
-    open fun isDisposed()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-}
-                
-            
 

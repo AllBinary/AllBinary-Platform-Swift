@@ -1,162 +1,94 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.util.HashtableUtil
+// import org.allbinary.game.ai.BasicAI
+// import org.allbinary.util.ABHashtable
 
+open class KeyPressesAI: BasicAI {
+    fileprivate var on: Bool = false
+    public var keys: JArray<Int32?>! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameInput
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.util.HashtableUtil
-import org.allbinary.game.ai.BasicAI
-import org.allbinary.util.ABHashtable
-
-open public class KeyPressesAI : BasicAI {
-        
-
-    private var on: Boolean = true
-
-    var keys: Array<Integer?>
-public constructor (hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(ownerLayerInterface, gameInput){
-var hashtable = hashtable
-var ownerLayerInterface = ownerLayerInterface
-var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.keys= arrayOfNulls(hashtable.size)
-
-    var objectArray: Array<Any?> = HashtableUtil.getInstance()!!.getKeysAsArray(hashtable)!!
-
-
-    var size: Int = objectArray!!.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-this.keys[index]= hashtable.get(objectArray[index]!! as Object) as Integer
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processAI(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-var allBinaryLayerManager = allBinaryLayerManager
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.on = true
     
-                        if(this.on)
-                        
-                                    {
-                                    
-
-
-
-                        for (index in 0 until this.keys.size)
-
-        {
-super.processKeyAI(this.keys[index]!!.toInt())
-}
-
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun toggle()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    }
     
-                        if(this.isOn())
-                        
-                                    {
-                                    this.setOn(false)
 
-                                    }
-                                
-                        else {
-                            this.setOn(true)
+    public init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(ownerLayerInterface, gameInput)
+        self.initFields()
+        self.keys = JArray<Int32?>(hashtable.size(), nil)
+        let objectArray: JArray<JObject?>! = HashtableUtil.getInstance().getKeysAsArray(hashtable)
+        let size: Int32 = objectArray.length
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            self.keys[index] = jUnboxValue(hashtable.get(objectArray[index]), Int32.self)
+            }
+        }
+    }
+    
 
-                        }
-                            
+    open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        if (self.on) {
+            do {
+                var index: Int32 = 0
+                while (index < self.keys.length) {
+                    defer { index &+= 1 }
+                super.processKeyAI(self.keys[index]!.intValue())
+                }
+            }
+        }
+    }
+    
+
+    open func toggle() {
+        if (self.isOn()) {
+            self.setOn(false)
+        } else {
+            self.setOn(true)
+        }
+    }
+    
+
+    open func disable() {
+        self.setOn(false)
+    }
+    
+
+    open func enable() {
+        self.setOn(true)
+    }
+    
+
+    fileprivate func setOn(_ on: Bool) {
+        self.on = on
+    }
+    
+
+    @discardableResult open func isOn() -> Bool {
+        return self.on
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun disable()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setOn(false)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun enable()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setOn(true)
-}
-
-
-    open fun setOn(on: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var on = on
-this.on= on
-}
-
-
-    open fun isOn()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.on
-}
-
-
-}
-                
-            
 

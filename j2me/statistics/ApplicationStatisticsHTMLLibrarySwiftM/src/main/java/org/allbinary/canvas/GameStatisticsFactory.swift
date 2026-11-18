@@ -1,86 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
 //ActualPlatform
-/*actual*/ open public class GameStatisticsFactory : BaseGameStatistics {
-        
-/*actual*/ companion object {
-            
-    private val instance: GameStatisticsFactory = GameStatisticsFactory()
+open class GameStatisticsFactory: BaseGameStatistics {
+    fileprivate static let instance: GameStatisticsFactory! = GameStatisticsFactory()
+    fileprivate var stringBuffer: StringMaker! = nil
 
-    /*actual*/ open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameStatisticsFactory{
+    // Each class has its own field initializers
+    private func initFields() {
+    self.stringBuffer = StringMaker()
+    }
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStatisticsFactory.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var stringBuffer: StringMaker = StringMaker()
-
-    override fun add(string: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var string = string
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(this.stringBuffer!!.length() > 12000)
-                        
-                                    {
-                                    this.stringBuffer!!.delete(0, this.stringBuffer!!.length())
-this.stringBuffer!!.append("Old Stats Cleared")
 
-                                    }
-                                
-this.stringBuffer!!.append(string)
+    @discardableResult open class func getInstance() -> GameStatisticsFactory! {
+        return GameStatisticsFactory.instance
+    }
+    
+
+    open override func add(_ string: String!) {
+        if (self.stringBuffer.length() > 12000) {
+            self.stringBuffer.delete(0, self.stringBuffer.length())
+            self.stringBuffer.append("Old Stats Cleared")
+        }
+        self.stringBuffer.append(string)
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append(super.toString()).append(self.stringBuffer.toString()).toString()
+    }
 }
-
-
-    /*actual*/ override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append(super.toString())!!.append(this.stringBuffer!!.toString())!!.toString()
-}
-
-
-}
-                
-            
 

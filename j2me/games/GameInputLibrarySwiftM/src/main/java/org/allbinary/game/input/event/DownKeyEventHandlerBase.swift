@@ -1,268 +1,146 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.event
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.PlayerGameInput
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.event.EventListenerInterface
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.logic.util.event.handler.BasicEventHandler
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class DownKeyEventHandlerBase: BasicEventHandler {
+    fileprivate static let TOTAL_LISTENERS: String! = " Total PlayerGameInput Listeners: "
+    fileprivate static let LISTENER_LABEL: String! = " PlayerGameInput Listener: "
+    fileprivate var list: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.PlayerGameInput
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.event.EventListenerInterface
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.logic.util.event.handler.BasicEventHandler
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class DownKeyEventHandlerBase : BasicEventHandler {
-        
-companion object {
-            
-    private val TOTAL_LISTENERS: String = " Total PlayerGameInput Listeners: "
-
-    private val LISTENER_LABEL: String = " PlayerGameInput Listener: "
-
-        }
-            
-    private val list: BasicArrayList = BasicArrayListD()
- constructor (){
-}
-
-
-    open fun addListener(playerGameInput: PlayerGameInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var playerGameInput = playerGameInput
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
     
-                        if(!this.list.contains(playerGameInput))
-                        
-                                    {
-                                    this.list.add(playerGameInput)
 
-                                    }
-                                
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func addListener(_ playerGameInput: PlayerGameInput!) {
+        if (!self.list.contains(playerGameInput)) {
+            self.list.add(playerGameInput)
+        }
+    }
+    
+
+    open override func removeAllListeners() {
+        self.list.clear()
+        super.removeAllListeners()
+    }
+    
+
+    open override func removeListenerSingleThreaded(_ eventListenerInterface: EventListenerInterface!) {
+        self.list.remove((eventListenerInterface as? JObject))
+        super.removeListenerSingleThreaded(eventListenerInterface)
+    }
+    
+
+    open override func removeListener(_ eventListenerInterface: EventListenerInterface!) {
+        self.list.remove((eventListenerInterface as? JObject))
+        super.removeListener(eventListenerInterface)
+    }
+    
+
+    open func fireEventI(_ eventObject: Int32!) {
+        do {
+            var index: Int32 = self.list.size()
+            while (jPreDecrement(&index) >= 0) {
+            do {
+                let playerGameInput: PlayerGameInput! = (self.list.objectArray[index] as! PlayerGameInput)
+                playerGameInput.onDownKey(eventObject)
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            }
+        }
+        var index: Int32 = 0
+        var eventListenerInterface: EventListenerInterface! = nil
+        while (index < self.eventListenerInterfaceList.size()) {
+            do {
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                self.processI(eventObject, eventListenerInterface)
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            index &+= 1
+        }
+    }
+    
+
+    open func fireEventForGameKeyEvent(_ eventObject: GameKeyEvent!) {
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = size
+            while (jPreDecrement(&index) >= 0) {
+            do {
+                let playerGameInput: PlayerGameInput! = (self.list.objectArray[index] as! PlayerGameInput)
+                playerGameInput.onDownKeyEvent(eventObject)
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            }
+        }
+        var index: Int32 = 0
+        var eventListenerInterface: EventListenerInterface! = nil
+        while (index < self.eventListenerInterfaceList.size()) {
+            do {
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                self.processEvent(eventObject, eventListenerInterface)
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            index &+= 1
+        }
+    }
+    
+
+    open func processI(_ eventObject: Int32!, _ eventListenerInterface: EventListenerInterface!) {
+        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as! DownKeyEventListenerInterface)
+        downKeyEventListenerInterface.onDownKey(eventObject)
+    }
+    
+
+    open func processEvent(_ eventObject: GameKeyEvent!, _ eventListenerInterface: EventListenerInterface!) {
+        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as! DownKeyEventListenerInterface)
+        downKeyEventListenerInterface.onDownKeyEvent(eventObject)
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(super.toString())
+        stringBuffer.append(DownKeyEventHandlerBase.TOTAL_LISTENERS)
+        stringBuffer.appendint(self.list.size())
+        var eventListenerInterface: EventListenerInterface! = nil
+        do {
+            var index: Int32 = 0
+            while (index < self.list.size()) {
+                defer { index &+= 1 }
+            do {
+                eventListenerInterface = (self.list.get(index) as! EventListenerInterface)
+                stringBuffer.append(DownKeyEventHandlerBase.LISTENER_LABEL)
+                stringBuffer.append(jstr(eventListenerInterface))
+            } /* catch (Exception e): a thrown Java exception stops the program */
+            }
+        }
+        return stringBuffer.toString()
+    }
 }
-
-
-    override fun removeAllListeners()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list.clear()
-super.removeAllListeners()
-}
-
-
-    override fun removeListenerSingleThreaded(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventListenerInterface = eventListenerInterface
-this.list.remove(eventListenerInterface)
-super.removeListenerSingleThreaded(eventListenerInterface)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun removeListener(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-this.list.remove(eventListenerInterface)
-super.removeListener(eventListenerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun fireEventI(eventObject: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-
-
-
-
-                        for (index in this.list.size()!!  - 1  downTo 0)
-
-        {
-
-        try {
-            
-    var playerGameInput: PlayerGameInput = this.list.objectArray[index]!! as PlayerGameInput
-
-playerGameInput!!.onDownKey(eventObject)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
-}
-
-}
-
-
-    var index: Int = 0
-
-
-    var eventListenerInterface: EventListenerInterface
-
-
-        while(index < this.eventListenerInterfaceList!!.size())
-        {
-
-        try {
-            eventListenerInterface= this.eventListenerInterfaceList!!.get(index) as EventListenerInterface
-this.processI(eventObject, eventListenerInterface)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
-}
-
-index++
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun fireEventForGameKeyEvent(eventObject: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in size  - 1  downTo 0)
-
-        {
-
-        try {
-            
-    var playerGameInput: PlayerGameInput = this.list.objectArray[index]!! as PlayerGameInput
-
-playerGameInput!!.onDownKeyEvent(eventObject)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
-}
-
-}
-
-
-    var index: Int = 0
-
-
-    var eventListenerInterface: EventListenerInterface
-
-
-        while(index < this.eventListenerInterfaceList!!.size())
-        {
-
-        try {
-            eventListenerInterface= this.eventListenerInterfaceList!!.get(index) as EventListenerInterface
-this.processEvent(eventObject, eventListenerInterface)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, EventStrings.getInstance()!!.FIRE_EVENT, e)
-}
-
-index++
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processI(eventObject: Integer, eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-    //var eventListenerInterface = eventListenerInterface
-
-    var downKeyEventListenerInterface: DownKeyEventListenerInterface = eventListenerInterface as DownKeyEventListenerInterface
-
-downKeyEventListenerInterface!!.onDownKey(eventObject)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processEvent(eventObject: GameKeyEvent, eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-    //var eventListenerInterface = eventListenerInterface
-
-    var downKeyEventListenerInterface: DownKeyEventListenerInterface = eventListenerInterface as DownKeyEventListenerInterface
-
-downKeyEventListenerInterface!!.onDownKeyEvent(eventObject)
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(super.toString())
-stringBuffer!!.append(DownKeyEventHandlerBase.TOTAL_LISTENERS)
-stringBuffer!!.appendint(this.list.size())
-
-    var eventListenerInterface: EventListenerInterface
-
-
-
-
-
-                        for (index in 0 until this.list.size()!!)
-
-        {
-
-        try {
-            eventListenerInterface= this.list.get(index) as EventListenerInterface
-stringBuffer!!.append(DownKeyEventHandlerBase.LISTENER_LABEL)
-stringBuffer!!.append(eventListenerInterface!!.toString())
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.TOSTRING, e)
-}
-
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

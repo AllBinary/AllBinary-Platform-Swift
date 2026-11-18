@@ -1,498 +1,263 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.CommandListener
+// import org.allbinary.TsUtil
+// import org.allbinary.game.displayable.canvas.NullWaitGameRunnable
+// import org.allbinary.graphics.displayable.MyCanvas
+// import org.allbinary.logic.ABSystemWrapper
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.thread.NullThread
+// import org.allbinary.thread.RunnableInterface
+// import org.allbinary.thread.ThreadObjectUtil
+// import org.allbinary.time.TimeDelayHelper
+// import org.allbinary.util.BasicArrayList
 
+open class RunnableCanvas: MyCanvas, RunnableInterface {
+    public var nullUtil: NullUtil! = nil
+    public var stdUtil: StdUtil! = nil
+    public var systemWrapper: ABSystemWrapper! = nil
+    public var tsUtil: TsUtil! = nil
+    fileprivate var thread: Thread! = nil
+    fileprivate var currentThread: Thread! = nil
+    fileprivate var running: Bool = false
+    public var loopTimeHelper: TimeDelayHelper! = nil
+    public var runnableCanvasRefreshHelper: Processor! = nil
+    public var commonLabels: CommonLabels! = nil
+    public var threadObjectUtil: ThreadObjectUtil! = nil
+    public var SET_RUNNING: String! = nil
+    fileprivate var IS_RUNNING: String! = nil
+    fileprivate var THREAD: String! = nil
+    fileprivate var NOT_EQUAL: String! = nil
+    fileprivate var PAUSE_SLEEP: String! = nil
+    fileprivate var START_PAUSE: String! = nil
+    fileprivate var END_PAUSE: String! = nil
+    fileprivate var PROCESS_LOOP_SLEEP: String! = nil
+    fileprivate var pauseWait: Int64 = 0
+    fileprivate var notified: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Thread
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.CommandListener
-import org.allbinary.TsUtil
-import org.allbinary.game.displayable.canvas.NullWaitGameRunnable
-import org.allbinary.graphics.displayable.MyCanvas
-import org.allbinary.logic.ABSystemWrapper
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.StdUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonStrings
-import org.allbinary.thread.NullThread
-import org.allbinary.thread.RunnableInterface
-import org.allbinary.thread.ThreadObjectUtil
-import org.allbinary.time.TimeDelayHelper
-import org.allbinary.util.BasicArrayList
-
-open public class RunnableCanvas : MyCanvas
-                , RunnableInterface {
-        
-
-    val nullUtil: NullUtil = NullUtil.getInstance()!!
-
-    val stdUtil: StdUtil = StdUtil.getInstance()!!
-
-    val systemWrapper: ABSystemWrapper = ABSystemWrapper.getInstance()!!
-
-    val tsUtil: TsUtil = TsUtil.getInstance()!!
-
-    private var thread: Thread = NullThread.NULL_THREAD
-
-    private var currentThread: Thread = NullThread.NULL_THREAD
-
-    private var running: Boolean= false
-
-    val loopTimeHelper: TimeDelayHelper = TimeDelayHelper(NullWaitGameRunnable.getInstance()!!.WAIT)
-
-    var runnableCanvasRefreshHelper: Processor = Processor.getInstance()!!
-
-    val commonLabels: CommonLabels = CommonLabels.getInstance()!!
-
-    val threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!!
-
-    val SET_RUNNING: String = "setRunning"
-
-    private val IS_RUNNING: String = "isRunning"
-
-    private val THREAD: String = "Thread: "
-
-    private val NOT_EQUAL: String = " != "
-
-    private val PAUSE_SLEEP: String = "pause sleep"
-
-    private val START_PAUSE: String = "start pause - game thread sleep at: "
-
-    private val END_PAUSE: String = "end pause - game thread sleep at: "
-
-    private val PROCESS_LOOP_SLEEP: String = "processLoopSleep"
-public constructor (commandListener: CommandListener, childNameList: BasicArrayList, hasParam: Boolean)                        
-
-                            : super(CommonStrings.getInstance()!!.UNKNOWN, childNameList){
-    //var commandListener = commandListener
-    //var childNameList = childNameList
-    //var hasParam = hasParam
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.logUtil!!.putF(StringMaker().
-                            append("RunnableCanvas delay: ")!!.appendint(this.loopTimeHelper!!.delay.toInt())!!.toString(), this, this.commonStrings!!.CONSTRUCTOR)
-this.runnableCanvasRefreshHelper= RunnableCanvasRefreshHelper(this)
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.nullUtil = NullUtil.getInstance()
+    self.stdUtil = StdUtil.getInstance()
+    self.systemWrapper = ABSystemWrapper.getInstance()
+    self.tsUtil = TsUtil.getInstance()
+    self.thread = NullThread.NULL_THREAD
+    self.currentThread = NullThread.NULL_THREAD
+    self.running = false
+    self.loopTimeHelper = TimeDelayHelper(NullWaitGameRunnable.getInstance().WAIT)
+    self.runnableCanvasRefreshHelper = Processor.getInstance()
+    self.commonLabels = CommonLabels.getInstance()
+    self.threadObjectUtil = ThreadObjectUtil.getInstance()
+    self.SET_RUNNING = "setRunning"
+    self.IS_RUNNING = "isRunning"
+    self.THREAD = "Thread: "
+    self.NOT_EQUAL = " != "
+    self.PAUSE_SLEEP = "pause sleep"
+    self.START_PAUSE = "start pause - game thread sleep at: "
+    self.END_PAUSE = "end pause - game thread sleep at: "
+    self.PROCESS_LOOP_SLEEP = "processLoopSleep"
+    self.pauseWait = 0
+    self.notified = false
+    }
     
-                        if(commandListener != 
-                                    null
-                                )
-                        
-                                    {
-                                    this.initCommands(commandListener)
 
-                                    }
-                                
-                             else 
+    public init(_ commandListener: CommandListener!, _ childNameList: BasicArrayList!, _ hasParam: Bool) {
+        super.init(CommonStrings.getInstance().UNKNOWN, childNameList)
+        self.initFields()
+        self.logUtil.putF(StringMaker().append("RunnableCanvas delay: ").appendint(self.loopTimeHelper.delay).toString(), self, self.commonStrings.CONSTRUCTOR)
+        self.runnableCanvasRefreshHelper = RunnableCanvasRefreshHelper(self)
+        if (commandListener != nil) {
+            self.initCommands(commandListener)
+        } else if (hasParam) {
+            self.logUtil.putF("commandListener was null", self, "initCommands")
+        }
+    }
     
-                        if(hasParam)
-                        
-                                    {
-                                    this.logUtil!!.putF("commandListener was null", this, "initCommands")
 
-                                    }
-                                
-}
-
-
-    open fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var cmdListener = cmdListener
-this.logUtil!!.putF(this.commonStrings!!.NOT_IMPLEMENTED, this, "initCommands")
-}
-
-
-    open fun isMainCanvas()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func initCommands(_ cmdListener: CommandListener!) {
+        self.logUtil.putF(self.commonStrings.NOT_IMPLEMENTED, self, "initCommands")
+    }
     
-                        if(this.getCustomCommandListener() != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-    override fun setThread(thread: Thread)
-        //nullable = true from not(false or (false and false)) = true
-{
-var thread = thread
-this.thread= thread
-}
-
-
-    override fun setRunning(running: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var running = running
-this.running= running
-
+    @discardableResult open func isMainCanvas() -> Bool {
+        if (self.getCustomCommandListener() != nil) {
+            return true
+        } else {
+            return false
+        }
+    }
     
-                        if(!this.running)
-                        
-                                    {
-                                    this.thread= NullThread.NULL_THREAD
 
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this) 
-
-        //mutex.withLock
-        {
-this.threadObjectUtil!!.notifyObject(this)
-}
-
-
-                                    }
-                                
-this.logUtil!!.putF(StringMaker().
-                            append(this.IS_RUNNING)!!.appendboolean(this.running)!!.toString(), this, this.SET_RUNNING)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun isRunning()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open override func setThread(_ thread: Thread!) {
+        self.thread = thread
+    }
     
-                        if(this.thread == this.currentThread)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running
 
-                                    }
-                                
-                        else {
-                            
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(this.THREAD)
-
+    open override func setRunning(_ running: Bool) {
+        self.running = running
+        if (!self.running) {
+            self.thread = NullThread.NULL_THREAD
+            do {
+                self.threadObjectUtil.notifyObject(self)
+            }
+        }
+        self.logUtil.putF(StringMaker().append(self.IS_RUNNING).appendboolean(self.running).toString(), self, self.SET_RUNNING)
+    }
     
-                        if(this.thread != 
-                                    null
-                                )
-                        
-                                    {
-                                    stringBuffer!!.append(this.thread.toString())
 
-                                    }
-                                
-stringBuffer!!.append(this.NOT_EQUAL)
-
+    @discardableResult open override func isRunning() -> Bool {
+        if (self.thread === self.currentThread) {
+            return self.running
+        } else {
+            let stringBuffer: StringMaker! = StringMaker()
+            stringBuffer.append(self.THREAD)
+            if (self.thread != nil) {
+                stringBuffer.append(self.thread.toString())
+            }
+            stringBuffer.append(self.NOT_EQUAL)
+            if (self.currentThread != nil) {
+                stringBuffer.append(StringUtil.getInstance().toString(self.currentThread))
+            }
+            self.logUtil.putF(stringBuffer.toString(), self, self.IS_RUNNING)
+            return false
+        }
+    }
     
-                        if(this.currentThread != 
-                                    null
-                                )
-                        
-                                    {
-                                    stringBuffer!!.append(StringUtil.getInstance()!!.toString(this.currentThread))
 
-                                    }
-                                
-this.logUtil!!.putF(stringBuffer!!.toString(), this, this.IS_RUNNING)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-    open fun getLoopTimeHelperP()
-        //nullable = true from not(false or (false and true)) = true
-: TimeDelayHelper{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopTimeHelper
-}
-
-
-    private var pauseWait: Long = 0
-
-    open fun setWait(wait: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var wait = wait
-this.loopTimeHelper!!.delay= wait
-this.pauseWait= wait.toLong() *3
-this.logUtil!!.putF(StringMaker().
-                            append("setWait - delay: ")!!.appendint(this.loopTimeHelper!!.delay.toInt())!!.toString(), this, this.commonStrings!!.CONSTRUCTOR)
-}
-
-
-    open fun getWait()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopTimeHelper!!.delay
-}
-
-
-    open fun setCurrentThread()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.currentThread= Thread.currentThread()!!
-}
-
-
-    open fun setCurrentThreadFake()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.currentThread= this.thread
-}
-
-
-    override fun showNotify()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.stopWaiting()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "showNotify", e)
-}
-
-}
-
-
-    private var notified: Boolean = false
-
-                @Throws(Exception::class)
-            
-    open fun stopWaiting()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.notified= true
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this) 
-
-        //mutex.withLock
-        {
-this.threadObjectUtil!!.notifyObject(this)
-}
-
-this.repaint()
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun waitOnNotify(wait: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var wait = wait
-
+    @discardableResult open func getLoopTimeHelperP() -> TimeDelayHelper! {
+        return self.loopTimeHelper
+    }
     
-                        if(!this.notified)
-                        
-                                    {
-                                    
+
+    open func setWait(_ wait: Int32) {
+        self.loopTimeHelper.delay = wait
+        self.pauseWait = Int64(truncatingIfNeeded: wait) &* 3
+        self.logUtil.putF(StringMaker().append("setWait - delay: ").appendint(self.loopTimeHelper.delay).toString(), self, self.commonStrings.CONSTRUCTOR)
+    }
     
-                        if(wait > 0)
-                        
-                                    {
-                                    this.threadObjectUtil!!.waitObjectFor(this, wait.toLong())
 
-                                    }
-                                
-                        else {
-                            this.threadObjectUtil!!.waitObject(this)
-
-                        }
-                            
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processSleep()
-        //nullable = true from not(false or (false and true)) = true
-{
-Thread.sleep(this.pauseWait)
-}
-
-
-    open fun isPausable()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processGameSleep(sleep: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sleep = sleep
-Thread.sleep(sleep)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processLoopSleep()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.runnableCanvasRefreshHelper!!.process()
-
+    @discardableResult open func getWait() -> Int32 {
+        return self.loopTimeHelper.delay
+    }
     
-                        if(this.isPaused())
-                        
-                                    {
-                                    
-    var stringMaker: StringMaker = StringMaker()
 
-
+    open func setCurrentThread() {
+        self.currentThread = Thread.currentThread()
+    }
     
-                        if(this.isRunning() && !this.isSingleThread())
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
 
-    var currentTimeMillis: Long = this.systemWrapper!!.currentTimeMillis()
-
-this.logUtil!!.putF(stringMaker!!.append(this.START_PAUSE)!!.appendlong(currentTimeMillis)!!.append(this.PAUSE_SLEEP)!!.appendlong(this.pauseWait)!!.toString(), this, this.PROCESS_LOOP_SLEEP)
-
-        while(this.isPaused() && this.isRunning() && !this.isSingleThread())
-        {
-this.processSleep()
-
+    open func setCurrentThreadFake() {
+        self.currentThread = self.thread
+    }
     
-                        if(!this.isPausable())
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.END_PAUSE)!!.appendlong(currentTimeMillis)!!.toString(), this, this.PROCESS_LOOP_SLEEP)
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-}
-
-
-                                    }
-                                
-
-                                    }
-                                
-
-    var elapsedTime: Long = this.loopTimeHelper!!.getElapsedTNT()
-
-
-    var wait: Long = this.loopTimeHelper!!.delay.toLong()
-
-
+    open override func showNotify() {
+        do {
+            self.stopWaiting()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(elapsedTime > wait)
-                        
-                                    {
-                                    elapsedTime= wait
 
-                                    }
-                                
-                        else {
-                            this.processGameSleep(wait -elapsedTime)
+    fileprivate func stopWaiting() {
+        self.notified = true
+        do {
+            self.threadObjectUtil.notifyObject(self)
+        }
+        self.repaint()
+    }
+    
 
-                        }
-                            
+    open func waitOnNotify(_ wait: Int64) {
+        if (!self.notified) {
+            if (wait > 0) {
+                self.threadObjectUtil.waitObjectFor(self, wait)
+            } else {
+                self.threadObjectUtil.waitObject(self)
+            }
+        }
+    }
+    
+
+    open func processSleep() {
+        Thread.sleep(self.pauseWait)
+    }
+    
+
+    @discardableResult open func isPausable() -> Bool {
+        return false
+    }
+    
+
+    open func processGameSleep(_ sleep: Int64) {
+        Thread.sleep(sleep)
+    }
+    
+
+    open func processLoopSleep() {
+        self.runnableCanvasRefreshHelper.process()
+        if (self.isPaused()) {
+            let stringMaker: StringMaker! = StringMaker()
+            if (self.isRunning() && !self.isSingleThread()) {
+                stringMaker.delete(0, stringMaker.length())
+                let currentTimeMillis: Int64 = self.systemWrapper.currentTimeMillis()
+                self.logUtil.putF(stringMaker.append(self.START_PAUSE).appendlong(currentTimeMillis).append(self.PAUSE_SLEEP).appendlong(self.pauseWait).toString(), self, self.PROCESS_LOOP_SLEEP)
+                while (self.isPaused() && self.isRunning() && !self.isSingleThread()) {
+                    self.processSleep()
+                    if (!self.isPausable()) {
+                        stringMaker.delete(0, stringMaker.length())
+                        self.logUtil.putF(stringMaker.append(self.END_PAUSE).appendlong(currentTimeMillis).toString(), self, self.PROCESS_LOOP_SLEEP)
+                        return
+                    }
+                }
+            }
+        }
+        var elapsedTime: Int64 = self.loopTimeHelper.getElapsedTNT()
+        let wait: Int64 = Int64(truncatingIfNeeded: self.loopTimeHelper.delay)
+        if (elapsedTime > wait) {
+            elapsedTime = wait
+        } else {
+            self.processGameSleep(wait &- elapsedTime)
+        }
+    }
+    
+
+    @discardableResult open func isSingleThread() -> Bool {
+        return false
+    }
+    
+
+    open override func run() {
+        self.setCurrentThread()
+    }
+    
+
+    open func end2() {
+    }
+    
+
+    @discardableResult open func getType() -> Int32 {
+        return -1
+    }
 }
-
-
-    open fun isSingleThread()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setCurrentThread()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun end2()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-}
-                
-            
 

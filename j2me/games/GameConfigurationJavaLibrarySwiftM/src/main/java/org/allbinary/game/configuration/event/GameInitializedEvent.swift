@@ -1,89 +1,61 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.event
+import J2SEForSwiftLibrary
+// import org.allbinary.game.resource.ResourceLoadingLevel
+// import org.allbinary.game.resource.ResourceLoadingLevelFactory
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class GameInitializedEvent: AllBinaryEventObject {
+    fileprivate var resourceLoadingLevel: ResourceLoadingLevel! = nil
+    fileprivate var level: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.resourceLoadingLevel = ResourceLoadingLevelFactory.getInstance().LEVEL
+    self.level = 0
+    }
+    
 
+    public override init(_ anyType: JObject!) {
+        super.init(anyType)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.resource.ResourceLoadingLevel
-import org.allbinary.game.resource.ResourceLoadingLevelFactory
-import org.allbinary.logic.util.event.AllBinaryEventObject
+    open func setLevel(_ level: Int32) {
+        self.level = level
+        self.resourceLoadingLevel = ResourceLoadingLevelFactory.getInstance().LEVEL
+    }
+    
 
-open public class GameInitializedEvent : AllBinaryEventObject {
-        
+    @discardableResult open func getLevel() -> Int32 {
+        return self.level
+    }
+    
 
-    private var resourceLoadingLevel: ResourceLoadingLevel = ResourceLoadingLevelFactory.getInstance()!!.LEVEL
+    open func setResourceLoadingLevel(_ resourceLoadingLevel: ResourceLoadingLevel!) {
+        self.resourceLoadingLevel = resourceLoadingLevel
+        self.level = self.resourceLoadingLevel.getLevel()
+    }
+    
 
-    private var level: Int= 0
-public constructor (anyType: Any)                        
-
-                            : super(anyType){
-var anyType = anyType
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open func getResourceLoadingLevel() -> ResourceLoadingLevel! {
+        return self.resourceLoadingLevel
+    }
 }
-
-
-    open fun setLevel(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var level = level
-this.level= level
-this.resourceLoadingLevel= ResourceLoadingLevelFactory.getInstance()!!.LEVEL
-}
-
-
-    open fun getLevel()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level
-}
-
-
-    open fun setResourceLoadingLevel(resourceLoadingLevel: ResourceLoadingLevel)
-        //nullable = true from not(false or (false and false)) = true
-{
-var resourceLoadingLevel = resourceLoadingLevel
-this.resourceLoadingLevel= resourceLoadingLevel
-this.level= this.resourceLoadingLevel!!.getLevel()
-}
-
-
-    open fun getResourceLoadingLevel()
-        //nullable = true from not(false or (false and true)) = true
-: ResourceLoadingLevel{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.resourceLoadingLevel
-}
-
-
-}
-                
-            
 

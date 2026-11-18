@@ -1,52 +1,31 @@
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class CacheTypeFactory: JObject {
+    fileprivate static let instance: CacheTypeFactory! = CacheTypeFactory()
+    public var NO_CACHE: CacheType! = nil
+    public var CACHE: CacheType! = nil
+    public var SET: CacheType! = nil
+    public var CACHE_VECTOR: CacheType! = nil
 
+    private func initFields() {
+    self.NO_CACHE = CacheType(StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING)
+    self.CACHE = CacheType(StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING)
+    self.SET = CacheType(StringUtil.getInstance().EMPTY_STRING, "Set")
+    self.CACHE_VECTOR = CacheType(StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING)
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
-
-open public class CacheTypeFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: CacheTypeFactory = CacheTypeFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CacheTypeFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CacheTypeFactory.instance
+    @discardableResult open class func getInstance() -> CacheTypeFactory! {
+        return CacheTypeFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var NO_CACHE: CacheType = CacheType(StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING)
-
-    var CACHE: CacheType = CacheType(StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING)
-
-    var SET: CacheType = CacheType(StringUtil.getInstance()!!.EMPTY_STRING, "Set")
-
-    var CACHE_VECTOR: CacheType = CacheType(StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING)
-
-}
-                
-            
 

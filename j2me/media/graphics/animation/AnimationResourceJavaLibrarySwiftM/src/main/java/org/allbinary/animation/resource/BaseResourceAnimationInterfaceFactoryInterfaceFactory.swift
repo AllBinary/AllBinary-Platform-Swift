@@ -1,339 +1,168 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.resource
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.resource
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.BasicAnimationInterfaceFactoryInterface
+// import org.allbinary.animation.NullAnimationFactory
+// import org.allbinary.game.resource.ResourceLoadingLevelFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.RectangleFactory
+// import org.allbinary.image.ImageCache
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.ABHashtable
 
+open class BaseResourceAnimationInterfaceFactoryInterfaceFactory: JObject, FeatureResourceAnimationInterfaceFactoryInterface {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var hashtable: ABHashtable! = nil
+    fileprivate var rectangleHashtable: ABHashtable! = nil
+    fileprivate var rectangleArrayOfArraysHashtable: ABHashtable! = nil
+    fileprivate var name: String! = nil
+    fileprivate var initialized: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.BasicAnimationInterfaceFactoryInterface
-import org.allbinary.animation.NullAnimationFactory
-import org.allbinary.game.resource.ResourceLoadingLevelFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.RectangleFactory
-import org.allbinary.image.ImageCache
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.ABHashtable
-
-open public class BaseResourceAnimationInterfaceFactoryInterfaceFactory
-            : Object
-        
-                , FeatureResourceAnimationInterfaceFactoryInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val hashtable: ABHashtable<Any, Any>
-
-    private val rectangleHashtable: ABHashtable<Any, Any>
-
-    private val rectangleArrayOfArraysHashtable: ABHashtable<Any, Any>
-
-    private val name: String
-
-    private var initialized: Boolean= false
-public constructor (name: String, hashtable: ABHashtable<Any, Any>, rectangleHashtable: ABHashtable<Any, Any>, rectangleArrayHashtable: ABHashtable<Any, Any>)
-            : super()
-        {
-    //var name = name
-    //var hashtable = hashtable
-    //var rectangleHashtable = rectangleHashtable
-    //var rectangleArrayHashtable = rectangleArrayHashtable
-this.hashtable= hashtable
-this.rectangleHashtable= rectangleHashtable
-this.rectangleArrayOfArraysHashtable= rectangleArrayHashtable
-this.name= name
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun init(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var level = level
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.putF(StringMaker().
-                            append("Available List of Animations: ")!!.append(this.hashtable.toString())!!.toString(), this, commonStrings!!.INIT)
-this.setInitialized(true)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initImageCache(imageCache: ImageCache, level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var imageCache = imageCache
-    //var level = level
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun add(resource: String, animationInterfaceFactoryInterface: BasicAnimationInterfaceFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resource = resource
-    //var animationInterfaceFactoryInterface = animationInterfaceFactoryInterface
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
     
-                        if(this.hashtable.containsKey(resource as Object))
-                        
-                                    {
-                                    
-
-
-                            throw Exception(StringMaker().
-                            append("Resource Already Created: ")!!.append(resource)!!.toString())
-
-                                    }
-                                
-this.hashtable.put(resource, animationInterfaceFactoryInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getBasicAnimationInterfaceFactoryInstance(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: BasicAnimationInterfaceFactoryInterface{
-    //var resource = resource
-
-    var basicAnimationInterfaceFactoryInterfaceCanBeNull: Any? = this.hashtable.get(resource as Object)
-
-
     
-                        if(basicAnimationInterfaceFactoryInterfaceCanBeNull == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return basicAnimationInterfaceFactoryInterfaceCanBeNull as BasicAnimationInterfaceFactoryInterface
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getRectangle(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: Rectangle{
-    //var resource = resource
-
-    var rectangleCanBeNull: Any? = this.rectangleHashtable!!.get(resource as Object)
-
-
     
-                        if(rectangleCanBeNull == 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RectangleFactory.SINGLETON
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return rectangleCanBeNull as Rectangle
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun addRectangle(resource: String, rectangle: Rectangle)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resource = resource
-    //var rectangle = rectangle
-this.rectangleHashtable!!.put(resource, rectangle)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getRectangleArrayOfArrays(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: Array<Array<Rectangle?>?>{
-    //var resource = resource
-
-    var valueCanBeNull: Any? = this.rectangleArrayOfArraysHashtable!!.get(resource as Object)
-
-
     
-                        if(valueCanBeNull != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var rectangleArrayOfArrays: Array<Array<Rectangle?>?> = valueCanBeNull as Array<Array<Rectangle?>?>
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return rectangleArrayOfArrays
-
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RectangleFactory.ARRAY_OF_ARRAYS
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun addRectangleArrayOfArrays(resource: String, rectangleArrayOfArrays: Array<Array<Rectangle?>?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resource = resource
-    //var rectangleArrayOfArrays = rectangleArrayOfArrays
-this.rectangleArrayOfArraysHashtable!!.put(resource, rectangleArrayOfArrays)
-}
-
-
-    override fun isFeature()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    override fun isLoadingLevel(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var level = level
-
-    var resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!!
-
-
+    self.initialized = false
+    }
     
-                        if(level == resourceLoadingLevelFactory!!.LOAD_ALL.getLevel())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    public init(_ name: String!, _ hashtable: ABHashtable!, _ rectangleHashtable: ABHashtable!, _ rectangleArrayHashtable: ABHashtable!) {
+        super.init()
+        self.initFields()
+        self.hashtable = hashtable
+        self.rectangleHashtable = rectangleHashtable
+        self.rectangleArrayOfArraysHashtable = rectangleArrayHashtable
+        self.name = name
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
+
+    open func `init`(_ level: Int32) {
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        self.logUtil.putF(StringMaker().append("Available List of Animations: ").append(self.hashtable.toString()).toString(), self, commonStrings.INIT)
+        self.setInitialized(true)
+    }
+    
+
+    open func initImageCache(_ imageCache: ImageCache!, _ level: Int32) {
+    }
+    
+
+    open func add(_ resource: String!, _ animationInterfaceFactoryInterface: BasicAnimationInterfaceFactoryInterface!) {
+        if (self.hashtable.containsKey(jBoxString(resource))) {
+            jThrow(JException("Exception", StringMaker().append("Resource Already Created: ").append(resource).toString()))
+        }
+        self.hashtable.put(jBoxString(resource), (animationInterfaceFactoryInterface as? JObject))
+    }
+    
+
+    @discardableResult open func getBasicAnimationInterfaceFactoryInstance(_ resource: String!) -> BasicAnimationInterfaceFactoryInterface! {
+        let basicAnimationInterfaceFactoryInterfaceCanBeNull: JObject! = self.hashtable.get(jBoxString(resource))
+        if (basicAnimationInterfaceFactoryInterfaceCanBeNull == nil) {
+            return NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY
+        }
+        return (basicAnimationInterfaceFactoryInterfaceCanBeNull as! BasicAnimationInterfaceFactoryInterface)
+    }
+    
+
+    @discardableResult open func getRectangle(_ resource: String!) -> Rectangle! {
+        let rectangleCanBeNull: JObject! = self.rectangleHashtable.get(jBoxString(resource))
+        if (rectangleCanBeNull == nil) {
+            return RectangleFactory.SINGLETON
+        }
+        return (rectangleCanBeNull as! Rectangle)
+    }
+    
+
+    open func addRectangle(_ resource: String!, _ rectangle: Rectangle!) {
+        self.rectangleHashtable.put(jBoxString(resource), rectangle)
+    }
+    
+
+    @discardableResult open func getRectangleArrayOfArrays(_ resource: String!) -> JArray<JArray<Rectangle?>?>! {
+        let valueCanBeNull: JObject! = self.rectangleArrayOfArraysHashtable.get(jBoxString(resource))
+        if (valueCanBeNull != nil) {
+            let rectangleArrayOfArrays: JArray<JArray<Rectangle?>?>! = (valueCanBeNull as! JArray<JArray<Rectangle?>?>)
+            return rectangleArrayOfArrays
+        } else {
+            return RectangleFactory.ARRAY_OF_ARRAYS
+        }
+    }
+    
+
+    open func addRectangleArrayOfArrays(_ resource: String!, _ rectangleArrayOfArrays: JArray<JArray<Rectangle?>?>!) {
+        self.rectangleArrayOfArraysHashtable.put(jBoxString(resource), rectangleArrayOfArrays)
+    }
+    
+
+    @discardableResult open func isFeature() -> Bool {
+        return false
+    }
+    
+
+    @discardableResult open func isLoadingLevel(_ level: Int32) -> Bool {
+        let resourceLoadingLevelFactory: ResourceLoadingLevelFactory! = ResourceLoadingLevelFactory.getInstance()
+        if (level == resourceLoadingLevelFactory.LOAD_ALL.getLevel()) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append(JObject.className(self)).append(CommonSeps.getInstance().SEMICOLON).append(CommonSeps.getInstance().SPACE).append(self.name).toString()
+    }
+    
+
+    @discardableResult open func getHashtable() -> ABHashtable! {
+        return self.hashtable
+    }
+    
+
+    @discardableResult open func getRectangleHashtable() -> ABHashtable! {
+        return self.rectangleHashtable
+    }
+    
+
+    @discardableResult open func getRectangleArrayOfArraysHashtable() -> ABHashtable! {
+        return self.rectangleArrayOfArraysHashtable
+    }
+    
+
+    open func setInitialized(_ initialized: Bool) {
+        self.initialized = initialized
+    }
+    
+
+    @discardableResult open func isInitialized() -> Bool {
+        return self.initialized
+    }
 }
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append(this::class.toString()!!)!!.append(CommonSeps.getInstance()!!.SEMICOLON)!!.append(CommonSeps.getInstance()!!.SPACE)!!.append(this.name)!!.toString()
-}
-
-
-    override fun getHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable
-}
-
-
-    open fun getRectangleHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleHashtable
-}
-
-
-    open fun getRectangleArrayOfArraysHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleArrayOfArraysHashtable
-}
-
-
-    open fun setInitialized(initialized: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var initialized = initialized
-this.initialized= initialized
-}
-
-
-    open fun isInitialized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized
-}
-
-
-}
-                
-            
 

@@ -1,66 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.collision
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.collision
+import J2SEForSwiftLibrary
 
+open class CollidableAlwaysPickupNeverCollideBehaviorFactory: CollidableBaseBehaviorFactory {
+    fileprivate static let instanceC: CollidableAlwaysPickupNeverCollideBehaviorFactory! = CollidableAlwaysPickupNeverCollideBehaviorFactory()
+    fileprivate var instance: CollidableAlwaysPickupNeverCollideBehavior! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.instance = CollidableAlwaysPickupNeverCollideBehavior()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func getInstance() -> CollidableAlwaysPickupNeverCollideBehaviorFactory! {
+        return CollidableAlwaysPickupNeverCollideBehaviorFactory.instanceC
+    }
+    
 
-open public class CollidableAlwaysPickupNeverCollideBehaviorFactory : CollidableBaseBehaviorFactory {
-        
-companion object {
-            
-    private val instanceC: CollidableAlwaysPickupNeverCollideBehaviorFactory = CollidableAlwaysPickupNeverCollideBehaviorFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CollidableAlwaysPickupNeverCollideBehaviorFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableAlwaysPickupNeverCollideBehaviorFactory.instanceC
+    @discardableResult open override func createBehavior() -> CollidableBaseBehavior! {
+        return self.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val instance: CollidableAlwaysPickupNeverCollideBehavior = CollidableAlwaysPickupNeverCollideBehavior()
-
-    override fun createBehavior()
-        //nullable = true from not(false or (false and true)) = true
-: CollidableBaseBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.instance
-}
-
-
-}
-                
-            
 

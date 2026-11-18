@@ -29,7 +29,7 @@ open class FilePathData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> FilePathData! {
+    @discardableResult open class func getInstance() -> FilePathData! {
         return FilePathData.instance
     }
     

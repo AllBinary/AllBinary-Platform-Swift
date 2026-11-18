@@ -41,7 +41,7 @@ open class BooleanFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BooleanFactory! {
+    @discardableResult open class func getInstance() -> BooleanFactory! {
         return BooleanFactory.instance
     }
     

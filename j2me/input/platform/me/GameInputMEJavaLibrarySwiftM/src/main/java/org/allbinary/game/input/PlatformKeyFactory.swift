@@ -1,157 +1,81 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
 
+open class PlatformKeyFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-
-open public class PlatformKeyFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: PlatformKeyFactory{
-
+    public override init() {
+        super.init()
+    }
     
-                        if(PlatformKeyFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    PlatformKeyFactory.instance= PlatformKeyFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformKeyFactory.instance as PlatformKeyFactory
-}
-
-
+    @discardableResult open class func getInstance() -> PlatformKeyFactory! {
+        if (PlatformKeyFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            PlatformKeyFactory.instance = PlatformKeyFactory()
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun getString(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var keyCode = keyCode
+        return (PlatformKeyFactory.instance as! PlatformKeyFactory)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEGameKey.getString(keyCode)
+    @discardableResult open func getString(_ keyCode: Int32) -> String! {
+        return J2MEGameKey.getString(keyCode)
+    }
+    
+
+    @discardableResult open func isSubmission(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isSubmission(input)
+    }
+    
+
+    @discardableResult open func isDelete(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isDelete(input)
+    }
+    
+
+    @discardableResult open func isBackSpace(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isBackSpace(input)
+    }
+    
+
+    @discardableResult open func isLeft(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isLeft(input)
+    }
+    
+
+    @discardableResult open func isRight(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isRight(input)
+    }
+    
+
+    @discardableResult open func isUp(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isUp(input)
+    }
+    
+
+    @discardableResult open func isDown(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isDown(input)
+    }
+    
+
+    @discardableResult open func isEnter(_ input: Input!) -> Bool {
+        return J2MEKeyFactory.getInstance().isEnter(input)
+    }
 }
-
-
-    open fun isSubmission(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isSubmission(input)
-}
-
-
-    open fun isDelete(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isDelete(input)
-}
-
-
-    open fun isBackSpace(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isBackSpace(input)
-}
-
-
-    open fun isLeft(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isLeft(input)
-}
-
-
-    open fun isRight(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isRight(input)
-}
-
-
-    open fun isUp(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isUp(input)
-}
-
-
-    open fun isDown(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isDown(input)
-}
-
-
-    open fun isEnter(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!!.isEnter(input)
-}
-
-
-}
-                
-            
 

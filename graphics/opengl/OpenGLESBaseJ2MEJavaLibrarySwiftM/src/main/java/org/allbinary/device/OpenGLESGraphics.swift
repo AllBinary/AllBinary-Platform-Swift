@@ -1,104 +1,61 @@
+// Generated Code Do Not Modify
+// package org.allbinary.device
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.device
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
+// import javax.microedition.khronos.opengles.GL10
+// import javax.microedition.lcdui.Font
+// import org.allbinary.graphics.font.FontDebugBase
+// import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
+// import org.allbinary.string.CommonStrings
 
+open class OpenGLESGraphics: JObject, OpenGLSurfaceChangedInterface, GraphicsInterface {
+    public var commonStrings: CommonStrings! = nil
+    public var gl: GL10! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    self.gl = NullGL10.NULL_GL10
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-import javax.microedition.khronos.opengles.GL10
-import javax.microedition.lcdui.Font
-import org.allbinary.graphics.font.FontDebugBase
-import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
-import org.allbinary.string.CommonStrings
+    open func updateGL(_ gl: GL!) {
+    }
+    
 
-open public class OpenGLESGraphics
-            : Object
-        
-                , OpenGLSurfaceChangedInterface
-                , GraphicsInterface {
-        
+    open func set(_ gl: GL!) {
+    }
+    
 
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    open func `init`() {
+    }
+    
 
-    var gl: GL10 = NullGL10.NULL_GL10
- constructor ()
-            : super()
-        {
+    open func update() {
+    }
+    
+
+    open func setOrthoginalMode() {
+    }
+    
+
+    open func setCameraMode() {
+    }
+    
+
+    @discardableResult open func getGlP() -> GL10! {
+        return self.gl
+    }
+    
+
+    open func setFontDebug(_ font: Font!, _ fontDebug: FontDebugBase!) {
+        jThrow(JException("RuntimeException", ""))
+    }
 }
-
-
-    open fun updateGL(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-}
-
-
-    override fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun setOrthoginalMode()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun setCameraMode()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun getGlP()
-        //nullable = true from not(false or (false and true)) = true
-: GL10{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gl
-}
-
-
-    override fun setFontDebug(font: Font, fontDebug: FontDebugBase)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var font = font
-    //var fontDebug = fontDebug
-
-
-
-                            throw RuntimeException()
-}
-
-
-}
-                
-            
 

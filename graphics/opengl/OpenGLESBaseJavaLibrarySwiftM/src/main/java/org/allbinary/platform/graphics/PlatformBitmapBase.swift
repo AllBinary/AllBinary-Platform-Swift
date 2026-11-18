@@ -1,83 +1,54 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.platform.graphics
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.platform.graphics
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.NullImage
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
 
+open class PlatformBitmapBase: JObject {
+    public static let NULL_PLATFORM_BITMAP_BASE: PlatformBitmapBase! = PlatformBitmapBase()
+    public var alpha: Int32 = 0
+    public var basicColor: BasicColor! = nil
 
+    private func initFields() {
+    self.alpha = 255
+    self.basicColor = BasicColorFactory.getInstance().NULL_COLOR
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.NullImage
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
+    @discardableResult open func getWidth() -> Int32 {
+        return 0
+    }
+    
 
-open public class PlatformBitmapBase
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_PLATFORM_BITMAP_BASE: PlatformBitmapBase = PlatformBitmapBase()
+    @discardableResult open func getHeight() -> Int32 {
+        return 0
+    }
+    
 
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var alpha: Int = 255
-
-    var basicColor: BasicColor = BasicColorFactory.getInstance()!!.NULL_COLOR
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
+    @discardableResult open func getImage() -> Image! {
+        return NullImage.NULL_IMAGE
+    }
 }
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun getImage()
-        //nullable = true from not(false or (false and true)) = true
-: Image{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE
-}
-
-
-}
-                
-            
 

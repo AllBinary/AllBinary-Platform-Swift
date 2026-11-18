@@ -1,354 +1,227 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.displayable
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.displayable
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.NullCommandListener
+// import org.allbinary.graphics.displayable.command.MyCommandInterface
+// import org.allbinary.graphics.displayable.command.MyCommandsFactory
+// import org.allbinary.input.TouchJ2ME
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.media.audio.Sound
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABStack
 
+open class MyCanvas: Canvas, DisplayableInterface, MyCommandInterface {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    public var canvasStrings: CanvasStrings! = nil
+    public var stringUtil: StringUtil! = nil
+    public var displayInfo: DisplayInfoSingleton! = nil
+    fileprivate var name: String! = nil
+    fileprivate var childNameList: BasicArrayList! = nil
+    fileprivate var commandStack: ABStack! = nil
+    fileprivate var commandListener: CommandListener! = nil
+    fileprivate var paused: Bool = false
+    fileprivate var touchME: TouchJ2ME! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.NullCommandListener
-import org.allbinary.graphics.displayable.command.MyCommandInterface
-import org.allbinary.graphics.displayable.command.MyCommandsFactory
-import org.allbinary.input.TouchJ2ME
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.media.audio.Sound
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABStack
-
-open public class MyCanvas : Canvas
-                , DisplayableInterface
-                , MyCommandInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    val canvasStrings: CanvasStrings = CanvasStrings.getInstance()!!
-
-    val stringUtil: StringUtil = StringUtil.getInstance()!!
-
-    val displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-    private val name: String
-
-    private val childNameList: BasicArrayList
-
-    private val commandStack: ABStack<Any>
-
-    private var commandListener: CommandListener = NullCommandListener.NULL_COMMAND_LISTENER
-
-    private var paused: Boolean= false
-public constructor (name: String, childNameList: BasicArrayList){
-    //var name = name
-    //var childNameList = childNameList
-this.logUtil!!.putF(this.commonStrings!!.CONSTRUCTOR, this, this.commonStrings!!.CONSTRUCTOR)
-this.displayInfo!!.update(this, this.canvasStrings!!.CONSTRUCTOR)
-this.name= name
-this.childNameList= childNameList
-this.commandStack= StdUtil.getInstance()!!.createStack()!!
-}
-
-
-    override fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getWidth()
-}
-
-
-    override fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getHeight()
-}
-
-
-    override fun setFullScreenMode(mode: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var mode = mode
-super.setFullScreenMode(mode)
-this.displayInfo!!.update(this, this.canvasStrings!!.SET_FULL_SCREEN_MODE)
-}
-
-
-    override fun sizeChanged(w: Int, h: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var w = w
-var h = h
-this.displayInfo!!.update(this, this.canvasStrings!!.SIZE_CHANGED)
-}
-
-
-    open fun getCommandStack()
-        //nullable = true from not(false or (false and true)) = true
-: ABStack<Any>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandStack
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun isCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var command = command
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandStack!!.contains(command)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun addCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-{
-var command = command
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.canvasStrings = CanvasStrings.getInstance()
+    self.stringUtil = StringUtil.getInstance()
+    self.displayInfo = DisplayInfoSingleton.getInstance()
     
-                        if(!this.commandStack!!.contains(command))
-                        
-                                    {
-                                    this.commandStack!!.push(command)
-super.addCommand(command)
+    
+    
+    self.commandListener = NullCommandListener.NULL_COMMAND_LISTENER
+    self.paused = false
+    self.touchME = TouchJ2ME()
+    }
+    
 
-                                    }
-                                
+    public init(_ name: String!, _ childNameList: BasicArrayList!) {
+        super.init()
+        self.initFields()
+        self.logUtil.putF(self.commonStrings.CONSTRUCTOR, self, self.commonStrings.CONSTRUCTOR)
+        self.displayInfo.update(self, self.canvasStrings.CONSTRUCTOR)
+        self.name = name
+        self.childNameList = childNameList
+        self.commandStack = StdUtil.getInstance().createStack()
+    }
+    
+
+    @discardableResult open override func getWidth() -> Int32 {
+        return super.getWidth()
+    }
+    
+
+    @discardableResult open override func getHeight() -> Int32 {
+        return super.getHeight()
+    }
+    
+
+    open override func setFullScreenMode(_ mode: Bool) {
+        super.setFullScreenMode(mode)
+        self.displayInfo.update(self, self.canvasStrings.SET_FULL_SCREEN_MODE)
+    }
+    
+
+    open override func sizeChanged(_ w: Int32, _ h: Int32) {
+        self.displayInfo.update(self, self.canvasStrings.SIZE_CHANGED)
+    }
+    
+
+    @discardableResult open func getCommandStack() -> ABStack! {
+        return self.commandStack
+    }
+    
+
+    @discardableResult open func isCommand(_ command: Command!) -> Bool {
+        return self.commandStack.contains(command)
+    }
+    
+
+    open override func addCommand(_ command: Command!) {
+        if (!self.commandStack.contains(command)) {
+            self.commandStack.push(command)
+            super.addCommand(command)
+        }
+    }
+    
+
+    open override func removeCommand(_ command: Command!) {
+        self.commandStack.removeElement(command)
+        super.removeCommand(command)
+    }
+    
+
+    open override func removeAllCommands() {
+        let size: Int32 = self.commandStack.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            super.removeCommand((self.commandStack.pop() as! Command))
+            }
+        }
+    }
+    
+
+    open override func setCommandListener(_ l: CommandListener!) {
+        super.setCommandListener(l)
+        self.commandListener = l
+    }
+    
+
+    @discardableResult open func getCustomCommandListener() -> CommandListener! {
+        return self.commandListener
+    }
+    
+
+    @discardableResult open func isPaused() -> Bool {
+        return self.paused
+    }
+    
+
+    open func removePauseCommand() {
+        self.removeCommand(MyCommandsFactory.getInstance().PAUSE_COMMAND)
+    }
+    
+
+    open func pause() {
+        self.logUtil.putF(self.commonStrings.START, self, self.canvasStrings.PAUSE)
+        self.removePauseCommand()
+        self.addCommand(MyCommandsFactory.getInstance().RESUME_COMMAND)
+        self.setPaused(true)
+    }
+    
+
+    open func unPause() {
+        self.logUtil.putF(self.commonStrings.START, self, self.canvasStrings.UN_PAUSE)
+        self.removeCommand(MyCommandsFactory.getInstance().RESUME_COMMAND)
+        self.addCommand(MyCommandsFactory.getInstance().PAUSE_COMMAND)
+        self.setPaused(false)
+    }
+    
+
+    open func process() {
+        self.displayInfo.process()
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+    }
+    
+
+    open func draw(_ graphics: Graphics!) {
+    }
+    
+
+    @discardableResult open func hasChild(_ displayable: MyCanvas!) -> Bool {
+        return self.childNameList.contains(jBoxString(displayable.name))
+    }
+    
+
+    open func destroy() {
+        self.logUtil.putF("Destroyed MyCanvas", self, "destroy")
+    }
+    
+
+    open func setPaused(_ isPaused: Bool) {
+        self.paused = isPaused
+    }
+    
+
+    open func keyPressedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+    }
+    
+
+    open func keyRepeatedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+    }
+    
+
+    open func keyReleasedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+    }
+    
+
+    open override func pointerDragged(_ x: Int32, _ y: Int32) {
+        self.touchME.pointerDragged(x, y)
+    }
+    
+
+    open override func pointerPressed(_ x: Int32, _ y: Int32) {
+        self.touchME.pointerPressed(x, y)
+    }
+    
+
+    open override func pointerReleased(_ x: Int32, _ y: Int32) {
+        self.touchME.pointerReleased(x, y)
+    }
+    
+
+    open func nextSong(_ nextSongSound: Sound!, _ leftVolume: Int32, _ rightVolume: Int32) {
+    }
 }
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun removeCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-{
-var command = command
-this.commandStack!!.removeElement(command)
-super.removeCommand(command)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun removeAllCommands()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var size: Int = this.commandStack!!.size
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-super.removeCommand(this.commandStack!!.pop() as Command)
-}
-
-}
-
-
-    override fun setCommandListener(l: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var l = l
-super.setCommandListener(l)
-this.commandListener= l
-}
-
-
-    open fun getCustomCommandListener()
-        //nullable = true from not(false or (false and true)) = true
-: CommandListener{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandListener
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun isPaused()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paused
-}
-
-
-    open fun removePauseCommand()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.removeCommand(MyCommandsFactory.getInstance()!!.PAUSE_COMMAND)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun pause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.canvasStrings!!.PAUSE)
-this.removePauseCommand()
-this.addCommand(MyCommandsFactory.getInstance()!!.RESUME_COMMAND)
-this.setPaused(true)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun unPause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.canvasStrings!!.UN_PAUSE)
-this.removeCommand(MyCommandsFactory.getInstance()!!.RESUME_COMMAND)
-this.addCommand(MyCommandsFactory.getInstance()!!.PAUSE_COMMAND)
-this.setPaused(false)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.displayInfo!!.process()
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun draw(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun hasChild(displayable: MyCanvas)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var displayable = displayable
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.childNameList!!.contains(displayable.name)
-}
-
-
-    open fun destroy()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF("Destroyed MyCanvas", this, "destroy")
-}
-
-
-    open fun setPaused(isPaused: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var isPaused = isPaused
-this.paused= isPaused
-}
-
-
-    open fun keyPressedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-var deviceId = deviceId
-}
-
-
-    open fun keyRepeatedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-var deviceId = deviceId
-}
-
-
-    open fun keyReleasedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-var deviceId = deviceId
-}
-
-
-    private val touchME: TouchJ2ME = TouchJ2ME()
-
-    override fun pointerDragged(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-this.touchME!!.pointerDragged(x, y)
-}
-
-
-    override fun pointerPressed(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-this.touchME!!.pointerPressed(x, y)
-}
-
-
-    override fun pointerReleased(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-this.touchME!!.pointerReleased(x, y)
-}
-
-
-    open fun nextSong(nextSongSound: Sound, leftVolume: Int, rightVolume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var nextSongSound = nextSongSound
-    //var leftVolume = leftVolume
-    //var rightVolume = rightVolume
-}
-
-
-}
-                
-            
 

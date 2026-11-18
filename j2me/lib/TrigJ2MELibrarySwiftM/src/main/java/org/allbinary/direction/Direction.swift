@@ -1,130 +1,83 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.direction
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.direction
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
 
+open class Direction: JObject {
+    fileprivate static var directionArray: JArray<Direction?>! = JArray<Direction?>(13, nil)
+    fileprivate var name: String! = nil
+    fileprivate var otherName: String! = nil
+    fileprivate var value: Int32 = 0
+    fileprivate var frameFactor: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    
+    }
+    
 
+    public init(_ name: String!, _ otherName: String!, _ value: Int32, _ frameFactor: Int32) {
+        super.init()
+        self.initFields()
+        self.name = name
+        self.otherName = otherName
+        self.value = value
+        self.frameFactor = frameFactor
+        Direction.directionArray[value] = self
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
+    @discardableResult open class func getInstance(_ direction: Int32) -> Direction! {
+        return Direction.directionArray[direction]
+    }
+    
 
-open public class Direction
-            : Object
-         {
-        
-companion object {
-            
-    private var directionArray: Array<Direction?> = arrayOfNulls(13)
+    @discardableResult open func getValue() -> Int32 {
+        return self.value
+    }
+    
 
-    open fun getInstance(direction: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Direction{
-var direction = direction
+    @discardableResult open func getFrameFactor() -> Int32 {
+        return self.frameFactor
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Direction.directionArray[direction]!!
+    @discardableResult open func getOtherName() -> String! {
+        return self.otherName
+    }
+    
+
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Direction: ")
+        stringBuffer.append(self.getName())
+        stringBuffer.append(" Or: ")
+        stringBuffer.append(self.getOtherName())
+        stringBuffer.append(" Value: ")
+        stringBuffer.appendint(self.value)
+        return stringBuffer.toString()
+    }
 }
-
-
-        }
-            
-    private var name: String
-
-    private var otherName: String
-
-    private var value: Int
-
-    private var frameFactor: Int
- constructor (name: String, otherName: String, value: Int, frameFactor: Int)
-            : super()
-        {
-var name = name
-var otherName = otherName
-var value = value
-var frameFactor = frameFactor
-this.name= name
-this.otherName= otherName
-this.value= value
-this.frameFactor= frameFactor
-Direction.directionArray[value]= this
-}
-
-
-    open fun getValue()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value
-}
-
-
-    open fun getFrameFactor()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frameFactor
-}
-
-
-    open fun getOtherName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.otherName
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Direction: ")
-stringBuffer!!.append(this.getName())
-stringBuffer!!.append(" Or: ")
-stringBuffer!!.append(this.getOtherName())
-stringBuffer!!.append(" Value: ")
-stringBuffer!!.appendint(this.value)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

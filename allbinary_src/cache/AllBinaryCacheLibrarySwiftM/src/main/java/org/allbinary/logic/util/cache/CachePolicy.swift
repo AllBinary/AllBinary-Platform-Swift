@@ -1,98 +1,65 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
 
+open class CachePolicy: JObject {
+    fileprivate var name: String! = nil
+    fileprivate var maxTime: Int64 = 0
+    fileprivate var maxSize: Int64 = 0
 
+    private func initFields() {
+    
+    self.maxTime = 0
+    self.maxSize = 0
+    }
+    
 
+    public init(_ name: String!, _ maxTime: Int64, _ maxSize: Int64) {
+        super.init()
+        self.initFields()
+        self.name = name
+        self.setMaxTime(maxTime)
+        self.setMaxSize(maxSize)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getMaxTime() -> Int64 {
+        return self.maxTime
+    }
+    
 
-open public class CachePolicy
-            : Object
-         {
-        
+    open func setMaxTime(_ maxTime: Int64) {
+        self.maxTime = maxTime
+    }
+    
 
-    private val name: String
+    @discardableResult open func getMaxSize() -> Int64 {
+        return self.maxSize
+    }
+    
 
-    private var maxTime: Long= 0
+    open func setMaxSize(_ maxSize: Int64) {
+        self.maxSize = maxSize
+    }
+    
 
-    private var maxSize: Long= 0
-public constructor (name: String, maxTime: Long, maxSize: Long)
-            : super()
-        {
-var name = name
-var maxTime = maxTime
-var maxSize = maxSize
-this.name= name
-this.setMaxTime(maxTime)
-this.setMaxSize(maxSize)
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
 }
-
-
-    open fun getMaxTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxTime
-}
-
-
-    open fun setMaxTime(maxTime: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var maxTime = maxTime
-this.maxTime= maxTime
-}
-
-
-    open fun getMaxSize()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxSize
-}
-
-
-    open fun setMaxSize(maxSize: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var maxSize = maxSize
-this.maxSize= maxSize
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-}
-                
-            
 

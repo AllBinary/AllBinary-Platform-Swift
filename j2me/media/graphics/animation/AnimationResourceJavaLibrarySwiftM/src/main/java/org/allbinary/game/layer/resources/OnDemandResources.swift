@@ -1,85 +1,50 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.resources
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.resources
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.resource.BaseResourceAnimationInterfaceFactoryInterfaceFactory
+// import org.allbinary.image.ImageCache
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class OnDemandResources: JObject {
+    public static let NULL_ON_DEMAND_RESOURCES: OnDemandResources! = OnDemandResources()
+    public var logUtil: LogUtil! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.resource.BaseResourceAnimationInterfaceFactoryInterfaceFactory
-import org.allbinary.image.ImageCache
-import org.allbinary.logic.communication.log.LogUtil
+    open func waitFor() {
+    }
+    
 
-open public class OnDemandResources
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_ON_DEMAND_RESOURCES: OnDemandResources = OnDemandResources()
+    open func `init`() {
+    }
+    
 
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-protected constructor ()
-            : super()
-        {
+    @discardableResult open func initAt(_ imageCache: ImageCache!, _ resourceAnimationInterfaceFactoryInterfaceFactory: BaseResourceAnimationInterfaceFactoryInterfaceFactory!, _ portion: Int32, _ loadingString: String!, _ index: Int32) -> Int32 {
+        return 0
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun waitFor()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initAt(imageCache: ImageCache, resourceAnimationInterfaceFactoryInterfaceFactory: BaseResourceAnimationInterfaceFactoryInterfaceFactory, portion: Int, loadingString: String, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var imageCache = imageCache
-var resourceAnimationInterfaceFactoryInterfaceFactory = resourceAnimationInterfaceFactoryInterfaceFactory
-var portion = portion
-var loadingString = loadingString
-var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

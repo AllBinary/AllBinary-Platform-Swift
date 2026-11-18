@@ -34,7 +34,7 @@ open class ThreadUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ThreadUtil! {
+    @discardableResult open class func getInstance() -> ThreadUtil! {
         return ThreadUtil.instance
     }
     

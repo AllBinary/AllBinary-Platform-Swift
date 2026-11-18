@@ -1,161 +1,102 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image.sprite
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.game.Sprite
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.RotationAnimation
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.math.AngleInfo
+// import org.allbinary.util.CircularIndexUtil
 
+open class HackRotationSpriteIndexedAnimation: RotationAnimation {
+    public var sprite: Sprite! = nil
+    fileprivate var image: Image! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    }
+    
 
+    public init(_ sprite: Sprite!, _ image: Image!, _ angleInfo: AngleInfo!, _ animationBehavior: AnimationBehavior!) {
+        super.init(angleInfo, CircularIndexUtil.createInstance(360 / Int32(Int32(truncatingIfNeeded: angleInfo.getAngleIncrementInfo().getAngleIncrement()))), animationBehavior)
+        self.initFields()
+        self.sprite = sprite
+        self.image = image
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.game.Sprite
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.RotationAnimation
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.math.AngleInfo
-import org.allbinary.util.CircularIndexUtil
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
 
-open public class HackRotationSpriteIndexedAnimation : RotationAnimation {
-        
+    open func paintFrame(_ g: Graphics!, _ frame: Int32, _ x: Int32, _ y: Int32) {
+        self.setFrame(frame)
+        self.paintXY(g, x, y)
+    }
+    
 
-    val sprite: Sprite
+    open override func paintXY(_ g: Graphics!, _ x: Int32, _ y: Int32) {
+        self.sprite.setPosition(x, y)
+        self.paint(g)
+    }
+    
 
-    private val image: Image
-public constructor (sprite: Sprite, image: Image, angleInfo: AngleInfo, animationBehavior: AnimationBehavior)                        
+    open func paint(_ g: Graphics!) {
+        self.sprite.paint(g)
+    }
+    
 
-                            : super(angleInfo, CircularIndexUtil.createInstance(360 /angleInfo!!.getAngleIncrementInfo()!!.getAngleIncrement()), animationBehavior){
-    //var sprite = sprite
-    //var image = image
-    //var angleInfo = angleInfo
-    //var animationBehavior = animationBehavior
+    open override func nextRotation() {
+        self.sprite.nextFrame()
+    }
+    
 
+    open override func previousRotation() {
+        self.sprite.prevFrame()
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.sprite= sprite
-this.image= image
+    @discardableResult open override func getSize() -> Int32 {
+        return self.sprite.getRawFrameCount()
+    }
+    
+
+    open override func setFrame(_ frame: Int32) {
+        self.sprite.setFrame(frame)
+    }
+    
+
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.sprite.getFrame()
+    }
+    
+
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
+
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    open fun paintFrame(g: Graphics, frame: Int, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var g = g
-    //var frame = frame
-    //var x = x
-    //var y = y
-this.setFrame(frame)
-this.paintXY(g, x, y)
-}
-
-
-    override fun paintXY(g: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var g = g
-    //var x = x
-    //var y = y
-this.sprite.setPosition(x, y)
-this.paint(g)
-}
-
-
-    open fun paint(g: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var g = g
-this.sprite.paint(g)
-}
-
-
-    override fun nextRotation()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.nextFrame()
-}
-
-
-    override fun previousRotation()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.sprite.prevFrame()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getRawFrameCount()
-}
-
-
-    override fun setFrame(frame: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var frame = frame
-this.sprite.setFrame(frame)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getFrame()
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-}
-                
-            
 

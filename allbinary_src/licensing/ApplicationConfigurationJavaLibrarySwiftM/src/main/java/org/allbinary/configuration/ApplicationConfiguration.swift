@@ -1,409 +1,183 @@
+// Generated Code Do Not Modify
+// package org.allbinary.configuration
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.configuration
+import J2SEForSwiftLibrary
+// import java.io.Closeable
+// import java.io.InputStream
+// import java.io.OutputStream
+// import org.allbinary.game.configuration.feature.Feature
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.MainFeatureFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.io.AbDataInputStream
+// import org.allbinary.logic.io.AbDataOutputStream
+// import org.allbinary.logic.io.FileStreamFactory
+// import org.allbinary.logic.io.NullCloseable
+// import org.allbinary.logic.io.StreamUtil
+// import org.allbinary.logic.io.file.FileFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
+open class ApplicationConfiguration: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    fileprivate var fullscreen: Bool = false
+    fileprivate var showTitleBar: Bool = false
+    fileprivate var progressBarView: Bool = false
+    fileprivate var FILE: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.Closeable
-import java.io.InputStream
-import java.io.OutputStream
-import org.allbinary.game.configuration.feature.Feature
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.MainFeatureFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.io.AbDataInputStream
-import org.allbinary.logic.io.AbDataOutputStream
-import org.allbinary.logic.io.FileStreamFactory
-import org.allbinary.logic.io.NullCloseable
-import org.allbinary.logic.io.StreamUtil
-import org.allbinary.logic.io.file.FileFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-
-open public class ApplicationConfiguration
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ApplicationConfiguration{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.fullscreen = true
+    self.showTitleBar = false
+    self.progressBarView = false
+    self.FILE = "ReloadConfiguration.dat"
+    }
     
-                        if(ApplicationConfiguration.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    ApplicationConfiguration.instance= ApplicationConfiguration()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration.instance as ApplicationConfiguration
-}
-
-
+    @discardableResult open class func getInstance() -> ApplicationConfiguration! {
+        if (ApplicationConfiguration.instance === NullUtil.getInstance().NULL_OBJECT) {
+            ApplicationConfiguration.instance = ApplicationConfiguration()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var fullscreen: Boolean = true
-
-    private var showTitleBar: Boolean = false
-
-    private var progressBarView: Boolean = false
-
-    private val FILE: String = "ReloadConfiguration.dat"
-private constructor ()
-            : super()
-        {
-
-        try {
-            
+        return (ApplicationConfiguration.instance as! ApplicationConfiguration)
+    }
     
-                        if(FileFactory.getInstance()!!.isFile(this.FILE))
-                        
-                                    {
-                                    this.read()
 
-                                    }
-                                
-                        else {
-                            this.write()
-
-                        }
-                            
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.CONSTRUCTOR, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun read()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!!
-
-
-    var fileInputStream: InputStream = fileInputStreamFactory!!.getFileInputStreamInstance(StringUtil.getInstance()!!.EMPTY_STRING, this.FILE)!!
-
-
-    var dataInputStream: AbDataInputStream = AbDataInputStream(fileInputStream)
-
-
-    var fullScreen: Int = dataInputStream!!.readInt()
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+        do {
+            if (FileFactory.getInstance().isFile(self.FILE)) {
+                self.read()
+            } else {
+                self.write()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(fullScreen == 0)
-                        
-                                    {
-                                    this.setFullscreen(false)
 
-                                    }
-                                
-                             else 
+    fileprivate func read() {
+        let fileInputStreamFactory: FileStreamFactory! = FileStreamFactory.getInstance()
+        let fileInputStream: InputStream! = fileInputStreamFactory.getFileInputStreamInstance(StringUtil.getInstance().EMPTY_STRING, self.FILE)
+        let dataInputStream: AbDataInputStream! = AbDataInputStream(fileInputStream)
+        let fullScreen: Int32 = dataInputStream.readInt()
+        if (fullScreen == 0) {
+            self.setFullscreen(false)
+        } else if (fullScreen == 1) {
+            self.setFullscreen(true)
+        } else {
+            jThrow(JException("Exception", "Invalid FullScreen ActivityConfiguration"))
+        }
+        let progressBarView: Int32 = dataInputStream.readInt()
+        if (progressBarView == 0) {
+            self.setProgressBarView(false)
+        } else if (progressBarView == 1) {
+            self.setProgressBarView(true)
+        } else {
+            jThrow(JException("Exception", "Invalid ProgressBarView ActivityConfiguration"))
+        }
+        let showTitleBar: Int32 = dataInputStream.readInt()
+        if (showTitleBar == 0) {
+            self.setShowTitleBar(false)
+        } else if (showTitleBar == 1) {
+            self.setShowTitleBar(true)
+        } else {
+            jThrow(JException("Exception", "Invalid ShowTitleBar ActivityConfiguration"))
+        }
+        self.logUtil.putF(jstr("Read Configuration: ") + jstr(self.toString()), self, "read")
+    }
     
-                        if(fullScreen == 1)
-                        
-                                    {
-                                    this.setFullscreen(true)
 
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("Invalid FullScreen ActivityConfiguration")
-
-                        }
-                            
-
-    var progressBarView: Int = dataInputStream!!.readInt()
-
-
+    open func write() {
+        var closeable: Closeable! = NullCloseable.NULL_CLOSEABLE
+        do {
+            defer {
+            StreamUtil.getInstance().close(closeable)
+            }
+            self.logUtil.putF(jstr("Write Configuration: ") + jstr(self.toString()), self, "write")
+            let fileInputStreamFactory: FileStreamFactory! = FileStreamFactory.getInstance()
+            let fileOutputStream: OutputStream! = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil.getInstance().EMPTY_STRING, self.FILE)
+            let dataOutputStream: AbDataOutputStream! = AbDataOutputStream(fileOutputStream)
+            closeable = dataOutputStream
+            if (self.isFullscreen()) {
+                dataOutputStream.writeInt(1)
+            } else {
+                dataOutputStream.writeInt(0)
+            }
+            if (self.isProgressBarView()) {
+                dataOutputStream.writeInt(1)
+            } else {
+                dataOutputStream.writeInt(0)
+            }
+            if (self.isShowTitleBar()) {
+                dataOutputStream.writeInt(1)
+            } else {
+                dataOutputStream.writeInt(0)
+            }
+            dataOutputStream.flush()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(progressBarView == 0)
-                        
-                                    {
-                                    this.setProgressBarView(false)
 
-                                    }
-                                
-                             else 
+    open func update(_ gameFeature: Feature!) {
+        if (gameFeature === MainFeatureFactory.getInstance().FULL_SCREEN) {
+            let features: Features! = Features.getInstance()
+            if (features.isFeature(gameFeature)) {
+                if (!self.isFullscreen()) {
+                    self.setFullscreen(true)
+                    self.write()
+                }
+            } else {
+                if (self.isFullscreen()) {
+                    self.setFullscreen(false)
+                    self.write()
+                }
+            }
+        }
+    }
     
-                        if(progressBarView == 1)
-                        
-                                    {
-                                    this.setProgressBarView(true)
 
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("Invalid ProgressBarView ActivityConfiguration")
-
-                        }
-                            
-
-    var showTitleBar: Int = dataInputStream!!.readInt()
-
-
+    open func setFullscreen(_ fullscreen: Bool) {
+        self.fullscreen = fullscreen
+    }
     
-                        if(showTitleBar == 0)
-                        
-                                    {
-                                    this.setShowTitleBar(false)
 
-                                    }
-                                
-                             else 
+    @discardableResult open func isFullscreen() -> Bool {
+        return self.fullscreen
+    }
     
-                        if(showTitleBar == 1)
-                        
-                                    {
-                                    this.setShowTitleBar(true)
 
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("Invalid ShowTitleBar ActivityConfiguration")
-
-                        }
-                            
-this.logUtil!!.putF("Read Configuration: " +this.toString(), this, "read")
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun write()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var closeable: Closeable = NullCloseable.NULL_CLOSEABLE
-
-
-        try {
-            this.logUtil!!.putF("Write Configuration: " +this.toString(), this, "write")
-
-    var fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!!
-
-
-    var fileOutputStream: OutputStream = fileInputStreamFactory!!.getFileOutputStreamInstance(StringUtil.getInstance()!!.EMPTY_STRING, this.FILE)!!
-
-
-    var dataOutputStream: AbDataOutputStream = AbDataOutputStream(fileOutputStream)
-
-closeable= dataOutputStream
-
+    open func setShowTitleBar(_ showTitleBar: Bool) {
+        self.showTitleBar = showTitleBar
+    }
     
-                        if(this.isFullscreen())
-                        
-                                    {
-                                    dataOutputStream!!.writeInt(1)
 
-                                    }
-                                
-                        else {
-                            dataOutputStream!!.writeInt(0)
-
-                        }
-                            
-
+    @discardableResult open func isShowTitleBar() -> Bool {
+        return self.showTitleBar
+    }
     
-                        if(this.isProgressBarView())
-                        
-                                    {
-                                    dataOutputStream!!.writeInt(1)
 
-                                    }
-                                
-                        else {
-                            dataOutputStream!!.writeInt(0)
-
-                        }
-                            
-
+    open func setProgressBarView(_ progressBarView: Bool) {
+        self.progressBarView = progressBarView
+    }
     
-                        if(this.isShowTitleBar())
-                        
-                                    {
-                                    dataOutputStream!!.writeInt(1)
 
-                                    }
-                                
-                        else {
-                            dataOutputStream!!.writeInt(0)
-
-                        }
-                            
-dataOutputStream!!.flush()
-} catch(e: Exception)
-            {
-
-
-
-                            throw e
-}
-
-         finally {
-            StreamUtil.getInstance()!!.close(closeable)
-
-         }
-        
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-
+    @discardableResult open func isProgressBarView() -> Bool {
+        return self.progressBarView
+    }
     
-                        if(gameFeature == MainFeatureFactory.getInstance()!!.FULL_SCREEN)
-                        
-                                    {
-                                    
-    var features: Features = Features.getInstance()!!
 
-
-    
-                        if(features.isFeature(gameFeature))
-                        
-                                    {
-                                    
-    
-                        if(!this.isFullscreen())
-                        
-                                    {
-                                    this.setFullscreen(true)
-this.write()
-
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            
-    
-                        if(this.isFullscreen())
-                        
-                                    {
-                                    this.setFullscreen(false)
-this.write()
-
-                                    }
-                                
-
-                        }
-                            
-
-                                    }
-                                
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("isFullscreen: ")
+        stringBuffer.appendboolean(self.isFullscreen())
+        stringBuffer.append(" isProgressBarView: ")
+        stringBuffer.appendboolean(self.isProgressBarView())
+        stringBuffer.append(" isShowTitleBar: ")
+        stringBuffer.appendboolean(self.isShowTitleBar())
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun setFullscreen(fullscreen: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var fullscreen = fullscreen
-this.fullscreen= fullscreen
-}
-
-
-    open fun isFullscreen()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fullscreen
-}
-
-
-    open fun setShowTitleBar(showTitleBar: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var showTitleBar = showTitleBar
-this.showTitleBar= showTitleBar
-}
-
-
-    open fun isShowTitleBar()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.showTitleBar
-}
-
-
-    open fun setProgressBarView(progressBarView: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var progressBarView = progressBarView
-this.progressBarView= progressBarView
-}
-
-
-    open fun isProgressBarView()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.progressBarView
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("isFullscreen: ")
-stringBuffer!!.appendboolean(this.isFullscreen())
-stringBuffer!!.append(" isProgressBarView: ")
-stringBuffer!!.appendboolean(this.isProgressBarView())
-stringBuffer!!.append(" isShowTitleBar: ")
-stringBuffer!!.appendboolean(this.isShowTitleBar())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

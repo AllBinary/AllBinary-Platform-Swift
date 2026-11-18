@@ -1,72 +1,38 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.graphics.paint.PaintableInterface
 
+open class PaintableToImageUtil: JObject {
+    fileprivate static let instance: PaintableToImageUtil! = PaintableToImageUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.graphics.paint.PaintableInterface
-
-open public class PaintableToImageUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: PaintableToImageUtil = PaintableToImageUtil()
-
-                @Throws(Exception::class)
-            
-    open fun getImage(paintableInterface: PaintableInterface, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-var paintableInterface = paintableInterface
-var width = width
-var height = height
-
-    var image: Image = GameFeatureImageCacheFactory.getInstance()!!.get(PaintableToImageUtil.instance::class.toString()!!, width, height)!!
-
-
-    var graphics: Graphics = image.getGraphics()!!
-
-paintableInterface!!.paint(graphics)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
+    @discardableResult open class func getImage(_ paintableInterface: PaintableInterface!, _ width: Int32, _ height: Int32) -> Image! {
+        let image: Image! = GameFeatureImageCacheFactory.getInstance().get(JObject.className(PaintableToImageUtil.instance), width, height)
+        let graphics: Graphics! = image.getGraphics()
+        paintableInterface.paint(graphics)
+        return image
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-}
-                
-            
 

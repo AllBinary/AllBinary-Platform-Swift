@@ -25,7 +25,7 @@ open class NullABRunnable: ABRunnable {
     }
     
 
-    @discardableResult public static func getInstance() -> NullABRunnable! {
+    @discardableResult open class func getInstance() -> NullABRunnable! {
         return NullABRunnable.instance
     }
     

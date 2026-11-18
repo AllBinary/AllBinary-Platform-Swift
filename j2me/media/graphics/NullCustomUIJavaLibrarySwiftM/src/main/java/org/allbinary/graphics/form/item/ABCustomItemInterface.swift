@@ -1,43 +1,15 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-
-interface ABCustomItemInterface {
-        
-
-    open fun getMinimumWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int
-
-    open fun getMinimumHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int
-
-    open fun getLabel()
-        //nullable = true from not(false or (false and true)) = true
-: String
-
-    open fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun paintUnselected(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
+public protocol ABCustomItemInterface: AnyObject {
+    @discardableResult func getMinimumWidth() -> Int32
+    @discardableResult func getMinimumHeight() -> Int32
+    @discardableResult func getLabel() -> String!
+    func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32)
+    func paintUnselected(_ graphics: Graphics!, _ x: Int32, _ y: Int32)
 }
-                
-            
+
 

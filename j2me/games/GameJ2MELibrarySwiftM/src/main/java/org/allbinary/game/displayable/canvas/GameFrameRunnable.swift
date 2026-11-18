@@ -1,85 +1,59 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.displayable.GameTickDisplayInfoSingleton
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.time.GameTickTimeDelayHelper
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
 
+open class GameFrameRunnable: GameRunnable {
+    public var logUtil: LogUtil! = nil
+    fileprivate var gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton! = nil
+    fileprivate var allBinaryGameCanvas: AllBinaryGameCanvas! = nil
+    fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.displayable.GameTickDisplayInfoSingleton
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.time.GameTickTimeDelayHelper
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-
-open public class GameFrameRunnable : GameRunnable {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!!
-
-    private val allBinaryGameCanvas: AllBinaryGameCanvas
-public constructor (allBinaryGameCanvas: AllBinaryGameCanvas){
-var allBinaryGameCanvas = allBinaryGameCanvas
-this.allBinaryGameCanvas= allBinaryGameCanvas
-}
-
-
-    private val gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!!
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var allBinaryGameCanvas: AllBinaryGameCanvas = this.allBinaryGameCanvas
-
-allBinaryGameCanvas!!.getLoopTimeHelperP()!!.setStartTime(this.gameTickTimeDelayHelper!!.setStartTime())
-this.gameTickDisplayInfoSingleton!!.update()
-allBinaryGameCanvas!!.processGame()
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()
     
-                        if(!allBinaryGameCanvas!!.isRunning() || allBinaryGameCanvas!!.isPaused())
-                        
-                                    {
-                                    allBinaryGameCanvas!!.notifyDonePainting()
+    self.gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()
+    }
+    
 
-                                    }
-                                
-} catch(e: Exception)
-            {
+    public init(_ allBinaryGameCanvas: AllBinaryGameCanvas!) {
+        super.init()
+        self.initFields()
+        self.allBinaryGameCanvas = allBinaryGameCanvas
+    }
+    
 
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.RUN, e)
+    open override func run() {
+        do {
+            let allBinaryGameCanvas: AllBinaryGameCanvas! = self.allBinaryGameCanvas
+            allBinaryGameCanvas.getLoopTimeHelperP().setStartTime(self.gameTickTimeDelayHelper.setStartTime())
+            self.gameTickDisplayInfoSingleton.update()
+            allBinaryGameCanvas.processGame()
+            if (!allBinaryGameCanvas.isRunning() || allBinaryGameCanvas.isPaused()) {
+                allBinaryGameCanvas.notifyDonePainting()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

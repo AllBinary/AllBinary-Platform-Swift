@@ -22,7 +22,7 @@ open class LogUtil: JObject {
     fileprivate static let instance: LogUtil! = LogUtil()
     
 
-    @discardableResult public static func getInstance() -> LogUtil! {
+    @discardableResult open class func getInstance() -> LogUtil! {
         return LogUtil.instance
     }
     

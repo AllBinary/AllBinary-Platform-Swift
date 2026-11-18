@@ -1,98 +1,48 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.io.file.AbFile
 
+open class DataOutputStreamFactory: JObject {
+    fileprivate static let instance: DataOutputStreamFactory! = DataOutputStreamFactory()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> DataOutputStreamFactory! {
+        return DataOutputStreamFactory.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.io.file.AbFile
+    @discardableResult open func getInstanceForAbFile(_ file: AbFile!) -> AbDataOutputStream! {
+        let idFileOutputStream: AbFileOutputStream! = AbFileOutputStream.createFromAbFile(file)
+        let idOutData: AbDataOutputStream! = AbDataOutputStream(idFileOutputStream)
+        return idOutData
+    }
+    
 
-open public class DataOutputStreamFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: DataOutputStreamFactory = DataOutputStreamFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DataOutputStreamFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DataOutputStreamFactory.instance
+    @discardableResult open func getInstance(_ filePath: String!, _ fileName: String!) -> AbDataOutputStream! {
+        let fileStreamFactory: FileStreamFactory! = FileStreamFactory.getInstance()
+        let fileOutputStream: AbFileOutputStream! = fileStreamFactory.getFileOutputStreamInstance(filePath, fileName)
+        let idOutData: AbDataOutputStream! = AbDataOutputStream(fileOutputStream)
+        return idOutData
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    open fun getInstanceForAbFile(file: AbFile)
-        //nullable = true from not(false or (false and false)) = true
-: AbDataOutputStream{
-    //var file = file
-
-    var idFileOutputStream: AbFileOutputStream = AbFileOutputStream.createFromAbFile(file)!!
-
-
-    var idOutData: AbDataOutputStream = AbDataOutputStream(idFileOutputStream)
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return idOutData
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getInstance(filePath: String, fileName: String)
-        //nullable =  from not(true or (false and false)) = 
-: AbDataOutputStream{
-    //var filePath = filePath
-    //var fileName = fileName
-
-    var fileStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!!
-
-
-    var fileOutputStream: AbFileOutputStream = fileStreamFactory!!.getFileOutputStreamInstance(filePath, fileName)!!
-
-
-    var idOutData: AbDataOutputStream = AbDataOutputStream(fileOutputStream)
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return idOutData
-}
-
-
-}
-                
-            
 

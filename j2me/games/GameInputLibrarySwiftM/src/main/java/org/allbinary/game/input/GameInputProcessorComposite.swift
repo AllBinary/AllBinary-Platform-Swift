@@ -1,87 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class GameInputProcessorComposite: PlayerGameInput {
+    fileprivate var name: String! = nil
+    fileprivate var gameInputProcessorInterface: GameInputProcessorInterface! = nil
+    fileprivate var NAME_LABEL: String! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    self.NAME_LABEL = " GameInputProcessorInterface: "
+    }
+    
 
+    public init(_ name: String!, _ gameInputProcessorInterface: GameInputProcessorInterface!) {
+        super.init(BasicArrayListD(), BasicArrayListD(), -1)
+        self.initFields()
+        self.name = name
+        self.gameInputProcessorInterface = gameInputProcessorInterface
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    open override func update() {
+        do {
+            let list: BasicArrayList! = self.getGameKeyEventList()
+            self.gameInputProcessorInterface.onInput(list)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-open public class GameInputProcessorComposite : PlayerGameInput {
-        
-
-    private val name: String
-
-    private val gameInputProcessorInterface: GameInputProcessorInterface
-public constructor (name: String, gameInputProcessorInterface: GameInputProcessorInterface)                        
-
-                            : super(BasicArrayListD(), BasicArrayListD(),  -1){
-var name = name
-var gameInputProcessorInterface = gameInputProcessorInterface
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.name= name
-this.gameInputProcessorInterface= gameInputProcessorInterface
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append(super.toString()).append(self.NAME_LABEL).append(self.name).toString()
+    }
 }
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var list: BasicArrayList = this.getGameKeyEventList()!!
-
-this.gameInputProcessorInterface!!.onInput(list)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.UPDATE, e)
-}
-
-}
-
-
-    private val NAME_LABEL: String = " GameInputProcessorInterface: "
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append(super.toString())!!.append(this.NAME_LABEL)!!.append(this.name)!!.toString()
-}
-
-
-}
-                
-            
 

@@ -1,151 +1,97 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.physics.movement
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.physics.movement
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.AllBinaryGameLayer
+// import org.allbinary.game.physics.velocity.BasicVelocityProperties
+// import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.math.BasicDecimal
+// import org.allbinary.logic.math.vector.AxisMathVectorUtil
+// import org.allbinary.math.AngleFactory
 
+open class NoZBasicConstantVelocityMovement: Movement, VelocityInterfaceCompositeInterface {
+    fileprivate var velocityProperties: BasicVelocityProperties! = nil
+    fileprivate var speedBasicDecimal: BasicDecimal! = nil
+    fileprivate var axisMathVectorUtil: AxisMathVectorUtil! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    self.speedBasicDecimal = BasicDecimal.ZERO_BIGDECIMAL
+    self.axisMathVectorUtil = AxisMathVectorUtil.getInstance()
+    }
+    
 
+    public init(_ basicDecimal: BasicDecimal!, _ velocityProperties: BasicVelocityProperties!) {
+        super.init()
+        self.initFields()
+        self.setSpeedBasicDecimal(basicDecimal)
+        self.velocityProperties = velocityProperties
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.AllBinaryGameLayer
-import org.allbinary.game.physics.velocity.BasicVelocityProperties
-import org.allbinary.game.physics.velocity.VelocityInterfaceCompositeInterface
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.math.BasicDecimal
-import org.allbinary.logic.math.vector.AxisMathVectorUtil
-import org.allbinary.math.AngleFactory
+    open override func `init`(_ speedBasicDecimal: BasicDecimal!, _ angle: Int32, _ otherAngle: Int32) {
+        self.speedBasicDecimal = speedBasicDecimal
+        let angleFactory: AngleFactory! = AngleFactory.getInstance()
+        self.velocityProperties.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory.getAt(angle), angleFactory.getAt(otherAngle))
+    }
+    
 
-open public class NoZBasicConstantVelocityMovement : Movement
-                , VelocityInterfaceCompositeInterface {
-        
+    open func moveOutsideRadius(_ layer: AllBinaryLayer!, _ radius: Int64, _ angle: Int32, _ otherAngle: Int32) {
+        let scaleFactorValue: Int32 = self.speedBasicDecimal.getScaledFactorValue()
+        let xVector: Int32 = Int32(truncatingIfNeeded: (self.axisMathVectorUtil.calculateX(radius, angle) / Int64(truncatingIfNeeded: scaleFactorValue)))
+        let yVector: Int32 = Int32(truncatingIfNeeded: (self.axisMathVectorUtil.calculateY(radius, angle) / Int64(truncatingIfNeeded: scaleFactorValue)))
+        layer.moveDXYZ(xVector, yVector, 0)
+    }
+    
 
-    private var velocityProperties: BasicVelocityProperties
+    open override func process(_ layer: AllBinaryGameLayer!) {
+        layer.moveDXYZ(self.velocityProperties.getVelocityXBasicDecimalP().getScaled(), self.velocityProperties.getVelocityYBasicDecimalP().getScaled(), 0)
+    }
+    
 
-    private var speedBasicDecimal: BasicDecimal = BasicDecimal.ZERO_BIGDECIMAL
+    @discardableResult open override func toString() -> String! {
+        return self.velocityProperties.toString()
+    }
+    
 
-    private val axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!!
-public constructor (basicDecimal: BasicDecimal, velocityProperties: BasicVelocityProperties){
-var basicDecimal = basicDecimal
-var velocityProperties = velocityProperties
-this.setSpeedBasicDecimal(basicDecimal)
-this.velocityProperties= velocityProperties
+    open override func stop() {
+        self.velocityProperties.zero()
+    }
+    
+
+    @discardableResult open func getVelocityProperties() -> BasicVelocityProperties! {
+        return self.velocityProperties
+    }
+    
+
+    open func setVelocityProperties(_ velocityProperties: BasicVelocityProperties!) {
+        self.velocityProperties = velocityProperties
+    }
+    
+
+    open func setSpeedBasicDecimal(_ speedBasicDecimal: BasicDecimal!) {
+        self.speedBasicDecimal = speedBasicDecimal
+    }
+    
+
+    @discardableResult open func getSpeedBasicDecimal() -> BasicDecimal! {
+        return self.speedBasicDecimal
+    }
 }
-
-
-    override fun init(speedBasicDecimal: BasicDecimal, angle: Int, otherAngle: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var speedBasicDecimal = speedBasicDecimal
-var angle = angle
-var otherAngle = otherAngle
-this.speedBasicDecimal= speedBasicDecimal
-
-    var angleFactory: AngleFactory = AngleFactory.getInstance()!!
-
-this.velocityProperties!!.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory!!.getAt(angle), angleFactory!!.getAt(otherAngle))
-}
-
-
-    open fun moveOutsideRadius(layer: AllBinaryLayer, radius: Long, angle: Int, otherAngle: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layer = layer
-var radius = radius
-var angle = angle
-var otherAngle = otherAngle
-
-    var scaleFactorValue: Int = this.speedBasicDecimal!!.getScaledFactorValue()
-
-
-    var xVector: Int = (this.axisMathVectorUtil!!.calculateX(radius, angle) /scaleFactorValue).toInt()
-
-
-    var yVector: Int = (this.axisMathVectorUtil!!.calculateY(radius, angle) /scaleFactorValue).toInt()
-
-layer.moveDXYZ(xVector, yVector, 0)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun process(layer: AllBinaryGameLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layer = layer
-layer.moveDXYZ(this.velocityProperties!!.getVelocityXBasicDecimalP()!!.getScaled(), this.velocityProperties!!.getVelocityYBasicDecimalP()!!.getScaled(), 0)
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.velocityProperties!!.toString()
-}
-
-
-    override fun stop()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.velocityProperties!!.zero()
-}
-
-
-    override fun getVelocityProperties()
-        //nullable = true from not(false or (false and true)) = true
-: BasicVelocityProperties{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.velocityProperties
-}
-
-
-    open fun setVelocityProperties(velocityProperties: BasicVelocityProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-var velocityProperties = velocityProperties
-this.velocityProperties= velocityProperties
-}
-
-
-    open fun setSpeedBasicDecimal(speedBasicDecimal: BasicDecimal)
-        //nullable = true from not(false or (false and false)) = true
-{
-var speedBasicDecimal = speedBasicDecimal
-this.speedBasicDecimal= speedBasicDecimal
-}
-
-
-    open fun getSpeedBasicDecimal()
-        //nullable = true from not(false or (false and true)) = true
-: BasicDecimal{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.speedBasicDecimal
-}
-
-
-}
-                
-            
 

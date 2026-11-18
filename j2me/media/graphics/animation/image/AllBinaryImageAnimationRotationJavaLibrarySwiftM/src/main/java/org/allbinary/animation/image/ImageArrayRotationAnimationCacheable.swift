@@ -1,70 +1,41 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.util.cache.CacheableInterface
 
+open class ImageArrayRotationAnimationCacheable: AdjustedImageArrayRotationAnimation, CacheableInterface {
+    
 
+    public init(_ anyType: JObject!, _ animationBehavior: AnimationBehavior!) {
+        super.init(((anyType as! ImageArrayRotationAnimationInfo)).getImageArray(), ((anyType as! ImageArrayRotationAnimationInfo)).getAngleInfoP(), ((anyType as! ImageArrayRotationAnimationInfo)).getTotalAngle(), ((anyType as! ImageArrayRotationAnimationInfo)).getDx(), ((anyType as! ImageArrayRotationAnimationInfo)).getDy(), animationBehavior)
+    }
+    
 
+    @discardableResult open func getKey() -> JObject! {
+        return NullUtil.getInstance().NULL_OBJECT
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.util.cache.CacheableInterface
-
-open public class ImageArrayRotationAnimationCacheable : AdjustedImageArrayRotationAnimation
-                , CacheableInterface {
-        
-public constructor (anyType: Any, animationBehavior: AnimationBehavior)                        
-
-                            : super((anyType as ImageArrayRotationAnimationInfo).getImageArray(), (anyType as ImageArrayRotationAnimationInfo).getAngleInfoP(), (anyType as ImageArrayRotationAnimationInfo).getTotalAngle(), (anyType as ImageArrayRotationAnimationInfo).getDx(), (anyType as ImageArrayRotationAnimationInfo).getDy(), animationBehavior){
-    //var anyType = anyType
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open override func toString() -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
 }
-
-
-    override fun getKey()
-        //nullable = true from not(false or (false and true)) = true
-: Any{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_OBJECT
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-}
-                
-            
 

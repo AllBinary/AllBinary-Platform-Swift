@@ -25,7 +25,7 @@ open class J2SEMath: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> J2SEMath! {
+    @discardableResult open class func getInstance() -> J2SEMath! {
         return J2SEMath.instance
     }
     

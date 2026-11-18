@@ -1,98 +1,62 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io
+import J2SEForSwiftLibrary
+// import java.io.BufferedReader
+// import java.io.FileReader
+// import org.allbinary.logic.io.file.AbFile
+// import org.allbinary.logic.io.file.AbFileNativeUtil
 
+open class BufferedLineReader: JObject {
+    fileprivate var tmpIn: BufferedReader! = nil
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ file: AbFile!) {
+        super.init()
+        self.initFields()
+        self.tmpIn = BufferedReader(FileReader(AbFileNativeUtil.get(file)))
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.BufferedReader
-import java.io.FileReader
-import org.allbinary.logic.io.file.AbFile
-import org.allbinary.logic.io.file.AbFileNativeUtil
+    open func readUpToLines(_ readAheadIndex: Int64) {
+    }
+    
 
-open public class BufferedLineReader
-            : Object
-         {
-        
+    @discardableResult open func readLine() -> String! {
+        return self.tmpIn.readLine()
+    }
+    
 
-    private val tmpIn: BufferedReader
-public constructor (file: AbFile)
-            : super()
-        {
-var file = file
-this.tmpIn= BufferedReader(FileReader(AbFileNativeUtil.get(file)))
+    @discardableResult open func ready() -> Bool {
+        return self.tmpIn.ready()
+    }
+    
+
+    @discardableResult open func getSize() -> Int64 {
+        return 0
+    }
+    
+
+    @discardableResult open func getCurrent() -> Int32 {
+        return 0
+    }
 }
-
-
-    open fun readUpToLines(readAheadIndex: Long)
-        //nullable = true from not(false or (false and false)) = true
-{
-var readAheadIndex = readAheadIndex
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun readLine()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tmpIn!!.readLine()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun ready()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tmpIn!!.ready()
-}
-
-
-    open fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun getCurrent()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

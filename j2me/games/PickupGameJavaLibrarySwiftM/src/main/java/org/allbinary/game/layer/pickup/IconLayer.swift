@@ -1,89 +1,59 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.pickup
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.pickup
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.NullAnimationFactory
+// import org.allbinary.graphics.PointFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.view.ViewPosition
 
+open class IconLayer: AllBinaryLayer {
+    public static let NULL_ICON_LAYER: IconLayer! = IconLayer(NullAnimationFactory.getFactoryInstance().getInstance(0), 0, 0)
+    fileprivate var animationInterface: Animation! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ animationInterface: Animation!, _ width: Int32, _ height: Int32) {
+        super.init(StringUtil.getInstance().EMPTY_STRING, Rectangle(PointFactory.getInstance().ZERO_ZERO, width, height), ViewPosition.getInstanceD())
+        self.initFields()
+        self.animationInterface = animationInterface
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
-import org.allbinary.animation.NullAnimationFactory
-import org.allbinary.graphics.PointFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.view.ViewPosition
+    open override func paint(_ graphics: Graphics!) {
+        self.animationInterface.paintXY(graphics, self.x, self.y)
+    }
+    
 
-open public class IconLayer : AllBinaryLayer {
-        
-companion object {
-            
-    val NULL_ICON_LAYER: IconLayer = IconLayer(NullAnimationFactory.getFactoryInstance()!!.getInstance(0), 0, 0)
+    open override func paintThreed(_ graphics: Graphics!) {
+        self.animationInterface.paintThreedXYZ(graphics, self.x, self.y, self.z)
+    }
+    
 
-        }
-            
-    private var animationInterface: Animation
-public constructor (animationInterface: Animation, width: Int, height: Int)                        
-
-                            : super(StringUtil.getInstance()!!.EMPTY_STRING, Rectangle(PointFactory.getInstance()!!.ZERO_ZERO, width, height), ViewPosition.getInstanceD()){
-var animationInterface = animationInterface
-var width = width
-var height = height
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.animationInterface= animationInterface
+    @discardableResult open func getAnimationInterface() -> Animation! {
+        return self.animationInterface
+    }
 }
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.animationInterface!!.paintXY(graphics, this.x, this.y)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.animationInterface!!.paintThreedXYZ(graphics, this.x, this.y, this.z)
-}
-
-
-    open fun getAnimationInterface()
-        //nullable = true from not(false or (false and true)) = true
-: Animation{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface
-}
-
-
-}
-                
-            
 

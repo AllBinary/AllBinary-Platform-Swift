@@ -1,188 +1,100 @@
+// Generated Code Do Not Modify
+// package javax.microedition.lcdui
 
-        /* Generated Code Do Not Modify */
-        package javax.microedition.lcdui
+import J2SEForSwiftLibrary
+// import java.util.Stack
 
+open class NullCanvas: Canvas {
+    public static let NULL_CANVAS: NullCanvas! = NullCanvas()
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open override func setFullScreenMode(_ mode: Bool) {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.util.Stack
+    open override func sizeChanged(_ w: Int32, _ h: Int32) {
+    }
+    
 
-open public class NullCanvas : Canvas {
-        
-companion object {
-            
-    val NULL_CANVAS: NullCanvas = NullCanvas()
+    @discardableResult open func getCommandStack() -> Stack! {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-        }
-            public constructor (){
+    @discardableResult open func isCommand(_ command: Command!) -> Bool {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open override func addCommand(_ command: Command!) {
+    }
+    
+
+    open override func removeCommand(_ command: Command!) {
+    }
+    
+
+    open func removeAllCommands() {
+    }
+    
+
+    open override func setCommandListener(_ l: CommandListener!) {
+    }
+    
+
+    @discardableResult open func getCustomCommandListener() -> CommandListener! {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    @discardableResult open func isPaused() -> Bool {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open func removePauseCommand() {
+    }
+    
+
+    open func pause() {
+    }
+    
+
+    open func unPause() {
+    }
+    
+
+    open func process() {
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+    }
+    
+
+    open func destroy() {
+    }
+    
+
+    open func setPaused(_ isPaused: Bool) {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open override func pointerDragged(_ x: Int32, _ y: Int32) {
+    }
+    
+
+    open override func pointerPressed(_ x: Int32, _ y: Int32) {
+    }
+    
+
+    open override func pointerReleased(_ x: Int32, _ y: Int32) {
+    }
 }
-
-
-    override fun setFullScreenMode(mode: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var mode = mode
-}
-
-
-    override fun sizeChanged(w: Int, h: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var w = w
-var h = h
-}
-
-
-    open fun getCommandStack()
-        //nullable = true from not(false or (false and true)) = true
-: Stack<Any>{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun isCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var command = command
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun addCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-{
-var command = command
-}
-
-
-    override fun removeCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-{
-var command = command
-}
-
-
-    open fun removeAllCommands()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun setCommandListener(l: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var l = l
-}
-
-
-    open fun getCustomCommandListener()
-        //nullable = true from not(false or (false and true)) = true
-: CommandListener{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun isPaused()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun removePauseCommand()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun pause()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun unPause()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun destroy()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun setPaused(isPaused: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var isPaused = isPaused
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun pointerDragged(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-}
-
-
-    override fun pointerPressed(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-}
-
-
-    override fun pointerReleased(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-var y = y
-}
-
-
-}
-                
-            
 

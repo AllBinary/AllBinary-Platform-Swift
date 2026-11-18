@@ -1,53 +1,33 @@
+// Generated Code Do Not Modify
+// package org.allbinary.animation.vector
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.vector
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColorFactory
 
+open class ARectangleFilledAnimation: RectangleFilledAnimation {
+    public var x: Int32 = 0
+    public var y: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.x = 0
+    self.y = 0
+    }
+    
 
+    public init() {
+        super.init(0, 0, BasicColorFactory.getInstance().BLACK)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColorFactory
+    open override func nextFrame() {
+    }
+    
 
-open public class ARectangleFilledAnimation : RectangleFilledAnimation {
-        
-
-    var x: Int= 0
-
-    var y: Int= 0
-public constructor ()                        
-
-                            : super(0, 0, BasicColorFactory.getInstance()!!.BLACK){
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    open override func paintXY(_ graphics: Graphics!, _ unusedX: Int32, _ unusedY: Int32) {
+        super.paintXY(graphics, self.x, self.y)
+    }
 }
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paintXY(graphics: Graphics, unusedX: Int, unusedY: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var unusedX = unusedX
-    //var unusedY = unusedY
-super.paintXY(graphics, this.x, this.y)
-}
-
-
-}
-                
-            
 

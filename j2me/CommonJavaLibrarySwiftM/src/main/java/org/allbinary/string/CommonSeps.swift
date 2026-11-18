@@ -85,7 +85,7 @@ open class CommonSeps: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CommonSeps! {
+    @discardableResult open class func getInstance() -> CommonSeps! {
         return CommonSeps.instance
     }
 }

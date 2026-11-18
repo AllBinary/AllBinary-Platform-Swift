@@ -1,95 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ *
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ *
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ *
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                * 
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                * 
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                * 
-                *  Created By: Travis Berthelot 
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.game.score.displayable.HighScoreTextBox
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+open class SaveHighScoreRunnable: JObject, Runnable {
+    fileprivate var progressCanvas: ProgressCanvas! = nil
+    fileprivate var isLast: Bool = false
+    fileprivate var textBox: HighScoreTextBox! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Runnable
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.score.displayable.HighScoreTextBox
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-
-open public class SaveHighScoreRunnable
-            : Object
-        
-                , Runnable {
-        
-
-    private val progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-    private val isLast: Boolean
-
-    private val textBox: HighScoreTextBox
- constructor (isLast: Boolean, textBox: HighScoreTextBox)
-            : super()
-        {
-    //var isLast = isLast
-    //var textBox = textBox
-this.isLast= isLast
-this.textBox= textBox
-}
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-
-        try {
-            
+    private func initFields() {
+    self.progressCanvas = ProgressCanvasFactory.getInstance()
     
-                        if(this.isLast)
-                        
-                                    {
-                                    this.textBox!!.submit()
+    
+    }
+    
 
-                                    }
-                                
-                        else {
-                            this.textBox!!.saveHighScore()
+    public init(_ isLast: Bool, _ textBox: HighScoreTextBox!) {
+        super.init()
+        self.initFields()
+        self.isLast = isLast
+        self.textBox = textBox
+    }
+    
 
-                        }
-                            
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-logUtil!!.put(commonStrings!!.EXCEPTION, this, "run", e)
-this.progressCanvas!!.end()
+    open func run() {
+        let logUtil: LogUtil! = LogUtil.getInstance()
+        do {
+            if (self.isLast) {
+                self.textBox.submit()
+            } else {
+                self.textBox.saveHighScore()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

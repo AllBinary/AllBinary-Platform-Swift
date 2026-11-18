@@ -1,62 +1,47 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.paint.Paintable
 
+open class FormPaintable: Paintable {
+    fileprivate var form: PaintableForm! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ form: PaintableForm!) {
+        super.init()
+        self.initFields()
+        self.form = form
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.paint.Paintable
+    open override func paint(_ graphics: Graphics!) {
+        self.form.paint(graphics)
+    }
+    
 
-open public class FormPaintable : Paintable {
-        
-
-    private val form: PaintableForm
-public constructor (form: PaintableForm){
-var form = form
-this.form= form
+    @discardableResult open func getForm() -> PaintableForm! {
+        return self.form
+    }
 }
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.form.paint(graphics)
-}
-
-
-    open fun getForm()
-        //nullable = true from not(false or (false and true)) = true
-: PaintableForm{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.form
-}
-
-
-}
-                
-            
 

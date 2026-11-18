@@ -1,120 +1,76 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.identification
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.identification
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class CompositeGroup: JObject {
+    public var logUtil: LogUtil! = nil
+    fileprivate var groupInterface: Group! = nil
+    fileprivate var list: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class CompositeGroup
-            : Object
-         {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val groupInterface: Group
-
-    private val list: BasicArrayList = BasicArrayListD()
-public constructor (groupInterface: Group)
-            : super()
-        {
-    //var groupInterface = groupInterface
-this.groupInterface= groupInterface
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list.clear()
-}
-
-
-    open fun add(groupInterface: Group)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var groupInterface = groupInterface
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
-    var groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!!
-
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(groupCommonFactory!!.ADDING_LABEL)
-stringBuffer!!.append(groupInterface!!.toString())
-stringBuffer!!.append(groupCommonFactory!!.TO_LABEL)
-stringBuffer!!.append(StringUtil.getInstance()!!.toString(this.groupInterface))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, commonStrings!!.ADD)
-this.list.add(groupInterface)
-}
-
-
-    open fun isInGroup(groupInterface: Group)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var groupInterface = groupInterface
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(this.list.contains(groupInterface))
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
+    self.list = BasicArrayListD()
+    }
+    
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    public init(_ groupInterface: Group!) {
+        super.init()
+        self.initFields()
+        self.groupInterface = groupInterface
+    }
+    
 
-                        }
-                            
+    open func clear() {
+        self.list.clear()
+    }
+    
+
+    open func add(_ groupInterface: Group!) {
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        let groupCommonFactory: GroupCommonFactory! = GroupCommonFactory.getInstance()
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(groupCommonFactory.ADDING_LABEL)
+        stringBuffer.append(groupInterface.toString())
+        stringBuffer.append(groupCommonFactory.TO_LABEL)
+        stringBuffer.append(StringUtil.getInstance().toString(self.groupInterface))
+        self.logUtil.putF(stringBuffer.toString(), self, commonStrings.ADD)
+        self.list.add(groupInterface)
+    }
+    
+
+    @discardableResult open func isInGroup(_ groupInterface: Group!) -> Bool {
+        if (self.list.contains(groupInterface)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open func getGroup() -> Group! {
+        return self.groupInterface
+    }
 }
-
-
-    open fun getGroup()
-        //nullable = true from not(false or (false and true)) = true
-: Group{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.groupInterface
-}
-
-
-}
-                
-            
 

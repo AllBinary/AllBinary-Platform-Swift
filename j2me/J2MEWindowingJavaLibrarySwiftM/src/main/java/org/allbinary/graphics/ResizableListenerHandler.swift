@@ -25,7 +25,7 @@ open class ResizableListenerHandler: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ResizableListenerHandler! {
+    @discardableResult open class func getInstance() -> ResizableListenerHandler! {
         return ResizableListenerHandler.instance
     }
     

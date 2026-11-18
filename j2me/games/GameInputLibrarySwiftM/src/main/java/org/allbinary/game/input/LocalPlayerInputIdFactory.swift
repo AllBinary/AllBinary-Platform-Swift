@@ -1,243 +1,135 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.analog.AnalogLocationInputFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
 
+open class LocalPlayerInputIdFactory: JObject {
+    fileprivate static let instance: LocalPlayerInputIdFactory! = LocalPlayerInputIdFactory()
+    public var logUtil: LogUtil! = nil
+    public var MAX_NUMBER_OF_PLAYERS: Int32 = 0
+    fileprivate var MAX_FAST_DEVICEID: Int32 = 0
+    fileprivate var deviceIdToplayerId: JArray<Int32>! = nil
+    fileprivate var playerIdToDeviceId: JArray<Int32>! = nil
+    fileprivate var playersInPlay: JArray<Bool>! = nil
+    fileprivate var totalDevicesMapped: Int32 = 0
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.MAX_NUMBER_OF_PLAYERS = 6
+    self.MAX_FAST_DEVICEID = 65
+    self.deviceIdToplayerId = JArray<Int32>(self.MAX_FAST_DEVICEID, 0)
+    self.playerIdToDeviceId = JArray<Int32>(self.MAX_NUMBER_OF_PLAYERS, 0)
+    self.playersInPlay = JArray<Bool>(self.MAX_NUMBER_OF_PLAYERS, false)
+    self.totalDevicesMapped = 0
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.analog.AnalogLocationInputFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-
-open public class LocalPlayerInputIdFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LocalPlayerInputIdFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocalPlayerInputIdFactory.instance
-}
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+        do {
+            var index: Int32 = self.deviceIdToplayerId.length &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            self.deviceIdToplayerId[index] = -1
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val MAX_NUMBER_OF_PLAYERS: Int = 6
-
-    private val MAX_FAST_DEVICEID: Int = 65
-
-    private val deviceIdToplayerId: IntArray = IntArray(this.MAX_FAST_DEVICEID)
-
-    private val playerIdToDeviceId: IntArray = IntArray(this.MAX_NUMBER_OF_PLAYERS)
-
-    private val playersInPlay: BooleanArray = BooleanArray(this.MAX_NUMBER_OF_PLAYERS)
-
-    private var totalDevicesMapped: Int = 0
-private constructor ()
-            : super()
-        {
-
-
-
-
-                        for (index in this.deviceIdToplayerId!!.size -1 downTo 0)
-
-        {
-this.deviceIdToplayerId[index]=  -1
-}
-
-}
-
-
-    open fun getDeviceId(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var playerInputId = playerInputId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerIdToDeviceId[playerInputId]!!
-}
-
-
-    open fun getPlayerForDevice(deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var deviceId = deviceId
-
-    var index: Int= 0
-
-
+    }
     
-                        if(deviceId < this.MAX_FAST_DEVICEID)
-                        
-                                    {
-                                    
-    var playerInputId: Int = this.deviceIdToplayerId[deviceId]!!
 
-
+    @discardableResult open class func getInstance() -> LocalPlayerInputIdFactory! {
+        return LocalPlayerInputIdFactory.instance
+    }
     
-                        if(playerInputId !=  -1)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return playerInputId
 
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            
-
-
-
-                        for (index in this.totalDevicesMapped -1 downTo 0)
-
-        {
-
+    @discardableResult open func getDeviceId(_ playerInputId: Int32) -> Int32 {
+        return self.playerIdToDeviceId[playerInputId]
+    }
     
-                        if(this.playerIdToDeviceId[index] == deviceId)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return index
 
-                                    }
-                                
-}
-
-
-                        }
-                            
-index= this.totalDevicesMapped
-
+    @discardableResult open func getPlayerForDevice(_ deviceId: Int32) -> Int32 {
+        var index: Int32 = 0
+        if (deviceId < self.MAX_FAST_DEVICEID) {
+            let playerInputId: Int32 = self.deviceIdToplayerId[deviceId]
+            if (playerInputId != -1) {
+                return playerInputId
+            }
+        } else {
+            do {
+                index = self.totalDevicesMapped &- 1
+                while (index >= 0) {
+                    defer { index &-= 1 }
+                if (self.playerIdToDeviceId[index] == deviceId) {
+                    return index
+                }
+                }
+            }
+        }
+        index = self.totalDevicesMapped
+        if (deviceId < self.MAX_FAST_DEVICEID) {
+            self.deviceIdToplayerId[deviceId] = index
+        } else {
+            self.logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" beyond fast Id list").toString(), self, "getPlayerForDevice")
+        }
+        self.playerIdToDeviceId[index] = deviceId
+        AnalogLocationInputFactory.getInstance().addPlayer(self.totalDevicesMapped)
+        self.totalDevicesMapped &+= 1
+        self.logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" at: ").appendint(index).append(" Total: ").appendint(self.totalDevicesMapped).toString(), self, "getPlayerForDevice")
+        return index
+    }
     
-                        if(deviceId < this.MAX_FAST_DEVICEID)
-                        
-                                    {
-                                    this.deviceIdToplayerId[deviceId]= index
 
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF(StringMaker().
-                            append("Added DeviceId: ")!!.appendint(deviceId)!!.append(" beyond fast Id list")!!.toString(), this, "getPlayerForDevice")
-
-                        }
-                            
-this.playerIdToDeviceId[index]= deviceId
-AnalogLocationInputFactory.getInstance()!!.addPlayer(this.totalDevicesMapped)
-this.totalDevicesMapped++
-this.logUtil!!.putF(StringMaker().
-                            append("Added DeviceId: ")!!.appendint(deviceId)!!.append(" at: ")!!.appendint(index)!!.append(" Total: ")!!.appendint(this.totalDevicesMapped)!!.toString(), this, "getPlayerForDevice")
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return index
-}
-
-
-    open fun getTotalDevicesInPlay()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-    var total: Int = 0
-
-
-
-
-
-                        for (index in this.totalDevicesMapped -1 downTo 0)
-
-        {
-
+    @discardableResult open func getTotalDevicesInPlay() -> Int32 {
+        var total: Int32 = 0
+        do {
+            var index: Int32 = self.totalDevicesMapped &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (self.playersInPlay[index] == true) {
+                total &+= 1
+            }
+            }
+        }
+        return total
+    }
     
-                        if(this.playersInPlay[index] == true)
-                        
-                                    {
-                                    total++
 
-                                    }
-                                
+    @discardableResult open func isPlayerInPlay(_ playerInputId: Int32) -> Bool {
+        return self.playersInPlay[playerInputId]
+    }
+    
+
+    open func setPlayerInPlay(_ playerInputId: Int32) {
+        self.logUtil.putF(StringMaker().append("Setting PlayerInPlay with playerInputId: ").appendint(playerInputId).toString(), self, "setPlayerInPlay")
+        self.playersInPlay[playerInputId] = true
+    }
+    
+
+    open func setPlayerOutOfPlay(_ playerInputId: Int32) {
+        self.logUtil.putF(StringMaker().append("Setting PlayerOutOfPlay with playerInputId: ").appendint(playerInputId).toString(), self, "setPlayerOutOfPlay")
+        self.playersInPlay[playerInputId] = false
+    }
+    
+
+    @discardableResult open func getPlayersInPlay() -> JArray<Bool>! {
+        return self.playersInPlay
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return total
-}
-
-
-    open fun isPlayerInPlay(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var playerInputId = playerInputId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playersInPlay[playerInputId]!!
-}
-
-
-    open fun setPlayerInPlay(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerInputId = playerInputId
-this.logUtil!!.putF(StringMaker().
-                            append("Setting PlayerInPlay with playerInputId: ")!!.appendint(playerInputId)!!.toString(), this, "setPlayerInPlay")
-this.playersInPlay[playerInputId]= true
-}
-
-
-    open fun setPlayerOutOfPlay(playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerInputId = playerInputId
-this.logUtil!!.putF(StringMaker().
-                            append("Setting PlayerOutOfPlay with playerInputId: ")!!.appendint(playerInputId)!!.toString(), this, "setPlayerOutOfPlay")
-this.playersInPlay[playerInputId]= false
-}
-
-
-    open fun getPlayersInPlay()
-        //nullable = true from not(false or (false and true)) = true
-: BooleanArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playersInPlay
-}
-
-
-}
-                
-            
 

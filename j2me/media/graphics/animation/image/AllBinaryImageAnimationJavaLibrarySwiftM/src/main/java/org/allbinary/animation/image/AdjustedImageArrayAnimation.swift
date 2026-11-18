@@ -1,113 +1,71 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.AnimationBehavior
 
+open class AdjustedImageArrayAnimation: ImageArrayAnimation {
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.dx = 0
+    self.dy = 0
+    }
+    
 
+    public init(_ imageArray: JArray<Image?>!, _ dx: Int32, _ dy: Int32, _ animationBehavior: AnimationBehavior!) {
+        super.init(imageArray, animationBehavior)
+        self.initFields()
+        self.`init`(dx, dy)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.AnimationBehavior
+    open func `init`(_ dx: Int32, _ dy: Int32) {
+        self.setDx(dx)
+        self.setDy(dy)
+    }
+    
 
-open public class AdjustedImageArrayAnimation : ImageArrayAnimation {
-        
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        super.paintXY(graphics, x &+ self.dx, y &+ self.dy)
+    }
+    
 
-    private var dx: Int= 0
+    open override func setDx(_ dx: Int32) {
+        self.dx = dx
+    }
+    
 
-    private var dy: Int= 0
-public constructor (imageArray: Array<Image?>, dx: Int, dy: Int, animationBehavior: AnimationBehavior)                        
+    @discardableResult open override func getDx() -> Int32 {
+        return self.dx
+    }
+    
 
-                            : super(imageArray, animationBehavior){
-    //var imageArray = imageArray
-    //var dx = dx
-    //var dy = dy
-    //var animationBehavior = animationBehavior
+    open override func setDy(_ dy: Int32) {
+        self.dy = dy
+    }
+    
 
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.init(dx, dy)
+    @discardableResult open override func getDy() -> Int32 {
+        return self.dy
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun init(dx: Int, dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var dx = dx
-    //var dy = dy
-this.setDx(dx)
-this.setDy(dy)
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-super.paintXY(graphics, x +this.dx, y +this.dy)
-}
-
-
-    override fun setDx(dx: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dx = dx
-this.dx= dx
-}
-
-
-    override fun getDx()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx
-}
-
-
-    override fun setDy(dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dy = dy
-this.dy= dy
-}
-
-
-    override fun getDy()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy
-}
-
-
-}
-                
-            
 

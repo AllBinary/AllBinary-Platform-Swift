@@ -1,173 +1,110 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2002 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.displayable.screen
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2002 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.displayable.screen
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Form
+// import javax.microedition.lcdui.NullCommandListener
+// import org.allbinary.canvas.Processor
+// import org.allbinary.game.displayable.canvas.MenuListener
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.displayable.command.MyCommandInterface
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABStack
 
+open class CommandForm: Form, MyCommandInterface, MenuListener {
+    fileprivate static var NULL_COMMAND_FORM: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var repaintProcessor: Processor! = nil
+    fileprivate var commandStack: ABStack! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Form
-import javax.microedition.lcdui.NullCommandListener
-import org.allbinary.canvas.Processor
-import org.allbinary.game.displayable.canvas.MenuListener
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.displayable.command.MyCommandInterface
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABStack
-
-open public class CommandForm : Form
-                , MyCommandInterface
-                , MenuListener {
-        
-companion object {
-            
-    private var NULL_COMMAND_FORM: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullCommandForm()
-        //nullable = true from not(false or (false and true)) = true
-: CommandForm{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.repaintProcessor = ScreenRepaintProcessorFactory.getInstance().create(self)
     
-                        if(CommandForm.NULL_COMMAND_FORM == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    CommandForm.NULL_COMMAND_FORM= CommandForm(NullCommandListener.NULL_COMMAND_LISTENER, StringUtil.getInstance()!!.EMPTY_STRING, BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandForm.NULL_COMMAND_FORM as CommandForm
-}
-
-
+    @discardableResult open class func getNullCommandForm() -> CommandForm! {
+        if (CommandForm.NULL_COMMAND_FORM === NullUtil.getInstance().NULL_OBJECT) {
+            CommandForm.NULL_COMMAND_FORM = CommandForm(NullCommandListener.NULL_COMMAND_LISTENER, StringUtil.getInstance().EMPTY_STRING, BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
+        return (CommandForm.NULL_COMMAND_FORM as! CommandForm)
+    }
+    
 
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    public init(_ commandListener: CommandListener!, _ formTitle: String!, _ backgrounBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(formTitle)
+        self.initFields()
+        self.commandStack = StdUtil.getInstance().createStack()
+        do {
+            self.repaintProcessor.process()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-    private val repaintProcessor: Processor = ScreenRepaintProcessorFactory.getInstance()!!.create(this)!!
+    open func initCommands(_ cmdListener: CommandListener!) {
+    }
+    
 
-    private var commandStack: ABStack<Any>
-public constructor (commandListener: CommandListener, formTitle: String, backgrounBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
+    open override func `open`() {
+        self.logUtil.putF(self.commonStrings.START, self, "open")
+    }
+    
 
-                            : super(formTitle){
-var commandListener = commandListener
-var formTitle = formTitle
-var backgrounBasicColor = backgrounBasicColor
-var foregroundBasicColor = foregroundBasicColor
+    open override func close() {
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CLOSE)
+    }
+    
 
+    open func update() {
+        self.repaintProcessor.process()
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.commandStack= StdUtil.getInstance()!!.createStack()!!
+    @discardableResult open override func getSourceId() -> Int32 {
+        return 0
+    }
+    
 
-        try {
-            this.repaintProcessor!!.process()
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.CONSTRUCTOR, e)
+    open override func addCommand(_ command: Command!) {
+        self.commandStack.push(command)
+        super.addCommand(command)
+    }
+    
+
+    open override func removeAllCommands() {
+        let size: Int32 = self.commandStack.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            super.removeCommand((self.commandStack.pop() as! Command))
+            }
+        }
+    }
 }
-
-}
-
-
-    open fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var cmdListener = cmdListener
-}
-
-
-    override fun open()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, "open")
-}
-
-
-    override fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CLOSE)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.repaintProcessor!!.process()
-}
-
-
-    override fun getSourceId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    override fun addCommand(command: Command)
-        //nullable = true from not(false or (false and false)) = true
-{
-var command = command
-this.commandStack!!.push(command)
-super.addCommand(command)
-}
-
-
-    override fun removeAllCommands()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var size: Int = this.commandStack!!.size
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-super.removeCommand(this.commandStack!!.pop() as Command)
-}
-
-}
-
-
-}
-                
-            
 

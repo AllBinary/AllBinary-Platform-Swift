@@ -1,106 +1,69 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.util.CircularIndexUtil
 
+open class HighScoresHelper2: HighScoresHelperBase {
+    fileprivate var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var selectedHighScores: HighScores! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.circularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)
+    self.selectedHighScores = NullHighScoresSingletonFactory.getInstance()
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.CircularIndexUtil
-
-open public class HighScoresHelper2 : HighScoresHelperBase {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)!!
-
-    private var selectedHighScores: HighScores = NullHighScoresSingletonFactory.getInstance()!!
-
-    override fun setSelectedHighScores(selectedHighScores: HighScores)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var selectedHighScores = selectedHighScores
-this.selectedHighScores= selectedHighScores
-}
-
-
-    override fun getSelectedHighScores()
-        //nullable = true from not(false or (false and true)) = true
-: HighScores{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedHighScores
-}
-
-
-    override fun setHighScoresArray(highScoresArrayP: Array<HighScores?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var highScoresArrayP = highScoresArrayP
-super.setHighScoresArray(highScoresArrayP)
-this.circularIndexUtil!!.setSize(this.highScoresArrayP!!.size)
-this.selectHighScores()
-}
-
-
-    override fun selectHighScores()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(this.highScoresArrayP!!.size == 0)
-                        
-                                    {
-                                    this.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance())
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
+    open override func setSelectedHighScores(_ selectedHighScores: HighScores!) {
+        self.selectedHighScores = selectedHighScores
+    }
+    
 
-                                    }
-                                
-this.circularIndexUtil!!.next()
+    @discardableResult open override func getSelectedHighScores() -> HighScores! {
+        return self.selectedHighScores
+    }
+    
 
-    var highScores: HighScores = this.highScoresArrayP[this.circularIndexUtil!!.getIndex()]!!
+    open override func setHighScoresArray(_ highScoresArrayP: JArray<HighScores?>!) {
+        super.setHighScoresArray(highScoresArrayP)
+        self.circularIndexUtil.setSize(self.highScoresArrayP.length)
+        self.selectHighScores()
+    }
+    
 
-
-    var index: Int = 0
-
-
-        while(highScores!!.getTotal() < 1 && index < this.highScoresArrayP!!.size)
-        {
-highScores= this.highScoresArrayP[this.circularIndexUtil!!.next()]!!
-index++
+    open override func selectHighScores() {
+        if (self.highScoresArrayP.length == 0) {
+            self.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance())
+            return
+        }
+        self.circularIndexUtil.next()
+        var highScores: HighScores! = self.highScoresArrayP[self.circularIndexUtil.getIndex()]
+        var index: Int32 = 0
+        while (highScores.getTotal() < 1 && index < self.highScoresArrayP.length) {
+            highScores = self.highScoresArrayP[self.circularIndexUtil.next()]
+            index &+= 1
+        }
+        self.setSelectedHighScores(highScores)
+    }
 }
-
-this.setSelectedHighScores(highScores)
-}
-
-
-}
-                
-            
 

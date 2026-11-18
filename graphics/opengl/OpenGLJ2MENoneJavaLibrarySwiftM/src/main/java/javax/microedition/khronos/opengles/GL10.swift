@@ -1,22 +1,9 @@
+// Generated Code Do Not Modify
+// package javax.microedition.khronos.opengles
 
-        /* Generated Code Do Not Modify */
-        package javax.microedition.khronos.opengles
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-interface GL10 : GL {
-        
-
+public protocol GL10: AnyObject, GL {
 }
-                
-            
+
 

@@ -37,7 +37,7 @@ open class BasicColorUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicColorUtil! {
+    @discardableResult open class func getInstance() -> BasicColorUtil! {
         return BasicColorUtil.instance
     }
     

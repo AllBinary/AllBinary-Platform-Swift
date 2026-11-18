@@ -1,36 +1,16 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
 
+open class CustomDisplayable: JObject {
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class CustomDisplayable
-            : Object
-         {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun setTitle(title: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var title = title
+    open func setTitle(_ title: String!) {
+    }
 }
-
-
-}
-                
-            
 

@@ -1,83 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gesture
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.gesture
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.InputFactory
+// import org.allbinary.logic.NullUtil
 
+open class TrackballMotionGestureFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var LEFT: MotionGestureInput! = nil
+    public var RIGHT: MotionGestureInput! = nil
+    public var UP: MotionGestureInput! = nil
+    public var DOWN: MotionGestureInput! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.InputFactory
-import org.allbinary.logic.NullUtil
-
-open public class TrackballMotionGestureFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: TrackballMotionGestureFactory{
-
+    private func initFields() {
     
-                        if(TrackballMotionGestureFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    TrackballMotionGestureFactory.instance= TrackballMotionGestureFactory()
+    
+    
+    
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballMotionGestureFactory.instance as TrackballMotionGestureFactory
-}
-
-
+    @discardableResult open class func getInstance() -> TrackballMotionGestureFactory! {
+        if (TrackballMotionGestureFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            TrackballMotionGestureFactory.instance = TrackballMotionGestureFactory()
         }
-            
-    val LEFT: MotionGestureInput
+        return (TrackballMotionGestureFactory.instance as! TrackballMotionGestureFactory)
+    }
+    
 
-    val RIGHT: MotionGestureInput
-
-    val UP: MotionGestureInput
-
-    val DOWN: MotionGestureInput
-private constructor ()
-            : super()
-        {
-
-    var MAX: Int = InputFactory.getInstance()!!.MAX
-
-this.LEFT= MotionGestureInput(MAX -26, "L Trackball")
-this.RIGHT= MotionGestureInput(MAX -27, "R Trackball")
-this.UP= MotionGestureInput(MAX -28, "Up Trackball")
-this.DOWN= MotionGestureInput(MAX -29, "D Trackball")
+    public override init() {
+        super.init()
+        self.initFields()
+        let MAX: Int32 = InputFactory.getInstance().MAX
+        self.LEFT = MotionGestureInput(MAX &- 26, "L Trackball")
+        self.RIGHT = MotionGestureInput(MAX &- 27, "R Trackball")
+        self.UP = MotionGestureInput(MAX &- 28, "Up Trackball")
+        self.DOWN = MotionGestureInput(MAX &- 29, "D Trackball")
+    }
 }
-
-
-}
-                
-            
 

@@ -1,131 +1,79 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
 
+open class CustomGPoint: GPoint {
+    public static let NULL_CUSTOM_POINT: CustomGPoint! = CustomGPoint(0, 0, 0)
+    fileprivate var cx: Int32 = 0
+    fileprivate var cy: Int32 = 0
+    fileprivate var cz: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.cx = 0
+    self.cy = 0
+    self.cz = 0
+    }
+    
 
+    @discardableResult open override class func getInstance(_ point: GPoint!) -> CustomGPoint! {
+        return CustomGPoint(point.getX(), point.getY(), point.getZ())
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func getInstance3(_ x: Int32, _ y: Int32) -> CustomGPoint! {
+        return CustomGPoint(x, y, 3)
+    }
+    
 
-open public class CustomGPoint : GPoint {
-        
-companion object {
-            
-    val NULL_CUSTOM_POINT: CustomGPoint = CustomGPoint(0, 0, 0)
+    public override init(_ x: Int32, _ y: Int32, _ z: Int32) {
+        super.init(x, y, z)
+        self.initFields()
+    }
+    
 
-    open fun getInstance(point: GPoint)
-        //nullable =  from not(true or (false and false)) = 
-: CustomGPoint{
-    //var point = point
+    open func setX(_ x: Int32) {
+        self.cx = x
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomGPoint(point.getX(), point.getY(), point.getZ())
+    @discardableResult open override func getX() -> Int32 {
+        return self.cx
+    }
+    
+
+    open func setY(_ y: Int32) {
+        self.cy = y
+    }
+    
+
+    @discardableResult open override func getY() -> Int32 {
+        return self.cy
+    }
+    
+
+    open func setZ(_ z: Int32) {
+        self.cz = z
+    }
+    
+
+    @discardableResult open override func getZ() -> Int32 {
+        return self.cz
+    }
 }
-
-
-    open fun getInstance3(x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: CustomGPoint{
-    //var x = x
-    //var y = y
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomGPoint(x, y, 3)
-}
-
-
-        }
-            
-    private var cx: Int= 0
-
-    private var cy: Int= 0
-
-    private var cz: Int= 0
-public constructor (x: Int, y: Int, z: Int)                        
-
-                            : super(x, y, z){
-var x = x
-var y = y
-var z = z
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-    open fun setX(x: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var x = x
-this.cx= x
-}
-
-
-    override fun getX()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cx
-}
-
-
-    open fun setY(y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var y = y
-this.cy= y
-}
-
-
-    override fun getY()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cy
-}
-
-
-    open fun setZ(z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var z = z
-this.cz= z
-}
-
-
-    override fun getZ()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cz
-}
-
-
-}
-                
-            
 

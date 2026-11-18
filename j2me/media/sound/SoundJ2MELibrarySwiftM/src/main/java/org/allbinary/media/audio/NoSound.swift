@@ -1,61 +1,35 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class NoSound: Sound {
+    fileprivate static let instance: NoSound! = NoSound()
+    
 
+    @discardableResult open class func getInstance() -> NoSound! {
+        return NoSound.instance
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
-
-open public class NoSound : Sound {
-        
-companion object {
-            
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NoSound{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoSound.instance
+    public init() {
+        super.init(StringUtil.getInstance().EMPTY_STRING)
+        self.setPlayerP(NoPlayer.NO_PLAYER)
+    }
 }
-
-
-    private val instance: NoSound = NoSound()
-
-        }
-            private constructor ()                        
-
-                            : super(StringUtil.getInstance()!!.EMPTY_STRING){
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.setPlayerP(NoPlayer.NO_PLAYER)
-}
-
-
-}
-                
-            
 

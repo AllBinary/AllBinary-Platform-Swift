@@ -1,58 +1,47 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
 
+open class IndexedAnimationBehavior: AnimationBehavior {
+    public var frameDelayTime: Int64 = 0
+    public var loopTotal: Int32 = 0
+    public var elapsedTime: Int64 = 0
+    public var loopIndex: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    self.elapsedTime = 0
+    self.loopIndex = 0
+    }
+    
 
+    public init(_ loopTotal: Int32, _ frameDelayTime: Int64) {
+        super.init()
+        self.initFields()
+        self.loopTotal = loopTotal
+        self.frameDelayTime = frameDelayTime
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class IndexedAnimationBehavior : AnimationBehavior {
-        
-
-    var frameDelayTime: Long
-
-    var loopTotal: Int
-
-    var elapsedTime: Long= 0
-
-    var loopIndex: Int= 0
-public constructor (loopTotal: Int, frameDelayTime: Long){
-    //var loopTotal = loopTotal
-    //var frameDelayTime = frameDelayTime
-this.loopTotal= loopTotal
-this.frameDelayTime= frameDelayTime
+    open override func reset() {
+        self.loopIndex = 0
+    }
 }
-
-
-    override fun reset()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.loopIndex= 0
-}
-
-
-}
-                
-            
 

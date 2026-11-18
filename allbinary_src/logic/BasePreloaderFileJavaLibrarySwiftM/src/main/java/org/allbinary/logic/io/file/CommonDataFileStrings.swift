@@ -1,435 +1,414 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2026 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io.file
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2026 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io.file
+import J2SEForSwiftLibrary
 
+open class CommonDataFileStrings: JObject {
+    fileprivate static let instance: CommonDataFileStrings! = CommonDataFileStrings()
+    public var XML: String! = nil
+    public var _XML: String! = nil
+    public var JSON: String! = nil
+    public var _JSON: String! = nil
+    public var XSL: String! = nil
+    public var _XSL: String! = nil
+    public var JAVA: String! = nil
+    public var _JAVA: String! = nil
+    public var KT: String! = nil
+    public var _KT: String! = nil
+    public var TS: String! = nil
+    public var _TS: String! = nil
+    public var JS: String! = nil
+    public var _JS: String! = nil
+    public var CPP: String! = nil
+    public var _CPP: String! = nil
+    public var H: String! = nil
+    public var _H: String! = nil
+    public var PY: String! = nil
+    public var _PY: String! = nil
+    public var GO: String! = nil
+    public var _GO: String! = nil
+    public var CS: String! = nil
+    public var _CS: String! = nil
+    public var ADB: String! = nil
+    public var _ADB: String! = nil
+    public var ADS: String! = nil
+    public var _ADS: String! = nil
+    public var ADA: String! = nil
+    public var _ADA: String! = nil
+    public var RUST: String! = nil
+    public var _RUST: String! = nil
+    public var C: String! = nil
+    public var _C: String! = nil
+    public var CSHARP: String! = nil
+    public var _CSHARP: String! = nil
+    public var ERL: String! = nil
+    public var _ERL: String! = nil
+    public var HS: String! = nil
+    public var _HS: String! = nil
+    public var HX: String! = nil
+    public var _HX: String! = nil
+    public var LUA: String! = nil
+    public var _LUA: String! = nil
+    public var PAS: String! = nil
+    public var _PAS: String! = nil
+    public var ML: String! = nil
+    public var _ML: String! = nil
+    public var PL: String! = nil
+    public var _PL: String! = nil
+    public var RB: String! = nil
+    public var _RB: String! = nil
+    public var ZIG: String! = nil
+    public var _ZIG: String! = nil
+    public var PM: String! = nil
+    public var _PM: String! = nil
+    public var KTS: String! = nil
+    public var _KTS: String! = nil
+    public var CBL: String! = nil
+    public var _CBL: String! = nil
+    public var COB: String! = nil
+    public var _COB: String! = nil
+    public var F90: String! = nil
+    public var _F90: String! = nil
+    public var F: String! = nil
+    public var _F: String! = nil
+    public var DART: String! = nil
+    public var _DART: String! = nil
+    public var EX: String! = nil
+    public var _EX: String! = nil
+    public var EXS: String! = nil
+    public var _EXS: String! = nil
+    public var M: String! = nil
+    public var _M: String! = nil
+    public var SWIFT: String! = nil
+    public var _SWIFT: String! = nil
+    public var ASM: String! = nil
+    public var _ASM: String! = nil
+    public var S: String! = nil
+    public var _S: String! = nil
+    public var NIM: String! = nil
+    public var _NIM: String! = nil
+    public var VALA: String! = nil
+    public var _VALA: String! = nil
+    public var LISP: String! = nil
+    public var _LISP: String! = nil
+    public var RKT: String! = nil
+    public var _RKT: String! = nil
+    public var SCM: String! = nil
+    public var _SCM: String! = nil
+    public var AS: String! = nil
+    public var _AS: String! = nil
+    public var OBX: String! = nil
+    public var _OBX: String! = nil
+    public var SCALA: String! = nil
+    public var _SCALA: String! = nil
+    public var GROOVY: String! = nil
+    public var _GROOVY: String! = nil
+    public var JL: String! = nil
+    public var _JL: String! = nil
+    public var TCL: String! = nil
+    public var _TCL: String! = nil
+    public var WREN: String! = nil
+    public var _WREN: String! = nil
+    public var JANET: String! = nil
+    public var _JANET: String! = nil
+    public var GR: String! = nil
+    public var _GR: String! = nil
+    public var ELM: String! = nil
+    public var _ELM: String! = nil
+    public var KOTLIN: String! = nil
+    public var TYPESCRIPT: String! = nil
+    public var JAVASCRIPT: String! = nil
+    public var C_PLUS_PLUS: String! = nil
+    public var PYTHON: String! = nil
+    public var C_SHARP: String! = nil
+    public var RUST_NAME: String! = nil
+    public var RUBY: String! = nil
+    public var PERL: String! = nil
+    public var OBJECT_PASCAL: String! = nil
+    public var OCAML: String! = nil
+    public var HASKELL: String! = nil
+    public var HAXE: String! = nil
+    public var ERLANG: String! = nil
+    public var COBOL: String! = nil
+    public var FORTRAN: String! = nil
+    public var ELIXIR: String! = nil
+    public var OBJECTIVE_C: String! = nil
+    public var RACKET: String! = nil
+    public var SCHEME: String! = nil
+    public var ACTIONSCRIPT: String! = nil
+    public var OBERON_PLUS: String! = nil
+    public var JULIA: String! = nil
+    public var GRAIN: String! = nil
+    public var CPLUSPLUS: String! = nil
+    public var GOLANG: String! = nil
+    public var CSHARP_ALIAS: String! = nil
+    public var C23: String! = nil
+    public var PASCAL: String! = nil
+    public var OBJECT_PASCAL_ALIAS: String! = nil
+    public var OBJC: String! = nil
+    public var OBJECTIVE_C_ALIAS: String! = nil
+    public var ASSEMBLY: String! = nil
+    public var COMMON_LISP: String! = nil
+    public var OBERON: String! = nil
+    public var OBERON_PLUS_ALIAS: String! = nil
+    public var KT_SHORT_NAME: String! = nil
+    public var TS_SHORT_NAME: String! = nil
+    public var JS_SHORT_NAME: String! = nil
+    public var CPP_SHORT_NAME: String! = nil
+    public var PY_SHORT_NAME: String! = nil
+    public var GO_SHORT_NAME: String! = nil
+    public var CS_SHORT_NAME: String! = nil
+    public var ADA_SHORT_NAME: String! = nil
+    public var RUST_SHORT_NAME: String! = nil
+    public var LUA_SHORT_NAME: String! = nil
+    public var C_SHORT_NAME: String! = nil
+    public var ZIG_SHORT_NAME: String! = nil
+    public var RB_SHORT_NAME: String! = nil
+    public var PL_SHORT_NAME: String! = nil
+    public var PAS_SHORT_NAME: String! = nil
+    public var ML_SHORT_NAME: String! = nil
+    public var HS_SHORT_NAME: String! = nil
+    public var HX_SHORT_NAME: String! = nil
+    public var ERL_SHORT_NAME: String! = nil
+    public var CBL_SHORT_NAME: String! = nil
+    public var F90_SHORT_NAME: String! = nil
+    public var DART_SHORT_NAME: String! = nil
+    public var EX_SHORT_NAME: String! = nil
+    public var OBJC_SHORT_NAME: String! = nil
+    public var SWIFT_SHORT_NAME: String! = nil
+    public var ASM_SHORT_NAME: String! = nil
+    public var NIM_SHORT_NAME: String! = nil
+    public var VALA_SHORT_NAME: String! = nil
+    public var LISP_SHORT_NAME: String! = nil
+    public var RKT_SHORT_NAME: String! = nil
+    public var SCM_SHORT_NAME: String! = nil
+    public var AS_SHORT_NAME: String! = nil
+    public var OBX_SHORT_NAME: String! = nil
+    public var SCALA_SHORT_NAME: String! = nil
+    public var GROOVY_SHORT_NAME: String! = nil
+    public var JL_SHORT_NAME: String! = nil
+    public var TCL_SHORT_NAME: String! = nil
+    public var WREN_SHORT_NAME: String! = nil
+    public var JANET_SHORT_NAME: String! = nil
+    public var GR_SHORT_NAME: String! = nil
+    public var ELM_SHORT_NAME: String! = nil
+    public var UNCRYPTED_EXTENSION: String! = nil
+    public var ENCRYPTED_EXTENSION: String! = nil
 
+    private func initFields() {
+    self.XML = "xml"
+    self._XML = ".xml"
+    self.JSON = "json"
+    self._JSON = ".json"
+    self.XSL = "xsl"
+    self._XSL = ".xsl"
+    self.JAVA = "java"
+    self._JAVA = ".java"
+    self.KT = "kt"
+    self._KT = ".kt"
+    self.TS = "ts"
+    self._TS = ".ts"
+    self.JS = "js"
+    self._JS = ".js"
+    self.CPP = "cpp"
+    self._CPP = ".cpp"
+    self.H = "h"
+    self._H = ".h"
+    self.PY = "py"
+    self._PY = ".py"
+    self.GO = "go"
+    self._GO = ".go"
+    self.CS = "cs"
+    self._CS = ".cs"
+    self.ADB = "adb"
+    self._ADB = ".adb"
+    self.ADS = "ads"
+    self._ADS = ".ads"
+    self.ADA = "ada"
+    self._ADA = ".ada"
+    self.RUST = "rs"
+    self._RUST = ".rs"
+    self.C = "c"
+    self._C = ".c"
+    self.CSHARP = "cs"
+    self._CSHARP = ".cs"
+    self.ERL = "erl"
+    self._ERL = ".erl"
+    self.HS = "hs"
+    self._HS = ".hs"
+    self.HX = "hx"
+    self._HX = ".hx"
+    self.LUA = "lua"
+    self._LUA = ".lua"
+    self.PAS = "pas"
+    self._PAS = ".pas"
+    self.ML = "ml"
+    self._ML = ".ml"
+    self.PL = "pl"
+    self._PL = ".pl"
+    self.RB = "rb"
+    self._RB = ".rb"
+    self.ZIG = "zig"
+    self._ZIG = ".zig"
+    self.PM = "pm"
+    self._PM = ".pm"
+    self.KTS = "kts"
+    self._KTS = ".kts"
+    self.CBL = "cbl"
+    self._CBL = ".cbl"
+    self.COB = "cob"
+    self._COB = ".cob"
+    self.F90 = "f90"
+    self._F90 = ".f90"
+    self.F = "f"
+    self._F = ".f"
+    self.DART = "dart"
+    self._DART = ".dart"
+    self.EX = "ex"
+    self._EX = ".ex"
+    self.EXS = "exs"
+    self._EXS = ".exs"
+    self.M = "m"
+    self._M = ".m"
+    self.SWIFT = "swift"
+    self._SWIFT = ".swift"
+    self.ASM = "asm"
+    self._ASM = ".asm"
+    self.S = "s"
+    self._S = ".s"
+    self.NIM = "nim"
+    self._NIM = ".nim"
+    self.VALA = "vala"
+    self._VALA = ".vala"
+    self.LISP = "lisp"
+    self._LISP = ".lisp"
+    self.RKT = "rkt"
+    self._RKT = ".rkt"
+    self.SCM = "scm"
+    self._SCM = ".scm"
+    self.AS = "as"
+    self._AS = ".as"
+    self.OBX = "obx"
+    self._OBX = ".obx"
+    self.SCALA = "scala"
+    self._SCALA = ".scala"
+    self.GROOVY = "groovy"
+    self._GROOVY = ".groovy"
+    self.JL = "jl"
+    self._JL = ".jl"
+    self.TCL = "tcl"
+    self._TCL = ".tcl"
+    self.WREN = "wren"
+    self._WREN = ".wren"
+    self.JANET = "janet"
+    self._JANET = ".janet"
+    self.GR = "gr"
+    self._GR = ".gr"
+    self.ELM = "elm"
+    self._ELM = ".elm"
+    self.KOTLIN = "kotlin"
+    self.TYPESCRIPT = "typescript"
+    self.JAVASCRIPT = "javascript"
+    self.C_PLUS_PLUS = "c++"
+    self.PYTHON = "python"
+    self.C_SHARP = "c#"
+    self.RUST_NAME = "rust"
+    self.RUBY = "ruby"
+    self.PERL = "perl"
+    self.OBJECT_PASCAL = "objectpascal"
+    self.OCAML = "ocaml"
+    self.HASKELL = "haskell"
+    self.HAXE = "haxe"
+    self.ERLANG = "erlang"
+    self.COBOL = "cobol"
+    self.FORTRAN = "fortran"
+    self.ELIXIR = "elixir"
+    self.OBJECTIVE_C = "objective-c"
+    self.RACKET = "racket"
+    self.SCHEME = "scheme"
+    self.ACTIONSCRIPT = "actionscript"
+    self.OBERON_PLUS = "oberon+"
+    self.JULIA = "julia"
+    self.GRAIN = "grain"
+    self.CPLUSPLUS = "cplusplus"
+    self.GOLANG = "golang"
+    self.CSHARP_ALIAS = "csharp"
+    self.C23 = "c23"
+    self.PASCAL = "pascal"
+    self.OBJECT_PASCAL_ALIAS = "object pascal"
+    self.OBJC = "objc"
+    self.OBJECTIVE_C_ALIAS = "objectivec"
+    self.ASSEMBLY = "assembly"
+    self.COMMON_LISP = "common lisp"
+    self.OBERON = "oberon"
+    self.OBERON_PLUS_ALIAS = "oberonplus"
+    self.KT_SHORT_NAME = "Kt"
+    self.TS_SHORT_NAME = "Ts"
+    self.JS_SHORT_NAME = "Js"
+    self.CPP_SHORT_NAME = "Cpp"
+    self.PY_SHORT_NAME = "Py"
+    self.GO_SHORT_NAME = "Go"
+    self.CS_SHORT_NAME = "Cs"
+    self.ADA_SHORT_NAME = "Ada"
+    self.RUST_SHORT_NAME = "Rust"
+    self.LUA_SHORT_NAME = "Lua"
+    self.C_SHORT_NAME = "C"
+    self.ZIG_SHORT_NAME = "Zig"
+    self.RB_SHORT_NAME = "Rb"
+    self.PL_SHORT_NAME = "Pl"
+    self.PAS_SHORT_NAME = "Pas"
+    self.ML_SHORT_NAME = "Ml"
+    self.HS_SHORT_NAME = "Hs"
+    self.HX_SHORT_NAME = "Hx"
+    self.ERL_SHORT_NAME = "Erl"
+    self.CBL_SHORT_NAME = "Cbl"
+    self.F90_SHORT_NAME = "F90"
+    self.DART_SHORT_NAME = "Dart"
+    self.EX_SHORT_NAME = "Ex"
+    self.OBJC_SHORT_NAME = "ObjC"
+    self.SWIFT_SHORT_NAME = "Swift"
+    self.ASM_SHORT_NAME = "Asm"
+    self.NIM_SHORT_NAME = "Nim"
+    self.VALA_SHORT_NAME = "Vala"
+    self.LISP_SHORT_NAME = "Lisp"
+    self.RKT_SHORT_NAME = "Rkt"
+    self.SCM_SHORT_NAME = "Scm"
+    self.AS_SHORT_NAME = "As"
+    self.OBX_SHORT_NAME = "Obx"
+    self.SCALA_SHORT_NAME = "Scala"
+    self.GROOVY_SHORT_NAME = "Groovy"
+    self.JL_SHORT_NAME = "Jl"
+    self.TCL_SHORT_NAME = "Tcl"
+    self.WREN_SHORT_NAME = "Wren"
+    self.JANET_SHORT_NAME = "Janet"
+    self.GR_SHORT_NAME = "Gr"
+    self.ELM_SHORT_NAME = "Elm"
+    self.UNCRYPTED_EXTENSION = self.XML
+    self.ENCRYPTED_EXTENSION = "abd"
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class CommonDataFileStrings
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: CommonDataFileStrings = CommonDataFileStrings()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CommonDataFileStrings{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonDataFileStrings.instance
+    @discardableResult open class func getInstance() -> CommonDataFileStrings! {
+        return CommonDataFileStrings.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val XML: String = "xml"
-
-    val _XML: String = ".xml"
-
-    val JSON: String = "json"
-
-    val _JSON: String = ".json"
-
-    val XSL: String = "xsl"
-
-    val _XSL: String = ".xsl"
-
-    val JAVA: String = "java"
-
-    val _JAVA: String = ".java"
-
-    val KT: String = "kt"
-
-    val _KT: String = ".kt"
-
-    val TS: String = "ts"
-
-    val _TS: String = ".ts"
-
-    val JS: String = "js"
-
-    val _JS: String = ".js"
-
-    val CPP: String = "cpp"
-
-    val _CPP: String = ".cpp"
-
-    val H: String = "h"
-
-    val _H: String = ".h"
-
-    val PY: String = "py"
-
-    val _PY: String = ".py"
-
-    val GO: String = "go"
-
-    val _GO: String = ".go"
-
-    val CS: String = "cs"
-
-    val _CS: String = ".cs"
-
-    val ADB: String = "adb"
-
-    val _ADB: String = ".adb"
-
-    val ADS: String = "ads"
-
-    val _ADS: String = ".ads"
-
-    val ADA: String = "ada"
-
-    val _ADA: String = ".ada"
-
-    val RUST: String = "rs"
-
-    val _RUST: String = ".rs"
-
-    val C: String = "c"
-
-    val _C: String = ".c"
-
-    val CSHARP: String = "cs"
-
-    val _CSHARP: String = ".cs"
-
-    val ERL: String = "erl"
-
-    val _ERL: String = ".erl"
-
-    val HS: String = "hs"
-
-    val _HS: String = ".hs"
-
-    val HX: String = "hx"
-
-    val _HX: String = ".hx"
-
-    val LUA: String = "lua"
-
-    val _LUA: String = ".lua"
-
-    val PAS: String = "pas"
-
-    val _PAS: String = ".pas"
-
-    val ML: String = "ml"
-
-    val _ML: String = ".ml"
-
-    val PL: String = "pl"
-
-    val _PL: String = ".pl"
-
-    val RB: String = "rb"
-
-    val _RB: String = ".rb"
-
-    val ZIG: String = "zig"
-
-    val _ZIG: String = ".zig"
-
-    val PM: String = "pm"
-
-    val _PM: String = ".pm"
-
-    val KTS: String = "kts"
-
-    val _KTS: String = ".kts"
-
-    val CBL: String = "cbl"
-
-    val _CBL: String = ".cbl"
-
-    val COB: String = "cob"
-
-    val _COB: String = ".cob"
-
-    val F90: String = "f90"
-
-    val _F90: String = ".f90"
-
-    val F: String = "f"
-
-    val _F: String = ".f"
-
-    val DART: String = "dart"
-
-    val _DART: String = ".dart"
-
-    val EX: String = "ex"
-
-    val _EX: String = ".ex"
-
-    val EXS: String = "exs"
-
-    val _EXS: String = ".exs"
-
-    val M: String = "m"
-
-    val _M: String = ".m"
-
-    val SWIFT: String = "swift"
-
-    val _SWIFT: String = ".swift"
-
-    val ASM: String = "asm"
-
-    val _ASM: String = ".asm"
-
-    val S: String = "s"
-
-    val _S: String = ".s"
-
-    val NIM: String = "nim"
-
-    val _NIM: String = ".nim"
-
-    val VALA: String = "vala"
-
-    val _VALA: String = ".vala"
-
-    val LISP: String = "lisp"
-
-    val _LISP: String = ".lisp"
-
-    val RKT: String = "rkt"
-
-    val _RKT: String = ".rkt"
-
-    val SCM: String = "scm"
-
-    val _SCM: String = ".scm"
-
-    val AS: String = "as"
-
-    val _AS: String = ".as"
-
-    val OBX: String = "obx"
-
-    val _OBX: String = ".obx"
-
-    val SCALA: String = "scala"
-
-    val _SCALA: String = ".scala"
-
-    val GROOVY: String = "groovy"
-
-    val _GROOVY: String = ".groovy"
-
-    val JL: String = "jl"
-
-    val _JL: String = ".jl"
-
-    val TCL: String = "tcl"
-
-    val _TCL: String = ".tcl"
-
-    val WREN: String = "wren"
-
-    val _WREN: String = ".wren"
-
-    val JANET: String = "janet"
-
-    val _JANET: String = ".janet"
-
-    val GR: String = "gr"
-
-    val _GR: String = ".gr"
-
-    val ELM: String = "elm"
-
-    val _ELM: String = ".elm"
-
-    val KOTLIN: String = "kotlin"
-
-    val TYPESCRIPT: String = "typescript"
-
-    val JAVASCRIPT: String = "javascript"
-
-    val C_PLUS_PLUS: String = "c++"
-
-    val PYTHON: String = "python"
-
-    val C_SHARP: String = "c#"
-
-    val RUST_NAME: String = "rust"
-
-    val RUBY: String = "ruby"
-
-    val PERL: String = "perl"
-
-    val OBJECT_PASCAL: String = "objectpascal"
-
-    val OCAML: String = "ocaml"
-
-    val HASKELL: String = "haskell"
-
-    val HAXE: String = "haxe"
-
-    val ERLANG: String = "erlang"
-
-    val COBOL: String = "cobol"
-
-    val FORTRAN: String = "fortran"
-
-    val ELIXIR: String = "elixir"
-
-    val OBJECTIVE_C: String = "objective-c"
-
-    val RACKET: String = "racket"
-
-    val SCHEME: String = "scheme"
-
-    val ACTIONSCRIPT: String = "actionscript"
-
-    val OBERON_PLUS: String = "oberon+"
-
-    val JULIA: String = "julia"
-
-    val GRAIN: String = "grain"
-
-    val CPLUSPLUS: String = "cplusplus"
-
-    val GOLANG: String = "golang"
-
-    val CSHARP_ALIAS: String = "csharp"
-
-    val C23: String = "c23"
-
-    val PASCAL: String = "pascal"
-
-    val OBJECT_PASCAL_ALIAS: String = "object pascal"
-
-    val OBJC: String = "objc"
-
-    val OBJECTIVE_C_ALIAS: String = "objectivec"
-
-    val ASSEMBLY: String = "assembly"
-
-    val COMMON_LISP: String = "common lisp"
-
-    val OBERON: String = "oberon"
-
-    val OBERON_PLUS_ALIAS: String = "oberonplus"
-
-    val KT_SHORT_NAME: String = "Kt"
-
-    val TS_SHORT_NAME: String = "Ts"
-
-    val JS_SHORT_NAME: String = "Js"
-
-    val CPP_SHORT_NAME: String = "Cpp"
-
-    val PY_SHORT_NAME: String = "Py"
-
-    val GO_SHORT_NAME: String = "Go"
-
-    val CS_SHORT_NAME: String = "Cs"
-
-    val ADA_SHORT_NAME: String = "Ada"
-
-    val RUST_SHORT_NAME: String = "Rust"
-
-    val LUA_SHORT_NAME: String = "Lua"
-
-    val C_SHORT_NAME: String = "C"
-
-    val ZIG_SHORT_NAME: String = "Zig"
-
-    val RB_SHORT_NAME: String = "Rb"
-
-    val PL_SHORT_NAME: String = "Pl"
-
-    val PAS_SHORT_NAME: String = "Pas"
-
-    val ML_SHORT_NAME: String = "Ml"
-
-    val HS_SHORT_NAME: String = "Hs"
-
-    val HX_SHORT_NAME: String = "Hx"
-
-    val ERL_SHORT_NAME: String = "Erl"
-
-    val CBL_SHORT_NAME: String = "Cbl"
-
-    val F90_SHORT_NAME: String = "F90"
-
-    val DART_SHORT_NAME: String = "Dart"
-
-    val EX_SHORT_NAME: String = "Ex"
-
-    val OBJC_SHORT_NAME: String = "ObjC"
-
-    val SWIFT_SHORT_NAME: String = "Swift"
-
-    val ASM_SHORT_NAME: String = "Asm"
-
-    val NIM_SHORT_NAME: String = "Nim"
-
-    val VALA_SHORT_NAME: String = "Vala"
-
-    val LISP_SHORT_NAME: String = "Lisp"
-
-    val RKT_SHORT_NAME: String = "Rkt"
-
-    val SCM_SHORT_NAME: String = "Scm"
-
-    val AS_SHORT_NAME: String = "As"
-
-    val OBX_SHORT_NAME: String = "Obx"
-
-    val SCALA_SHORT_NAME: String = "Scala"
-
-    val GROOVY_SHORT_NAME: String = "Groovy"
-
-    val JL_SHORT_NAME: String = "Jl"
-
-    val TCL_SHORT_NAME: String = "Tcl"
-
-    val WREN_SHORT_NAME: String = "Wren"
-
-    val JANET_SHORT_NAME: String = "Janet"
-
-    val GR_SHORT_NAME: String = "Gr"
-
-    val ELM_SHORT_NAME: String = "Elm"
-
-    val UNCRYPTED_EXTENSION: String = this.XML
-
-    val ENCRYPTED_EXTENSION: String = "abd"
-
-}
-                
-            
 

@@ -56,7 +56,7 @@ open class ComponentFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ComponentFactory! {
+    @discardableResult open class func getInstance() -> ComponentFactory! {
         return ComponentFactory.instance
     }
 }

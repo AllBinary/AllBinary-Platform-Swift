@@ -1,167 +1,82 @@
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
 
+open class FillAnimation: IndexedAnimation {
+    fileprivate var pixelBuffer: JArray<Int32>! = nil
+    fileprivate var width: Int32 = 0
+    fileprivate var height: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-
-open public class FillAnimation : IndexedAnimation {
-        
-
-    private val pixelBuffer: IntArray
-
-    private val width: Int
-
-    private val height: Int
-public constructor (pixelBuffer: IntArray, width: Int, height: Int, animationBehavior: AnimationBehavior)                        
-
-                            : super(animationBehavior){
-    //var pixelBuffer = pixelBuffer
-    //var width = width
-    //var height = height
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.width= 100
-this.height= 100
-this.pixelBuffer= pixelBuffer
-}
-
-
-    override fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-
-    var changed: Boolean = false
-
-
+    // Each class has its own field initializers
+    private func initFields() {
     
-                        if(this.getBasicColorP() == 
-                                    null
-                                 || this.getBasicColorP()!!.toInt() != basicColor!!.toInt())
-                        
-                                    {
-                                    changed= true
-
-                                    }
-                                
-super.setBasicColorP(basicColor)
-
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
-
-                                    }
-                                
-}
-
-
-    override fun changeBasicColor(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-
-    var changed: Boolean = false
-
-
     
-                        if(this.getChangeBasicColor() == 
-                                    null
-                                 || this.getChangeBasicColor()!!.toInt() != basicColor!!.toInt())
-                        
-                                    {
-                                    changed= true
-
-                                    }
-                                
-super.changeBasicColor(basicColor)
-
+    }
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
 
-                                    }
-                                
-}
-
-
-    override fun setAlpha(alpha: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var alpha = alpha
-
-    var changed: Boolean = false
-
-
+    public init(_ pixelBuffer: JArray<Int32>!, _ width: Int32, _ height: Int32, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.width = 100
+        self.height = 100
+        self.pixelBuffer = pixelBuffer
+    }
     
-                        if(this.alphaP != alpha)
-                        
-                                    {
-                                    changed= true
 
-                                    }
-                                
-super.setAlpha(alpha)
-
+    open override func setBasicColorP(_ basicColor: BasicColor!) {
+        var changed: Bool = false
+        if (self.getBasicColorP() == nil || self.getBasicColorP().intValue() != basicColor.intValue()) {
+            changed = true
+        }
+        super.setBasicColorP(basicColor)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
     
-                        if(changed)
-                        
-                                    {
-                                    this.updateModifiers()
 
-                                    }
-                                
+    open override func changeBasicColor(_ basicColor: BasicColor!) {
+        var changed: Bool = false
+        if (self.getChangeBasicColor() == nil || self.getChangeBasicColor().intValue() != basicColor.intValue()) {
+            changed = true
+        }
+        super.changeBasicColor(basicColor)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
+    
+
+    open override func setAlpha(_ alpha: Int32) {
+        var changed: Bool = false
+        if (self.alphaP != alpha) {
+            changed = true
+        }
+        super.setAlpha(alpha)
+        if (changed) {
+            self.updateModifiers()
+        }
+    }
+    
+
+    open override func setScale(_ scaleX: Float, _ scaleY: Float) {
+    }
+    
+
+    open override func setMaxScale(_ maxScaleX: Float, _ maxScaleY: Float) {
+    }
+    
+
+    fileprivate func updateModifiers() {
+    }
+    
+
+    open func paint(_ g: Graphics!) {
+        g.drawRGB(self.pixelBuffer, 0, self.width, 0, 0, self.width, self.height, true)
+    }
 }
-
-
-    override fun setScale(scaleX: Float, scaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleX = scaleX
-    //var scaleY = scaleY
-}
-
-
-    override fun setMaxScale(maxScaleX: Float, maxScaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var maxScaleX = maxScaleX
-    //var maxScaleY = maxScaleY
-}
-
-
-    open fun updateModifiers()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun paint(g: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var g = g
-g.drawRGB(pixelBuffer, 0, width, 0, 0, width, height, true)
-}
-
-
-}
-                
-            
 

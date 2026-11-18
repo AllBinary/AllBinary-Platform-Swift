@@ -1,83 +1,47 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.GameConfigurationCentral
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.GameConfigurationCentral
-
-open public class AllBinaryVibration : AllBinaryVibrationME {
-        
-companion object {
-            
-    private var VIBRATION: AllBinaryVibrationME = AllBinaryNoVibration.NO_VIBRATION
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AllBinaryVibrationME{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryVibration.VIBRATION
-}
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+open class AllBinaryVibration: AllBinaryVibrationME {
+    fileprivate static var VIBRATION: AllBinaryVibrationME! = AllBinaryNoVibration.NO_VIBRATION
     
-                        if(GameConfigurationCentral.getInstance()!!.VIBRATION.getValue()!!.toInt() == 0)
-                        
-                                    {
-                                    AllBinaryVibration.VIBRATION= AllBinaryNoVibration.NO_VIBRATION
 
-                                    }
-                                
-                        else {
-                            AllBinaryVibration.VIBRATION= AllBinaryVibration()
+    public override init() {
+        super.init()
+    }
+    
 
-                        }
-                            
-}
+    @discardableResult open class func getInstance() -> AllBinaryVibrationME! {
+        return AllBinaryVibration.VIBRATION
+    }
+    
 
-
+    open class func `init`() {
+        if (GameConfigurationCentral.getInstance().VIBRATION.getValue().intValue() == 0) {
+            AllBinaryVibration.VIBRATION = AllBinaryNoVibration.NO_VIBRATION
+        } else {
+            AllBinaryVibration.VIBRATION = AllBinaryVibration()
         }
-            private constructor (){
+    }
+    
+
+    open override func vibrate(_ duration: Int32, _ type: Int32, _ volume: Int32) {
+    }
 }
-
-
-    override fun vibrate(duration: Int, type: Int, volume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var duration = duration
-var type = type
-var volume = volume
-}
-
-
-}
-                
-            
 

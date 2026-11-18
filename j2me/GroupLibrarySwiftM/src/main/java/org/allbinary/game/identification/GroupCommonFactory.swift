@@ -1,80 +1,51 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.identification
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.identification
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
 
+open class GroupCommonFactory: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var ID: Int32! = nil
+    public var GROUP_NAME_LABEL: String! = nil
+    public var ID_LABEL: String! = nil
+    public var ADDING_LABEL: String! = nil
+    public var TO_LABEL: String! = nil
 
+    private func initFields() {
+    self.ID = SmallIntegerSingletonFactory.getInstance().getAt(10)
+    self.GROUP_NAME_LABEL = "Group Name: "
+    self.ID_LABEL = " Id: "
+    self.ADDING_LABEL = "Adding: "
+    self.TO_LABEL = " to: "
+    }
 
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-
-open public class GroupCommonFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GroupCommonFactory{
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(GroupCommonFactory.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    GroupCommonFactory.instance= GroupCommonFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupCommonFactory.instance as GroupCommonFactory
-}
-
-
+    @discardableResult open class func getInstance() -> GroupCommonFactory! {
+        if (GroupCommonFactory.instance === NullUtil.getInstance().NULL_OBJECT) {
+            GroupCommonFactory.instance = GroupCommonFactory()
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val ID: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(10)!!
-
-    val GROUP_NAME_LABEL: String = "Group Name: "
-
-    val ID_LABEL: String = " Id: "
-
-    val ADDING_LABEL: String = "Adding: "
-
-    val TO_LABEL: String = " to: "
-
+        return (GroupCommonFactory.instance as! GroupCommonFactory)
+    }
 }
-                
-            
 

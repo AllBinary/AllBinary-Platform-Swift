@@ -25,12 +25,12 @@ open class AndroidUtil: JObject {
     }
     
 
-    @discardableResult public static func isMemoryRestrictive() -> Bool {
+    @discardableResult open class func isMemoryRestrictive() -> Bool {
         return false
     }
     
 
-    @discardableResult public static func isAndroid() -> Bool {
+    @discardableResult open class func isAndroid() -> Bool {
         return false
     }
 }

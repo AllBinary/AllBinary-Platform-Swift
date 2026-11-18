@@ -1,155 +1,84 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.thread
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.thread
+import J2SEForSwiftLibrary
+// import org.allbinary.J2MEUtil
+// import org.allbinary.canvas.RunnableCanvas
+// import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
+// import org.allbinary.game.displayable.canvas.DemoCanvas
+// import org.allbinary.game.displayable.canvas.GameCanvasRunnableInterface
+// import org.allbinary.game.displayable.canvas.RunnableCanvasSingleThreadStartRunnable
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
 
+open class ThreadFactoryUtil: JObject {
+    fileprivate static let instance: ThreadFactoryUtil! = ThreadFactoryUtil()
+    public var logUtil: LogUtil! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Runnable
-        
-        import java.lang.Thread
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.J2MEUtil
-import org.allbinary.canvas.RunnableCanvas
-import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
-import org.allbinary.game.displayable.canvas.DemoCanvas
-import org.allbinary.game.displayable.canvas.GameCanvasRunnableInterface
-import org.allbinary.game.displayable.canvas.RunnableCanvasSingleThreadStartRunnable
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
+    @discardableResult open class func getInstance() -> ThreadFactoryUtil! {
+        return ThreadFactoryUtil.instance
+    }
+    
 
-open public class ThreadFactoryUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ThreadFactoryUtil = ThreadFactoryUtil()
+    @discardableResult open func getInstanceGameCanvasRunnable(_ runnable: GameCanvasRunnableInterface!) -> Thread! {
+        return self.getInstanceType(runnable, runnable.getType())
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ThreadFactoryUtil{
+    @discardableResult open func getInstanceForRunnable(_ runnable: ABRunnable!) -> Thread! {
+        return self.getInstanceType(runnable, runnable.getType())
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadFactoryUtil.instance
-}
-
-
+    @discardableResult fileprivate func getInstanceType(_ runnable: Runnable!, _ type: Int32) -> Thread! {
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        if (J2MEUtil.isHTML()) {
+            if (type == DemoCanvas.TYPE || type == AllBinaryGameCanvas.TYPE) {
+                let demoGameSingleThreadStartRunnable: RunnableCanvasSingleThreadStartRunnable! = RunnableCanvasSingleThreadStartRunnable((runnable as! RunnableCanvas))
+                PreLogUtil.put(StringMaker().append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ").append(StringUtil.getInstance().toString((runnable as? JObject))).toString(), self, commonStrings.CONSTRUCTOR)
+                let primaryThreadPool: ThreadPool! = PrimaryThreadPool.getInstance()
+                primaryThreadPool.runTask(demoGameSingleThreadStartRunnable)
+            } else {
+                PreLogUtil.put(StringMaker().append("Using Pseudo Thread for Runnable under PlayN/HTML5: ").append(StringUtil.getInstance().toString((runnable as? JObject))).toString(), self, commonStrings.CONSTRUCTOR)
+                let primaryThreadPool: ThreadPool! = PrimaryThreadPool.getInstance()
+                primaryThreadPool.runTask(runnable)
+            }
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    open fun getInstanceGameCanvasRunnable(runnable: GameCanvasRunnableInterface)
-        //nullable = true from not(false or (false and false)) = true
-: Thread{
-    //var runnable = runnable
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstanceType(runnable, runnable.getType())
-}
-
-
-    open fun getInstanceForRunnable(runnable: ABRunnable)
-        //nullable = true from not(false or (false and false)) = true
-: Thread{
-    //var runnable = runnable
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstanceType(runnable, runnable.getType())
-}
-
-
-    open fun getInstanceType(runnable: Runnable, type: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Thread{
-    //var runnable = runnable
-    //var type = type
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
+        let thread: Thread! = Thread(runnable, jstr(runnable))
+        self.logUtil.putF(thread.toString(), self, commonStrings.CONSTRUCTOR)
+        return thread
+    }
     
-                        if(J2MEUtil.isHTML())
-                        
-                                    {
-                                    
-    
-                        if(type == DemoCanvas.TYPE || type == AllBinaryGameCanvas.TYPE)
-                        
-                                    {
-                                    
-    var demoGameSingleThreadStartRunnable: RunnableCanvasSingleThreadStartRunnable = RunnableCanvasSingleThreadStartRunnable(runnable as RunnableCanvas)
 
-PreLogUtil.put(StringMaker().
-                            append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")!!.append(StringUtil.getInstance()!!.toString(runnable))!!.toString(), this, commonStrings!!.CONSTRUCTOR)
-
-    var primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!!
-
-primaryThreadPool!!.runTask(demoGameSingleThreadStartRunnable)
-
-                                    }
-                                
-                        else {
-                            PreLogUtil.put(StringMaker().
-                            append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")!!.append(StringUtil.getInstance()!!.toString(runnable))!!.toString(), this, commonStrings!!.CONSTRUCTOR)
-
-    var primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!!
-
-primaryThreadPool!!.runTask(runnable)
-
-                        }
-                            
-
-                                    }
-                                
-
-    var thread: Thread = Thread(runnable, runnable.toString())
-
-this.logUtil!!.putF(thread.toString(), this, commonStrings!!.CONSTRUCTOR)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return thread
+    open func start(_ thread: Thread!) {
+        thread.start()
+    }
 }
-
-
-    open fun start(thread: Thread)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var thread = thread
-thread.start()
-}
-
-
-}
-                
-            
 

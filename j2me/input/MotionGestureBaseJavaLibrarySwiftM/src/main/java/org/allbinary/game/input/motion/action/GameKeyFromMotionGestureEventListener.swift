@@ -1,115 +1,67 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.motion.action
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.motion.action
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.CompleteMotionGestureInputEvent
+// import org.allbinary.game.input.CompleteMotionGestureInputEventListener
+// import org.allbinary.game.input.event.DownGameKeyEventHandler
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.game.input.event.UpGameKeyEventHandler
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.string.CommonStrings
 
+open class GameKeyFromMotionGestureEventListener: CompleteMotionGestureInputEventListener {
+    public var logUtil: LogUtil! = nil
+    fileprivate var previousGameKeyEvent: GameKeyEvent! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.previousGameKeyEvent = GameKeyEvent.NONE
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.CompleteMotionGestureInputEvent
-import org.allbinary.game.input.CompleteMotionGestureInputEventListener
-import org.allbinary.game.input.event.DownGameKeyEventHandler
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.game.input.event.UpGameKeyEventHandler
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.string.CommonStrings
-
-open public class GameKeyFromMotionGestureEventListener : CompleteMotionGestureInputEventListener {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var previousGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-    override fun onCompleteMotionGestureInputEvent(completeMotionGestureInputEvent: CompleteMotionGestureInputEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var completeMotionGestureInputEvent = completeMotionGestureInputEvent
-
-        try {
-            
-    var gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent
-
-
-    var gameKeyEvent: GameKeyEvent = gameKeyCompleteMotionGestureInputEvent!!.getGameKeyEvent()!!
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(gameKeyEvent != this.previousGameKeyEvent)
-                        
-                                    {
-                                    
+
+    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
     
-                        if(this.previousGameKeyEvent != GameKeyEvent.NONE)
-                        
-                                    {
-                                    UpGameKeyEventHandler.getInstance()!!.fireEvent(this.previousGameKeyEvent)
 
-                                    }
-                                
-this.previousGameKeyEvent= gameKeyEvent
-
-    
-                        if(gameKeyEvent != 
-                                    null
-                                 && gameKeyEvent != GameKeyEvent.NONE)
-                        
-                                    {
-                                    DownGameKeyEventHandler.getInstance()!!.fireEvent(gameKeyEvent)
-
-                                    }
-                                
-
-                                    }
-                                
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, "onCompleteMotionGestureInputEvent", e)
+    open override func onCompleteMotionGestureInputEvent(_ completeMotionGestureInputEvent: CompleteMotionGestureInputEvent!) {
+        do {
+            let gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent! = (completeMotionGestureInputEvent as! GameKeyCompleteMotionGestureInputEvent)
+            let gameKeyEvent: GameKeyEvent! = gameKeyCompleteMotionGestureInputEvent.getGameKeyEvent()
+            if (gameKeyEvent !== self.previousGameKeyEvent) {
+                if (self.previousGameKeyEvent !== GameKeyEvent.NONE) {
+                    UpGameKeyEventHandler.getInstance().fireEvent(self.previousGameKeyEvent)
+                }
+                self.previousGameKeyEvent = gameKeyEvent
+                if (gameKeyEvent != nil && gameKeyEvent !== GameKeyEvent.NONE) {
+                    DownGameKeyEventHandler.getInstance().fireEvent(gameKeyEvent)
+                }
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

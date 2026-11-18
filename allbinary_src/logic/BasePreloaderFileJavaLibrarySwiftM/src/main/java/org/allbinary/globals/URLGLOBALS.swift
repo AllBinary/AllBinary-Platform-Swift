@@ -1,94 +1,52 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.globals
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.globals
+import J2SEForSwiftLibrary
 
+open class URLGLOBALS: JObject {
+    fileprivate static var urlGlobalsInterface: UrlGlobalsInterface! = AppUrlGlobals.NULL_APP_URL_GLOBALS
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open class func `init`(_ urlGlobalsInterface: UrlGlobalsInterface!) {
+        URLGLOBALS.urlGlobalsInterface = urlGlobalsInterface
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func isTestingMode() -> Bool {
+        return URLGLOBALS.urlGlobalsInterface.isTestingMode()
+    }
+    
 
-open public class URLGLOBALS
-            : Object
-         {
-        
-companion object {
-            
-    private var urlGlobalsInterface: UrlGlobalsInterface = AppUrlGlobals.NULL_APP_URL_GLOBALS
+    @discardableResult open class func getWebappPath() -> String! {
+        return URLGLOBALS.urlGlobalsInterface.getWebappPath()
+    }
+    
 
-    open fun init(urlGlobalsInterface: UrlGlobalsInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var urlGlobalsInterface = urlGlobalsInterface
-URLGLOBALS.urlGlobalsInterface= urlGlobalsInterface
+    @discardableResult open class func getTestHtmlPath() -> String! {
+        return URLGLOBALS.urlGlobalsInterface.getTestHtmlPath()
+    }
+    
+
+    @discardableResult open class func getMainPath() -> String! {
+        return URLGLOBALS.urlGlobalsInterface.getMainPath()
+    }
 }
-
-
-    open fun isTestingMode()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!!.isTestingMode()
-}
-
-
-    open fun getWebappPath()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!!.getWebappPath()
-}
-
-
-    open fun getTestHtmlPath()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!!.getTestHtmlPath()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getMainPath()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!!.getMainPath()
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-}
-                
-            
 

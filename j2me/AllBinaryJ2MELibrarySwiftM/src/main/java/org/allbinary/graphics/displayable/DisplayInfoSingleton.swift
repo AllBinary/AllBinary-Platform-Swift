@@ -1,801 +1,478 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.displayable
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.displayable
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Displayable
+// import org.allbinary.AndroidUtil
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.graphics.displayable.event.DisplayChangeEvent
+// import org.allbinary.graphics.displayable.event.DisplayChangeEventHandler
+// import org.allbinary.graphics.displayable.event.LastDisplayChangeEventHandler
+// import org.allbinary.graphics.opengles.OpenGLFeatureFactory
+// import org.allbinary.graphics.threed.SWTJOGLProcessor
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.system.os.GenericOperatingSystem
+// import org.allbinary.logic.system.os.OperatingSystemFactory
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class DisplayInfoSingleton: JObject {
+    fileprivate static let SINGLETON: DisplayInfoSingleton! = DisplayInfoSingleton()
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonLabels: CommonLabels! = nil
+    fileprivate var commonSeps: CommonSeps! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    public var ORIENTATION: String! = nil
+    public var ADJUSTING_FOR_SCALING_IN_PORTRAIT: String! = nil
+    public var ADJUSTING_FOR_SCALING_IN_LANDSCAPE: String! = nil
+    fileprivate var last: JArray<Int32>! = nil
+    fileprivate var lastHalf: JArray<Int32>! = nil
+    fileprivate var full: JArray<Int32>! = nil
+    fileprivate var top: Int32 = 0
+    fileprivate var left: Int32 = 0
+    fileprivate var xOffset: Int32 = 0
+    fileprivate var yOffset: Int32 = 0
+    fileprivate var scaleLargestTo: Float = 0.0
+    public var WIDTH: Int32 = 0
+    public var HEIGHT: Int32 = 0
+    public var CUSTOM_WIDTH: Int32 = 0
+    public var CUSTOM_HEIGHT: Int32 = 0
+    fileprivate var scalableListener: BaseScalable! = nil
+    fileprivate var displayRatio: Float = 0.0
+    fileprivate var ratio: Float = 0.0
+    fileprivate var SET_LAST_SIZE_METHOD_NAME: String! = nil
+    fileprivate var FULL_WIDTH: String! = nil
+    fileprivate var FULL_HEIGHT: String! = nil
+    fileprivate var LAST_WIDTH: String! = nil
+    fileprivate var LAST_HEIGHT: String! = nil
+    fileprivate var PORTRAIT: String! = nil
+    fileprivate var LANDSCAPE: String! = nil
+    public var displayChangeEvent: DisplayChangeEvent! = nil
+    fileprivate var FIRE_METHOD_NAME: String! = nil
+    fileprivate var REASON: String! = nil
+    fileprivate var UPDATE_FROM_ORIENTATION_CHANGE: String! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var DISPLAY_INFO: String! = nil
+    fileprivate var FULL: String! = nil
+    fileprivate var LAST: String! = nil
+    fileprivate var LAST_HALF: String! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonLabels = CommonLabels.getInstance()
+    self.commonSeps = CommonSeps.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.ORIENTATION = "ORIENTATION"
+    self.ADJUSTING_FOR_SCALING_IN_PORTRAIT = "Adjusting for Scaling in portrait display ratio: "
+    self.ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: "
+    self.last = JArray<Int32>(4, 0)
+    self.lastHalf = JArray<Int32>(4, 0)
+    self.full = JArray<Int32>(4, 0)
+    self.top = 0
+    self.left = 0
+    self.xOffset = 0
+    self.yOffset = 0
+    self.scaleLargestTo = 0.0
+    self.WIDTH = 0
+    self.HEIGHT = 1
+    self.CUSTOM_WIDTH = 2
+    self.CUSTOM_HEIGHT = 3
+    self.scalableListener = BaseScalable()
+    self.displayRatio = 0.0
+    self.ratio = 1.0
+    self.SET_LAST_SIZE_METHOD_NAME = "setLastSize"
+    self.FULL_WIDTH = " FullWidth: "
+    self.FULL_HEIGHT = " FullHeight: "
+    self.LAST_WIDTH = "LastWidth: "
+    self.LAST_HEIGHT = " LastHeight: "
+    self.PORTRAIT = "Portrait"
+    self.LANDSCAPE = "Landscape"
+    self.displayChangeEvent = DisplayChangeEvent(self)
+    self.FIRE_METHOD_NAME = "fire"
+    self.REASON = "reason: "
+    self.UPDATE_FROM_ORIENTATION_CHANGE = "Updating from Orientation Change "
+    self.list = BasicArrayListD()
+    self.DISPLAY_INFO = "Display Info: "
+    self.FULL = "full"
+    self.LAST = "last"
+    self.LAST_HALF = "lastHalf"
+    }
+    
 
+    @discardableResult open class func getInstance() -> DisplayInfoSingleton! {
+        return DisplayInfoSingleton.SINGLETON
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Displayable
-import org.allbinary.AndroidUtil
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.graphics.displayable.event.DisplayChangeEvent
-import org.allbinary.graphics.displayable.event.DisplayChangeEventHandler
-import org.allbinary.graphics.displayable.event.LastDisplayChangeEventHandler
-import org.allbinary.graphics.opengles.OpenGLFeatureFactory
-import org.allbinary.graphics.threed.SWTJOGLProcessor
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.system.os.GenericOperatingSystem
-import org.allbinary.logic.system.os.OperatingSystemFactory
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class DisplayInfoSingleton
-            : Object
-         {
-        
-companion object {
-            
-    private val SINGLETON: DisplayInfoSingleton = DisplayInfoSingleton()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DisplayInfoSingleton{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayInfoSingleton.SINGLETON
-}
-
-
+    public override init() {
+        super.init()
+        self.initFields()
+        let size: Int32 = self.last.length
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            self.last[index] = 0
+            self.lastHalf[index] = 0
+            self.full[index] = 0
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonLabels: CommonLabels = CommonLabels.getInstance()!!
-
-    private val commonSeps: CommonSeps = CommonSeps.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    val ORIENTATION: String = "ORIENTATION"
-
-    val ADJUSTING_FOR_SCALING_IN_PORTRAIT: String = "Adjusting for Scaling in portrait display ratio: "
-
-    val ADJUSTING_FOR_SCALING_IN_LANDSCAPE: String = "Adjusting for Scaling in landscape display ratio: "
-
-    private var last: IntArray = IntArray(4)
-
-    private var lastHalf: IntArray = IntArray(4)
-
-    private var full: IntArray = IntArray(4)
-
-    private var top: Int= 0
-
-    private var left: Int= 0
-
-    private var xOffset: Int= 0
-
-    private var yOffset: Int= 0
-
-    private var scaleLargestTo: Float= 0.0f
-
-    val WIDTH: Int = 0
-
-    val HEIGHT: Int = 1
-
-    val CUSTOM_WIDTH: Int = 2
-
-    val CUSTOM_HEIGHT: Int = 3
-
-    private var scalableListener: BaseScalable = BaseScalable()
-
-    private var displayRatio: Float= 0.0f
-
-    private var ratio: Float = 1.0f
-private constructor ()
-            : super()
-        {
-
-    var size: Int = this.last.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-this.last[index]= 0
-this.lastHalf[index]= 0
-this.full[index]= 0
-}
-
-
+        if (AndroidUtil.isAndroid()) {
+            self.scaleLargestTo = 640.0
+        } else {
+            self.scaleLargestTo = 1080.0
+        }
+    }
     
-                        if(AndroidUtil.isAndroid())
-                        
-                                    {
-                                    this.scaleLargestTo= 640.toFloat()
 
-                                    }
-                                
-                        else {
-                            this.scaleLargestTo= 1080.toFloat()
+    @discardableResult open func getLastHalf() -> JArray<Int32>! {
+        return self.lastHalf
+    }
+    
 
+    @discardableResult open func getLast() -> JArray<Int32>! {
+        return self.last
+    }
+    
+
+    @discardableResult open func getFull() -> JArray<Int32>! {
+        return self.full
+    }
+    
+
+    @discardableResult open func getScaleLargestTo() -> Float {
+        return self.scaleLargestTo
+    }
+    
+
+    open func setScaleLargestTo(_ scaleLargestTo: Int32) {
+        self.scaleLargestTo = Float(scaleLargestTo)
+    }
+    
+
+    open func setLastSize(_ aLastWidth: Int32, _ aLastHeight: Int32, _ reason: String!) {
+        if (self.full[self.WIDTH] != aLastWidth || self.full[self.HEIGHT] != aLastHeight) {
+            self.setLastSizeForce(aLastWidth, aLastHeight, reason)
+        }
+    }
+    
+
+    fileprivate func setLastSizeForce(_ aLastWidth: Int32, _ aLastHeight: Int32, _ reason: String!) {
+        var aLastWidth: Int32 = aLastWidth
+        var aLastHeight: Int32 = aLastHeight
+        let stringMaker: StringMaker! = StringMaker()
+        self.logUtil.putF(stringMaker.append(CommonLabels.getInstance().START_LABEL).append(reason).toString(), self, self.SET_LAST_SIZE_METHOD_NAME)
+        let aFullWidth: Int32 = aLastWidth
+        let aFullHeight: Int32 = aLastHeight
+        stringMaker.delete(0, stringMaker.length())
+        self.logUtil.putF(stringMaker.append(self.FULL_WIDTH).appendint(aFullWidth).append(self.FULL_HEIGHT).appendint(aFullHeight).append(self.toString()).toString(), self, self.SET_LAST_SIZE_METHOD_NAME)
+        let operatingSystemInterface: GenericOperatingSystem! = OperatingSystemFactory.getInstance().getOperatingSystemInstance()
+        if (operatingSystemInterface.isOverScan()) {
+            aLastWidth = aLastWidth &* operatingSystemInterface.getOverScanXPercent() / 100
+            aLastHeight = aLastHeight &* operatingSystemInterface.getOverScanYPercent() / 100
+        }
+        if (operatingSystemInterface.isScalable()) {
+            if (self.isPortraitWH(aLastWidth, aLastHeight)) {
+                if (Float(aLastHeight) > self.scaleLargestTo) {
+                    self.displayRatio = self.scaleLargestTo / Float(aLastHeight)
+                    self.ratio = Float(aLastHeight) / self.scaleLargestTo
+                    stringMaker.delete(0, stringMaker.length())
+                    self.logUtil.putF(stringMaker.append(self.ADJUSTING_FOR_SCALING_IN_PORTRAIT).appendfloat(self.displayRatio).toString(), self, self.SET_LAST_SIZE_METHOD_NAME)
+                    aLastWidth = JMath.toInt32(Double((Float(aLastWidth) * self.displayRatio)))
+                    aLastHeight = JMath.toInt32(Double((Float(aLastHeight) * self.displayRatio)))
+                    self.scalableListener.scale(self.ratio)
+                } else {
+                    self.ratio = 1.0
+                    self.scalableListener.scale(self.ratio)
+                }
+            } else {
+                if (Float(aLastWidth) > self.scaleLargestTo) {
+                    self.displayRatio = self.scaleLargestTo / Float(aLastWidth)
+                    self.ratio = Float(aLastWidth) / self.scaleLargestTo
+                    stringMaker.delete(0, stringMaker.length())
+                    self.logUtil.putF(stringMaker.append(self.ADJUSTING_FOR_SCALING_IN_LANDSCAPE).appendfloat(self.displayRatio).toString(), self, self.SET_LAST_SIZE_METHOD_NAME)
+                    aLastWidth = JMath.toInt32(Double((Float(aLastWidth) * self.displayRatio)))
+                    aLastHeight = JMath.toInt32(Double((Float(aLastHeight) * self.displayRatio)))
+                    self.scalableListener.scale(self.ratio)
+                } else {
+                    self.ratio = 1.0
+                    self.scalableListener.scale(self.ratio)
+                }
+            }
+        }
+        stringMaker.delete(0, stringMaker.length())
+        self.logUtil.putF(stringMaker.append(self.LAST_WIDTH).appendint(aLastWidth).append(self.LAST_HEIGHT).appendint(aLastHeight).toString(), self, self.SET_LAST_SIZE_METHOD_NAME)
+        self.xOffset = aFullWidth &- aLastWidth
+        self.yOffset = aFullHeight &- aLastHeight
+        self.left = self.scalableListener.getLeft(self.xOffset)
+        self.top = self.scalableListener.getTop(self.yOffset)
+        self.full[self.WIDTH] = aFullWidth
+        self.full[self.HEIGHT] = aFullHeight
+        self.last[self.WIDTH] = aLastWidth
+        self.lastHalf[self.WIDTH] = (self.last[self.WIDTH] >> 1)
+        self.last[self.HEIGHT] = aLastHeight
+        self.lastHalf[self.HEIGHT] = (self.last[self.HEIGHT] >> 1)
+        SWTJOGLProcessor.getInstance().setCustom(aLastWidth, aLastHeight, self.ratio)
+        self.add(self.SET_LAST_SIZE_METHOD_NAME)
+    }
+    
+
+    @discardableResult open func isPortraitWH(_ lastWidth: Int32, _ lastHeight: Int32) -> Bool {
+        if (lastHeight > lastWidth) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    @discardableResult open func isPortrait() -> Bool {
+        return self.isPortraitWH(self.last[self.WIDTH], self.last[self.HEIGHT])
+    }
+    
+
+    open func add(_ reason: String!) {
+        let stringMaker: StringMaker! = StringMaker()
+        self.logUtil.putF(stringMaker.append(self.REASON).append(reason).toString(), self, self.FIRE_METHOD_NAME)
+        stringMaker.delete(0, stringMaker.length())
+        self.logUtil.putF(self.toStringAppend(stringMaker), self, self.FIRE_METHOD_NAME)
+        self.list.add(jBoxString(reason))
+    }
+    
+
+    open func process() {
+        do {
+            if (self.list.size() > 0) {
+                self.processForced()
+            }
+            self.list.clear()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func processForced() {
+        do {
+            let swtJOGLProcessor: SWTJOGLProcessor! = SWTJOGLProcessor.getInstance()
+            swtJOGLProcessor.clear()
+            DisplayChangeEventHandler.getInstance().fireEvent(self.displayChangeEvent)
+            LastDisplayChangeEventHandler.getInstance().fireEvent(self.displayChangeEvent)
+            swtJOGLProcessor.onSurfaceChanged()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func update(_ displayable: Displayable!, _ reason: String!) {
+        var aLastWidth: Int32 = displayable.getWidth()
+        var aLastHeight: Int32 = displayable.getHeight()
+        let aFullWidth: Int32 = aLastWidth
+        let aFullHeight: Int32 = aLastHeight
+        let stringMaker: StringMaker! = StringMaker()
+        self.logUtil.putF(stringMaker.append(CommonLabels.getInstance().START_LABEL).append(reason).append(self.LAST_WIDTH).appendint(aLastWidth).append(self.LAST_HEIGHT).appendint(aLastHeight).append(self.commonSeps.SPACE).append(self.toString()).toString(), self, self.commonStrings.UPDATE)
+        if (aLastWidth > 0 && aLastHeight > 0) {
+            let features: Features! = Features.getInstance()
+            let openGLFeatureFactory: OpenGLFeatureFactory! = OpenGLFeatureFactory.getInstance()
+            if (!features.isDefault(openGLFeatureFactory.OPENGL) || self.last[self.WIDTH] != aLastWidth || self.last[self.HEIGHT] != aLastHeight) {
+                stringMaker.delete(0, stringMaker.length())
+                self.logUtil.putF(stringMaker.append(self.UPDATE_FROM_ORIENTATION_CHANGE).toString(), self, self.commonStrings.UPDATE)
+                let operatingSystemInterface: GenericOperatingSystem! = OperatingSystemFactory.getInstance().getOperatingSystemInstance()
+                if (operatingSystemInterface.isOverScan()) {
+                    aLastWidth = aLastWidth &* operatingSystemInterface.getOverScanXPercent() / 100
+                    aLastHeight = aLastHeight &* operatingSystemInterface.getOverScanYPercent() / 100
+                }
+                if (operatingSystemInterface.isScalable()) {
+                    if (self.isPortraitWH(aLastWidth, aLastHeight)) {
+                        if (Float(aLastHeight) > self.scaleLargestTo) {
+                            self.displayRatio = self.scaleLargestTo / Float(aLastHeight)
+                            self.ratio = Float(aLastHeight) / self.scaleLargestTo
+                            stringMaker.delete(0, stringMaker.length())
+                            self.logUtil.putF(stringMaker.append(self.ADJUSTING_FOR_SCALING_IN_PORTRAIT).appendfloat(self.displayRatio).toString(), self, self.commonStrings.UPDATE)
+                            aLastWidth = JMath.toInt32(Double((Float(aLastWidth) * self.displayRatio)))
+                            aLastHeight = JMath.toInt32(Double((Float(aLastHeight) * self.displayRatio)))
+                            self.scalableListener.scale(self.ratio)
+                        } else {
+                            self.ratio = 1.0
+                            self.scalableListener.scale(self.ratio)
                         }
-                            
-}
-
-
-    open fun getLastHalf()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHalf
-}
-
-
-    open fun getLast()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last
-}
-
-
-    open fun getFull()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.full
-}
-
-
-    open fun getScaleLargestTo()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scaleLargestTo
-}
-
-
-    open fun setScaleLargestTo(scaleLargestTo: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleLargestTo = scaleLargestTo
-this.scaleLargestTo= scaleLargestTo.toFloat()
-}
-
-
-    private val SET_LAST_SIZE_METHOD_NAME: String = "setLastSize"
-
-    private val FULL_WIDTH: String = " FullWidth: "
-
-    private val FULL_HEIGHT: String = " FullHeight: "
-
-    private val LAST_WIDTH: String = "LastWidth: "
-
-    private val LAST_HEIGHT: String = " LastHeight: "
-
-    private val PORTRAIT: String = "Portrait"
-
-    private val LANDSCAPE: String = "Landscape"
-
-    open fun setLastSize(aLastWidth: Int, aLastHeight: Int, reason: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var aLastWidth = aLastWidth
-    //var aLastHeight = aLastHeight
-    //var reason = reason
-
-    
-                        if(this.full[this.WIDTH] != aLastWidth || this.full[this.HEIGHT] != aLastHeight)
-                        
-                                    {
-                                    this.setLastSizeForce(aLastWidth, aLastHeight, reason)
-
-                                    }
-                                
-}
-
-
-    open fun setLastSizeForce(aLastWidth: Int, aLastHeight: Int, reason: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var aLastWidth = aLastWidth
-var aLastHeight = aLastHeight
-    //var reason = reason
-
-    var stringMaker: StringMaker = StringMaker()
-
-this.logUtil!!.putF(stringMaker!!.append(CommonLabels.getInstance()!!.START_LABEL)!!.append(reason)!!.toString(), this, this.SET_LAST_SIZE_METHOD_NAME)
-
-    var aFullWidth: Int = aLastWidth
-
-
-    var aFullHeight: Int = aLastHeight
-
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.FULL_WIDTH)!!.appendint(aFullWidth)!!.append(this.FULL_HEIGHT)!!.appendint(aFullHeight)!!.append(this.toString())!!.toString(), this, this.SET_LAST_SIZE_METHOD_NAME)
-
-    var operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!!.getOperatingSystemInstance()!!
-
-
-    
-                        if(operatingSystemInterface!!.isOverScan())
-                        
-                                    {
-                                    aLastWidth= aLastWidth *operatingSystemInterface!!.getOverScanXPercent() /100
-aLastHeight= aLastHeight *operatingSystemInterface!!.getOverScanYPercent() /100
-
-                                    }
-                                
-
-    
-                        if(operatingSystemInterface!!.isScalable())
-                        
-                                    {
-                                    
-    
-                        if(this.isPortraitWH(aLastWidth, aLastHeight))
-                        
-                                    {
-                                    
-    
-                        if(aLastHeight > this.scaleLargestTo)
-                        
-                                    {
-                                    this.displayRatio= this.scaleLargestTo /aLastHeight
-this.ratio= aLastHeight /this.scaleLargestTo
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.ADJUSTING_FOR_SCALING_IN_PORTRAIT)!!.appendfloat(this.displayRatio)!!.toString(), this, this.SET_LAST_SIZE_METHOD_NAME)
-aLastWidth= (aLastWidth *this.displayRatio).toInt()
-aLastHeight= (aLastHeight *this.displayRatio).toInt()
-this.scalableListener!!.scale(this.ratio.toFloat())
-
-                                    }
-                                
-                        else {
-                            this.ratio= 1.0f
-this.scalableListener!!.scale(this.ratio.toFloat())
-
+                    } else {
+                        if (Float(aLastWidth) > self.scaleLargestTo) {
+                            self.displayRatio = self.scaleLargestTo / Float(aLastWidth)
+                            self.ratio = Float(aLastWidth) / self.scaleLargestTo
+                            stringMaker.delete(0, stringMaker.length())
+                            self.logUtil.putF(stringMaker.append(self.ADJUSTING_FOR_SCALING_IN_LANDSCAPE).appendfloat(self.displayRatio).toString(), self, self.commonStrings.UPDATE)
+                            aLastWidth = JMath.toInt32(Double((Float(aLastWidth) * self.displayRatio)))
+                            aLastHeight = JMath.toInt32(Double((Float(aLastHeight) * self.displayRatio)))
+                            self.scalableListener.scale(self.ratio)
+                        } else {
+                            self.ratio = 1.0
+                            self.scalableListener.scale(self.ratio)
                         }
-                            
-
-                                    }
-                                
-                        else {
-                            
+                    }
+                }
+                stringMaker.delete(0, stringMaker.length())
+                self.logUtil.putF(stringMaker.append(self.UPDATE_FROM_ORIENTATION_CHANGE).append(self.LAST_WIDTH).appendint(aLastWidth).append(self.LAST_HEIGHT).appendint(aLastHeight).toString(), self, self.commonStrings.UPDATE)
+                self.xOffset = aFullWidth &- aLastWidth
+                self.yOffset = aFullHeight &- aLastHeight
+                self.left = self.scalableListener.getLeft(self.xOffset)
+                self.top = self.scalableListener.getTop(self.yOffset)
+                self.full[self.WIDTH] = aFullWidth
+                self.full[self.HEIGHT] = aFullHeight
+                self.last[self.WIDTH] = aLastWidth
+                self.lastHalf[self.WIDTH] = (self.last[self.WIDTH] >> 1)
+                self.last[self.HEIGHT] = aLastHeight
+                self.lastHalf[self.HEIGHT] = (self.last[self.HEIGHT] >> 1)
+                SWTJOGLProcessor.getInstance().setCustom(aLastWidth, aLastHeight, self.ratio)
+                self.add(self.commonStrings.UPDATE)
+            }
+        }
+    }
     
-                        if(aLastWidth > this.scaleLargestTo)
-                        
-                                    {
-                                    this.displayRatio= this.scaleLargestTo /aLastWidth
-this.ratio= aLastWidth /this.scaleLargestTo
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.ADJUSTING_FOR_SCALING_IN_LANDSCAPE)!!.appendfloat(this.displayRatio)!!.toString(), this, this.SET_LAST_SIZE_METHOD_NAME)
-aLastWidth= (aLastWidth *this.displayRatio).toInt()
-aLastHeight= (aLastHeight *this.displayRatio).toInt()
-this.scalableListener!!.scale(this.ratio.toFloat())
 
-                                    }
-                                
-                        else {
-                            this.ratio= 1.0f
-this.scalableListener!!.scale(this.ratio.toFloat())
-
-                        }
-                            
-
-                        }
-                            
-
-                                    }
-                                
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.LAST_WIDTH)!!.appendint(aLastWidth)!!.append(this.LAST_HEIGHT)!!.appendint(aLastHeight)!!.toString(), this, this.SET_LAST_SIZE_METHOD_NAME)
-this.xOffset= aFullWidth -aLastWidth
-this.yOffset= aFullHeight -aLastHeight
-this.left= this.scalableListener!!.getLeft(this.xOffset)
-this.top= this.scalableListener!!.getTop(this.yOffset)
-this.full[this.WIDTH]= aFullWidth
-this.full[this.HEIGHT]= aFullHeight
-this.last[this.WIDTH]= aLastWidth
-this.lastHalf[this.WIDTH]= (this.last[this.WIDTH] shr 1)
-this.last[this.HEIGHT]= aLastHeight
-this.lastHalf[this.HEIGHT]= (this.last[this.HEIGHT] shr 1)
-SWTJOGLProcessor.getInstance()!!.setCustom(aLastWidth, aLastHeight, this.ratio)
-this.add(this.SET_LAST_SIZE_METHOD_NAME)
-}
-
-
-    open fun isPortraitWH(lastWidth: Int, lastHeight: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var lastWidth = lastWidth
-    //var lastHeight = lastHeight
-
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        return self.toStringAppend(stringBuffer)
+    }
     
-                        if(lastHeight > lastWidth)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-    open fun isPortrait()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isPortraitWH(this.last[this.WIDTH]!!, this.last[this.HEIGHT]!!)
-}
-
-
-    val displayChangeEvent: DisplayChangeEvent = DisplayChangeEvent(this)
-
-    private val FIRE_METHOD_NAME: String = "fire"
-
-    private val REASON: String = "reason: "
-
-    private val UPDATE_FROM_ORIENTATION_CHANGE: String = "Updating from Orientation Change "
-
-    private val list: BasicArrayList = BasicArrayListD()
-
-    open fun add(reason: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var reason = reason
-
-    var stringMaker: StringMaker = StringMaker()
-
-this.logUtil!!.putF(stringMaker!!.append(this.REASON)!!.append(reason)!!.toString(), this, this.FIRE_METHOD_NAME)
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(this.toStringAppend(stringMaker), this, this.FIRE_METHOD_NAME)
-this.list.add(reason)
-}
-
-
-    open fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
+    @discardableResult open func toStringAppend(_ stringBuffer: StringMaker!) -> String! {
+        stringBuffer.append(self.DISPLAY_INFO)
+        stringBuffer.append(self.FULL)
+        stringBuffer.append(self.commonLabels.WIDTH_LABEL)
+        stringBuffer.appendint(self.full[self.WIDTH])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append(self.FULL)
+        stringBuffer.append(self.commonLabels.HEIGHT_LABEL)
+        stringBuffer.appendint(self.full[self.HEIGHT])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append(self.LAST)
+        stringBuffer.append(self.commonLabels.WIDTH_LABEL)
+        stringBuffer.appendint(self.last[self.WIDTH])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append(self.LAST)
+        stringBuffer.append(self.commonLabels.HEIGHT_LABEL)
+        stringBuffer.appendint(self.last[self.HEIGHT])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append(self.LAST_HALF)
+        stringBuffer.append(self.commonLabels.WIDTH_LABEL)
+        stringBuffer.appendint(self.lastHalf[self.WIDTH])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append(self.LAST_HALF)
+        stringBuffer.append(self.commonLabels.HEIGHT_LABEL)
+        stringBuffer.appendint(self.lastHalf[self.HEIGHT])
+        stringBuffer.append(self.commonSeps.SPACE)
+        stringBuffer.append((self.isPortrait() ? self.PORTRAIT : self.LANDSCAPE))
+        return stringBuffer.toString()
+    }
     
-                        if(this.list.size() > 0)
-                        
-                                    {
-                                    this.processForced()
 
-                                    }
-                                
-this.list.clear()
-} catch(e: Exception)
-            {
-PreLogUtil.putOE(this.commonStrings!!.EXCEPTION, this, this.FIRE_METHOD_NAME, e)
-}
-
-}
-
-
-    open fun processForced()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var swtJOGLProcessor: SWTJOGLProcessor = SWTJOGLProcessor.getInstance()!!
-
-swtJOGLProcessor!!.clear()
-DisplayChangeEventHandler.getInstance()!!.fireEvent(this.displayChangeEvent)
-LastDisplayChangeEventHandler.getInstance()!!.fireEvent(this.displayChangeEvent)
-swtJOGLProcessor!!.onSurfaceChanged()
-} catch(e: Exception)
-            {
-PreLogUtil.putOE(this.commonStrings!!.EXCEPTION, this, this.FIRE_METHOD_NAME, e)
-}
-
-}
-
-
-    open fun update(displayable: Displayable, reason: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var displayable = displayable
-    //var reason = reason
-
-    var aLastWidth: Int = displayable.getWidth()
-
-
-    var aLastHeight: Int = displayable.getHeight()
-
-
-    var aFullWidth: Int = aLastWidth
-
-
-    var aFullHeight: Int = aLastHeight
-
-
-    var stringMaker: StringMaker = StringMaker()
-
-this.logUtil!!.putF(stringMaker!!.append(CommonLabels.getInstance()!!.START_LABEL)!!.append(reason)!!.append(this.LAST_WIDTH)!!.appendint(aLastWidth)!!.append(this.LAST_HEIGHT)!!.appendint(aLastHeight)!!.append(this.commonSeps!!.SPACE)!!.append(this.toString())!!.toString(), this, this.commonStrings!!.UPDATE)
-
+    @discardableResult open func getTop() -> Int32 {
+        return self.top
+    }
     
-                        if(aLastWidth > 0 && aLastHeight > 0)
-                        
-                                    {
-                                    
-    var features: Features = Features.getInstance()!!
 
-
-    var openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!!
-
-
+    @discardableResult open func getLeft() -> Int32 {
+        return self.left
+    }
     
-                        if(!features.isDefault(openGLFeatureFactory!!.OPENGL) || this.last[this.WIDTH] != aLastWidth || this.last[this.HEIGHT] != aLastHeight)
-                        
-                                    {
-                                    stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.UPDATE_FROM_ORIENTATION_CHANGE)!!.toString(), this, this.commonStrings!!.UPDATE)
 
-    var operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!!.getOperatingSystemInstance()!!
-
-
+    @discardableResult open func getLastWidth() -> Int32 {
+        return self.last[self.WIDTH]
+    }
     
-                        if(operatingSystemInterface!!.isOverScan())
-                        
-                                    {
-                                    aLastWidth= aLastWidth *operatingSystemInterface!!.getOverScanXPercent() /100
-aLastHeight= aLastHeight *operatingSystemInterface!!.getOverScanYPercent() /100
 
-                                    }
-                                
-
+    @discardableResult open func getLastHeight() -> Int32 {
+        return self.last[self.HEIGHT]
+    }
     
-                        if(operatingSystemInterface!!.isScalable())
-                        
-                                    {
-                                    
+
+    @discardableResult open func getLastHalfWidth() -> Int32 {
+        return self.lastHalf[self.WIDTH]
+    }
     
-                        if(this.isPortraitWH(aLastWidth, aLastHeight))
-                        
-                                    {
-                                    
+
+    @discardableResult open func getLastHalfHeight() -> Int32 {
+        return self.lastHalf[self.HEIGHT]
+    }
     
-                        if(aLastHeight > this.scaleLargestTo)
-                        
-                                    {
-                                    this.displayRatio= this.scaleLargestTo /aLastHeight
-this.ratio= aLastHeight /this.scaleLargestTo
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.ADJUSTING_FOR_SCALING_IN_PORTRAIT)!!.appendfloat(this.displayRatio)!!.toString(), this, this.commonStrings!!.UPDATE)
-aLastWidth= (aLastWidth *this.displayRatio).toInt()
-aLastHeight= (aLastHeight *this.displayRatio).toInt()
-this.scalableListener!!.scale(this.ratio.toFloat())
 
-                                    }
-                                
-                        else {
-                            this.ratio= 1.0f
-this.scalableListener!!.scale(this.ratio.toFloat())
-
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            
+    @discardableResult open func getCustomLastWidth() -> Int32 {
+        return self.last[self.CUSTOM_WIDTH]
+    }
     
-                        if(aLastWidth > this.scaleLargestTo)
-                        
-                                    {
-                                    this.displayRatio= this.scaleLargestTo /aLastWidth
-this.ratio= aLastWidth /this.scaleLargestTo
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.ADJUSTING_FOR_SCALING_IN_LANDSCAPE)!!.appendfloat(this.displayRatio)!!.toString(), this, this.commonStrings!!.UPDATE)
-aLastWidth= (aLastWidth *this.displayRatio).toInt()
-aLastHeight= (aLastHeight *this.displayRatio).toInt()
-this.scalableListener!!.scale(this.ratio.toFloat())
 
-                                    }
-                                
-                        else {
-                            this.ratio= 1.0f
-this.scalableListener!!.scale(this.ratio.toFloat())
+    @discardableResult open func getCustomLastHeight() -> Int32 {
+        return self.last[self.CUSTOM_HEIGHT]
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getRawLastWidth() -> Int32 {
+        return self.last[self.WIDTH]
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getRawLastHeight() -> Int32 {
+        return self.last[self.HEIGHT]
+    }
+    
 
-                                    }
-                                
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(this.UPDATE_FROM_ORIENTATION_CHANGE)!!.append(this.LAST_WIDTH)!!.appendint(aLastWidth)!!.append(this.LAST_HEIGHT)!!.appendint(aLastHeight)!!.toString(), this, this.commonStrings!!.UPDATE)
-this.xOffset= aFullWidth -aLastWidth
-this.yOffset= aFullHeight -aLastHeight
-this.left= this.scalableListener!!.getLeft(this.xOffset)
-this.top= this.scalableListener!!.getTop(this.yOffset)
-this.full[this.WIDTH]= aFullWidth
-this.full[this.HEIGHT]= aFullHeight
-this.last[this.WIDTH]= aLastWidth
-this.lastHalf[this.WIDTH]= (this.last[this.WIDTH] shr 1)
-this.last[this.HEIGHT]= aLastHeight
-this.lastHalf[this.HEIGHT]= (this.last[this.HEIGHT] shr 1)
-SWTJOGLProcessor.getInstance()!!.setCustom(aLastWidth, aLastHeight, this.ratio)
-this.add(this.commonStrings!!.UPDATE)
+    open func setCustom(_ width: Int32, _ height: Int32) {
+        self.last[self.CUSTOM_WIDTH] = width
+        self.lastHalf[self.CUSTOM_WIDTH] = (self.last[self.CUSTOM_WIDTH] >> 1)
+        self.last[self.CUSTOM_HEIGHT] = height
+        self.lastHalf[self.CUSTOM_HEIGHT] = (self.last[self.CUSTOM_HEIGHT] >> 1)
+    }
+    
 
-                                    }
-                                
+    open func setScalableListener(_ scalableListener: BaseScalable!) {
+        self.scalableListener = scalableListener
+    }
+    
 
-                                    }
-                                
+    @discardableResult open func getScalableListener() -> ScalableListener! {
+        return self.scalableListener
+    }
+    
+
+    @discardableResult open func getRatio() -> Float {
+        return self.ratio
+    }
+    
+
+    @discardableResult open func getDisplayRatio() -> Float {
+        return self.displayRatio
+    }
+    
+
+    open func setOffset(_ left: Int32, _ top: Int32) {
+        self.left = left
+    }
+    
+
+    @discardableResult open func getxOffset() -> Int32 {
+        return self.xOffset
+    }
+    
+
+    @discardableResult open func getyOffset() -> Int32 {
+        return self.yOffset
+    }
 }
-
-
-    private val DISPLAY_INFO: String = "Display Info: "
-
-    private val FULL: String = "full"
-
-    private val LAST: String = "last"
-
-    private val LAST_HALF: String = "lastHalf"
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.toStringAppend(stringBuffer)
-}
-
-
-    open fun toStringAppend(stringBuffer: StringMaker)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-    //var stringBuffer = stringBuffer
-stringBuffer!!.append(this.DISPLAY_INFO)
-stringBuffer!!.append(this.FULL)
-stringBuffer!!.append(this.commonLabels!!.WIDTH_LABEL)
-stringBuffer!!.appendint(this.full[this.WIDTH]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(this.FULL)
-stringBuffer!!.append(this.commonLabels!!.HEIGHT_LABEL)
-stringBuffer!!.appendint(this.full[this.HEIGHT]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(this.LAST)
-stringBuffer!!.append(this.commonLabels!!.WIDTH_LABEL)
-stringBuffer!!.appendint(this.last[this.WIDTH]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(this.LAST)
-stringBuffer!!.append(this.commonLabels!!.HEIGHT_LABEL)
-stringBuffer!!.appendint(this.last[this.HEIGHT]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(this.LAST_HALF)
-stringBuffer!!.append(this.commonLabels!!.WIDTH_LABEL)
-stringBuffer!!.appendint(this.lastHalf[this.WIDTH]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(this.LAST_HALF)
-stringBuffer!!.append(this.commonLabels!!.HEIGHT_LABEL)
-stringBuffer!!.appendint(this.lastHalf[this.HEIGHT]!!)
-stringBuffer!!.append(this.commonSeps!!.SPACE)
-stringBuffer!!.append(if(this.isPortrait()) {
-                            
-                            this.PORTRAIT
-                        
-                            } else {
-                            this.LANDSCAPE
-                            }
-    )
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-    open fun getTop()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.top
-}
-
-
-    open fun getLeft()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.left
-}
-
-
-    open fun getLastWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.WIDTH]!!
-}
-
-
-    open fun getLastHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.HEIGHT]!!
-}
-
-
-    open fun getLastHalfWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHalf[this.WIDTH]!!
-}
-
-
-    open fun getLastHalfHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHalf[this.HEIGHT]!!
-}
-
-
-    open fun getCustomLastWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.CUSTOM_WIDTH]!!
-}
-
-
-    open fun getCustomLastHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.CUSTOM_HEIGHT]!!
-}
-
-
-    open fun getRawLastWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.WIDTH]!!
-}
-
-
-    open fun getRawLastHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.last[this.HEIGHT]!!
-}
-
-
-    open fun setCustom(width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var width = width
-    //var height = height
-this.last[this.CUSTOM_WIDTH]= width
-this.lastHalf[this.CUSTOM_WIDTH]= (this.last[this.CUSTOM_WIDTH] shr 1)
-this.last[this.CUSTOM_HEIGHT]= height
-this.lastHalf[this.CUSTOM_HEIGHT]= (this.last[this.CUSTOM_HEIGHT] shr 1)
-}
-
-
-    open fun setScalableListener(scalableListener: BaseScalable)
-        //nullable = true from not(false or (false and false)) = true
-{
-var scalableListener = scalableListener
-this.scalableListener= scalableListener
-}
-
-
-    open fun getScalableListener()
-        //nullable = true from not(false or (false and true)) = true
-: ScalableListener{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scalableListener
-}
-
-
-    open fun getRatio()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ratio
-}
-
-
-    open fun getDisplayRatio()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.displayRatio
-}
-
-
-    open fun setOffset(left: Int, top: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var left = left
-var top = top
-this.left= left
-}
-
-
-    open fun getxOffset()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.xOffset
-}
-
-
-    open fun getyOffset()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.yOffset
-}
-
-
-}
-                
-            
 

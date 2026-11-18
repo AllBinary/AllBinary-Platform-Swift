@@ -1,89 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.damage
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.combat.damage
+import J2SEForSwiftLibrary
 
+open class DamageableBaseBehavior: JObject, DamageableInterface {
+    fileprivate static let instance: DamageableBaseBehavior! = DamageableBaseBehavior()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> DamageableBaseBehavior! {
+        return DamageableBaseBehavior.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getName() -> String! {
+        return JObject.className(self)
+    }
+    
 
-open public class DamageableBaseBehavior
-            : Object
-        
-                , DamageableInterface {
-        
-companion object {
-            
-    private val instance: DamageableBaseBehavior = DamageableBaseBehavior()
+    open func damage(_ damage: Int32, _ damageType: Int32) {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DamageableBaseBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageableBaseBehavior.instance
+    @discardableResult open func getDamage(_ damageType: Int32) -> Int32 {
+        return 6000
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    override fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this::class.toString()!!
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun damage(damage: Int, damageType: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var damage = damage
-var damageType = damageType
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getDamage(damageType: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var damageType = damageType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 6000
-}
-
-
-}
-                
-            
 

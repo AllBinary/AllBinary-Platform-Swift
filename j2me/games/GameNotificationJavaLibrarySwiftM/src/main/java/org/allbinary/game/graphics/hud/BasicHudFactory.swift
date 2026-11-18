@@ -1,77 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.graphics.hud
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.graphics.hud
+import J2SEForSwiftLibrary
 
+open class BasicHudFactory: JObject {
+    fileprivate static let instance: BasicHudFactory! = BasicHudFactory()
+    public var DIRECTION_EXCEPTION: String! = nil
+    public var VERTICAL: Int32 = 0
+    public var HORIZONTAL: Int32 = 0
+    public var BOTTOMLEFT: Int32 = 0
+    public var BOTTOMRIGHT: Int32 = 0
+    public var TOPLEFT: Int32 = 0
+    public var TOPRIGHT: Int32 = 0
+    public var BOTTOMCENTER: Int32 = 0
+    public var TOPCENTER: Int32 = 0
+    public var ABSOLUTE: Int32 = 0
 
+    private func initFields() {
+    self.DIRECTION_EXCEPTION = "Only Horizontal Direction is Allowed Currently"
+    self.VERTICAL = 0
+    self.HORIZONTAL = 1
+    self.BOTTOMLEFT = 0
+    self.BOTTOMRIGHT = 1
+    self.TOPLEFT = 2
+    self.TOPRIGHT = 3
+    self.BOTTOMCENTER = 4
+    self.TOPCENTER = 5
+    self.ABSOLUTE = 6
+    }
+    
 
+    @discardableResult open class func getInstance() -> BasicHudFactory! {
+        return BasicHudFactory.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class BasicHudFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: BasicHudFactory = BasicHudFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: BasicHudFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicHudFactory.instance
+    public override init() {
+        super.init()
+        self.initFields()
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-    val DIRECTION_EXCEPTION: String = "Only Horizontal Direction is Allowed Currently"
-
-    val VERTICAL: Int = 0
-
-    val HORIZONTAL: Int = 1
-
-    val BOTTOMLEFT: Int = 0
-
-    val BOTTOMRIGHT: Int = 1
-
-    val TOPLEFT: Int = 2
-
-    val TOPRIGHT: Int = 3
-
-    val BOTTOMCENTER: Int = 4
-
-    val TOPCENTER: Int = 5
-
-    val ABSOLUTE: Int = 6
-
-}
-                
-            
 

@@ -1,108 +1,43 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.ItemStateListener
+// import org.allbinary.game.state.GameStateCompositeInterface
+// import org.allbinary.graphics.paint.PaintableInterface
+// import org.allbinary.thread.RunnableInterface
+// import org.allbinary.util.ABHashtable
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.ItemStateListener
-import org.allbinary.game.state.GameStateCompositeInterface
-import org.allbinary.graphics.paint.PaintableInterface
-import org.allbinary.thread.RunnableInterface
-import org.allbinary.util.ABHashtable
-
-interface GameCanvasRunnableInterface : RunnableInterface, PaintableInterface, ItemStateListener, GameStateCompositeInterface {
-        
-
-    open fun getTitle()
-        //nullable = true from not(false or (false and true)) = true
-: String
-
-    open fun isInitialized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
-    open fun isPaused()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
-    open fun unPause()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun pause()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun isHighScoreSubmitted()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
-                @Throws(Exception::class)
-            
-    open fun setHighScoreSubmitted(highScoreSubmitted: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-
-
-                @Throws(Exception::class)
-            
-    open fun processGameOver()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun isGameOver()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
-    open fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-
-
-                @Throws(Exception::class)
-            
-    open fun getCurrentStateHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>
-
-                @Throws(Exception::class)
-            
-    open fun getLoadStateHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>
-
-                @Throws(Exception::class)
-            
-    open fun setLoadStateHashtable(hashtable: ABHashtable<Any, Any>)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int
-
+public protocol GameCanvasRunnableInterface: AnyObject, RunnableInterface, PaintableInterface, ItemStateListener, GameStateCompositeInterface {
+    @discardableResult func getTitle() -> String!
+    @discardableResult func isInitialized() -> Bool
+    @discardableResult func isPaused() -> Bool
+    func unPause()
+    func pause()
+    @discardableResult func isHighScoreSubmitted() -> Bool
+    func setHighScoreSubmitted(_ highScoreSubmitted: Bool)
+    func processGameOver()
+    @discardableResult func isGameOver() -> Bool
+    func initCommands(_ cmdListener: CommandListener!)
+    @discardableResult func getCurrentStateHashtable() -> ABHashtable!
+    @discardableResult func getLoadStateHashtable() -> ABHashtable!
+    func setLoadStateHashtable(_ hashtable: ABHashtable!)
+    @discardableResult func getType() -> Int32
 }
-                
-            
+
 

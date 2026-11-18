@@ -1,64 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer
+import J2SEForSwiftLibrary
 
+open class LayerPlacementType: JObject {
+    fileprivate var type: Int32 = 0
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ type: Int32) {
+        super.init()
+        self.initFields()
+        self.type = type
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open func getType() -> Int32 {
+        return self.type
+    }
+    
 
-open public class LayerPlacementType
-            : Object
-         {
-        
-
-    private var type: Int
- constructor (type: Int)
-            : super()
-        {
-var type = type
-this.type= type
+    open func setType(_ type: Int32) {
+        self.type = type
+    }
 }
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type
-}
-
-
-    open fun setType(type: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var type = type
-this.type= type
-}
-
-
-}
-                
-            
 

@@ -1,53 +1,28 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game
+import J2SEForSwiftLibrary
+// import org.allbinary.time.TimeDelayHelper
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.time.TimeDelayHelper
-
-interface IntermissionInterface {
-        
-
-    open fun getTimeDelayHelper()
-        //nullable = true from not(false or (false and true)) = true
-: TimeDelayHelper
-
-    open fun isEnabled()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean
-
-    open fun setEnabled(value: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun setListener(enableListener: IntermissionEnableListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-
-
+public protocol IntermissionInterface: AnyObject {
+    @discardableResult func getTimeDelayHelper() -> TimeDelayHelper!
+    @discardableResult func isEnabled() -> Bool
+    func setEnabled(_ value: Bool)
+    func setListener(_ enableListener: IntermissionEnableListenerInterface!)
 }
-                
-            
+
 

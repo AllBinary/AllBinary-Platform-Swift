@@ -1,170 +1,110 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.NullImage
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.util.CircularIndexUtil
 
+open class ImageArrayAnimation: IndexedAnimation {
+    fileprivate var imageArray: JArray<Image?>! = nil
+    fileprivate var totalFrames: Int32 = 0
+    public var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var anchor: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.imageArray = NullImage.NULL_IMAGE_ARRAY
+    self.totalFrames = 0
+    self.circularIndexUtil = CircularIndexUtil.NULL_CIRCULAR_INDEX_UTIL
+    self.anchor = Anchor.TOP_LEFT
+    }
+    
 
+    public init(_ imageArray: JArray<Image?>!, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.setImageArray(imageArray)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.NullImage
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.graphics.Anchor
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.util.CircularIndexUtil
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
 
-open public class ImageArrayAnimation : IndexedAnimation {
-        
+    open override func nextFrame() {
+        self.circularIndexUtil.next()
+    }
+    
 
-    private var imageArray: Array<Image?> = NullImage.NULL_IMAGE_ARRAY
+    open override func previousFrame() {
+        self.circularIndexUtil.previous()
+    }
+    
 
-    private var totalFrames: Int= 0
+    open override func setFrame(_ index: Int32) {
+        self.circularIndexUtil.setIndex(index)
+    }
+    
 
-    var circularIndexUtil: CircularIndexUtil = CircularIndexUtil.NULL_CIRCULAR_INDEX_UTIL
-public constructor (imageArray: Array<Image?>, animationBehavior: AnimationBehavior)                        
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.circularIndexUtil.getIndex()
+    }
+    
 
-                            : super(animationBehavior){
-    //var imageArray = imageArray
-    //var animationBehavior = animationBehavior
+    @discardableResult open override func getSize() -> Int32 {
+        return self.totalFrames
+    }
+    
 
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.setImageArray(imageArray)
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
+
+    @discardableResult open func getImage(_ index: Int32) -> Image! {
+        return self.imageArray[index]
+    }
+    
+
+    @discardableResult open func getImageArray() -> JArray<Image?>! {
+        return self.imageArray
+    }
+    
+
+    open func setImageArray(_ imageArray: JArray<Image?>!) {
+        self.imageArray = imageArray
+        self.totalFrames = imageArray.length
+        self.circularIndexUtil = CircularIndexUtil.createInstance(self.totalFrames)
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        graphics.drawImage(self.imageArray[self.circularIndexUtil.getIndex()], x, y, self.anchor)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.next()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.previous()
-}
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-this.circularIndexUtil!!.setIndex(index)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!!.getIndex()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalFrames
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    open fun getImage(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageArray[index]!!
-}
-
-
-    open fun getImageArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Image?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageArray
-}
-
-
-    open fun setImageArray(imageArray: Array<Image?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-var imageArray = imageArray
-this.imageArray= imageArray
-this.totalFrames= imageArray!!.size
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.totalFrames)!!
-}
-
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-graphics.drawImage(this.imageArray[this.circularIndexUtil!!.getIndex()]!!, x, y, this.anchor)
-}
-
-
-}
-                
-            
 

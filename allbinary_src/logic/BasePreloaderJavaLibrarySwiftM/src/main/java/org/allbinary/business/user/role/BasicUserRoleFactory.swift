@@ -71,7 +71,7 @@ open class BasicUserRoleFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicUserRoleFactory! {
+    @discardableResult open class func getInstance() -> BasicUserRoleFactory! {
         return BasicUserRoleFactory.instance
     }
 }

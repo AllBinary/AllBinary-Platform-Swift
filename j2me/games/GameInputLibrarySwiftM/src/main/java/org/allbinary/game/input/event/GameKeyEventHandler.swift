@@ -1,114 +1,80 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.event
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.util.event.EventListenerInterface
+// import org.allbinary.string.CommonStrings
 
+open class GameKeyEventHandler: JObject {
+    fileprivate static let instance: GameKeyEventHandler! = GameKeyEventHandler()
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var pressGameKeyEventHandler: PressGameKeyEventHandler! = nil
+    fileprivate var upGameKeyEventHandler: UpGameKeyEventHandler! = nil
+    fileprivate var downGameKeyEventHandler: DownGameKeyEventHandler! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.pressGameKeyEventHandler = PressGameKeyEventHandler.getInstance()
+    self.upGameKeyEventHandler = UpGameKeyEventHandler.getInstance()
+    self.downGameKeyEventHandler = DownGameKeyEventHandler.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.util.event.EventListenerInterface
-import org.allbinary.string.CommonStrings
+    @discardableResult open class func getInstance() -> GameKeyEventHandler! {
+        return GameKeyEventHandler.instance
+    }
+    
 
-open public class GameKeyEventHandler
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: GameKeyEventHandler = GameKeyEventHandler()
+    open func removeAllListeners() {
+        self.pressGameKeyEventHandler.removeAllListeners()
+        self.upGameKeyEventHandler.removeAllListeners()
+        self.downGameKeyEventHandler.removeAllListeners()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameKeyEventHandler{
+    open func addListenerForPlayer(_ eventListenerInterface: EventListenerInterface!, _ playerInputId: Int32) {
+        self.logUtil.putF(jstr(eventListenerInterface), self, self.commonStrings.ADD_LISTENER)
+        self.pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface)
+        self.upGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface)
+        self.downGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventHandler.instance
+    open func addListener(_ eventListenerInterface: EventListenerInterface!) {
+        self.logUtil.putF(jstr(eventListenerInterface), self, self.commonStrings.ADD_LISTENER)
+        self.pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface)
+        self.upGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface)
+        self.downGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface)
+    }
+    
+
+    open func removeListener(_ eventListenerInterface: EventListenerInterface!) {
+        self.logUtil.putF(jstr(eventListenerInterface), self, self.commonStrings.REMOVE_LISTENER)
+        self.pressGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface)
+        self.upGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface)
+        self.downGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface)
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val pressGameKeyEventHandler: PressGameKeyEventHandler = PressGameKeyEventHandler.getInstance()!!
-
-    private val upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!!
-
-    private val downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!!
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun removeAllListeners()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.pressGameKeyEventHandler!!.removeAllListeners()
-this.upGameKeyEventHandler!!.removeAllListeners()
-this.downGameKeyEventHandler!!.removeAllListeners()
-}
-
-
-    open fun addListenerForPlayer(eventListenerInterface: EventListenerInterface, playerInputId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-var playerInputId = playerInputId
-this.logUtil!!.putF(eventListenerInterface!!.toString(), this, this.commonStrings!!.ADD_LISTENER)
-this.pressGameKeyEventHandler!!.addListenerSingleThreaded(eventListenerInterface)
-this.upGameKeyEventHandler!!.getInstanceForPlayer(playerInputId)!!.addListenerSingleThreaded(eventListenerInterface)
-this.downGameKeyEventHandler!!.getInstanceForPlayer(playerInputId)!!.addListenerSingleThreaded(eventListenerInterface)
-}
-
-
-    open fun addListener(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-this.logUtil!!.putF(eventListenerInterface!!.toString(), this, this.commonStrings!!.ADD_LISTENER)
-this.pressGameKeyEventHandler!!.addListenerSingleThreaded(eventListenerInterface)
-this.upGameKeyEventHandler!!.addListenerSingleThreaded(eventListenerInterface)
-this.downGameKeyEventHandler!!.addListenerSingleThreaded(eventListenerInterface)
-}
-
-
-    open fun removeListener(eventListenerInterface: EventListenerInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventListenerInterface = eventListenerInterface
-this.logUtil!!.putF(eventListenerInterface!!.toString(), this, this.commonStrings!!.REMOVE_LISTENER)
-this.pressGameKeyEventHandler!!.removeListenerSingleThreaded(eventListenerInterface)
-this.upGameKeyEventHandler!!.removeListenerSingleThreaded(eventListenerInterface)
-this.downGameKeyEventHandler!!.removeListenerSingleThreaded(eventListenerInterface)
-}
-
-
-}
-                
-            
 

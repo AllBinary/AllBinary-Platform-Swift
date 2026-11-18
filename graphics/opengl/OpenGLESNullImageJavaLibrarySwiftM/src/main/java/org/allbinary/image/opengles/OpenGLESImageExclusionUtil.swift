@@ -1,72 +1,46 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image.opengles
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image.opengles
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class OpenGLESImageExclusionUtil: JObject {
+    fileprivate static let instance: OpenGLESImageExclusionUtil! = OpenGLESImageExclusionUtil()
+    public var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    @discardableResult open class func getInstance() -> OpenGLESImageExclusionUtil! {
+        return OpenGLESImageExclusionUtil.instance
+    }
+    
 
-open public class OpenGLESImageExclusionUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: OpenGLESImageExclusionUtil = OpenGLESImageExclusionUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLESImageExclusionUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageExclusionUtil.instance
+    @discardableResult open func isCustomScaling(_ image: Image!) -> Bool {
+        return false
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val list: BasicArrayList = BasicArrayListD()
-
-    open fun isCustomScaling(image: Image)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var image = image
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-}
-                
-            
 

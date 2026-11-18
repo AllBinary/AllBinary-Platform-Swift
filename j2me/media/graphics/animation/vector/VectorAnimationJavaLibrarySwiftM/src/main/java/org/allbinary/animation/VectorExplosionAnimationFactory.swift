@@ -1,97 +1,60 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
 
+open class VectorExplosionAnimationFactory: JObject, ProceduralAnimationInterfaceFactoryInterface {
+    fileprivate var vectorExplosionGenerator: VectorExplosionGenerator! = nil
+    fileprivate var basicColor: BasicColor! = nil
+    public var animationBehaviorFactory: AnimationBehaviorFactory! = nil
 
+    private func initFields() {
+    self.vectorExplosionGenerator = VectorExplosionGenerator.getInstance()
+    self.basicColor = BasicColorFactory.getInstance().WHITE
+    
+    }
+    
 
+    public init(_ basicColor: BasicColor!, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        self.animationBehaviorFactory = animationBehaviorFactory
+        self.setBasicColorP(basicColor)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
+    @discardableResult open func getInstanceAnimation(_ animationInterface: Animation!) -> Animation! {
+        let vectorRotationAnimationInterface: VectorAnimationInterface! = (animationInterface as! VectorAnimationInterface)
+        let frame: Int32 = vectorRotationAnimationInterface.getFrame()
+        let framePoints: JArray<JArray<Int32>?>! = vectorRotationAnimationInterface.getPoints(frame)
+        let points: JArray<JArray<JArray<Int32>?>?>! = self.vectorExplosionGenerator.getInstance(framePoints, 6, self.vectorExplosionGenerator.ROTATION)
+        return VectorRotationAnimation(points, self.getBasicColorP(), self.animationBehaviorFactory.getOrCreateInstance())
+    }
+    
 
-open public class VectorExplosionAnimationFactory
-            : Object
-        
-                , ProceduralAnimationInterfaceFactoryInterface {
-        
+    fileprivate func setBasicColorP(_ basicColor: BasicColor!) {
+        self.basicColor = basicColor
+    }
+    
 
-    private val vectorExplosionGenerator: VectorExplosionGenerator = VectorExplosionGenerator.getInstance()!!
-
-    private var basicColor: BasicColor = BasicColorFactory.getInstance()!!.WHITE
-
-    val animationBehaviorFactory: AnimationBehaviorFactory
-public constructor (basicColor: BasicColor, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var basicColor = basicColor
-    //var animationBehaviorFactory = animationBehaviorFactory
-this.animationBehaviorFactory= animationBehaviorFactory
-this.setBasicColorP(basicColor)
+    @discardableResult fileprivate func getBasicColorP() -> BasicColor! {
+        return self.basicColor
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstanceAnimation(animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: Animation{
-    //var animationInterface = animationInterface
-
-    var vectorRotationAnimationInterface: VectorAnimationInterface = animationInterface as VectorAnimationInterface
-
-
-    var frame: Int = vectorRotationAnimationInterface!!.getFrame()
-
-
-    var framePoints: Array<IntArray?> = vectorRotationAnimationInterface!!.getPoints(frame)!!
-
-
-    var points: Array<Array<IntArray?>?> = this.vectorExplosionGenerator!!.getInstance(framePoints, 6, this.vectorExplosionGenerator!!.ROTATION)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationAnimation(points, this.getBasicColorP(), this.animationBehaviorFactory!!.getOrCreateInstance())
-}
-
-
-    open fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var basicColor = basicColor
-this.basicColor= basicColor
-}
-
-
-    open fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor
-}
-
-
-}
-                
-            
 

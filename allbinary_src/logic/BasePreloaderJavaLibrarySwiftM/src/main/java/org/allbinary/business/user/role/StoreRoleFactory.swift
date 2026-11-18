@@ -32,7 +32,7 @@ open class StoreRoleFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> StoreRoleFactory! {
+    @discardableResult open class func getInstance() -> StoreRoleFactory! {
         return StoreRoleFactory.instance
     }
     

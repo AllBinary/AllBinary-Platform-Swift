@@ -1,78 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.pickup
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.pickup
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class PickedUpLayerTypeFactory: JObject {
+    fileprivate static let instance: PickedUpLayerTypeFactory! = PickedUpLayerTypeFactory()
+    public var NONE: PickedUpLayerType! = nil
+    public var BEAM: PickedUpLayerType! = nil
+    public var MINE: PickedUpLayerType! = nil
+    public var PROJECTILE: PickedUpLayerType! = nil
+    public var ENHANCEMENT: PickedUpLayerType! = nil
+    public var MORPH: PickedUpLayerType! = nil
+    public var PART: PickedUpLayerType! = nil
+    public var HEAL: PickedUpLayerType! = nil
+    public var LIFE: PickedUpLayerType! = nil
+    public var POINTS: PickedUpLayerType! = nil
 
+    private func initFields() {
+    self.NONE = PickedUpLayerType(StringUtil.getInstance().NULL_STRING)
+    self.BEAM = PickedUpLayerType("BEAM")
+    self.MINE = PickedUpLayerType("MINE")
+    self.PROJECTILE = PickedUpLayerType("PROJECTILE")
+    self.ENHANCEMENT = PickedUpLayerType("Enhancement")
+    self.MORPH = PickedUpLayerType("Morph")
+    self.PART = PickedUpLayerType("Part")
+    self.HEAL = PickedUpLayerType("Heal")
+    self.LIFE = PickedUpLayerType("Life")
+    self.POINTS = PickedUpLayerType("Points")
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
-
-open public class PickedUpLayerTypeFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: PickedUpLayerTypeFactory = PickedUpLayerTypeFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: PickedUpLayerTypeFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PickedUpLayerTypeFactory.instance
+    @discardableResult open class func getInstance() -> PickedUpLayerTypeFactory! {
+        return PickedUpLayerTypeFactory.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var NONE: PickedUpLayerType = PickedUpLayerType(StringUtil.getInstance()!!.NULL_STRING)
-
-    var BEAM: PickedUpLayerType = PickedUpLayerType("BEAM")
-
-    var MINE: PickedUpLayerType = PickedUpLayerType("MINE")
-
-    var PROJECTILE: PickedUpLayerType = PickedUpLayerType("PROJECTILE")
-
-    var ENHANCEMENT: PickedUpLayerType = PickedUpLayerType("Enhancement")
-
-    var MORPH: PickedUpLayerType = PickedUpLayerType("Morph")
-
-    var PART: PickedUpLayerType = PickedUpLayerType("Part")
-
-    var HEAL: PickedUpLayerType = PickedUpLayerType("Heal")
-
-    var LIFE: PickedUpLayerType = PickedUpLayerType("Life")
-
-    var POINTS: PickedUpLayerType = PickedUpLayerType("Points")
-
-}
-                
-            
 

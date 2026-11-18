@@ -1,96 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.media.ScaleProperties
 
+open class VectorRotationAnimationInterfaceFactory: JObject, AnimationInterfaceFactoryInterface {
+    fileprivate var currentPoints: JArray<JArray<JArray<Int32>?>?>! = nil
+    fileprivate var basicColor: BasicColor! = nil
+    public var animationBehaviorFactory: AnimationBehaviorFactory! = nil
 
+    private func initFields() {
+    self.currentPoints = NullUtil.getInstance().NULL_INT_ARRAY_ARRAY_ARRAY
+    self.basicColor = BasicColorFactory.getInstance().WHITE
+    
+    }
+    
 
+    public init(_ currentPoints: JArray<JArray<JArray<Int32>?>?>!, _ basicColor: BasicColor!, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        self.currentPoints = currentPoints
+        self.setBasicColorP(basicColor)
+        self.animationBehaviorFactory = animationBehaviorFactory
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.media.ScaleProperties
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        return VectorRotationAnimation(self.currentPoints, self.getBasicColorP(), self.animationBehaviorFactory.getOrCreateInstance())
+    }
+    
 
-open public class VectorRotationAnimationInterfaceFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
+    open func setBasicColorP(_ basicColor: BasicColor!) {
+        self.basicColor = basicColor
+    }
+    
 
-    private var currentPoints: Array<Array<IntArray?>?> = NullUtil.getInstance()!!.NULL_INT_ARRAY_ARRAY_ARRAY
+    @discardableResult open func getBasicColorP() -> BasicColor! {
+        return self.basicColor
+    }
+    
 
-    private var basicColor: BasicColor = BasicColorFactory.getInstance()!!.WHITE
-
-    val animationBehaviorFactory: AnimationBehaviorFactory
-public constructor (currentPoints: Array<Array<IntArray?>?>, basicColor: BasicColor, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var currentPoints = currentPoints
-    //var basicColor = basicColor
-    //var animationBehaviorFactory = animationBehaviorFactory
-this.currentPoints= currentPoints
-this.setBasicColorP(basicColor)
-this.animationBehaviorFactory= animationBehaviorFactory
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationAnimation(this.currentPoints, this.getBasicColorP(), this.animationBehaviorFactory!!.getOrCreateInstance())
-}
-
-
-    open fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-var basicColor = basicColor
-this.basicColor= basicColor
-}
-
-
-    open fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

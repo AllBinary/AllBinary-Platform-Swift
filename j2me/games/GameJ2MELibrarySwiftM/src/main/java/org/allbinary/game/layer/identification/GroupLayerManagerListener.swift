@@ -1,476 +1,246 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.identification
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.identification
+import J2SEForSwiftLibrary
+// import org.allbinary.game.identification.Group
+// import org.allbinary.game.identification.GroupInterfaceCompositeInterface
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.event.LayerManagerEvent
+// import org.allbinary.layer.event.LayerManagerEventHandler
+// import org.allbinary.layer.event.LayerManagerEventListener
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class GroupLayerManagerListener: LayerManagerEventListener {
+    fileprivate static var SINGLETON: GroupLayerManagerListener! = GroupLayerManagerListener()
+    public var logUtil: LogUtil! = nil
+    fileprivate var list: BasicArrayList! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.list = BasicArrayListD()
+    }
+    
 
+    @discardableResult open class func getInstance() -> GroupLayerManagerListener! {
+        return GroupLayerManagerListener.SINGLETON
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.identification.Group
-import org.allbinary.game.identification.GroupInterfaceCompositeInterface
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.event.LayerManagerEvent
-import org.allbinary.layer.event.LayerManagerEventHandler
-import org.allbinary.layer.event.LayerManagerEventListener
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    public override init() {
+        super.init()
+        self.initFields()
+        LayerManagerEventHandler.getInstance().addListener(self)
+    }
+    
 
-open public class GroupLayerManagerListener : LayerManagerEventListener {
-        
-companion object {
-            
-    private var SINGLETON: GroupLayerManagerListener = GroupLayerManagerListener()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GroupLayerManagerListener{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupLayerManagerListener.SINGLETON
-}
-
-
+    open func clear() {
+        var groupList: BasicArrayList! = nil
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = size &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            groupList = (self.list.objectArray[index] as! BasicArrayList)
+            groupList.clear()
+            }
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val list: BasicArrayList = BasicArrayListD()
-private constructor (){
-LayerManagerEventHandler.getInstance()!!.addListener(this)
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var groupList: BasicArrayList
-
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in size -1 downTo 0)
-
-        {
-groupList= this.list.objectArray[index]!! as BasicArrayList
-groupList!!.clear()
-}
-
-}
-
-
-    open fun getGroupSizeFromInterface(groupInterfaceCompositeInterface: GroupInterfaceCompositeInterface)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var groupInterfaceCompositeInterface = groupInterfaceCompositeInterface
-
-    var groupInterfaceArray: Array<Group?> = groupInterfaceCompositeInterface!!.getGroupInterface()!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getGroupSize(groupInterfaceArray[0]!!)
-}
-
-
-    open fun getGroupSize(groupInterface: Group)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var groupInterface = groupInterface
-
-    var id: Int = groupInterface!!.getGroupId().toInt()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getGroupSizeById(id)
-}
-
-
-    open fun getList(groupInterface: Group)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-    //var groupInterface = groupInterface
-
-    var id: Int = groupInterface!!.getGroupId().toInt()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getListById(id)
-}
-
-
-    open fun getListById(groupId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-    //var groupId = groupId
-
-    var groupList: BasicArrayList = this.list.objectArray[groupId]!! as BasicArrayList
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return groupList
-}
-
-
-    open fun getGroupSizeById(groupId: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var groupId = groupId
-
-    var groupList: BasicArrayList = this.list.objectArray[groupId]!! as BasicArrayList
-
-
-    var size: Int = groupList!!.size()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return size
-}
-
-
-    open fun areAllOtherGroupsEmpty(groupInterface: Group)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var groupInterface = groupInterface
-
-    var id: Int = groupInterface!!.getGroupId().toInt()
-
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in size -1 downTo 0)
-
-        {
-
+    }
     
-                        if(id != index)
-                        
-                                    {
-                                    
-    var groupSize: Int = this.getGroupSizeById(index)
 
-
+    @discardableResult open func getGroupSizeFromInterface(_ groupInterfaceCompositeInterface: GroupInterfaceCompositeInterface!) -> Int32 {
+        let groupInterfaceArray: JArray<Group?>! = groupInterfaceCompositeInterface.getGroupInterface()
+        return self.getGroupSize(groupInterfaceArray[0])
+    }
     
-                        if(groupSize != 0)
-                        
-                                    {
-                                    this.logUtil!!.putF(StringMaker().
-                            append("Group Size: ")!!.appendint(groupSize)!!.toString(), this, "areAllOtherGroupsEmpty")
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-    open fun isIdInList(id: Int, excludeGroupList: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var id = id
-    //var excludeGroupList = excludeGroupList
-
-    var size: Int = excludeGroupList!!.size()
-
-
-    var groupInterfaceArray: Array<Group?>
-
-
-    var groupInterface: Group
-
-
-    var groupId: Int= 0
-
-
-
-
-
-                        for (index in size -1 downTo 0)
-
-        {
-groupInterfaceArray= excludeGroupList!!.objectArray[index]!! as Array<Group?>
-
-    var size2: Int = groupInterfaceArray!!.size
-                
-
-
-
-
-
-                        for (index2 in 0 until size2)
-
-        {
-groupInterface= groupInterfaceArray[index2]!!
-groupId= groupInterface!!.getGroupId().toInt()
-
+    @discardableResult open func getGroupSize(_ groupInterface: Group!) -> Int32 {
+        let id: Int32 = Int32(truncatingIfNeeded: groupInterface.getGroupId())
+        return self.getGroupSizeById(id)
+    }
     
-                        if(groupId == id)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-}
-
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun areAllOtherGroupsLessThan(excludeGroupList: BasicArrayList, maxSize: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var excludeGroupList = excludeGroupList
-    //var maxSize = maxSize
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in size -1 downTo 0)
-
-        {
-
+    @discardableResult open func getList(_ groupInterface: Group!) -> BasicArrayList! {
+        let id: Int32 = Int32(truncatingIfNeeded: groupInterface.getGroupId())
+        return self.getListById(id)
+    }
     
-                        if(!this.isIdInList(index, excludeGroupList))
-                        
-                                    {
-                                    
-    var groupSize: Int = this.getGroupSizeById(index)
 
-
+    @discardableResult fileprivate func getListById(_ groupId: Int32) -> BasicArrayList! {
+        let groupList: BasicArrayList! = (self.list.objectArray[groupId] as! BasicArrayList)
+        return groupList
+    }
     
-                        if(groupSize >= maxSize)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-    open fun init(total: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var total = total
-
-        while(this.list.size() <= total +1)
-        {
-this.list.add(BasicArrayListD())
-}
-
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun onCreateLayerManagerEvent(layerManagerEvent: LayerManagerEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerManagerEvent = layerManagerEvent
-
-    var layerInterface: AllBinaryLayer = layerManagerEvent!!.getLayerInterface()!!
-
-
-    var groupInterfaceArray: Array<Group?> = layerInterface!!.getGroupInterface()!!
-
-
-    var size: Int = groupInterfaceArray!!.size
-                
-
-
-    var id: Int= 0
-
-
-    var groupList: BasicArrayList
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-id= groupInterfaceArray[index]!!.getGroupId().toInt()
-groupList= this.list.objectArray[id]!! as BasicArrayList
-
+    @discardableResult fileprivate func getGroupSizeById(_ groupId: Int32) -> Int32 {
+        let groupList: BasicArrayList! = (self.list.objectArray[groupId] as! BasicArrayList)
+        let size: Int32 = groupList.size()
+        return size
+    }
     
-                        if(groupList == 
-                                    null
-                                )
-                        
-                                    {
-                                    this.logUtil!!.putF(StringMaker().
-                            append("id: ")!!.appendint(id)!!.toString(), this, "onCreateLayerManagerEvent")
 
-                                    }
-                                
-
+    @discardableResult open func areAllOtherGroupsEmpty(_ groupInterface: Group!) -> Bool {
+        let id: Int32 = Int32(truncatingIfNeeded: groupInterface.getGroupId())
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = size &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (id != index) {
+                let groupSize: Int32 = self.getGroupSizeById(index)
+                if (groupSize != 0) {
+                    self.logUtil.putF(StringMaker().append("Group Size: ").appendint(groupSize).toString(), self, "areAllOtherGroupsEmpty")
+                    return false
+                }
+            }
+            }
+        }
+        return true
+    }
     
-                        if(!groupList!!.contains(layerInterface))
-                        
-                                    {
-                                    groupList!!.add(layerInterface)
 
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
+    @discardableResult fileprivate func isIdInList(_ id: Int32, _ excludeGroupList: BasicArrayList!) -> Bool {
+        let size: Int32 = excludeGroupList.size()
+        var groupInterfaceArray: JArray<Group?>! = nil
+        var groupInterface: Group! = nil
+        var groupId: Int32 = 0
+        do {
+            var index: Int32 = size &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            groupInterfaceArray = (excludeGroupList.objectArray[index] as! JArray<Group?>)
+            let size2: Int32 = groupInterfaceArray.length
+            do {
+                var index2: Int32 = 0
+                while (index2 < size2) {
+                    defer { index2 &+= 1 }
+                groupInterface = groupInterfaceArray[index2]
+                groupId = Int32(truncatingIfNeeded: groupInterface.getGroupId())
+                if (groupId == id) {
+                    return true
+                }
+                }
+            }
+            }
+        }
+        return false
+    }
+    
+
+    @discardableResult open func areAllOtherGroupsLessThan(_ excludeGroupList: BasicArrayList!, _ maxSize: Int32) -> Bool {
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = size &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            if (!self.isIdInList(index, excludeGroupList)) {
+                let groupSize: Int32 = self.getGroupSizeById(index)
+                if (groupSize >= maxSize) {
+                    return false
+                }
+            }
+            }
+        }
+        return true
+    }
+    
+
+    open func `init`(_ total: Int32) {
+        while (self.list.size() <= total &+ 1) {
+            self.list.add(BasicArrayListD())
+        }
+    }
+    
+
+    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
+    
+
+    open override func onCreateLayerManagerEvent(_ layerManagerEvent: LayerManagerEvent!) {
+        let layerInterface: AllBinaryLayer! = layerManagerEvent.getLayerInterface()
+        let groupInterfaceArray: JArray<Group?>! = layerInterface.getGroupInterface()
+        let size: Int32 = groupInterfaceArray.length
+        var id: Int32 = 0
+        var groupList: BasicArrayList! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            id = Int32(truncatingIfNeeded: groupInterfaceArray[index]!.getGroupId())
+            groupList = (self.list.objectArray[id] as! BasicArrayList)
+            if (groupList == nil) {
+                self.logUtil.putF(StringMaker().append("id: ").appendint(id).toString(), self, "onCreateLayerManagerEvent")
+            }
+            if (!groupList.contains(layerInterface)) {
+                groupList.add(layerInterface)
+            } else {
+            }
+            }
+        }
+    }
+    
+
+    open override func onDeleteLayerManagerEvent(_ layerManagerEvent: LayerManagerEvent!) {
+        let layerInterface: AllBinaryLayer! = layerManagerEvent.getLayerInterface()
+        let groupInterfaceArray: JArray<Group?>! = layerInterface.getGroupInterface()
+        let size: Int32 = groupInterfaceArray.length
+        var id: Int32 = 0
+        var groupList: BasicArrayList! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            id = Int32(truncatingIfNeeded: groupInterfaceArray[index]!.getGroupId())
+            groupList = (self.list.objectArray[id] as! BasicArrayList)
+            groupList.remove(layerInterface)
+            }
+        }
+    }
+    
+
+    open func log() {
+        let stringBuffer: StringMaker! = StringMaker()
+        let GROUP: String! = "Group: "
+        let SPACE: String! = CommonSeps.getInstance().SPACE
+        let TOTAL_LABEL: String! = CommonLabels.getInstance().TOTAL_LABEL
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = size &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            let groupList: BasicArrayList! = (self.list.objectArray[index] as! BasicArrayList)
+            stringBuffer.append(GROUP)
+            stringBuffer.appendint(index)
+            stringBuffer.append(SPACE)
+            stringBuffer.append(TOTAL_LABEL)
+            stringBuffer.appendint(groupList.size())
+            stringBuffer.append(SPACE)
+            }
+        }
+        self.logUtil.putF(stringBuffer.toString(), self, "log")
+    }
 }
-
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun onDeleteLayerManagerEvent(layerManagerEvent: LayerManagerEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerManagerEvent = layerManagerEvent
-
-    var layerInterface: AllBinaryLayer = layerManagerEvent!!.getLayerInterface()!!
-
-
-    var groupInterfaceArray: Array<Group?> = layerInterface!!.getGroupInterface()!!
-
-
-    var size: Int = groupInterfaceArray!!.size
-                
-
-
-    var id: Int= 0
-
-
-    var groupList: BasicArrayList
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-id= groupInterfaceArray[index]!!.getGroupId().toInt()
-groupList= this.list.objectArray[id]!! as BasicArrayList
-groupList!!.remove(layerInterface)
-}
-
-}
-
-
-    open fun log()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-
-    var GROUP: String = "Group: "
-
-
-    var SPACE: String = CommonSeps.getInstance()!!.SPACE
-
-
-    var TOTAL_LABEL: String = CommonLabels.getInstance()!!.TOTAL_LABEL
-
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in size -1 downTo 0)
-
-        {
-
-    var groupList: BasicArrayList = this.list.objectArray[index]!! as BasicArrayList
-
-stringBuffer!!.append(GROUP)
-stringBuffer!!.appendint(index)
-stringBuffer!!.append(SPACE)
-stringBuffer!!.append(TOTAL_LABEL)
-stringBuffer!!.appendint(groupList!!.size())
-stringBuffer!!.append(SPACE)
-}
-
-this.logUtil!!.putF(stringBuffer!!.toString(), this, "log")
-}
-
-
-}
-                
-            
 

@@ -1,215 +1,128 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot 
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer
+import J2SEForSwiftLibrary
+// import org.allbinary.TsUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonSeps
 
+open class LayerManagerLogging: LayerManagerLoggingBase {
+    fileprivate static let instance: LayerManagerLogging! = LayerManagerLogging()
+    fileprivate static var removeFailed: Bool = false
+    public var logUtil: LogUtil! = nil
+    fileprivate var stringBuilder: StringMaker! = nil
+    fileprivate var APPEND: String! = nil
+    fileprivate var APPEND_: String! = nil
+    fileprivate var _AT_: String! = nil
+    fileprivate var ATTEMPT_REMOVE_: String! = nil
+    fileprivate var REMOVE_: String! = nil
+    fileprivate var REMOVE: String! = nil
+    fileprivate var DID_NOT_REMOVE: String! = nil
+    fileprivate var CLEAR: String! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.stringBuilder = StringMaker()
+    self.APPEND = "append"
+    self.APPEND_ = " append: "
+    self._AT_ = " at: "
+    self.ATTEMPT_REMOVE_ = " Remove Attempt: "
+    self.REMOVE_ = " Remove: "
+    self.REMOVE = "remove"
+    self.DID_NOT_REMOVE = " Did not remove: "
+    self.CLEAR = " Clear List"
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.TsUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonSeps
+    @discardableResult open class func getInstance() -> LayerManagerLogging! {
+        return LayerManagerLogging.instance
+    }
+    
 
-open public class LayerManagerLogging : LayerManagerLoggingBase {
-        
-companion object {
-            
-    private val instance: LayerManagerLogging = LayerManagerLogging()
+    open override func append(_ layerInterface: AllBinaryLayer!) {
+        self.stringBuilder.delete(0, self.stringBuilder.length())
+        self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.APPEND_).append(layerInterface.getName()).toString(), self, self.APPEND)
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LayerManagerLogging{
+    open override func appendAt(_ layerInterface: AllBinaryLayer!, _ index: Int32) {
+        self.stringBuilder.delete(0, self.stringBuilder.length())
+        self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.APPEND_).append(layerInterface.getName()).append(self._AT_).appendint(index).toString(), self, self.APPEND)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerManagerLogging.instance
-}
-
-
-    private var removeFailed: Boolean = false
-
+    open override func remove(_ layerInterface: AllBinaryLayer!) {
+        if (layerInterface == nil) {
+            self.stringBuilder.delete(0, self.stringBuilder.length())
+            self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.ATTEMPT_REMOVE_).append(StringUtil.getInstance().toString(layerInterface)).toString(), self, self.REMOVE)
+        } else {
+            self.stringBuilder.delete(0, self.stringBuilder.length())
+            self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.ATTEMPT_REMOVE_).append(layerInterface.getName()).toString(), self, self.REMOVE)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val stringBuilder: StringMaker = StringMaker()
-
-    private val APPEND: String = "append"
-
-    private val APPEND_: String = " append: "
-
-    private val _AT_: String = " at: "
-
-    private val ATTEMPT_REMOVE_: String = " Remove Attempt: "
-
-    private val REMOVE_: String = " Remove: "
-
-    private val REMOVE: String = "remove"
-
-    private val DID_NOT_REMOVE: String = " Did not remove: "
-
-    private val CLEAR: String = " Clear List"
-
-                @Throws(Exception::class)
-            
-    override fun append(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.APPEND_)!!.append(layerInterface!!.getName())!!.toString(), this, this.APPEND)
-}
-
-
-    override fun appendAt(layerInterface: AllBinaryLayer, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-    //var index = index
-this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.APPEND_)!!.append(layerInterface!!.getName())!!.append(this._AT_)!!.appendint(index)!!.toString(), this, this.APPEND)
-}
-
-
-    override fun remove(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-
+    }
     
-                        if(layerInterface == 
-                                    null
-                                )
-                        
-                                    {
-                                    this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.ATTEMPT_REMOVE_)!!.append(StringUtil.getInstance()!!.toString(layerInterface))!!.toString(), this, this.REMOVE)
 
-                                    }
-                                
-                        else {
-                            this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.ATTEMPT_REMOVE_)!!.append(layerInterface!!.getName())!!.toString(), this, this.REMOVE)
-
-                        }
-                            
-}
-
-
-    override fun removeResult(layerManager: LayerManager, layerInterface: AllBinaryLayer, result: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerManager = layerManager
-    //var layerInterface = layerInterface
-    //var result = result
-
+    open override func removeResult(_ layerManager: LayerManager!, _ layerInterface: AllBinaryLayer!, _ result: Bool) {
+        if (layerInterface == nil) {
+            self.stringBuilder.delete(0, self.stringBuilder.length())
+            self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.REMOVE_).append(StringUtil.getInstance().toString(layerInterface)).toString(), self, self.REMOVE)
+        } else if (result) {
+            if (LayerManagerLogging.removeFailed) {
+                self.stringBuilder.delete(0, self.stringBuilder.length())
+                self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.REMOVE_).append(layerInterface.getName()).toString(), self, self.REMOVE)
+            }
+        } else {
+            self.stringBuilder.delete(0, self.stringBuilder.length())
+            self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.DID_NOT_REMOVE).append(layerInterface.getName()).toString(), self, self.REMOVE)
+            LayerManagerLogging.removeFailed = true
+        }
+    }
     
-                        if(layerInterface == 
-                                    null
-                                )
-                        
-                                    {
-                                    this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.REMOVE_)!!.append(StringUtil.getInstance()!!.toString(layerInterface))!!.toString(), this, this.REMOVE)
 
-                                    }
-                                
-                             else 
+    fileprivate func log(_ layerManager: LayerManager!) {
+        self.stringBuilder.delete(0, self.stringBuilder.length())
+        let size: Int32 = layerManager.getSize()
+        let commonSeps: CommonSeps! = CommonSeps.getInstance()
+        self.stringBuilder.append(Integer.toHexString(TsUtil.getInstance().hashCode(layerManager))).append(commonSeps.COLON_SEP)
+        self.stringBuilder.appendint(size).append(commonSeps.COLON_SEP)
+        var allBinaryLayer: AllBinaryLayer! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            allBinaryLayer = ((layerManager.getLayerAt(index) as! AllBinaryLayer))
+            self.stringBuilder.append(allBinaryLayer.getName()).append(commonSeps.COMMA)
+            }
+        }
+        self.logUtil.putF(self.stringBuilder.toString(), self, self.REMOVE)
+    }
     
-                        if(result)
-                        
-                                    {
-                                    
-    
-                        if(LayerManagerLogging.removeFailed)
-                        
-                                    {
-                                    this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.REMOVE_)!!.append(layerInterface!!.getName())!!.toString(), this, this.REMOVE)
 
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.DID_NOT_REMOVE)!!.append(layerInterface!!.getName())!!.toString(), this, this.REMOVE)
-LayerManagerLogging.removeFailed= true
-
-                        }
-                            
+    open override func clear() {
+        self.stringBuilder.delete(0, self.stringBuilder.length())
+        self.logUtil.putF(self.stringBuilder.appendint(TsUtil.getInstance().hashCode(self)).append(self.CLEAR).toString(), self, self.CLEAR)
+    }
 }
-
-
-    open fun log(layerManager: LayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerManager = layerManager
-this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-
-    var size: Int = layerManager!!.getSize()
-
-
-    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
-
-this.stringBuilder!!.append(Integer.toHexString(TsUtil.getInstance()!!.hashCode(layerManager)))!!.append(commonSeps!!.COLON_SEP)
-this.stringBuilder!!.appendint(size)!!.append(commonSeps!!.COLON_SEP)
-
-    var allBinaryLayer: AllBinaryLayer
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-allBinaryLayer= (layerManager!!.getLayerAt(index) as AllBinaryLayer)
-this.stringBuilder!!.append(allBinaryLayer!!.getName())!!.append(commonSeps!!.COMMA)
-}
-
-this.logUtil!!.putF(this.stringBuilder!!.toString(), this, this.REMOVE)
-}
-
-
-    override fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.stringBuilder!!.delete(0, this.stringBuilder!!.length())
-this.logUtil!!.putF(this.stringBuilder!!.appendint(TsUtil.getInstance()!!.hashCode(this).toInt())!!.append(this.CLEAR)!!.toString(), this, this.CLEAR)
-}
-
-
-}
-                
-            
 

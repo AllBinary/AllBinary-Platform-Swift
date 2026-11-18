@@ -1,185 +1,93 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import java.io.InputStream
+// import javax.microedition.media.Manager
+// import javax.microedition.media.MediaException
+// import javax.microedition.media.Player
+// import org.allbinary.MIDPUtil
+// import org.allbinary.TsUtil
+// import org.allbinary.audio.AudioContentTypeDataFactory
+// import org.allbinary.data.resource.ResourceUtil
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.GameFeatureFactory
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.InputStream
-import javax.microedition.media.Manager
-import javax.microedition.media.MediaException
-import javax.microedition.media.Player
-import org.allbinary.MIDPUtil
-import org.allbinary.TsUtil
-import org.allbinary.audio.AudioContentTypeDataFactory
-import org.allbinary.data.resource.ResourceUtil
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.GameFeatureFactory
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
 //NotDeviceSpecificMIDP2JavaLibrary
-open public class AllBinaryMediaManager
-            : Object
-         {
-        
-companion object {
-            
-    private val THIS: String = "AllBinaryMediaManagerNoMIPD2"
-
-    open fun isMuted()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun setMuted(aMuted: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var aMuted = aMuted
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun init(soundsFactoryInterface: SoundsFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var soundsFactoryInterface = soundsFactoryInterface
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-
-    var commonString: CommonStrings = CommonStrings.getInstance()!!
-
-logUtil!!.putF(commonString!!.START, AllBinaryMediaManager.THIS, commonString!!.INIT)
-ProgressCanvasFactory.getInstance()!!.addNormalPortion(50, "Media Manager")
-Sounds(soundsFactoryInterface).
-                            init()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun shutdown(soundsFactoryInterface: SoundsFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var soundsFactoryInterface = soundsFactoryInterface
-Sounds(soundsFactoryInterface).
-                            stopAll()
-Sounds(soundsFactoryInterface).
-                            closeAll()
-TsUtil.getInstance()!!.gc()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createPlayer(resource: String)
-        //nullable = true from not(false or (false and false)) = true
-: Player{
-var resource = resource
-
+open class AllBinaryMediaManager: JObject {
+    fileprivate static let THIS: String! = "AllBinaryMediaManagerNoMIPD2"
     
-                        if(Features.getInstance()!!.isFeature(GameFeatureFactory.getInstance()!!.SOUND))
-                        
-                                    {
-                                    
+
+    public override init() {
+        super.init()
+    }
     
-                        if(TsUtil.getInstance()!!.compareTo(resource, Manager.TONE_DEVICE_LOCATOR) == 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Manager.createPlayer(resource)
 
-                                    }
-                                
-                        else {
-                            
-    var inputStream: InputStream = ResourceUtil.getInstance()!!.getResourceAsStream(resource)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MIDPUtil.getInstance()!!.createPlayerFromInputStream(inputStream, AudioContentTypeDataFactory.getInstance()!!.MIME_AUDIO_WAV.getName())
-
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER
-
-                        }
-                            
-}
-
-
-                @Throws(MediaException::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun playTone(frequency: Int, time: Int, volume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var frequency = frequency
-var time = time
-var volume = volume
-
+    @discardableResult open class func isMuted() -> Bool {
+        return false
+    }
     
-                        if(Features.getInstance()!!.isFeature(GameFeatureFactory.getInstance()!!.SOUND))
-                        
-                                    {
-                                    Manager.playTone(frequency, time, volume)
 
-                                    }
-                                
-}
+    open class func setMuted(_ aMuted: Bool) {
+    }
+    
 
+    @discardableResult open class func update() -> Bool {
+        return true
+    }
+    
 
+    open class func `init`(_ soundsFactoryInterface: SoundsFactoryInterface!) {
+        let logUtil: LogUtil! = LogUtil.getInstance()
+        let commonString: CommonStrings! = CommonStrings.getInstance()
+        logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), commonString.INIT)
+        ProgressCanvasFactory.getInstance().addNormalPortion(50, "Media Manager")
+        Sounds(soundsFactoryInterface).`init`()
+    }
+    
+
+    open class func shutdown(_ soundsFactoryInterface: SoundsFactoryInterface!) {
+        Sounds(soundsFactoryInterface).stopAll()
+        Sounds(soundsFactoryInterface).closeAll()
+        TsUtil.getInstance().gc()
+    }
+    
+
+    @discardableResult open class func createPlayer(_ resource: String!) -> Player! {
+        if (Features.getInstance().isFeature(GameFeatureFactory.getInstance().SOUND)) {
+            if (TsUtil.getInstance().compareTo(resource, Manager.TONE_DEVICE_LOCATOR) == 0) {
+                return Manager.createPlayer(resource)
+            } else {
+                let inputStream: InputStream! = ResourceUtil.getInstance().getResourceAsStream(resource)
+                return MIDPUtil.getInstance().createPlayerFromInputStream(inputStream, AudioContentTypeDataFactory.getInstance().MIME_AUDIO_WAV.getName())
+            }
+        } else {
+            return NoPlayer.NO_PLAYER
         }
-            private constructor ()
-            : super()
-        {
-}
+    }
+    
 
-
+    open class func playTone(_ frequency: Int32, _ time: Int32, _ volume: Int32) {
+        if (Features.getInstance().isFeature(GameFeatureFactory.getInstance().SOUND)) {
+            Manager.playTone(frequency, time, volume)
+        }
+    }
 }
-                
-            
 

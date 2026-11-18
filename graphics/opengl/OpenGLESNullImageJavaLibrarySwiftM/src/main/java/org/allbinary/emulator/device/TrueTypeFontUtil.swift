@@ -1,133 +1,73 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2011 AllBinary 
+ * 
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ * 
+ * Created By: Travis Berthelot 
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.emulator.device
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2011 AllBinary 
-                *  
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.emulator.device
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL10
+// import javax.microedition.lcdui.Image
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.image.opengles.OpenGLESImage
 
+open class TrueTypeFontUtil: TrueTypeFontUtilBase {
+    fileprivate static let instance: TrueTypeFontUtil! = TrueTypeFontUtil()
+    public var fontImage: OpenGLESImage! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.fontImage = OpenGLESImage.NULL_OPENGL_IMAGE
+    }
+    
 
+    @discardableResult open class func getInstance() -> TrueTypeFontUtil! {
+        return TrueTypeFontUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL10
-import javax.microedition.lcdui.Image
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.image.opengles.OpenGLESImage
+    public init() {
+        super.init(1)
+        self.initFields()
+    }
+    
 
-open public class TrueTypeFontUtil : TrueTypeFontUtilBase {
-        
-companion object {
-            
-    private val instance: TrueTypeFontUtil = TrueTypeFontUtil()
+    @discardableResult open override func getAsTextureSize(_ textureSize: Int32) -> Int32 {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: TrueTypeFontUtil{
+    @discardableResult open override func getCellSize(_ cellSize: Int32) -> Int32 {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrueTypeFontUtil.instance
+    @discardableResult open func getFontBitmap(_ filename: String!, _ fontSize: Int32, _ cellSize: Int32, _ basicColor: BasicColor!) -> Image! {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    open func saveFontAtlasAsFile() {
+    }
+    
+
+    @discardableResult open func getFontBitmapGL(_ gl: GL10!, _ filename: String!, _ cellSize: Int32, _ basicColor: BasicColor!) -> Image! {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
+
+    @discardableResult open func getFontWidths(_ filename: String!, _ fontSize: Int32) -> JArray<Int32>! {
+        jThrow(JException("RuntimeException", ""))
+    }
 }
-
-
-        }
-            
-    var fontImage: OpenGLESImage = OpenGLESImage.NULL_OPENGL_IMAGE
-private constructor ()                        
-
-                            : super(1){
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-    override fun getAsTextureSize(textureSize: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var textureSize = textureSize
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun getCellSize(cellSize: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var cellSize = cellSize
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun getFontBitmap(filename: String, fontSize: Int, cellSize: Int, basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var filename = filename
-    //var fontSize = fontSize
-    //var cellSize = cellSize
-    //var basicColor = basicColor
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun saveFontAtlasAsFile()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun getFontBitmapGL(gl: GL10, filename: String, cellSize: Int, basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var gl = gl
-    //var filename = filename
-    //var cellSize = cellSize
-    //var basicColor = basicColor
-
-
-
-                            throw RuntimeException()
-}
-
-
-    open fun getFontWidths(filename: String, fontSize: Int)
-        //nullable = true from not(false or (false and false)) = true
-: IntArray{
-    //var filename = filename
-    //var fontSize = fontSize
-
-
-
-                            throw RuntimeException()
-}
-
-
-}
-                
-            
 

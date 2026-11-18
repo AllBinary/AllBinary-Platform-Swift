@@ -1,109 +1,74 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.life
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.life
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.game.health.Health
+// import org.allbinary.game.health.HealthBarAnimation
+// import org.allbinary.game.health.HealthBarTwodAnimation
+// import org.allbinary.game.health.HealthInterface
+// import org.allbinary.game.health.HealthListenerInterface
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.layer.AllBinaryLayer
 
+open class HealthIncludingLifeBar: Paintable, HealthListenerInterface {
+    fileprivate var animationInterface: HealthBarAnimation! = nil
+    fileprivate var life: Life! = nil
+    fileprivate var healthInterface: HealthInterface! = nil
+    public var allbinaryLayer: AllBinaryLayer! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    }
+    
 
+    @discardableResult open class func createHealthIncludingLifeBar(_ layerInterface: AllBinaryLayer!, _ life: Life!, _ healthInterface: Health!, _ location: Int32, _ direction: Int32) -> HealthIncludingLifeBar! {
+        return HealthIncludingLifeBar(layerInterface, life, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.game.health.Health
-import org.allbinary.game.health.HealthBarAnimation
-import org.allbinary.game.health.HealthBarTwodAnimation
-import org.allbinary.game.health.HealthInterface
-import org.allbinary.game.health.HealthListenerInterface
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.layer.AllBinaryLayer
+    public init(_ layerInterface: AllBinaryLayer!, _ life: Life!, _ healthInterface: Health!, _ animationInterface: HealthBarAnimation!, _ direction: Int32) {
+        super.init()
+        self.initFields()
+        self.allbinaryLayer = layerInterface
+        self.animationInterface = animationInterface
+        self.life = life
+        self.healthInterface = healthInterface
+        self.healthInterface.addListener(self)
+        self.onHealthChange()
+    }
+    
 
-open public class HealthIncludingLifeBar : Paintable
-                , HealthListenerInterface {
-        
-companion object {
-            
-                @Throws(Exception::class)
-            
-    open fun createHealthIncludingLifeBar(layerInterface: AllBinaryLayer, life: Life, healthInterface: Health, location: Int, direction: Int)
-        //nullable = true from not(false or (false and false)) = true
-: HealthIncludingLifeBar{
-    //var layerInterface = layerInterface
-    //var life = life
-    //var healthInterface = healthInterface
-    //var location = location
-    //var direction = direction
+    open func onHealthChange() {
+        self.animationInterface.onHealthChange(((self.healthInterface.getHealth() &+ (self.healthInterface.getMaxHealth() &* Int32(Int32(truncatingIfNeeded: self.life.get())))) &* self.allbinaryLayer.getWidth()) / (self.healthInterface.getMaxHealth() &+ (self.healthInterface.getMaxHealth() &* Int32(Int32(truncatingIfNeeded: self.life.getStartLives())))))
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthIncludingLifeBar(layerInterface, life, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction)
+    open override func paint(_ graphics: Graphics!) {
+        self.animationInterface.paintXY(graphics, 0, 0)
+    }
+    
+
+    open override func paintThreed(_ graphics: Graphics!) {
+        self.animationInterface.paintThreedXYZ(graphics, 0, 0, 0)
+    }
 }
-
-
-        }
-            
-    private val animationInterface: HealthBarAnimation
-
-    private val life: Life
-
-    private val healthInterface: HealthInterface
-
-    val allbinaryLayer: AllBinaryLayer
-public constructor (layerInterface: AllBinaryLayer, life: Life, healthInterface: Health, animationInterface: HealthBarAnimation, direction: Int){
-    //var layerInterface = layerInterface
-    //var life = life
-    //var healthInterface = healthInterface
-    //var animationInterface = animationInterface
-    //var direction = direction
-this.allbinaryLayer= layerInterface
-this.animationInterface= animationInterface
-this.life= life
-this.healthInterface= healthInterface
-this.healthInterface!!.addListener(this)
-this.onHealthChange()
-}
-
-
-    override fun onHealthChange()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.animationInterface!!.onHealthChange(((this.healthInterface!!.getHealth() +(this.healthInterface!!.getMaxHealth() *this.life.get())) *this.allbinaryLayer!!.getWidth()) /(this.healthInterface!!.getMaxHealth() +(this.healthInterface!!.getMaxHealth() *this.life.getStartLives())))
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.animationInterface!!.paintXY(graphics, 0, 0)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.animationInterface!!.paintThreedXYZ(graphics, 0, 0, 0)
-}
-
-
-}
-                
-            
 

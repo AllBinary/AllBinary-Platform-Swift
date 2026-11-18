@@ -1,30 +1,12 @@
+// Generated Code Do Not Modify
+// package org.apache.xmlrpc
 
-        /* Generated Code Do Not Modify */
-        package org.apache.xmlrpc
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-interface XmlRpcHandler {
-        
-
-                @Throws(Exception::class)
-            
-    open fun execute(method: String, params: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-: Any
-
+public protocol XmlRpcHandler: AnyObject {
+    @discardableResult func execute(_ method: String!, _ params: BasicArrayList!) -> JObject!
 }
-                
-            
+
 

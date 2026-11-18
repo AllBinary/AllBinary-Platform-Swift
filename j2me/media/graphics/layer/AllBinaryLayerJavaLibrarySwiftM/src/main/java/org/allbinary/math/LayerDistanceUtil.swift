@@ -1,116 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.math
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.math
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.GPoint
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.logic.math.MathUtil
 
+open class LayerDistanceUtil: JObject {
+    fileprivate static let instance: LayerDistanceUtil! = LayerDistanceUtil()
+    fileprivate var mathUtil: MathUtil! = nil
 
+    private func initFields() {
+    self.mathUtil = MathUtil.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.GPoint
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.logic.math.MathUtil
+    @discardableResult open class func getInstance() -> LayerDistanceUtil! {
+        return LayerDistanceUtil.instance
+    }
+    
 
-open public class LayerDistanceUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LayerDistanceUtil = LayerDistanceUtil()
+    @discardableResult open func getDistance(_ layerInterface: AllBinaryLayer!, _ layerInterface2: AllBinaryLayer!) -> Int32 {
+        let dx: Int32 = (layerInterface.getXP() &+ layerInterface.getHalfWidth()) &- (layerInterface2.getXP() &+ layerInterface2.getHalfWidth())
+        let dy: Int32 = (layerInterface.getYP() &+ layerInterface.getHalfHeight()) &- (layerInterface2.getYP() &+ layerInterface2.getHalfHeight())
+        return self.mathUtil.sqrt((dx &* dx) &+ (dy &* dy))
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LayerDistanceUtil{
+    @discardableResult open func getDistance3D(_ layerInterface: AllBinaryLayer!, _ layerInterface2: AllBinaryLayer!) -> Int32 {
+        let dx: Int32 = (layerInterface.getXP() &+ layerInterface.getHalfWidth()) &- (layerInterface2.getXP() &+ layerInterface2.getHalfWidth())
+        let dy: Int32 = (layerInterface.getYP() &+ layerInterface.getHalfHeight()) &- (layerInterface2.getYP() &+ layerInterface2.getHalfHeight())
+        let dz: Int32 = (layerInterface.getZP() &+ layerInterface.getHalfDepth()) &- (layerInterface2.getZP() &+ layerInterface2.getHalfDepth())
+        return self.mathUtil.sqrt((dx &* dx) &+ (dy &* dy) &+ (dz &* dz))
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerDistanceUtil.instance
+    @discardableResult open func getDistanceAt(_ layerInterface: AllBinaryLayer!, _ point: GPoint!) -> Int32 {
+        let dx: Int32 = layerInterface.getXP() &- point.getX()
+        let dy: Int32 = layerInterface.getYP() &- point.getY()
+        return self.mathUtil.sqrt((dx &* dx) &+ (dy &* dy))
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val mathUtil: MathUtil = MathUtil.getInstance()!!
-
-    open fun getDistance(layerInterface: AllBinaryLayer, layerInterface2: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var layerInterface = layerInterface
-    //var layerInterface2 = layerInterface2
-
-    var dx: Int = (layerInterface!!.getXP() +layerInterface!!.getHalfWidth()) -(layerInterface2!!.getXP() +layerInterface2!!.getHalfWidth())
-
-
-    var dy: Int = (layerInterface!!.getYP() +layerInterface!!.getHalfHeight()) -(layerInterface2!!.getYP() +layerInterface2!!.getHalfHeight())
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mathUtil!!.sqrt((dx *dx) +(dy *dy)).toInt()
-}
-
-
-    open fun getDistance3D(layerInterface: AllBinaryLayer, layerInterface2: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var layerInterface = layerInterface
-    //var layerInterface2 = layerInterface2
-
-    var dx: Int = (layerInterface!!.getXP() +layerInterface!!.getHalfWidth()) -(layerInterface2!!.getXP() +layerInterface2!!.getHalfWidth())
-
-
-    var dy: Int = (layerInterface!!.getYP() +layerInterface!!.getHalfHeight()) -(layerInterface2!!.getYP() +layerInterface2!!.getHalfHeight())
-
-
-    var dz: Int = (layerInterface!!.getZP() +layerInterface!!.getHalfDepth()) -(layerInterface2!!.getZP() +layerInterface2!!.getHalfDepth())
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mathUtil!!.sqrt((dx *dx) +(dy *dy) +(dz *dz)).toInt()
-}
-
-
-    open fun getDistanceAt(layerInterface: AllBinaryLayer, point: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var layerInterface = layerInterface
-    //var point = point
-
-    var dx: Int = layerInterface!!.getXP() -point.getX()
-
-
-    var dy: Int = layerInterface!!.getYP() -point.getY()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mathUtil!!.sqrt((dx *dx) +(dy *dy)).toInt()
-}
-
-
-}
-                
-            
 

@@ -27,24 +27,24 @@ open class LogFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstanceD() -> Log! {
+    @discardableResult open class func getInstanceD() -> Log! {
         let stringUtil: StringUtil! = StringUtil.getInstance()
         let nullUtil: NullUtil! = NullUtil.getInstance()
         return Log(stringUtil.EMPTY_STRING, nullUtil.NULL_OBJECT, stringUtil.EMPTY_STRING, nullUtil.NULL_OBJECT)
     }
     
 
-    @discardableResult public static func getInstanceNoF(_ specialMessage: String!, _ anyType: JObject!, _ exception: JObject!) -> Log! {
+    @discardableResult open class func getInstanceNoF(_ specialMessage: String!, _ anyType: JObject!, _ exception: JObject!) -> Log! {
         return Log(specialMessage, anyType, StringUtil.getInstance().EMPTY_STRING, exception)
     }
     
 
-    @discardableResult public static func getInstance(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) -> Log! {
+    @discardableResult open class func getInstance(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) -> Log! {
         return Log(specialMessage, anyType, functionName, exception)
     }
     
 
-    @discardableResult public static func getInstanceF(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) -> Log! {
+    @discardableResult open class func getInstanceF(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) -> Log! {
         let nullUtil: NullUtil! = NullUtil.getInstance()
         return Log(specialMessage, anyType, functionName, nullUtil.NULL_OBJECT)
     }

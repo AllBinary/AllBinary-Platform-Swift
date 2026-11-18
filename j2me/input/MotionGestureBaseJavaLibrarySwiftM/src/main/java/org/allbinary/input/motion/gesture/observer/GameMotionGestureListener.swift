@@ -1,224 +1,133 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gesture.observer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.gesture.observer
+import J2SEForSwiftLibrary
+// import org.allbinary.input.motion.gesture.MotionGestureInput
+// import org.allbinary.input.motion.gesture.TouchMotionGestureFactory
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class GameMotionGestureListener: JObject, MotionGestureEventListener {
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var motionGestureCollection: BasicArrayList! = nil
+    fileprivate var touchGestureCollection: BasicArrayList! = nil
+    fileprivate var signed: CompleteMotionGestureListenerInterface! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.input.motion.gesture.MotionGestureInput
-import org.allbinary.input.motion.gesture.TouchMotionGestureFactory
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class GameMotionGestureListener
-            : Object
-        
-                , MotionGestureEventListener {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private var motionGestureCollection: BasicArrayList = BasicArrayListD()
-
-    private var touchGestureCollection: BasicArrayList = BasicArrayListD()
-
-    private var signed: CompleteMotionGestureListenerInterface
-public constructor (signed: CompleteMotionGestureListenerInterface)
-            : super()
-        {
-var signed = signed
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CONSTRUCTOR)
-this.signed= signed
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-var eventObject = eventObject
-ForcedLogUtil.log(this.commonStrings!!.NOT_IMPLEMENTED, this)
-}
-
-
-    override fun onUpMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onDownMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onLeftMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onRightMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onDiagonalDownRightMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onDiagonalDownLeftMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onDiagonalUpRightMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onDiagonalUpLeftMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.onMotionGestureEvent(ev)
-}
-
-
-    override fun onPressedMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-this.touchGestureCollection!!.add(ev.getMotionGesture())
-}
-
-
-    override fun released(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-
-        try {
-            this.touchGestureCollection!!.add(ev.getMotionGesture())
-this.signed.onMotionGestureCompleted(this.touchGestureCollection)
-this.touchGestureCollection!!.clear()
-} catch(e: Exception)
-            {
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(this.commonStrings!!.EXCEPTION_LABEL)
-stringBuffer!!.append(StringUtil.getInstance()!!.toString(ev.getMotionGesture()))
-this.logUtil!!.put(stringBuffer!!.toString(), this, "release", e)
-}
-
-}
-
-
-    override fun onScrolledMotionGestureEvent(motionGestureEvent: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var motionGestureEvent = motionGestureEvent
-}
-
-
-    override fun onMotionGestureEvent(ev: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var ev = ev
-
-        try {
-            
-    var motionGestureInput: MotionGestureInput = ev.getMotionGesture()!!
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.motionGestureCollection = BasicArrayListD()
+    self.touchGestureCollection = BasicArrayListD()
     
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!!.PRESSED)
-                        
-                                    {
-                                    this.onPressedMotionGestureEvent(ev)
-
-                                    }
-                                
-                             else 
+    }
     
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!!.RELEASED)
-                        
-                                    {
-                                    this.released(ev)
 
-                                    }
-                                
-                        else {
-                            this.motionGestureCollection!!.add(motionGestureInput)
-this.signed.onMotionGestureCompleted(this.motionGestureCollection)
-this.motionGestureCollection!!.clear()
-this.touchGestureCollection!!.clear()
+    public init(_ signed: CompleteMotionGestureListenerInterface!) {
+        super.init()
+        self.initFields()
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CONSTRUCTOR)
+        self.signed = signed
+    }
+    
 
-                        }
-                            
-} catch(e: Exception)
-            {
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(self.commonStrings.NOT_IMPLEMENTED, self)
+    }
+    
 
-    var stringBuffer: StringMaker = StringMaker()
+    open func onUpMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
 
-stringBuffer!!.append(this.commonStrings!!.EXCEPTION_LABEL)
-stringBuffer!!.append(StringUtil.getInstance()!!.toString(ev.getMotionGesture()))
-this.logUtil!!.put(stringBuffer!!.toString(), this, "onMotionGestureEvent", e)
+    open func onDownMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onLeftMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onRightMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onDiagonalDownRightMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onDiagonalDownLeftMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onDiagonalUpRightMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onDiagonalUpLeftMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.onMotionGestureEvent(ev)
+    }
+    
+
+    open func onPressedMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        self.touchGestureCollection.add(ev.getMotionGesture())
+    }
+    
+
+    open func released(_ ev: MotionGestureEvent!) {
+        do {
+            self.touchGestureCollection.add(ev.getMotionGesture())
+            self.signed.onMotionGestureCompleted(self.touchGestureCollection)
+            self.touchGestureCollection.clear()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func onScrolledMotionGestureEvent(_ motionGestureEvent: MotionGestureEvent!) {
+    }
+    
+
+    open func onMotionGestureEvent(_ ev: MotionGestureEvent!) {
+        do {
+            let motionGestureInput: MotionGestureInput! = ev.getMotionGesture()
+            if (motionGestureInput === TouchMotionGestureFactory.getInstance().PRESSED) {
+                self.onPressedMotionGestureEvent(ev)
+            } else if (motionGestureInput === TouchMotionGestureFactory.getInstance().RELEASED) {
+                self.released(ev)
+            } else {
+                self.motionGestureCollection.add(motionGestureInput)
+                self.signed.onMotionGestureCompleted(self.motionGestureCollection)
+                self.motionGestureCollection.clear()
+                self.touchGestureCollection.clear()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

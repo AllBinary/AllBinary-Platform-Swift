@@ -1,119 +1,75 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.time.TimeDelayHelper
+// import org.allbinary.util.ABHashtable
 
+open class InputProbability: JObject {
+    public static var INPUT_PROBABILITY: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(0)
+    fileprivate var likelyhoodIntegerArray: JArray<JArray<Int32?>?>! = nil
+    fileprivate var repeatLikelyhoodIntegerArray: JArray<Int32?>! = nil
+    fileprivate var max: Int32 = 0
+    fileprivate var timeDelayHelper: TimeDelayHelper! = nil
 
+    private func initFields() {
+    
+    
+    
+    
+    }
+    
 
+    public init(_ likelyhoodIntegerArray: JArray<JArray<Int32?>?>!, _ repeatLikelyhoodIntegerArray: JArray<Int32?>!, _ max: Int32, _ timeDelayHelper: TimeDelayHelper!) {
+        super.init()
+        self.initFields()
+        self.likelyhoodIntegerArray = likelyhoodIntegerArray
+        self.repeatLikelyhoodIntegerArray = repeatLikelyhoodIntegerArray
+        self.max = max
+        self.timeDelayHelper = timeDelayHelper
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.StdUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.time.TimeDelayHelper
-import org.allbinary.util.ABHashtable
+    @discardableResult open func getLikelyhoodIntegerArray() -> JArray<JArray<Int32?>?>! {
+        return self.likelyhoodIntegerArray
+    }
+    
 
-open public class InputProbability
-            : Object
-         {
-        
-companion object {
-            
-    var INPUT_PROBABILITY: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(0)!!
+    @discardableResult open func getRepeatLikelyhoodIntegerArray() -> JArray<Int32?>! {
+        return self.repeatLikelyhoodIntegerArray
+    }
+    
 
-        }
-            
-    private val likelyhoodIntegerArray: Array<Array<Integer?>?>
+    @discardableResult open func getMax() -> Int32 {
+        return self.max
+    }
+    
 
-    private val repeatLikelyhoodIntegerArray: Array<Integer?>
+    @discardableResult open func getTimeDelayHelper() -> TimeDelayHelper! {
+        return self.timeDelayHelper
+    }
+    
 
-    private val max: Int
-
-    private val timeDelayHelper: TimeDelayHelper
-public constructor (likelyhoodIntegerArray: Array<Array<Integer?>?>, repeatLikelyhoodIntegerArray: Array<Integer?>, max: Int, timeDelayHelper: TimeDelayHelper)
-            : super()
-        {
-var likelyhoodIntegerArray = likelyhoodIntegerArray
-var repeatLikelyhoodIntegerArray = repeatLikelyhoodIntegerArray
-var max = max
-var timeDelayHelper = timeDelayHelper
-this.likelyhoodIntegerArray= likelyhoodIntegerArray
-this.repeatLikelyhoodIntegerArray= repeatLikelyhoodIntegerArray
-this.max= max
-this.timeDelayHelper= timeDelayHelper
+    @discardableResult open func toHashtable() -> ABHashtable! {
+        let hashtable: ABHashtable! = StdUtil.getInstance().createHashtable()
+        hashtable.put(InputProbability.INPUT_PROBABILITY, self)
+        return hashtable
+    }
 }
-
-
-    open fun getLikelyhoodIntegerArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Array<Integer?>?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.likelyhoodIntegerArray
-}
-
-
-    open fun getRepeatLikelyhoodIntegerArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Integer?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.repeatLikelyhoodIntegerArray
-}
-
-
-    open fun getMax()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.max
-}
-
-
-    open fun getTimeDelayHelper()
-        //nullable = true from not(false or (false and true)) = true
-: TimeDelayHelper{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeDelayHelper
-}
-
-
-    open fun toHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-    var hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-
-hashtable.put(InputProbability.INPUT_PROBABILITY, this)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashtable
-}
-
-
-}
-                
-            
 

@@ -1,81 +1,40 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.AppletUtil
+// import org.allbinary.J2MEUtil
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.graphics.displayable.MyCanvas
 
+open class CustomGameMenuUtil: JObject {
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.AppletUtil
-import org.allbinary.J2MEUtil
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.graphics.displayable.MyCanvas
-
-open public class CustomGameMenuUtil
-            : Object
-         {
-        
-companion object {
-            
-    open fun add(canvas: MyCanvas)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var canvas = canvas
-
-    var gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!!
-
-
+    public override init() {
+        super.init()
+    }
     
-                        if(AppletUtil.isAppletLoader(canvas))
-                        
-                                    {
-                                    
-                                    }
-                                
-                             else 
-    
-                        if(J2MEUtil.isHTML())
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            canvas.addCommand(gameCommandsFactory!!.EXIT_COMMAND)
 
-                        }
-                            
-}
-
-
+    open class func add(_ canvas: MyCanvas!) {
+        let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
+        if (AppletUtil.isAppletLoader(canvas)) {
+        } else if (J2MEUtil.isHTML()) {
+        } else {
+            canvas.addCommand(gameCommandsFactory.EXIT_COMMAND)
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    }
 }
-                
-            
 

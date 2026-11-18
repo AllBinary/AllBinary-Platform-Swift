@@ -1,26 +1,10 @@
+// Generated Code Do Not Modify
+// package java.lang.annotation
 
-        /* Generated Code Do Not Modify */
-        package java.lang.annotation
+import J2SEForSwiftLibrary
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-interface Annotation {
-        
-
-    open fun annotationType()
-        //nullable = true from not(false or (false and true)) = true
-: KClass<*>
-
+public protocol Annotation: AnyObject {
+    @discardableResult func annotationType() -> String!
 }
-                
-            
+
 

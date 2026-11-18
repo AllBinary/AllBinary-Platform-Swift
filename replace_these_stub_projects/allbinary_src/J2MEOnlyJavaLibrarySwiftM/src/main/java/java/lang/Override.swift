@@ -1,17 +1,8 @@
+// Generated Code Do Not Modify
+// package java.lang
 
-        /* Generated Code Do Not Modify */
-        package java.lang
+import J2SEForSwiftLibrary
 
+// Java annotation Override: annotations have no Swift form
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-                //Otherwise - classOrInterfaceDeclaration - type - AnnotationDeclaration
 

@@ -1,156 +1,97 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.text
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.text
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehaviorFactory
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.media.ScaleProperties
 
+open class CustomTextAnimationFactory: JObject, AnimationInterfaceFactoryInterface {
+    public var logUtil: LogUtil! = nil
+    fileprivate var animationBehaviorFactory: AnimationBehaviorFactory! = nil
+    public var basicColor: BasicColor! = nil
+    fileprivate var text: String! = nil
+    fileprivate var initScaleHeight: Int32 = 0
+    public var dx: Int32 = 0
+    public var dy: Int32 = 0
+    public var font: Font! = nil
+    public var scaleProperties: ScaleProperties! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehaviorFactory
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.media.ScaleProperties
-
-open public class CustomTextAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
-companion object {
-            
-    open fun createDXY(text: String, fontSize: Int, dx: Int, dy: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-        //nullable = true from not(false or (false and false)) = true
-: CustomTextAnimationFactory{
-    //var text = text
-    //var fontSize = fontSize
-    //var dx = dx
-    //var dy = dy
-    //var animationBehaviorFactory = animationBehaviorFactory
-
-    var customTextAnimationFactory: CustomTextAnimationFactory = CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory)
-
-customTextAnimationFactory!!.dx= dx
-customTextAnimationFactory!!.dy= dy
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return customTextAnimationFactory
-}
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val animationBehaviorFactory: AnimationBehaviorFactory
-
-    var basicColor: BasicColor = BasicColorFactory.getInstance()!!.BLACK
-
-    private var text: String
-
-    private var initScaleHeight: Int
-
-    var dx: Int = 0
-
-    var dy: Int = 0
-
-    var font: Font
-
-    var scaleProperties: ScaleProperties
-public constructor (text: String, fontSize: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var text = text
-    //var fontSize = fontSize
-    //var animationBehaviorFactory = animationBehaviorFactory
-this.scaleProperties= ScaleProperties()
-this.text= text
-this.scaleProperties!!.scaleHeight= fontSize.toInt() -(fontSize /4)
-this.initScaleHeight= this.scaleProperties!!.scaleHeight
-this.animationBehaviorFactory= animationBehaviorFactory
-this.font= Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, this.initScaleHeight)!!
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-    var customTextAnimation: CustomTextAnimation
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(this.dx != 0 || this.dy != 0)
-                        
-                                    {
-                                    customTextAnimation= AdjustCustomTextAnimation(this.text, this.scaleProperties!!.scaleHeight, this.dx, this.dy, this.animationBehaviorFactory!!.getOrCreateInstance())
+    self.basicColor = BasicColorFactory.getInstance().BLACK
+    
+    
+    self.dx = 0
+    self.dy = 0
+    
+    
+    }
+    
 
-                                    }
-                                
-                        else {
-                            customTextAnimation= CustomTextAnimation(this.text, this.scaleProperties!!.scaleHeight, this.animationBehaviorFactory!!.getOrCreateInstance())
+    @discardableResult open class func createDXY(_ text: String!, _ fontSize: Int32, _ dx: Int32, _ dy: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) -> CustomTextAnimationFactory! {
+        let customTextAnimationFactory: CustomTextAnimationFactory! = CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory)
+        customTextAnimationFactory.dx = dx
+        customTextAnimationFactory.dy = dy
+        return customTextAnimationFactory
+    }
+    
 
-                        }
-                            
-customTextAnimation!!.setBasicColorP(this.basicColor)
+    public init(_ text: String!, _ fontSize: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        self.scaleProperties = ScaleProperties()
+        self.text = text
+        self.scaleProperties.scaleHeight = fontSize &- (fontSize / 4)
+        self.initScaleHeight = self.scaleProperties.scaleHeight
+        self.animationBehaviorFactory = animationBehaviorFactory
+        self.font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, self.initScaleHeight)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return customTextAnimation
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        var customTextAnimation: CustomTextAnimation! = nil
+        if (self.dx != 0 || self.dy != 0) {
+            customTextAnimation = AdjustCustomTextAnimation(self.text, self.scaleProperties.scaleHeight, self.dx, self.dy, self.animationBehaviorFactory.getOrCreateInstance())
+        } else {
+            customTextAnimation = CustomTextAnimation(self.text, self.scaleProperties.scaleHeight, self.animationBehaviorFactory.getOrCreateInstance())
+        }
+        customTextAnimation.setBasicColorP(self.basicColor)
+        return customTextAnimation
+    }
+    
+
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
+    
+
+    @discardableResult open func getWidth() -> Int32 {
+        return self.font.stringWidth(self.text)
+    }
+    
+
+    @discardableResult open func getHeight() -> Int32 {
+        return self.font.getHeight()
+    }
 }
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-    open fun getWidth()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.font.stringWidth(this.text)
-}
-
-
-    open fun getHeight()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.font.getHeight()
-}
-
-
-}
-                
-            
 

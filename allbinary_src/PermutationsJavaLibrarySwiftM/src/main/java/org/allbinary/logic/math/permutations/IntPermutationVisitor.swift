@@ -1,87 +1,55 @@
+// Generated Code Do Not Modify
+// package org.allbinary.logic.math.permutations
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.math.permutations
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.visitor.Visitor
+// import org.allbinary.string.CommonSeps
 
+open class IntPermutationVisitor: Visitor {
+    public var data: JArray<Int32>! = nil
+    fileprivate var stringBuilder: StringMaker! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    self.stringBuilder = StringMaker()
+    }
+    
 
+    public init(_ data: JArray<Int32>!) {
+        super.init()
+        self.initFields()
+        self.data = data
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.System
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.visitor.Visitor
-import org.allbinary.string.CommonSeps
+    @discardableResult open override func visit(_ anyType: JObject!) -> JObject! {
+        self.stringBuilder.delete(0, self.stringBuilder.length())
+        self.print(self.data, self.stringBuilder)
+        return NullUtil.getInstance().NULL_OBJECT
+    }
+    
 
-open public class IntPermutationVisitor : Visitor {
-        
+    open func print(_ data: JArray<Int32>!) {
+        let stringBuilder: StringMaker! = StringMaker()
+        self.print(data, stringBuilder)
+    }
+    
 
-    val data: IntArray
-public constructor (data: IntArray){
-    //var data = data
-this.data= data
+    open func print(_ data: JArray<Int32>!, _ stringBuilder: StringMaker!) {
+        let commonSeps: CommonSeps! = CommonSeps.getInstance()
+        let size: Int32 = data.length
+        do {
+            var i: Int32 = 0
+            while (i < size) {
+                defer { i &+= 1 }
+            stringBuilder.appendint(data[i])
+            stringBuilder.append(commonSeps.SPACE)
+            }
+        }
+        JSystem.println(jstr(stringBuilder.toString()))
+    }
 }
-
-
-    private var stringBuilder: StringMaker = StringMaker()
-
-    override fun visit(anyType: Any)
-        //nullable = true from not(false or (false and false)) = true
-: Any{
-    //var anyType = anyType
-this.stringBuilder!!.delete(0, stringBuilder!!.length())
-this.print(this.data, stringBuilder)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!!.NULL_OBJECT
-}
-
-
-    open fun print(data: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var data = data
-
-    var stringBuilder: StringMaker = StringMaker()
-
-this.print(data, stringBuilder)
-}
-
-
-    open fun print(data: IntArray, stringBuilder: StringMaker)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var data = data
-    //var stringBuilder = stringBuilder
-
-    var commonSeps: CommonSeps = CommonSeps.getInstance()!!
-
-
-    var size: Int = data.size
-                
-
-
-
-
-
-                        for (i in 0 until size)
-
-        {
-stringBuilder!!.appendint(data[i]!!)
-stringBuilder!!.append(commonSeps!!.SPACE)
-}
-
-System.out.println(stringBuilder!!.toString())
-}
-
-
-}
-                
-            
 

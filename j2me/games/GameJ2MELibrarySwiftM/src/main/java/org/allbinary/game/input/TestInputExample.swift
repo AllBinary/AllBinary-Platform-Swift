@@ -1,99 +1,67 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
 
+open class TestInputExample: JObject, TestInputInterface {
+    fileprivate var testValue: Int32 = 0
 
+    private func initFields() {
+    self.testValue = 0
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
+    open func up() {
+    }
+    
 
-open public class TestInputExample
-            : Object
-        
-                , TestInputInterface {
-        
+    open func down() {
+    }
+    
 
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var testValue: Int= 0
+    open func left() {
+        self.testValue &+= 1
+    }
+    
 
-    override fun up()
-        //nullable = true from not(false or (false and true)) = true
-{
+    open func right() {
+        self.testValue &-= 1
+    }
+    
+
+    open func strafeLeft() {
+    }
+    
+
+    open func strafeRight() {
+    }
+    
+
+    open func paint(_ graphics: Graphics!) {
+    }
+    
+
+    open func paintThreed(_ graphics: Graphics!) {
+    }
 }
-
-
-    override fun down()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun left()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.testValue++
-}
-
-
-    override fun right()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.testValue--
-}
-
-
-    override fun strafeLeft()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun strafeRight()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-}
-                
-            
 

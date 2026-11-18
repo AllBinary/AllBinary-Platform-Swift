@@ -1,95 +1,49 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image.opengles
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image.opengles
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL10
 
+open class OpenGLESImageProcessor: JObject {
+    fileprivate static let instance: OpenGLESImageProcessor! = OpenGLESImageProcessor()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> OpenGLESImageProcessor! {
+        return OpenGLESImageProcessor.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL10
+    open func translate(_ gl: GL10!, _ translateX: Float, _ translateY: Float) {
+    }
+    
 
-open public class OpenGLESImageProcessor
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: OpenGLESImageProcessor = OpenGLESImageProcessor()
+    open func rotate(_ gl: GL10!, _ angle: Float) {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLESImageProcessor{
+    open func scale(_ gl: GL10!, _ scaleX: Float, _ scaleY: Float) {
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageProcessor.instance
+    open func colorMask(_ gl: GL10!, _ red: Float, _ green: Float, _ blue: Float, _ alpha: Float) {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun translate(gl: GL10, translateX: Float, translateY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var translateX = translateX
-var translateY = translateY
-}
-
-
-    open fun rotate(gl: GL10, angle: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var angle = angle
-}
-
-
-    open fun scale(gl: GL10, scaleX: Float, scaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var scaleX = scaleX
-var scaleY = scaleY
-}
-
-
-    open fun colorMask(gl: GL10, red: Float, green: Float, blue: Float, alpha: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var red = red
-var green = green
-var blue = blue
-var alpha = alpha
-}
-
-
-}
-                
-            
 

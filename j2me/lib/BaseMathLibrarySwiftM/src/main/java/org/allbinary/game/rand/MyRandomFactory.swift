@@ -36,7 +36,7 @@ open class MyRandomFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> MyRandomFactory! {
+    @discardableResult open class func getInstance() -> MyRandomFactory! {
         return MyRandomFactory.instance
     }
     
@@ -125,7 +125,7 @@ open class MyRandomFactory: JObject {
     }
     
 
-    public static func main(_ args: JArray<String?>!) {
+    open class func main(_ args: JArray<String?>!) {
         let randomFactory: MyRandomFactory! = MyRandomFactory.getInstance()
         let stringBuilder: StringMaker! = StringMaker()
         let commonSeps: CommonSeps! = CommonSeps.getInstance()

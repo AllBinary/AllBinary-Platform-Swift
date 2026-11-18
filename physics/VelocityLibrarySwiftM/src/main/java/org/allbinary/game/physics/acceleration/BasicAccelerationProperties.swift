@@ -1,85 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.physics.acceleration
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.physics.acceleration
+import J2SEForSwiftLibrary
 
+open class BasicAccelerationProperties: JObject {
+    fileprivate var forward: Int32 = 0
+    fileprivate var reverse: Int32 = 0
 
+    private func initFields() {
+    self.forward = 0
+    self.reverse = 0
+    }
+    
 
+    public init(_ forward: Int32, _ reverse: Int32) {
+        super.init()
+        self.initFields()
+        self.setForward(forward)
+        self.setReverse(reverse)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func setReverse(_ reverse: Int32) {
+        self.reverse = reverse
+    }
+    
 
-open public class BasicAccelerationProperties
-            : Object
-         {
-        
+    @discardableResult open func getReverse() -> Int32 {
+        return self.reverse
+    }
+    
 
-    private var forward: Int= 0
+    open func setForward(_ forward: Int32) {
+        self.forward = forward
+    }
+    
 
-    private var reverse: Int= 0
-public constructor (forward: Int, reverse: Int)
-            : super()
-        {
-var forward = forward
-var reverse = reverse
-this.setForward(forward)
-this.setReverse(reverse)
+    @discardableResult open func getForward() -> Int32 {
+        return self.forward
+    }
 }
-
-
-    open fun setReverse(reverse: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var reverse = reverse
-this.reverse= reverse
-}
-
-
-    open fun getReverse()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.reverse
-}
-
-
-    open fun setForward(forward: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var forward = forward
-this.forward= forward
-}
-
-
-    open fun getForward()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.forward
-}
-
-
-}
-                
-            
 

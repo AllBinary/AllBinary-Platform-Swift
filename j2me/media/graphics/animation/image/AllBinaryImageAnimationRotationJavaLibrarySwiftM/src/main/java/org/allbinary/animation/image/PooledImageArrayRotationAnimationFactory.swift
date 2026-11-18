@@ -1,134 +1,72 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehaviorFactory
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.game.configuration.GameConfigurationCentral
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.media.ScaleProperties
+// import org.allbinary.media.image.ImageToRotationImageArrayUtil
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehaviorFactory
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.game.configuration.GameConfigurationCentral
-import org.allbinary.logic.NullUtil
-import org.allbinary.math.AngleFactory
-import org.allbinary.media.ScaleProperties
-import org.allbinary.media.image.ImageToRotationImageArrayUtil
 //TWB - Adjustments should be done in the resource creation and not at the animation level
-open public class PooledImageArrayRotationAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
-companion object {
-            
-                @Throws(Exception::class)
-            
-    open fun createFactory(image: Image, animationBehaviorFactory: AnimationBehaviorFactory)
-        //nullable = true from not(false or (false and false)) = true
-: PooledImageArrayRotationAnimationFactory{
-    //var image = image
-    //var animationBehaviorFactory = animationBehaviorFactory
+open class PooledImageArrayRotationAnimationFactory: JObject, AnimationInterfaceFactoryInterface {
+    fileprivate var allBinaryImageRotationAnimationInfo: JObject! = nil
+    fileprivate var animationBehaviorFactory: AnimationBehaviorFactory! = nil
 
-    var totalAngle: Int = AngleFactory.getInstance()!!.TOTAL_ANGLE.toInt()
+    private func initFields() {
+    self.allBinaryImageRotationAnimationInfo = NullUtil.getInstance().NULL_OBJECT
+    
+    }
+    
 
+    @discardableResult open class func createFactory(_ image: Image!, _ animationBehaviorFactory: AnimationBehaviorFactory!) -> PooledImageArrayRotationAnimationFactory! {
+        let totalAngle: Int32 = Int32(truncatingIfNeeded: AngleFactory.getInstance().TOTAL_ANGLE)
+        let angleIncrement: Int32 = (totalAngle / GameConfigurationCentral.getInstance().getGameControlFidelity())
+        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(), -(image.getWidth() >> 2), -(image.getHeight() >> 2), angleIncrement, animationBehaviorFactory)
+    }
+    
 
-    var angleIncrement: Int = (totalAngle /GameConfigurationCentral.getInstance()!!.getGameControlFidelity())
+    @discardableResult open class func createDXY(_ image: Image!, _ dx: Int32, _ dy: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) -> PooledImageArrayRotationAnimationFactory! {
+        let totalAngle: Int32 = Int32(truncatingIfNeeded: AngleFactory.getInstance().TOTAL_ANGLE)
+        let angleIncrement: Int32 = (totalAngle / GameConfigurationCentral.getInstance().getGameControlFidelity())
+        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(), dx, dy, angleIncrement, animationBehaviorFactory)
+    }
+    
 
+    public init(_ image: Image!, _ width: Int32, _ height: Int32, _ dx: Int32, _ dy: Int32, _ angleIncrement: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        self.animationBehaviorFactory = animationBehaviorFactory
+        let totalAngle: Int32 = Int32(truncatingIfNeeded: AngleFactory.getInstance().TOTAL_ANGLE)
+        let imageArray: JArray<Image?>! = ImageToRotationImageArrayUtil.getInstance().generate(image, angleIncrement, totalAngle)
+        self.allBinaryImageRotationAnimationInfo = ImageArrayRotationAnimationInfo(imageArray, angleIncrement, totalAngle, dx, dy)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(),  -(image.getWidth() shr 2),  -(image.getHeight() shr 2), angleIncrement, animationBehaviorFactory)
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        return AdjustedImageArrayRotationAnimation.createAdjustedImageArrayRotationAnimationInfo(self.allBinaryImageRotationAnimationInfo, self.animationBehaviorFactory.getOrCreateInstance())
+    }
+    
+
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun createDXY(image: Image, dx: Int, dy: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-        //nullable = true from not(false or (false and false)) = true
-: PooledImageArrayRotationAnimationFactory{
-    //var image = image
-    //var dx = dx
-    //var dy = dy
-    //var animationBehaviorFactory = animationBehaviorFactory
-
-    var totalAngle: Int = AngleFactory.getInstance()!!.TOTAL_ANGLE.toInt()
-
-
-    var angleIncrement: Int = (totalAngle /GameConfigurationCentral.getInstance()!!.getGameControlFidelity())
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(), dx, dy, angleIncrement, animationBehaviorFactory)
-}
-
-
-        }
-            
-    private var allBinaryImageRotationAnimationInfo: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    private val animationBehaviorFactory: AnimationBehaviorFactory
-public constructor (image: Image, width: Int, height: Int, dx: Int, dy: Int, angleIncrement: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var image = image
-    //var width = width
-    //var height = height
-    //var dx = dx
-    //var dy = dy
-    //var angleIncrement = angleIncrement
-    //var animationBehaviorFactory = animationBehaviorFactory
-this.animationBehaviorFactory= animationBehaviorFactory
-
-    var totalAngle: Int = AngleFactory.getInstance()!!.TOTAL_ANGLE.toInt()
-
-
-    var imageArray: Array<Image?> = ImageToRotationImageArrayUtil.getInstance()!!.generate(image, angleIncrement, totalAngle)!!
-
-this.allBinaryImageRotationAnimationInfo= ImageArrayRotationAnimationInfo(imageArray, angleIncrement, totalAngle, dx, dy)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageArrayRotationAnimation.createAdjustedImageArrayRotationAnimationInfo(this.allBinaryImageRotationAnimationInfo, this.animationBehaviorFactory!!.getOrCreateInstance())
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

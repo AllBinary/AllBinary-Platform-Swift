@@ -1,244 +1,143 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import javax.microedition.media.Control
+// import javax.microedition.media.MediaException
+// import javax.microedition.media.Player
+// import javax.microedition.media.PlayerListener
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.media.Control
-import javax.microedition.media.MediaException
-import javax.microedition.media.Player
-import javax.microedition.media.PlayerListener
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
 //BasicPlayerJavaLibrary
-open public class BasicPlayer
-            : Object
-        
-                , Player
-                , Controllable2 {
-        
-companion object {
-            
-    var CONTROL_TYPE: String = "ToneControl"
+open class BasicPlayer: JObject, Player, Controllable2 {
+    public static var CONTROL_TYPE: String! = "ToneControl"
+    public var commonStrings: CommonStrings! = nil
+    public var listenersList: BasicArrayList! = nil
+    public var stateP: Int32 = 0
+    public var loopCountP: Int32 = 0
 
-        }
-            
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    val listenersList: BasicArrayList = BasicArrayListD()
-
-    var stateP: Int= 0
-
-    var loopCountP: Int= 0
-public constructor ()
-            : super()
-        {
-this.setLoopCount(0)
-this.setState(Player.UNREALIZED)
-}
-
-
-    override fun getContentType()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-}
-
-
-    override fun getControl(controlType: String)
-        //nullable = true from not(false or (false and false)) = true
-: Control{
-var controlType = controlType
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullControl()
-}
-
-
-    override fun getControls()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Control?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return arrayOfNulls(0)
-}
-
-
-    override fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun addPlayerListener(playerListener: PlayerListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerListener = playerListener
-
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    self.listenersList = BasicArrayListD()
+    self.stateP = 0
+    self.loopCountP = 0
+    }
     
-                        if(!this.listenersList!!.contains(playerListener))
-                        
-                                    {
-                                    this.listenersList!!.add(playerListener)
 
-                                    }
-                                
+    public override init() {
+        super.init()
+        self.initFields()
+        self.setLoopCount(0)
+        self.setState(PlayerConstants.UNREALIZED)
+    }
+    
+
+    @discardableResult open func getContentType() -> String! {
+        return StringUtil.getInstance().EMPTY_STRING
+    }
+    
+
+    @discardableResult open func getControl(_ controlType: String!) -> Control! {
+        return NullControl()
+    }
+    
+
+    @discardableResult open func getControls() -> JArray<Control?>! {
+        return JArray<Control?>(0, nil)
+    }
+    
+
+    open func close() {
+    }
+    
+
+    open func addPlayerListener(_ playerListener: PlayerListener!) {
+        if (!self.listenersList.contains((playerListener as? JObject))) {
+            self.listenersList.add((playerListener as? JObject))
+        }
+    }
+    
+
+    open func removePlayerListener(_ playerListener: PlayerListener!) {
+        self.listenersList.remove((playerListener as? JObject))
+    }
+    
+
+    @discardableResult open func getState() -> Int32 {
+        return self.stateP
+    }
+    
+
+    open func setState(_ state: Int32) {
+        self.stateP = state
+    }
+    
+
+    @discardableResult open func getDuration() -> Int64 {
+        return 0
+    }
+    
+
+    @discardableResult open func getMediaTime() -> Int64 {
+        return 0
+    }
+    
+
+    open func deallocate() {
+    }
+    
+
+    open func prefetch() {
+    }
+    
+
+    open func realize() {
+    }
+    
+
+    open func setLoopCount(_ count: Int32) {
+        self.loopCountP = count
+    }
+    
+
+    @discardableResult open func getLoopCount() -> Int32 {
+        return self.loopCountP
+    }
+    
+
+    @discardableResult open func setMediaTime(_ now: Int64) -> Int64 {
+        return 0
+    }
+    
+
+    open func start() {
+        self.setState(PlayerConstants.STARTED)
+    }
+    
+
+    open func stop() {
+        self.setState(PlayerConstants.PREFETCHED)
+    }
+    
+
+    open func setVolume(_ leftVolume: Int32, _ rightVolume: Int32) {
+    }
 }
-
-
-    override fun removePlayerListener(playerListener: PlayerListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var playerListener = playerListener
-this.listenersList!!.remove(playerListener)
-}
-
-
-    override fun getState()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.stateP
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun setState(state: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var state = state
-this.stateP= state
-}
-
-
-    override fun getDuration()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    override fun getMediaTime()
-        //nullable = true from not(false or (false and true)) = true
-: Long{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    override fun deallocate()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(MediaException::class)
-            
-    override fun prefetch()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(MediaException::class)
-            
-    override fun realize()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun setLoopCount(count: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var count = count
-this.loopCountP= count
-}
-
-
-    open fun getLoopCount()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopCountP
-}
-
-
-                @Throws(MediaException::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun setMediaTime(now: Long)
-        //nullable = true from not(false or (false and false)) = true
-: Long{
-var now = now
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-                @Throws(MediaException::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun start()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setState(Player.STARTED)
-}
-
-
-                @Throws(MediaException::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun stop()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setState(Player.PREFETCHED)
-}
-
-
-    override fun setVolume(leftVolume: Int, rightVolume: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var leftVolume = leftVolume
-    //var rightVolume = rightVolume
-}
-
-
-}
-                
-            
 

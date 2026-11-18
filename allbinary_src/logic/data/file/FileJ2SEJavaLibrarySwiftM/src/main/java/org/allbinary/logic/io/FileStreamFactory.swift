@@ -1,134 +1,64 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.io.file.AbFile
+// import org.allbinary.logic.io.path.AbPath
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.io.file.AbFile
-import org.allbinary.logic.io.path.AbPath
-
-open public class FileStreamFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var SINGLETON: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: FileStreamFactory{
-
+open class FileStreamFactory: JObject {
+    fileprivate static var SINGLETON: JObject! = NullUtil.getInstance().NULL_OBJECT
     
-                        if(FileStreamFactory.SINGLETON == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    FileStreamFactory.SINGLETON= FileStreamFactory()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileStreamFactory.SINGLETON as FileStreamFactory
-}
-
-
+    @discardableResult open class func getInstance() -> FileStreamFactory! {
+        if (FileStreamFactory.SINGLETON === NullUtil.getInstance().NULL_OBJECT) {
+            FileStreamFactory.SINGLETON = FileStreamFactory()
         }
-            private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getFileInputStreamInstance(path: String, fileName: String)
-        //nullable = true from not(false or (false and false)) = true
-: AbFileInputStream{
-    //var path = path
-    //var fileName = fileName
-
-    var FILEABPATH: AbPath = AbPath(path, fileName)
-
-
-    var file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileInputStream.createFromAbFile(file)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getFileOutputStreamInstance(path: String, fileName: String)
-        //nullable = true from not(false or (false and false)) = true
-: AbFileOutputStream{
-    //var path = path
-    //var fileName = fileName
-
-    var FILEABPATH: AbPath = AbPath(path, fileName)
-
-
-    var file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!!
-
-
+        return (FileStreamFactory.SINGLETON as! FileStreamFactory)
+    }
     
-                        if(file.exists())
-                        
-                                    {
-                                    file.delete()
-file.createNewFile()
 
-                                    }
-                                
+    public override init() {
+        super.init()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream.createFromAbFile(file)
+    @discardableResult open func getFileInputStreamInstance(_ path: String!, _ fileName: String!) -> AbFileInputStream! {
+        let FILEABPATH: AbPath! = AbPath(path, fileName)
+        let file: AbFile! = AbFile.createAbFileFromAbPath(FILEABPATH)
+        return AbFileInputStream.createFromAbFile(file)
+    }
+    
+
+    @discardableResult open func getFileOutputStreamInstance(_ path: String!, _ fileName: String!) -> AbFileOutputStream! {
+        let FILEABPATH: AbPath! = AbPath(path, fileName)
+        let file: AbFile! = AbFile.createAbFileFromAbPath(FILEABPATH)
+        if (file.exists()) {
+            file.delete()
+            file.createNewFile()
+        }
+        return AbFileOutputStream.createFromAbFile(file)
+    }
+    
+
+    open func delete(_ path: String!, _ fileName: String!) {
+        let FILEABPATH: AbPath! = AbPath(path, fileName)
+        let file: AbFile! = AbFile.createAbFileFromAbPath(FILEABPATH)
+        file.delete()
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun delete(path: String, fileName: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var path = path
-    //var fileName = fileName
-
-    var FILEABPATH: AbPath = AbPath(path, fileName)
-
-
-    var file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!!
-
-file.delete()
-}
-
-
-}
-                
-            
 

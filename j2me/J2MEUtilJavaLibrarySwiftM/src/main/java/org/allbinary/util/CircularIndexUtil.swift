@@ -77,12 +77,12 @@ open class CircularIndexUtil: JObject {
     }
     
 
-    @discardableResult public static func createInstance(_ max: Int32) -> CircularIndexUtil! {
+    @discardableResult open class func createInstance(_ max: Int32) -> CircularIndexUtil! {
         return CircularIndexUtil(0, max)
     }
     
 
-    @discardableResult public static func createInstanceAt(_ index: Int32, _ max: Int32) -> CircularIndexUtil! {
+    @discardableResult open class func createInstanceAt(_ index: Int32, _ max: Int32) -> CircularIndexUtil! {
         return CircularIndexUtil(index, max)
     }
     

@@ -1,81 +1,50 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.physics.movement
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.physics.movement
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.AllBinaryGameLayer
+// import org.allbinary.game.physics.velocity.BasicVelocityProperties
+// import org.allbinary.logic.math.BasicDecimal
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
+// import org.allbinary.time.TimeDelayHelper
 
+open class DelayedConstantVelocityMovement: BasicConstantVelocityMovement {
+    fileprivate var timeDelayHelper: TimeDelayHelper! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.AllBinaryGameLayer
-import org.allbinary.game.physics.velocity.BasicVelocityProperties
-import org.allbinary.logic.math.BasicDecimal
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-import org.allbinary.time.TimeDelayHelper
-
-open public class DelayedConstantVelocityMovement : BasicConstantVelocityMovement {
-        
-
-    private val timeDelayHelper: TimeDelayHelper = TimeDelayHelper(60)
-public constructor (basicDecimal: BasicDecimal, velocityProperties: BasicVelocityProperties)                        
-
-                            : super(basicDecimal, velocityProperties){
-var basicDecimal = basicDecimal
-var velocityProperties = velocityProperties
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-    override fun init(speedBasicDecimal: BasicDecimal, angle: Int, otherAngle: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var speedBasicDecimal = speedBasicDecimal
-var angle = angle
-var otherAngle = otherAngle
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun process(layer: AllBinaryGameLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layer = layer
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.timeDelayHelper = TimeDelayHelper(60)
+    }
     
-                        if(this.timeDelayHelper!!.isTime(GameTickTimeDelayHelperFactory.getInstance()!!.startTime))
-                        
-                                    {
-                                    super.process(layer)
 
-                                    }
-                                
+    public override init(_ basicDecimal: BasicDecimal!, _ velocityProperties: BasicVelocityProperties!) {
+        super.init(basicDecimal, velocityProperties)
+        self.initFields()
+    }
+    
+
+    open override func `init`(_ speedBasicDecimal: BasicDecimal!, _ angle: Int32, _ otherAngle: Int32) {
+    }
+    
+
+    open override func process(_ layer: AllBinaryGameLayer!) {
+        if (self.timeDelayHelper.isTime(GameTickTimeDelayHelperFactory.getInstance().startTime)) {
+            super.process(layer)
+        }
+    }
 }
-
-
-}
-                
-            
 

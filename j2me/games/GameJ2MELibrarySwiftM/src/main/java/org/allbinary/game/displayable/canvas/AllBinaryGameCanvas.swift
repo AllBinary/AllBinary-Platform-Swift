@@ -1,2898 +1,1603 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ *
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ *
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ *
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                * 
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                * 
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                * 
-                *  Created By: Travis Berthelot 
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.ChoiceGroup
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Item
+// import javax.microedition.lcdui.NullCommandListener
+// import org.allbinary.AndroidUtil
+// import org.allbinary.J2MEUtil
+// import org.allbinary.business.advertisement.GameAdStateFactory
+// import org.allbinary.canvas.BaseGameStatistics
+// import org.allbinary.canvas.GameStatisticsFactory
+// import org.allbinary.canvas.Processor
+// import org.allbinary.canvas.RunnableCanvas
+// import org.allbinary.debug.DebugFactory
+// import org.allbinary.debug.NoDebug
+// import org.allbinary.game.GameAdState
+// import org.allbinary.game.GameInfo
+// import org.allbinary.game.GameStrings
+// import org.allbinary.game.GameTypeFactory
+// import org.allbinary.game.Intermission
+// import org.allbinary.game.IntermissionCompositeInterface
+// import org.allbinary.game.IntermissionEnableListenerInterface
+// import org.allbinary.game.IntermissionInterface
+// import org.allbinary.game.PlayerTypesFactory
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.game.configuration.InGameFeatures
+// import org.allbinary.game.configuration.InGameOptionsForm
+// import org.allbinary.game.configuration.event.ChangedGameFeatureListener
+// import org.allbinary.game.configuration.event.GameInitializedEvent
+// import org.allbinary.game.configuration.event.GameInitializedEventHandler
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.GameFeatureFactory
+// import org.allbinary.game.configuration.feature.GameFeatureUtil
+// import org.allbinary.game.configuration.feature.InputFeatureFactory
+// import org.allbinary.game.configuration.feature.MainFeatureFactory
+// import org.allbinary.game.configuration.feature.SensorFeatureFactory
+// import org.allbinary.game.configuration.feature.TouchFeatureFactory
+// import org.allbinary.game.displayable.GameLevelDisplayChangeEventListenersFactory
+// import org.allbinary.game.init.BasicBuildGameInitializerFactory
+// import org.allbinary.game.init.GameInitializationUtil
+// import org.allbinary.game.input.GameInputStrings
+// import org.allbinary.game.input.InputProcessor
+// import org.allbinary.game.input.NoPlayerGameInput
+// import org.allbinary.game.input.PlayerGameInput
+// import org.allbinary.game.input.event.GameKeyEventHandler
+// import org.allbinary.game.layer.AllBinaryGameLayerManager
+// import org.allbinary.game.layer.SWTUtil
+// import org.allbinary.game.paint.ColorFillBasePaintable
+// import org.allbinary.game.paint.ColorFillPaintableFactory
+// import org.allbinary.game.resource.ResourceLoadingLevel
+// import org.allbinary.game.resource.ResourceLoadingLevelFactory
+// import org.allbinary.game.score.HighScore
+// import org.allbinary.game.score.HighScoresHelperBaseInterface
+// import org.allbinary.game.score.HighScoresFactoryInterface
+// import org.allbinary.game.score.HighScoresPaintable
+// import org.allbinary.game.score.NullHighScoresSingletonFactory
+// import org.allbinary.game.score.displayable.HighScoreTextBox
+// import org.allbinary.game.state.GameState
+// import org.allbinary.game.state.GameStateFactory
+// import org.allbinary.graphics.GraphicsStrings
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.ScreenCapture
+// import org.allbinary.graphics.ScreenCaptureFactory
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
+// import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.BasicColorSetUtil
+// import org.allbinary.graphics.displayable.CanvasStrings
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.graphics.displayable.GameTickDisplayInfoSingleton
+// import org.allbinary.graphics.displayable.command.MyCommandsFactory
+// import org.allbinary.graphics.displayable.event.DisplayChangeEvent
+// import org.allbinary.graphics.displayable.event.DisplayChangeEventHandler
+// import org.allbinary.graphics.displayable.event.DisplayChangeEventListener
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
+// import org.allbinary.graphics.form.CommandCurrentSelectionFormFactory
+// import org.allbinary.graphics.form.FormPaintable
+// import org.allbinary.graphics.form.FormType
+// import org.allbinary.graphics.form.FormTypeFactory
+// import org.allbinary.graphics.form.ScrollSelectionForm
+// import org.allbinary.graphics.form.ScrollSelectionFormNoneFactory
+// import org.allbinary.graphics.form.item.CommandTextItemArrayFactory
+// import org.allbinary.graphics.form.item.ABCustomItem
+// import org.allbinary.graphics.opengles.CurrentDisplayableFactory
+// import org.allbinary.graphics.opengles.OpenGLFeatureFactory
+// import org.allbinary.graphics.opengles.OpenGLFeatureUtil
+// import org.allbinary.graphics.opengles.OpenGLThreadUtil
+// import org.allbinary.graphics.paint.InitUpdatePaintable
+// import org.allbinary.graphics.paint.NullInitUpdatePaintable
+// import org.allbinary.graphics.paint.NullPaintable
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.graphics.paint.PaintableInterface
+// import org.allbinary.image.opengles.OpenGLImageSpecificFactory
+// import org.allbinary.input.gyro.SensorGameUpdateProcessor
+// import org.allbinary.input.gyro.SingleSensorGameUpdateProcessor
+// import org.allbinary.input.motion.button.BaseTouchInput
+// import org.allbinary.input.motion.button.NoButtonsTouchInputFactory
+// import org.allbinary.input.motion.button.TouchButtonFactory
+// import org.allbinary.input.motion.button.TouchButtonsPaintableFactory
+// import org.allbinary.input.motion.button.TouchScreenFactory
+// import org.allbinary.input.motion.gesture.observer.BasicMotionGesturesHandler
+// import org.allbinary.logic.ABSystemWrapper
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.system.os.OperatingSystemFactory
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.media.audio.AllBinaryMediaManager
+// import org.allbinary.media.audio.PlayerQueue
+// import org.allbinary.media.audio.PrimaryPlayerQueueFactory
+// import org.allbinary.media.audio.SecondaryPlayerQueueFactory
+// import org.allbinary.media.audio.SelectSound
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.thread.SecondaryThreadPool
+// import org.allbinary.time.GameTickTimeDelayHelper
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
+// import org.allbinary.time.TimeDelayHelper
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.util.BasicArrayListUtil
 
+open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, GameCanvasRunnableInterface, MenuListener, IntermissionCompositeInterface, IntermissionEnableListenerInterface, PopupMenuInterface, DisplayChangeEventListener, UpdateMyFontInterface {
+    fileprivate static let id: Int32 = 0
+    public static let TYPE: Int32 = 2
+    public var basicColorFactory: BasicColorFactory! = nil
+    public var basicSetColorUtil: BasicColorSetUtil! = nil
+    public var touchFeatureFactory: TouchFeatureFactory! = nil
+    public var openGLFeatureFactory: OpenGLFeatureFactory! = nil
+    public var touchButtonFactory: TouchButtonFactory! = nil
+    public var gameAdStateFactory: GameAdStateFactory! = nil
+    public var gameStrings: GameStrings! = nil
+    public var gameInputStrings: GameInputStrings! = nil
+    public var gameStateFactory: GameStateFactory! = nil
+    fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
+    fileprivate var gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton! = nil
+    public var gameRunnable: GameCanvasRunnable! = nil
+    public var gamePauseRunnable: GameCanvasPauseRunnable! = nil
+    public var formUtil: FormUtil! = nil
+    public var myFormUtil: MyFormUtil! = nil
+    fileprivate var updateMyFontProcessor: MyFontProcessor! = nil
+    fileprivate var myFontProcessor: MyFontProcessor! = nil
+    public var gameSpecificPaintable: Paintable! = nil
+    fileprivate var sensorGameUpdateProcessor: SensorGameUpdateProcessor! = nil
+    public var endGameInfo: EndGameInfo! = nil
+    fileprivate var startIntermissionInterface: IntermissionInterface! = nil
+    fileprivate var endLevelIntermissionInterface: IntermissionInterface! = nil
+    public var gameLayerManager: AllBinaryGameLayerManager! = nil
+    fileprivate var gameState: GameState! = nil
+    fileprivate var gameOver: Bool = false
+    fileprivate var initialized: Bool = false
+    fileprivate var gameStateTimeHelper: TimeDelayHelper! = nil
+    public var highScoresHelper: HighScoresHelperBaseInterface! = nil
+    fileprivate var highScoreSubmitted: Bool = false
+    fileprivate var realHighScoresPaintable: HighScoresPaintable! = nil
+    fileprivate var highScoresPaintable: Paintable! = nil
+    fileprivate var localPlayerGameInputList: BasicArrayList! = nil
+    fileprivate var isCheating: Bool = false
+    fileprivate var hashtable: ABHashtable! = nil
+    fileprivate var isSingleKeyRepeatableProcessing: Bool = false
+    fileprivate var gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory! = nil
+    fileprivate var touchButtonsPaintable: Paintable! = nil
+    public var touchPaintable: Paintable! = nil
+    fileprivate var cheatProcessor: PlayerGameInput! = nil
+    fileprivate var gameInputProcessor: Processor! = nil
+    fileprivate var endGameProcessor: Processor! = nil
+    fileprivate var realEndGameProcessor: Processor! = nil
+    fileprivate var startIntermissionProcessor: Processor! = nil
+    fileprivate var realStartIntermissionProcessor: Processor! = nil
+    fileprivate var endGamePaintable: Paintable! = nil
+    fileprivate var endGameStatePaintable: Paintable! = nil
+    public var nonBotPaintable: Paintable! = nil
+    fileprivate var intermissionPaintable: Paintable! = nil
+    fileprivate var startIntermissionPaintable: InitUpdatePaintable! = nil
+    fileprivate var mainStateProcessor: Processor! = nil
+    fileprivate var processGameProcessor: Processor! = nil
+    fileprivate var highScoresFactoryInterface: HighScoresFactoryInterface! = nil
+    fileprivate var startLevel: Int32 = 0
+    fileprivate var mainMenuInputProcessor: BasicMenuInputProcessor! = nil
+    fileprivate var popupMenuInputProcessor: BasicMenuInputProcessor! = nil
+    fileprivate var menuInputProcessor: BasicMenuInputProcessor! = nil
+    fileprivate var menuForm: ScrollSelectionForm! = nil
+    fileprivate var formPaintable: Paintable! = nil
+    fileprivate var openMenuPaintable: Paintable! = nil
+    fileprivate var menuPaintable: Paintable! = nil
+    fileprivate var currentTouchInputFactory: BaseTouchInput! = nil
+    public var colorFillPaintable: ColorFillBasePaintable! = nil
+    fileprivate var baseGameStatistics: BaseGameStatistics! = nil
+    fileprivate var primaryPlayerQueue: PlayerQueue! = nil
+    fileprivate var secondaryPlayerQueue: PlayerQueue! = nil
+    public var BUILD_GAME: String! = nil
+    public var gameTypeFactory: GameTypeFactory! = nil
+    public var screenCapture: ScreenCapture! = nil
+    fileprivate var basicMotionGesturesHandler: BasicMotionGesturesHandler! = nil
+    fileprivate var gameKeyEventHandler: GameKeyEventHandler! = nil
+    fileprivate var gameBehavior: DemoGameBehavior! = nil
+    fileprivate var menuBehavior: BaseMenuBehavior! = nil
+    fileprivate var progressPaintable: PaintableInterface! = nil
+    public var fontHeightP: Int32 = 0
+    fileprivate var gameCanvasStartListener: DemoPaintableInterface! = nil
+    fileprivate var rawGameInputProcessor: InputProcessor! = nil
+    fileprivate var rawInputProcessor: InputProcessor! = nil
+    fileprivate var inputProcessor: InputProcessor! = nil
+    fileprivate var YIELD_SLEEP: Int64 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.basicColorFactory = BasicColorFactory.getInstance()
+    self.basicSetColorUtil = BasicColorSetUtil.getInstance()
+    self.touchFeatureFactory = TouchFeatureFactory.getInstance()
+    self.openGLFeatureFactory = OpenGLFeatureFactory.getInstance()
+    self.touchButtonFactory = TouchButtonFactory.getInstance()
+    self.gameAdStateFactory = GameAdStateFactory.getInstance()
+    self.gameStrings = GameStrings.getInstance()
+    self.gameInputStrings = GameInputStrings.getInstance()
+    self.gameStateFactory = GameStateFactory.getInstance()
+    self.gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()
+    self.gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()
+    self.gameRunnable = GameCanvasRunnable(self)
+    self.gamePauseRunnable = GameCanvasPauseRunnable(self)
+    self.formUtil = FormUtil.getInstance()
+    self.myFormUtil = MyFormUtil.getInstance()
+    self.updateMyFontProcessor = UpdateMyFontProcessor(self)
+    self.myFontProcessor = self.updateMyFontProcessor
+    self.gameSpecificPaintable = NullPaintable.getInstance()
+    self.sensorGameUpdateProcessor = SingleSensorGameUpdateProcessor()
+    self.endGameInfo = EndGameInfo()
+    self.startIntermissionInterface = Intermission()
+    self.endLevelIntermissionInterface = Intermission()
+    self.gameLayerManager = AllBinaryGameLayerManager.getNullInstance()
+    self.gameState = self.gameStateFactory.NO_GAME_STATE
+    self.gameOver = false
+    self.initialized = false
+    self.gameStateTimeHelper = TimeDelayHelper(0)
+    
+    self.highScoreSubmitted = false
+    self.realHighScoresPaintable = HighScoresPaintable()
+    self.highScoresPaintable = NullPaintable.getInstance()
+    self.localPlayerGameInputList = BasicArrayListD()
+    self.isCheating = false
+    self.hashtable = self.stdUtil.NULL_TABLE
+    self.isSingleKeyRepeatableProcessing = false
+    self.gameInitializationInterfaceFactoryInterface = BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY
+    self.touchButtonsPaintable = NullPaintable.getInstance()
+    self.touchPaintable = NullPaintable.getInstance()
+    self.cheatProcessor = NoPlayerGameInput.getInstance()
+    self.gameInputProcessor = Processor.getInstance()
+    self.endGameProcessor = Processor.getInstance()
+    self.realEndGameProcessor = Processor.getInstance()
+    self.startIntermissionProcessor = Processor.getInstance()
+    self.realStartIntermissionProcessor = Processor.getInstance()
+    self.endGamePaintable = NullPaintable.getInstance()
+    self.endGameStatePaintable = NullPaintable.getInstance()
+    self.nonBotPaintable = NullPaintable.getInstance()
+    self.intermissionPaintable = NullPaintable.getInstance()
+    self.startIntermissionPaintable = NullInitUpdatePaintable.getInstance()
+    self.mainStateProcessor = Processor.getInstance()
+    self.processGameProcessor = Processor.getInstance()
+    
+    self.startLevel = 0
+    self.mainMenuInputProcessor = NoMenuInputProcessor.getInstance()
+    self.popupMenuInputProcessor = NoMenuInputProcessor.getInstance()
+    self.menuInputProcessor = NoMenuInputProcessor.getInstance()
+    self.menuForm = ScrollSelectionForm.getNullScrollSelectionForm()
+    self.formPaintable = NullPaintable.getInstance()
+    self.openMenuPaintable = NullPaintable.getInstance()
+    self.menuPaintable = NullPaintable.getInstance()
+    self.currentTouchInputFactory = NoButtonsTouchInputFactory.getInstance()
+    self.colorFillPaintable = ColorFillPaintableFactory.getInstance().getInstance(self.basicColorFactory.BLACK, true)
+    self.baseGameStatistics = GameStatisticsFactory.getInstance()
+    self.primaryPlayerQueue = PrimaryPlayerQueueFactory.getInstance()
+    self.secondaryPlayerQueue = SecondaryPlayerQueueFactory.getInstance()
+    self.BUILD_GAME = "buildGame"
+    self.gameTypeFactory = GameTypeFactory.getInstance()
+    self.screenCapture = ScreenCaptureFactory.getInstance()
+    self.basicMotionGesturesHandler = BasicMotionGesturesHandler.getInstance()
+    self.gameKeyEventHandler = GameKeyEventHandler.getInstance()
+    self.gameBehavior = nil
+    self.menuBehavior = nil
+    self.progressPaintable = ProgressCanvasFactory.getLazyInstance()
+    self.fontHeightP = 0
+    self.gameCanvasStartListener = NullDemoPaintable.NULL_DEMO_PAINTABLE
+    self.rawGameInputProcessor = GameCanvasInputProcessor(self)
+    self.rawInputProcessor = FormInputProcessor(self)
+    self.inputProcessor = self.getRawGameInputProcessor()
+    self.YIELD_SLEEP = 100
+    }
+    
 
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        import java.lang.Thread
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.ChoiceGroup
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Item
-import javax.microedition.lcdui.NullCommandListener
-import org.allbinary.AndroidUtil
-import org.allbinary.J2MEUtil
-import org.allbinary.business.advertisement.GameAdStateFactory
-import org.allbinary.canvas.BaseGameStatistics
-import org.allbinary.canvas.GameStatisticsFactory
-import org.allbinary.canvas.Processor
-import org.allbinary.canvas.RunnableCanvas
-import org.allbinary.debug.DebugFactory
-import org.allbinary.debug.NoDebug
-import org.allbinary.game.GameAdState
-import org.allbinary.game.GameInfo
-import org.allbinary.game.GameStrings
-import org.allbinary.game.GameTypeFactory
-import org.allbinary.game.Intermission
-import org.allbinary.game.IntermissionCompositeInterface
-import org.allbinary.game.IntermissionEnableListenerInterface
-import org.allbinary.game.IntermissionInterface
-import org.allbinary.game.PlayerTypesFactory
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.game.configuration.InGameFeatures
-import org.allbinary.game.configuration.InGameOptionsForm
-import org.allbinary.game.configuration.event.ChangedGameFeatureListener
-import org.allbinary.game.configuration.event.GameInitializedEvent
-import org.allbinary.game.configuration.event.GameInitializedEventHandler
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.GameFeatureFactory
-import org.allbinary.game.configuration.feature.GameFeatureUtil
-import org.allbinary.game.configuration.feature.InputFeatureFactory
-import org.allbinary.game.configuration.feature.MainFeatureFactory
-import org.allbinary.game.configuration.feature.SensorFeatureFactory
-import org.allbinary.game.configuration.feature.TouchFeatureFactory
-import org.allbinary.game.displayable.GameLevelDisplayChangeEventListenersFactory
-import org.allbinary.game.init.BasicBuildGameInitializerFactory
-import org.allbinary.game.init.GameInitializationUtil
-import org.allbinary.game.input.GameInputStrings
-import org.allbinary.game.input.InputProcessor
-import org.allbinary.game.input.NoPlayerGameInput
-import org.allbinary.game.input.PlayerGameInput
-import org.allbinary.game.input.event.GameKeyEventHandler
-import org.allbinary.game.layer.AllBinaryGameLayerManager
-import org.allbinary.game.layer.SWTUtil
-import org.allbinary.game.paint.ColorFillBasePaintable
-import org.allbinary.game.paint.ColorFillPaintableFactory
-import org.allbinary.game.resource.ResourceLoadingLevel
-import org.allbinary.game.resource.ResourceLoadingLevelFactory
-import org.allbinary.game.score.HighScore
-import org.allbinary.game.score.HighScoresHelperBaseInterface
-import org.allbinary.game.score.HighScoresFactoryInterface
-import org.allbinary.game.score.HighScoresPaintable
-import org.allbinary.game.score.NullHighScoresSingletonFactory
-import org.allbinary.game.score.displayable.HighScoreTextBox
-import org.allbinary.game.state.GameState
-import org.allbinary.game.state.GameStateFactory
-import org.allbinary.graphics.GraphicsStrings
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.ScreenCapture
-import org.allbinary.graphics.ScreenCaptureFactory
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvas
-import org.allbinary.graphics.canvas.transition.progress.ProgressCanvasFactory
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.BasicColorSetUtil
-import org.allbinary.graphics.displayable.CanvasStrings
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.graphics.displayable.GameTickDisplayInfoSingleton
-import org.allbinary.graphics.displayable.command.MyCommandsFactory
-import org.allbinary.graphics.displayable.event.DisplayChangeEvent
-import org.allbinary.graphics.displayable.event.DisplayChangeEventHandler
-import org.allbinary.graphics.displayable.event.DisplayChangeEventListener
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-import org.allbinary.graphics.form.CommandCurrentSelectionFormFactory
-import org.allbinary.graphics.form.FormPaintable
-import org.allbinary.graphics.form.FormType
-import org.allbinary.graphics.form.FormTypeFactory
-import org.allbinary.graphics.form.ScrollSelectionForm
-import org.allbinary.graphics.form.ScrollSelectionFormNoneFactory
-import org.allbinary.graphics.form.item.CommandTextItemArrayFactory
-import org.allbinary.graphics.form.item.ABCustomItem
-import org.allbinary.graphics.opengles.CurrentDisplayableFactory
-import org.allbinary.graphics.opengles.OpenGLFeatureFactory
-import org.allbinary.graphics.opengles.OpenGLFeatureUtil
-import org.allbinary.graphics.opengles.OpenGLThreadUtil
-import org.allbinary.graphics.paint.InitUpdatePaintable
-import org.allbinary.graphics.paint.NullInitUpdatePaintable
-import org.allbinary.graphics.paint.NullPaintable
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.graphics.paint.PaintableInterface
-import org.allbinary.image.opengles.OpenGLImageSpecificFactory
-import org.allbinary.input.gyro.SensorGameUpdateProcessor
-import org.allbinary.input.gyro.SingleSensorGameUpdateProcessor
-import org.allbinary.input.motion.button.BaseTouchInput
-import org.allbinary.input.motion.button.NoButtonsTouchInputFactory
-import org.allbinary.input.motion.button.TouchButtonFactory
-import org.allbinary.input.motion.button.TouchButtonsPaintableFactory
-import org.allbinary.input.motion.button.TouchScreenFactory
-import org.allbinary.input.motion.gesture.observer.BasicMotionGesturesHandler
-import org.allbinary.logic.ABSystemWrapper
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.system.os.OperatingSystemFactory
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.media.audio.AllBinaryMediaManager
-import org.allbinary.media.audio.PlayerQueue
-import org.allbinary.media.audio.PrimaryPlayerQueueFactory
-import org.allbinary.media.audio.SecondaryPlayerQueueFactory
-import org.allbinary.media.audio.SelectSound
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-import org.allbinary.thread.SecondaryThreadPool
-import org.allbinary.time.GameTickTimeDelayHelper
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-import org.allbinary.time.TimeDelayHelper
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.util.BasicArrayListUtil
-
-open public class AllBinaryGameCanvas : RunnableCanvas
-                , AllBinaryGameCanvasInterface
-                , GameCanvasRunnableInterface
-                , MenuListener
-                , IntermissionCompositeInterface
-                , IntermissionEnableListenerInterface
-                , PopupMenuInterface
-                , DisplayChangeEventListener
-                , UpdateMyFontInterface {
-        
-companion object {
-            
-    private val id: Int = 0
-
-    val TYPE: Int = 2
-
+    public init(_ commandListener: CommandListener!, _ gameLayerManager: AllBinaryGameLayerManager!, _ highScoresFactoryInterface: HighScoresFactoryInterface!, _ gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory!, _ buffered: Bool) {
+        super.init(commandListener, CanvasStrings.getInstance().EMPTY_CHILD_NAME_LIST, true)
+        self.initFields()
+        self.highScoresHelper = highScoresFactoryInterface.createHighScoresHelper()
+        self.gameInitializationInterfaceFactoryInterface = gameInitializationInterfaceFactoryInterface
+        self.`init`(gameLayerManager, buffered)
+        self.highScoresFactoryInterface = highScoresFactoryInterface
+        if (self.gameLayerManager.getGameInfo().getGameType() == self.gameTypeFactory.BOT || self.gameLayerManager.getGameInfo().getGameType() == self.gameTypeFactory.NONE) {
+            self.gameBehavior = DemoGameBehavior.getInstance()
+            self.menuBehavior = BaseMenuBehavior.getInstance()
+        } else {
+            self.gameBehavior = BaseGameBehavior.getInstance()
+            self.menuBehavior = self.getInGameMenuBehavior()
         }
-            
-    val basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!!
-
-    val basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!!
-
-    val touchFeatureFactory: TouchFeatureFactory = TouchFeatureFactory.getInstance()!!
-
-    val openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!!
-
-    val touchButtonFactory: TouchButtonFactory = TouchButtonFactory.getInstance()!!
-
-    val gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!!
-
-    val gameStrings: GameStrings = GameStrings.getInstance()!!
-
-    val gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!!
-
-    val gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!!
-
-    private val gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!!
-
-    private val gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!!
-
-    val gameRunnable: GameCanvasRunnable = GameCanvasRunnable(this)
-
-    val gamePauseRunnable: GameCanvasPauseRunnable = GameCanvasPauseRunnable(this)
-
-    val formUtil: FormUtil = FormUtil.getInstance()!!
-
-    val myFormUtil: MyFormUtil = MyFormUtil.getInstance()!!
-
-    private val updateMyFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    private var myFontProcessor: MyFontProcessor = this.updateMyFontProcessor
-
-    var gameSpecificPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private val sensorGameUpdateProcessor: SensorGameUpdateProcessor = SingleSensorGameUpdateProcessor()
-
-    var endGameInfo: EndGameInfo = EndGameInfo()
-
-    private val startIntermissionInterface: IntermissionInterface = Intermission()
-
-    private val endLevelIntermissionInterface: IntermissionInterface = Intermission()
-
-    var gameLayerManager: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!!
-
-    private var gameState: GameState = this.gameStateFactory!!.NO_GAME_STATE
-
-    private var gameOver: Boolean= false
-
-    private var initialized: Boolean= false
-
-    private val gameStateTimeHelper: TimeDelayHelper = TimeDelayHelper(0)
-
-    val highScoresHelper: HighScoresHelperBaseInterface
-
-    private var highScoreSubmitted: Boolean= false
-
-    private val realHighScoresPaintable: HighScoresPaintable = HighScoresPaintable()
-
-    private var highScoresPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var localPlayerGameInputList: BasicArrayList = BasicArrayListD()
-
-    private var isCheating: Boolean= false
-
-    private var hashtable: ABHashtable<Any, Any> = this.stdUtil!!.NULL_TABLE
-
-    private var isSingleKeyRepeatableProcessing: Boolean= false
-
-    private var gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory = BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY
-
-    private var touchButtonsPaintable: Paintable = NullPaintable.getInstance()!!
-
-    var touchPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var cheatProcessor: PlayerGameInput = NoPlayerGameInput.getInstance()!!
-
-    private var gameInputProcessor: Processor = Processor.getInstance()!!
-
-    private var endGameProcessor: Processor = Processor.getInstance()!!
-
-    private var realEndGameProcessor: Processor = Processor.getInstance()!!
-
-    private var startIntermissionProcessor: Processor = Processor.getInstance()!!
-
-    private var realStartIntermissionProcessor: Processor = Processor.getInstance()!!
-
-    private var endGamePaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var endGameStatePaintable: Paintable = NullPaintable.getInstance()!!
-
-    var nonBotPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var intermissionPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var startIntermissionPaintable: InitUpdatePaintable = NullInitUpdatePaintable.getInstance()!!
-
-    private var mainStateProcessor: Processor = Processor.getInstance()!!
-
-    private var processGameProcessor: Processor = Processor.getInstance()!!
-
-    private val highScoresFactoryInterface: HighScoresFactoryInterface
-
-    private var startLevel: Int= 0
-
-    private var mainMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!!
-
-    private var popupMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!!
-
-    private var menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!!
-
-    private var menuForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!!
-
-    private var formPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var openMenuPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var menuPaintable: Paintable = NullPaintable.getInstance()!!
-
-    private var currentTouchInputFactory: BaseTouchInput = NoButtonsTouchInputFactory.getInstance()!!
-
-    var colorFillPaintable: ColorFillBasePaintable = ColorFillPaintableFactory.getInstance()!!.getInstance(this.basicColorFactory!!.BLACK, true)!!
-
-    private val baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!!
-
-    private val primaryPlayerQueue: PlayerQueue = PrimaryPlayerQueueFactory.getInstance()!!
-
-    private val secondaryPlayerQueue: PlayerQueue = SecondaryPlayerQueueFactory.getInstance()!!
-
-    val BUILD_GAME: String = "buildGame"
-
-    val gameTypeFactory: GameTypeFactory = GameTypeFactory.getInstance()!!
-
-    val screenCapture: ScreenCapture = ScreenCaptureFactory.getInstance()!!
-
-    private val basicMotionGesturesHandler: BasicMotionGesturesHandler = BasicMotionGesturesHandler.getInstance()!!
-
-    private val gameKeyEventHandler: GameKeyEventHandler = GameKeyEventHandler.getInstance()!!
-
-    private val gameBehavior: DemoGameBehavior
-
-    private val menuBehavior: BaseMenuBehavior
-
-    private var progressPaintable: PaintableInterface = ProgressCanvasFactory.getLazyInstance()!!
-
-    var fontHeightP: Int= 0
-public constructor (commandListener: CommandListener, gameLayerManager: AllBinaryGameLayerManager, highScoresFactoryInterface: HighScoresFactoryInterface, gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory, buffered: Boolean)                        
-
-                            : super(commandListener, CanvasStrings.getInstance()!!.EMPTY_CHILD_NAME_LIST, true){
-    //var commandListener = commandListener
-    //var gameLayerManager = gameLayerManager
-    //var highScoresFactoryInterface = highScoresFactoryInterface
-    //var gameInitializationInterfaceFactoryInterface = gameInitializationInterfaceFactoryInterface
-    //var buffered = buffered
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.highScoresHelper= highScoresFactoryInterface!!.createHighScoresHelper()!!
-this.gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface
-this.init(gameLayerManager, buffered)
-this.highScoresFactoryInterface= highScoresFactoryInterface
-
+        self.initPopupMenu()
+        self.initMenu()
+        self.initSpecialPaint()
+        DisplayChangeEventHandler.getInstance().addListenerInterface(self)
+    }
     
-                        if(this.gameLayerManager!!.getGameInfo()!!.getGameType() == this.gameTypeFactory!!.BOT || this.gameLayerManager!!.getGameInfo()!!.getGameType() == this.gameTypeFactory!!.NONE)
-                        
-                                    {
-                                    this.gameBehavior= DemoGameBehavior.getInstance()!!
-this.menuBehavior= BaseMenuBehavior.getInstance()!!
 
-                                    }
-                                
-                        else {
-                            this.gameBehavior= BaseGameBehavior.getInstance()!!
-this.menuBehavior= this.getInGameMenuBehavior()!!
-
-                        }
-                            
-this.initPopupMenu()
-this.initMenu()
-this.initSpecialPaint()
-DisplayChangeEventHandler.getInstance()!!.addListenerInterface(this)
-}
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-        try {
-            
-    var font: Font = graphics.getFont()!!
-
-this.logUtil!!.putF(StringMaker().
-                            append(this.commonStrings!!.START)!!.append(this.canvasStrings!!.FD_WIDTH)!!.appendint(MyFontProcessor.defaultCharWidth(font).toInt())!!.append(this.canvasStrings!!.FD_HEIGHT)!!.appendint(font.getHeight().toInt())!!.toString(), this, this.canvasStrings!!.UPDATE_MEASUREMENT)
-this.fontHeightP= font.getHeight()
-this.myFormUtil!!.updateMeasurement(graphics)
-
-    var popupMenuRectangle: Rectangle = this.myFormUtil!!.getPopupMenuRectangle()!!
-
-
-    var basicPopupMenuPaintable: BasicPopupMenuPaintable = (this.getOpenMenuPaintable() as BasicPopupMenuPaintable)
-
-basicPopupMenuPaintable!!.init(popupMenuRectangle)
-
+    open override func updateMeasurement(_ graphics: Graphics!) {
+        do {
+            let font: Font! = graphics.getFont()
+            self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(self.canvasStrings.FD_WIDTH).appendint(MyFontProcessor.defaultCharWidth(font)).append(self.canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), self, self.canvasStrings.UPDATE_MEASUREMENT)
+            self.fontHeightP = font.getHeight()
+            self.myFormUtil.updateMeasurement(graphics)
+            let popupMenuRectangle: Rectangle! = self.myFormUtil.getPopupMenuRectangle()
+            let basicPopupMenuPaintable: BasicPopupMenuPaintable! = ((self.getOpenMenuPaintable() as! BasicPopupMenuPaintable))
+            basicPopupMenuPaintable.`init`(popupMenuRectangle)
+            if (self.getPopupMenuInputProcessor() !== NoMenuInputProcessor.getInstance()) {
+                let popupMenuInputProcessor: PopupMenuInputProcessor! = ((self.getPopupMenuInputProcessor() as! PopupMenuInputProcessor))
+                popupMenuInputProcessor.`init`(popupMenuRectangle)
+            }
+            self.myFontProcessor = MyFontProcessor.getInstance()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.getPopupMenuInputProcessor() != NoMenuInputProcessor.getInstance())
-                        
-                                    {
-                                    
-    var popupMenuInputProcessor: PopupMenuInputProcessor = (this.getPopupMenuInputProcessor() as PopupMenuInputProcessor)
 
-popupMenuInputProcessor!!.init(popupMenuRectangle)
-
-                                    }
-                                
-this.myFontProcessor= MyFontProcessor.getInstance()!!
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.canvasStrings!!.ON_DISPLAY_CHANGE_EVENT, e)
-}
-
-}
-
-
-    open fun getInGameMenuBehavior()
-        //nullable = true from not(false or (false and true)) = true
-: BaseMenuBehavior{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameMenuBehavior.getInstance()
-}
-
-
-    override fun setCurrentThread()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    @discardableResult open func getInGameMenuBehavior() -> BaseMenuBehavior! {
+        return InGameMenuBehavior.getInstance()
+    }
     
-                        if(J2MEUtil.isHTML())
-                        
-                                    {
-                                    super.setCurrentThreadFake()
 
-                                    }
-                                
-                        else {
-                            super.setCurrentThread()
-
-                        }
-                            
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-    override fun onDisplayChangeEvent(displayChangeEvent: DisplayChangeEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var displayChangeEvent = displayChangeEvent
-
-        try {
-            this.logUtil!!.putF(StringMaker().
-                            append(this.commonStrings!!.START)!!.append(DisplayInfoSingleton.getInstance()!!.toString())!!.toString(), this, this.canvasStrings!!.UPDATE_MEASUREMENT)
-this.myFontProcessor= this.updateMyFontProcessor
-this.menuBehavior!!.onDisplayChangeEvent(this, displayChangeEvent)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.canvasStrings!!.ON_DISPLAY_CHANGE_EVENT, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateMenuFromEvent(displayChangeEvent: DisplayChangeEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var displayChangeEvent = displayChangeEvent
-
-    var formType: FormType = FormTypeFactory.getInstance()!!.getFormType()!!
-
-
-    var rectangle: Rectangle = this.formUtil!!.createFormRectangle()!!
-
-this.menuForm!!.init(rectangle, formType)
-
+    open override func setCurrentThread() {
+        if (J2MEUtil.isHTML()) {
+            super.setCurrentThreadFake()
+        } else {
+            super.setCurrentThread()
+        }
+    }
     
-                        if(this.currentTouchInputFactory != NoButtonsTouchInputFactory.getInstance())
-                        
-                                    {
-                                    this.touchButtonFactory!!.toggle(this.isPaused(), this.currentTouchInputFactory!!.getList())
 
-                                    }
-                                
-this.myFontProcessor= this.updateMyFontProcessor
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processSleep()
-        //nullable = true from not(false or (false and true)) = true
-{
-super.processSleep()
-
+    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
     
-                        if(AllBinaryMediaManager.update())
-                        
-                                    {
-                                    
+
+    open override func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+        do {
+            self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(DisplayInfoSingleton.getInstance().toString()).toString(), self, self.canvasStrings.UPDATE_MEASUREMENT)
+            self.myFontProcessor = self.updateMyFontProcessor
+            self.menuBehavior.onDisplayChangeEvent(self, displayChangeEvent)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(!this.primaryPlayerQueue!!.process())
-                        
-                                    {
-                                    this.secondaryPlayerQueue!!.process()
 
-                                    }
-                                
-
-                                    }
-                                
-
+    open func updateMenuFromEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+        let formType: FormType! = FormTypeFactory.getInstance().getFormType()
+        let rectangle: Rectangle! = self.formUtil.createFormRectangle()
+        self.menuForm.`init`(rectangle, formType)
+        if (self.currentTouchInputFactory !== NoButtonsTouchInputFactory.getInstance()) {
+            self.touchButtonFactory.toggle(self.isPaused(), self.currentTouchInputFactory.getList())
+        }
+        self.myFontProcessor = self.updateMyFontProcessor
+    }
     
-                        if(this.menuInputProcessor!!.processInputList() !=  -1)
-                        
-                                    {
-                                    this.runnableCanvasRefreshHelper!!.process()
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initPopupMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open override func processSleep() {
+        super.processSleep()
+        if (AllBinaryMediaManager.update()) {
+            if (!self.primaryPlayerQueue.process()) {
+                self.secondaryPlayerQueue.process()
+            }
+        }
+        if (self.menuInputProcessor.processInputList() != -1) {
+            self.runnableCanvasRefreshHelper.process()
+        }
+    }
     
-                        if(this.popupMenuInputProcessor == NoMenuInputProcessor.getInstance())
-                        
-                                    {
-                                    
-    var features: Features = Features.getInstance()!!
 
-
-    var popupMenuRectangle: Rectangle = this.myFormUtil!!.getPopupMenuRectangle()!!
-
-
+    open func initPopupMenu() {
+        if (self.popupMenuInputProcessor === NoMenuInputProcessor.getInstance()) {
+            let features: Features! = Features.getInstance()
+            let popupMenuRectangle: Rectangle! = self.myFormUtil.getPopupMenuRectangle()
+            if (features.isFeature(self.touchFeatureFactory.TOUCH_ENABLED)) {
+                self.setOpenMenuPaintable(BasicPopupMenuPaintable(popupMenuRectangle, self.gameLayerManager.getBackgroundBasicColor(), self.gameLayerManager.getForegroundBasicColor()))
+                self.setPopupMenuInputProcessor(PopupMenuInputProcessor(BasicArrayListD(), -1, self, popupMenuRectangle))
+            }
+        } else {
+        }
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.TOUCH_ENABLED))
-                        
-                                    {
-                                    this.setOpenMenuPaintable(BasicPopupMenuPaintable(popupMenuRectangle, this.gameLayerManager!!.getBackgroundBasicColor(), this.gameLayerManager!!.getForegroundBasicColor()))
-this.setPopupMenuInputProcessor(PopupMenuInputProcessor(BasicArrayListD(),  -1, this, popupMenuRectangle))
 
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
-}
-
-
-    open fun initMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.menuBehavior!!.initMenu(this)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "initMenu", e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initMenu2()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.closeMenu()
-
-    var formType: FormType = FormTypeFactory.getInstance()!!.getFormType()!!
-
-
-    var gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory.getInstance()!!
-
-
-    var commandTextItemArrayFactory: CommandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory!!.getCommandTextItemArrayFactory()!!
-
-
-    var items: Array<ABCustomItem?> = commandTextItemArrayFactory!!.getInstance(this.getCommandStack(), this.gameLayerManager!!.getBackgroundBasicColor(), this.gameLayerManager!!.getForegroundBasicColor())!!
-
-
-    var rectangle: Rectangle = this.formUtil!!.createFormRectangle()!!
-
-this.setMenuForm(CommandCurrentSelectionFormFactory.getInstance(StringUtil.getInstance()!!.EMPTY_STRING, items, rectangle, formType, 25, false, this.gameLayerManager!!.getBackgroundBasicColor(), this.gameLayerManager!!.getForegroundBasicColor()))
-
-    var scrollSelectionForm: ScrollSelectionForm = this.getMenuForm()!!
-
-
-    var features: Features = Features.getInstance()!!
-
-
+    open func initMenu() {
+        do {
+            self.menuBehavior.initMenu(self)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.TOUCH_ENABLED))
-                        
-                                    {
-                                    this.mainMenuInputProcessor= PopupCommandFormInputProcessor(BasicArrayListD(),  -1, this, scrollSelectionForm, this.getPopupMenuInputProcessor() as PopupMenuInputProcessor)
 
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
-this.setMenuInputProcessor(this.getPopupMenuInputProcessor())
-
+    open func initMenu2() {
+        self.closeMenu()
+        let formType: FormType! = FormTypeFactory.getInstance().getFormType()
+        let gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory! = GameLimitedCommandTextItemArrayFactory.getInstance()
+        let commandTextItemArrayFactory: CommandTextItemArrayFactory! = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory()
+        let items: JArray<ABCustomItem?>! = commandTextItemArrayFactory.getInstance(self.getCommandStack(), self.gameLayerManager.getBackgroundBasicColor(), self.gameLayerManager.getForegroundBasicColor())
+        let rectangle: Rectangle! = self.formUtil.createFormRectangle()
+        self.setMenuForm(CommandCurrentSelectionFormFactory.getInstance(StringUtil.getInstance().EMPTY_STRING, items, rectangle, formType, 25, false, self.gameLayerManager.getBackgroundBasicColor(), self.gameLayerManager.getForegroundBasicColor()))
+        let scrollSelectionForm: ScrollSelectionForm! = self.getMenuForm()
+        let features: Features! = Features.getInstance()
+        if (features.isFeature(self.touchFeatureFactory.TOUCH_ENABLED)) {
+            self.mainMenuInputProcessor = PopupCommandFormInputProcessor(BasicArrayListD(), -1, self, scrollSelectionForm, (self.getPopupMenuInputProcessor() as! PopupMenuInputProcessor))
+        } else {
+        }
+        self.setMenuInputProcessor(self.getPopupMenuInputProcessor())
+        if (scrollSelectionForm !== ScrollSelectionFormNoneFactory.getInstance()) {
+            self.setFormPaintable(FormPaintable(scrollSelectionForm))
+        } else {
+        }
+        self.closeMenu()
+    }
     
-                        if(scrollSelectionForm != ScrollSelectionFormNoneFactory.getInstance())
-                        
-                                    {
-                                    this.setFormPaintable(FormPaintable(scrollSelectionForm))
 
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
-this.closeMenu()
-}
-
-
-    open fun updateMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.menuBehavior!!.updateMenu(this)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "initMenu", e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateMenu2()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var scrollSelectionForm: ScrollSelectionForm = this.getMenuForm()!!
-
-scrollSelectionForm!!.deleteAll()
-
-    var gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory.getInstance()!!
-
-
-    var commandTextItemArrayFactory: CommandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory!!.getCommandTextItemArrayFactory()!!
-
-
-    var items: Array<ABCustomItem?> = commandTextItemArrayFactory!!.getInstance(this.getCommandStack(), this.gameLayerManager!!.getBackgroundBasicColor(), this.gameLayerManager!!.getForegroundBasicColor())!!
-
-
-    var size: Int = items.size
-                
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-scrollSelectionForm!!.append(items[index]!!)
-}
-
-
-    var formType: FormType = FormTypeFactory.getInstance()!!.getFormType()!!
-
-
-    var rectangle: Rectangle = this.formUtil!!.createFormRectangle()!!
-
-scrollSelectionForm!!.init(rectangle, formType)
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun pause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.gameBehavior!!.pause(this)
-this.closeMenu()
-super.pause()
-this.touchButtonFactory!!.toggle(this.isPaused(), BasicArrayListUtil.getInstance()!!.getImmutableInstance())
-this.tsUtil!!.gc()
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun unPause()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.gameStrings!!.UNPAUSE)
-this.closeMenu()
-this.tsUtil!!.gc()
-super.unPause()
-this.touchButtonFactory!!.toggle(this.isPaused(), BasicArrayListUtil.getInstance()!!.getImmutableInstance())
-this.gameBehavior!!.unPause(this)
-}
-
-
-    override fun isPausable()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func updateMenu() {
+        do {
+            self.menuBehavior.updateMenu(self)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(CurrentDisplayableFactory.getInstance()!!.getUsedRunnable() == NullWaitGameRunnable.getInstance())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun popupMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.menuBehavior!!.popupMenu(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun popupMenu2()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.primaryPlayerQueue!!.add(SelectSound.getInstance())
-this.setMenuPaintable(this.getFormPaintable())
-this.setMenuInputProcessor(this.mainMenuInputProcessor)
-this.basicMotionGesturesHandler!!.addListenerInterface(this.mainMenuInputProcessor)
-this.gameKeyEventHandler!!.addListener(this.mainMenuInputProcessor)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun toggleMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.gameStrings!!.TOGGLE_MENU)
-
+    open func updateMenu2() {
+        let scrollSelectionForm: ScrollSelectionForm! = self.getMenuForm()
+        scrollSelectionForm.deleteAll()
+        let gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory! = GameLimitedCommandTextItemArrayFactory.getInstance()
+        let commandTextItemArrayFactory: CommandTextItemArrayFactory! = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory()
+        let items: JArray<ABCustomItem?>! = commandTextItemArrayFactory.getInstance(self.getCommandStack(), self.gameLayerManager.getBackgroundBasicColor(), self.gameLayerManager.getForegroundBasicColor())
+        let size: Int32 = items.length
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            scrollSelectionForm.append(items[index])
+            }
+        }
+        let formType: FormType! = FormTypeFactory.getInstance().getFormType()
+        let rectangle: Rectangle! = self.formUtil.createFormRectangle()
+        scrollSelectionForm.`init`(rectangle, formType)
+    }
     
-                        if(this.getMenuPaintable() == this.getOpenMenuPaintable())
-                        
-                                    {
-                                    this.pause()
-this.updateMenu()
-this.popupMenu()
 
-                                    }
-                                
-                             else 
+    open override func pause() {
+        self.gameBehavior.pause(self)
+        self.closeMenu()
+        super.pause()
+        self.touchButtonFactory.toggle(self.isPaused(), BasicArrayListUtil.getInstance().getImmutableInstance())
+        self.tsUtil.gc()
+    }
     
-                        if(this.getMenuPaintable() == this.getFormPaintable())
-                        
-                                    {
-                                    this.primaryPlayerQueue!!.add(SelectSound.getInstance())
-this.unPause()
 
-                                    }
-                                
-}
-
-
-    override fun closeMenu()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.menuBehavior!!.closeMenu(this)
-}
-
-
-    open fun closeMenu2()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setMenuPaintable(this.getOpenMenuPaintable())
-this.basicMotionGesturesHandler!!.removeListener(this.mainMenuInputProcessor)
-this.gameKeyEventHandler!!.removeListener(this.mainMenuInputProcessor)
-this.setMenuInputProcessor(this.getPopupMenuInputProcessor())
-}
-
-
-    override fun open()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.basicMotionGesturesHandler!!.addListenerInterface(this.menuInputProcessor)
-this.gameKeyEventHandler!!.addListener(this.menuInputProcessor)
-}
-
-
-    override fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.basicMotionGesturesHandler!!.removeListener(this.menuInputProcessor)
-this.gameKeyEventHandler!!.removeListener(this.menuInputProcessor)
-this.primaryPlayerQueue!!.clear()
-this.secondaryPlayerQueue!!.clear()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processorInit()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setMainStateProcessor(Processor.getInstance())
-this.setProcessGameProcessorInit()
-}
-
-
-    open fun setProcessGameProcessorInit()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setProcessGameProcessor(GameProcessor(this))
-}
-
-
-    open fun initSpecialPaint()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.menuBehavior!!.initSpecialPaint(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun init(gameLayerManager: AllBinaryGameLayerManager, buffered: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameLayerManager = gameLayerManager
-var buffered = buffered
-this.gameStateTimeHelper!!.setStartTimeTNT()
-this.setHighScoreSubmitted(false)
-this.setLayerManager(gameLayerManager)
-
+    open override func unPause() {
+        self.logUtil.putF(self.commonStrings.START, self, self.gameStrings.UNPAUSE)
+        self.closeMenu()
+        self.tsUtil.gc()
+        super.unPause()
+        self.touchButtonFactory.toggle(self.isPaused(), BasicArrayListUtil.getInstance().getImmutableInstance())
+        self.gameBehavior.unPause(self)
+    }
     
-                        if(!buffered)
-                        
-                                    {
-                                    
-    var BUFF_MESSAGE: String = "XXX Not Buffering Causes Concurrency Issues XXX"
 
-this.logUtil!!.putF(BUFF_MESSAGE, this, this.commonStrings!!.CONSTRUCTOR)
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception("Buffering is disabled")
-
-                        }
-                            
-this.setGameInputProcessor(Processor.getInstance())
-
-    var features: Features = Features.getInstance()!!
-
-
+    @discardableResult open override func isPausable() -> Bool {
+        if (CurrentDisplayableFactory.getInstance().getUsedRunnable() == NullWaitGameRunnable.getInstance()) {
+            return true
+        } else {
+            return false
+        }
+    }
     
-                        if(features.isFeature(GameFeatureFactory.getInstance()!!.CHEATING))
-                        
-                                    {
-                                    this.isCheating= true
-this.cheatProcessor= CheatGameInputProcessor(this)
-this.gameKeyEventHandler!!.addListener(this.cheatProcessor)
 
-                                    }
-                                
-                        else {
-                            this.isCheating= false
-this.cheatProcessor= NoPlayerGameInput.getInstance()!!
-
-                        }
-                            
-this.realEndGameProcessor= EndGameProcessor(this)
-this.setEndGameProcessor(Processor.getInstance())
-this.realStartIntermissionProcessor= StartIntermissionProcessor(this)
-this.startIntermissionProcessor= Processor.getInstance()!!
-this.setEndGameStatePaintable(EndGamePaintable(this))
-this.setEndGamePaintable(NullPaintable.getInstance())
-this.setIntermissionPaintable(NullPaintable.getInstance())
-this.getStartIntermissionInterface()!!.setListener(this)
-}
-
-
-    override fun notifyIntermission(enable: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var enable = enable
-
+    open override func popupMenu() {
+        self.menuBehavior.popupMenu(self)
+    }
     
-                        if(enable)
-                        
-                                    {
-                                    this.startIntermissionProcessor= this.realStartIntermissionProcessor
 
-                                    }
-                                
-                        else {
-                            this.startIntermissionProcessor= Processor.getInstance()!!
-
-                        }
-                            
-
+    open func popupMenu2() {
+        self.primaryPlayerQueue.add(SelectSound.getInstance())
+        self.setMenuPaintable(self.getFormPaintable())
+        self.setMenuInputProcessor(self.mainMenuInputProcessor)
+        self.basicMotionGesturesHandler.addListenerInterface(self.mainMenuInputProcessor)
+        self.gameKeyEventHandler.addListener(self.mainMenuInputProcessor)
+    }
     
-                        if(enable)
-                        
-                                    {
-                                    this.setIntermissionPaintable(this.getStartIntermissionPaintable())
 
-                                    }
-                                
-                        else {
-                            this.setIntermissionPaintable(NullPaintable.getInstance())
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun mediaInit()
-        //nullable = true from not(false or (false and true)) = true
-{
-ForcedLogUtil.log(this.commonStrings!!.NOT_IMPLEMENTED, this)
-}
-
-
-                @Throws(Exception::class)
-            @Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun initConfigurable(abeClientInformation: AbeClientInformationInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.addNormalPortion(50, "Setting Configurables")
-GameInitializationUtil.getInstance()!!.initGame(abeClientInformation, this, this.gameInitializationInterfaceFactoryInterface)
-
-    var gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!!
-
-
-    var changedGameFeatureListener: ChangedGameFeatureListener = ChangedGameFeatureListener.getInstance()!!
-
-
+    open override func toggleMenu() {
+        self.logUtil.putF(self.commonStrings.START, self, self.gameStrings.TOGGLE_MENU)
+        if (self.getMenuPaintable() === self.getOpenMenuPaintable()) {
+            self.pause()
+            self.updateMenu()
+            self.popupMenu()
+        } else if (self.getMenuPaintable() === self.getFormPaintable()) {
+            self.primaryPlayerQueue.add(SelectSound.getInstance())
+            self.unPause()
+        }
+    }
     
-                        if(changedGameFeatureListener!!.isChangedFeature(gameFeatureFactory!!.SOUND))
-                        
-                                    {
-                                    
-    var features: Features = Features.getInstance()!!
 
-this.logUtil!!.putF(StringMaker().
-                            append("Sound Changing To: ")!!.appendboolean(features.isFeature(gameFeatureFactory!!.SOUND))!!.toString(), this, "initConfigurable")
-this.mediaInit()
-changedGameFeatureListener!!.remove(gameFeatureFactory!!.SOUND)
-
-                                    }
-                                
-
-    var sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!!
-
-
+    open override func closeMenu() {
+        self.menuBehavior.closeMenu(self)
+    }
     
-                        if(changedGameFeatureListener!!.isChangedFeature(sensorFeatureFactory!!.ORIENTATION_SENSORS) || changedGameFeatureListener!!.isChangedFeature(sensorFeatureFactory!!.NO_ORIENTATION) || changedGameFeatureListener!!.isChangedFeature(sensorFeatureFactory!!.SIMULATED_ORIENTATION_SENSORS))
-                        
-                                    {
-                                    changedGameFeatureListener!!.remove(sensorFeatureFactory!!.NO_ORIENTATION)
-changedGameFeatureListener!!.remove(sensorFeatureFactory!!.ORIENTATION_SENSORS)
-changedGameFeatureListener!!.remove(sensorFeatureFactory!!.SIMULATED_ORIENTATION_SENSORS)
 
-                                    }
-                                
-
-    var resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!!
-
-this.loadResourceLoadingLevel(resourceLoadingLevelFactory!!.LOAD_GAME)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initApp(abeClientInformation: AbeClientInformationInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-this.initConfigurable(abeClientInformation)
-this.processorInit()
-this.sensorGameUpdateProcessor!!.process(this.gameLayerManager)
-this.sensorGameUpdateProcessor!!.sendNotifications(this.gameLayerManager)
-this.initTouch()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun initTouch()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!!.EVENT
-
-
-    var resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!!
-
-gameInitializedEvent!!.setResourceLoadingLevel(resourceLoadingLevelFactory!!.LOAD_TOUCH)
-GameInitializedEventHandler.getInstance()!!.fireEvent(gameInitializedEvent)
-this.touchButtonFactory!!.defaultList()
-this.updateTouch()
-this.postInitTouch()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateCurrentTouchInputFactory(nextTouchInput: BaseTouchInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var nextTouchInput = nextTouchInput
-
+    open func closeMenu2() {
+        self.setMenuPaintable(self.getOpenMenuPaintable())
+        self.basicMotionGesturesHandler.removeListener(self.mainMenuInputProcessor)
+        self.gameKeyEventHandler.removeListener(self.mainMenuInputProcessor)
+        self.setMenuInputProcessor(self.getPopupMenuInputProcessor())
+    }
     
-                        if(nextTouchInput != this.currentTouchInputFactory)
-                        
-                                    {
-                                    this.currentTouchInputFactory= nextTouchInput
-PreLogUtil.put(this.currentTouchInputFactory!!.toString(), this, this.gameInputStrings!!.UDPATE_CURRENT_TOUCH_INPUT_FACTORY)
-this.touchButtonFactory!!.toggle(this.isPaused(), this.currentTouchInputFactory!!.getList())
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateTouch()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.gameBehavior!!.updateTouch(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateTouch2()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var features: Features = Features.getInstance()!!
-
-
+    open override func `open`() {
+        self.basicMotionGesturesHandler.addListenerInterface(self.menuInputProcessor)
+        self.gameKeyEventHandler.addListener(self.menuInputProcessor)
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
-                        
-                                    {
-                                    
+
+    open override func close() {
+        self.basicMotionGesturesHandler.removeListener(self.menuInputProcessor)
+        self.gameKeyEventHandler.removeListener(self.menuInputProcessor)
+        self.primaryPlayerQueue.clear()
+        self.secondaryPlayerQueue.clear()
+    }
     
-                        if(this.gameLayerManager!!.getGameInfo()!!.getCurrentLevel() -this.getStartLevel() == 1)
-                        
-                                    {
-                                    this.setTouchPaintableP(NullPaintable.getInstance())
 
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun postInitTouch()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setTouchButtonsPaintable(TouchButtonsPaintableFactory.getInstance(this.gameLayerManager!!.getForegroundBasicColor()))
-this.updateScreenButtonPaintable()
-}
-
-
-    override fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var cmdListener = cmdListener
-this.removeAllCommands()
-this.addCommands()
-this.setCommandListener(cmdListener)
-}
-
-
-    open fun addCommands()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!!
-
-
-    var myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!!
-
-
+    open func processorInit() {
+        self.setMainStateProcessor(Processor.getInstance())
+        self.setProcessGameProcessorInit()
+    }
     
-                        if(DebugFactory.getInstance() != NoDebug.getInstance())
-                        
-                                    {
-                                    this.addCommand(gameCommandsFactory!!.START_TRACE)
 
-                                    }
-                                
-this.addCommand(gameCommandsFactory!!.RESTART_COMMAND)
-this.addCommand(myCommandsFactory!!.PAUSE_COMMAND)
-this.addCommand(gameCommandsFactory!!.QUIT_COMMAND)
-
-    var isOverScan: Boolean = OperatingSystemFactory.getInstance()!!.getOperatingSystemInstance()!!.isOverScan()
-
-
+    open func setProcessGameProcessorInit() {
+        self.setProcessGameProcessor(GameProcessor(self))
+    }
     
-                        if(J2MEUtil.isHTML())
-                        
-                                    {
-                                    
-                                    }
-                                
-                             else 
+
+    open func initSpecialPaint() {
+        self.menuBehavior.initSpecialPaint(self)
+    }
     
-                        if(SWTUtil.isSWT)
-                        
-                                    {
-                                    
-                                    }
-                                
-                             else 
+
+    fileprivate func `init`(_ gameLayerManager: AllBinaryGameLayerManager!, _ buffered: Bool) {
+        self.gameStateTimeHelper.setStartTimeTNT()
+        self.setHighScoreSubmitted(false)
+        self.setLayerManager(gameLayerManager)
+        if (!buffered) {
+            let BUFF_MESSAGE: String! = "XXX Not Buffering Causes Concurrency Issues XXX"
+            self.logUtil.putF(BUFF_MESSAGE, self, self.commonStrings.CONSTRUCTOR)
+        } else {
+            jThrow(JException("Exception", "Buffering is disabled"))
+        }
+        self.setGameInputProcessor(Processor.getInstance())
+        let features: Features! = Features.getInstance()
+        if (features.isFeature(GameFeatureFactory.getInstance().CHEATING)) {
+            self.isCheating = true
+            self.cheatProcessor = CheatGameInputProcessor(self)
+            self.gameKeyEventHandler.addListener(self.cheatProcessor)
+        } else {
+            self.isCheating = false
+            self.cheatProcessor = NoPlayerGameInput.getInstance()
+        }
+        self.realEndGameProcessor = EndGameProcessor(self)
+        self.setEndGameProcessor(Processor.getInstance())
+        self.realStartIntermissionProcessor = StartIntermissionProcessor(self)
+        self.startIntermissionProcessor = Processor.getInstance()
+        self.setEndGameStatePaintable(EndGamePaintable(self))
+        self.setEndGamePaintable(NullPaintable.getInstance())
+        self.setIntermissionPaintable(NullPaintable.getInstance())
+        self.getStartIntermissionInterface().setListener(self)
+    }
     
-                        if(!isOverScan)
-                        
-                                    {
-                                    
+
+    open override func notifyIntermission(_ enable: Bool) {
+        if (enable) {
+            self.startIntermissionProcessor = self.realStartIntermissionProcessor
+        } else {
+            self.startIntermissionProcessor = Processor.getInstance()
+        }
+        if (enable) {
+            self.setIntermissionPaintable(self.getStartIntermissionPaintable())
+        } else {
+            self.setIntermissionPaintable(NullPaintable.getInstance())
+        }
+    }
     
-                        if(TouchScreenFactory.getInstance()!!.isTouch() && InGameFeatures().
-                            isAny())
-                        
-                                    {
-                                    this.addCommand(InGameOptionsForm.DISPLAY)
 
-                                    }
-                                
-this.addCommand(gameCommandsFactory!!.SAVE)
-this.addCommand(gameCommandsFactory!!.DISPLAY_LOAD_FORM)
-
-                                    }
-                                
-}
-
-
-    override fun itemStateChanged(item: Item)
-        //nullable = true from not(false or (false and false)) = true
-{
-var item = item
-
-        try {
-            
-    var itemLabel: String = item.getLabel()!!
-
-this.logUtil!!.putF(StringMaker().
-                            append(this.commonLabels!!.ITEM_LABEL)!!.append(itemLabel)!!.toString(), this, "itemStateChanged")
-
+    open func mediaInit() {
+        ForcedLogUtil.log(self.commonStrings.NOT_IMPLEMENTED, self)
+    }
     
-                        if(item is ChoiceGroup)
-                        
-                                    {
-                                    
-    var gameFeatureUtil: GameFeatureUtil = GameFeatureUtil.getInstance()!!
 
-
+    open func initConfigurable(_ abeClientInformation: AbeClientInformationInterface!) {
+        let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+        progressCanvas.addNormalPortion(50, "Setting Configurables")
+        GameInitializationUtil.getInstance().initGame(abeClientInformation, self, self.gameInitializationInterfaceFactoryInterface)
+        let gameFeatureFactory: GameFeatureFactory! = GameFeatureFactory.getInstance()
+        let changedGameFeatureListener: ChangedGameFeatureListener! = ChangedGameFeatureListener.getInstance()
+        if (changedGameFeatureListener.isChangedFeature(gameFeatureFactory.SOUND)) {
+            let features: Features! = Features.getInstance()
+            self.logUtil.putF(StringMaker().append("Sound Changing To: ").appendboolean(features.isFeature(gameFeatureFactory.SOUND)).toString(), self, "initConfigurable")
+            self.mediaInit()
+            changedGameFeatureListener.remove(gameFeatureFactory.SOUND)
+        }
+        let sensorFeatureFactory: SensorFeatureFactory! = SensorFeatureFactory.getInstance()
+        if (changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.ORIENTATION_SENSORS) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.NO_ORIENTATION) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS)) {
+            changedGameFeatureListener.remove(sensorFeatureFactory.NO_ORIENTATION)
+            changedGameFeatureListener.remove(sensorFeatureFactory.ORIENTATION_SENSORS)
+            changedGameFeatureListener.remove(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS)
+        }
+        let resourceLoadingLevelFactory: ResourceLoadingLevelFactory! = ResourceLoadingLevelFactory.getInstance()
+        self.loadResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_GAME)
+    }
     
-                        if(gameFeatureUtil!!.isExclusive(itemLabel))
-                        
-                                    {
-                                    gameFeatureUtil!!.updateExclusiveForChoiceGroup(item as ChoiceGroup)
 
-                                    }
-                                
-                        else {
-                            gameFeatureUtil!!.updateMultiple(item as ChoiceGroup)
-
-                        }
-                            
-
-                                    }
-                                
-this.sensorGameUpdateProcessor!!.process(this.gameLayerManager)
-this.updateTouch()
-this.updateScreenButtonPaintable()
-this.sensorGameUpdateProcessor!!.sendNotifications(this.gameLayerManager)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "itemStateChanged", e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateScreenButtonPaintable()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.gameBehavior!!.updateScreenButtonPaintable(this)
-}
-
-
-    open fun updateScreenButtonPaintable2()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var features: Features = Features.getInstance()!!
-
-
+    open func initApp(_ abeClientInformation: AbeClientInformationInterface!) {
+        self.initConfigurable(abeClientInformation)
+        self.processorInit()
+        self.sensorGameUpdateProcessor.process(self.gameLayerManager)
+        self.sensorGameUpdateProcessor.sendNotifications(self.gameLayerManager)
+        self.initTouch()
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
-                        
-                                    {
-                                    this.setTouchPaintableP(this.getTouchButtonsPaintable())
-this.setStartLevel(this.gameLayerManager!!.getGameInfo()!!.getCurrentLevel())
 
-                                    }
-                                
-                             else 
+    open func initTouch() {
+        let gameInitializedEvent: GameInitializedEvent! = GameInitializationUtil.getInstance().EVENT
+        let resourceLoadingLevelFactory: ResourceLoadingLevelFactory! = ResourceLoadingLevelFactory.getInstance()
+        gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_TOUCH)
+        GameInitializedEventHandler.getInstance().fireEvent(gameInitializedEvent)
+        self.touchButtonFactory.defaultList()
+        self.updateTouch()
+        self.postInitTouch()
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.SHOW_SCREEN_BUTTONS))
-                        
-                                    {
-                                    this.setTouchPaintableP(this.getTouchButtonsPaintable())
 
-                                    }
-                                
-                             else 
+    open func updateCurrentTouchInputFactory(_ nextTouchInput: BaseTouchInput!) {
+        if (nextTouchInput !== self.currentTouchInputFactory) {
+            self.currentTouchInputFactory = nextTouchInput
+            PreLogUtil.put(self.currentTouchInputFactory.toString(), self, self.gameInputStrings.UDPATE_CURRENT_TOUCH_INPUT_FACTORY)
+            self.touchButtonFactory.toggle(self.isPaused(), self.currentTouchInputFactory.getList())
+        }
+    }
     
-                        if(features.isFeature(this.touchFeatureFactory!!.HIDE_SCREEN_BUTTONS))
-                        
-                                    {
-                                    this.setTouchPaintableP(NullPaintable.getInstance())
 
-                                    }
-                                
-                        else {
-                            this.setTouchPaintableP(NullPaintable.getInstance())
-
-                        }
-                            
-}
-
-
-    override fun getLayerManager()
-        //nullable = true from not(false or (false and true)) = true
-: AllBinaryGameLayerManager{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameLayerManager
-}
-
-
-    open fun setLayerManager(layerManager: AllBinaryGameLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layerManager = layerManager
-this.gameLayerManager= layerManager
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun isGameOver()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameOver
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    open fun setGameOver(gameOver: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameOver = gameOver
-this.gameOver= gameOver
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processGameOver()
-        //nullable = true from not(false or (false and true)) = true
-{
-PreLogUtil.put(this.commonStrings!!.START, this, this.gameStrings!!.SET_GAME_OVER)
-this.setGameOver(true)
-this.removePauseCommand()
-this.setGameState(this.gameStateFactory!!.SHOW_END_RESULT_GAME_STATE)
-this.setEndGamePaintable(this.getEndGameStatePaintable())
-}
-
-
-    override fun isHighScoreSubmitted()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoreSubmitted
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun setHighScoreSubmitted(highScoreSubmitted: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var highScoreSubmitted = highScoreSubmitted
-this.highScoreSubmitted= highScoreSubmitted
-
+    open func updateTouch() {
+        self.gameBehavior.updateTouch(self)
+    }
     
-                        if(highScoreSubmitted)
-                        
-                                    {
-                                    this.highScoresHelper!!.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance())
 
-                                    }
-                                
-this.logUtil!!.putF(StringMaker().
-                            append("isHighScoreSubmitted: ")!!.appendboolean(highScoreSubmitted)!!.toString(), this, "setHighScoreSubmitted")
-}
-
-
-    override fun getGameState()
-        //nullable = true from not(false or (false and true)) = true
-: GameState{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameState
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun setGameState(gameState: GameState)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameState = gameState
-this.logUtil!!.putF(StringMaker().
-                            append(this.gameStrings!!.GAME_STATE)!!.append(this.stringUtil!!.toString(gameState))!!.toString(), this, this.gameStrings!!.SET_GAME_STATE)
-this.gameState= gameState
-this.gameStateTimeHelper!!.setStartTimeTNT()
-this.updateEndGameProcessor()
-this.updateGameKeyEventProcessor()
-this.gameBehavior!!.setGameState(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateGameState()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var gameAdState: GameAdState = this.gameAdStateFactory!!.getCurrentInstance()!!
-
-gameAdState!!.processAdState(this.gameState, this.gameLayerManager!!.getGameInfo()!!.getGameType())
-
+    open func updateTouch2() {
+        let features: Features! = Features.getInstance()
+        if (features.isFeature(self.touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS)) {
+            if (self.gameLayerManager.getGameInfo().getCurrentLevel() &- self.getStartLevel() == 1) {
+                self.setTouchPaintableP(NullPaintable.getInstance())
+            }
+        }
+    }
     
-                        if(this.gameState != this.gameStateFactory!!.PLAYING_GAME_STATE)
-                        
-                                    {
-                                    gameAdState!!.processPageAdState()
 
-                                    }
-                                
-}
-
-
-    open fun updateGameKeyEventProcessor()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open func postInitTouch() {
+        self.setTouchButtonsPaintable(TouchButtonsPaintableFactory.getInstance(self.gameLayerManager.getForegroundBasicColor()))
+        self.updateScreenButtonPaintable()
+    }
     
-                        if(this.getGameState() != this.gameStateFactory!!.PLAYING_GAME_STATE || this.isCheating)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
-}
 
-
-    open fun removeAllGameKeyInputListenersOnBuild()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.removeAllGameKeyInputListeners()
-}
-
-
-    open fun removeAllGameKeyInputListeners()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.gameBehavior!!.removeAllGameKeyInputListeners(this)
-}
-
-
-    open fun removeAllGameKeyInputListeners2()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputListeners")
-
-
-
-
-                        for (index in this.localPlayerGameInputList!!.size() -1 downTo 0)
-
-        {
-
-    var playerGameInput: PlayerGameInput = this.localPlayerGameInputList!!.get(index) as PlayerGameInput
-
-this.removeKeyInputListener(playerGameInput)
-playerGameInput!!.removeNonAIInputGameKeyEvents()
-}
-
-}
-
-
-    open fun removeKeyInputListener(playerGameInput: PlayerGameInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var playerGameInput = playerGameInput
-this.gameKeyEventHandler!!.removeListener(playerGameInput)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateEndGameProcessor()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.gameBehavior!!.updateEndGameProcessor(this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateEndGameProcessor2()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open override func initCommands(_ cmdListener: CommandListener!) {
+        self.removeAllCommands()
+        self.addCommands()
+        self.setCommandListener(cmdListener)
+    }
     
-                        if(this.getGameState() == this.gameStateFactory!!.SHOW_END_RESULT_GAME_STATE || this.getGameState() == this.gameStateFactory!!.SHOW_HIGH_SCORE_GAME_STATE)
-                        
-                                    {
-                                    this.setEndGameProcessor(this.realEndGameProcessor)
 
-                                    }
-                                
-                        else {
-                            this.setEndGameProcessor(Processor.getInstance())
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun buildGameInit(isPortion: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var isPortion = isPortion
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun cleanupGame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CLEANUP)
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.addNormalPortion(10, "Cleaning Up")
-this.primaryPlayerQueue!!.clear()
-this.secondaryPlayerQueue!!.clear()
-GameLevelDisplayChangeEventListenersFactory.getInstance()!!.clear()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun loadResourceLoadingLevel(resourceLoadingLevel: ResourceLoadingLevel)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var resourceLoadingLevel = resourceLoadingLevel
-
-    var gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!!.EVENT
-
-gameInitializedEvent!!.setResourceLoadingLevel(resourceLoadingLevel)
-GameInitializedEventHandler.getInstance()!!.fireEvent(gameInitializedEvent)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun loadResources(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var level = level
-
-    var gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!!.EVENT
-
-gameInitializedEvent!!.setLevel(level)
-GameInitializedEventHandler.getInstance()!!.fireEvent(gameInitializedEvent)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun updateColor()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun buildGame(portion: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var portion = portion
-this.screenCapture!!.endRecording()
-this.screenCapture!!.startRecording()
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-
-    var features: Features = Features.getInstance()!!
-
-progressCanvas!!.addNormalPortion(portion, "Generic Build")
-this.removeAllGameKeyInputListenersOnBuild()
-this.updateTouch()
-progressCanvas!!.addNormalPortion(portion, "High Scores")
-this.highScoresFactoryInterface!!.fetchHighScores(this.gameLayerManager!!.getGameInfo(), this.highScoresHelper)
-this.setHighScoresPaintable(NullPaintable.getInstance())
-progressCanvas!!.addNormalPortion(portion, "Finishing.")
-this.getEndGameInfoP()!!.update(this.getLayerManager()!!.getGameInfo(), this)
-this.isSingleKeyRepeatableProcessing= features.isFeature(InputFeatureFactory.getInstance()!!.SINGLE_KEY_REPEAT_PRESS)
-this.setGameOver(false)
-progressCanvas!!.addNormalPortion(portion, "Finishing..")
-this.updateColor()
-this.getStartIntermissionPaintable()!!.update()
-
+    open func addCommands() {
+        let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
+        let myCommandsFactory: MyCommandsFactory! = MyCommandsFactory.getInstance()
+        if (DebugFactory.getInstance() != NoDebug.getInstance()) {
+            self.addCommand(gameCommandsFactory.START_TRACE)
+        }
+        self.addCommand(gameCommandsFactory.RESTART_COMMAND)
+        self.addCommand(myCommandsFactory.PAUSE_COMMAND)
+        self.addCommand(gameCommandsFactory.QUIT_COMMAND)
+        let isOverScan: Bool = OperatingSystemFactory.getInstance().getOperatingSystemInstance().isOverScan()
+        if (J2MEUtil.isHTML()) {
+        } else if (SWTUtil.isSWT) {
+        } else if (!isOverScan) {
+            if (TouchScreenFactory.getInstance().isTouch() && InGameFeatures().isAny()) {
+                self.addCommand(InGameOptionsForm.DISPLAY)
+            }
+            self.addCommand(gameCommandsFactory.SAVE)
+            self.addCommand(gameCommandsFactory.DISPLAY_LOAD_FORM)
+        }
+    }
     
-                        if(!this.isRunningInAnotherThread())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
 
-                                    }
-                                
-progressCanvas!!.addNormalPortion(portion, "Finishing...")
-
+    open override func itemStateChanged(_ item: Item!) {
+        do {
+            let itemLabel: String! = item.getLabel()
+            self.logUtil.putF(StringMaker().append(self.commonLabels.ITEM_LABEL).append(itemLabel).toString(), self, "itemStateChanged")
+            if ((item is ChoiceGroup)) {
+                let gameFeatureUtil: GameFeatureUtil! = GameFeatureUtil.getInstance()
+                if (gameFeatureUtil.isExclusive(itemLabel)) {
+                    gameFeatureUtil.updateExclusiveForChoiceGroup((item as! ChoiceGroup))
+                } else {
+                    gameFeatureUtil.updateMultiple((item as! ChoiceGroup))
+                }
+            }
+            self.sensorGameUpdateProcessor.process(self.gameLayerManager)
+            self.updateTouch()
+            self.updateScreenButtonPaintable()
+            self.sensorGameUpdateProcessor.sendNotifications(self.gameLayerManager)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.isMainCanvas() || !this.isInitialized())
-                        
-                                    {
-                                    
+
+    open func updateScreenButtonPaintable() {
+        self.gameBehavior.updateScreenButtonPaintable(self)
+    }
     
-                        if(features.isFeature(MainFeatureFactory.getInstance()!!.LOAD_ONDEMAND))
-                        
-                                    {
-                                    
+
+    open func updateScreenButtonPaintable2() {
+        let features: Features! = Features.getInstance()
+        if (features.isFeature(self.touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS)) {
+            self.setTouchPaintableP(self.getTouchButtonsPaintable())
+            self.setStartLevel(self.gameLayerManager.getGameInfo().getCurrentLevel())
+        } else if (features.isFeature(self.touchFeatureFactory.SHOW_SCREEN_BUTTONS)) {
+            self.setTouchPaintableP(self.getTouchButtonsPaintable())
+        } else if (features.isFeature(self.touchFeatureFactory.HIDE_SCREEN_BUTTONS)) {
+            self.setTouchPaintableP(NullPaintable.getInstance())
+        } else {
+            self.setTouchPaintableP(NullPaintable.getInstance())
+        }
+    }
     
-                        if(this.getCustomCommandListener() != 
-                                    null
-                                )
-                        
-                                    {
-                                    progressCanvas!!.end()
 
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            progressCanvas!!.end()
-
-                        }
-                            
-this.setInitialized(true)
-
-                                    }
-                                
-
+    @discardableResult open override func getLayerManager() -> AllBinaryGameLayerManager! {
+        return self.gameLayerManager
+    }
     
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
-                        
-                                    {
-                                    this.logUtil!!.putF("Show Game Paintable in DemoCanvas Thread", this, this.BUILD_GAME)
-this.gameCanvasStartListener!!.showGamePaintable()
 
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF("No GameCanvasStartListener", this, this.BUILD_GAME)
-
-                        }
-                            
-this.colorFillPaintable!!.setBasicColorP(this.gameLayerManager!!.getBackgroundBasicColor())
-this.gameBehavior!!.buildGame(this)
-}
-
-
-    open fun buildGame2()
-        //nullable = true from not(false or (false and true)) = true
-{
-PreLogUtil.put(StringMaker().
-                            append(this.gameInputStrings!!.ENABLE_PLAYER_GAME_INPUTS)!!.appendint(this.localPlayerGameInputList!!.size())!!.toString(), this, this.BUILD_GAME)
-
-    var playerGameInput: PlayerGameInput
-
-
-
-
-
-                        for (index in this.localPlayerGameInputList!!.size() -1 downTo 0)
-
-        {
-playerGameInput= this.localPlayerGameInputList!!.get(index) as PlayerGameInput
-PreLogUtil.put(StringMaker().
-                            append(this.gameInputStrings!!.ENABLE_PLAYER_GAME_INPUT)!!.append(playerGameInput!!.toString())!!.toString(), this, this.BUILD_GAME)
-playerGameInput!!.removeNonAIInputGameKeyEvents()
-this.addKeyInputListener(playerGameInput)
-}
-
-}
-
-
-    open fun addKeyInputListener(playerGameInput: PlayerGameInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var playerGameInput = playerGameInput
-GameKeyEventHandler.getInstance()!!.addListenerForPlayer(playerGameInput, playerGameInput!!.getPlayerInputId())
-}
-
-
-    private var gameCanvasStartListener: DemoPaintableInterface = NullDemoPaintable.NULL_DEMO_PAINTABLE
-
-    open fun setGameCanvasStartListener(gameCanvasStartListener: DemoPaintableInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameCanvasStartListener = gameCanvasStartListener
-this.gameCanvasStartListener= gameCanvasStartListener
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun loadState()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.LOAD)
-
-    var hashtable: ABHashtable<Any, Any> = this.getLoadStateHashtable()!!
-
-
+    open func setLayerManager(_ layerManager: AllBinaryGameLayerManager!) {
+        self.gameLayerManager = layerManager
+    }
     
-                        if(hashtable != 
-                                    null
-                                 && hashtable.size > 0)
-                        
-                                    {
-                                    
-    var levelAsString: String = hashtable.get(GameInfo.LEVEL_NAME as Object) as String
 
-
-    var level: Int = Integer.valueOf(levelAsString)!!.toInt()
-
-
-    var gameInfo: GameInfo = this.gameLayerManager!!.getGameInfo()!!
-
-gameInfo!!.setCurrentLevel(level)
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getLoadStateHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-this.logUtil!!.putF(StringMaker().
-                            append(this.commonLabels!!.START_LABEL)!!.append(this.stringUtil!!.toString(this.hashtable))!!.toString(), this, "getLoadStateHashtable")
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable
-}
-
-
-    override fun setLoadStateHashtable(hashtable: ABHashtable<Any, Any>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var hashtable = hashtable
-this.logUtil!!.putF(StringMaker().
-                            append(this.commonLabels!!.START_LABEL)!!.append(this.stringUtil!!.toString(hashtable))!!.toString(), this, "setLoadStateHashtable")
-this.hashtable= hashtable
-}
-
-
-    override fun getCurrentStateHashtable()
-        //nullable = true from not(false or (false and true)) = true
-: ABHashtable<Any, Any>{
-
-    var hashtable: ABHashtable<Any, Any> = this.stdUtil!!.createHashtable()!!
-
-
-    var level: Int = this.gameLayerManager!!.getGameInfo()!!.getCurrentLevel()
-
-hashtable.put(GameInfo.LEVEL_NAME.toString(), level.toString())
-this.logUtil!!.putF(StringMaker().
-                            append("End: ")!!.append(this.stringUtil!!.toString(hashtable))!!.toString(), this, "getCurrentStateHashtable")
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashtable
-}
-
-
-    open fun paintGameOver(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-ForcedLogUtil.log(this.commonStrings!!.NOT_IMPLEMENTED, this)
-}
-
-
-    override fun draw(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.colorFillPaintable!!.paint(graphics)
-this.basicSetColorUtil!!.setBasicColorP(graphics, this.gameLayerManager!!.getForegroundBasicColor())
-this.gameSpecificPaintable!!.paint(graphics)
-}
-
-
-    open fun clear(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.colorFillPaintable!!.paint(graphics)
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-this.baseGameStatistics!!.nextRefresh()
-this.draw(graphics)
-this.menuPaintable!!.paint(graphics)
-this.progressPaintable!!.paint(graphics)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processEndLevelIntermissionGameState()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun nonBotPaint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.endGamePaintable!!.paint(graphics)
-this.intermissionPaintable!!.paint(graphics)
-this.paintIntermission(graphics)
-this.touchPaintable!!.paint(graphics)
-}
-
-
-    open fun paintIntermission(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    private val rawGameInputProcessor: InputProcessor = GameCanvasInputProcessor(this)
-
-    private val rawInputProcessor: InputProcessor = FormInputProcessor(this)
-
-    private var inputProcessor: InputProcessor = this.getRawGameInputProcessor()!!
-
-    override fun keyPressed(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-this.keyPressedByDevice(keyCode, 0)
-}
-
-
-    override fun keyReleased(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-this.keyReleasedByDevice(keyCode, 0)
-}
-
-
-    override fun keyRepeated(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-this.keyRepeatedByDevice(keyCode, 0)
-}
-
-
-    override fun keyPressedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-var deviceId = deviceId
-this.inputProcessor!!.keyPressedByDevice(keyCode, deviceId)
-}
-
-
-    override fun keyRepeatedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var keyCode = keyCode
-var deviceId = deviceId
-
+    @discardableResult open override func isGameOver() -> Bool {
+        return self.gameOver
+    }
     
-                        if(this.isSingleKeyRepeatableProcessing)
-                        
-                                    {
-                                    this.inputProcessor!!.keyPressedByDevice(keyCode, deviceId)
 
-                                    }
-                                
-}
-
-
-    override fun keyReleasedByDevice(keyCode: Int, deviceId: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-this.inputProcessor!!.keyReleasedByDevice(this, keyCode, deviceId)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun handleRawKey(keyCode: Int, deviceId: Int, repeated: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var keyCode = keyCode
-    //var deviceId = deviceId
-    //var repeated = repeated
-}
-
-
-    open fun endProgress(isProgress: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var isProgress = isProgress
-
-    var portion: Int = 30
-
-
+    open func setGameOver(_ gameOver: Bool) {
+        self.gameOver = gameOver
+    }
     
-                        if(isProgress && this.isMainCanvas())
-                        
-                                    {
-                                    
-    var myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!!
 
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.start()
-this.getCustomCommandListener()!!.commandAction(myCommandsFactory!!.SET_DISPLAYABLE, progressCanvas)
-portion= 4
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return portion
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processPlayingGame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.cheatProcessor!!.update()
-this.sensorGameUpdateProcessor!!.getInputSensor()!!.update()
-this.gameInputProcessor!!.process()
-this.gameLayerManager!!.process()
-this.startIntermissionProcessor!!.process()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun threadInit()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processGame()
-        //nullable = true from not(false or (false and true)) = true
-{
-super.process()
-
+    open override func processGameOver() {
+        PreLogUtil.put(self.commonStrings.START, self, self.gameStrings.SET_GAME_OVER)
+        self.setGameOver(true)
+        self.removePauseCommand()
+        self.setGameState(self.gameStateFactory.SHOW_END_RESULT_GAME_STATE)
+        self.setEndGamePaintable(self.getEndGameStatePaintable())
+    }
     
-                        if(AllBinaryMediaManager.update())
-                        
-                                    {
-                                    
+
+    @discardableResult open override func isHighScoreSubmitted() -> Bool {
+        return self.highScoreSubmitted
+    }
     
-                        if(!this.primaryPlayerQueue!!.process())
-                        
-                                    {
-                                    this.secondaryPlayerQueue!!.process()
 
-                                    }
-                                
-
-                                    }
-                                
-this.mainStateProcessor!!.process()
-this.menuInputProcessor!!.processInputList()
-this.endGameProcessor!!.process()
-this.baseGameStatistics!!.nextFrame()
-}
-
-
-    open fun notifyDonePainting()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this) 
-
-        //mutex.withLock
-        {
-this.threadObjectUtil!!.notifyObject(this)
-}
-
-}
-
-
-    private val YIELD_SLEEP: Long = 100
-
-                @Throws(Exception::class)
-            
-    open fun shouldWait()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var features: Features = Features.getInstance()!!
-
-
+    open override func setHighScoreSubmitted(_ highScoreSubmitted: Bool) {
+        self.highScoreSubmitted = highScoreSubmitted
+        if (highScoreSubmitted) {
+            self.highScoresHelper.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance())
+        }
+        self.logUtil.putF(StringMaker().append("isHighScoreSubmitted: ").appendboolean(highScoreSubmitted).toString(), self, "setHighScoreSubmitted")
+    }
     
-                        if(AndroidUtil.isAndroid())
-                        
-                                    {
-                                    
-                                    }
-                                
-                             else 
+
+    @discardableResult open override func getGameState() -> GameState! {
+        return self.gameState
+    }
     
-                        if(features.isFeature(this.openGLFeatureFactory!!.OPENGL_2D))
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
+
+    open override func setGameState(_ gameState: GameState!) {
+        self.logUtil.putF(StringMaker().append(self.gameStrings.GAME_STATE).append(self.stringUtil.toString(gameState)).toString(), self, self.gameStrings.SET_GAME_STATE)
+        self.gameState = gameState
+        self.gameStateTimeHelper.setStartTimeTNT()
+        self.updateEndGameProcessor()
+        self.updateGameKeyEventProcessor()
+        self.gameBehavior.setGameState(self)
+    }
     
-                        if(features.isDefault(this.openGLFeatureFactory!!.OPENGL))
-                        
-                                    {
-                                    
-    var openGLImageSpecificFactory: OpenGLImageSpecificFactory = OpenGLImageSpecificFactory.getInstance()!!
 
-
-        while(openGLImageSpecificFactory!!.updating)
-        {
-Thread.sleep(this.YIELD_SLEEP)
-}
-
-
-                                    }
-                                
-
-                        }
-                            
-}
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.logUtil!!.putF(this.commonStrings!!.START_RUNNABLE, this, this.commonStrings!!.RUN)
-
-    var progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!!
-
-progressCanvas!!.addNormalPortion(50, "Game Thread")
-this.setCurrentThread()
-this.setRunning(true)
-
+    open func updateGameState() {
+        let gameAdState: GameAdState! = self.gameAdStateFactory.getCurrentInstance()
+        gameAdState.processAdState(self.gameState, self.gameLayerManager.getGameInfo().getGameType())
+        if (self.gameState !== self.gameStateFactory.PLAYING_GAME_STATE) {
+            gameAdState.processPageAdState()
+        }
+    }
     
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
-                        
-                                    {
-                                    Thread.sleep(this.YIELD_SLEEP)
 
-                                    }
-                                
-this.shouldWait()
-this.threadInit()
-
+    fileprivate func updateGameKeyEventProcessor() {
+        if (self.getGameState() !== self.gameStateFactory.PLAYING_GAME_STATE || self.isCheating) {
+        } else {
+        }
+    }
     
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
-                        
-                                    {
-                                    Thread.sleep(this.YIELD_SLEEP)
 
-                                    }
-                                
-this.open()
-
-    var gameAdState: GameAdState = this.gameAdStateFactory!!.getCurrentInstance()!!
-
-gameAdState!!.init()
-gameAdState!!.setGameIsReady(true)
-this.gameBehavior!!.run(this)
-this.logUtil!!.putF(this.commonStrings!!.END_RUNNABLE, this, this.commonStrings!!.RUN)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.RUN, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun run2()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var features: Features = Features.getInstance()!!
-
-
+    open func removeAllGameKeyInputListenersOnBuild() {
+        self.removeAllGameKeyInputListeners()
+    }
     
-                        if(features.isDefault(this.openGLFeatureFactory!!.OPENGL_AS_GAME_THREAD) || J2MEUtil.isHTML())
-                        
-                                    {
-                                    
+
+    open func removeAllGameKeyInputListeners() {
+        self.gameBehavior.removeAllGameKeyInputListeners(self)
+    }
     
-                        if(features.isDefault(this.openGLFeatureFactory!!.OPENGL_AS_GAME_THREAD))
-                        
-                                    {
-                                    this.logUtil!!.putF(this.openGLFeatureFactory!!.OPENGL_AS_GAME_THREAD.getName(), this, this.commonStrings!!.RUN)
 
-                                    }
-                                
-
+    open func removeAllGameKeyInputListeners2() {
+        self.logUtil.putF("Remove PlayerInput Listeners", self, "removeAllGameKeyInputListeners")
+        do {
+            var index: Int32 = self.localPlayerGameInputList.size() &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            let playerGameInput: PlayerGameInput! = (self.localPlayerGameInputList.get(index) as! PlayerGameInput)
+            self.removeKeyInputListener(playerGameInput)
+            playerGameInput.removeNonAIInputGameKeyEvents()
+            }
+        }
+    }
     
-                        if(J2MEUtil.isHTML())
-                        
-                                    {
-                                    this.logUtil!!.putF(GraphicsStrings.getInstance()!!.HTML, this, this.commonStrings!!.RUN)
 
-                                    }
-                                
-
-    var currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!!
-
-currentDisplayableFactory!!.setRunnable(this.gameRunnable)
-currentDisplayableFactory!!.setDisplayable(this)
-OpenGLThreadUtil.getInstance()!!.onResume()
-
-                                    }
-                                
-                             else 
+    open func removeKeyInputListener(_ playerGameInput: PlayerGameInput!) {
+        self.gameKeyEventHandler.removeListener(playerGameInput)
+    }
     
-                        if(features.isDefault(this.openGLFeatureFactory!!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS))
-                        
-                                    {
-                                    this.logUtil!!.putF(this.openGLFeatureFactory!!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), this, this.commonStrings!!.RUN)
-OpenGLThreadUtil.getInstance()!!.onResume()
 
-        while(this.isRunning())
-        {
-this.run3()
-}
-
-this.end()
-
-                                    }
-                                
-                        else {
-                            this.logUtil!!.putF("this thread", this, this.commonStrings!!.RUN)
-
-        while(this.isRunning())
-        {
-this.run3()
-}
-
-this.end()
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun run3()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.loopTimeHelper!!.setStartTime(this.gameTickTimeDelayHelper!!.setStartTime())
-this.gameTickDisplayInfoSingleton!!.update()
-this.processGame()
-this.processLoopSleep()
-}
-
-
-    override fun setRunning(running: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var running = running
-super.setRunning(running)
-
-        try {
-            
-    var features: Features = Features.getInstance()!!
-
-
+    open func updateEndGameProcessor() {
+        self.gameBehavior.updateEndGameProcessor(self)
+    }
     
-                        if(running)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
+
+    open func updateEndGameProcessor2() {
+        if (self.getGameState() === self.gameStateFactory.SHOW_END_RESULT_GAME_STATE || self.getGameState() === self.gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE) {
+            self.setEndGameProcessor(self.realEndGameProcessor)
+        } else {
+            self.setEndGameProcessor(Processor.getInstance())
+        }
+    }
     
-                        if(features.isDefault(this.openGLFeatureFactory!!.OPENGL) || SWTUtil.isSWT)
-                        
-                                    {
-                                    
+
+    open func buildGameInit(_ isPortion: Bool) {
+    }
     
-                        if(this.gameLayerManager!!.getGameInfo()!!.getGameType() != this.gameTypeFactory!!.BOT)
-                        
-                                    {
-                                    
-    var currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!!
 
-currentDisplayableFactory!!.clearRunnable()
-
-                                    }
-                                
-this.end()
-
-                                    }
-                                
-
-                        }
-                            
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.SET_RUNNING, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun end()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.screenCapture!!.endRecording()
-this.baseGameStatistics!!.add(StringMaker().
-                            append(this.baseGameStatistics!!.toString())!!.append(CommonSeps.getInstance()!!.NEW_LINE)!!.toString())
-this.baseGameStatistics!!.init()
-this.gameKeyEventHandler!!.removeListener(this.cheatProcessor)
-this.close()
-this.removeAllGameKeyInputListeners()
-this.endGameThread()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun endGameThread()
-        //nullable = true from not(false or (false and true)) = true
-{
-DisplayChangeEventHandler.getInstance()!!.removeListener(this)
-GameLevelDisplayChangeEventListenersFactory.getInstance()!!.clear()
-
-    var gameAdState: GameAdState = this.gameAdStateFactory!!.getCurrentInstance()!!
-
-gameAdState!!.notPlayingAdState()
-}
-
-
-    open fun createHighScore(score: Long)
-        //nullable = true from not(false or (false and false)) = true
-: HighScore{
-var score = score
-
-    var gameInfo: GameInfo = this.gameLayerManager!!.getGameInfo()!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScore(0, "NONE", GameInfo(gameInfo!!.getGameType(), gameInfo!!.getGameMode(), PlayerTypesFactory.getInstance()!!.PLAYER_TYPE_ONE, 0, 0), score)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun setHighScore(abeClientInformation: AbeClientInformationInterface, name: String, score: Long, autoSubmit: Boolean, isLast: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-    //var name = name
-    //var score = score
-    //var autoSubmit = autoSubmit
-    //var isLast = isLast
-this.gameBehavior!!.setHighScore(abeClientInformation, this, name, score, autoSubmit, isLast)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun setHighScore2(abeClientInformation: AbeClientInformationInterface, name: String, score: Long, autoSubmit: Boolean, isLast: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-    //var name = name
-    //var score = score
-    //var autoSubmit = autoSubmit
-    //var isLast = isLast
-
-    var highScore: HighScore = this.createHighScore(score)!!
-
-
-    var textBox: HighScoreTextBox = HighScoreTextBox(this.highScoresFactoryInterface, this.highScoresHelper, abeClientInformation, this.gameLayerManager!!.getGameInfo(), this.getCustomCommandListener(), name, highScore, this.gameLayerManager!!.getBackgroundBasicColor(), this.gameLayerManager!!.getForegroundBasicColor())
-
-
+    open func cleanupGame() {
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CLEANUP)
+        let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+        progressCanvas.addNormalPortion(10, "Cleaning Up")
+        self.primaryPlayerQueue.clear()
+        self.secondaryPlayerQueue.clear()
+        GameLevelDisplayChangeEventListenersFactory.getInstance().clear()
+    }
     
-                        if(isLast)
-                        
-                                    {
-                                    this.getCustomCommandListener()!!.commandAction(GameCommandsFactory.getInstance()!!.SET_MENU_DISPLAYABLE, textBox)
 
-                                    }
-                                
-
+    open func loadResourceLoadingLevel(_ resourceLoadingLevel: ResourceLoadingLevel!) {
+        let gameInitializedEvent: GameInitializedEvent! = GameInitializationUtil.getInstance().EVENT
+        gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevel)
+        GameInitializedEventHandler.getInstance().fireEvent(gameInitializedEvent)
+    }
     
-                        if(autoSubmit)
-                        
-                                    {
-                                    SecondaryThreadPool.getInstance()!!.runTask(SaveHighScoreRunnable(isLast, textBox))
 
-                                    }
-                                
-}
-
-
-    open fun getGameStateTimeHelper()
-        //nullable = true from not(false or (false and true)) = true
-: TimeDelayHelper{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameStateTimeHelper
-}
-
-
-    open fun setInitialized(initialized: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var initialized = initialized
-this.initialized= initialized
-}
-
-
-    override fun isInitialized()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized
-}
-
-
-    override fun getSourceId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameCanvas.id
-}
-
-
-    open fun setProgressPaintable(paintable: PaintableInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var paintable = paintable
-this.progressPaintable= paintable
-}
-
-
-    override fun getStartIntermissionInterface()
-        //nullable = true from not(false or (false and true)) = true
-: IntermissionInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startIntermissionInterface
-}
-
-
-    override fun getEndLevelIntermissionInterface()
-        //nullable = true from not(false or (false and true)) = true
-: IntermissionInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endLevelIntermissionInterface
-}
-
-
-    open fun setTouchPaintableP(paintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-var paintable = paintable
-this.touchPaintable= paintable
-}
-
-
-    open fun getTouchPaintableP()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchPaintable
-}
-
-
-    open fun setEndGamePaintable(endGamePaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-var endGamePaintable = endGamePaintable
-this.endGamePaintable= endGamePaintable
-}
-
-
-    open fun getEndGamePaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGamePaintable
-}
-
-
-    open fun setIntermissionPaintable(intermissionPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-var intermissionPaintable = intermissionPaintable
-this.intermissionPaintable= intermissionPaintable
-}
-
-
-    open fun getIntermissionPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.intermissionPaintable
-}
-
-
-    open fun getEndGameInfoP()
-        //nullable = true from not(false or (false and true)) = true
-: EndGameInfo{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameInfo
-}
-
-
-    open fun setHighScoresPaintable(highScoresPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var highScoresPaintable = highScoresPaintable
-this.highScoresPaintable= highScoresPaintable
-}
-
-
-    open fun getHighScoresPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresPaintable
-}
-
-
-    open fun getRealHighScoresPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: HighScoresPaintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.realHighScoresPaintable
-}
-
-
-    open fun clearPlayerGameInputList()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var playerGameInput: PlayerGameInput
-
-
-
-
-
-                        for (index in this.localPlayerGameInputList!!.size() -1 downTo 0)
-
-        {
-playerGameInput= this.localPlayerGameInputList!!.get(index) as PlayerGameInput
-this.gameKeyEventHandler!!.removeListener(playerGameInput)
-}
-
-this.localPlayerGameInputList!!.clear()
-}
-
-
-    open fun addPlayerGameInput(playerGameInput: PlayerGameInput)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var playerGameInput = playerGameInput
-this.localPlayerGameInputList!!.add(playerGameInput)
-}
-
-
-    open fun setMenuInputProcessor(menuInputProcessor: BasicMenuInputProcessor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var menuInputProcessor = menuInputProcessor
-this.menuInputProcessor= menuInputProcessor
-}
-
-
-    open fun getMenuInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicMenuInputProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuInputProcessor
-}
-
-
-    open fun getMenuForm()
-        //nullable = true from not(false or (false and true)) = true
-: ScrollSelectionForm{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuForm
-}
-
-
-    open fun setMenuForm(menuForm: ScrollSelectionForm)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var menuForm = menuForm
-this.menuForm= menuForm
-}
-
-
-    open fun getStartLevel()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startLevel
-}
-
-
-    open fun setStartLevel(startLevel: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var startLevel = startLevel
-this.startLevel= startLevel
-}
-
-
-    open fun setTouchButtonsPaintable(touchButtonsPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var touchButtonsPaintable = touchButtonsPaintable
-this.touchButtonsPaintable= touchButtonsPaintable
-}
-
-
-    open fun getTouchButtonsPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchButtonsPaintable
-}
-
-
-    open fun setGameInputProcessor(gameInputProcessor: Processor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameInputProcessor = gameInputProcessor
-this.gameInputProcessor= gameInputProcessor
-}
-
-
-    open fun getGameInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: Processor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInputProcessor
-}
-
-
-    open fun setEndGameProcessor(endGameProcessor: Processor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var endGameProcessor = endGameProcessor
-this.endGameProcessor= endGameProcessor
-}
-
-
-    open fun getEndGameProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: Processor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameProcessor
-}
-
-
-    open fun setEndGameStatePaintable(endGameStatePaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var endGameStatePaintable = endGameStatePaintable
-this.endGameStatePaintable= endGameStatePaintable
-}
-
-
-    open fun getEndGameStatePaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameStatePaintable
-}
-
-
-    open fun setNonBotPaintableP(nonBotPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var nonBotPaintable = nonBotPaintable
-this.nonBotPaintable= nonBotPaintable
-}
-
-
-    open fun getNonBotPaintableP()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nonBotPaintable
-}
-
-
-    open fun setStartIntermissionPaintable(startIntermissionPaintable: InitUpdatePaintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var startIntermissionPaintable = startIntermissionPaintable
-this.startIntermissionPaintable= startIntermissionPaintable
-}
-
-
-    open fun getStartIntermissionPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: InitUpdatePaintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startIntermissionPaintable
-}
-
-
-    open fun setMainStateProcessor(mainStateProcessor: Processor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var mainStateProcessor = mainStateProcessor
-this.mainStateProcessor= mainStateProcessor
-}
-
-
-    open fun getMainStateProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: Processor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainStateProcessor
-}
-
-
-    open fun setProcessGameProcessor(processGameProcessor: Processor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var processGameProcessor = processGameProcessor
-this.processGameProcessor= processGameProcessor
-}
-
-
-    open fun getProcessGameProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: Processor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.processGameProcessor
-}
-
-
-    open fun setOpenMenuPaintable(openMenuPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var openMenuPaintable = openMenuPaintable
-this.openMenuPaintable= openMenuPaintable
-}
-
-
-    open fun getOpenMenuPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.openMenuPaintable
-}
-
-
-    open fun setPopupMenuInputProcessor(popupMenuInputProcessor: BasicMenuInputProcessor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var popupMenuInputProcessor = popupMenuInputProcessor
-this.popupMenuInputProcessor= popupMenuInputProcessor
-}
-
-
-    open fun getPopupMenuInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicMenuInputProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.popupMenuInputProcessor
-}
-
-
-    open fun getSensorGameUpdateProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: SensorGameUpdateProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sensorGameUpdateProcessor
-}
-
-
-    open fun getRawGameInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: InputProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rawGameInputProcessor
-}
-
-
-    open fun getRawInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: InputProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rawInputProcessor
-}
-
-
-    open fun setInputProcessor(inputProcessor: InputProcessor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var inputProcessor = inputProcessor
-this.inputProcessor= inputProcessor
-}
-
-
-    open fun getInputProcessor()
-        //nullable = true from not(false or (false and true)) = true
-: InputProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputProcessor
-}
-
-
-    open fun setMenuPaintable(menuPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var menuPaintable = menuPaintable
-this.menuPaintable= menuPaintable
-}
-
-
-    open fun getMenuPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuPaintable
-}
-
-
-    open fun setFormPaintable(formPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var formPaintable = formPaintable
-this.formPaintable= formPaintable
-}
-
-
-    open fun getFormPaintable()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.formPaintable
-}
-
-
-    open fun setGameSpecificPaintableP(gameSpecificPaintable: Paintable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameSpecificPaintable = gameSpecificPaintable
-this.gameSpecificPaintable= gameSpecificPaintable
-}
-
-
-    open fun getGameSpecificPaintableP()
-        //nullable = true from not(false or (false and true)) = true
-: Paintable{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameSpecificPaintable
-}
-
-
-    override fun isSingleThread()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil.getInstance()!!.isAnyThreed() || SWTUtil.isSWT
-}
-
-
-    open fun isRunningInAnotherThread()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-    var features: Features = Features.getInstance()!!
-
-
-    var openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!!
-
-
+    open func loadResources(_ level: Int32) {
+        let gameInitializedEvent: GameInitializedEvent! = GameInitializationUtil.getInstance().EVENT
+        gameInitializedEvent.setLevel(level)
+        GameInitializedEventHandler.getInstance().fireEvent(gameInitializedEvent)
+    }
     
-                        if(features.isDefault(openGLFeatureFactory!!.OPENGL_AS_GAME_THREAD))
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRunning()
+    open func updateColor() {
+    }
+    
 
-                        }
-                            
+    open func buildGame(_ portion: Int32) {
+        self.screenCapture.endRecording()
+        self.screenCapture.startRecording()
+        let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+        let features: Features! = Features.getInstance()
+        progressCanvas.addNormalPortion(portion, "Generic Build")
+        self.removeAllGameKeyInputListenersOnBuild()
+        self.updateTouch()
+        progressCanvas.addNormalPortion(portion, "High Scores")
+        self.highScoresFactoryInterface.fetchHighScores(self.gameLayerManager.getGameInfo(), self.highScoresHelper)
+        self.setHighScoresPaintable(NullPaintable.getInstance())
+        progressCanvas.addNormalPortion(portion, "Finishing.")
+        self.getEndGameInfoP().update(self.getLayerManager().getGameInfo(), self)
+        self.isSingleKeyRepeatableProcessing = features.isFeature(InputFeatureFactory.getInstance().SINGLE_KEY_REPEAT_PRESS)
+        self.setGameOver(false)
+        progressCanvas.addNormalPortion(portion, "Finishing..")
+        self.updateColor()
+        self.getStartIntermissionPaintable().update()
+        if (!self.isRunningInAnotherThread()) {
+            return
+        }
+        progressCanvas.addNormalPortion(portion, "Finishing...")
+        if (self.isMainCanvas() || !self.isInitialized()) {
+            if (features.isFeature(MainFeatureFactory.getInstance().LOAD_ONDEMAND)) {
+                if (self.getCustomCommandListener() != nil) {
+                    progressCanvas.end()
+                }
+            } else {
+                progressCanvas.end()
+            }
+            self.setInitialized(true)
+        }
+        if (self.getCustomCommandListener() === NullCommandListener.NULL_COMMAND_LISTENER) {
+            self.logUtil.putF("Show Game Paintable in DemoCanvas Thread", self, self.BUILD_GAME)
+            self.gameCanvasStartListener.showGamePaintable()
+        } else {
+            self.logUtil.putF("No GameCanvasStartListener", self, self.BUILD_GAME)
+        }
+        self.colorFillPaintable.setBasicColorP(self.gameLayerManager.getBackgroundBasicColor())
+        self.gameBehavior.buildGame(self)
+    }
+    
+
+    open func buildGame2() {
+        PreLogUtil.put(StringMaker().append(self.gameInputStrings.ENABLE_PLAYER_GAME_INPUTS).appendint(self.localPlayerGameInputList.size()).toString(), self, self.BUILD_GAME)
+        var playerGameInput: PlayerGameInput! = nil
+        do {
+            var index: Int32 = self.localPlayerGameInputList.size() &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            playerGameInput = (self.localPlayerGameInputList.get(index) as! PlayerGameInput)
+            PreLogUtil.put(StringMaker().append(self.gameInputStrings.ENABLE_PLAYER_GAME_INPUT).append(playerGameInput.toString()).toString(), self, self.BUILD_GAME)
+            playerGameInput.removeNonAIInputGameKeyEvents()
+            self.addKeyInputListener(playerGameInput)
+            }
+        }
+    }
+    
+
+    open func addKeyInputListener(_ playerGameInput: PlayerGameInput!) {
+        GameKeyEventHandler.getInstance().addListenerForPlayer(playerGameInput, playerGameInput.getPlayerInputId())
+    }
+    
+
+    open func setGameCanvasStartListener(_ gameCanvasStartListener: DemoPaintableInterface!) {
+        self.gameCanvasStartListener = gameCanvasStartListener
+    }
+    
+
+    open func loadState() {
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.LOAD)
+        let hashtable: ABHashtable! = self.getLoadStateHashtable()
+        if (hashtable != nil && hashtable.size() > 0) {
+            let levelAsString: String! = jUnboxString(hashtable.get((GameInfo.LEVEL_NAME as! JObject)))
+            let level: Int32 = jstr(levelAsString).intValue()
+            let gameInfo: GameInfo! = self.gameLayerManager.getGameInfo()
+            gameInfo.setCurrentLevel(level)
+        }
+    }
+    
+
+    @discardableResult open override func getLoadStateHashtable() -> ABHashtable! {
+        self.logUtil.putF(StringMaker().append(self.commonLabels.START_LABEL).append(self.stringUtil.toString(self.hashtable)).toString(), self, "getLoadStateHashtable")
+        return self.hashtable
+    }
+    
+
+    open override func setLoadStateHashtable(_ hashtable: ABHashtable!) {
+        self.logUtil.putF(StringMaker().append(self.commonLabels.START_LABEL).append(self.stringUtil.toString(hashtable)).toString(), self, "setLoadStateHashtable")
+        self.hashtable = hashtable
+    }
+    
+
+    @discardableResult open override func getCurrentStateHashtable() -> ABHashtable! {
+        let hashtable: ABHashtable! = self.stdUtil.createHashtable()
+        let level: Int32 = self.gameLayerManager.getGameInfo().getCurrentLevel()
+        hashtable.put(jBoxString(GameInfo.LEVEL_NAME.toString()), jBoxString(jstr(level)))
+        self.logUtil.putF(StringMaker().append("End: ").append(self.stringUtil.toString(hashtable)).toString(), self, "getCurrentStateHashtable")
+        return hashtable
+    }
+    
+
+    open func paintGameOver(_ graphics: Graphics!) {
+        ForcedLogUtil.log(self.commonStrings.NOT_IMPLEMENTED, self)
+    }
+    
+
+    open override func draw(_ graphics: Graphics!) {
+        self.colorFillPaintable.paint(graphics)
+        self.basicSetColorUtil.setBasicColorP(graphics, self.gameLayerManager.getForegroundBasicColor())
+        self.gameSpecificPaintable.paint(graphics)
+    }
+    
+
+    open func clear(_ graphics: Graphics!) {
+        self.colorFillPaintable.paint(graphics)
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        self.baseGameStatistics.nextRefresh()
+        self.draw(graphics)
+        self.menuPaintable.paint(graphics)
+        self.progressPaintable.paint(graphics)
+    }
+    
+
+    open override func paintThreed(_ graphics: Graphics!) {
+    }
+    
+
+    open func processEndLevelIntermissionGameState() {
+    }
+    
+
+    open func nonBotPaint(_ graphics: Graphics!) {
+        self.endGamePaintable.paint(graphics)
+        self.intermissionPaintable.paint(graphics)
+        self.paintIntermission(graphics)
+        self.touchPaintable.paint(graphics)
+    }
+    
+
+    open func paintIntermission(_ graphics: Graphics!) {
+    }
+    
+
+    open override func keyPressed(_ keyCode: Int32) {
+        self.keyPressedByDevice(keyCode, 0)
+    }
+    
+
+    open override func keyReleased(_ keyCode: Int32) {
+        self.keyReleasedByDevice(keyCode, 0)
+    }
+    
+
+    open override func keyRepeated(_ keyCode: Int32) {
+        self.keyRepeatedByDevice(keyCode, 0)
+    }
+    
+
+    open override func keyPressedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+        self.inputProcessor.keyPressedByDevice(keyCode, deviceId)
+    }
+    
+
+    open override func keyRepeatedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+        if (self.isSingleKeyRepeatableProcessing) {
+            self.inputProcessor.keyPressedByDevice(keyCode, deviceId)
+        }
+    }
+    
+
+    open override func keyReleasedByDevice(_ keyCode: Int32, _ deviceId: Int32) {
+        self.inputProcessor.keyReleasedByDevice(self, keyCode, deviceId)
+    }
+    
+
+    open func handleRawKey(_ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool) {
+    }
+    
+
+    @discardableResult open func endProgress(_ isProgress: Bool) -> Int32 {
+        var portion: Int32 = 30
+        if (isProgress && self.isMainCanvas()) {
+            let myCommandsFactory: MyCommandsFactory! = MyCommandsFactory.getInstance()
+            let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+            progressCanvas.start()
+            self.getCustomCommandListener().commandAction(myCommandsFactory.SET_DISPLAYABLE, progressCanvas)
+            portion = 4
+        }
+        return portion
+    }
+    
+
+    open func processPlayingGame() {
+        self.cheatProcessor.update()
+        self.sensorGameUpdateProcessor.getInputSensor().update()
+        self.gameInputProcessor.process()
+        self.gameLayerManager.process()
+        self.startIntermissionProcessor.process()
+    }
+    
+
+    open func threadInit() {
+    }
+    
+
+    open func processGame() {
+        super.process()
+        if (AllBinaryMediaManager.update()) {
+            if (!self.primaryPlayerQueue.process()) {
+                self.secondaryPlayerQueue.process()
+            }
+        }
+        self.mainStateProcessor.process()
+        self.menuInputProcessor.processInputList()
+        self.endGameProcessor.process()
+        self.baseGameStatistics.nextFrame()
+    }
+    
+
+    open func notifyDonePainting() {
+        do {
+            self.threadObjectUtil.notifyObject(self)
+        }
+    }
+    
+
+    open func shouldWait() {
+        let features: Features! = Features.getInstance()
+        if (AndroidUtil.isAndroid()) {
+        } else if (features.isFeature(self.openGLFeatureFactory.OPENGL_2D)) {
+        } else {
+            if (features.isDefault(self.openGLFeatureFactory.OPENGL)) {
+                let openGLImageSpecificFactory: OpenGLImageSpecificFactory! = OpenGLImageSpecificFactory.getInstance()
+                while (openGLImageSpecificFactory.updating) {
+                    Thread.sleep(self.YIELD_SLEEP)
+                }
+            }
+        }
+    }
+    
+
+    open override func run() {
+        do {
+            self.logUtil.putF(self.commonStrings.START_RUNNABLE, self, self.commonStrings.RUN)
+            let progressCanvas: ProgressCanvas! = ProgressCanvasFactory.getInstance()
+            progressCanvas.addNormalPortion(50, "Game Thread")
+            self.setCurrentThread()
+            self.setRunning(true)
+            if (self.getCustomCommandListener() === NullCommandListener.NULL_COMMAND_LISTENER) {
+                Thread.sleep(self.YIELD_SLEEP)
+            }
+            self.shouldWait()
+            self.threadInit()
+            if (self.getCustomCommandListener() === NullCommandListener.NULL_COMMAND_LISTENER) {
+                Thread.sleep(self.YIELD_SLEEP)
+            }
+            self.`open`()
+            let gameAdState: GameAdState! = self.gameAdStateFactory.getCurrentInstance()
+            gameAdState.`init`()
+            gameAdState.setGameIsReady(true)
+            self.gameBehavior.run(self)
+            self.logUtil.putF(self.commonStrings.END_RUNNABLE, self, self.commonStrings.RUN)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func run2() {
+        let features: Features! = Features.getInstance()
+        if (features.isDefault(self.openGLFeatureFactory.OPENGL_AS_GAME_THREAD) || J2MEUtil.isHTML()) {
+            if (features.isDefault(self.openGLFeatureFactory.OPENGL_AS_GAME_THREAD)) {
+                self.logUtil.putF(self.openGLFeatureFactory.OPENGL_AS_GAME_THREAD.getName(), self, self.commonStrings.RUN)
+            }
+            if (J2MEUtil.isHTML()) {
+                self.logUtil.putF(GraphicsStrings.getInstance().HTML, self, self.commonStrings.RUN)
+            }
+            let currentDisplayableFactory: CurrentDisplayableFactory! = CurrentDisplayableFactory.getInstance()
+            currentDisplayableFactory.setRunnable(self.gameRunnable)
+            currentDisplayableFactory.setDisplayable(self)
+            OpenGLThreadUtil.getInstance().onResume()
+        } else if (features.isDefault(self.openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS)) {
+            self.logUtil.putF(self.openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), self, self.commonStrings.RUN)
+            OpenGLThreadUtil.getInstance().onResume()
+            while (self.isRunning()) {
+                self.run3()
+            }
+            self.end()
+        } else {
+            self.logUtil.putF("this thread", self, self.commonStrings.RUN)
+            while (self.isRunning()) {
+                self.run3()
+            }
+            self.end()
+        }
+    }
+    
+
+    open func run3() {
+        self.loopTimeHelper.setStartTime(self.gameTickTimeDelayHelper.setStartTime())
+        self.gameTickDisplayInfoSingleton.update()
+        self.processGame()
+        self.processLoopSleep()
+    }
+    
+
+    open override func setRunning(_ running: Bool) {
+        super.setRunning(running)
+        do {
+            let features: Features! = Features.getInstance()
+            if (running) {
+            } else {
+                if (features.isDefault(self.openGLFeatureFactory.OPENGL) || SWTUtil.isSWT) {
+                    if (self.gameLayerManager.getGameInfo().getGameType() != self.gameTypeFactory.BOT) {
+                        let currentDisplayableFactory: CurrentDisplayableFactory! = CurrentDisplayableFactory.getInstance()
+                        currentDisplayableFactory.clearRunnable()
+                    }
+                    self.end()
+                }
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open func end() {
+        self.screenCapture.endRecording()
+        self.baseGameStatistics.add(StringMaker().append(self.baseGameStatistics.toString()).append(CommonSeps.getInstance().NEW_LINE).toString())
+        self.baseGameStatistics.`init`()
+        self.gameKeyEventHandler.removeListener(self.cheatProcessor)
+        self.close()
+        self.removeAllGameKeyInputListeners()
+        self.endGameThread()
+    }
+    
+
+    open func endGameThread() {
+        DisplayChangeEventHandler.getInstance().removeListener(self)
+        GameLevelDisplayChangeEventListenersFactory.getInstance().clear()
+        let gameAdState: GameAdState! = self.gameAdStateFactory.getCurrentInstance()
+        gameAdState.notPlayingAdState()
+    }
+    
+
+    @discardableResult open func createHighScore(_ score: Int64) -> HighScore! {
+        let gameInfo: GameInfo! = self.gameLayerManager.getGameInfo()
+        return HighScore(0, "NONE", GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), PlayerTypesFactory.getInstance().PLAYER_TYPE_ONE, 0, 0), score)
+    }
+    
+
+    open func setHighScore(_ abeClientInformation: AbeClientInformationInterface!, _ name: String!, _ score: Int64, _ autoSubmit: Bool, _ isLast: Bool) {
+        self.gameBehavior.setHighScore(abeClientInformation, self, name, score, autoSubmit, isLast)
+    }
+    
+
+    open func setHighScore2(_ abeClientInformation: AbeClientInformationInterface!, _ name: String!, _ score: Int64, _ autoSubmit: Bool, _ isLast: Bool) {
+        let highScore: HighScore! = self.createHighScore(score)
+        let textBox: HighScoreTextBox! = HighScoreTextBox(self.highScoresFactoryInterface, self.highScoresHelper, abeClientInformation, self.gameLayerManager.getGameInfo(), self.getCustomCommandListener(), name, highScore, self.gameLayerManager.getBackgroundBasicColor(), self.gameLayerManager.getForegroundBasicColor())
+        if (isLast) {
+            self.getCustomCommandListener().commandAction(GameCommandsFactory.getInstance().SET_MENU_DISPLAYABLE, textBox)
+        }
+        if (autoSubmit) {
+            SecondaryThreadPool.getInstance().runTask(SaveHighScoreRunnable(isLast, textBox))
+        }
+    }
+    
+
+    @discardableResult open func getGameStateTimeHelper() -> TimeDelayHelper! {
+        return self.gameStateTimeHelper
+    }
+    
+
+    open func setInitialized(_ initialized: Bool) {
+        self.initialized = initialized
+    }
+    
+
+    @discardableResult open override func isInitialized() -> Bool {
+        return self.initialized
+    }
+    
+
+    @discardableResult open override func getSourceId() -> Int32 {
+        return AllBinaryGameCanvas.id
+    }
+    
+
+    open func setProgressPaintable(_ paintable: PaintableInterface!) {
+        self.progressPaintable = paintable
+    }
+    
+
+    @discardableResult open override func getStartIntermissionInterface() -> IntermissionInterface! {
+        return self.startIntermissionInterface
+    }
+    
+
+    @discardableResult open override func getEndLevelIntermissionInterface() -> IntermissionInterface! {
+        return self.endLevelIntermissionInterface
+    }
+    
+
+    open func setTouchPaintableP(_ paintable: Paintable!) {
+        self.touchPaintable = paintable
+    }
+    
+
+    @discardableResult open func getTouchPaintableP() -> Paintable! {
+        return self.touchPaintable
+    }
+    
+
+    open func setEndGamePaintable(_ endGamePaintable: Paintable!) {
+        self.endGamePaintable = endGamePaintable
+    }
+    
+
+    @discardableResult open func getEndGamePaintable() -> Paintable! {
+        return self.endGamePaintable
+    }
+    
+
+    open func setIntermissionPaintable(_ intermissionPaintable: Paintable!) {
+        self.intermissionPaintable = intermissionPaintable
+    }
+    
+
+    @discardableResult open func getIntermissionPaintable() -> Paintable! {
+        return self.intermissionPaintable
+    }
+    
+
+    @discardableResult open func getEndGameInfoP() -> EndGameInfo! {
+        return self.endGameInfo
+    }
+    
+
+    open func setHighScoresPaintable(_ highScoresPaintable: Paintable!) {
+        self.highScoresPaintable = highScoresPaintable
+    }
+    
+
+    @discardableResult open func getHighScoresPaintable() -> Paintable! {
+        return self.highScoresPaintable
+    }
+    
+
+    @discardableResult open func getRealHighScoresPaintable() -> HighScoresPaintable! {
+        return self.realHighScoresPaintable
+    }
+    
+
+    open func clearPlayerGameInputList() {
+        var playerGameInput: PlayerGameInput! = nil
+        do {
+            var index: Int32 = self.localPlayerGameInputList.size() &- 1
+            while (index >= 0) {
+                defer { index &-= 1 }
+            playerGameInput = (self.localPlayerGameInputList.get(index) as! PlayerGameInput)
+            self.gameKeyEventHandler.removeListener(playerGameInput)
+            }
+        }
+        self.localPlayerGameInputList.clear()
+    }
+    
+
+    open func addPlayerGameInput(_ playerGameInput: PlayerGameInput!) {
+        self.localPlayerGameInputList.add(playerGameInput)
+    }
+    
+
+    open func setMenuInputProcessor(_ menuInputProcessor: BasicMenuInputProcessor!) {
+        self.menuInputProcessor = menuInputProcessor
+    }
+    
+
+    @discardableResult open func getMenuInputProcessor() -> BasicMenuInputProcessor! {
+        return self.menuInputProcessor
+    }
+    
+
+    @discardableResult open func getMenuForm() -> ScrollSelectionForm! {
+        return self.menuForm
+    }
+    
+
+    open func setMenuForm(_ menuForm: ScrollSelectionForm!) {
+        self.menuForm = menuForm
+    }
+    
+
+    @discardableResult open func getStartLevel() -> Int32 {
+        return self.startLevel
+    }
+    
+
+    open func setStartLevel(_ startLevel: Int32) {
+        self.startLevel = startLevel
+    }
+    
+
+    open func setTouchButtonsPaintable(_ touchButtonsPaintable: Paintable!) {
+        self.touchButtonsPaintable = touchButtonsPaintable
+    }
+    
+
+    @discardableResult open func getTouchButtonsPaintable() -> Paintable! {
+        return self.touchButtonsPaintable
+    }
+    
+
+    open func setGameInputProcessor(_ gameInputProcessor: Processor!) {
+        self.gameInputProcessor = gameInputProcessor
+    }
+    
+
+    @discardableResult open func getGameInputProcessor() -> Processor! {
+        return self.gameInputProcessor
+    }
+    
+
+    open func setEndGameProcessor(_ endGameProcessor: Processor!) {
+        self.endGameProcessor = endGameProcessor
+    }
+    
+
+    @discardableResult open func getEndGameProcessor() -> Processor! {
+        return self.endGameProcessor
+    }
+    
+
+    open func setEndGameStatePaintable(_ endGameStatePaintable: Paintable!) {
+        self.endGameStatePaintable = endGameStatePaintable
+    }
+    
+
+    @discardableResult open func getEndGameStatePaintable() -> Paintable! {
+        return self.endGameStatePaintable
+    }
+    
+
+    open func setNonBotPaintableP(_ nonBotPaintable: Paintable!) {
+        self.nonBotPaintable = nonBotPaintable
+    }
+    
+
+    @discardableResult open func getNonBotPaintableP() -> Paintable! {
+        return self.nonBotPaintable
+    }
+    
+
+    open func setStartIntermissionPaintable(_ startIntermissionPaintable: InitUpdatePaintable!) {
+        self.startIntermissionPaintable = startIntermissionPaintable
+    }
+    
+
+    @discardableResult open func getStartIntermissionPaintable() -> InitUpdatePaintable! {
+        return self.startIntermissionPaintable
+    }
+    
+
+    open func setMainStateProcessor(_ mainStateProcessor: Processor!) {
+        self.mainStateProcessor = mainStateProcessor
+    }
+    
+
+    @discardableResult open func getMainStateProcessor() -> Processor! {
+        return self.mainStateProcessor
+    }
+    
+
+    open func setProcessGameProcessor(_ processGameProcessor: Processor!) {
+        self.processGameProcessor = processGameProcessor
+    }
+    
+
+    @discardableResult open func getProcessGameProcessor() -> Processor! {
+        return self.processGameProcessor
+    }
+    
+
+    open func setOpenMenuPaintable(_ openMenuPaintable: Paintable!) {
+        self.openMenuPaintable = openMenuPaintable
+    }
+    
+
+    @discardableResult open func getOpenMenuPaintable() -> Paintable! {
+        return self.openMenuPaintable
+    }
+    
+
+    open func setPopupMenuInputProcessor(_ popupMenuInputProcessor: BasicMenuInputProcessor!) {
+        self.popupMenuInputProcessor = popupMenuInputProcessor
+    }
+    
+
+    @discardableResult open func getPopupMenuInputProcessor() -> BasicMenuInputProcessor! {
+        return self.popupMenuInputProcessor
+    }
+    
+
+    @discardableResult open func getSensorGameUpdateProcessor() -> SensorGameUpdateProcessor! {
+        return self.sensorGameUpdateProcessor
+    }
+    
+
+    @discardableResult open func getRawGameInputProcessor() -> InputProcessor! {
+        return self.rawGameInputProcessor
+    }
+    
+
+    @discardableResult open func getRawInputProcessor() -> InputProcessor! {
+        return self.rawInputProcessor
+    }
+    
+
+    open func setInputProcessor(_ inputProcessor: InputProcessor!) {
+        self.inputProcessor = inputProcessor
+    }
+    
+
+    @discardableResult open func getInputProcessor() -> InputProcessor! {
+        return self.inputProcessor
+    }
+    
+
+    open func setMenuPaintable(_ menuPaintable: Paintable!) {
+        self.menuPaintable = menuPaintable
+    }
+    
+
+    @discardableResult open func getMenuPaintable() -> Paintable! {
+        return self.menuPaintable
+    }
+    
+
+    fileprivate func setFormPaintable(_ formPaintable: Paintable!) {
+        self.formPaintable = formPaintable
+    }
+    
+
+    @discardableResult open func getFormPaintable() -> Paintable! {
+        return self.formPaintable
+    }
+    
+
+    open func setGameSpecificPaintableP(_ gameSpecificPaintable: Paintable!) {
+        self.gameSpecificPaintable = gameSpecificPaintable
+    }
+    
+
+    @discardableResult open func getGameSpecificPaintableP() -> Paintable! {
+        return self.gameSpecificPaintable
+    }
+    
+
+    @discardableResult open override func isSingleThread() -> Bool {
+        return OpenGLFeatureUtil.getInstance().isAnyThreed() || SWTUtil.isSWT
+    }
+    
+
+    @discardableResult open func isRunningInAnotherThread() -> Bool {
+        let features: Features! = Features.getInstance()
+        let openGLFeatureFactory: OpenGLFeatureFactory! = OpenGLFeatureFactory.getInstance()
+        if (features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD)) {
+            return true
+        } else {
+            return self.isRunning()
+        }
+    }
+    
+
+    @discardableResult open override func getType() -> Int32 {
+        return AllBinaryGameCanvas.TYPE
+    }
+    
+
+    @discardableResult open override func getTitle() -> String! {
+        return super.getTitle()
+    }
+    
+
+    @discardableResult open override func isPaused() -> Bool {
+        return super.isPaused()
+    }
 }
-
-
-    override fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameCanvas.TYPE
-}
-
-
-    override fun getTitle()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getTitle()
-}
-
-
-    override fun isPaused()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isPaused()
-}
-
-
-}
-                
-            
 

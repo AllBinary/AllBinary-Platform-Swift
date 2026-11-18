@@ -1,96 +1,68 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.caption
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.caption
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.animation.Animation
 
+open class CaptionAnimation: Animation {
+    fileprivate var animationInterface: Animation! = nil
+    fileprivate var overlayAnimationInterface: Animation! = nil
+    fileprivate var captionDx: Int32 = 0
+    fileprivate var captionDy: Int32 = 0
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    
+    
+    }
+    
 
+    public init(_ animationInterface: Animation!, _ overlayAnimationInterface: Animation!, _ captionDx: Int32, _ captionDy: Int32, _ dx: Int32, _ dy: Int32) {
+        super.init()
+        self.initFields()
+        self.animationInterface = animationInterface
+        self.overlayAnimationInterface = overlayAnimationInterface
+        self.captionDx = captionDx
+        self.captionDy = captionDy
+        self.dx = dx
+        self.dy = dy
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.animation.Animation
+    open override func nextFrame() {
+    }
+    
 
-open public class CaptionAnimation : Animation {
-        
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.animationInterface.paintXY(graphics, x &+ self.captionDx, y &+ self.captionDy)
+        self.overlayAnimationInterface.paintXY(graphics, x &+ self.captionDx &+ self.dx, y &+ self.captionDy &+ self.dy)
+    }
+    
 
-    private val animationInterface: Animation
-
-    private val overlayAnimationInterface: Animation
-
-    private val captionDx: Int
-
-    private val captionDy: Int
-
-    private val dx: Int
-
-    private val dy: Int
-public constructor (animationInterface: Animation, overlayAnimationInterface: Animation, captionDx: Int, captionDy: Int, dx: Int, dy: Int){
-    //var animationInterface = animationInterface
-    //var overlayAnimationInterface = overlayAnimationInterface
-    //var captionDx = captionDx
-    //var captionDy = captionDy
-    //var dx = dx
-    //var dy = dy
-this.animationInterface= animationInterface
-this.overlayAnimationInterface= overlayAnimationInterface
-this.captionDx= captionDx
-this.captionDy= captionDy
-this.dx= dx
-this.dy= dy
+    open override func paintThreedXYZ(_ graphics: Graphics!, _ x: Int32, _ y: Int32, _ z: Int32) {
+        self.animationInterface.paintThreedXYZ(graphics, x &+ self.captionDx, y &+ self.captionDy, z)
+        self.overlayAnimationInterface.paintThreedXYZ(graphics, x &+ self.captionDx &+ self.dx, y &+ self.captionDy &+ self.dy, z)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.animationInterface!!.paintXY(graphics, x +this.captionDx, y +this.captionDy)
-this.overlayAnimationInterface!!.paintXY(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy)
-}
-
-
-    override fun paintThreedXYZ(graphics: Graphics, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-    //var z = z
-this.animationInterface!!.paintThreedXYZ(graphics, x +this.captionDx, y +this.captionDy, z)
-this.overlayAnimationInterface!!.paintThreedXYZ(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy, z)
-}
-
-
-}
-                
-            
 

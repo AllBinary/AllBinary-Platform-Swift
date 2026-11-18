@@ -1,77 +1,43 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.util.BasicArrayListD
 
+open class NoPlayerGameInput: PlayerGameInput {
+    fileprivate static let SINGLETON: NoPlayerGameInput! = NoPlayerGameInput()
+    
 
+    @discardableResult open class func getInstance() -> NoPlayerGameInput! {
+        return NoPlayerGameInput.SINGLETON
+    }
+    
 
+    public init() {
+        super.init(BasicArrayListD(), BasicArrayListD(), -1)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.util.BasicArrayListD
+    open override func onDownGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+    }
+    
 
-open public class NoPlayerGameInput : PlayerGameInput {
-        
-companion object {
-            
-    private val SINGLETON: NoPlayerGameInput = NoPlayerGameInput()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: NoPlayerGameInput{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayerGameInput.SINGLETON
+    open override func onUpGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+    }
 }
-
-
-        }
-            private constructor ()                        
-
-                            : super(BasicArrayListD(), BasicArrayListD(),  -1){
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onDownGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onUpGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-}
-
-
-}
-                
-            
 

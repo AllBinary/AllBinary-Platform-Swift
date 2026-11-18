@@ -1,85 +1,54 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.media.ScaleProperties
 
+open class BaseAnimationInterfaceFactoryInterfaceComposite: JObject, AnimationInterfaceFactoryInterface {
+    fileprivate var basicAnimationInterfaceFactoryInterfaceArray: JArray<BasicAnimationInterfaceFactoryInterface?>! = nil
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ basicAnimationInterfaceFactoryInterfaceArray: JArray<BasicAnimationInterfaceFactoryInterface?>!) {
+        super.init()
+        self.initFields()
+        self.basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.media.ScaleProperties
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        return NullAnimationFactory.getFactoryInstance().getInstance(0)
+    }
+    
 
-open public class BaseAnimationInterfaceFactoryInterfaceComposite
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
+    @discardableResult open func getBasicAnimationInterfaceFactoryInterfaceArray() -> JArray<BasicAnimationInterfaceFactoryInterface?>! {
+        return self.basicAnimationInterfaceFactoryInterfaceArray
+    }
+    
 
-    private var basicAnimationInterfaceFactoryInterfaceArray: Array<BasicAnimationInterfaceFactoryInterface?>
-public constructor (basicAnimationInterfaceFactoryInterfaceArray: Array<BasicAnimationInterfaceFactoryInterface?>)
-            : super()
-        {
-var basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray
-this.basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray
+    open func setBasicAnimationInterfaceFactoryInterfaceArray(_ basicAnimationInterfaceFactoryInterfaceArray: JArray<BasicAnimationInterfaceFactoryInterface?>!) {
+        self.basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray
+    }
+    
+
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!!.getInstance(0)
-}
-
-
-    open fun getBasicAnimationInterfaceFactoryInterfaceArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<BasicAnimationInterfaceFactoryInterface?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicAnimationInterfaceFactoryInterfaceArray
-}
-
-
-    open fun setBasicAnimationInterfaceFactoryInterfaceArray(basicAnimationInterfaceFactoryInterfaceArray: Array<BasicAnimationInterfaceFactoryInterface?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-var basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray
-this.basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

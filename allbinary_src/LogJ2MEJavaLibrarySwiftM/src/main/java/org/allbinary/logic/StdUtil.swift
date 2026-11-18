@@ -37,7 +37,7 @@ open class StdUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> StdUtil! {
+    @discardableResult open class func getInstance() -> StdUtil! {
         return StdUtil.instance
     }
     

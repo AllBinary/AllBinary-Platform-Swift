@@ -43,7 +43,7 @@ open class NoDecimalTrigTable: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> NoDecimalTrigTable! {
+    @discardableResult open class func getInstance() -> NoDecimalTrigTable! {
         return NoDecimalTrigTable.instance
     }
     

@@ -1,99 +1,60 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.util.BasicArrayListUtil
 
+open class ArtificialIntelligenceInterfaceFactoryInterfaceFactory: JObject {
+    fileprivate static var SINGLETON: ArtificialIntelligenceInterfaceFactoryInterfaceFactory! = ArtificialIntelligenceInterfaceFactoryInterfaceFactory()
+    fileprivate var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListUtil.getInstance().getImmutableInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.util.BasicArrayListUtil
+    open func clear() {
+        self.list = BasicArrayListD()
+    }
+    
 
-open public class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var SINGLETON: ArtificialIntelligenceInterfaceFactoryInterfaceFactory = ArtificialIntelligenceInterfaceFactoryInterfaceFactory()
+    @discardableResult open class func getInstance() -> ArtificialIntelligenceInterfaceFactoryInterfaceFactory! {
+        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory.SINGLETON
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ArtificialIntelligenceInterfaceFactoryInterfaceFactory{
+    @discardableResult open func getInstanceFromCollection(_ hashtable: ABHashtable!) -> ArtificialIntelligenceInterfaceFactoryInterface! {
+        let typeInteger: Int32! = jUnboxValue(hashtable.get((BasicAI.ID as! JObject)), Int32.self)
+        let type: Int32 = typeInteger.intValue()
+        let artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface! = (self.list.objectArray[type &- 1] as! ArtificialIntelligenceInterfaceFactoryInterface)
+        return artificialIntelligenceInterfaceFactoryInterface
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory.SINGLETON
+    open func add(_ artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface!) {
+        self.list.add((artificialIntelligenceInterfaceFactoryInterface as? JObject))
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var list: BasicArrayList = BasicArrayListUtil.getInstance()!!.getImmutableInstance()!!
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list= BasicArrayListD()
-}
-
-
-    open fun getInstanceFromCollection(hashtable: ABHashtable<Any, Any>)
-        //nullable = true from not(false or (false and false)) = true
-: ArtificialIntelligenceInterfaceFactoryInterface{
-    //var hashtable = hashtable
-
-    var typeInteger: Integer = hashtable.get(BasicAI.ID as Object) as Integer
-
-
-    var type: Int = typeInteger!!.toInt()
-
-
-    var artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface = this.list.objectArray[type -1]!! as ArtificialIntelligenceInterfaceFactoryInterface
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return artificialIntelligenceInterfaceFactoryInterface
-}
-
-
-    open fun add(artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var artificialIntelligenceInterfaceFactoryInterface = artificialIntelligenceInterfaceFactoryInterface
-this.list.add(artificialIntelligenceInterfaceFactoryInterface)
-}
-
-
-}
-                
-            
 

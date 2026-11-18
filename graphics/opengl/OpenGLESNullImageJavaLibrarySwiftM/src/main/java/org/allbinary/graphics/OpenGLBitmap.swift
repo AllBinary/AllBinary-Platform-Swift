@@ -1,62 +1,34 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
+// import org.allbinary.platform.graphics.PlatformBitmapBase
 
+open class OpenGLBitmap: PlatformBitmapBase {
+    public var bitmap: JObject! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ bitmap: JObject!) {
+        super.init()
+        self.initFields()
+        self.bitmap = bitmap
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.platform.graphics.PlatformBitmapBase
+    open func getPixels(_ pixels: JArray<Int32>!, _ offset: Int32, _ stride: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32) {
+    }
+    
 
-open public class OpenGLBitmap : PlatformBitmapBase {
-        
+    open func setPixels(_ pixels: JArray<Int32>!, _ offset: Int32, _ stride: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32) {
+    }
+    
 
-    val bitmap: Any
-public constructor (bitmap: Any){
-    //var bitmap = bitmap
-this.bitmap= bitmap
+    open func recycle() {
+    }
 }
-
-
-    open fun getPixels(pixels: IntArray, offset: Int, stride: Int, x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var pixels = pixels
-var offset = offset
-var stride = stride
-var x = x
-var y = y
-var width = width
-var height = height
-}
-
-
-    open fun setPixels(pixels: IntArray, offset: Int, stride: Int, x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var pixels = pixels
-var offset = offset
-var stride = stride
-var x = x
-var y = y
-var width = width
-var height = height
-}
-
-
-    open fun recycle()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

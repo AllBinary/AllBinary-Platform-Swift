@@ -1,82 +1,46 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot 
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer
+import J2SEForSwiftLibrary
 
+open class LayerManagerLoggingBase: JObject {
 
+    public override init() {
+        super.init()
+    }
+    
 
+    open func append(_ layerInterface: AllBinaryLayer!) {
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    open func appendAt(_ layerInterface: AllBinaryLayer!, _ index: Int32) {
+    }
+    
 
-open public class LayerManagerLoggingBase
-            : Object
-         {
-        
+    open func remove(_ layerInterface: AllBinaryLayer!) {
+    }
+    
 
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-                @Throws(Exception::class)
-            
-    open fun append(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
+    open func removeResult(_ layerManager: LayerManager!, _ layerInterface: AllBinaryLayer!, _ result: Bool) {
+    }
+    
+
+    open func clear() {
+    }
 }
-
-
-    open fun appendAt(layerInterface: AllBinaryLayer, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-    //var index = index
-}
-
-
-    open fun remove(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-}
-
-
-    open fun removeResult(layerManager: LayerManager, layerInterface: AllBinaryLayer, result: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerManager = layerManager
-    //var layerInterface = layerInterface
-    //var result = result
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

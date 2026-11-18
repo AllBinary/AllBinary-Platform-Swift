@@ -1,162 +1,86 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.graphics.form.ScrollSelectionForm
+// import org.allbinary.input.motion.gesture.observer.MotionGestureEvent
+// import org.allbinary.time.TimeDelayHelper
+// import org.allbinary.util.BasicArrayList
 
+open class ImmediateCommandFormInputProcessor: CommandFormInputProcessor {
+    fileprivate var timeHelper: TimeDelayHelper! = nil
+    public var gameCommandCanvas: GameCommandCanvas! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.timeHelper = TimeDelayHelper(25)
+    
+    }
+    
 
+    public init(_ gameKeyEventList: BasicArrayList!, _ playerInputId: Int32, _ gameCommandCanvas: GameCommandCanvas!, _ form: ScrollSelectionForm!) {
+        super.init(gameKeyEventList, playerInputId, gameCommandCanvas, form)
+        self.initFields()
+        self.gameCommandCanvas = gameCommandCanvas
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.graphics.form.ScrollSelectionForm
-import org.allbinary.input.motion.gesture.observer.MotionGestureEvent
-import org.allbinary.time.TimeDelayHelper
-import org.allbinary.util.BasicArrayList
-
-open public class ImmediateCommandFormInputProcessor : CommandFormInputProcessor {
-        
-
-    private val timeHelper: TimeDelayHelper = TimeDelayHelper(25)
-
-    var gameCommandCanvas: GameCommandCanvas
-public constructor (gameKeyEventList: BasicArrayList, playerInputId: Int, gameCommandCanvas: GameCommandCanvas, form: ScrollSelectionForm)                        
-
-                            : super(gameKeyEventList, playerInputId, gameCommandCanvas, form){
-var gameKeyEventList = gameKeyEventList
-var playerInputId = playerInputId
-var gameCommandCanvas = gameCommandCanvas
-var form = form
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.gameCommandCanvas= gameCommandCanvas
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onPressGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-
-        try {
+    open override func onPressGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        do {
             super.onPressGameKeyEvent(gameKeyEvent)
-
+            if (self.timeHelper.isTimeTNT()) {
+                self.processInputList()
+                self.gameCommandCanvas.repaintBehavior.onChangeRepaint(self.getCanvas())
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.timeHelper!!.isTimeTNT())
-                        
-                                    {
-                                    this.processInputList()
-this.gameCommandCanvas!!.repaintBehavior!!.onChangeRepaint(this.getCanvas())
 
-                                    }
-                                
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.gameInputStrings!!.ON_PRESS_GAME_KEY, e)
-}
-
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onDownGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-
-        try {
+    open override func onDownGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        do {
             super.onDownGameKeyEvent(gameKeyEvent)
-
+            if (self.timeHelper.isTimeTNT()) {
+                self.processInputList()
+                self.gameCommandCanvas.repaintBehavior.onChangeRepaint(self.getCanvas())
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.timeHelper!!.isTimeTNT())
-                        
-                                    {
-                                    this.processInputList()
-this.gameCommandCanvas!!.repaintBehavior!!.onChangeRepaint(this.getCanvas())
 
-                                    }
-                                
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.gameInputStrings!!.ON_DOWN_GAME_KEY, e)
-}
-
-}
-
-@Synchronized //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-
-    override fun onUpGameKeyEvent(gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameKeyEvent = gameKeyEvent
-
-        try {
+    open override func onUpGameKeyEvent(_ gameKeyEvent: GameKeyEvent!) {
+        do {
             super.onUpGameKeyEvent(gameKeyEvent)
-
+            if (self.timeHelper.isTimeTNT()) {
+                self.processInputList()
+                self.gameCommandCanvas.repaintBehavior.onChangeRepaint(self.getCanvas())
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(this.timeHelper!!.isTimeTNT())
-                        
-                                    {
-                                    this.processInputList()
-this.gameCommandCanvas!!.repaintBehavior!!.onChangeRepaint(this.getCanvas())
 
-                                    }
-                                
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.gameInputStrings!!.ON_UP_GAME_KEY, e)
-}
-
-}
-
-
-    override fun onMotionGestureEvent(motionGestureEvent: MotionGestureEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-var motionGestureEvent = motionGestureEvent
-
-        try {
+    open override func onMotionGestureEvent(_ motionGestureEvent: MotionGestureEvent!) {
+        do {
             super.onMotionGestureEvent(motionGestureEvent)
-
-    
-                        if(this.timeHelper!!.isTimeTNT())
-                        
-                                    {
-                                    this.processInputList()
-this.gameCommandCanvas!!.repaintBehavior!!.onChangeRepaint(this.getCanvas())
-
-                                    }
-                                
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "onMotionGestureEvent", e)
+            if (self.timeHelper.isTimeTNT()) {
+                self.processInputList()
+                self.gameCommandCanvas.repaintBehavior.onChangeRepaint(self.getCanvas())
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-}
-
-
-}
-                
-            
 

@@ -1,76 +1,48 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.persistance
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.persistance
+import J2SEForSwiftLibrary
 
+open class GameDifficultyFactory: JObject {
+    fileprivate static let instance: GameDifficultyFactory! = GameDifficultyFactory()
+    fileprivate var level: Int32 = 0
 
+    private func initFields() {
+    self.level = 0
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    @discardableResult open class func getInstance() -> GameDifficultyFactory! {
+        return GameDifficultyFactory.instance
+    }
+    
 
-open public class GameDifficultyFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: GameDifficultyFactory = GameDifficultyFactory()
+    open func setLevel(_ level: Int32) {
+        self.level = level
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameDifficultyFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameDifficultyFactory.instance
+    @discardableResult open func getLevel() -> Int32 {
+        return self.level
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private var level: Int = 0
-
-    open fun setLevel(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var level = level
-this.level= level
-}
-
-
-    open fun getLevel()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level
-}
-
-
-}
-                
-            
 

@@ -40,7 +40,7 @@ open class StringUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> StringUtil! {
+    @discardableResult open class func getInstance() -> StringUtil! {
         return StringUtil.instance
     }
     

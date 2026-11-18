@@ -38,7 +38,7 @@ open class SmallLongFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> SmallLongFactory! {
+    @discardableResult open class func getInstance() -> SmallLongFactory! {
         return SmallLongFactory.instance
     }
     

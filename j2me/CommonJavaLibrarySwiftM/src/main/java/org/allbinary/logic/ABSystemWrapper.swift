@@ -26,7 +26,7 @@ open class ABSystemWrapper: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ABSystemWrapper! {
+    @discardableResult open class func getInstance() -> ABSystemWrapper! {
         return ABSystemWrapper.instance
     }
     

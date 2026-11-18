@@ -1,87 +1,38 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.physics.velocity
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.physics.velocity
+import J2SEForSwiftLibrary
+// import org.allbinary.direction.Direction
+// import org.allbinary.logic.math.BasicDecimal
+// import org.allbinary.math.Angle
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.direction.Direction
-import org.allbinary.logic.math.BasicDecimal
-import org.allbinary.math.Angle
-
-interface BasicVelocityInterface {
-        
-
-    open fun getVelocityXBasicDecimalP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicDecimal
-
-    open fun getVelocityYBasicDecimalP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicDecimal
-
-    open fun zero()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun setVelocityWithBigDecimalAndDirection(magnitudeBasicDecimal: BasicDecimal, direction: Direction, otherDirection: Direction)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun addVelocityWithBigDecimalAndDirection(magnitudeBasicDecimal: BasicDecimal, direction: Direction, otherDirection: Direction)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun setVelocityWithDirection(magnitude: Long, direction: Direction, otherDirection: Direction)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun addVelocityWithDirection(magnitude: Long, direction: Direction, otherDirection: Direction)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun setVelocityWithBigDecimal(magnitudeBasicDecimal: BasicDecimal, angle: Angle, otherAngle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun addVelocityWithBigDecimal(magnitudeBasicDecimal: BasicDecimal, angle: Angle, otherAngle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun setVelocity(magnitude: Long, angle: Angle, otherAngle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun addVelocity(magnitude: Long, angle: Angle, otherAngle: Angle)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun addVelocityi(magnitude: Long, angle: Int, otherAngle: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
+public protocol BasicVelocityInterface: AnyObject {
+    @discardableResult func getVelocityXBasicDecimalP() -> BasicDecimal!
+    @discardableResult func getVelocityYBasicDecimalP() -> BasicDecimal!
+    func zero()
+    func setVelocityWithBigDecimalAndDirection(_ magnitudeBasicDecimal: BasicDecimal!, _ direction: Direction!, _ otherDirection: Direction!)
+    func addVelocityWithBigDecimalAndDirection(_ magnitudeBasicDecimal: BasicDecimal!, _ direction: Direction!, _ otherDirection: Direction!)
+    func setVelocityWithDirection(_ magnitude: Int64, _ direction: Direction!, _ otherDirection: Direction!)
+    func addVelocityWithDirection(_ magnitude: Int64, _ direction: Direction!, _ otherDirection: Direction!)
+    func setVelocityWithBigDecimal(_ magnitudeBasicDecimal: BasicDecimal!, _ angle: Angle!, _ otherAngle: Angle!)
+    func addVelocityWithBigDecimal(_ magnitudeBasicDecimal: BasicDecimal!, _ angle: Angle!, _ otherAngle: Angle!)
+    func setVelocity(_ magnitude: Int64, _ angle: Angle!, _ otherAngle: Angle!)
+    func addVelocity(_ magnitude: Int64, _ angle: Angle!, _ otherAngle: Angle!)
+    func addVelocityi(_ magnitude: Int64, _ angle: Int32, _ otherAngle: Int32)
 }
-                
-            
+
 

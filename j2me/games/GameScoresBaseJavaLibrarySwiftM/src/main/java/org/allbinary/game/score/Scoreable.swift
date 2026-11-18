@@ -1,89 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
 
+open class Scoreable: JObject, ScoreableInterface {
+    public static var ID: Int32! = SmallIntegerSingletonFactory.getInstance().getAt(3)
+    fileprivate var points: Int32 = 0
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ points: Int32) {
+        super.init()
+        self.initFields()
+        self.points = points
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
+    open func addPoints(_ points: Int32) {
+        self.points = self.points &+ points
+    }
+    
 
-open public class Scoreable
-            : Object
-        
-                , ScoreableInterface {
-        
-companion object {
-            
-    var ID: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(3)!!
+    open func removePoints(_ points: Int32) {
+        self.points = self.points &- points
+    }
+    
 
-        }
-            
-    private var points: Int
-public constructor (points: Int)
-            : super()
-        {
-var points = points
-this.points= points
+    open func setPoints(_ points: Int32) {
+        self.points = points
+    }
+    
+
+    @discardableResult open func getPoints() -> Int32 {
+        return self.points
+    }
 }
-
-
-    override fun addPoints(points: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var points = points
-this.points += points
-}
-
-
-    override fun removePoints(points: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var points = points
-this.points -= points
-}
-
-
-    open fun setPoints(points: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var points = points
-this.points= points
-}
-
-
-    override fun getPoints()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points
-}
-
-
-}
-                
-            
 

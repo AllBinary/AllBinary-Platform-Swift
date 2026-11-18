@@ -1,197 +1,102 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
+// import org.allbinary.time.GameTickTimeDelayHelper
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
+// import org.allbinary.time.TimeDelayHelper
+// import org.allbinary.util.ABHashtable
 
+open class MultiKeyPressesAI: KeyPressesAI {
+    fileprivate var toggleTimeHelper: TimeDelayHelper! = nil
+    fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameInput
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-import org.allbinary.time.GameTickTimeDelayHelper
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-import org.allbinary.time.TimeDelayHelper
-import org.allbinary.util.ABHashtable
-
-open public class MultiKeyPressesAI : KeyPressesAI {
-        
-
-    private val toggleTimeHelper: TimeDelayHelper = TimeDelayHelper(600)
-
-    private val gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!!
-public constructor (hashtable: ABHashtable<Any, Any>, ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(hashtable, ownerLayerInterface, gameInput){
-    //var hashtable = hashtable
-    //var ownerLayerInterface = ownerLayerInterface
-    //var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.update()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processAI(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allBinaryLayerManager = allBinaryLayerManager
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var gameInput: GameInput = this.getGameInput()!!
-
-
-    var keys: Array<Integer?> = this.keys
-
-
-    var size: Int = keys.size
-                
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.toggleTimeHelper = TimeDelayHelper(600)
+    self.gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()
+    }
     
-                        if(this.isOn())
-                        
-                                    {
-                                    
 
-
-
-                        for (index in 0 until size)
-
-        {
-
-    var key: Int = keys[index]!!.toInt()
-
-
+    public override init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(hashtable, ownerLayerInterface, gameInput)
+        self.initFields()
+        self.update()
+    }
     
-                        if(key !=  -1)
-                        
-                                    {
-                                    gameInput!!.add(this.gameKeyEventFactory!!.getInstanceForKey(this, key))
 
-                                    }
-                                
-}
-
-
-                                    }
-                                
-                        else {
-                            
-
-
-
-                        for (index in 0 until size)
-
-        {
-
-    var key: Int = keys[index]!!.toInt()
-
-
+    open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+    }
     
-                        if(key !=  -1)
-                        
-                                    {
-                                    gameInput!!.addForRemoval(this.gameKeyEventFactory!!.getInstanceForKey(this, key))
 
-                                    }
-                                
-}
-
-
-                        }
-                            
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun toggle()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    fileprivate func update() {
+        let gameInput: GameInput! = self.getGameInput()
+        let keys: JArray<Int32?>! = self.keys
+        let size: Int32 = keys.length
+        if (self.isOn()) {
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                let key: Int32 = keys[index]!.intValue()
+                if (key != -1) {
+                    gameInput.add(self.gameKeyEventFactory.getInstanceForKey(self, key))
+                }
+                }
+            }
+        } else {
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                let key: Int32 = keys[index]!.intValue()
+                if (key != -1) {
+                    gameInput.addForRemoval(self.gameKeyEventFactory.getInstanceForKey(self, key))
+                }
+                }
+            }
+        }
+    }
     
-                        if(this.toggleTimeHelper!!.isTime(this.gameTickTimeDelayHelper!!.startTime))
-                        
-                                    {
-                                    super.toggle()
-this.update()
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun disable()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open override func toggle() {
+        if (self.toggleTimeHelper.isTime(self.gameTickTimeDelayHelper.startTime)) {
+            super.toggle()
+            self.update()
+        }
+    }
     
-                        if(this.toggleTimeHelper!!.isTime(this.gameTickTimeDelayHelper!!.startTime))
-                        
-                                    {
-                                    super.disable()
-this.update()
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun enable()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    open override func disable() {
+        if (self.toggleTimeHelper.isTime(self.gameTickTimeDelayHelper.startTime)) {
+            super.disable()
+            self.update()
+        }
+    }
     
-                        if(this.toggleTimeHelper!!.isTime(this.gameTickTimeDelayHelper!!.startTime))
-                        
-                                    {
-                                    super.enable()
-this.update()
 
-                                    }
-                                
+    open override func enable() {
+        if (self.toggleTimeHelper.isTime(self.gameTickTimeDelayHelper.startTime)) {
+            super.enable()
+            self.update()
+        }
+    }
 }
-
-
-}
-                
-            
 

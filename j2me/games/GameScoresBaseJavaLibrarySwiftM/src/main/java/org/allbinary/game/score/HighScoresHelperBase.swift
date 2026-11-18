@@ -1,132 +1,77 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.score
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonStrings
 
+open class HighScoresHelperBase: JObject, HighScoresHelperBaseInterface {
+    public var logUtil: LogUtil! = nil
+    public var highScoresArrayP: JArray<HighScores?>! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.highScoresArrayP = LastFetchHighScoresFactory.getInstance().highScoresArray
+    }
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonStrings
-
-open public class HighScoresHelperBase
-            : Object
-        
-                , HighScoresHelperBaseInterface {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    var highScoresArrayP: Array<HighScores?> = LastFetchHighScoresFactory.getInstance()!!.highScoresArray
-
-    override fun setHighScoresArray(highScoresArrayP: Array<HighScores?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var highScoresArrayP = highScoresArrayP
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(highScoresArrayP != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
 
-this.logUtil!!.putF(StringMaker().
-                            append(commonStrings!!.START)!!.appendint(highScoresArrayP!!.size)!!.toString(), this, "setHighScoresArray")
+    open func setHighScoresArray(_ highScoresArrayP: JArray<HighScores?>!) {
+        if (highScoresArrayP != nil) {
+            let commonStrings: CommonStrings! = CommonStrings.getInstance()
+            self.logUtil.putF(StringMaker().append(commonStrings.START).appendint(highScoresArrayP.length).toString(), self, "setHighScoresArray")
+        } else {
+            let commonStrings: CommonStrings! = CommonStrings.getInstance()
+            self.logUtil.putF(commonStrings.START, self, "setHighScoresArray")
+        }
+        self.highScoresArrayP = highScoresArrayP
+    }
+    
 
-                                    }
-                                
-                        else {
-                            
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    @discardableResult open func getNextHighScores() -> HighScores! {
+        return NullHighScoresSingletonFactory.getInstance()
+    }
+    
 
-this.logUtil!!.putF(commonStrings!!.START, this, "setHighScoresArray")
+    @discardableResult open func isAnyHighScores() -> Bool {
+        jThrow(JException("RuntimeException", ""))
+    }
+    
 
-                        }
-                            
-this.highScoresArrayP= highScoresArrayP
+    open func setSelectedHighScores(_ selectedHighScores: HighScores!) {
+    }
+    
+
+    @discardableResult open func getSelectedHighScores() -> HighScores! {
+        return NullHighScoresSingletonFactory.getInstance()
+    }
+    
+
+    @discardableResult open func getHighScoresArray() -> JArray<HighScores?>! {
+        return self.highScoresArrayP
+    }
+    
+
+    open func selectHighScores() {
+    }
 }
-
-
-    open fun getNextHighScores()
-        //nullable = true from not(false or (false and true)) = true
-: HighScores{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullHighScoresSingletonFactory.getInstance()
-}
-
-
-    open fun isAnyHighScores()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-
-
-                            throw RuntimeException()
-}
-
-
-    override fun setSelectedHighScores(selectedHighScores: HighScores)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var selectedHighScores = selectedHighScores
-}
-
-
-    override fun getSelectedHighScores()
-        //nullable = true from not(false or (false and true)) = true
-: HighScores{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullHighScoresSingletonFactory.getInstance()
-}
-
-
-    override fun getHighScoresArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<HighScores?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresArrayP
-}
-
-
-    open fun selectHighScores()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-}
-                
-            
 

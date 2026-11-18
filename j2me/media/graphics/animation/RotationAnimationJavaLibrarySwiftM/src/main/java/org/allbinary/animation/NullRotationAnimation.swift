@@ -1,73 +1,31 @@
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.math.AngleInfo
+// import org.allbinary.util.CircularIndexUtil
 
+open class NullRotationAnimation: RotationAnimation {
+    
 
+    @discardableResult open class func createTotalAngle(_ angleInfo: AngleInfo!, _ totalAngle: Int16, _ animationBehavior: AnimationBehavior!) -> NullRotationAnimation! {
+        return NullRotationAnimation(angleInfo, CircularIndexUtil.createInstance(Int32(totalAngle) / Int32(angleInfo.getAngleIncrementInfo().getAngleIncrement())), animationBehavior)
+    }
+    
 
+    @discardableResult open class func createQuarter(_ animationBehavior: AnimationBehavior!) -> NullRotationAnimation! {
+        return NullRotationAnimation(AngleInfo.getInstance(AngleFactory.getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), animationBehavior)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.math.AngleFactory
-import org.allbinary.math.AngleInfo
-import org.allbinary.util.CircularIndexUtil
+    public override init(_ angleInfo: AngleInfo!, _ circularIndexUtil: CircularIndexUtil!, _ animationBehavior: AnimationBehavior!) {
+        super.init(angleInfo, circularIndexUtil, animationBehavior)
+    }
+    
 
-open public class NullRotationAnimation : RotationAnimation {
-        
-companion object {
-            
-    open fun createTotalAngle(angleInfo: AngleInfo, totalAngle: Short, animationBehavior: AnimationBehavior)
-        //nullable = true from not(false or (false and false)) = true
-: NullRotationAnimation{
-    //var angleInfo = angleInfo
-    //var totalAngle = totalAngle
-    //var animationBehavior = animationBehavior
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimation(angleInfo, CircularIndexUtil.createInstance(totalAngle /angleInfo!!.getAngleIncrementInfo()!!.getAngleIncrement()), animationBehavior)
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return 0
+    }
 }
-
-
-    open fun createQuarter(animationBehavior: AnimationBehavior)
-        //nullable = true from not(false or (false and false)) = true
-: NullRotationAnimation{
-    //var animationBehavior = animationBehavior
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimation(AngleInfo.getInstance(AngleFactory.getInstance()!!.QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), animationBehavior)
-}
-
-
-        }
-            protected constructor (angleInfo: AngleInfo, circularIndexUtil: CircularIndexUtil, animationBehavior: AnimationBehavior)                        
-
-                            : super(angleInfo, circularIndexUtil, animationBehavior){
-    //var angleInfo = angleInfo
-    //var circularIndexUtil = circularIndexUtil
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

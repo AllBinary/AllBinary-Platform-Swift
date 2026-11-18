@@ -32,7 +32,7 @@ open class DistanceUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> DistanceUtil! {
+    @discardableResult open class func getInstance() -> DistanceUtil! {
         return DistanceUtil.instance
     }
     

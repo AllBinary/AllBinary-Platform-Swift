@@ -1,219 +1,116 @@
+// Generated Code Do Not Modify
+// package org.allbinary.configuration
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.configuration
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.feature.Feature
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.MainFeatureFactory
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonStrings
 
+open class ApplicationConfiguration: JObject {
+    fileprivate static var instance: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    fileprivate var fullscreen: Bool = false
+    fileprivate var showTitleBar: Bool = false
+    fileprivate var progressBarView: Bool = false
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.feature.Feature
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.MainFeatureFactory
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonStrings
-
-open public class ApplicationConfiguration
-            : Object
-         {
-        
-companion object {
-            
-    private var instance: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ApplicationConfiguration{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.fullscreen = true
+    self.showTitleBar = false
+    self.progressBarView = false
+    }
     
-                        if(ApplicationConfiguration.instance == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    ApplicationConfiguration.instance= ApplicationConfiguration()
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration.instance as ApplicationConfiguration
-}
-
-
+    @discardableResult open class func getInstance() -> ApplicationConfiguration! {
+        if (ApplicationConfiguration.instance === NullUtil.getInstance().NULL_OBJECT) {
+            ApplicationConfiguration.instance = ApplicationConfiguration()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var fullscreen: Boolean = true
-
-    private var showTitleBar: Boolean = false
-
-    private var progressBarView: Boolean = false
-private constructor ()
-            : super()
-        {
-
-        try {
-            this.read()
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.CONSTRUCTOR, e)
-}
-
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun read()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setFullscreen(true)
-this.setProgressBarView(false)
-this.setShowTitleBar(false)
-this.logUtil!!.putF("Read Configuration: " +this.toString(), this, "read")
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun write()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-
+        return (ApplicationConfiguration.instance as! ApplicationConfiguration)
+    }
     
-                        if(gameFeature == MainFeatureFactory.getInstance()!!.FULL_SCREEN)
-                        
-                                    {
-                                    
-    var features: Features = Features.getInstance()!!
 
-
+    public override init() {
+        super.init()
+        self.initFields()
+        do {
+            self.read()
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(features.isFeature(gameFeature))
-                        
-                                    {
-                                    
+
+    fileprivate func read() {
+        self.setFullscreen(true)
+        self.setProgressBarView(false)
+        self.setShowTitleBar(false)
+        self.logUtil.putF(jstr("Read Configuration: ") + jstr(self.toString()), self, "read")
+    }
     
-                        if(!this.isFullscreen())
-                        
-                                    {
-                                    this.setFullscreen(true)
-this.write()
 
-                                    }
-                                
-
-                                    }
-                                
-                        else {
-                            
+    open func write() {
+    }
     
-                        if(this.isFullscreen())
-                        
-                                    {
-                                    this.setFullscreen(false)
-this.write()
 
-                                    }
-                                
+    open func update(_ gameFeature: Feature!) {
+        if (gameFeature === MainFeatureFactory.getInstance().FULL_SCREEN) {
+            let features: Features! = Features.getInstance()
+            if (features.isFeature(gameFeature)) {
+                if (!self.isFullscreen()) {
+                    self.setFullscreen(true)
+                    self.write()
+                }
+            } else {
+                if (self.isFullscreen()) {
+                    self.setFullscreen(false)
+                    self.write()
+                }
+            }
+        }
+    }
+    
 
-                        }
-                            
+    open func setFullscreen(_ fullscreen: Bool) {
+        self.fullscreen = fullscreen
+    }
+    
 
-                                    }
-                                
+    @discardableResult open func isFullscreen() -> Bool {
+        return self.fullscreen
+    }
+    
+
+    open func setShowTitleBar(_ showTitleBar: Bool) {
+        self.showTitleBar = showTitleBar
+    }
+    
+
+    @discardableResult open func isShowTitleBar() -> Bool {
+        return self.showTitleBar
+    }
+    
+
+    open func setProgressBarView(_ progressBarView: Bool) {
+        self.progressBarView = progressBarView
+    }
+    
+
+    @discardableResult open func isProgressBarView() -> Bool {
+        return self.progressBarView
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("isFullscreen: ")
+        stringBuffer.appendboolean(self.isFullscreen())
+        stringBuffer.append(" isProgressBarView: ")
+        stringBuffer.appendboolean(self.isProgressBarView())
+        stringBuffer.append(" isShowTitleBar: ")
+        stringBuffer.appendboolean(self.isShowTitleBar())
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun setFullscreen(fullscreen: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var fullscreen = fullscreen
-this.fullscreen= fullscreen
-}
-
-
-    open fun isFullscreen()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fullscreen
-}
-
-
-    open fun setShowTitleBar(showTitleBar: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var showTitleBar = showTitleBar
-this.showTitleBar= showTitleBar
-}
-
-
-    open fun isShowTitleBar()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.showTitleBar
-}
-
-
-    open fun setProgressBarView(progressBarView: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var progressBarView = progressBarView
-this.progressBarView= progressBarView
-}
-
-
-    open fun isProgressBarView()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.progressBarView
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("isFullscreen: ")
-stringBuffer!!.appendboolean(this.isFullscreen())
-stringBuffer!!.append(" isProgressBarView: ")
-stringBuffer!!.appendboolean(this.isProgressBarView())
-stringBuffer!!.append(" isShowTitleBar: ")
-stringBuffer!!.appendboolean(this.isShowTitleBar())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

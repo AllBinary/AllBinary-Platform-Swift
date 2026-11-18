@@ -1,190 +1,118 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.hud.basic.level
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.layer.hud.basic.level
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.game.graphics.hud.BasicHud
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.paint.PaintableInterface
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.math.PrimitiveLongUtil
 
+open class LevelHudWidget: BasicHud, PaintableInterface {
+    fileprivate var level: Int32 = 0
+    fileprivate var maxlevel: Int32 = 0
+    fileprivate var levelString: JArray<UInt16>! = nil
+    fileprivate var levelNumberCharArray: JArray<UInt16>! = nil
+    fileprivate var levelNumberTotalDigits: Int32 = 0
+    fileprivate var offset: Int32 = 0
+    fileprivate var primitiveLongUtil: PrimitiveLongUtil! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    self.levelNumberCharArray = NullUtil.getInstance().NULL_CHAR_ARRAY
+    self.levelNumberTotalDigits = 0
+    self.offset = 0
+    
+    }
+    
 
+    @discardableResult open class func createHud(_ maxlevel: Int32, _ location: Int32, _ direction: Int32) -> LevelHudWidget! {
+        return LevelHudWidget(maxlevel, location, direction)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import org.allbinary.game.graphics.hud.BasicHud
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.paint.PaintableInterface
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.math.PrimitiveLongUtil
+    public init(_ maxlevel: Int32, _ location: Int32, _ direction: Int32) {
+        super.init(location, direction, 2, BasicColorFactory.getInstance().GREY)
+        self.initFields()
+        self.primitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(1000)
+        let LEVEL: String! = "Lv "
+        self.levelString = JString.toCharArray(LEVEL)
+        self.maxlevel = maxlevel
+        self.level = maxlevel
+        self.update()
+        self.updateMaxHeight = 14
+    }
+    
 
-open public class LevelHudWidget : BasicHud
-                , PaintableInterface {
-        
-companion object {
-            
-                @Throws(Exception::class)
-            
-    open fun createHud(maxlevel: Int, location: Int, direction: Int)
-        //nullable = true from not(false or (false and false)) = true
-: LevelHudWidget{
-var maxlevel = maxlevel
-var location = location
-var direction = direction
+    open override func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        self.updateMaxWidth = font.getSize() * 4
+        self.offset = font.charsWidth(self.levelString, 0, self.levelString.length) + font.getSize()
+        super.updateMeasurement(graphics)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LevelHudWidget(maxlevel, location, direction)
-}
+    fileprivate func update() {
+        self.levelNumberCharArray = self.primitiveLongUtil.getCharArray(self.level)
+        self.levelNumberTotalDigits = self.primitiveLongUtil.getCurrentTotalDigits()
+    }
+    
 
+    open func setLevel(_ level: Int32) {
+        self.level = level
+        self.update()
+    }
+    
 
+    open func nextLevel() {
+        self.level &+= 1
+        self.update()
+    }
+    
+
+    open func previousLevel() {
+        self.level &-= 1
+        if (self.level < 0) {
+            self.level = 0
         }
-            
-    private var level: Int
-
-    private var maxlevel: Int
-
-    private val levelString: CharArray
-
-    private var levelNumberCharArray: CharArray = NullUtil.getInstance()!!.NULL_CHAR_ARRAY
-
-    private var levelNumberTotalDigits: Int= 0
-
-    private var offset: Int= 0
-
-    private val primitiveLongUtil: PrimitiveLongUtil
-public constructor (maxlevel: Int, location: Int, direction: Int)                        
-
-                            : super(location, direction, 2, BasicColorFactory.getInstance()!!.GREY){
-var maxlevel = maxlevel
-var location = location
-var direction = direction
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(1000)!!
-
-    var LEVEL: String = "Lv "
-
-this.levelString= LEVEL.toCharArray()!!
-this.maxlevel= maxlevel
-this.level= maxlevel
-this.update()
-this.updateMaxHeight= 14
-}
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-this.updateMaxWidth= font.getSize() *4
-this.offset= font.charsWidth(this.levelString, 0, this.levelString!!.size) +font.getSize()
-super.updateMeasurement(graphics)
-}
-
-
-    open fun update()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.levelNumberCharArray= this.primitiveLongUtil!!.getCharArray(this.level)!!
-this.levelNumberTotalDigits= this.primitiveLongUtil!!.getCurrentTotalDigits()
-}
-
-
-    open fun setLevel(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var level = level
-this.level= level
-this.update()
-}
-
-
-    open fun nextLevel()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.level++
-this.update()
-}
-
-
-    open fun previousLevel()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.level--
-
+        self.update()
+    }
     
-                        if(this.level < 0)
-                        
-                                    {
-                                    this.level= 0
 
-                                    }
-                                
-this.update()
-}
-
-
-    open fun isComplete()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    @discardableResult open func isComplete() -> Bool {
+        if (self.level <= self.maxlevel) {
+            return false
+        } else {
+            return true
+        }
+    }
     
-                        if(this.level <= this.maxlevel)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
+    open func paint(_ graphics: Graphics!) {
+        super.paintDX(graphics, self.levelString, 0, self.levelString.length, self.levelNumberCharArray, 0, self.levelNumberTotalDigits, self.offset)
+    }
+    
 
-                        }
-                            
+    open func paintThreed(_ graphics: Graphics!) {
+    }
 }
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-super.paintDX(graphics, this.levelString, 0, this.levelString!!.size, this.levelNumberCharArray, 0, this.levelNumberTotalDigits, this.offset)
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-}
-                
-            
 

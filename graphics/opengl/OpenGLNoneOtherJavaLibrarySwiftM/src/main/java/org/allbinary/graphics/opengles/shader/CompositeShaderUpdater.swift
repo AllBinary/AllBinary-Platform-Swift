@@ -1,80 +1,53 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles.shader
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles.shader
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.egl.EGLConfig
+// import javax.microedition.khronos.opengles.GL10
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonSeps
 
+open class CompositeShaderUpdater: ShaderUpdater {
+    fileprivate static let instanceC: CompositeShaderUpdater! = CompositeShaderUpdater(StringUtil.getInstance().getArrayInstance(), StringUtil.getInstance().getArrayInstance(), StringUtil.getInstance().getArrayInstance(), NullUtil.getInstance().NULL_INT_ARRAY)
+    public var commonSeps: CommonSeps! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.commonSeps = CommonSeps.getInstance()
+    }
+    
 
+    @discardableResult open override class func getInstance() -> CompositeShaderUpdater! {
+        return CompositeShaderUpdater.instanceC
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.egl.EGLConfig
-import javax.microedition.khronos.opengles.GL10
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonSeps
+    public init(_ uniformBlockArray: JArray<String?>!, _ uniformArray: JArray<String?>!, _ attributeArray: JArray<String?>!, _ attributeHandleArray: JArray<Int32>!) {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class CompositeShaderUpdater : ShaderUpdater {
-        
-companion object {
-            
-    private val instanceC: CompositeShaderUpdater = CompositeShaderUpdater(StringUtil.getInstance()!!.getArrayInstance(), StringUtil.getInstance()!!.getArrayInstance(), StringUtil.getInstance()!!.getArrayInstance(), NullUtil.getInstance()!!.NULL_INT_ARRAY)
+    open func onSurfaceCreated(_ gl: GL10!, _ eglConfig: EGLConfig!, _ programHandle: Int32) {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CompositeShaderUpdater{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompositeShaderUpdater.instanceC
+    open func onSurfaceDestroyed(_ gl: GL10!) {
+    }
 }
-
-
-        }
-            
-    val commonSeps: CommonSeps = CommonSeps.getInstance()!!
-public constructor (uniformBlockArray: Array<String?>, uniformArray: Array<String?>, attributeArray: Array<String?>, attributeHandleArray: IntArray){
-    //var uniformBlockArray = uniformBlockArray
-    //var uniformArray = uniformArray
-    //var attributeArray = attributeArray
-    //var attributeHandleArray = attributeHandleArray
-}
-
-
-    open fun onSurfaceCreated(gl: GL10, eglConfig: EGLConfig, programHandle: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gl = gl
-    //var eglConfig = eglConfig
-    //var programHandle = programHandle
-}
-
-
-    open fun onSurfaceDestroyed(gl: GL10)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gl = gl
-}
-
-
-}
-                
-            
 

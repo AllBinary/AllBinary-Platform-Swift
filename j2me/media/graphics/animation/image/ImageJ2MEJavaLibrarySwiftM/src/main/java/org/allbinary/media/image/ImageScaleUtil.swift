@@ -1,96 +1,45 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.image.ImageCache
 
+open class ImageScaleUtil: JObject {
+    fileprivate static let instance: ImageScaleUtil! = ImageScaleUtil()
+    
 
+    @discardableResult open class func getInstance() -> ImageScaleUtil! {
+        return ImageScaleUtil.instance
+    }
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.image.ImageCache
+    @discardableResult open func createImage2(_ imageCache: ImageCache!, _ originalImage: Image!, _ scaleNominatorX: Float, _ scaleDenominatorX: Float, _ scaleNominatorY: Float, _ scaleDenominatorY: Float, _ cached: Bool) -> Image! {
+        return self.createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true)
+    }
+    
 
-open public class ImageScaleUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ImageScaleUtil = ImageScaleUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ImageScaleUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil.instance
+    @discardableResult open func createImage3(_ imageCache: ImageCache!, _ originalImage: Image!, _ scaleNominatorX: Float, _ scaleDenominatorX: Float, _ scaleNominatorY: Float, _ scaleDenominatorY: Float, _ cached: Bool, _ mutable: Bool) -> Image! {
+        return originalImage
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createImage2(imageCache: ImageCache, originalImage: Image, scaleNominatorX: Float, scaleDenominatorX: Float, scaleNominatorY: Float, scaleDenominatorY: Float, cached: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var imageCache = imageCache
-    //var originalImage = originalImage
-    //var scaleNominatorX = scaleNominatorX
-    //var scaleDenominatorX = scaleDenominatorX
-    //var scaleNominatorY = scaleNominatorY
-    //var scaleDenominatorY = scaleDenominatorY
-    //var cached = cached
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createImage3(imageCache: ImageCache, originalImage: Image, scaleNominatorX: Float, scaleDenominatorX: Float, scaleNominatorY: Float, scaleDenominatorY: Float, cached: Boolean, mutable: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var imageCache = imageCache
-    //var originalImage = originalImage
-    //var scaleNominatorX = scaleNominatorX
-    //var scaleDenominatorX = scaleDenominatorX
-    //var scaleNominatorY = scaleNominatorY
-    //var scaleDenominatorY = scaleDenominatorY
-    //var cached = cached
-    //var mutable = mutable
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return originalImage
-}
-
-
-}
-                
-            
 

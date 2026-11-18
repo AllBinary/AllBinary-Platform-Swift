@@ -58,7 +58,7 @@ open class LogFormatUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> LogFormatUtil! {
+    @discardableResult open class func getInstance() -> LogFormatUtil! {
         return LogFormatUtil.instance
     }
     

@@ -1,90 +1,62 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer.event
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer.event
+import J2SEForSwiftLibrary
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.LayerManager
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.util.event.AllBinaryEventObject
 
+open class LayerManagerEvent: AllBinaryEventObject {
+    fileprivate var layerInterface: AllBinaryLayer! = nil
+    fileprivate var crud: String! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.layerInterface = AllBinaryLayer.NULL_ALLBINARY_LAYER
+    
+    }
+    
 
+    public init(_ layerManager: LayerManager!, _ crud: String!) {
+        super.init(layerManager)
+        self.initFields()
+        self.crud = crud
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.LayerManager
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.util.event.AllBinaryEventObject
+    @discardableResult open func getLayerInterface() -> AllBinaryLayer! {
+        return self.layerInterface
+    }
+    
 
-open public class LayerManagerEvent : AllBinaryEventObject {
-        
+    open func setLayerInterface(_ layerInterface: AllBinaryLayer!) {
+        self.layerInterface = layerInterface
+    }
+    
 
-    private var layerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER
-
-    private val crud: String
-public constructor (layerManager: LayerManager, crud: String)                        
-
-                            : super(layerManager){
-var layerManager = layerManager
-var crud = crud
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.crud= crud
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("LayerManagerEvent: \n")
+        stringBuffer.append("LayerInterface: ")
+        stringBuffer.append(self.getLayerInterface().toString())
+        stringBuffer.append("\nCRUD: ")
+        stringBuffer.append(self.crud)
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun getLayerInterface()
-        //nullable = true from not(false or (false and true)) = true
-: AllBinaryLayer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface
-}
-
-
-    open fun setLayerInterface(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layerInterface = layerInterface
-this.layerInterface= layerInterface
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("LayerManagerEvent: \n")
-stringBuffer!!.append("LayerInterface: ")
-stringBuffer!!.append(this.getLayerInterface()!!.toString())
-stringBuffer!!.append("\nCRUD: ")
-stringBuffer!!.append(this.crud)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

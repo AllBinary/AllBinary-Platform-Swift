@@ -1,90 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.bounds
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.bounds
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.Rectangle
 
+open class RectangleLayerBounds: LayerBounds {
+    
 
+    public override init(_ rectangle: Rectangle!) {
+        super.init(rectangle)
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.Rectangle
-
-open public class RectangleLayerBounds : LayerBounds {
-        
-public constructor (rectangle: Rectangle)                        
-
-                            : super(rectangle){
-var rectangle = rectangle
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    open override func visit(_ boundsVisitorInterface: BoundsVisitorInterface!) {
+        if (boundsVisitorInterface.getX() > self.rectangle.getMaxX()) {
+            boundsVisitorInterface.maxX()
+        }
+        if (boundsVisitorInterface.getY() > self.rectangle.getMaxY()) {
+            boundsVisitorInterface.maxY()
+        }
+        if (boundsVisitorInterface.getX() < self.rectangle.getPoint().getX()) {
+            boundsVisitorInterface.minX()
+        }
+        if (boundsVisitorInterface.getY() < self.rectangle.getPoint().getY()) {
+            boundsVisitorInterface.minY()
+        }
+    }
 }
-
-
-    override fun visit(boundsVisitorInterface: BoundsVisitorInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var boundsVisitorInterface = boundsVisitorInterface
-
-    
-                        if(boundsVisitorInterface!!.getX() > this.rectangle.getMaxX())
-                        
-                                    {
-                                    boundsVisitorInterface!!.maxX()
-
-                                    }
-                                
-
-    
-                        if(boundsVisitorInterface!!.getY() > this.rectangle.getMaxY())
-                        
-                                    {
-                                    boundsVisitorInterface!!.maxY()
-
-                                    }
-                                
-
-    
-                        if(boundsVisitorInterface!!.getX() < this.rectangle.getPoint()!!.getX())
-                        
-                                    {
-                                    boundsVisitorInterface!!.minX()
-
-                                    }
-                                
-
-    
-                        if(boundsVisitorInterface!!.getY() < this.rectangle.getPoint()!!.getY())
-                        
-                                    {
-                                    boundsVisitorInterface!!.minY()
-
-                                    }
-                                
-}
-
-
-}
-                
-            
 

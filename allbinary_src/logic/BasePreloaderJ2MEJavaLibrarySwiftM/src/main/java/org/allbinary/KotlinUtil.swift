@@ -11,12 +11,12 @@ open class KotlinUtil: JObject {
     }
     
 
-    @discardableResult public static func isKotlin() -> Bool {
+    @discardableResult open class func isKotlin() -> Bool {
         return false
     }
     
 
-    @discardableResult public static func getShortName() -> String! {
+    @discardableResult open class func getShortName() -> String! {
         return StringUtil.getInstance().EMPTY_STRING
     }
 }

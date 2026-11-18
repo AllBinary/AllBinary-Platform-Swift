@@ -1,69 +1,48 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
 
+open class SoundStrings: JObject {
+    fileprivate static let instance: SoundStrings! = SoundStrings()
+    public var STOP_ALL: String! = nil
+    public var CLOSE_ALL: String! = nil
+    public var SOUND: String! = nil
+    public var INIT_SOUND: String! = nil
+    public var STOPPING_SOUND: String! = nil
+    public var CLOSING_SOUND: String! = nil
 
+    private func initFields() {
+    self.STOP_ALL = "stopAll"
+    self.CLOSE_ALL = "closeAll"
+    self.SOUND = " Sound: "
+    self.INIT_SOUND = "Initializing Sound: "
+    self.STOPPING_SOUND = "Stopping Sound: "
+    self.CLOSING_SOUND = "Closing Sound: "
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class SoundStrings
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: SoundStrings = SoundStrings()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: SoundStrings{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return SoundStrings.instance
+    @discardableResult open class func getInstance() -> SoundStrings! {
+        return SoundStrings.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val STOP_ALL: String = "stopAll"
-
-    val CLOSE_ALL: String = "closeAll"
-
-    val SOUND: String = " Sound: "
-
-    val INIT_SOUND: String = "Initializing Sound: "
-
-    val STOPPING_SOUND: String = "Stopping Sound: "
-
-    val CLOSING_SOUND: String = "Closing Sound: "
-
-}
-                
-            
 

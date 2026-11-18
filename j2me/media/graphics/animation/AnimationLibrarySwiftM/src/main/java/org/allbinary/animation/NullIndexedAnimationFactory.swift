@@ -1,95 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.media.ScaleProperties
 
+open class NullIndexedAnimationFactory: JObject, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface {
+    public static let NULL_INDEXED_ANIMATION_ARRAY: JArray<IndexedAnimation?>! = JArray<IndexedAnimation?>(0, nil)
+    fileprivate static var NULL_INDEXED_ANIMATION_FACTORY: NullIndexedAnimationFactory! = NullIndexedAnimationFactory()
+    fileprivate var NULL_ANIMATION: Animation! = nil
 
+    private func initFields() {
+    self.NULL_ANIMATION = NullIndexedAnimationInner()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.media.ScaleProperties
+    @discardableResult open class func getFactoryInstance() -> NullIndexedAnimationFactory! {
+        return NullIndexedAnimationFactory.NULL_INDEXED_ANIMATION_FACTORY
+    }
+    
 
-open public class NullIndexedAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface
-                , ProceduralAnimationInterfaceFactoryInterface {
-        
-companion object {
-            
-    val NULL_INDEXED_ANIMATION_ARRAY: Array<IndexedAnimation?> = arrayOfNulls(0)
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        return self.NULL_ANIMATION
+    }
+    
 
-    private var NULL_INDEXED_ANIMATION_FACTORY: NullIndexedAnimationFactory = NullIndexedAnimationFactory()
+    @discardableResult open func getInstanceAnimation(_ animationInterface: Animation!) -> Animation! {
+        return self.NULL_ANIMATION
+    }
+    
 
-    open fun getFactoryInstance()
-        //nullable = true from not(false or (false and true)) = true
-: NullIndexedAnimationFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullIndexedAnimationFactory.NULL_INDEXED_ANIMATION_FACTORY
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-        }
-            
-    private val NULL_ANIMATION: Animation = NullIndexedAnimationInner()
-private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstanceAnimation(animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: Animation{
-    //var animationInterface = animationInterface
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

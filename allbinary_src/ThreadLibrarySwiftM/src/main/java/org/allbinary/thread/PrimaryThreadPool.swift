@@ -23,7 +23,7 @@ open class PrimaryThreadPool: ThreadPool {
     fileprivate static let THREAD_POOL: ThreadPool! = ThreadPool("Primary", 1, ThreadPool.NORMAL_PRIORITY)
     
 
-    @discardableResult public static func getInstance() -> ThreadPool! {
+    @discardableResult open class func getInstance() -> ThreadPool! {
         return PrimaryThreadPool.THREAD_POOL
     }
     

@@ -1,93 +1,47 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.image.GameFeatureImageCacheFactory
 
+open class ImageCreationUtil: JObject {
+    fileprivate static let instance: ImageCreationUtil! = ImageCreationUtil()
+    
 
+    @discardableResult open class func getInstance() -> ImageCreationUtil! {
+        return ImageCreationUtil.instance
+    }
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.image.GameFeatureImageCacheFactory
+    @discardableResult open func createImageWH(_ width: Int32, _ height: Int32) -> Image! {
+        let image: Image! = GameFeatureImageCacheFactory.getInstance().get(JObject.className(self), width, height)
+        return image
+    }
+    
 
-open public class ImageCreationUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ImageCreationUtil = ImageCreationUtil()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ImageCreationUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCreationUtil.instance
+    @discardableResult open func createImage(_ width: Int32, _ height: Int32, _ maxScaleX: Float, _ maxScaleY: Float) -> Image! {
+        let image: Image! = GameFeatureImageCacheFactory.getInstance().get(JObject.className(self), JMath.toInt32(Double((Float(width) * maxScaleX))) &+ 1, JMath.toInt32(Double((Float(height) * maxScaleY))) &+ 1)
+        return image
+    }
 }
-
-
-        }
-            private constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createImageWH(width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var width = width
-    //var height = height
-
-    var image: Image = GameFeatureImageCacheFactory.getInstance()!!.get(this::class.toString()!!, width, height)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun createImage(width: Int, height: Int, maxScaleX: Float, maxScaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var width = width
-    //var height = height
-    //var maxScaleX = maxScaleX
-    //var maxScaleY = maxScaleY
-
-    var image: Image = GameFeatureImageCacheFactory.getInstance()!!.get(this::class.toString()!!, (width *maxScaleX).toInt() +1, (height *maxScaleY).toInt() +1)!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
-}
-
-
-}
-                
-            
 

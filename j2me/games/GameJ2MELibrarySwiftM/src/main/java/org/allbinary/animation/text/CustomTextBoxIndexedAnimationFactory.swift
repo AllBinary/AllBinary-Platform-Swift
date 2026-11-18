@@ -1,110 +1,69 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.text
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.text
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.TextField
+// import org.allbinary.graphics.form.item.CustomTextBox
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.game.canvas.ABToGBUtil
+// import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.media.ScaleProperties
 
+open class CustomTextBoxIndexedAnimationFactory: JObject, AnimationInterfaceFactoryInterface {
+    public var logUtil: LogUtil! = nil
+    public var scaleProperties: ScaleProperties! = nil
+    fileprivate var maxLength: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.TextField
-import org.allbinary.graphics.form.item.CustomTextBox
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.game.canvas.ABToGBUtil
-import org.allbinary.game.displayable.canvas.AllBinaryGameCanvas
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.media.ScaleProperties
-
-open public class CustomTextBoxIndexedAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    var scaleProperties: ScaleProperties
-
-    private val maxLength: Int
-public constructor (fontSize: Int, maxLength: Int)
-            : super()
-        {
-    //var fontSize = fontSize
-    //var maxLength = maxLength
-this.scaleProperties= ScaleProperties()
-this.scaleProperties!!.scaleHeight= fontSize
-this.maxLength= maxLength
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-    var abToGBUtil: ABToGBUtil = ABToGBUtil.getInstance()!!
-
-
-    var abCanvas: AllBinaryGameCanvas = abToGBUtil!!.abCanvas as AllBinaryGameCanvas
-
-
-    var font: Font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, this.scaleProperties!!.scaleHeight)!!
-
-
-    var customTextBox: CustomTextBox = CustomTextBox2(abCanvas!!.getCustomCommandListener(), StringUtil.getInstance()!!.EMPTY_STRING, StringUtil.getInstance()!!.EMPTY_STRING, this.maxLength, TextField.ANY, font, abCanvas!!.getLayerManager()!!.getBackgroundBasicColor(), abCanvas!!.getLayerManager()!!.getForegroundBasicColor())
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomTextBoxIndexedAnimation(customTextBox)
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-
-    var fontSize: Int = this.scaleProperties!!.scaleHeight
-
-this.scaleProperties= scaleProperties
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
     
-                        if(this.scaleProperties!!.scaleHeight < 6)
-                        
-                                    {
-                                    this.scaleProperties!!.scaleHeight= fontSize
+    
+    }
+    
 
-                                    }
-                                
+    public init(_ fontSize: Int32, _ maxLength: Int32) {
+        super.init()
+        self.initFields()
+        self.scaleProperties = ScaleProperties()
+        self.scaleProperties.scaleHeight = fontSize
+        self.maxLength = maxLength
+    }
+    
+
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        let abToGBUtil: ABToGBUtil! = ABToGBUtil.getInstance()
+        let abCanvas: AllBinaryGameCanvas! = (abToGBUtil.abCanvas as! AllBinaryGameCanvas)
+        let font: Font! = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, self.scaleProperties.scaleHeight)
+        let customTextBox: CustomTextBox! = CustomTextBox2(abCanvas.getCustomCommandListener(), StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING, self.maxLength, TextField.ANY, font, abCanvas.getLayerManager().getBackgroundBasicColor(), abCanvas.getLayerManager().getForegroundBasicColor())
+        return CustomTextBoxIndexedAnimation(customTextBox)
+    }
+    
+
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+        let fontSize: Int32 = self.scaleProperties.scaleHeight
+        self.scaleProperties = scaleProperties
+        if (self.scaleProperties.scaleHeight < 6) {
+            self.scaleProperties.scaleHeight = fontSize
+        }
+    }
 }
-
-
-}
-                
-            
 

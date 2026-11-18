@@ -33,7 +33,7 @@ open class SmallBasicColorCacheFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> SmallBasicColorCacheFactory! {
+    @discardableResult open class func getInstance() -> SmallBasicColorCacheFactory! {
         return SmallBasicColorCacheFactory.instance
     }
     

@@ -1,279 +1,142 @@
+// Generated Code Do Not Modify
+// package org.allbinary.layer
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.TsUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.thread.SynchObject
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.logic.ABSystemWrapper
 
+open class LayerManager: JObject {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var systemWrapper: ABSystemWrapper! = nil
+    fileprivate var tsUtil: TsUtil! = nil
+    fileprivate var layerManagerLogging: LayerManagerLoggingBase! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var anyType: SynchObject! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import org.allbinary.TsUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.thread.SynchObject
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.logic.ABSystemWrapper
-
-open public class LayerManager
-            : Object
-         {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val systemWrapper: ABSystemWrapper = ABSystemWrapper.getInstance()!!
-
-    private val tsUtil: TsUtil = TsUtil.getInstance()!!
-
-    private val layerManagerLogging: LayerManagerLoggingBase
-
-    private val list: BasicArrayList = BasicArrayListD()
-
-    private val anyType: SynchObject = SynchObject()
-public constructor (layerManagerLogging: LayerManagerLoggingBase)
-            : super()
-        {
-    //var layerManagerLogging = layerManagerLogging
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CONSTRUCTOR)
-this.layerManagerLogging= layerManagerLogging
-}
-
-
-    open fun contains(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var layerInterface = layerInterface
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(layerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-
-    var had: Boolean = this.list.remove(layerInterface)
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
+    self.systemWrapper = ABSystemWrapper.getInstance()
+    self.tsUtil = TsUtil.getInstance()
     
-                        if(had)
-                        
-                                    {
-                                    
-    var nextLayerInterface: AllBinaryLayer
-
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-nextLayerInterface= this.list.get(index) as AllBinaryLayer
-
+    self.list = BasicArrayListD()
+    self.anyType = SynchObject()
+    }
     
-                        if(layerInterface!!.getZP() > nextLayerInterface!!.getZP())
-                        
-                                    {
-                                    this.list.addAt(index, layerInterface)
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-}
-
-this.list.add(layerInterface)
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun insert(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-
-    var nextLayerInterface: AllBinaryLayer
-
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-nextLayerInterface= this.list.get(index) as AllBinaryLayer
-
+    public init(_ layerManagerLogging: LayerManagerLoggingBase!) {
+        super.init()
+        self.initFields()
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CONSTRUCTOR)
+        self.layerManagerLogging = layerManagerLogging
+    }
     
-                        if(layerInterface!!.getZP() > nextLayerInterface!!.getZP())
-                        
-                                    {
-                                    this.appendAt(layerInterface, index)
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-}
-
-this.append(layerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun append(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-this.layerManagerLogging!!.append(layerInterface)
-this.list.add(layerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun appendAt(layerInterface: AllBinaryLayer, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-    //var index = index
-this.layerManagerLogging!!.appendAt(layerInterface, index)
-this.list.addAt(index, layerInterface)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun remove(layerInterface: AllBinaryLayer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterface = layerInterface
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this.anyType) 
-
-        //mutex.withLock
-        {
-this.layerManagerLogging!!.remove(layerInterface)
-
-    var result: Boolean = this.list.remove(layerInterface)
-
-this.layerManagerLogging!!.removeResult(this, layerInterface, result)
-}
-
-}
-
-
-    open fun getLayerAt(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Layer{
-    //var index = index
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.objectArray[index]!! as Layer
-}
-
-
-    open fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun cleanup()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this.anyType) 
-
-        //mutex.withLock
-        {
-this.list.clear()
-this.layerManagerLogging!!.clear()
-this.tsUtil!!.gc()
-this.tsUtil!!.gc()
-}
-
-}
-
-
-    open fun paint(g: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var g = g
-var x = x
-var y = y
-
-        
-        //TWB - This is not allowed for Kotlin native. Instead use Coroutine logic instead.
-        synchronized(this.anyType) 
-
-        //mutex.withLock
-        {
-
-    var comp: Layer
-
-
-
-
-
-                        for (index in this.list.size()!!  - 1  downTo 0)
-
-        {
-comp= this.list.objectArray[index]!! as Layer
-
+    @discardableResult open func contains(_ layerInterface: AllBinaryLayer!) -> Bool {
+        return self.list.contains(layerInterface)
+    }
     
-                        if(comp != 
-                                    null
-                                 && comp.isVisible())
-                        
-                                    {
-                                    comp.paint(g)
 
-                                    }
-                                
+    open func update(_ layerInterface: AllBinaryLayer!) {
+        let had: Bool = self.list.remove(layerInterface)
+        if (had) {
+            var nextLayerInterface: AllBinaryLayer! = nil
+            let size: Int32 = self.list.size()
+            do {
+                var index: Int32 = 0
+                while (index < size) {
+                    defer { index &+= 1 }
+                nextLayerInterface = (self.list.get(index) as! AllBinaryLayer)
+                if (layerInterface.getZP() > nextLayerInterface.getZP()) {
+                    self.list.addAt(index, layerInterface)
+                    return
+                }
+                }
+            }
+            self.list.add(layerInterface)
+        }
+    }
+    
+
+    open func insert(_ layerInterface: AllBinaryLayer!) {
+        var nextLayerInterface: AllBinaryLayer! = nil
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            nextLayerInterface = (self.list.get(index) as! AllBinaryLayer)
+            if (layerInterface.getZP() > nextLayerInterface.getZP()) {
+                self.appendAt(layerInterface, index)
+                return
+            }
+            }
+        }
+        self.append(layerInterface)
+    }
+    
+
+    open func append(_ layerInterface: AllBinaryLayer!) {
+        self.layerManagerLogging.append(layerInterface)
+        self.list.add(layerInterface)
+    }
+    
+
+    open func appendAt(_ layerInterface: AllBinaryLayer!, _ index: Int32) {
+        self.layerManagerLogging.appendAt(layerInterface, index)
+        self.list.addAt(index, layerInterface)
+    }
+    
+
+    open func remove(_ layerInterface: AllBinaryLayer!) {
+        do {
+            self.layerManagerLogging.remove(layerInterface)
+            let result: Bool = self.list.remove(layerInterface)
+            self.layerManagerLogging.removeResult(self, layerInterface, result)
+        }
+    }
+    
+
+    @discardableResult open func getLayerAt(_ index: Int32) -> Layer! {
+        return (self.list.objectArray[index] as! Layer)
+    }
+    
+
+    @discardableResult open func getSize() -> Int32 {
+        return self.list.size()
+    }
+    
+
+    open func cleanup() {
+        do {
+            self.list.clear()
+            self.layerManagerLogging.clear()
+            self.tsUtil.gc()
+            self.tsUtil.gc()
+        }
+    }
+    
+
+    open func paint(_ g: Graphics!, _ x: Int32, _ y: Int32) {
+        do {
+            var comp: Layer! = nil
+            do {
+                var index: Int32 = self.list.size()
+                while (jPreDecrement(&index) >= 0) {
+                comp = (self.list.objectArray[index] as! Layer)
+                if (comp != nil && comp.isVisible()) {
+                    comp.paint(g)
+                }
+                }
+            }
+        }
+    }
 }
-
-}
-
-}
-
-
-}
-                
-            
 

@@ -30,12 +30,12 @@ open class PreLogUtil: JObject {
     }
     
 
-    public static func put(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) {
+    open class func put(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!) {
         PreLogUtil.putOE(specialMessage, anyType, functionName, NullUtil.getInstance().NULL_OBJECT)
     }
     
 
-    public static func putOE(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) {
+    open class func putOE(_ specialMessage: String!, _ anyType: JObject!, _ functionName: String!, _ exception: JObject!) {
         var className: String! = CommonStrings.getInstance().EMPTY
         if (JObject.className(anyType) != nil) {
             className = JObject.className(anyType)
@@ -46,19 +46,19 @@ open class PreLogUtil: JObject {
     }
     
 
-    public static func putS(_ specialMessage: String!, _ className: String!, _ functionName: String!) {
+    open class func putS(_ specialMessage: String!, _ className: String!, _ functionName: String!) {
         PreLogUtil.putSE(specialMessage, className, functionName, NullUtil.getInstance().NULL_OBJECT)
     }
     
 
-    public static func putSE(_ specialMessage: String!, _ className: String!, _ functionName: String!, _ exception: JObject!) {
+    open class func putSE(_ specialMessage: String!, _ className: String!, _ functionName: String!, _ exception: JObject!) {
         let message: String! = LogFormatUtil.getInstance().get(className, functionName, specialMessage, exception)
         JSystem.println(jstr(PreLogUtil.LOG_SUCCESS))
         JSystem.println(jstr(message))
     }
     
 
-    @discardableResult public static func getClassName(_ anyType: JObject!) -> String! {
+    @discardableResult open class func getClassName(_ anyType: JObject!) -> String! {
         return JObject.className(anyType)
     }
 }

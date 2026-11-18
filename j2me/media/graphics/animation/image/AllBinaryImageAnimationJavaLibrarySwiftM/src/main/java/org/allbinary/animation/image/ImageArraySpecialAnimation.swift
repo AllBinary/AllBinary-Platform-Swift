@@ -1,154 +1,92 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.special.SpecialAnimationInterface
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.time.GameTickTimeDelayHelperFactory
+// import org.allbinary.time.TimeDelayHelper
 
+open class ImageArraySpecialAnimation: ImageArrayAnimation, SpecialAnimationInterface {
+    fileprivate var timeDelayHelper: TimeDelayHelper! = nil
+    fileprivate var loopCount: Int32 = 0
+    fileprivate var loopCountTotal: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.special.SpecialAnimationInterface
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.time.GameTickTimeDelayHelperFactory
-import org.allbinary.time.TimeDelayHelper
-
-open public class ImageArraySpecialAnimation : ImageArrayAnimation
-                , SpecialAnimationInterface {
-        
-
-    private val timeDelayHelper: TimeDelayHelper = TimeDelayHelper(270)
-public constructor (imageArray: Array<Image?>, animationBehavior: AnimationBehavior)                        
-
-                            : super(imageArray, animationBehavior){
-    //var imageArray = imageArray
-    //var animationBehavior = animationBehavior
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.reset()
-}
-
-
-    private var loopCount: Int = 0
-
-    open fun getLoopCount()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopCount
-}
-
-
-    override fun setLastFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.setIndex(this.circularIndexUtil!!.getSize() -1)
-}
-
-
-    override fun reset()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setFrame(this.getSize() -1)
-this.loopCount= 0
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.timeDelayHelper = TimeDelayHelper(270)
+    self.loopCount = 0
+    self.loopCountTotal = 1
+    }
     
-                        if(this.getFrame() > 0)
-                        
-                                    {
-                                    
+
+    public override init(_ imageArray: JArray<Image?>!, _ animationBehavior: AnimationBehavior!) {
+        super.init(imageArray, animationBehavior)
+        self.initFields()
+        self.reset()
+    }
     
-                        if(this.timeDelayHelper!!.isTime(GameTickTimeDelayHelperFactory.getInstance()!!.startTime))
-                        
-                                    {
-                                    this.previousFrame()
 
+    @discardableResult open func getLoopCount() -> Int32 {
+        return self.loopCount
+    }
     
-                        if(this.getFrame() == 0)
-                        
-                                    {
-                                    this.loopCount++
 
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-    private val loopCountTotal: Int = 1
-
-    override fun isComplete()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    open func setLastFrame() {
+        self.circularIndexUtil.setIndex(self.circularIndexUtil.getSize() &- 1)
+    }
     
-                        if(this.loopCount < this.loopCountTotal || this.getFrame() != 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
+    open override func reset() {
+        self.setFrame(self.getSize() &- 1)
+        self.loopCount = 0
+    }
+    
 
-                        }
-                            
+    open override func nextFrame() {
+        if (self.getFrame() > 0) {
+            if (self.timeDelayHelper.isTime(GameTickTimeDelayHelperFactory.getInstance().startTime)) {
+                self.previousFrame()
+                if (self.getFrame() == 0) {
+                    self.loopCount &+= 1
+                }
+            }
+        }
+    }
+    
+
+    @discardableResult open func isComplete() -> Bool {
+        if (self.loopCount < self.loopCountTotal || self.getFrame() != 0) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        var x: Int32 = x
+        var y: Int32 = y
+        x = DisplayInfoSingleton.getInstance().getLastHalfWidth() &- (self.getImage(self.circularIndexUtil.getIndex()).getWidth() >> 1)
+        y = 5
+        super.paintXY(graphics, x, y)
+    }
 }
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-var x = x
-var y = y
-x= DisplayInfoSingleton.getInstance()!!.getLastHalfWidth() -(this.getImage(this.circularIndexUtil!!.getIndex())!!.getWidth() shr 1)
-y= 5
-super.paintXY(graphics, x, y)
-}
-
-
-}
-                
-            
 

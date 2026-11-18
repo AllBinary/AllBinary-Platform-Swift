@@ -42,7 +42,7 @@ open class SmallIntegerSingletonFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> SmallIntegerSingletonFactory! {
+    @discardableResult open class func getInstance() -> SmallIntegerSingletonFactory! {
         return SmallIntegerSingletonFactory.instance
     }
     

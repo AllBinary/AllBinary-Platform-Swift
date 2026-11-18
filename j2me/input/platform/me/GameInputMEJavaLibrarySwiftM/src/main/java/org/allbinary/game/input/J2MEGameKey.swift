@@ -1,107 +1,49 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-
-open public class J2MEGameKey : Input {
-        
-companion object {
-            
-    open fun getString(keyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var keyCode = keyCode
-
-    var input: Input = InputFactory.getInstance()!!.getInstanceById(keyCode)!!
-
-
+open class J2MEGameKey: Input {
     
-                        if(input != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return input.getName()
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!!.EMPTY_STRING
-
-                        }
-                            
-}
-
-
+    public override init(_ key: Int32, _ keyName: String!) {
+        super.init(key, keyName)
+        let id: Int32 = self.getId()
+        if (id >= 0) {
+            let inputFactory: InputFactory! = InputFactory.getInstance()
+            inputFactory.add(id, self)
         }
-            protected constructor (key: Int, keyName: String)                        
-
-                            : super(key, keyName){
-var key = key
-var keyName = keyName
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    var id: Int = this.getId()
-
-
+    }
     
-                        if(id >= 0)
-                        
-                                    {
-                                    
-    var inputFactory: InputFactory = InputFactory.getInstance()!!
 
-inputFactory!!.add(id, this)
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append("J2MEGameKey: ").append(super.toString()).toString()
+    }
+    
 
-                                    }
-                                
+    @discardableResult open class func getString(_ keyCode: Int32) -> String! {
+        let input: Input! = InputFactory.getInstance().getInstanceById(keyCode)
+        if (input != nil) {
+            return input.getName()
+        } else {
+            return StringUtil.getInstance().EMPTY_STRING
+        }
+    }
 }
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append("J2MEGameKey: ")!!.append(super.toString())!!.toString()
-}
-
-
-}
-                
-            
 

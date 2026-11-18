@@ -1,117 +1,71 @@
+// Generated Code Do Not Modify
+// package org.allbinary.game.input.analog
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input.analog
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.CustomGPoint
 
+open class AnalogLocationInput: JObject {
+    public static let NULL_ANALOG_LOCATION_INPUT: AnalogLocationInput! = AnalogLocationInput(-1)
+    fileprivate var playerId: Int32 = 0
+    fileprivate var customGPoint: CustomGPoint! = nil
+    fileprivate var rz: Int32 = 0
+    fileprivate var rightTrigger: Int32 = 0
+    fileprivate var leftTrigger: Int32 = 0
 
+    private func initFields() {
+    
+    
+    self.rz = 0
+    self.rightTrigger = 0
+    self.leftTrigger = 0
+    }
+    
 
+    public init(_ playerId: Int32) {
+        super.init()
+        self.initFields()
+        self.playerId = playerId
+        self.customGPoint = CustomGPoint(0, 0, 0)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.CustomGPoint
+    @discardableResult open func getPlayerId() -> Int32 {
+        return self.playerId
+    }
+    
 
-open public class AnalogLocationInput
-            : Object
-         {
-        
-companion object {
-            
-    val NULL_ANALOG_LOCATION_INPUT: AnalogLocationInput = AnalogLocationInput( -1)
+    @discardableResult open func getCustomGPoint() -> CustomGPoint! {
+        return self.customGPoint
+    }
+    
 
-        }
-            
-    private val playerId: Int
+    @discardableResult open func getRz() -> Int32 {
+        return self.rz
+    }
+    
 
-    private val customGPoint: CustomGPoint
+    open func setRz(_ rz: Int32) {
+        self.rz = rz
+    }
+    
 
-    private var rz: Int= 0
+    @discardableResult open func getRightTrigger() -> Int32 {
+        return self.rightTrigger
+    }
+    
 
-    private var rightTrigger: Int= 0
+    open func setRightTrigger(_ rightTrigger: Int32) {
+        self.rightTrigger = rightTrigger
+    }
+    
 
-    private var leftTrigger: Int= 0
- constructor (playerId: Int)
-            : super()
-        {
-var playerId = playerId
-this.playerId= playerId
-this.customGPoint= CustomGPoint(0, 0, 0)
+    @discardableResult open func getLeftTrigger() -> Int32 {
+        return self.leftTrigger
+    }
+    
+
+    open func setLeftTrigger(_ leftTrigger: Int32) {
+        self.leftTrigger = leftTrigger
+    }
 }
-
-
-    open fun getPlayerId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerId
-}
-
-
-    open fun getCustomGPoint()
-        //nullable = true from not(false or (false and true)) = true
-: CustomGPoint{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customGPoint
-}
-
-
-    open fun getRz()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rz
-}
-
-
-    open fun setRz(rz: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var rz = rz
-this.rz= rz
-}
-
-
-    open fun getRightTrigger()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rightTrigger
-}
-
-
-    open fun setRightTrigger(rightTrigger: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var rightTrigger = rightTrigger
-this.rightTrigger= rightTrigger
-}
-
-
-    open fun getLeftTrigger()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.leftTrigger
-}
-
-
-    open fun setLeftTrigger(leftTrigger: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var leftTrigger = leftTrigger
-this.leftTrigger= leftTrigger
-}
-
-
-}
-                
-            
 

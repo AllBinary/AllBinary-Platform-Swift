@@ -1,182 +1,104 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.string.CommonStrings
 
+open class CellPositionFactory: JObject {
+    fileprivate static var SINGLETON: CellPositionFactory! = CellPositionFactory()
+    public var logUtil: LogUtil! = nil
+    public var NONE: CellPosition! = nil
+    fileprivate var cellPositionArray: JArray<JArray<CellPosition?>?>! = nil
+    fileprivate var columns: Int32 = 0
+    fileprivate var rows: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.string.CommonStrings
-
-open public class CellPositionFactory
-            : Object
-         {
-        
-companion object {
-            
-    private var SINGLETON: CellPositionFactory = CellPositionFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CellPositionFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPositionFactory.SINGLETON
-}
-
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val NONE: CellPosition = CellPosition( -1,  -1,  -1,  -1)
-
-    private var cellPositionArray: Array<Array<CellPosition?>?> = Array(0) { arrayOfNulls<CellPosition?>(0) }
-                                                            
-
-    private var columns: Int= 0
-
-    private var rows: Int= 0
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun init(columns: Int, rows: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var columns = columns
-var rows = rows
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Init: columns: ")
-stringBuffer!!.appendint(columns)
-stringBuffer!!.append(" rows: ")
-stringBuffer!!.appendint(rows)
-this.logUtil!!.putF(stringBuffer!!.toString(), this, commonStrings!!.INIT)
-this.cellPositionArray= Array(columns) { arrayOfNulls<CellPosition?>(rows) }
-                                                            
-this.columns= columns
-this.rows= rows
-
-
-
-
-                        for (column in 0 until columns)
-
-        {
-
-
-
-
-                        for (row in 0 until rows)
-
-        {
-this.createInstance(column, row)
-}
-
-}
-
-}
-
-
-    open fun getInstanceColRow(i_column: Int, i_row: Int)
-        //nullable = true from not(false or (false and false)) = true
-: CellPosition{
-var i_column = i_column
-var i_row = i_row
-
-        try {
-            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPositionArray[i_column]!![i_row]!!
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(StringMaker().
-                            append("columns: ")!!.appendint(this.getColumns())!!.append(" rows: ")!!.appendint(this.getRows())!!.append(" col: ")!!.appendint(i_column)!!.append(" row: ")!!.appendint(i_row)!!.toString(), this, commonStrings!!.GET_INSTANCE, e)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NONE
-}
-
-}
-
-
-    open fun createInstance(i_column: Int, i_row: Int)
-        //nullable = true from not(false or (false and false)) = true
-: CellPosition?{
-var i_column = i_column
-var i_row = i_row
-
-    var cellPositionCanBeNull: CellPosition? = this.cellPositionArray[i_column]!![i_row]
-
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.NONE = CellPosition(-1, -1, -1, -1)
+    self.cellPositionArray = JArray<JArray<CellPosition?>?>(0, factory: { JArray<CellPosition?>(0, nil) })
+    self.columns = 0
+    self.rows = 0
+    }
     
-                        if(cellPositionCanBeNull == 
-                                    null
-                                )
-                        
-                                    {
-                                    cellPositionCanBeNull= CellPosition(i_column, i_row, this.columns, this.rows)
-this.cellPositionArray[i_column]!![i_row]= cellPositionCanBeNull
 
-                                    }
-                                
+    @discardableResult open class func getInstance() -> CellPositionFactory! {
+        return CellPositionFactory.SINGLETON
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return cellPositionCanBeNull
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    open func `init`(_ columns: Int32, _ rows: Int32) {
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Init: columns: ")
+        stringBuffer.appendint(columns)
+        stringBuffer.append(" rows: ")
+        stringBuffer.appendint(rows)
+        self.logUtil.putF(stringBuffer.toString(), self, commonStrings.INIT)
+        self.cellPositionArray = JArray<JArray<CellPosition?>?>(columns, factory: { JArray<CellPosition?>(rows, nil) })
+        self.columns = columns
+        self.rows = rows
+        do {
+            var column: Int32 = 0
+            while (column < columns) {
+                defer { column &+= 1 }
+            do {
+                var row: Int32 = 0
+                while (row < rows) {
+                    defer { row &+= 1 }
+                self.createInstance(column, row)
+                }
+            }
+            }
+        }
+    }
+    
+
+    @discardableResult open func getInstanceColRow(_ i_column: Int32, _ i_row: Int32) -> CellPosition! {
+        do {
+            return self.cellPositionArray[i_column]![i_row]
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open func createInstance(_ i_column: Int32, _ i_row: Int32) -> CellPosition! {
+        var cellPositionCanBeNull: CellPosition! = self.cellPositionArray[i_column]![i_row]
+        if (cellPositionCanBeNull == nil) {
+            cellPositionCanBeNull = CellPosition(i_column, i_row, self.columns, self.rows)
+            self.cellPositionArray[i_column]![i_row] = cellPositionCanBeNull
+        }
+        return cellPositionCanBeNull
+    }
+    
+
+    @discardableResult open func getColumns() -> Int32 {
+        return self.columns
+    }
+    
+
+    @discardableResult open func getRows() -> Int32 {
+        return self.rows
+    }
 }
-
-
-    open fun getColumns()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columns
-}
-
-
-    open fun getRows()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rows
-}
-
-
-}
-                
-            
 

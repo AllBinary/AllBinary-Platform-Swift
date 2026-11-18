@@ -1,33 +1,14 @@
+// Generated Code Do Not Modify
+// package javax.microedition.khronos.egl
 
-        /* Generated Code Do Not Modify */
-        package javax.microedition.khronos.egl
+import J2SEForSwiftLibrary
 
+open class EGLConfig: JObject {
+    
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class EGLConfig
-            : Object
-         {
-        
-public constructor ()
-            : super()
-        {
-
-
-
-                            throw RuntimeException()
+    public override init() {
+        super.init()
+        jThrow(JException("RuntimeException", ""))
+    }
 }
-
-
-}
-                
-            
 

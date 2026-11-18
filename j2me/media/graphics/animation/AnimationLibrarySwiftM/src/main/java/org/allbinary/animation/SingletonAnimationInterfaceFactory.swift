@@ -1,81 +1,49 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import org.allbinary.media.ScaleProperties
 
+open class SingletonAnimationInterfaceFactory: JObject, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface {
+    fileprivate var animationInterface: Animation! = nil
 
+    private func initFields() {
+    
+    }
+    
 
+    public init(_ animationInterface: Animation!) {
+        super.init()
+        self.initFields()
+        self.animationInterface = animationInterface
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.media.ScaleProperties
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        return self.animationInterface
+    }
+    
 
-open public class SingletonAnimationInterfaceFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface
-                , ProceduralAnimationInterfaceFactoryInterface {
-        
+    @discardableResult open func getInstanceAnimation(_ animationInterface: Animation!) -> Animation! {
+        return self.animationInterface
+    }
+    
 
-    private val animationInterface: Animation
-public constructor (animationInterface: Animation)
-            : super()
-        {
-    //var animationInterface = animationInterface
-this.animationInterface= animationInterface
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstanceAnimation(animationInterface: Animation)
-        //nullable = true from not(false or (false and false)) = true
-: Animation{
-    //var animationInterface = animationInterface
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface
-}
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-}
-
-
-}
-                
-            
 

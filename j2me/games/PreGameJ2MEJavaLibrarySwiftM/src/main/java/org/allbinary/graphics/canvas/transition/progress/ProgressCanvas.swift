@@ -1,393 +1,267 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.canvas.transition.progress
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.canvas.transition.progress
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.NullCanvas
+// import javax.microedition.lcdui.NullCommandListener
+// import org.allbinary.canvas.Processor
+// import org.allbinary.canvas.RunnableCanvas
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.displayable.CanvasStrings
+// import org.allbinary.graphics.font.MyFontProcessor
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.font.UpdateMyFontProcessor
+// import org.allbinary.graphics.form.item.ABCustomGaugeItem
+// import org.allbinary.graphics.paint.NullPaintable
+// import org.allbinary.graphics.paint.Paintable
+// import org.allbinary.graphics.paint.PaintableInterface
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.midlet.AllBinaryMidlet
+// import org.allbinary.thread.PathFindingThreadPool
+// import org.allbinary.thread.ThreadPool
 
+open class ProgressCanvas: RunnableCanvas, PaintableInterface, UpdateMyFontInterface {
+    public var hasPainted: Bool = false
+    fileprivate var backgroundBasicColor: BasicColor! = nil
+    public var GAUGE_PAINTABLE: Paintable! = nil
+    fileprivate var maxValue: Float = 0.0
+    public var gauge: ABCustomGaugeItem! = nil
+    fileprivate var TEXT: String! = nil
+    fileprivate var updateMyFontProcessor: MyFontProcessor! = nil
+    fileprivate var myFontProcessor: MyFontProcessor! = nil
+    public var allbinaryMidlet: AllBinaryMidlet! = nil
+    fileprivate var value: Float = 0.0
+    fileprivate var text: String! = nil
+    fileprivate var background: Bool = false
+    public var paintable: PaintableInterface! = nil
+    public var inProgress: Bool = false
+    fileprivate var IN_GAME_PROCESSOR: Processor! = nil
+    public var inGameProcessor: Processor! = nil
+    public var progressEndListener: ProgressEndListener! = nil
+    fileprivate var backgroundLabel: String! = nil
+    fileprivate var START_BACKGROUND: String! = nil
+    public var ADD_PORTION: String! = nil
+    public var ADD_EARLY_PORTION: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.NullCanvas
-import javax.microedition.lcdui.NullCommandListener
-import org.allbinary.canvas.Processor
-import org.allbinary.canvas.RunnableCanvas
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.displayable.CanvasStrings
-import org.allbinary.graphics.font.MyFontProcessor
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.font.UpdateMyFontProcessor
-import org.allbinary.graphics.form.item.ABCustomGaugeItem
-import org.allbinary.graphics.paint.NullPaintable
-import org.allbinary.graphics.paint.Paintable
-import org.allbinary.graphics.paint.PaintableInterface
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.midlet.AllBinaryMidlet
-import org.allbinary.thread.PathFindingThreadPool
-import org.allbinary.thread.ThreadPool
-
-open public class ProgressCanvas : RunnableCanvas
-                , PaintableInterface
-                , UpdateMyFontInterface {
-        
-
-    var hasPainted: Boolean= false
-
-    private val backgroundBasicColor: BasicColor
-
-    val GAUGE_PAINTABLE: Paintable = ProgressPaintable(this)
-
-    private val maxValue: Float = 100.0f
-
-    val gauge: ABCustomGaugeItem
-
-    private val TEXT: String = this.commonStrings!!.LOADING
-
-    private val updateMyFontProcessor: MyFontProcessor = UpdateMyFontProcessor(this)
-
-    private var myFontProcessor: MyFontProcessor = this.updateMyFontProcessor
-
-    var allbinaryMidlet: AllBinaryMidlet = AllBinaryMidlet.getNullInstance()!!
-
-    private var value: Float= 0.0f
-
-    private var text: String = this.TEXT
-
-    private var background: Boolean = true
-
-    var paintable: PaintableInterface = this.GAUGE_PAINTABLE
-
-    var inProgress: Boolean = false
-
-    private val IN_GAME_PROCESSOR: Processor = object: Processor()
-                                {
-                                
-                                
-    private val pathFindingThreadPool: ThreadPool = PathFindingThreadPool.getInstance()!!
-
-                @Throws(Exception::class)
-            
-    open override fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.pathFindingThreadPool!!.runAPriorityTask()
-}
-
-                                }
-                            
-
-    var inGameProcessor: Processor = Processor.getInstance()!!
-
-    var progressEndListener: ProgressEndListener = ProgressEndListener.instance
- constructor (title: String, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(NullCommandListener.NULL_COMMAND_LISTENER, CanvasStrings.getInstance()!!.EMPTY_CHILD_NAME_LIST, false){
-    //var title = title
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.backgroundBasicColor= backgroundBasicColor
-this.gauge= ABCustomGaugeItem(StringUtil.getInstance()!!.EMPTY_STRING, this.maxValue.toInt(), 0, backgroundBasicColor, foregroundBasicColor)
-}
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-
-    var font: Font = graphics.getFont()!!
-
-this.gauge.setHeight(font.getHeight() +2)
-this.myFontProcessor= MyFontProcessor.getInstance()!!
-}
-
-
-    open fun init(gameMidlet: AllBinaryMidlet)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gameMidlet = gameMidlet
-this.allbinaryMidlet= gameMidlet
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun update(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    override fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-var cmdListener = cmdListener
-}
-
-
-    open fun getMaxValue()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxValue
-}
-
-
-    open fun start()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.START_METHOD_NAME)
-this.setBackground(true)
-this.gauge.setHeight(30)
-this.gauge.setLabel(this.commonStrings!!.PLEASE_WAIT)
-this.setText(this.TEXT)
-this.setValue(0)
-this.inGameProcessor= Processor.getInstance()!!
-this.paintable= this.GAUGE_PAINTABLE
-this.inProgress= true
-}
-
-
-    private val backgroundLabel: String = "Background AI Game Loading..."
-
-    private val START_BACKGROUND: String = "startBackground"
-
-    open fun startBackground(background: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var background = background
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.START_BACKGROUND)
-this.setBackground(background)
-this.myFontProcessor= this.updateMyFontProcessor
-this.gauge.setLabel(this.backgroundLabel)
-this.setText(this.TEXT)
-this.setValue(0)
-this.inGameProcessor= Processor.getInstance()!!
-this.paintable= this.GAUGE_PAINTABLE
-}
-
-
-    open fun endActual()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.allbinaryMidlet!!.commandAction(GameCommandsFactory.getInstance()!!.SHOW_GAME_CANVAS, NullCanvas.NULL_CANVAS)
-this.inProgress= false
-this.inGame()
-}
-
-
-    open fun inGame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.progressEndListener!!.onEndEvent()
-this.inGameProcessor= this.IN_GAME_PROCESSOR
-}
-
-
-    open fun end()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.END_METHOD_NAME)
-this.gauge.setValue(this.getMaxValue())
-this.endActual()
-this.paintable= NullPaintable.getInstance()!!
-}
-
-
-    open fun endFromInitialLazyLoadingComplete()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.progressEndListener!!.onEndEvent()
-this.gauge.setValue(this.getMaxValue())
-this.inGameProcessor= this.IN_GAME_PROCESSOR
-}
-
-
-    open fun isInGame()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.hasPainted = false
     
-                        if(this.inGameProcessor == this.IN_GAME_PROCESSOR)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun endIfPaintedSinceStart()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    val ADD_PORTION: String = "addPortion"
-
-    val ADD_EARLY_PORTION: String = "addEarlyPortion"
-
-    open fun addEarlyPortion(value: Int, text: String, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-var text = text
-var index = index
-this.setText(StringMaker().
-                            append(text)!!.append(SmallIntegerSingletonFactory.getInstance()!!.getAt(index)!!.toString())!!.toString())
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value)
-}
-
-
-    open fun addPortion(value: Int, text: String, index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-var text = text
-var index = index
-this.setText(StringMaker().
-                            append(text)!!.append(SmallIntegerSingletonFactory.getInstance()!!.getAt(index)!!.toString())!!.toString())
-PreLogUtil.put(this.text, this, this.ADD_PORTION)
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value)
-}
-
-
-    open fun addNormalPortion(value: Int, text: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-var text = text
-
+    self.GAUGE_PAINTABLE = ProgressPaintable(self)
+    self.maxValue = 100.0
     
-                        if(this.text != text)
-                        
-                                    {
-                                    PreLogUtil.put(text, this, this.ADD_PORTION)
+    self.TEXT = self.commonStrings.LOADING
+    self.updateMyFontProcessor = UpdateMyFontProcessor(self)
+    self.myFontProcessor = self.updateMyFontProcessor
+    self.allbinaryMidlet = AllBinaryMidlet.getNullInstance()
+    self.value = 0.0
+    self.text = self.TEXT
+    self.background = true
+    self.paintable = self.GAUGE_PAINTABLE
+    self.inProgress = false
+    self.IN_GAME_PROCESSOR = Processor() /* Java anonymous class body: implement it as a named subclass
+        self.pathFindingThreadPool = PathFindingThreadPool.getInstance()
+        
 
-                                    }
-                                
-this.setText(text)
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value)
+        open override func process() {
+            self.pathFindingThreadPool.runAPriorityTask()
+        } */
+    self.inGameProcessor = Processor.getInstance()
+    self.progressEndListener = ProgressEndListener.instance
+    self.backgroundLabel = "Background AI Game Loading..."
+    self.START_BACKGROUND = "startBackground"
+    self.ADD_PORTION = "addPortion"
+    self.ADD_EARLY_PORTION = "addEarlyPortion"
+    }
+    
+
+    public init(_ title: String!, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(NullCommandListener.NULL_COMMAND_LISTENER, CanvasStrings.getInstance().EMPTY_CHILD_NAME_LIST, false)
+        self.initFields()
+        self.backgroundBasicColor = backgroundBasicColor
+        self.gauge = ABCustomGaugeItem(StringUtil.getInstance().EMPTY_STRING, JMath.toInt32(Double(self.maxValue)), 0, backgroundBasicColor, foregroundBasicColor)
+    }
+    
+
+    open override func updateMeasurement(_ graphics: Graphics!) {
+        let font: Font! = graphics.getFont()
+        self.gauge.setHeight(font.getHeight() &+ 2)
+        self.myFontProcessor = MyFontProcessor.getInstance()
+    }
+    
+
+    open func `init`(_ gameMidlet: AllBinaryMidlet!) {
+        self.allbinaryMidlet = gameMidlet
+    }
+    
+
+    open func update(_ graphics: Graphics!) {
+    }
+    
+
+    open override func initCommands(_ cmdListener: CommandListener!) {
+    }
+    
+
+    @discardableResult public func getMaxValue() -> Float {
+        return self.maxValue
+    }
+    
+
+    open func start() {
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.START_METHOD_NAME)
+        self.setBackground(true)
+        self.gauge.setHeight(30)
+        self.gauge.setLabel(self.commonStrings.PLEASE_WAIT)
+        self.setText(self.TEXT)
+        self.setValue(0)
+        self.inGameProcessor = Processor.getInstance()
+        self.paintable = self.GAUGE_PAINTABLE
+        self.inProgress = true
+    }
+    
+
+    open func startBackground(_ background: Bool) {
+        self.logUtil.putF(self.commonStrings.START, self, self.START_BACKGROUND)
+        self.setBackground(background)
+        self.myFontProcessor = self.updateMyFontProcessor
+        self.gauge.setLabel(self.backgroundLabel)
+        self.setText(self.TEXT)
+        self.setValue(0)
+        self.inGameProcessor = Processor.getInstance()
+        self.paintable = self.GAUGE_PAINTABLE
+    }
+    
+
+    open func endActual() {
+        self.allbinaryMidlet.commandAction(GameCommandsFactory.getInstance().SHOW_GAME_CANVAS, NullCanvas.NULL_CANVAS)
+        self.inProgress = false
+        self.inGame()
+    }
+    
+
+    open func inGame() {
+        self.progressEndListener.onEndEvent()
+        self.inGameProcessor = self.IN_GAME_PROCESSOR
+    }
+    
+
+    open func end() {
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.END_METHOD_NAME)
+        self.gauge.setValue(self.getMaxValue())
+        self.endActual()
+        self.paintable = NullPaintable.getInstance()
+    }
+    
+
+    open func endFromInitialLazyLoadingComplete() {
+        self.progressEndListener.onEndEvent()
+        self.gauge.setValue(self.getMaxValue())
+        self.inGameProcessor = self.IN_GAME_PROCESSOR
+    }
+    
+
+    @discardableResult open func isInGame() -> Bool {
+        if (self.inGameProcessor === self.IN_GAME_PROCESSOR) {
+            return true
+        }
+        return false
+    }
+    
+
+    open func endIfPaintedSinceStart() {
+    }
+    
+
+    open func addEarlyPortion(_ value: Int32, _ text: String!, _ index: Int32) {
+        self.setText(StringMaker().append(text).append(SmallIntegerSingletonFactory.getInstance().getAt(index).toString()).toString())
+        self.gauge.setValue(self.gauge.getValue() + self.getMaxValue() / Float(value))
+    }
+    
+
+    open func addPortion(_ value: Int32, _ text: String!, _ index: Int32) {
+        self.setText(StringMaker().append(text).append(SmallIntegerSingletonFactory.getInstance().getAt(index).toString()).toString())
+        PreLogUtil.put(self.text, self, self.ADD_PORTION)
+        self.gauge.setValue(self.gauge.getValue() + self.getMaxValue() / Float(value))
+    }
+    
+
+    open func addNormalPortion(_ value: Int32, _ text: String!) {
+        if (self.text != text) {
+            PreLogUtil.put(text, self, self.ADD_PORTION)
+        }
+        self.setText(text)
+        self.gauge.setValue(self.gauge.getValue() + self.getMaxValue() / Float(value))
+    }
+    
+
+    open func setValue(_ value: Int32) {
+        self.value = Float(value)
+        self.gauge.setValue(Float(value))
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.paintable.paint(graphics)
+    }
+    
+
+    open func paint2(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        graphics.setColor(self.backgroundBasicColor.intValue())
+        graphics.fillRect(0, 0, self.displayInfo.getLastWidth(), self.displayInfo.getLastHeight())
+        self.gauge.paintXY(graphics, 0, 0)
+        self.hasPainted = true
+    }
+    
+
+    open override func paintThreed(_ graphics: Graphics!) {
+    }
+    
+
+    @discardableResult open func getValue() -> Float {
+        return self.value
+    }
+    
+
+    open func setText(_ text: String!) {
+        self.text = text
+    }
+    
+
+    @discardableResult open func getText() -> String! {
+        return self.text
+    }
+    
+
+    open func setBackground(_ background: Bool) {
+        self.background = background
+    }
+    
+
+    @discardableResult open func isBackground() -> Bool {
+        return self.background
+    }
 }
-
-
-    open fun setValue(value: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var value = value
-this.value= value.toFloat()
-this.gauge.setValue(value.toFloat())
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.paintable.paint(graphics)
-}
-
-
-    open fun paint2(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-graphics.setColor(this.backgroundBasicColor!!.toInt())
-graphics.fillRect(0, 0, this.displayInfo!!.getLastWidth(), this.displayInfo!!.getLastHeight())
-this.gauge.paintXY(graphics, 0, 0)
-this.hasPainted= true
-}
-
-
-    override fun paintThreed(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-}
-
-
-    open fun getValue()
-        //nullable = true from not(false or (false and true)) = true
-: Float{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value
-}
-
-
-    open fun setText(text: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var text = text
-this.text= text
-}
-
-
-    open fun getText()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.text
-}
-
-
-    open fun setBackground(background: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var background = background
-this.background= background
-}
-
-
-    open fun isBackground()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.background
-}
-
-
-}
-                
-            
 

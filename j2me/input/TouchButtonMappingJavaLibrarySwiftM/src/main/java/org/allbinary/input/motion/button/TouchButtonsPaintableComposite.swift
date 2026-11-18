@@ -1,166 +1,110 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.CompleteMotionGestureInputEvent
+// import org.allbinary.game.input.CompleteMotionGestureInputEventHandler
+// import org.allbinary.game.input.CompleteMotionGestureInputEventListenerInterface
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.game.input.mapping.InputMappingInterface
+// import org.allbinary.game.input.motion.action.GameKeyCompleteMotionGestureInputEvent
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.paint.ProcessPaintable
+// import org.allbinary.input.motion.gesture.MotionGestureInput
+// import org.allbinary.input.motion.gesture.TouchMotionGestureFactory
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.logic.util.event.AllBinaryEventObject
+// import org.allbinary.logic.util.event.EventStrings
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.time.TimeDelayHelper
 
+open class TouchButtonsPaintableComposite: ProcessPaintable, CompleteMotionGestureInputEventListenerInterface {
+    public var logUtil: LogUtil! = nil
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var inputMappingInterface: InputMappingInterface! = nil
+    public var touchButtonsPaintable: TouchButtonsMappingPaintable! = nil
+    fileprivate var timeHelper: TimeDelayHelper! = nil
+    fileprivate var released: Bool = false
+    fileprivate var METHOD_NAME: String! = nil
+    fileprivate var RELEASE: String! = nil
+    fileprivate var FAST_REPEAT: String! = nil
+    fileprivate var IGNORE: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.CompleteMotionGestureInputEvent
-import org.allbinary.game.input.CompleteMotionGestureInputEventHandler
-import org.allbinary.game.input.CompleteMotionGestureInputEventListenerInterface
-import org.allbinary.game.input.GameKey
-import org.allbinary.game.input.mapping.InputMappingInterface
-import org.allbinary.game.input.motion.action.GameKeyCompleteMotionGestureInputEvent
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.paint.ProcessPaintable
-import org.allbinary.input.motion.gesture.MotionGestureInput
-import org.allbinary.input.motion.gesture.TouchMotionGestureFactory
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.logic.util.event.AllBinaryEventObject
-import org.allbinary.logic.util.event.EventStrings
-import org.allbinary.string.CommonStrings
-import org.allbinary.time.TimeDelayHelper
-
-open public class TouchButtonsPaintableComposite : ProcessPaintable
-                , CompleteMotionGestureInputEventListenerInterface {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private var inputMappingInterface: InputMappingInterface
-
-    var touchButtonsPaintable: TouchButtonsMappingPaintable
-
-    private var timeHelper: TimeDelayHelper = TimeDelayHelper(250)
-
-    private var released: Boolean = true
-public constructor (inputMappingInterface: InputMappingInterface, basicColor: BasicColor){
-    //var inputMappingInterface = inputMappingInterface
-    //var basicColor = basicColor
-this.inputMappingInterface= inputMappingInterface
-CompleteMotionGestureInputEventHandler.getInstance()!!.addListenerInterface(this)
-this.touchButtonsPaintable= TouchButtonsMappingPaintable(basicColor)
-}
-
-
-    override fun onEvent(eventObject: AllBinaryEventObject)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var eventObject = eventObject
-ForcedLogUtil.log(EventStrings.getInstance()!!.PERFORMANCE_MESSAGE, this)
-}
-
-
-    private val METHOD_NAME: String = "onCompleteMotionGestureInputEvent"
-
-    private val RELEASE: String = "Ignoring: MotionGestureInput Release"
-
-    private val FAST_REPEAT: String = "Ignoring: MotionGestureInput Repeated To Quickly"
-
-    private val IGNORE: String = "Ignoring: Until Released"
-
-    override fun onCompleteMotionGestureInputEvent(completeMotionGestureInputEvent: CompleteMotionGestureInputEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var completeMotionGestureInputEvent = completeMotionGestureInputEvent
-
-        try {
-            this.logUtil!!.putF(this.commonStrings!!.START, this, "onCompleteMotionGestureInputEvent")
-
-    var touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!!
-
-
-    var gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent
-
-
-    var gameKey: GameKey = gameKeyCompleteMotionGestureInputEvent!!.getGameKey()!!
-
-
-    var motionGestureInput: MotionGestureInput = completeMotionGestureInputEvent!!.getMotionGestureInput()!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
     
-                        if(motionGestureInput == touchMotionGestureFactory!!.RELEASED)
-                        
-                                    {
-                                    this.logUtil!!.putF(this.RELEASE, this, this.METHOD_NAME)
-this.released= true
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-
     
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!!.NO_MOTION && !this.timeHelper!!.isTimeTNT())
-                        
-                                    {
-                                    this.logUtil!!.putF(this.FAST_REPEAT, this, this.METHOD_NAME)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
-
-                                    }
-                                
-
+    self.timeHelper = TimeDelayHelper(250)
+    self.released = true
+    self.METHOD_NAME = "onCompleteMotionGestureInputEvent"
+    self.RELEASE = "Ignoring: MotionGestureInput Release"
+    self.FAST_REPEAT = "Ignoring: MotionGestureInput Repeated To Quickly"
+    self.IGNORE = "Ignoring: Until Released"
+    }
     
-                        if(!this.released)
-                        
-                                    {
-                                    this.logUtil!!.putF(this.IGNORE, this, this.METHOD_NAME)
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 
+    public init(_ inputMappingInterface: InputMappingInterface!, _ basicColor: BasicColor!) {
+        super.init()
+        self.initFields()
+        self.inputMappingInterface = inputMappingInterface
+        CompleteMotionGestureInputEventHandler.getInstance().addListenerInterface(self)
+        self.touchButtonsPaintable = TouchButtonsMappingPaintable(basicColor)
+    }
+    
 
-                                    }
-                                
-this.released= false
-this.logUtil!!.putF(StringMaker().
-                            append("GameKey: ")!!.append(StringUtil.getInstance()!!.toString(gameKey))!!.append(" MotionGestureInput: ")!!.append(StringUtil.getInstance()!!.toString(motionGestureInput))!!.toString(), this, this.METHOD_NAME)
-this.inputMappingInterface!!.processInputMapping(gameKey, motionGestureInput)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, this.METHOD_NAME, e)
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
+        ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
+    }
+    
+
+    open func onCompleteMotionGestureInputEvent(_ completeMotionGestureInputEvent: CompleteMotionGestureInputEvent!) {
+        do {
+            self.logUtil.putF(self.commonStrings.START, self, "onCompleteMotionGestureInputEvent")
+            let touchMotionGestureFactory: TouchMotionGestureFactory! = TouchMotionGestureFactory.getInstance()
+            let gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent! = (completeMotionGestureInputEvent as! GameKeyCompleteMotionGestureInputEvent)
+            let gameKey: GameKey! = gameKeyCompleteMotionGestureInputEvent.getGameKey()
+            let motionGestureInput: MotionGestureInput! = completeMotionGestureInputEvent.getMotionGestureInput()
+            if (motionGestureInput === touchMotionGestureFactory.RELEASED) {
+                self.logUtil.putF(self.RELEASE, self, self.METHOD_NAME)
+                self.released = true
+                return
+            }
+            if (motionGestureInput === TouchMotionGestureFactory.getInstance().NO_MOTION && !self.timeHelper.isTimeTNT()) {
+                self.logUtil.putF(self.FAST_REPEAT, self, self.METHOD_NAME)
+                return
+            }
+            if (!self.released) {
+                self.logUtil.putF(self.IGNORE, self, self.METHOD_NAME)
+                return
+            }
+            self.released = false
+            self.logUtil.putF(StringMaker().append("GameKey: ").append(StringUtil.getInstance().toString(gameKey)).append(" MotionGestureInput: ").append(StringUtil.getInstance().toString(motionGestureInput)).toString(), self, self.METHOD_NAME)
+            self.inputMappingInterface.processInputMapping(gameKey, motionGestureInput)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    open override func process() {
+        CompleteMotionGestureInputEventHandler.getInstance().removeListener(self)
+    }
 }
-
-}
-
-
-    override fun process()
-        //nullable = true from not(false or (false and true)) = true
-{
-CompleteMotionGestureInputEventHandler.getInstance()!!.removeListener(this)
-}
-
-
-}
-                
-            
 

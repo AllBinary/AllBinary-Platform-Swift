@@ -1,177 +1,114 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Graphics
+// import javax.microedition.lcdui.Image
+// import org.allbinary.DisposalUtil
+// import org.allbinary.animation.AnimationBehavior
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.graphics.Anchor
+// import org.allbinary.logic.math.PrimitiveIntUtil
+// import org.allbinary.util.CircularIndexUtil
 
+open class TweenedImageAnimation: IndexedAnimation {
+    fileprivate var image: Image! = nil
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
+    fileprivate var totalFrames: Int32 = 0
+    public var circularIndexUtil: CircularIndexUtil! = nil
+    fileprivate var anchor: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    
+    
+    
+    
+    self.anchor = Anchor.TOP_LEFT
+    }
+    
 
+    public init(_ image: Image!, _ dx: Int32, _ dy: Int32, _ totalFrames: Int32, _ animationBehavior: AnimationBehavior!) {
+        super.init(animationBehavior)
+        self.initFields()
+        self.image = image
+        self.dx = dx
+        self.dy = dy
+        self.totalFrames = totalFrames
+        self.circularIndexUtil = CircularIndexUtil.createInstance(self.totalFrames)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Graphics
-import javax.microedition.lcdui.Image
-import org.allbinary.DisposalUtil
-import org.allbinary.animation.AnimationBehavior
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.graphics.Anchor
-import org.allbinary.logic.math.PrimitiveIntUtil
-import org.allbinary.util.CircularIndexUtil
+    @discardableResult open override func getAnimationSize() -> Int32 {
+        return self.getSize()
+    }
+    
 
-open public class TweenedImageAnimation : IndexedAnimation {
-        
+    open override func nextFrame() {
+        self.circularIndexUtil.next()
+    }
+    
 
-    private val image: Image
+    open override func previousFrame() {
+        self.circularIndexUtil.previous()
+    }
+    
 
-    private val dx: Int
+    open override func setFrame(_ index: Int32) {
+        self.circularIndexUtil.setIndex(index)
+    }
+    
 
-    private val dy: Int
+    @discardableResult open override func getFrame() -> Int32 {
+        return self.circularIndexUtil.getIndex()
+    }
+    
 
-    private var totalFrames: Int
+    @discardableResult open override func getSize() -> Int32 {
+        return self.totalFrames
+    }
+    
 
-    var circularIndexUtil: CircularIndexUtil
-public constructor (image: Image, dx: Int, dy: Int, totalFrames: Int, animationBehavior: AnimationBehavior)                        
+    open override func setSequence(_ sequence: JArray<Int32>!) {
+    }
+    
 
-                            : super(animationBehavior){
-    //var image = image
-    //var dx = dx
-    //var dy = dy
-    //var totalFrames = totalFrames
-    //var animationBehavior = animationBehavior
+    @discardableResult open override func getSequence() -> JArray<Int32>! {
+        return PrimitiveIntUtil.getArrayInstance()
+    }
+    
 
+    open override func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        let frame: Int32 = self.getFrame()
+        let currentX: Int32 = self.dx &* frame
+        let currentY: Int32 = self.dy &* frame
+        graphics.drawImage(self.image, x &+ currentX, y &+ currentY, self.anchor)
+    }
+    
 
-                            //For kotlin this is before the body of the constructor.
-                    
-this.image= image
-this.dx= dx
-this.dy= dy
-this.totalFrames= totalFrames
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.totalFrames)!!
+    open func close() {
+        DisposalUtil.getInstance().disposeImage(self.image)
+    }
+    
+
+    open func finalize() {
+        DisposalUtil.getInstance().disposeImage(self.image)
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun getAnimationSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize()
-}
-
-
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.next()
-}
-
-
-    override fun previousFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.circularIndexUtil!!.previous()
-}
-
-
-    override fun setFrame(index: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var index = index
-this.circularIndexUtil!!.setIndex(index)
-}
-
-
-    override fun getFrame()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!!.getIndex()
-}
-
-
-    override fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalFrames
-}
-
-
-    override fun setSequence(sequence: IntArray)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sequence = sequence
-}
-
-
-    override fun getSequence()
-        //nullable = true from not(false or (false and true)) = true
-: IntArray{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance()
-}
-
-
-    private var anchor: Int = Anchor.TOP_LEFT
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var graphics = graphics
-var x = x
-var y = y
-
-    var frame: Int = this.getFrame()
-
-
-    var currentX: Int = this.dx *frame
-
-
-    var currentY: Int = this.dy *frame
-
-graphics.drawImage(this.image, x +currentX, y +currentY, this.anchor)
-}
-
-
-    open fun close()
-        //nullable = true from not(false or (false and true)) = true
-{
-DisposalUtil.getInstance()!!.disposeImage(this.image)
-}
-
-
-                @Throws(Throwable::class)
-            
-    override fun finalize()
-        //nullable = true from not(false or (false and true)) = true
-{
-DisposalUtil.getInstance()!!.disposeImage(this.image)
-}
-
-
-}
-                
-            
 

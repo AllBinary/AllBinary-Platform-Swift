@@ -24,7 +24,7 @@ open class NullRunnable: ARunnable {
     fileprivate static let instance: NullRunnable! = NullRunnable()
     
 
-    @discardableResult public static func getInstance() -> NullRunnable! {
+    @discardableResult open class func getInstance() -> NullRunnable! {
         return NullRunnable.instance
     }
     

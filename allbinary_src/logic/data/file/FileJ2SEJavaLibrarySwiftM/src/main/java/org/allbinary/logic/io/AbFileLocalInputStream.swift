@@ -1,49 +1,30 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io
+import J2SEForSwiftLibrary
+// import java.io.FileNotFoundException
+// import org.allbinary.logic.io.file.AbFile
+// import org.allbinary.logic.io.file.AbFileNativeUtil
 
+open class AbFileLocalInputStream: AbFileInputStream {
+    
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.io.FileNotFoundException
-import org.allbinary.logic.io.file.AbFile
-import org.allbinary.logic.io.file.AbFileNativeUtil
-
-open public class AbFileLocalInputStream : AbFileInputStream {
-        
-public constructor (file: AbFile)                        
-
-                            : super(AbFileNativeUtil.get(file)!!.getPath()){
-var file = file
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    public init(_ file: AbFile!) {
+        super.init(AbFileNativeUtil.get(file).getPath())
+    }
 }
-
-
-}
-                
-            
 

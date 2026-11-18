@@ -1,236 +1,122 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.CustomGPoint
+// import org.allbinary.graphics.GPointCircularPool
+// import org.allbinary.input.motion.button.TouchButtonRecognizer
+// import org.allbinary.input.motion.gesture.MotionGestureRecognizer
+// import org.allbinary.logic.communication.log.LogUtil
 
+open class AllMotionRecognizer: MotionRecognizer {
+    fileprivate static var index: Int32 = 0
+    fileprivate static let pointCircularPool: GPointCircularPool! = GPointCircularPool(40)
+    public var logUtil: LogUtil! = nil
+    fileprivate var motionGestureRecognizer: MotionGestureRecognizer! = nil
+    fileprivate var touchButtonProcessing: Bool = false
+    fileprivate var touchButtonRecognizer: TouchButtonRecognizer! = nil
+    fileprivate var id: Int32 = 0
+    fileprivate var lastX: Int32 = 0
+    fileprivate var lastY: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    
+    self.touchButtonProcessing = false
+    
+    
+    self.lastX = 0
+    self.lastY = 0
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+        self.id = jPostIncrement(&AllMotionRecognizer.index)
+        self.motionGestureRecognizer = MotionGestureRecognizer(self.id)
+        self.touchButtonRecognizer = TouchButtonRecognizer()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.CustomGPoint
-import org.allbinary.graphics.GPointCircularPool
-import org.allbinary.input.motion.button.TouchButtonRecognizer
-import org.allbinary.input.motion.gesture.MotionGestureRecognizer
-import org.allbinary.logic.communication.log.LogUtil
-
-open public class AllMotionRecognizer : MotionRecognizer {
-        
-companion object {
-            
-    private var index: Int = 0
-
-    private val pointCircularPool: GPointCircularPool = GPointCircularPool(40)
-
+    open override func processStartMotionEvent(_ x: Int32, _ y: Int32, _ deviceId: Int32, _ modifiers: Int32) {
+        if (self.touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId)) {
+            self.touchButtonProcessing = true
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val motionGestureRecognizer: MotionGestureRecognizer
-
-    private var touchButtonProcessing: Boolean = false
-
-    private val touchButtonRecognizer: TouchButtonRecognizer
-
-    private val id: Int
-public constructor (){
-this.id= AllMotionRecognizer.index++
-this.motionGestureRecognizer= MotionGestureRecognizer(this.id)
-this.touchButtonRecognizer= TouchButtonRecognizer()
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processStartMotionEvent(x: Int, y: Int, deviceId: Int, modifiers: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var deviceId = deviceId
-    //var modifiers = modifiers
-
+        if (!self.touchButtonProcessing) {
+            let point: CustomGPoint! = (AllMotionRecognizer.pointCircularPool.getNextInstance() as! CustomGPoint)
+            point.setX(x)
+            point.setY(y)
+            self.motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifiers)
+        }
+    }
     
-                        if(this.touchButtonRecognizer!!.pressTouchButtonInput(x, y, deviceId))
-                        
-                                    {
-                                    this.touchButtonProcessing= true
 
-                                    }
-                                
-
+    open override func processEndMotionEvent(_ x: Int32, _ y: Int32, _ deviceId: Int32, _ modifiers: Int32) {
+        if (self.touchButtonRecognizer.releaseTouchButtonInput(x, y, deviceId)) {
+        }
+        if (!self.touchButtonProcessing) {
+            let point: CustomGPoint! = (AllMotionRecognizer.pointCircularPool.getNextInstance() as! CustomGPoint)
+            point.setX(x)
+            point.setY(y)
+            self.motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifiers)
+        }
+        if (self.touchButtonProcessing) {
+            self.touchButtonProcessing = false
+        }
+    }
     
-                        if(!this.touchButtonProcessing)
-                        
-                                    {
-                                    
-    var point: CustomGPoint = AllMotionRecognizer.pointCircularPool!!.getNextInstance() as CustomGPoint
 
-point.setX(x)
-point.setY(y)
-this.motionGestureRecognizer!!.processPressedMotionEvent(point, deviceId, modifiers)
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun processEndMotionEvent(x: Int, y: Int, deviceId: Int, modifiers: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var deviceId = deviceId
-    //var modifiers = modifiers
-
+    open override func processDraggedMotionEvent(_ x: Int32, _ y: Int32, _ deviceId: Int32, _ modifiers: Int32) {
+        if (self.touchButtonProcessing) {
+            self.touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId)
+        }
+        if (!self.touchButtonProcessing) {
+            let point: CustomGPoint! = (AllMotionRecognizer.pointCircularPool.getNextInstance() as! CustomGPoint)
+            point.setX(x)
+            point.setY(y)
+            self.motionGestureRecognizer.processDraggedMotionEvent(point, deviceId, modifiers)
+        }
+    }
     
-                        if(this.touchButtonRecognizer!!.releaseTouchButtonInput(x, y, deviceId))
-                        
-                                    {
-                                    
-                                    }
-                                
 
+    open func processMovedMotionEvent(_ x: Int32, _ y: Int32, _ deviceId: Int32, _ modifiers: Int32) {
+        if (x != self.lastX || y != self.lastY) {
+            self.lastX = x
+            self.lastY = y
+            let point: CustomGPoint! = (AllMotionRecognizer.pointCircularPool.getNextInstance() as! CustomGPoint)
+            point.setX(x)
+            point.setY(y)
+            self.motionGestureRecognizer.processMovedMotionEvent(point, deviceId, modifiers)
+        }
+    }
     
-                        if(!this.touchButtonProcessing)
-                        
-                                    {
-                                    
-    var point: CustomGPoint = AllMotionRecognizer.pointCircularPool!!.getNextInstance() as CustomGPoint
 
-point.setX(x)
-point.setY(y)
-this.motionGestureRecognizer!!.processReleasedMotionEvent(point, deviceId, modifiers)
-
-                                    }
-                                
-
+    open func processScrolledMotionEvent(_ x: Int32, _ y: Int32, _ deviceId: Int32, _ modifiers: Int32) {
+        let point: CustomGPoint! = (AllMotionRecognizer.pointCircularPool.getNextInstance() as! CustomGPoint)
+        point.setX(x)
+        point.setY(y)
+        self.motionGestureRecognizer.processScrolledMotionEvent(point, deviceId, modifiers)
+    }
     
-                        if(this.touchButtonProcessing)
-                        
-                                    {
-                                    this.touchButtonProcessing= false
 
-                                    }
-                                
+    @discardableResult public func getMotionGestureRecognizer() -> MotionGestureRecognizer! {
+        return self.motionGestureRecognizer
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun processDraggedMotionEvent(x: Int, y: Int, deviceId: Int, modifiers: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var deviceId = deviceId
-    //var modifiers = modifiers
-
-    
-                        if(this.touchButtonProcessing)
-                        
-                                    {
-                                    this.touchButtonRecognizer!!.pressTouchButtonInput(x, y, deviceId)
-
-                                    }
-                                
-
-    
-                        if(!this.touchButtonProcessing)
-                        
-                                    {
-                                    
-    var point: CustomGPoint = AllMotionRecognizer.pointCircularPool!!.getNextInstance() as CustomGPoint
-
-point.setX(x)
-point.setY(y)
-this.motionGestureRecognizer!!.processDraggedMotionEvent(point, deviceId, modifiers)
-
-                                    }
-                                
-}
-
-
-    private var lastX: Int= 0
-
-    private var lastY: Int= 0
-
-                @Throws(Exception::class)
-            
-    open fun processMovedMotionEvent(x: Int, y: Int, deviceId: Int, modifiers: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var deviceId = deviceId
-    //var modifiers = modifiers
-
-    
-                        if(x != this.lastX || y != this.lastY)
-                        
-                                    {
-                                    this.lastX= x
-this.lastY= y
-
-    var point: CustomGPoint = AllMotionRecognizer.pointCircularPool!!.getNextInstance() as CustomGPoint
-
-point.setX(x)
-point.setY(y)
-this.motionGestureRecognizer!!.processMovedMotionEvent(point, deviceId, modifiers)
-
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processScrolledMotionEvent(x: Int, y: Int, deviceId: Int, modifiers: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var x = x
-    //var y = y
-    //var deviceId = deviceId
-    //var modifiers = modifiers
-
-    var point: CustomGPoint = AllMotionRecognizer.pointCircularPool!!.getNextInstance() as CustomGPoint
-
-point.setX(x)
-point.setY(y)
-this.motionGestureRecognizer!!.processScrolledMotionEvent(point, deviceId, modifiers)
-}
-
-
-    open fun getMotionGestureRecognizer()
-        //nullable = true from not(false or (false and true)) = true
-: MotionGestureRecognizer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGestureRecognizer
-}
-
-
-}
-                
-            
 

@@ -1,79 +1,43 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.io.file
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.io.file
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.io.path.AbPathData
+// import org.allbinary.logic.string.StringValidationUtil
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.io.path.AbPathData
-import org.allbinary.logic.string.StringValidationUtil
 //Used to correct user input for paths
-open public class FilePathUtil
-            : Object
-         {
-        
-companion object {
-            
-    open fun adjust(path: String)
-        //nullable = true from not(false or (false and false)) = true
-: String{
-var path = path
-
-    var abPathData: AbPathData = AbPathData.getInstance()!!
-
-
-    var stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!!
-
-
-    var filePathData: FilePathData = FilePathData.getInstance()!!
-
-
+open class FilePathUtil: JObject {
     
-                        if(stringValidationUtil!!.isEmpty(path))
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return filePathData!!.PATH_START
 
-                                    }
-                                
-path= path.replace(abPathData!!.SEPARATORCHAR, filePathData!!.SEPARATORCHAR)!!
+    public override init() {
+        super.init()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return path
-}
-
-
+    @discardableResult open class func adjust(_ path: String!) -> String! {
+        var path: String! = path
+        let abPathData: AbPathData! = AbPathData.getInstance()
+        let stringValidationUtil: StringValidationUtil! = StringValidationUtil.getInstance()
+        let filePathData: FilePathData! = FilePathData.getInstance()
+        if (stringValidationUtil.isEmpty(path)) {
+            return filePathData.PATH_START
         }
-            private constructor ()
-            : super()
-        {
+        path = JString.replace(path, abPathData.SEPARATORCHAR, filePathData.SEPARATORCHAR)
+        return path
+    }
 }
-
-
-}
-                
-            
 

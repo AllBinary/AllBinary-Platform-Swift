@@ -1,878 +1,346 @@
-
-        /* Generated Code Do Not Modify */
-        package javax.microedition.khronos.opengles
-
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.nio.Buffer
-import java.nio.FloatBuffer
-import java.nio.IntBuffer
-
-interface GL10 : GL {
-        
-companion object {
-            
-    val GL_ADD: Int = 260
-
-    val GL_ALIASED_LINE_WIDTH_RANGE: Int = 33902
-
-    val GL_ALIASED_POINT_SIZE_RANGE: Int = 33901
-
-    val GL_ALPHA: Int = 6406
-
-    val GL_ALPHA_BITS: Int = 3413
-
-    val GL_ALPHA_TEST: Int = 3008
-
-    val GL_ALWAYS: Int = 519
-
-    val GL_AMBIENT: Int = 4608
-
-    val GL_AMBIENT_AND_DIFFUSE: Int = 5634
-
-    val GL_AND: Int = 5377
-
-    val GL_AND_INVERTED: Int = 5380
-
-    val GL_AND_REVERSE: Int = 5378
-
-    val GL_BACK: Int = 1029
-
-    val GL_BLEND: Int = 3042
-
-    val GL_BLUE_BITS: Int = 3412
-
-    val GL_BYTE: Int = 5120
-
-    val GL_CCW: Int = 2305
-
-    val GL_CLAMP_TO_EDGE: Int = 33071
-
-    val GL_CLEAR: Int = 5376
-
-    val GL_COLOR_ARRAY: Int = 32886
-
-    val GL_COLOR_BUFFER_BIT: Int = 16384
-
-    val GL_COLOR_LOGIC_OP: Int = 3058
-
-    val GL_COLOR_MATERIAL: Int = 2903
-
-    val GL_COMPRESSED_TEXTURE_FORMATS: Int = 34467
-
-    val GL_CONSTANT_ATTENUATION: Int = 4615
-
-    val GL_COPY: Int = 5379
-
-    val GL_COPY_INVERTED: Int = 5388
-
-    val GL_CULL_FACE: Int = 2884
-
-    val GL_CW: Int = 2304
-
-    val GL_DECAL: Int = 8449
-
-    val GL_DECR: Int = 7683
-
-    val GL_DEPTH_BITS: Int = 3414
-
-    val GL_DEPTH_BUFFER_BIT: Int = 256
-
-    val GL_DEPTH_TEST: Int = 2929
-
-    val GL_DIFFUSE: Int = 4609
-
-    val GL_DITHER: Int = 3024
-
-    val GL_DONT_CARE: Int = 4352
-
-    val GL_DST_ALPHA: Int = 772
-
-    val GL_DST_COLOR: Int = 774
-
-    val GL_EMISSION: Int = 5632
-
-    val GL_EQUAL: Int = 514
-
-    val GL_EQUIV: Int = 5385
-
-    val GL_EXP: Int = 2048
-
-    val GL_EXP2: Int = 2049
-
-    val GL_EXTENSIONS: Int = 7939
-
-    val GL_FALSE: Int = 0
-
-    val GL_FASTEST: Int = 4353
-
-    val GL_FIXED: Int = 5132
-
-    val GL_FLAT: Int = 7424
-
-    val GL_FLOAT: Int = 5126
-
-    val GL_FOG: Int = 2912
-
-    val GL_FOG_COLOR: Int = 2918
-
-    val GL_FOG_DENSITY: Int = 2914
-
-    val GL_FOG_END: Int = 2916
-
-    val GL_FOG_HINT: Int = 3156
-
-    val GL_FOG_MODE: Int = 2917
-
-    val GL_FOG_START: Int = 2915
-
-    val GL_FRONT: Int = 1028
-
-    val GL_FRONT_AND_BACK: Int = 1032
-
-    val GL_GEQUAL: Int = 518
-
-    val GL_GREATER: Int = 516
-
-    val GL_GREEN_BITS: Int = 3411
-
-    val GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES: Int = 35739
-
-    val GL_IMPLEMENTATION_COLOR_READ_TYPE_OES: Int = 35738
-
-    val GL_INCR: Int = 7682
-
-    val GL_INVALID_ENUM: Int = 1280
-
-    val GL_INVALID_OPERATION: Int = 1282
-
-    val GL_INVALID_VALUE: Int = 1281
-
-    val GL_INVERT: Int = 5386
-
-    val GL_KEEP: Int = 7680
-
-    val GL_LEQUAL: Int = 515
-
-    val GL_LESS: Int = 513
-
-    val GL_LIGHT_MODEL_AMBIENT: Int = 2899
-
-    val GL_LIGHT_MODEL_TWO_SIDE: Int = 2898
-
-    val GL_LIGHT0: Int = 16384
-
-    val GL_LIGHT1: Int = 16385
-
-    val GL_LIGHT2: Int = 16386
-
-    val GL_LIGHT3: Int = 16387
-
-    val GL_LIGHT4: Int = 16388
-
-    val GL_LIGHT5: Int = 16389
-
-    val GL_LIGHT6: Int = 16390
-
-    val GL_LIGHT7: Int = 16391
-
-    val GL_LIGHTING: Int = 2896
-
-    val GL_LINE_LOOP: Int = 2
-
-    val GL_LINE_SMOOTH: Int = 2848
-
-    val GL_LINE_SMOOTH_HINT: Int = 3154
-
-    val GL_LINE_STRIP: Int = 3
-
-    val GL_LINEAR: Int = 9729
-
-    val GL_LINEAR_ATTENUATION: Int = 4616
-
-    val GL_LINEAR_MIPMAP_LINEAR: Int = 9987
-
-    val GL_LINEAR_MIPMAP_NEAREST: Int = 9985
-
-    val GL_LINES: Int = 1
-
-    val GL_LUMINANCE: Int = 6409
-
-    val GL_LUMINANCE_ALPHA: Int = 6410
-
-    val GL_MAX_ELEMENTS_INDICES: Int = 33001
-
-    val GL_MAX_ELEMENTS_VERTICES: Int = 33000
-
-    val GL_MAX_LIGHTS: Int = 3377
-
-    val GL_MAX_MODELVIEW_STACK_DEPTH: Int = 3382
-
-    val GL_MAX_PROJECTION_STACK_DEPTH: Int = 3384
-
-    val GL_MAX_TEXTURE_SIZE: Int = 3379
-
-    val GL_MAX_TEXTURE_STACK_DEPTH: Int = 3385
-
-    val GL_MAX_TEXTURE_UNITS: Int = 34018
-
-    val GL_MAX_VIEWPORT_DIMS: Int = 3386
-
-    val GL_MODELVIEW: Int = 5888
-
-    val GL_MODULATE: Int = 8448
-
-    val GL_MULTISAMPLE: Int = 32925
-
-    val GL_NAND: Int = 5390
-
-    val GL_NEAREST: Int = 9728
-
-    val GL_NEAREST_MIPMAP_LINEAR: Int = 9986
-
-    val GL_NEAREST_MIPMAP_NEAREST: Int = 9984
-
-    val GL_NEVER: Int = 512
-
-    val GL_NICEST: Int = 4354
-
-    val GL_NO_ERROR: Int = 0
-
-    val GL_NOOP: Int = 5381
-
-    val GL_NOR: Int = 5384
-
-    val GL_NORMAL_ARRAY: Int = 32885
-
-    val GL_NORMALIZE: Int = 2977
-
-    val GL_NOTEQUAL: Int = 517
-
-    val GL_NUM_COMPRESSED_TEXTURE_FORMATS: Int = 34466
-
-    val GL_ONE: Int = 1
-
-    val GL_ONE_MINUS_DST_ALPHA: Int = 773
-
-    val GL_ONE_MINUS_DST_COLOR: Int = 775
-
-    val GL_ONE_MINUS_SRC_ALPHA: Int = 771
-
-    val GL_ONE_MINUS_SRC_COLOR: Int = 769
-
-    val GL_OR: Int = 5383
-
-    val GL_OR_INVERTED: Int = 5389
-
-    val GL_OR_REVERSE: Int = 5387
-
-    val GL_OUT_OF_MEMORY: Int = 1285
-
-    val GL_PACK_ALIGNMENT: Int = 3333
-
-    val GL_PALETTE4_R5_G6_B5_OES: Int = 35730
-
-    val GL_PALETTE4_RGB5_A1_OES: Int = 35732
-
-    val GL_PALETTE4_RGB8_OES: Int = 35728
-
-    val GL_PALETTE4_RGBA4_OES: Int = 35731
-
-    val GL_PALETTE4_RGBA8_OES: Int = 35729
-
-    val GL_PALETTE8_R5_G6_B5_OES: Int = 35735
-
-    val GL_PALETTE8_RGB5_A1_OES: Int = 35737
-
-    val GL_PALETTE8_RGB8_OES: Int = 35733
-
-    val GL_PALETTE8_RGBA4_OES: Int = 35736
-
-    val GL_PALETTE8_RGBA8_OES: Int = 35734
-
-    val GL_PERSPECTIVE_CORRECTION_HINT: Int = 3152
-
-    val GL_POINT_SMOOTH: Int = 2832
-
-    val GL_POINT_SMOOTH_HINT: Int = 3153
-
-    val GL_POINTS: Int = 0
-
-    val GL_POINT_FADE_THRESHOLD_SIZE: Int = 33064
-
-    val GL_POINT_SIZE: Int = 2833
-
-    val GL_POLYGON_OFFSET_FILL: Int = 32823
-
-    val GL_POLYGON_SMOOTH_HINT: Int = 3155
-
-    val GL_POSITION: Int = 4611
-
-    val GL_PROJECTION: Int = 5889
-
-    val GL_QUADRATIC_ATTENUATION: Int = 4617
-
-    val GL_RED_BITS: Int = 3410
-
-    val GL_RENDERER: Int = 7937
-
-    val GL_REPEAT: Int = 10497
-
-    val GL_REPLACE: Int = 7681
-
-    val GL_RESCALE_NORMAL: Int = 32826
-
-    val GL_RGB: Int = 6407
-
-    val GL_RGBA: Int = 6408
-
-    val GL_SAMPLE_ALPHA_TO_COVERAGE: Int = 32926
-
-    val GL_SAMPLE_ALPHA_TO_ONE: Int = 32927
-
-    val GL_SAMPLE_COVERAGE: Int = 32928
-
-    val GL_SCISSOR_TEST: Int = 3089
-
-    val GL_SET: Int = 5391
-
-    val GL_SHININESS: Int = 5633
-
-    val GL_SHORT: Int = 5122
-
-    val GL_SMOOTH: Int = 7425
-
-    val GL_SMOOTH_LINE_WIDTH_RANGE: Int = 2850
-
-    val GL_SMOOTH_POINT_SIZE_RANGE: Int = 2834
-
-    val GL_SPECULAR: Int = 4610
-
-    val GL_SPOT_CUTOFF: Int = 4614
-
-    val GL_SPOT_DIRECTION: Int = 4612
-
-    val GL_SPOT_EXPONENT: Int = 4613
-
-    val GL_SRC_ALPHA: Int = 770
-
-    val GL_SRC_ALPHA_SATURATE: Int = 776
-
-    val GL_SRC_COLOR: Int = 768
-
-    val GL_STACK_OVERFLOW: Int = 1283
-
-    val GL_STACK_UNDERFLOW: Int = 1284
-
-    val GL_STENCIL_BITS: Int = 3415
-
-    val GL_STENCIL_BUFFER_BIT: Int = 1024
-
-    val GL_STENCIL_TEST: Int = 2960
-
-    val GL_SUBPIXEL_BITS: Int = 3408
-
-    val GL_TEXTURE: Int = 5890
-
-    val GL_TEXTURE_2D: Int = 3553
-
-    val GL_TEXTURE_COORD_ARRAY: Int = 32888
-
-    val GL_TEXTURE_ENV: Int = 8960
-
-    val GL_TEXTURE_ENV_COLOR: Int = 8705
-
-    val GL_TEXTURE_ENV_MODE: Int = 8704
-
-    val GL_TEXTURE_MAG_FILTER: Int = 10240
-
-    val GL_TEXTURE_MIN_FILTER: Int = 10241
-
-    val GL_TEXTURE_WRAP_S: Int = 10242
-
-    val GL_TEXTURE_WRAP_T: Int = 10243
-
-    val GL_TEXTURE0: Int = 33984
-
-    val GL_TEXTURE1: Int = 33985
-
-    val GL_TEXTURE2: Int = 33986
-
-    val GL_TEXTURE3: Int = 33987
-
-    val GL_TEXTURE4: Int = 33988
-
-    val GL_TEXTURE5: Int = 33989
-
-    val GL_TEXTURE6: Int = 33990
-
-    val GL_TEXTURE7: Int = 33991
-
-    val GL_TEXTURE8: Int = 33992
-
-    val GL_TEXTURE9: Int = 33993
-
-    val GL_TEXTURE10: Int = 33994
-
-    val GL_TEXTURE11: Int = 33995
-
-    val GL_TEXTURE12: Int = 33996
-
-    val GL_TEXTURE13: Int = 33997
-
-    val GL_TEXTURE14: Int = 33998
-
-    val GL_TEXTURE15: Int = 33999
-
-    val GL_TEXTURE16: Int = 34000
-
-    val GL_TEXTURE17: Int = 34001
-
-    val GL_TEXTURE18: Int = 34002
-
-    val GL_TEXTURE19: Int = 34003
-
-    val GL_TEXTURE20: Int = 34004
-
-    val GL_TEXTURE21: Int = 34005
-
-    val GL_TEXTURE22: Int = 34006
-
-    val GL_TEXTURE23: Int = 34007
-
-    val GL_TEXTURE24: Int = 34008
-
-    val GL_TEXTURE25: Int = 34009
-
-    val GL_TEXTURE26: Int = 34010
-
-    val GL_TEXTURE27: Int = 34011
-
-    val GL_TEXTURE28: Int = 34012
-
-    val GL_TEXTURE29: Int = 34013
-
-    val GL_TEXTURE30: Int = 34014
-
-    val GL_TEXTURE31: Int = 34015
-
-    val GL_TRIANGLE_FAN: Int = 6
-
-    val GL_TRIANGLE_STRIP: Int = 5
-
-    val GL_TRIANGLES: Int = 4
-
-    val GL_TRUE: Int = 1
-
-    val GL_UNPACK_ALIGNMENT: Int = 3317
-
-    val GL_UNSIGNED_BYTE: Int = 5121
-
-    val GL_UNSIGNED_SHORT: Int = 5123
-
-    val GL_UNSIGNED_SHORT_4_4_4_4: Int = 32819
-
-    val GL_UNSIGNED_SHORT_5_5_5_1: Int = 32820
-
-    val GL_UNSIGNED_SHORT_5_6_5: Int = 33635
-
-    val GL_VENDOR: Int = 7936
-
-    val GL_VERSION: Int = 7938
-
-    val GL_VERTEX_ARRAY: Int = 32884
-
-    val GL_XOR: Int = 5382
-
-    val GL_ZERO: Int = 0
-
-        }
-            
-    open fun glActiveTexture(texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glAlphaFunc(func: Int, ref: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glBindTexture(target: Int, texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glBlendFunc(sfactor: Int, dfactor: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glClear(mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glClearColor(red: Float, green: Float, blue: Float, alpha: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glClearDepthf(depth: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glClearStencil(s: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glClientActiveTexture(texture: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glColor4f(red: Float, green: Float, blue: Float, alpha: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glColorMask(red: Boolean, green: Boolean, blue: Boolean, alpha: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glColorPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glCompressedTexImage2D(target: Int, level: Int, internalformat: Int, width: Int, height: Int, border: Int, imageSize: Int, data: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glCompressedTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, width: Int, height: Int, format: Int, imageSize: Int, data: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glCopyTexImage2D(target: Int, level: Int, internalformat: Int, x: Int, y: Int, width: Int, height: Int, border: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glCopyTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glCullFace(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDeleteTextures(n: Int, textures: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDeleteTextures(n: Int, textures: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDepthFunc(func: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDepthMask(flag: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDepthRangef(zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDisable(cap: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDisableClientState(array: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDrawArrays(mode: Int, first: Int, count: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glDrawElements(mode: Int, count: Int, type: Int, indices: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glEnable(cap: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glEnableClientState(array: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glFinish()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glFlush()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glFogf(pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glFogfv(pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glFogfv(pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glFrontFace(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glFrustumf(left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glGenTextures(n: Int, textures: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glGenTextures(n: Int, textures: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glGetError()
-        //nullable = true from not(false or (false and true)) = true
-: Int
-
-    open fun glGetIntegerv(pname: Int, params: IntArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glGetIntegerv(pname: Int, params: IntBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glGetString(name: Int)
-        //nullable = true from not(false or (false and false)) = true
-: String
-
-    open fun glHint(target: Int, mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightModelf(pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightModelfv(pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightModelfv(pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightf(light: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightfv(light: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLightfv(light: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLineWidth(width: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLoadIdentity()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glLoadMatrixf(m: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLoadMatrixf(m: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glLogicOp(opcode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMaterialf(face: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMaterialfv(face: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMaterialfv(face: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMatrixMode(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMultMatrixf(m: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMultMatrixf(m: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glMultiTexCoord4f(target: Int, s: Float, t: Float, r: Float, q: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glNormal3f(nx: Float, ny: Float, nz: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glNormalPointer(type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glOrthof(left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glPixelStorei(pname: Int, param: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glPointSize(size: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glPolygonOffset(factor: Float, units: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glPopMatrix()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glPushMatrix()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glReadPixels(x: Int, y: Int, width: Int, height: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glRotatef(angle: Float, x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glRotatex(angle: Int, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glSampleCoverage(value: Float, invert: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glScalef(x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glScalex(x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glScissor(x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glShadeModel(mode: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glStencilFunc(func: Int, ref: Int, mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glStencilMask(mask: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glStencilOp(fail: Int, zfail: Int, zpass: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexCoordPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexEnvf(target: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexEnvfv(target: Int, pname: Int, params: FloatArray, offset: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexEnvfv(target: Int, pname: Int, params: FloatBuffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexImage2D(target: Int, level: Int, internalformat: Int, width: Int, height: Int, border: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexParameterf(target: Int, pname: Int, param: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexParameteri(target: Int, pname: Int, param: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTexSubImage2D(target: Int, level: Int, xoffset: Int, yoffset: Int, width: Int, height: Int, format: Int, type: Int, pixels: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glTranslatef(x: Float, y: Float, z: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glVertexPointer(size: Int, type: Int, stride: Int, pointer: Buffer)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glViewport(x: Int, y: Int, width: Int, height: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glBegin(i: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glEnd()
-        //nullable = true from not(false or (false and true)) = true
-
-
-    open fun glVertex3f(f: Float, f2: Float, f3: Float)
-        //nullable = true from not(false or (false and false)) = true
-
-
-    open fun glPolygonMode(i: Int, i1: Int)
-        //nullable = true from not(false or (false and false)) = true
-
-
+// Generated Code Do Not Modify
+// package javax.microedition.khronos.opengles
+
+import J2SEForSwiftLibrary
+// import java.nio.Buffer
+// import java.nio.FloatBuffer
+// import java.nio.IntBuffer
+
+public protocol GL10: AnyObject, GL {
+    func glActiveTexture(_ texture: Int32)
+    func glAlphaFunc(_ `func`: Int32, _ ref: Float)
+    func glBindTexture(_ target: Int32, _ texture: Int32)
+    func glBlendFunc(_ sfactor: Int32, _ dfactor: Int32)
+    func glClear(_ mask: Int32)
+    func glClearColor(_ red: Float, _ green: Float, _ blue: Float, _ alpha: Float)
+    func glClearDepthf(_ depth: Float)
+    func glClearStencil(_ s: Int32)
+    func glClientActiveTexture(_ texture: Int32)
+    func glColor4f(_ red: Float, _ green: Float, _ blue: Float, _ alpha: Float)
+    func glColorMask(_ red: Bool, _ green: Bool, _ blue: Bool, _ alpha: Bool)
+    func glColorPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!)
+    func glCompressedTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ width: Int32, _ height: Int32, _ border: Int32, _ imageSize: Int32, _ data: Buffer!)
+    func glCompressedTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ imageSize: Int32, _ data: Buffer!)
+    func glCopyTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32, _ border: Int32)
+    func glCopyTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32)
+    func glCullFace(_ mode: Int32)
+    func glDeleteTextures(_ n: Int32, _ textures: JArray<Int32>!, _ offset: Int32)
+    func glDeleteTextures(_ n: Int32, _ textures: IntBuffer!)
+    func glDepthFunc(_ `func`: Int32)
+    func glDepthMask(_ flag: Bool)
+    func glDepthRangef(_ zNear: Float, _ zFar: Float)
+    func glDisable(_ cap: Int32)
+    func glDisableClientState(_ array: Int32)
+    func glDrawArrays(_ mode: Int32, _ first: Int32, _ count: Int32)
+    func glDrawElements(_ mode: Int32, _ count: Int32, _ type: Int32, _ indices: Buffer!)
+    func glEnable(_ cap: Int32)
+    func glEnableClientState(_ array: Int32)
+    func glFinish()
+    func glFlush()
+    func glFogf(_ pname: Int32, _ param: Float)
+    func glFogfv(_ pname: Int32, _ params: JArray<Float>!, _ offset: Int32)
+    func glFogfv(_ pname: Int32, _ params: FloatBuffer!)
+    func glFrontFace(_ mode: Int32)
+    func glFrustumf(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ zNear: Float, _ zFar: Float)
+    func glGenTextures(_ n: Int32, _ textures: JArray<Int32>!, _ offset: Int32)
+    func glGenTextures(_ n: Int32, _ textures: IntBuffer!)
+    @discardableResult func glGetError() -> Int32
+    func glGetIntegerv(_ pname: Int32, _ params: JArray<Int32>!, _ offset: Int32)
+    func glGetIntegerv(_ pname: Int32, _ params: IntBuffer!)
+    @discardableResult func glGetString(_ name: Int32) -> String!
+    func glHint(_ target: Int32, _ mode: Int32)
+    func glLightModelf(_ pname: Int32, _ param: Float)
+    func glLightModelfv(_ pname: Int32, _ params: JArray<Float>!, _ offset: Int32)
+    func glLightModelfv(_ pname: Int32, _ params: FloatBuffer!)
+    func glLightf(_ light: Int32, _ pname: Int32, _ param: Float)
+    func glLightfv(_ light: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32)
+    func glLightfv(_ light: Int32, _ pname: Int32, _ params: FloatBuffer!)
+    func glLineWidth(_ width: Float)
+    func glLoadIdentity()
+    func glLoadMatrixf(_ m: JArray<Float>!, _ offset: Int32)
+    func glLoadMatrixf(_ m: FloatBuffer!)
+    func glLogicOp(_ opcode: Int32)
+    func glMaterialf(_ face: Int32, _ pname: Int32, _ param: Float)
+    func glMaterialfv(_ face: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32)
+    func glMaterialfv(_ face: Int32, _ pname: Int32, _ params: FloatBuffer!)
+    func glMatrixMode(_ mode: Int32)
+    func glMultMatrixf(_ m: JArray<Float>!, _ offset: Int32)
+    func glMultMatrixf(_ m: FloatBuffer!)
+    func glMultiTexCoord4f(_ target: Int32, _ s: Float, _ t: Float, _ r: Float, _ q: Float)
+    func glNormal3f(_ nx: Float, _ ny: Float, _ nz: Float)
+    func glNormalPointer(_ type: Int32, _ stride: Int32, _ pointer: Buffer!)
+    func glOrthof(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ zNear: Float, _ zFar: Float)
+    func glPixelStorei(_ pname: Int32, _ param: Int32)
+    func glPointSize(_ size: Float)
+    func glPolygonOffset(_ factor: Float, _ units: Float)
+    func glPopMatrix()
+    func glPushMatrix()
+    func glReadPixels(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!)
+    func glRotatef(_ angle: Float, _ x: Float, _ y: Float, _ z: Float)
+    func glRotatex(_ angle: Int32, _ x: Int32, _ y: Int32, _ z: Int32)
+    func glSampleCoverage(_ value: Float, _ invert: Bool)
+    func glScalef(_ x: Float, _ y: Float, _ z: Float)
+    func glScalex(_ x: Int32, _ y: Int32, _ z: Int32)
+    func glScissor(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32)
+    func glShadeModel(_ mode: Int32)
+    func glStencilFunc(_ `func`: Int32, _ ref: Int32, _ mask: Int32)
+    func glStencilMask(_ mask: Int32)
+    func glStencilOp(_ fail: Int32, _ zfail: Int32, _ zpass: Int32)
+    func glTexCoordPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!)
+    func glTexEnvf(_ target: Int32, _ pname: Int32, _ param: Float)
+    func glTexEnvfv(_ target: Int32, _ pname: Int32, _ params: JArray<Float>!, _ offset: Int32)
+    func glTexEnvfv(_ target: Int32, _ pname: Int32, _ params: FloatBuffer!)
+    func glTexImage2D(_ target: Int32, _ level: Int32, _ internalformat: Int32, _ width: Int32, _ height: Int32, _ border: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!)
+    func glTexParameterf(_ target: Int32, _ pname: Int32, _ param: Float)
+    func glTexParameteri(_ target: Int32, _ pname: Int32, _ param: Int32)
+    func glTexSubImage2D(_ target: Int32, _ level: Int32, _ xoffset: Int32, _ yoffset: Int32, _ width: Int32, _ height: Int32, _ format: Int32, _ type: Int32, _ pixels: Buffer!)
+    func glTranslatef(_ x: Float, _ y: Float, _ z: Float)
+    func glVertexPointer(_ size: Int32, _ type: Int32, _ stride: Int32, _ pointer: Buffer!)
+    func glViewport(_ x: Int32, _ y: Int32, _ width: Int32, _ height: Int32)
+    func glBegin(_ i: Int32)
+    func glEnd()
+    func glVertex3f(_ f: Float, _ f2: Float, _ f3: Float)
+    func glPolygonMode(_ i: Int32, _ i1: Int32)
 }
-                
-            
+
+public enum GL10Constants {
+    public static let GL_ADD: Int32 = 260
+    public static let GL_ALIASED_LINE_WIDTH_RANGE: Int32 = 33902
+    public static let GL_ALIASED_POINT_SIZE_RANGE: Int32 = 33901
+    public static let GL_ALPHA: Int32 = 6406
+    public static let GL_ALPHA_BITS: Int32 = 3413
+    public static let GL_ALPHA_TEST: Int32 = 3008
+    public static let GL_ALWAYS: Int32 = 519
+    public static let GL_AMBIENT: Int32 = 4608
+    public static let GL_AMBIENT_AND_DIFFUSE: Int32 = 5634
+    public static let GL_AND: Int32 = 5377
+    public static let GL_AND_INVERTED: Int32 = 5380
+    public static let GL_AND_REVERSE: Int32 = 5378
+    public static let GL_BACK: Int32 = 1029
+    public static let GL_BLEND: Int32 = 3042
+    public static let GL_BLUE_BITS: Int32 = 3412
+    public static let GL_BYTE: Int32 = 5120
+    public static let GL_CCW: Int32 = 2305
+    public static let GL_CLAMP_TO_EDGE: Int32 = 33071
+    public static let GL_CLEAR: Int32 = 5376
+    public static let GL_COLOR_ARRAY: Int32 = 32886
+    public static let GL_COLOR_BUFFER_BIT: Int32 = 16384
+    public static let GL_COLOR_LOGIC_OP: Int32 = 3058
+    public static let GL_COLOR_MATERIAL: Int32 = 2903
+    public static let GL_COMPRESSED_TEXTURE_FORMATS: Int32 = 34467
+    public static let GL_CONSTANT_ATTENUATION: Int32 = 4615
+    public static let GL_COPY: Int32 = 5379
+    public static let GL_COPY_INVERTED: Int32 = 5388
+    public static let GL_CULL_FACE: Int32 = 2884
+    public static let GL_CW: Int32 = 2304
+    public static let GL_DECAL: Int32 = 8449
+    public static let GL_DECR: Int32 = 7683
+    public static let GL_DEPTH_BITS: Int32 = 3414
+    public static let GL_DEPTH_BUFFER_BIT: Int32 = 256
+    public static let GL_DEPTH_TEST: Int32 = 2929
+    public static let GL_DIFFUSE: Int32 = 4609
+    public static let GL_DITHER: Int32 = 3024
+    public static let GL_DONT_CARE: Int32 = 4352
+    public static let GL_DST_ALPHA: Int32 = 772
+    public static let GL_DST_COLOR: Int32 = 774
+    public static let GL_EMISSION: Int32 = 5632
+    public static let GL_EQUAL: Int32 = 514
+    public static let GL_EQUIV: Int32 = 5385
+    public static let GL_EXP: Int32 = 2048
+    public static let GL_EXP2: Int32 = 2049
+    public static let GL_EXTENSIONS: Int32 = 7939
+    public static let GL_FALSE: Int32 = 0
+    public static let GL_FASTEST: Int32 = 4353
+    public static let GL_FIXED: Int32 = 5132
+    public static let GL_FLAT: Int32 = 7424
+    public static let GL_FLOAT: Int32 = 5126
+    public static let GL_FOG: Int32 = 2912
+    public static let GL_FOG_COLOR: Int32 = 2918
+    public static let GL_FOG_DENSITY: Int32 = 2914
+    public static let GL_FOG_END: Int32 = 2916
+    public static let GL_FOG_HINT: Int32 = 3156
+    public static let GL_FOG_MODE: Int32 = 2917
+    public static let GL_FOG_START: Int32 = 2915
+    public static let GL_FRONT: Int32 = 1028
+    public static let GL_FRONT_AND_BACK: Int32 = 1032
+    public static let GL_GEQUAL: Int32 = 518
+    public static let GL_GREATER: Int32 = 516
+    public static let GL_GREEN_BITS: Int32 = 3411
+    public static let GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES: Int32 = 35739
+    public static let GL_IMPLEMENTATION_COLOR_READ_TYPE_OES: Int32 = 35738
+    public static let GL_INCR: Int32 = 7682
+    public static let GL_INVALID_ENUM: Int32 = 1280
+    public static let GL_INVALID_OPERATION: Int32 = 1282
+    public static let GL_INVALID_VALUE: Int32 = 1281
+    public static let GL_INVERT: Int32 = 5386
+    public static let GL_KEEP: Int32 = 7680
+    public static let GL_LEQUAL: Int32 = 515
+    public static let GL_LESS: Int32 = 513
+    public static let GL_LIGHT_MODEL_AMBIENT: Int32 = 2899
+    public static let GL_LIGHT_MODEL_TWO_SIDE: Int32 = 2898
+    public static let GL_LIGHT0: Int32 = 16384
+    public static let GL_LIGHT1: Int32 = 16385
+    public static let GL_LIGHT2: Int32 = 16386
+    public static let GL_LIGHT3: Int32 = 16387
+    public static let GL_LIGHT4: Int32 = 16388
+    public static let GL_LIGHT5: Int32 = 16389
+    public static let GL_LIGHT6: Int32 = 16390
+    public static let GL_LIGHT7: Int32 = 16391
+    public static let GL_LIGHTING: Int32 = 2896
+    public static let GL_LINE_LOOP: Int32 = 2
+    public static let GL_LINE_SMOOTH: Int32 = 2848
+    public static let GL_LINE_SMOOTH_HINT: Int32 = 3154
+    public static let GL_LINE_STRIP: Int32 = 3
+    public static let GL_LINEAR: Int32 = 9729
+    public static let GL_LINEAR_ATTENUATION: Int32 = 4616
+    public static let GL_LINEAR_MIPMAP_LINEAR: Int32 = 9987
+    public static let GL_LINEAR_MIPMAP_NEAREST: Int32 = 9985
+    public static let GL_LINES: Int32 = 1
+    public static let GL_LUMINANCE: Int32 = 6409
+    public static let GL_LUMINANCE_ALPHA: Int32 = 6410
+    public static let GL_MAX_ELEMENTS_INDICES: Int32 = 33001
+    public static let GL_MAX_ELEMENTS_VERTICES: Int32 = 33000
+    public static let GL_MAX_LIGHTS: Int32 = 3377
+    public static let GL_MAX_MODELVIEW_STACK_DEPTH: Int32 = 3382
+    public static let GL_MAX_PROJECTION_STACK_DEPTH: Int32 = 3384
+    public static let GL_MAX_TEXTURE_SIZE: Int32 = 3379
+    public static let GL_MAX_TEXTURE_STACK_DEPTH: Int32 = 3385
+    public static let GL_MAX_TEXTURE_UNITS: Int32 = 34018
+    public static let GL_MAX_VIEWPORT_DIMS: Int32 = 3386
+    public static let GL_MODELVIEW: Int32 = 5888
+    public static let GL_MODULATE: Int32 = 8448
+    public static let GL_MULTISAMPLE: Int32 = 32925
+    public static let GL_NAND: Int32 = 5390
+    public static let GL_NEAREST: Int32 = 9728
+    public static let GL_NEAREST_MIPMAP_LINEAR: Int32 = 9986
+    public static let GL_NEAREST_MIPMAP_NEAREST: Int32 = 9984
+    public static let GL_NEVER: Int32 = 512
+    public static let GL_NICEST: Int32 = 4354
+    public static let GL_NO_ERROR: Int32 = 0
+    public static let GL_NOOP: Int32 = 5381
+    public static let GL_NOR: Int32 = 5384
+    public static let GL_NORMAL_ARRAY: Int32 = 32885
+    public static let GL_NORMALIZE: Int32 = 2977
+    public static let GL_NOTEQUAL: Int32 = 517
+    public static let GL_NUM_COMPRESSED_TEXTURE_FORMATS: Int32 = 34466
+    public static let GL_ONE: Int32 = 1
+    public static let GL_ONE_MINUS_DST_ALPHA: Int32 = 773
+    public static let GL_ONE_MINUS_DST_COLOR: Int32 = 775
+    public static let GL_ONE_MINUS_SRC_ALPHA: Int32 = 771
+    public static let GL_ONE_MINUS_SRC_COLOR: Int32 = 769
+    public static let GL_OR: Int32 = 5383
+    public static let GL_OR_INVERTED: Int32 = 5389
+    public static let GL_OR_REVERSE: Int32 = 5387
+    public static let GL_OUT_OF_MEMORY: Int32 = 1285
+    public static let GL_PACK_ALIGNMENT: Int32 = 3333
+    public static let GL_PALETTE4_R5_G6_B5_OES: Int32 = 35730
+    public static let GL_PALETTE4_RGB5_A1_OES: Int32 = 35732
+    public static let GL_PALETTE4_RGB8_OES: Int32 = 35728
+    public static let GL_PALETTE4_RGBA4_OES: Int32 = 35731
+    public static let GL_PALETTE4_RGBA8_OES: Int32 = 35729
+    public static let GL_PALETTE8_R5_G6_B5_OES: Int32 = 35735
+    public static let GL_PALETTE8_RGB5_A1_OES: Int32 = 35737
+    public static let GL_PALETTE8_RGB8_OES: Int32 = 35733
+    public static let GL_PALETTE8_RGBA4_OES: Int32 = 35736
+    public static let GL_PALETTE8_RGBA8_OES: Int32 = 35734
+    public static let GL_PERSPECTIVE_CORRECTION_HINT: Int32 = 3152
+    public static let GL_POINT_SMOOTH: Int32 = 2832
+    public static let GL_POINT_SMOOTH_HINT: Int32 = 3153
+    public static let GL_POINTS: Int32 = 0
+    public static let GL_POINT_FADE_THRESHOLD_SIZE: Int32 = 33064
+    public static let GL_POINT_SIZE: Int32 = 2833
+    public static let GL_POLYGON_OFFSET_FILL: Int32 = 32823
+    public static let GL_POLYGON_SMOOTH_HINT: Int32 = 3155
+    public static let GL_POSITION: Int32 = 4611
+    public static let GL_PROJECTION: Int32 = 5889
+    public static let GL_QUADRATIC_ATTENUATION: Int32 = 4617
+    public static let GL_RED_BITS: Int32 = 3410
+    public static let GL_RENDERER: Int32 = 7937
+    public static let GL_REPEAT: Int32 = 10497
+    public static let GL_REPLACE: Int32 = 7681
+    public static let GL_RESCALE_NORMAL: Int32 = 32826
+    public static let GL_RGB: Int32 = 6407
+    public static let GL_RGBA: Int32 = 6408
+    public static let GL_SAMPLE_ALPHA_TO_COVERAGE: Int32 = 32926
+    public static let GL_SAMPLE_ALPHA_TO_ONE: Int32 = 32927
+    public static let GL_SAMPLE_COVERAGE: Int32 = 32928
+    public static let GL_SCISSOR_TEST: Int32 = 3089
+    public static let GL_SET: Int32 = 5391
+    public static let GL_SHININESS: Int32 = 5633
+    public static let GL_SHORT: Int32 = 5122
+    public static let GL_SMOOTH: Int32 = 7425
+    public static let GL_SMOOTH_LINE_WIDTH_RANGE: Int32 = 2850
+    public static let GL_SMOOTH_POINT_SIZE_RANGE: Int32 = 2834
+    public static let GL_SPECULAR: Int32 = 4610
+    public static let GL_SPOT_CUTOFF: Int32 = 4614
+    public static let GL_SPOT_DIRECTION: Int32 = 4612
+    public static let GL_SPOT_EXPONENT: Int32 = 4613
+    public static let GL_SRC_ALPHA: Int32 = 770
+    public static let GL_SRC_ALPHA_SATURATE: Int32 = 776
+    public static let GL_SRC_COLOR: Int32 = 768
+    public static let GL_STACK_OVERFLOW: Int32 = 1283
+    public static let GL_STACK_UNDERFLOW: Int32 = 1284
+    public static let GL_STENCIL_BITS: Int32 = 3415
+    public static let GL_STENCIL_BUFFER_BIT: Int32 = 1024
+    public static let GL_STENCIL_TEST: Int32 = 2960
+    public static let GL_SUBPIXEL_BITS: Int32 = 3408
+    public static let GL_TEXTURE: Int32 = 5890
+    public static let GL_TEXTURE_2D: Int32 = 3553
+    public static let GL_TEXTURE_COORD_ARRAY: Int32 = 32888
+    public static let GL_TEXTURE_ENV: Int32 = 8960
+    public static let GL_TEXTURE_ENV_COLOR: Int32 = 8705
+    public static let GL_TEXTURE_ENV_MODE: Int32 = 8704
+    public static let GL_TEXTURE_MAG_FILTER: Int32 = 10240
+    public static let GL_TEXTURE_MIN_FILTER: Int32 = 10241
+    public static let GL_TEXTURE_WRAP_S: Int32 = 10242
+    public static let GL_TEXTURE_WRAP_T: Int32 = 10243
+    public static let GL_TEXTURE0: Int32 = 33984
+    public static let GL_TEXTURE1: Int32 = 33985
+    public static let GL_TEXTURE2: Int32 = 33986
+    public static let GL_TEXTURE3: Int32 = 33987
+    public static let GL_TEXTURE4: Int32 = 33988
+    public static let GL_TEXTURE5: Int32 = 33989
+    public static let GL_TEXTURE6: Int32 = 33990
+    public static let GL_TEXTURE7: Int32 = 33991
+    public static let GL_TEXTURE8: Int32 = 33992
+    public static let GL_TEXTURE9: Int32 = 33993
+    public static let GL_TEXTURE10: Int32 = 33994
+    public static let GL_TEXTURE11: Int32 = 33995
+    public static let GL_TEXTURE12: Int32 = 33996
+    public static let GL_TEXTURE13: Int32 = 33997
+    public static let GL_TEXTURE14: Int32 = 33998
+    public static let GL_TEXTURE15: Int32 = 33999
+    public static let GL_TEXTURE16: Int32 = 34000
+    public static let GL_TEXTURE17: Int32 = 34001
+    public static let GL_TEXTURE18: Int32 = 34002
+    public static let GL_TEXTURE19: Int32 = 34003
+    public static let GL_TEXTURE20: Int32 = 34004
+    public static let GL_TEXTURE21: Int32 = 34005
+    public static let GL_TEXTURE22: Int32 = 34006
+    public static let GL_TEXTURE23: Int32 = 34007
+    public static let GL_TEXTURE24: Int32 = 34008
+    public static let GL_TEXTURE25: Int32 = 34009
+    public static let GL_TEXTURE26: Int32 = 34010
+    public static let GL_TEXTURE27: Int32 = 34011
+    public static let GL_TEXTURE28: Int32 = 34012
+    public static let GL_TEXTURE29: Int32 = 34013
+    public static let GL_TEXTURE30: Int32 = 34014
+    public static let GL_TEXTURE31: Int32 = 34015
+    public static let GL_TRIANGLE_FAN: Int32 = 6
+    public static let GL_TRIANGLE_STRIP: Int32 = 5
+    public static let GL_TRIANGLES: Int32 = 4
+    public static let GL_TRUE: Int32 = 1
+    public static let GL_UNPACK_ALIGNMENT: Int32 = 3317
+    public static let GL_UNSIGNED_BYTE: Int32 = 5121
+    public static let GL_UNSIGNED_SHORT: Int32 = 5123
+    public static let GL_UNSIGNED_SHORT_4_4_4_4: Int32 = 32819
+    public static let GL_UNSIGNED_SHORT_5_5_5_1: Int32 = 32820
+    public static let GL_UNSIGNED_SHORT_5_6_5: Int32 = 33635
+    public static let GL_VENDOR: Int32 = 7936
+    public static let GL_VERSION: Int32 = 7938
+    public static let GL_VERTEX_ARRAY: Int32 = 32884
+    public static let GL_XOR: Int32 = 5382
+    public static let GL_ZERO: Int32 = 0
+}
+
 

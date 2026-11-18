@@ -1,92 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.pipeline
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.pipeline
+import J2SEForSwiftLibrary
+// import org.allbinary.game.rand.MyRandomFactory
+// import org.allbinary.math.AngleFactory
+// import org.allbinary.util.BasicArrayList
 
+open class RandomRotationFactory: JObject {
+    fileprivate static let instance: RandomRotationFactory! = RandomRotationFactory()
+    fileprivate var myRandomFactory: MyRandomFactory! = nil
+    fileprivate var angleFactory: AngleFactory! = nil
 
+    private func initFields() {
+    self.myRandomFactory = MyRandomFactory.getInstance()
+    self.angleFactory = AngleFactory.getInstance()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.rand.MyRandomFactory
-import org.allbinary.math.AngleFactory
-import org.allbinary.util.BasicArrayList
+    @discardableResult open class func getInstance() -> RandomRotationFactory! {
+        return RandomRotationFactory.instance
+    }
+    
 
-open public class RandomRotationFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: RandomRotationFactory = RandomRotationFactory()
+    @discardableResult open func getInstanceList(_ vector: BasicArrayList!, _ howMuch: Int32) -> BasicArrayList! {
+        let graphicsPipe: BasicGraphicsPipeline! = BasicGraphicsPipeline(vector)
+        graphicsPipe.createMatrix()
+        graphicsPipe.rotateToAngle(self.angleFactory.getAt(self.getNextRandomAngle(howMuch)))
+        return graphicsPipe.getMatrix()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: RandomRotationFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RandomRotationFactory.instance
+    @discardableResult open func getNextRandomAngle(_ howMuch: Int32) -> Int32 {
+        return self.myRandomFactory.getNextInt(howMuch &* 10)
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!!
-
-    private val angleFactory: AngleFactory = AngleFactory.getInstance()!!
-
-                @Throws(Exception::class)
-            
-    open fun getInstanceList(vector: BasicArrayList, howMuch: Int)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-var vector = vector
-var howMuch = howMuch
-
-    var graphicsPipe: BasicGraphicsPipeline = BasicGraphicsPipeline(vector)
-
-graphicsPipe!!.createMatrix()
-graphicsPipe!!.rotateToAngle(this.angleFactory!!.getAt(this.getNextRandomAngle(howMuch)))
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe!!.getMatrix()
-}
-
-
-    open fun getNextRandomAngle(howMuch: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-var howMuch = howMuch
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.myRandomFactory!!.getNextInt(howMuch *10)
-}
-
-
-}
-                
-            
 

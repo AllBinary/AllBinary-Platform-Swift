@@ -31,7 +31,7 @@ open class AndroidInfoFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> AndroidInfoFactory! {
+    @discardableResult open class func getInstance() -> AndroidInfoFactory! {
         return AndroidInfoFactory.instance
     }
     

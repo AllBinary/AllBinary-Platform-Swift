@@ -26,7 +26,7 @@ open class ForcedLogUtil: JObject {
     }
     
 
-    public static func log(_ message: String!, _ anyType: JObject!) {
+    open class func log(_ message: String!, _ anyType: JObject!) {
         do {
             jThrow(JException("Exception", message))
         } /* catch (Exception e): a thrown Java exception stops the program */

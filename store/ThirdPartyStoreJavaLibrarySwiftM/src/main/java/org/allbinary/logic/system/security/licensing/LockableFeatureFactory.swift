@@ -1,70 +1,45 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.system.security.licensing
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.system.security.licensing
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class LockableFeatureFactory: JObject {
+    fileprivate static let instance: LockableFeatureFactory! = LockableFeatureFactory()
+    fileprivate var list: BasicArrayList! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
+    @discardableResult open class func getInstance() -> LockableFeatureFactory! {
+        return LockableFeatureFactory.instance
+    }
+    
 
-open public class LockableFeatureFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: LockableFeatureFactory = LockableFeatureFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LockableFeatureFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockableFeatureFactory.instance
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.list
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    private val list: BasicArrayList = BasicArrayListD()
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-}
-                
-            
 

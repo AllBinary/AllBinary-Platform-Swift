@@ -1,228 +1,143 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.event.GameFeatureEvent
+// import org.allbinary.game.configuration.event.GameFeatureEventHandler
+// import org.allbinary.logic.java.bool.BooleanFactory
+// import org.allbinary.logic.math.SmallIntegerSingletonFactory
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
 
+open class GameConfiguration: JObject {
+    fileprivate static let MIN_VALUE: Int32! = Integer.MIN_VALUE
+    fileprivate var name: String! = nil
+    fileprivate var defaultValue: Int32! = nil
+    fileprivate var value: Int32! = nil
+    fileprivate var minValue: Int32! = nil
+    fileprivate var maxValue: Int32! = nil
+    fileprivate var modifiable: Bool! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.event.GameFeatureEvent
-import org.allbinary.game.configuration.event.GameFeatureEventHandler
-import org.allbinary.logic.java.bool.BooleanFactory
-import org.allbinary.logic.math.SmallIntegerSingletonFactory
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-
-open public class GameConfiguration
-            : Object
-         {
-        
-companion object {
-            
-    private val MIN_VALUE: Integer = Integer(Integer.MIN_VALUE)
-
-        }
-            
-    private var name: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-    private var defaultValue: Integer = SmallIntegerSingletonFactory.getInstance()!!.getAt(0)!!
-
-    private var value: Integer = GameConfiguration.MIN_VALUE
-
-    private var minValue: Integer = this.defaultValue
-
-    private var maxValue: Integer = this.defaultValue
-
-    private var modifiable: Boolean = BooleanFactory.getInstance()!!.TRUE
-public constructor (name: String, defaultValue: Integer, minValue: Integer, maxValue: Integer)
-            : super()
-        {
-    //var name = name
-    //var defaultValue = defaultValue
-    //var minValue = minValue
-    //var maxValue = maxValue
-this.setName(name)
-this.setDefaultValue(defaultValue)
-this.value= this.getDefaultValue()!!
-this.setMinValue(minValue)
-this.setMaxValue(maxValue)
-GameConfigurationSingleton.getInstance()!!.getHashtable()!!.put(this.getName(), this)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun setValue(value: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var value = value
-
+    private func initFields() {
+    self.name = StringUtil.getInstance().EMPTY_STRING
+    self.defaultValue = SmallIntegerSingletonFactory.getInstance().getAt(0)
+    self.value = GameConfiguration.MIN_VALUE
+    self.minValue = self.defaultValue
+    self.maxValue = self.defaultValue
+    self.modifiable = BooleanFactory.getInstance().TRUE
+    }
     
-                        if(this.value != value)
-                        
-                                    {
-                                    
-    var oldValue: Integer = this.value
 
-this.value= value
-GameFeatureEventHandler.getInstance()!!.fireEvent(GameFeatureEvent(this, StringMaker().
-                            append(this.name)!!.append(" value: from: ")!!.appendint(oldValue!!.toInt().toInt())!!.append(" to ")!!.appendint(this.value.toInt().toInt())!!.toString()))
+    public init(_ name: String!, _ defaultValue: Int32!, _ minValue: Int32!, _ maxValue: Int32!) {
+        super.init()
+        self.initFields()
+        self.setName(name)
+        self.setDefaultValue(defaultValue)
+        self.value = self.getDefaultValue()
+        self.setMinValue(minValue)
+        self.setMaxValue(maxValue)
+        GameConfigurationSingleton.getInstance().getHashtable().put(self.getName(), self)
+    }
+    
 
-                                    }
-                                
+    open func setValue(_ value: Int32!) {
+        if (self.value !== value) {
+            let oldValue: Int32! = self.value
+            self.value = value
+            GameFeatureEventHandler.getInstance().fireEvent(GameFeatureEvent(self, StringMaker().append(self.name).append(" value: from: ").appendint(Int32(truncatingIfNeeded: oldValue.intValue())).append(" to ").appendint(Int32(truncatingIfNeeded: self.value.intValue())).toString()))
+        }
+    }
+    
+
+    @discardableResult open func getValue() -> Int32! {
+        return self.value
+    }
+    
+
+    open func setMaxValue(_ maxValue: Int32!) {
+        self.maxValue = maxValue
+    }
+    
+
+    @discardableResult open func getMaxValue() -> Int32! {
+        return self.maxValue
+    }
+    
+
+    open func setMinValue(_ minValue: Int32!) {
+        self.minValue = minValue
+    }
+    
+
+    @discardableResult open func getMinValue() -> Int32! {
+        return self.minValue
+    }
+    
+
+    open func setName(_ name: String!) {
+        self.name = name
+    }
+    
+
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
+
+    open func setDefaultValue(_ defaultValue: Int32!) {
+        self.defaultValue = defaultValue
+    }
+    
+
+    @discardableResult open func getDefaultValue() -> Int32! {
+        return self.defaultValue
+    }
+    
+
+    open func setDefault() {
+        self.setValue(self.getDefaultValue())
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("Name: ")
+        stringBuffer.append(self.name)
+        stringBuffer.append(" Min: ")
+        stringBuffer.appendint(Int32(truncatingIfNeeded: self.getMinValue().intValue()))
+        stringBuffer.append(" Max: ")
+        stringBuffer.appendint(Int32(truncatingIfNeeded: self.getMaxValue().intValue()))
+        stringBuffer.append(" Value: ")
+        stringBuffer.appendint(Int32(truncatingIfNeeded: self.getValue().intValue()))
+        stringBuffer.append(" Default: ")
+        stringBuffer.appendint(Int32(truncatingIfNeeded: self.getDefaultValue().intValue()))
+        stringBuffer.append(" Modifiable: ")
+        stringBuffer.appendboolean(self.isModifiable().booleanValue())
+        return stringBuffer.toString()
+    }
+    
+
+    open func setModifiable(_ modifiable: Bool!) {
+        self.modifiable = modifiable
+    }
+    
+
+    @discardableResult open func isModifiable() -> Bool! {
+        return self.modifiable
+    }
 }
-
-
-    open fun getValue()
-        //nullable = true from not(false or (false and true)) = true
-: Integer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value
-}
-
-
-    open fun setMaxValue(maxValue: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var maxValue = maxValue
-this.maxValue= maxValue
-}
-
-
-    open fun getMaxValue()
-        //nullable = true from not(false or (false and true)) = true
-: Integer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxValue
-}
-
-
-    open fun setMinValue(minValue: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var minValue = minValue
-this.minValue= minValue
-}
-
-
-    open fun getMinValue()
-        //nullable = true from not(false or (false and true)) = true
-: Integer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minValue
-}
-
-
-    open fun setName(name: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var name = name
-this.name= name
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    open fun setDefaultValue(defaultValue: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var defaultValue = defaultValue
-this.defaultValue= defaultValue
-}
-
-
-    open fun getDefaultValue()
-        //nullable = true from not(false or (false and true)) = true
-: Integer{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultValue
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun setDefault()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.setValue(this.getDefaultValue())
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("Name: ")
-stringBuffer!!.append(this.name)
-stringBuffer!!.append(" Min: ")
-stringBuffer!!.appendint(this.getMinValue()!!.toInt().toInt())
-stringBuffer!!.append(" Max: ")
-stringBuffer!!.appendint(this.getMaxValue()!!.toInt().toInt())
-stringBuffer!!.append(" Value: ")
-stringBuffer!!.appendint(this.getValue()!!.toInt().toInt())
-stringBuffer!!.append(" Default: ")
-stringBuffer!!.appendint(this.getDefaultValue()!!.toInt().toInt())
-stringBuffer!!.append(" Modifiable: ")
-stringBuffer!!.appendboolean(this.isModifiable())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-    open fun setModifiable(modifiable: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var modifiable = modifiable
-this.modifiable= modifiable
-}
-
-
-    open fun isModifiable()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.modifiable
-}
-
-
-}
-                
-            
 

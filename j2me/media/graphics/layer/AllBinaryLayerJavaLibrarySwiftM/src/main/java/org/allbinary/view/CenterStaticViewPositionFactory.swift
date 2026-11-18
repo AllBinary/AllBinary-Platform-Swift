@@ -1,57 +1,34 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.view
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.view
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
 
+open class CenterStaticViewPositionFactory: JObject {
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-
-open public class CenterStaticViewPositionFactory
-            : Object
-         {
-        
-public constructor ()
-            : super()
-        {
+    @discardableResult open func getInstance(_ z: Int32) -> ViewPositionBase! {
+        let displayInfoSingleton: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        return StaticViewPosition((displayInfoSingleton.getLastWidth() >> 1), (displayInfoSingleton.getLastHeight() >> 1), z)
+    }
 }
-
-
-    open fun getInstance(z: Int)
-        //nullable =  from not(true or (false and false)) = 
-: ViewPositionBase{
-var z = z
-
-    var displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StaticViewPosition((displayInfoSingleton!!.getLastWidth() shr 1), (displayInfoSingleton!!.getLastHeight() shr 1), z)
-}
-
-
-}
-                
-            
 

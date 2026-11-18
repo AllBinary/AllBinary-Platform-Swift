@@ -25,7 +25,7 @@ open class RendererInitializedStupidTimerFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> StupidTimer! {
+    @discardableResult open class func getInstance() -> StupidTimer! {
         return RendererInitializedStupidTimerFactory.instance
     }
 }

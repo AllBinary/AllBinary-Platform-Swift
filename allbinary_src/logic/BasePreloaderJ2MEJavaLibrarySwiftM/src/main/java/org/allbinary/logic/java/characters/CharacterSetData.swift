@@ -36,7 +36,7 @@ open class CharacterSetData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> CharacterSetData! {
+    @discardableResult open class func getInstance() -> CharacterSetData! {
         return CharacterSetData.instance
     }
     

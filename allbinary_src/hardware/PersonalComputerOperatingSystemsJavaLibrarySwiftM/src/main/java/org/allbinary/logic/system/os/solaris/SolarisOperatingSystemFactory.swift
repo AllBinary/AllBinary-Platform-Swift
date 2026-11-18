@@ -34,7 +34,7 @@ open class SolarisOperatingSystemFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> SolarisOperatingSystemFactory! {
+    @discardableResult open class func getInstance() -> SolarisOperatingSystemFactory! {
         return SolarisOperatingSystemFactory.instance
     }
     

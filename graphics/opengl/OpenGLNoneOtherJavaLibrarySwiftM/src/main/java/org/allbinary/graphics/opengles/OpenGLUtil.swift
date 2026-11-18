@@ -1,69 +1,32 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.opengles
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.opengles
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
 
+open class OpenGLUtil: JObject {
+    fileprivate static let instance: OpenGLUtil! = OpenGLUtil()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func getInstance() -> OpenGLUtil! {
+        return OpenGLUtil.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Runnable
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
+    @discardableResult open func addImage(_ image: Image!) -> Image! {
+        return image
+    }
+    
 
-open public class OpenGLUtil
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: OpenGLUtil = OpenGLUtil()
+    open func clear() {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: OpenGLUtil{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLUtil.instance
+    open func addRunnable(_ runnable: Runnable!) {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun addImage(image: Image)
-        //nullable = true from not(false or (false and false)) = true
-: Image{
-    //var image = image
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return image
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun addRunnable(runnable: Runnable)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var runnable = runnable
-}
-
-
-}
-                
-            
 

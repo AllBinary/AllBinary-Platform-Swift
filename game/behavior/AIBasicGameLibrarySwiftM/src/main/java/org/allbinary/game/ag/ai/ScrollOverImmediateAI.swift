@@ -1,121 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.ai
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.ag.ai
+import J2SEForSwiftLibrary
+// import org.allbinary.game.ai.BasicAI
+// import org.allbinary.game.input.GameInput
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.layer.AllBinaryLayer
+// import org.allbinary.layer.AllBinaryLayerManager
 
+open class ScrollOverImmediateAI: BasicAI {
+    
 
+    public override init(_ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
+        super.init(ownerLayerInterface, gameInput)
+    }
+    
 
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.ai.BasicAI
-import org.allbinary.game.input.GameInput
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.layer.AllBinaryLayer
-import org.allbinary.layer.AllBinaryLayerManager
-
-open public class ScrollOverImmediateAI : BasicAI {
-        
-public constructor (ownerLayerInterface: AllBinaryLayer, gameInput: GameInput)                        
-
-                            : super(ownerLayerInterface, gameInput){
-var ownerLayerInterface = ownerLayerInterface
-var gameInput = gameInput
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
+        let ownerLayerInterface: AllBinaryLayer! = self.getOwnerLayerInterface()
+        let x: Int32 = ownerLayerInterface.getXP()
+        let y: Int32 = ownerLayerInterface.getYP()
+        let x2: Int32 = ownerLayerInterface.getX2()
+        let y2: Int32 = ownerLayerInterface.getY2()
+        let width: Int32 = ownerLayerInterface.getWidth()
+        let height: Int32 = ownerLayerInterface.getHeight()
+        let displayInfo: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        if (x2 > displayInfo.getLastWidth()) {
+            ownerLayerInterface.setPosition(0, y, ownerLayerInterface.getZP())
+        }
+        if (y2 > displayInfo.getLastHeight()) {
+            ownerLayerInterface.setPosition(x, 0, ownerLayerInterface.getZP())
+        }
+        if (x < 0) {
+            ownerLayerInterface.setPosition(displayInfo.getLastWidth() &- width, y, ownerLayerInterface.getZP())
+        }
+        if (y < 0) {
+            ownerLayerInterface.setPosition(x, displayInfo.getLastHeight() &- height, ownerLayerInterface.getZP())
+        }
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun processAI(allBinaryLayerManager: AllBinaryLayerManager)
-        //nullable = true from not(false or (false and false)) = true
-{
-var allBinaryLayerManager = allBinaryLayerManager
-
-    var ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!!
-
-
-    var x: Int = ownerLayerInterface!!.getXP()
-
-
-    var y: Int = ownerLayerInterface!!.getYP()
-
-
-    var x2: Int = ownerLayerInterface!!.getX2()
-
-
-    var y2: Int = ownerLayerInterface!!.getY2()
-
-
-    var width: Int = ownerLayerInterface!!.getWidth()
-
-
-    var height: Int = ownerLayerInterface!!.getHeight()
-
-
-    var displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-
-    
-                        if(x2 > displayInfo!!.getLastWidth())
-                        
-                                    {
-                                    ownerLayerInterface!!.setPosition(0, y, ownerLayerInterface!!.getZP())
-
-                                    }
-                                
-
-    
-                        if(y2 > displayInfo!!.getLastHeight())
-                        
-                                    {
-                                    ownerLayerInterface!!.setPosition(x, 0, ownerLayerInterface!!.getZP())
-
-                                    }
-                                
-
-    
-                        if(x < 0)
-                        
-                                    {
-                                    ownerLayerInterface!!.setPosition(displayInfo!!.getLastWidth() -width, y, ownerLayerInterface!!.getZP())
-
-                                    }
-                                
-
-    
-                        if(y < 0)
-                        
-                                    {
-                                    ownerLayerInterface!!.setPosition(x, displayInfo!!.getLastHeight() -height, ownerLayerInterface!!.getZP())
-
-                                    }
-                                
-}
-
-
-}
-                
-            
 

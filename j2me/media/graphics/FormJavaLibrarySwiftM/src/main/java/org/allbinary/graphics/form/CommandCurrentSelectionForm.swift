@@ -1,406 +1,215 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.J2MEUtil
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.NullAnimationFactory
+// import org.allbinary.animation.vector.RectangleAdjustedAnimation
+// import org.allbinary.animation.vector.RectangleFilledAdjustedAnimation
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.font.UpdateMyFontInterface
+// import org.allbinary.graphics.form.item.CommandTextItem
+// import org.allbinary.graphics.form.item.ABCustomItem
 
+open class CommandCurrentSelectionForm: ScrollCurrentSelectionForm, UpdateMyFontInterface {
+    public var selectedAnimationArray: JArray<Animation?>! = nil
+    public var unSelectedAnimationArray: JArray<Animation?>! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.Graphics
-import org.allbinary.J2MEUtil
-import org.allbinary.animation.Animation
-import org.allbinary.animation.NullAnimationFactory
-import org.allbinary.animation.vector.RectangleAdjustedAnimation
-import org.allbinary.animation.vector.RectangleFilledAdjustedAnimation
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.font.UpdateMyFontInterface
-import org.allbinary.graphics.form.item.CommandTextItem
-import org.allbinary.graphics.form.item.ABCustomItem
-
-open public class CommandCurrentSelectionForm : ScrollCurrentSelectionForm
-                , UpdateMyFontInterface {
-        
-
-    val selectedAnimationArray: Array<Animation?> = arrayOfNulls(16)
-
-    val unSelectedAnimationArray: Array<Animation?> = arrayOfNulls(16)
-public constructor (title: String, items: Array<ABCustomItem?>, border: Int, moveForSmallScreen: Boolean, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(title, items, ItemPaintableFactory.getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor){
-    //var title = title
-    //var items = items
-    //var border = border
-    //var moveForSmallScreen = moveForSmallScreen
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.initAnimations()
-this.addAll(items)
-}
-
-
-    override fun updateMeasurement(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.updateAll(graphics, this.getAllitems())
-super.updateMeasurement(graphics)
-}
-
-
-    open fun initAnimations()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var nullAnimation: Animation = NullAnimationFactory.getFactoryInstance()!!.getInstance(0)!!
-
-
-
-
-
-                        for (index in this.selectedAnimationArray!!.size  - 1  downTo 0)
-
-        {
-this.selectedAnimationArray[index]= nullAnimation
-}
-
-
-
-
-
-                        for (index in this.unSelectedAnimationArray!!.size  - 1  downTo 0)
-
-        {
-this.unSelectedAnimationArray[index]= nullAnimation
-}
-
-}
-
-
-    open fun addAll(items: Array<ABCustomItem?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var items = items
-
-
-
-
-                        for (index in items.size  - 1  downTo 0)
-
-        {
-this.addAt(index, items[index]!!)
-}
-
-}
-
-
-    open fun addAt(index: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var index = index
-    //var item = item
-
-    var basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!!
-
-
-    var buttonColor: BasicColor = basicColorFactory!!.TRANSPARENT_GREY
-
-
-    var selectedButtonColor: BasicColor = basicColorFactory!!.TRANSPARENT_RED
-
-
-    var width: Int = item.getMinimumWidth()
-
-
-    var height: Int = item.getMinimumHeight()
-
-
-    var adjustedBorder: Int = 3
-
-
-    var offset: Int =  -(this.halfBorder +adjustedBorder)
-
-
-    var rectWidth: Int = width +this.border -adjustedBorder
-
-
-    var rectHeight: Int = height +this.border -adjustedBorder
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.selectedAnimationArray = JArray<Animation?>(16, nil)
+    self.unSelectedAnimationArray = JArray<Animation?>(16, nil)
+    }
     
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
-                        
-                                    {
-                                    this.selectedAnimationArray[index]= RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor)
 
-                                    }
-                                
-                        else {
-                            this.selectedAnimationArray[index]= RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor)
-
-                        }
-                            
-adjustedBorder= 4
-
+    public init(_ title: String!, _ items: JArray<ABCustomItem?>!, _ border: Int32, _ moveForSmallScreen: Bool, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(title, items, ItemPaintableFactory.getInstance(), border, -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor)
+        self.initFields()
+        self.initAnimations()
+        self.addAll(items)
+    }
     
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
-                        
-                                    {
-                                    this.unSelectedAnimationArray[index]= RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor)
 
-                                    }
-                                
-                        else {
-                            this.unSelectedAnimationArray[index]= RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor)
-
-                        }
-                            
-}
-
-
-    open fun updateAll(graphics: Graphics, items: Array<ABCustomItem?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var items = items
-
-
-
-
-                        for (index in items.size  - 1  downTo 0)
-
-        {
-items[index]!!.preMeasurement(graphics)
-this.updateAt(index, items[index]!!)
-}
-
-}
-
-
-    open fun updateAt(index: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var index = index
-    //var item = item
-
-    var basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!!
-
-
-    var buttonColor: BasicColor = basicColorFactory!!.TRANSPARENT_GREY
-
-
-    var selectedButtonColor: BasicColor = basicColorFactory!!.TRANSPARENT_RED
-
-
-    var width: Int = item.getMinimumWidth()
-
-
-    var height: Int = item.getMinimumHeight()
-
-
-    var adjustedBorder: Int = 3
-
-
-    var offset: Int =  -(this.halfBorder +adjustedBorder)
-
-
-    var rectWidth: Int = width +this.border -adjustedBorder
-
-
-    var rectHeight: Int = height +this.border -adjustedBorder
-
-
+    open override func updateMeasurement(_ graphics: Graphics!) {
+        self.updateAll(graphics, self.getAllitems())
+        super.updateMeasurement(graphics)
+    }
     
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
-                        
-                                    {
-                                    
-    var rectangleAdjustedAnimation: RectangleAdjustedAnimation = this.selectedAnimationArray[index]!! as RectangleAdjustedAnimation
 
-rectangleAdjustedAnimation!!.setWidth(rectWidth)
-rectangleAdjustedAnimation!!.setHeight(rectHeight)
-rectangleAdjustedAnimation!!.setOffsetX(offset)
-rectangleAdjustedAnimation!!.setOffsetY(offset)
-rectangleAdjustedAnimation!!.setBasicColorP(selectedButtonColor)
-
-                                    }
-                                
-                        else {
-                            
-    var rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation = this.selectedAnimationArray[index]!! as RectangleFilledAdjustedAnimation
-
-rectangleAdjustedAnimation!!.setWidth(rectWidth)
-rectangleAdjustedAnimation!!.setHeight(rectHeight)
-rectangleAdjustedAnimation!!.setOffsetX(offset)
-rectangleAdjustedAnimation!!.setOffsetY(offset)
-rectangleAdjustedAnimation!!.setBasicColorP(selectedButtonColor)
-
-                        }
-                            
-adjustedBorder= 4
-
+    fileprivate func initAnimations() {
+        let nullAnimation: Animation! = NullAnimationFactory.getFactoryInstance().getInstance(0)
+        do {
+            var index: Int32 = self.selectedAnimationArray.length
+            while (jPreDecrement(&index) >= 0) {
+            self.selectedAnimationArray[index] = nullAnimation
+            }
+        }
+        do {
+            var index: Int32 = self.unSelectedAnimationArray.length
+            while (jPreDecrement(&index) >= 0) {
+            self.unSelectedAnimationArray[index] = nullAnimation
+            }
+        }
+    }
     
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
-                        
-                                    {
-                                    
-    var rectangleAdjustedAnimation: RectangleAdjustedAnimation = this.unSelectedAnimationArray[index]!! as RectangleAdjustedAnimation
 
-rectangleAdjustedAnimation!!.setWidth(rectWidth)
-rectangleAdjustedAnimation!!.setHeight(rectHeight)
-rectangleAdjustedAnimation!!.setOffsetX(offset)
-rectangleAdjustedAnimation!!.setOffsetY(offset)
-rectangleAdjustedAnimation!!.setBasicColorP(buttonColor)
+    fileprivate func addAll(_ items: JArray<ABCustomItem?>!) {
+        do {
+            var index: Int32 = items.length
+            while (jPreDecrement(&index) >= 0) {
+            self.addAt(index, items[index])
+            }
+        }
+    }
+    
 
-                                    }
-                                
-                        else {
-                            
-    var rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation = this.unSelectedAnimationArray[index]!! as RectangleFilledAdjustedAnimation
+    fileprivate func addAt(_ index: Int32, _ item: ABCustomItem!) {
+        let basicColorFactory: BasicColorFactory! = BasicColorFactory.getInstance()
+        let buttonColor: BasicColor! = basicColorFactory.TRANSPARENT_GREY
+        let selectedButtonColor: BasicColor! = basicColorFactory.TRANSPARENT_RED
+        let width: Int32 = item.getMinimumWidth()
+        let height: Int32 = item.getMinimumHeight()
+        var adjustedBorder: Int32 = 3
+        let offset: Int32 = -(self.halfBorder + adjustedBorder)
+        let rectWidth: Int32 = width + self.border - adjustedBorder
+        let rectHeight: Int32 = height + self.border - adjustedBorder
+        if (J2MEUtil.isJ2ME() || J2MEUtil.isHTML()) {
+            self.selectedAnimationArray[index] = RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor)
+        } else {
+            self.selectedAnimationArray[index] = RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor)
+        }
+        adjustedBorder = 4
+        if (J2MEUtil.isJ2ME() || J2MEUtil.isHTML()) {
+            self.unSelectedAnimationArray[index] = RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor)
+        } else {
+            self.unSelectedAnimationArray[index] = RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor)
+        }
+    }
+    
 
-rectangleAdjustedAnimation!!.setWidth(rectWidth)
-rectangleAdjustedAnimation!!.setHeight(rectHeight)
-rectangleAdjustedAnimation!!.setOffsetX(offset)
-rectangleAdjustedAnimation!!.setOffsetY(offset)
-rectangleAdjustedAnimation!!.setBasicColorP(buttonColor)
+    fileprivate func updateAll(_ graphics: Graphics!, _ items: JArray<ABCustomItem?>!) {
+        do {
+            var index: Int32 = items.length
+            while (jPreDecrement(&index) >= 0) {
+            items[index]!.preMeasurement(graphics)
+            self.updateAt(index, items[index])
+            }
+        }
+    }
+    
 
-                        }
-                            
+    fileprivate func updateAt(_ index: Int32, _ item: ABCustomItem!) {
+        let basicColorFactory: BasicColorFactory! = BasicColorFactory.getInstance()
+        let buttonColor: BasicColor! = basicColorFactory.TRANSPARENT_GREY
+        let selectedButtonColor: BasicColor! = basicColorFactory.TRANSPARENT_RED
+        let width: Int32 = item.getMinimumWidth()
+        let height: Int32 = item.getMinimumHeight()
+        var adjustedBorder: Int32 = 3
+        let offset: Int32 = -(self.halfBorder + adjustedBorder)
+        let rectWidth: Int32 = width + self.border - adjustedBorder
+        let rectHeight: Int32 = height + self.border - adjustedBorder
+        if (J2MEUtil.isJ2ME() || J2MEUtil.isHTML()) {
+            let rectangleAdjustedAnimation: RectangleAdjustedAnimation! = (self.selectedAnimationArray[index] as! RectangleAdjustedAnimation)
+            rectangleAdjustedAnimation.setWidth(rectWidth)
+            rectangleAdjustedAnimation.setHeight(rectHeight)
+            rectangleAdjustedAnimation.setOffsetX(offset)
+            rectangleAdjustedAnimation.setOffsetY(offset)
+            rectangleAdjustedAnimation.setBasicColorP(selectedButtonColor)
+        } else {
+            let rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation! = (self.selectedAnimationArray[index] as! RectangleFilledAdjustedAnimation)
+            rectangleAdjustedAnimation.setWidth(rectWidth)
+            rectangleAdjustedAnimation.setHeight(rectHeight)
+            rectangleAdjustedAnimation.setOffsetX(offset)
+            rectangleAdjustedAnimation.setOffsetY(offset)
+            rectangleAdjustedAnimation.setBasicColorP(selectedButtonColor)
+        }
+        adjustedBorder = 4
+        if (J2MEUtil.isJ2ME() || J2MEUtil.isHTML()) {
+            let rectangleAdjustedAnimation: RectangleAdjustedAnimation! = (self.unSelectedAnimationArray[index] as! RectangleAdjustedAnimation)
+            rectangleAdjustedAnimation.setWidth(rectWidth)
+            rectangleAdjustedAnimation.setHeight(rectHeight)
+            rectangleAdjustedAnimation.setOffsetX(offset)
+            rectangleAdjustedAnimation.setOffsetY(offset)
+            rectangleAdjustedAnimation.setBasicColorP(buttonColor)
+        } else {
+            let rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation! = (self.unSelectedAnimationArray[index] as! RectangleFilledAdjustedAnimation)
+            rectangleAdjustedAnimation.setWidth(rectWidth)
+            rectangleAdjustedAnimation.setHeight(rectHeight)
+            rectangleAdjustedAnimation.setOffsetX(offset)
+            rectangleAdjustedAnimation.setOffsetY(offset)
+            rectangleAdjustedAnimation.setBasicColorP(buttonColor)
+        }
+    }
+    
+
+    @discardableResult open func getSelectedCommand() -> Command! {
+        let index: Int32 = super.getSelectedIndex()
+        let commandTextItem: CommandTextItem! = (self.get(index) as! CommandTextItem)
+        return commandTextItem.getCommand()
+    }
+    
+
+    @discardableResult open override func append(_ item: ABCustomItem!) -> Int32 {
+        let result: Int32 = super.append(item)
+        self.addAt(result, item)
+        return result
+    }
+    
+
+    open override func delete(_ itemNum: Int32) {
+        super.delete(itemNum)
+    }
+    
+
+    open override func deleteAll() {
+        self.initAnimations()
+        super.deleteAll()
+    }
+    
+
+    open override func insert(_ itemNum: Int32, _ item: ABCustomItem!) {
+        super.insert(itemNum, item)
+    }
+    
+
+    open override func set(_ itemNum: Int32, _ item: ABCustomItem!) {
+        super.set(itemNum, item)
+    }
+    
+
+    open override func paint(_ graphics: Graphics!) {
+        self.myFontProcessor.process(graphics)
+        super.paint(graphics)
+    }
+    
+
+    @discardableResult open override func paintItem(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        self.selectedAnimationArray[index]!.paintXY(graphics, x, y)
+        return super.paintItem(graphics, index, item, x, y)
+    }
+    
+
+    @discardableResult open override func paintUnselectedItem(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        self.unSelectedAnimationArray[index]!.paintXY(graphics, x, y)
+        return super.paintUnselectedItem(graphics, index, item, x, y)
+    }
 }
-
-
-    open fun getSelectedCommand()
-        //nullable = true from not(false or (false and true)) = true
-: Command{
-
-    var index: Int = super.getSelectedIndex()
-
-
-    var commandTextItem: CommandTextItem = this.get(index) as CommandTextItem
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return commandTextItem!!.getCommand()
-}
-
-
-    override fun append(item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var item = item
-
-    var result: Int = super.append(item)
-
-this.addAt(result, item)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return result
-}
-
-
-    override fun delete(itemNum: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var itemNum = itemNum
-super.delete(itemNum)
-}
-
-
-    override fun deleteAll()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.initAnimations()
-super.deleteAll()
-}
-
-
-    override fun insert(itemNum: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var itemNum = itemNum
-    //var item = item
-super.insert(itemNum, item)
-}
-
-
-    override fun set(itemNum: Int, item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var itemNum = itemNum
-    //var item = item
-super.set(itemNum, item)
-}
-
-
-    override fun paint(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-this.myFontProcessor!!.process(graphics)
-super.paint(graphics)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun paintItem(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-this.selectedAnimationArray[index]!!.paintXY(graphics, x, y)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.paintItem(graphics, index, item, x, y)
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun paintUnselectedItem(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-this.unSelectedAnimationArray[index]!!.paintXY(graphics, x, y)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.paintUnselectedItem(graphics, index, item, x, y)
-}
-
-
-}
-                
-            
 

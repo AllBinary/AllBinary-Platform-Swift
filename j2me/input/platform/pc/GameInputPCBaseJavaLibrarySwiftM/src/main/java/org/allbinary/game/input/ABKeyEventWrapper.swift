@@ -1,437 +1,416 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2026 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2026 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import java.awt.event.KeyEvent
+// import jsinterop.annotations.JsType
 
+open class ABKeyEventWrapper: JObject {
+    fileprivate static let instance: ABKeyEventWrapper! = ABKeyEventWrapper()
+    public var VK_ENTER: Int32 = 0
+    public var VK_BACK_SPACE: Int32 = 0
+    public var VK_TAB: Int32 = 0
+    public var VK_CANCEL: Int32 = 0
+    public var VK_CLEAR: Int32 = 0
+    public var VK_SHIFT: Int32 = 0
+    public var VK_CONTROL: Int32 = 0
+    public var VK_ALT: Int32 = 0
+    public var VK_PAUSE: Int32 = 0
+    public var VK_CAPS_LOCK: Int32 = 0
+    public var VK_ESCAPE: Int32 = 0
+    public var VK_SPACE: Int32 = 0
+    public var VK_PAGE_UP: Int32 = 0
+    public var VK_PAGE_DOWN: Int32 = 0
+    public var VK_END: Int32 = 0
+    public var VK_HOME: Int32 = 0
+    public var VK_LEFT: Int32 = 0
+    public var VK_UP: Int32 = 0
+    public var VK_RIGHT: Int32 = 0
+    public var VK_DOWN: Int32 = 0
+    public var VK_COMMA: Int32 = 0
+    public var VK_MINUS: Int32 = 0
+    public var VK_PERIOD: Int32 = 0
+    public var VK_SLASH: Int32 = 0
+    public var VK_0: Int32 = 0
+    public var VK_1: Int32 = 0
+    public var VK_2: Int32 = 0
+    public var VK_3: Int32 = 0
+    public var VK_4: Int32 = 0
+    public var VK_5: Int32 = 0
+    public var VK_6: Int32 = 0
+    public var VK_7: Int32 = 0
+    public var VK_8: Int32 = 0
+    public var VK_9: Int32 = 0
+    public var VK_SEMICOLON: Int32 = 0
+    public var VK_EQUALS: Int32 = 0
+    public var VK_A: Int32 = 0
+    public var VK_B: Int32 = 0
+    public var VK_C: Int32 = 0
+    public var VK_D: Int32 = 0
+    public var VK_E: Int32 = 0
+    public var VK_F: Int32 = 0
+    public var VK_G: Int32 = 0
+    public var VK_H: Int32 = 0
+    public var VK_I: Int32 = 0
+    public var VK_J: Int32 = 0
+    public var VK_K: Int32 = 0
+    public var VK_L: Int32 = 0
+    public var VK_M: Int32 = 0
+    public var VK_N: Int32 = 0
+    public var VK_O: Int32 = 0
+    public var VK_P: Int32 = 0
+    public var VK_Q: Int32 = 0
+    public var VK_R: Int32 = 0
+    public var VK_S: Int32 = 0
+    public var VK_T: Int32 = 0
+    public var VK_U: Int32 = 0
+    public var VK_V: Int32 = 0
+    public var VK_W: Int32 = 0
+    public var VK_X: Int32 = 0
+    public var VK_Y: Int32 = 0
+    public var VK_Z: Int32 = 0
+    public var VK_OPEN_BRACKET: Int32 = 0
+    public var VK_BACK_SLASH: Int32 = 0
+    public var VK_CLOSE_BRACKET: Int32 = 0
+    public var VK_NUMPAD0: Int32 = 0
+    public var VK_NUMPAD1: Int32 = 0
+    public var VK_NUMPAD2: Int32 = 0
+    public var VK_NUMPAD3: Int32 = 0
+    public var VK_NUMPAD4: Int32 = 0
+    public var VK_NUMPAD5: Int32 = 0
+    public var VK_NUMPAD6: Int32 = 0
+    public var VK_NUMPAD7: Int32 = 0
+    public var VK_NUMPAD8: Int32 = 0
+    public var VK_NUMPAD9: Int32 = 0
+    public var VK_MULTIPLY: Int32 = 0
+    public var VK_ADD: Int32 = 0
+    public var VK_SEPARATER: Int32 = 0
+    public var VK_SEPARATOR: Int32 = 0
+    public var VK_SUBTRACT: Int32 = 0
+    public var VK_DECIMAL: Int32 = 0
+    public var VK_DIVIDE: Int32 = 0
+    public var VK_DELETE: Int32 = 0
+    public var VK_NUM_LOCK: Int32 = 0
+    public var VK_SCROLL_LOCK: Int32 = 0
+    public var VK_F1: Int32 = 0
+    public var VK_F2: Int32 = 0
+    public var VK_F3: Int32 = 0
+    public var VK_F4: Int32 = 0
+    public var VK_F5: Int32 = 0
+    public var VK_F6: Int32 = 0
+    public var VK_F7: Int32 = 0
+    public var VK_F8: Int32 = 0
+    public var VK_F9: Int32 = 0
+    public var VK_F10: Int32 = 0
+    public var VK_F11: Int32 = 0
+    public var VK_F12: Int32 = 0
+    public var VK_F13: Int32 = 0
+    public var VK_F14: Int32 = 0
+    public var VK_F15: Int32 = 0
+    public var VK_F16: Int32 = 0
+    public var VK_F17: Int32 = 0
+    public var VK_F18: Int32 = 0
+    public var VK_F19: Int32 = 0
+    public var VK_F20: Int32 = 0
+    public var VK_F21: Int32 = 0
+    public var VK_F22: Int32 = 0
+    public var VK_F23: Int32 = 0
+    public var VK_F24: Int32 = 0
+    public var VK_PRINTSCREEN: Int32 = 0
+    public var VK_INSERT: Int32 = 0
+    public var VK_HELP: Int32 = 0
+    public var VK_META: Int32 = 0
+    public var VK_BACK_QUOTE: Int32 = 0
+    public var VK_QUOTE: Int32 = 0
+    public var VK_KP_UP: Int32 = 0
+    public var VK_KP_DOWN: Int32 = 0
+    public var VK_KP_LEFT: Int32 = 0
+    public var VK_KP_RIGHT: Int32 = 0
+    public var VK_DEAD_GRAVE: Int32 = 0
+    public var VK_DEAD_ACUTE: Int32 = 0
+    public var VK_DEAD_CIRCUMFLEX: Int32 = 0
+    public var VK_DEAD_TILDE: Int32 = 0
+    public var VK_DEAD_MACRON: Int32 = 0
+    public var VK_DEAD_BREVE: Int32 = 0
+    public var VK_DEAD_ABOVEDOT: Int32 = 0
+    public var VK_DEAD_DIAERESIS: Int32 = 0
+    public var VK_DEAD_ABOVERING: Int32 = 0
+    public var VK_DEAD_DOUBLEACUTE: Int32 = 0
+    public var VK_DEAD_CARON: Int32 = 0
+    public var VK_DEAD_CEDILLA: Int32 = 0
+    public var VK_DEAD_OGONEK: Int32 = 0
+    public var VK_DEAD_IOTA: Int32 = 0
+    public var VK_DEAD_VOICED_SOUND: Int32 = 0
+    public var VK_DEAD_SEMIVOICED_SOUND: Int32 = 0
+    public var VK_AMPERSAND: Int32 = 0
+    public var VK_ASTERISK: Int32 = 0
+    public var VK_QUOTEDBL: Int32 = 0
+    public var VK_LESS: Int32 = 0
+    public var VK_GREATER: Int32 = 0
+    public var VK_BRACELEFT: Int32 = 0
+    public var VK_BRACERIGHT: Int32 = 0
+    public var VK_AT: Int32 = 0
+    public var VK_COLON: Int32 = 0
+    public var VK_CIRCUMFLEX: Int32 = 0
+    public var VK_DOLLAR: Int32 = 0
+    public var VK_EURO_SIGN: Int32 = 0
+    public var VK_EXCLAMATION_MARK: Int32 = 0
+    public var VK_INVERTED_EXCLAMATION_MARK: Int32 = 0
+    public var VK_LEFT_PARENTHESIS: Int32 = 0
+    public var VK_NUMBER_SIGN: Int32 = 0
+    public var VK_PLUS: Int32 = 0
+    public var VK_RIGHT_PARENTHESIS: Int32 = 0
+    public var VK_UNDERSCORE: Int32 = 0
+    public var VK_WINDOWS: Int32 = 0
+    public var VK_CONTEXT_MENU: Int32 = 0
+    public var VK_FINAL: Int32 = 0
+    public var VK_CONVERT: Int32 = 0
+    public var VK_NONCONVERT: Int32 = 0
+    public var VK_ACCEPT: Int32 = 0
+    public var VK_MODECHANGE: Int32 = 0
+    public var VK_KANA: Int32 = 0
+    public var VK_KANJI: Int32 = 0
+    public var VK_ALPHANUMERIC: Int32 = 0
+    public var VK_KATAKANA: Int32 = 0
+    public var VK_HIRAGANA: Int32 = 0
+    public var VK_FULL_WIDTH: Int32 = 0
+    public var VK_HALF_WIDTH: Int32 = 0
+    public var VK_ROMAN_CHARACTERS: Int32 = 0
+    public var VK_ALL_CANDIDATES: Int32 = 0
+    public var VK_PREVIOUS_CANDIDATE: Int32 = 0
+    public var VK_CODE_INPUT: Int32 = 0
+    public var VK_JAPANESE_KATAKANA: Int32 = 0
+    public var VK_JAPANESE_HIRAGANA: Int32 = 0
+    public var VK_JAPANESE_ROMAN: Int32 = 0
+    public var VK_KANA_LOCK: Int32 = 0
+    public var VK_INPUT_METHOD_ON_OFF: Int32 = 0
+    public var VK_CUT: Int32 = 0
+    public var VK_COPY: Int32 = 0
+    public var VK_PASTE: Int32 = 0
+    public var VK_UNDO: Int32 = 0
+    public var VK_AGAIN: Int32 = 0
+    public var VK_FIND: Int32 = 0
+    public var VK_PROPS: Int32 = 0
+    public var VK_STOP: Int32 = 0
+    public var VK_COMPOSE: Int32 = 0
+    public var VK_ALT_GRAPH: Int32 = 0
+    public var VK_BEGIN: Int32 = 0
+    public var VK_UNDEFINED: Int32 = 0
 
+    private func initFields() {
+    self.VK_ENTER = KeyEvent.VK_ENTER
+    self.VK_BACK_SPACE = KeyEvent.VK_BACK_SPACE
+    self.VK_TAB = KeyEvent.VK_TAB
+    self.VK_CANCEL = KeyEvent.VK_CANCEL
+    self.VK_CLEAR = KeyEvent.VK_CLEAR
+    self.VK_SHIFT = KeyEvent.VK_SHIFT
+    self.VK_CONTROL = KeyEvent.VK_CONTROL
+    self.VK_ALT = KeyEvent.VK_ALT
+    self.VK_PAUSE = KeyEvent.VK_PAUSE
+    self.VK_CAPS_LOCK = KeyEvent.VK_CAPS_LOCK
+    self.VK_ESCAPE = KeyEvent.VK_ESCAPE
+    self.VK_SPACE = KeyEvent.VK_SPACE
+    self.VK_PAGE_UP = KeyEvent.VK_PAGE_UP
+    self.VK_PAGE_DOWN = KeyEvent.VK_PAGE_DOWN
+    self.VK_END = KeyEvent.VK_END
+    self.VK_HOME = KeyEvent.VK_HOME
+    self.VK_LEFT = KeyEvent.VK_LEFT
+    self.VK_UP = KeyEvent.VK_UP
+    self.VK_RIGHT = KeyEvent.VK_RIGHT
+    self.VK_DOWN = KeyEvent.VK_DOWN
+    self.VK_COMMA = KeyEvent.VK_COMMA
+    self.VK_MINUS = KeyEvent.VK_MINUS
+    self.VK_PERIOD = KeyEvent.VK_PERIOD
+    self.VK_SLASH = KeyEvent.VK_SLASH
+    self.VK_0 = KeyEvent.VK_0
+    self.VK_1 = KeyEvent.VK_1
+    self.VK_2 = KeyEvent.VK_2
+    self.VK_3 = KeyEvent.VK_3
+    self.VK_4 = KeyEvent.VK_4
+    self.VK_5 = KeyEvent.VK_5
+    self.VK_6 = KeyEvent.VK_6
+    self.VK_7 = KeyEvent.VK_7
+    self.VK_8 = KeyEvent.VK_8
+    self.VK_9 = KeyEvent.VK_9
+    self.VK_SEMICOLON = KeyEvent.VK_SEMICOLON
+    self.VK_EQUALS = KeyEvent.VK_EQUALS
+    self.VK_A = KeyEvent.VK_A
+    self.VK_B = KeyEvent.VK_B
+    self.VK_C = KeyEvent.VK_C
+    self.VK_D = KeyEvent.VK_D
+    self.VK_E = KeyEvent.VK_E
+    self.VK_F = KeyEvent.VK_F
+    self.VK_G = KeyEvent.VK_G
+    self.VK_H = KeyEvent.VK_H
+    self.VK_I = KeyEvent.VK_I
+    self.VK_J = KeyEvent.VK_J
+    self.VK_K = KeyEvent.VK_K
+    self.VK_L = KeyEvent.VK_L
+    self.VK_M = KeyEvent.VK_M
+    self.VK_N = KeyEvent.VK_N
+    self.VK_O = KeyEvent.VK_O
+    self.VK_P = KeyEvent.VK_P
+    self.VK_Q = KeyEvent.VK_Q
+    self.VK_R = KeyEvent.VK_R
+    self.VK_S = KeyEvent.VK_S
+    self.VK_T = KeyEvent.VK_T
+    self.VK_U = KeyEvent.VK_U
+    self.VK_V = KeyEvent.VK_V
+    self.VK_W = KeyEvent.VK_W
+    self.VK_X = KeyEvent.VK_X
+    self.VK_Y = KeyEvent.VK_Y
+    self.VK_Z = KeyEvent.VK_Z
+    self.VK_OPEN_BRACKET = KeyEvent.VK_OPEN_BRACKET
+    self.VK_BACK_SLASH = KeyEvent.VK_BACK_SLASH
+    self.VK_CLOSE_BRACKET = KeyEvent.VK_CLOSE_BRACKET
+    self.VK_NUMPAD0 = KeyEvent.VK_NUMPAD0
+    self.VK_NUMPAD1 = KeyEvent.VK_NUMPAD1
+    self.VK_NUMPAD2 = KeyEvent.VK_NUMPAD2
+    self.VK_NUMPAD3 = KeyEvent.VK_NUMPAD3
+    self.VK_NUMPAD4 = KeyEvent.VK_NUMPAD4
+    self.VK_NUMPAD5 = KeyEvent.VK_NUMPAD5
+    self.VK_NUMPAD6 = KeyEvent.VK_NUMPAD6
+    self.VK_NUMPAD7 = KeyEvent.VK_NUMPAD7
+    self.VK_NUMPAD8 = KeyEvent.VK_NUMPAD8
+    self.VK_NUMPAD9 = KeyEvent.VK_NUMPAD9
+    self.VK_MULTIPLY = KeyEvent.VK_MULTIPLY
+    self.VK_ADD = KeyEvent.VK_ADD
+    self.VK_SEPARATER = KeyEvent.VK_SEPARATER
+    self.VK_SEPARATOR = KeyEvent.VK_SEPARATOR
+    self.VK_SUBTRACT = KeyEvent.VK_SUBTRACT
+    self.VK_DECIMAL = KeyEvent.VK_DECIMAL
+    self.VK_DIVIDE = KeyEvent.VK_DIVIDE
+    self.VK_DELETE = KeyEvent.VK_DELETE
+    self.VK_NUM_LOCK = KeyEvent.VK_NUM_LOCK
+    self.VK_SCROLL_LOCK = KeyEvent.VK_SCROLL_LOCK
+    self.VK_F1 = KeyEvent.VK_F1
+    self.VK_F2 = KeyEvent.VK_F2
+    self.VK_F3 = KeyEvent.VK_F3
+    self.VK_F4 = KeyEvent.VK_F4
+    self.VK_F5 = KeyEvent.VK_F5
+    self.VK_F6 = KeyEvent.VK_F6
+    self.VK_F7 = KeyEvent.VK_F7
+    self.VK_F8 = KeyEvent.VK_F8
+    self.VK_F9 = KeyEvent.VK_F9
+    self.VK_F10 = KeyEvent.VK_F10
+    self.VK_F11 = KeyEvent.VK_F11
+    self.VK_F12 = KeyEvent.VK_F12
+    self.VK_F13 = KeyEvent.VK_F13
+    self.VK_F14 = KeyEvent.VK_F14
+    self.VK_F15 = KeyEvent.VK_F15
+    self.VK_F16 = KeyEvent.VK_F16
+    self.VK_F17 = KeyEvent.VK_F17
+    self.VK_F18 = KeyEvent.VK_F18
+    self.VK_F19 = KeyEvent.VK_F19
+    self.VK_F20 = KeyEvent.VK_F20
+    self.VK_F21 = KeyEvent.VK_F21
+    self.VK_F22 = KeyEvent.VK_F22
+    self.VK_F23 = KeyEvent.VK_F23
+    self.VK_F24 = KeyEvent.VK_F24
+    self.VK_PRINTSCREEN = KeyEvent.VK_PRINTSCREEN
+    self.VK_INSERT = KeyEvent.VK_INSERT
+    self.VK_HELP = KeyEvent.VK_HELP
+    self.VK_META = KeyEvent.VK_META
+    self.VK_BACK_QUOTE = KeyEvent.VK_BACK_QUOTE
+    self.VK_QUOTE = KeyEvent.VK_QUOTE
+    self.VK_KP_UP = KeyEvent.VK_KP_UP
+    self.VK_KP_DOWN = KeyEvent.VK_KP_DOWN
+    self.VK_KP_LEFT = KeyEvent.VK_KP_LEFT
+    self.VK_KP_RIGHT = KeyEvent.VK_KP_RIGHT
+    self.VK_DEAD_GRAVE = KeyEvent.VK_DEAD_GRAVE
+    self.VK_DEAD_ACUTE = KeyEvent.VK_DEAD_ACUTE
+    self.VK_DEAD_CIRCUMFLEX = KeyEvent.VK_DEAD_CIRCUMFLEX
+    self.VK_DEAD_TILDE = KeyEvent.VK_DEAD_TILDE
+    self.VK_DEAD_MACRON = KeyEvent.VK_DEAD_MACRON
+    self.VK_DEAD_BREVE = KeyEvent.VK_DEAD_BREVE
+    self.VK_DEAD_ABOVEDOT = KeyEvent.VK_DEAD_ABOVEDOT
+    self.VK_DEAD_DIAERESIS = KeyEvent.VK_DEAD_DIAERESIS
+    self.VK_DEAD_ABOVERING = KeyEvent.VK_DEAD_ABOVERING
+    self.VK_DEAD_DOUBLEACUTE = KeyEvent.VK_DEAD_DOUBLEACUTE
+    self.VK_DEAD_CARON = KeyEvent.VK_DEAD_CARON
+    self.VK_DEAD_CEDILLA = KeyEvent.VK_DEAD_CEDILLA
+    self.VK_DEAD_OGONEK = KeyEvent.VK_DEAD_OGONEK
+    self.VK_DEAD_IOTA = KeyEvent.VK_DEAD_IOTA
+    self.VK_DEAD_VOICED_SOUND = KeyEvent.VK_DEAD_VOICED_SOUND
+    self.VK_DEAD_SEMIVOICED_SOUND = KeyEvent.VK_DEAD_SEMIVOICED_SOUND
+    self.VK_AMPERSAND = KeyEvent.VK_AMPERSAND
+    self.VK_ASTERISK = KeyEvent.VK_ASTERISK
+    self.VK_QUOTEDBL = KeyEvent.VK_QUOTEDBL
+    self.VK_LESS = KeyEvent.VK_LESS
+    self.VK_GREATER = KeyEvent.VK_GREATER
+    self.VK_BRACELEFT = KeyEvent.VK_BRACELEFT
+    self.VK_BRACERIGHT = KeyEvent.VK_BRACERIGHT
+    self.VK_AT = KeyEvent.VK_AT
+    self.VK_COLON = KeyEvent.VK_COLON
+    self.VK_CIRCUMFLEX = KeyEvent.VK_CIRCUMFLEX
+    self.VK_DOLLAR = KeyEvent.VK_DOLLAR
+    self.VK_EURO_SIGN = KeyEvent.VK_EURO_SIGN
+    self.VK_EXCLAMATION_MARK = KeyEvent.VK_EXCLAMATION_MARK
+    self.VK_INVERTED_EXCLAMATION_MARK = KeyEvent.VK_INVERTED_EXCLAMATION_MARK
+    self.VK_LEFT_PARENTHESIS = KeyEvent.VK_LEFT_PARENTHESIS
+    self.VK_NUMBER_SIGN = KeyEvent.VK_NUMBER_SIGN
+    self.VK_PLUS = KeyEvent.VK_PLUS
+    self.VK_RIGHT_PARENTHESIS = KeyEvent.VK_RIGHT_PARENTHESIS
+    self.VK_UNDERSCORE = KeyEvent.VK_UNDERSCORE
+    self.VK_WINDOWS = KeyEvent.VK_WINDOWS
+    self.VK_CONTEXT_MENU = KeyEvent.VK_CONTEXT_MENU
+    self.VK_FINAL = KeyEvent.VK_FINAL
+    self.VK_CONVERT = KeyEvent.VK_CONVERT
+    self.VK_NONCONVERT = KeyEvent.VK_NONCONVERT
+    self.VK_ACCEPT = KeyEvent.VK_ACCEPT
+    self.VK_MODECHANGE = KeyEvent.VK_MODECHANGE
+    self.VK_KANA = KeyEvent.VK_KANA
+    self.VK_KANJI = KeyEvent.VK_KANJI
+    self.VK_ALPHANUMERIC = KeyEvent.VK_ALPHANUMERIC
+    self.VK_KATAKANA = KeyEvent.VK_KATAKANA
+    self.VK_HIRAGANA = KeyEvent.VK_HIRAGANA
+    self.VK_FULL_WIDTH = KeyEvent.VK_FULL_WIDTH
+    self.VK_HALF_WIDTH = KeyEvent.VK_HALF_WIDTH
+    self.VK_ROMAN_CHARACTERS = KeyEvent.VK_ROMAN_CHARACTERS
+    self.VK_ALL_CANDIDATES = KeyEvent.VK_ALL_CANDIDATES
+    self.VK_PREVIOUS_CANDIDATE = KeyEvent.VK_PREVIOUS_CANDIDATE
+    self.VK_CODE_INPUT = KeyEvent.VK_CODE_INPUT
+    self.VK_JAPANESE_KATAKANA = KeyEvent.VK_JAPANESE_KATAKANA
+    self.VK_JAPANESE_HIRAGANA = KeyEvent.VK_JAPANESE_HIRAGANA
+    self.VK_JAPANESE_ROMAN = KeyEvent.VK_JAPANESE_ROMAN
+    self.VK_KANA_LOCK = KeyEvent.VK_KANA_LOCK
+    self.VK_INPUT_METHOD_ON_OFF = KeyEvent.VK_INPUT_METHOD_ON_OFF
+    self.VK_CUT = KeyEvent.VK_CUT
+    self.VK_COPY = KeyEvent.VK_COPY
+    self.VK_PASTE = KeyEvent.VK_PASTE
+    self.VK_UNDO = KeyEvent.VK_UNDO
+    self.VK_AGAIN = KeyEvent.VK_AGAIN
+    self.VK_FIND = KeyEvent.VK_FIND
+    self.VK_PROPS = KeyEvent.VK_PROPS
+    self.VK_STOP = KeyEvent.VK_STOP
+    self.VK_COMPOSE = KeyEvent.VK_COMPOSE
+    self.VK_ALT_GRAPH = KeyEvent.VK_ALT_GRAPH
+    self.VK_BEGIN = KeyEvent.VK_BEGIN
+    self.VK_UNDEFINED = KeyEvent.VK_UNDEFINED
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import java.awt.event.KeyEvent
-import jsinterop.annotations.JsType
-
-open public class ABKeyEventWrapper
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: ABKeyEventWrapper = ABKeyEventWrapper()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: ABKeyEventWrapper{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABKeyEventWrapper.instance
+    @discardableResult open class func getInstance() -> ABKeyEventWrapper! {
+        return ABKeyEventWrapper.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val VK_ENTER: Int = KeyEvent.VK_ENTER
-
-    val VK_BACK_SPACE: Int = KeyEvent.VK_BACK_SPACE
-
-    val VK_TAB: Int = KeyEvent.VK_TAB
-
-    val VK_CANCEL: Int = KeyEvent.VK_CANCEL
-
-    val VK_CLEAR: Int = KeyEvent.VK_CLEAR
-
-    val VK_SHIFT: Int = KeyEvent.VK_SHIFT
-
-    val VK_CONTROL: Int = KeyEvent.VK_CONTROL
-
-    val VK_ALT: Int = KeyEvent.VK_ALT
-
-    val VK_PAUSE: Int = KeyEvent.VK_PAUSE
-
-    val VK_CAPS_LOCK: Int = KeyEvent.VK_CAPS_LOCK
-
-    val VK_ESCAPE: Int = KeyEvent.VK_ESCAPE
-
-    val VK_SPACE: Int = KeyEvent.VK_SPACE
-
-    val VK_PAGE_UP: Int = KeyEvent.VK_PAGE_UP
-
-    val VK_PAGE_DOWN: Int = KeyEvent.VK_PAGE_DOWN
-
-    val VK_END: Int = KeyEvent.VK_END
-
-    val VK_HOME: Int = KeyEvent.VK_HOME
-
-    val VK_LEFT: Int = KeyEvent.VK_LEFT
-
-    val VK_UP: Int = KeyEvent.VK_UP
-
-    val VK_RIGHT: Int = KeyEvent.VK_RIGHT
-
-    val VK_DOWN: Int = KeyEvent.VK_DOWN
-
-    val VK_COMMA: Int = KeyEvent.VK_COMMA
-
-    val VK_MINUS: Int = KeyEvent.VK_MINUS
-
-    val VK_PERIOD: Int = KeyEvent.VK_PERIOD
-
-    val VK_SLASH: Int = KeyEvent.VK_SLASH
-
-    val VK_0: Int = KeyEvent.VK_0
-
-    val VK_1: Int = KeyEvent.VK_1
-
-    val VK_2: Int = KeyEvent.VK_2
-
-    val VK_3: Int = KeyEvent.VK_3
-
-    val VK_4: Int = KeyEvent.VK_4
-
-    val VK_5: Int = KeyEvent.VK_5
-
-    val VK_6: Int = KeyEvent.VK_6
-
-    val VK_7: Int = KeyEvent.VK_7
-
-    val VK_8: Int = KeyEvent.VK_8
-
-    val VK_9: Int = KeyEvent.VK_9
-
-    val VK_SEMICOLON: Int = KeyEvent.VK_SEMICOLON
-
-    val VK_EQUALS: Int = KeyEvent.VK_EQUALS
-
-    val VK_A: Int = KeyEvent.VK_A
-
-    val VK_B: Int = KeyEvent.VK_B
-
-    val VK_C: Int = KeyEvent.VK_C
-
-    val VK_D: Int = KeyEvent.VK_D
-
-    val VK_E: Int = KeyEvent.VK_E
-
-    val VK_F: Int = KeyEvent.VK_F
-
-    val VK_G: Int = KeyEvent.VK_G
-
-    val VK_H: Int = KeyEvent.VK_H
-
-    val VK_I: Int = KeyEvent.VK_I
-
-    val VK_J: Int = KeyEvent.VK_J
-
-    val VK_K: Int = KeyEvent.VK_K
-
-    val VK_L: Int = KeyEvent.VK_L
-
-    val VK_M: Int = KeyEvent.VK_M
-
-    val VK_N: Int = KeyEvent.VK_N
-
-    val VK_O: Int = KeyEvent.VK_O
-
-    val VK_P: Int = KeyEvent.VK_P
-
-    val VK_Q: Int = KeyEvent.VK_Q
-
-    val VK_R: Int = KeyEvent.VK_R
-
-    val VK_S: Int = KeyEvent.VK_S
-
-    val VK_T: Int = KeyEvent.VK_T
-
-    val VK_U: Int = KeyEvent.VK_U
-
-    val VK_V: Int = KeyEvent.VK_V
-
-    val VK_W: Int = KeyEvent.VK_W
-
-    val VK_X: Int = KeyEvent.VK_X
-
-    val VK_Y: Int = KeyEvent.VK_Y
-
-    val VK_Z: Int = KeyEvent.VK_Z
-
-    val VK_OPEN_BRACKET: Int = KeyEvent.VK_OPEN_BRACKET
-
-    val VK_BACK_SLASH: Int = KeyEvent.VK_BACK_SLASH
-
-    val VK_CLOSE_BRACKET: Int = KeyEvent.VK_CLOSE_BRACKET
-
-    val VK_NUMPAD0: Int = KeyEvent.VK_NUMPAD0
-
-    val VK_NUMPAD1: Int = KeyEvent.VK_NUMPAD1
-
-    val VK_NUMPAD2: Int = KeyEvent.VK_NUMPAD2
-
-    val VK_NUMPAD3: Int = KeyEvent.VK_NUMPAD3
-
-    val VK_NUMPAD4: Int = KeyEvent.VK_NUMPAD4
-
-    val VK_NUMPAD5: Int = KeyEvent.VK_NUMPAD5
-
-    val VK_NUMPAD6: Int = KeyEvent.VK_NUMPAD6
-
-    val VK_NUMPAD7: Int = KeyEvent.VK_NUMPAD7
-
-    val VK_NUMPAD8: Int = KeyEvent.VK_NUMPAD8
-
-    val VK_NUMPAD9: Int = KeyEvent.VK_NUMPAD9
-
-    val VK_MULTIPLY: Int = KeyEvent.VK_MULTIPLY
-
-    val VK_ADD: Int = KeyEvent.VK_ADD
-
-    val VK_SEPARATER: Int = KeyEvent.VK_SEPARATER
-
-    val VK_SEPARATOR: Int = KeyEvent.VK_SEPARATOR
-
-    val VK_SUBTRACT: Int = KeyEvent.VK_SUBTRACT
-
-    val VK_DECIMAL: Int = KeyEvent.VK_DECIMAL
-
-    val VK_DIVIDE: Int = KeyEvent.VK_DIVIDE
-
-    val VK_DELETE: Int = KeyEvent.VK_DELETE
-
-    val VK_NUM_LOCK: Int = KeyEvent.VK_NUM_LOCK
-
-    val VK_SCROLL_LOCK: Int = KeyEvent.VK_SCROLL_LOCK
-
-    val VK_F1: Int = KeyEvent.VK_F1
-
-    val VK_F2: Int = KeyEvent.VK_F2
-
-    val VK_F3: Int = KeyEvent.VK_F3
-
-    val VK_F4: Int = KeyEvent.VK_F4
-
-    val VK_F5: Int = KeyEvent.VK_F5
-
-    val VK_F6: Int = KeyEvent.VK_F6
-
-    val VK_F7: Int = KeyEvent.VK_F7
-
-    val VK_F8: Int = KeyEvent.VK_F8
-
-    val VK_F9: Int = KeyEvent.VK_F9
-
-    val VK_F10: Int = KeyEvent.VK_F10
-
-    val VK_F11: Int = KeyEvent.VK_F11
-
-    val VK_F12: Int = KeyEvent.VK_F12
-
-    val VK_F13: Int = KeyEvent.VK_F13
-
-    val VK_F14: Int = KeyEvent.VK_F14
-
-    val VK_F15: Int = KeyEvent.VK_F15
-
-    val VK_F16: Int = KeyEvent.VK_F16
-
-    val VK_F17: Int = KeyEvent.VK_F17
-
-    val VK_F18: Int = KeyEvent.VK_F18
-
-    val VK_F19: Int = KeyEvent.VK_F19
-
-    val VK_F20: Int = KeyEvent.VK_F20
-
-    val VK_F21: Int = KeyEvent.VK_F21
-
-    val VK_F22: Int = KeyEvent.VK_F22
-
-    val VK_F23: Int = KeyEvent.VK_F23
-
-    val VK_F24: Int = KeyEvent.VK_F24
-
-    val VK_PRINTSCREEN: Int = KeyEvent.VK_PRINTSCREEN
-
-    val VK_INSERT: Int = KeyEvent.VK_INSERT
-
-    val VK_HELP: Int = KeyEvent.VK_HELP
-
-    val VK_META: Int = KeyEvent.VK_META
-
-    val VK_BACK_QUOTE: Int = KeyEvent.VK_BACK_QUOTE
-
-    val VK_QUOTE: Int = KeyEvent.VK_QUOTE
-
-    val VK_KP_UP: Int = KeyEvent.VK_KP_UP
-
-    val VK_KP_DOWN: Int = KeyEvent.VK_KP_DOWN
-
-    val VK_KP_LEFT: Int = KeyEvent.VK_KP_LEFT
-
-    val VK_KP_RIGHT: Int = KeyEvent.VK_KP_RIGHT
-
-    val VK_DEAD_GRAVE: Int = KeyEvent.VK_DEAD_GRAVE
-
-    val VK_DEAD_ACUTE: Int = KeyEvent.VK_DEAD_ACUTE
-
-    val VK_DEAD_CIRCUMFLEX: Int = KeyEvent.VK_DEAD_CIRCUMFLEX
-
-    val VK_DEAD_TILDE: Int = KeyEvent.VK_DEAD_TILDE
-
-    val VK_DEAD_MACRON: Int = KeyEvent.VK_DEAD_MACRON
-
-    val VK_DEAD_BREVE: Int = KeyEvent.VK_DEAD_BREVE
-
-    val VK_DEAD_ABOVEDOT: Int = KeyEvent.VK_DEAD_ABOVEDOT
-
-    val VK_DEAD_DIAERESIS: Int = KeyEvent.VK_DEAD_DIAERESIS
-
-    val VK_DEAD_ABOVERING: Int = KeyEvent.VK_DEAD_ABOVERING
-
-    val VK_DEAD_DOUBLEACUTE: Int = KeyEvent.VK_DEAD_DOUBLEACUTE
-
-    val VK_DEAD_CARON: Int = KeyEvent.VK_DEAD_CARON
-
-    val VK_DEAD_CEDILLA: Int = KeyEvent.VK_DEAD_CEDILLA
-
-    val VK_DEAD_OGONEK: Int = KeyEvent.VK_DEAD_OGONEK
-
-    val VK_DEAD_IOTA: Int = KeyEvent.VK_DEAD_IOTA
-
-    val VK_DEAD_VOICED_SOUND: Int = KeyEvent.VK_DEAD_VOICED_SOUND
-
-    val VK_DEAD_SEMIVOICED_SOUND: Int = KeyEvent.VK_DEAD_SEMIVOICED_SOUND
-
-    val VK_AMPERSAND: Int = KeyEvent.VK_AMPERSAND
-
-    val VK_ASTERISK: Int = KeyEvent.VK_ASTERISK
-
-    val VK_QUOTEDBL: Int = KeyEvent.VK_QUOTEDBL
-
-    val VK_LESS: Int = KeyEvent.VK_LESS
-
-    val VK_GREATER: Int = KeyEvent.VK_GREATER
-
-    val VK_BRACELEFT: Int = KeyEvent.VK_BRACELEFT
-
-    val VK_BRACERIGHT: Int = KeyEvent.VK_BRACERIGHT
-
-    val VK_AT: Int = KeyEvent.VK_AT
-
-    val VK_COLON: Int = KeyEvent.VK_COLON
-
-    val VK_CIRCUMFLEX: Int = KeyEvent.VK_CIRCUMFLEX
-
-    val VK_DOLLAR: Int = KeyEvent.VK_DOLLAR
-
-    val VK_EURO_SIGN: Int = KeyEvent.VK_EURO_SIGN
-
-    val VK_EXCLAMATION_MARK: Int = KeyEvent.VK_EXCLAMATION_MARK
-
-    val VK_INVERTED_EXCLAMATION_MARK: Int = KeyEvent.VK_INVERTED_EXCLAMATION_MARK
-
-    val VK_LEFT_PARENTHESIS: Int = KeyEvent.VK_LEFT_PARENTHESIS
-
-    val VK_NUMBER_SIGN: Int = KeyEvent.VK_NUMBER_SIGN
-
-    val VK_PLUS: Int = KeyEvent.VK_PLUS
-
-    val VK_RIGHT_PARENTHESIS: Int = KeyEvent.VK_RIGHT_PARENTHESIS
-
-    val VK_UNDERSCORE: Int = KeyEvent.VK_UNDERSCORE
-
-    val VK_WINDOWS: Int = KeyEvent.VK_WINDOWS
-
-    val VK_CONTEXT_MENU: Int = KeyEvent.VK_CONTEXT_MENU
-
-    val VK_FINAL: Int = KeyEvent.VK_FINAL
-
-    val VK_CONVERT: Int = KeyEvent.VK_CONVERT
-
-    val VK_NONCONVERT: Int = KeyEvent.VK_NONCONVERT
-
-    val VK_ACCEPT: Int = KeyEvent.VK_ACCEPT
-
-    val VK_MODECHANGE: Int = KeyEvent.VK_MODECHANGE
-
-    val VK_KANA: Int = KeyEvent.VK_KANA
-
-    val VK_KANJI: Int = KeyEvent.VK_KANJI
-
-    val VK_ALPHANUMERIC: Int = KeyEvent.VK_ALPHANUMERIC
-
-    val VK_KATAKANA: Int = KeyEvent.VK_KATAKANA
-
-    val VK_HIRAGANA: Int = KeyEvent.VK_HIRAGANA
-
-    val VK_FULL_WIDTH: Int = KeyEvent.VK_FULL_WIDTH
-
-    val VK_HALF_WIDTH: Int = KeyEvent.VK_HALF_WIDTH
-
-    val VK_ROMAN_CHARACTERS: Int = KeyEvent.VK_ROMAN_CHARACTERS
-
-    val VK_ALL_CANDIDATES: Int = KeyEvent.VK_ALL_CANDIDATES
-
-    val VK_PREVIOUS_CANDIDATE: Int = KeyEvent.VK_PREVIOUS_CANDIDATE
-
-    val VK_CODE_INPUT: Int = KeyEvent.VK_CODE_INPUT
-
-    val VK_JAPANESE_KATAKANA: Int = KeyEvent.VK_JAPANESE_KATAKANA
-
-    val VK_JAPANESE_HIRAGANA: Int = KeyEvent.VK_JAPANESE_HIRAGANA
-
-    val VK_JAPANESE_ROMAN: Int = KeyEvent.VK_JAPANESE_ROMAN
-
-    val VK_KANA_LOCK: Int = KeyEvent.VK_KANA_LOCK
-
-    val VK_INPUT_METHOD_ON_OFF: Int = KeyEvent.VK_INPUT_METHOD_ON_OFF
-
-    val VK_CUT: Int = KeyEvent.VK_CUT
-
-    val VK_COPY: Int = KeyEvent.VK_COPY
-
-    val VK_PASTE: Int = KeyEvent.VK_PASTE
-
-    val VK_UNDO: Int = KeyEvent.VK_UNDO
-
-    val VK_AGAIN: Int = KeyEvent.VK_AGAIN
-
-    val VK_FIND: Int = KeyEvent.VK_FIND
-
-    val VK_PROPS: Int = KeyEvent.VK_PROPS
-
-    val VK_STOP: Int = KeyEvent.VK_STOP
-
-    val VK_COMPOSE: Int = KeyEvent.VK_COMPOSE
-
-    val VK_ALT_GRAPH: Int = KeyEvent.VK_ALT_GRAPH
-
-    val VK_BEGIN: Int = KeyEvent.VK_BEGIN
-
-    val VK_UNDEFINED: Int = KeyEvent.VK_UNDEFINED
-
-}
-                
-            
 

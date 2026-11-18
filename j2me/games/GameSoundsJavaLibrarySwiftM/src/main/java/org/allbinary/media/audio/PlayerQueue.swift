@@ -1,169 +1,83 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.media.audio
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.media.audio
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class PlayerQueue: JObject {
+    fileprivate static let TOTAL: String! = "Sounds In Queue: "
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var max: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class PlayerQueue
-            : Object
-         {
-        
-companion object {
-            
-    private val TOTAL: String = "Sounds In Queue: "
-
-        }
-            
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val list: BasicArrayList = BasicArrayListD()
-
-    private var max: Int
- constructor (max: Int)
-            : super()
-        {
-var max = max
-this.max= max
-}
-
-
-    open fun add(sound: Sound)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sound = sound
-
-        try {
-            
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    self.list = BasicArrayListD()
     
-                        if(!this.list.contains(sound))
-                        
-                                    {
-                                    this.list.add(sound)
-
-                                    }
-                                
-} catch(e: Exception)
-            {
-PreLogUtil.put(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.ADD)
-}
-
-}
-
-
-    open fun process()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-    var sound: Sound = NoSound.getInstance()!!
-
-
-        try {
-            
-    var played: Boolean = false
-
-
+    }
     
-                        if(this.list.size() > 0)
-                        
-                                    {
-                                    sound= this.list.removeAt(0) as Sound
 
+    public init(_ max: Int32) {
+        super.init()
+        self.initFields()
+        self.max = max
+    }
     
-                        if(sound != 
-                                    null
-                                )
-                        
-                                    {
-                                    sound.getPlayerP()!!.start()
 
-                                    }
-                                
-
-        while(this.list.size() > this.max)
-        {
-this.list.removeAt(0)
-}
-
-played= true
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return played
-} catch(e: Exception)
-            {
-
-    var resource: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-
+    open func add(_ sound: Sound!) {
+        do {
+            if (!self.list.contains(sound)) {
+                self.list.add(sound)
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
     
-                        if(sound != 
-                                    null
-                                )
-                        
-                                    {
-                                    resource= sound.getResource()!!
 
-                                    }
-                                
-PreLogUtil.put(StringMaker().
-                            append(this.commonStrings!!.EXCEPTION_LABEL)!!.append(resource)!!.toString(), this, this.commonStrings!!.PROCESS)
+    @discardableResult open func process() -> Bool {
+        var sound: Sound! = NoSound.getInstance()
+        do {
+            var played: Bool = false
+            if (self.list.size() > 0) {
+                sound = (self.list.removeAt(0) as! Sound)
+                if (sound != nil) {
+                    sound.getPlayerP().start()
+                }
+                while (self.list.size() > self.max) {
+                    self.list.removeAt(0)
+                }
+                played = true
+            }
+            return played
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    open func clear() {
+        self.list.clear()
+    }
+    
+
+    @discardableResult open override func toString() -> String! {
+        return StringMaker().append(PlayerQueue.TOTAL).appendint(self.list.size()).toString()
+    }
 }
-
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list.clear()
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().
-                            append(PlayerQueue.TOTAL)!!.appendint(this.list.size())!!.toString()
-}
-
-
-}
-                
-            
 

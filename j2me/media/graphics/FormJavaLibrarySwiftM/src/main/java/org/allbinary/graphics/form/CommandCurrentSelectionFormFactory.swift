@@ -1,89 +1,42 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.TouchFeatureFactory
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.form.item.ABCustomItem
 
+open class CommandCurrentSelectionFormFactory: JObject {
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.TouchFeatureFactory
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.form.item.ABCustomItem
-
-open public class CommandCurrentSelectionFormFactory
-            : Object
-         {
-        
-companion object {
-            
-                @Throws(Exception::class)
-            
-    open fun getInstance(title: String, items: Array<ABCustomItem?>, rectangle: Rectangle, formType: FormType, border: Int, moveForSmallScreen: Boolean, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)
-        //nullable =  from not(true or (false and false)) = 
-: ScrollSelectionForm{
-    //var title = title
-    //var items = items
-    //var rectangle = rectangle
-    //var formType = formType
-    //var border = border
-    //var moveForSmallScreen = moveForSmallScreen
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
+    public override init() {
+        super.init()
+    }
     
-                        if(Features.getInstance()!!.isFeature(TouchFeatureFactory.getInstance()!!.TOUCH_ENABLED))
-                        
-                                    {
-                                    
-    var scrollSelectionForm: ScrollSelectionForm = CommandCurrentSelectionForm(title, items, border, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor)
 
-scrollSelectionForm!!.init(rectangle, formType)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return scrollSelectionForm
-
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionFormNoneFactory.getInstance()
-
-                        }
-                            
-}
-
-
+    @discardableResult open class func getInstance(_ title: String!, _ items: JArray<ABCustomItem?>!, _ rectangle: Rectangle!, _ formType: FormType!, _ border: Int32, _ moveForSmallScreen: Bool, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) -> ScrollSelectionForm! {
+        if (Features.getInstance().isFeature(TouchFeatureFactory.getInstance().TOUCH_ENABLED)) {
+            let scrollSelectionForm: ScrollSelectionForm! = CommandCurrentSelectionForm(title, items, border, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor)
+            scrollSelectionForm.`init`(rectangle, formType)
+            return scrollSelectionForm
+        } else {
+            return ScrollSelectionFormNoneFactory.getInstance()
         }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    }
 }
-                
-            
 

@@ -1,86 +1,58 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2007 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2007 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringMaker
 
+open class CacheType: JObject {
+    fileprivate var vendor: String! = nil
+    fileprivate var type: String! = nil
 
+    private func initFields() {
+    
+    
+    }
+    
 
+    public init(_ vendor: String!, _ type: String!) {
+        super.init()
+        self.initFields()
+        self.vendor = vendor
+        self.type = type
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringMaker
+    @discardableResult open func getVendor() -> String! {
+        return self.vendor
+    }
+    
 
-open public class CacheType
-            : Object
-         {
-        
+    @discardableResult open func getType() -> String! {
+        return self.type
+    }
+    
 
-    private val vendor: String
-
-    private val type: String
-public constructor (vendor: String, type: String)
-            : super()
-        {
-var vendor = vendor
-var type = type
-this.vendor= vendor
-this.type= type
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("CacheType: Vendor: ")
+        stringBuffer.append(self.getVendor())
+        stringBuffer.append(" Type: ")
+        stringBuffer.append(self.getType())
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun getVendor()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vendor
-}
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("CacheType: Vendor: ")
-stringBuffer!!.append(this.getVendor())
-stringBuffer!!.append(" Type: ")
-stringBuffer!!.append(this.getType())
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

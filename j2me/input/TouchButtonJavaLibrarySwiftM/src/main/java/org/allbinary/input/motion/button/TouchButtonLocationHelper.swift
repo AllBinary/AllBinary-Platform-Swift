@@ -1,149 +1,101 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.graphics.displayable.DisplayInfoSingleton
+// import org.allbinary.logic.string.StringMaker
 
+open class TouchButtonLocationHelper: JObject {
+    fileprivate var totalColumns: Int32 = 0
+    fileprivate var totalRows: Int32 = 0
+    fileprivate var columnsRemainder: Int32 = 0
+    fileprivate var rowsRemainder: Int32 = 0
+    fileprivate var columnsRemainderHalf: Int32 = 0
+    fileprivate var rowsRemainderHalf: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    
+    
+    
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+        let buttonSize: Int32 = CommonButtons.getInstance().STANDARD_BUTTON_SIZE
+        let displayInfo: DisplayInfoSingleton! = DisplayInfoSingleton.getInstance()
+        self.totalColumns = JMath.round(Float(displayInfo.getLastWidth()) / Float(buttonSize))
+        self.totalRows = JMath.round(Float(displayInfo.getLastHeight()) / Float(buttonSize))
+        self.columnsRemainder = displayInfo.getLastWidth() % buttonSize
+        self.columnsRemainderHalf = (self.columnsRemainder >> 1)
+        self.rowsRemainder = displayInfo.getLastHeight() % buttonSize
+        self.rowsRemainderHalf = (self.rowsRemainder >> 1)
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Math
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.graphics.displayable.DisplayInfoSingleton
-import org.allbinary.logic.string.StringMaker
+    @discardableResult open func getTotalColumns() -> Int32 {
+        return self.totalColumns
+    }
+    
 
-open public class TouchButtonLocationHelper
-            : Object
-         {
-        
+    @discardableResult open func getTotalRows() -> Int32 {
+        return self.totalRows
+    }
+    
 
-    private val totalColumns: Int
+    @discardableResult open func getColumnsRemainder() -> Int32 {
+        return self.columnsRemainder
+    }
+    
 
-    private val totalRows: Int
+    @discardableResult open func getRowsRemainder() -> Int32 {
+        return self.rowsRemainder
+    }
+    
 
-    private var columnsRemainder: Int
+    @discardableResult open func getColumnsRemainderHalf() -> Int32 {
+        return self.columnsRemainderHalf
+    }
+    
 
-    private var rowsRemainder: Int
+    @discardableResult open func getRowsRemainderHalf() -> Int32 {
+        return self.rowsRemainderHalf
+    }
+    
 
-    private var columnsRemainderHalf: Int
-
-    private var rowsRemainderHalf: Int
-public constructor ()
-            : super()
-        {
-
-    var buttonSize: Int = CommonButtons.getInstance()!!.STANDARD_BUTTON_SIZE
-
-
-    var displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!!
-
-this.totalColumns= Math.round(displayInfo!!.getLastWidth().toFloat() /buttonSize)
-this.totalRows= Math.round(displayInfo!!.getLastHeight().toFloat() /buttonSize)
-this.columnsRemainder= displayInfo!!.getLastWidth() % buttonSize
-this.columnsRemainderHalf= (this.columnsRemainder shr 1)
-this.rowsRemainder= displayInfo!!.getLastHeight() % buttonSize
-this.rowsRemainderHalf= (this.rowsRemainder shr 1)
+    @discardableResult open override func toString() -> String! {
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append("totalColumns: ")
+        stringBuffer.appendint(self.totalColumns)
+        stringBuffer.append(" totalRows: ")
+        stringBuffer.appendint(self.totalRows)
+        stringBuffer.append(" columnsRemainder: ")
+        stringBuffer.appendint(self.columnsRemainder)
+        stringBuffer.append(" rowsRemainder: ")
+        stringBuffer.appendint(self.rowsRemainder)
+        stringBuffer.append(" columnsRemainderHalf: ")
+        stringBuffer.appendint(self.columnsRemainderHalf)
+        stringBuffer.append(" rowsRemainderHalf: ")
+        stringBuffer.appendint(self.rowsRemainderHalf)
+        return stringBuffer.toString()
+    }
 }
-
-
-    open fun getTotalColumns()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalColumns
-}
-
-
-    open fun getTotalRows()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalRows
-}
-
-
-    open fun getColumnsRemainder()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnsRemainder
-}
-
-
-    open fun getRowsRemainder()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rowsRemainder
-}
-
-
-    open fun getColumnsRemainderHalf()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnsRemainderHalf
-}
-
-
-    open fun getRowsRemainderHalf()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rowsRemainderHalf
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append("totalColumns: ")
-stringBuffer!!.appendint(this.totalColumns)
-stringBuffer!!.append(" totalRows: ")
-stringBuffer!!.appendint(this.totalRows)
-stringBuffer!!.append(" columnsRemainder: ")
-stringBuffer!!.appendint(this.columnsRemainder)
-stringBuffer!!.append(" rowsRemainder: ")
-stringBuffer!!.appendint(this.rowsRemainder)
-stringBuffer!!.append(" columnsRemainderHalf: ")
-stringBuffer!!.appendint(this.columnsRemainderHalf)
-stringBuffer!!.append(" rowsRemainderHalf: ")
-stringBuffer!!.appendint(this.rowsRemainderHalf)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!!.toString()
-}
-
-
-}
-                
-            
 

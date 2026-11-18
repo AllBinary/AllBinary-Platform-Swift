@@ -1,107 +1,70 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.drop
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.layer.drop
+import J2SEForSwiftLibrary
+// import org.allbinary.game.layer.pickup.PickedUpLayerInterfaceFactoryInterface
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.util.BasicArrayListUtil
 
+open class DropLayerFactory: JObject {
+    fileprivate static let DROP_LAYER_FACTORY: DropLayerFactory! = DropLayerFactory()
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var basicArrayListUtil: BasicArrayListUtil! = nil
 
+    private func initFields() {
+    self.list = BasicArrayListD()
+    self.basicArrayListUtil = BasicArrayListUtil.getInstance()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.layer.pickup.PickedUpLayerInterfaceFactoryInterface
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.util.BasicArrayListUtil
+    open func clear() {
+        self.list.clear()
+    }
+    
 
-open public class DropLayerFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val DROP_LAYER_FACTORY: DropLayerFactory = DropLayerFactory()
+    @discardableResult open class func getInstance() -> DropLayerFactory! {
+        return DropLayerFactory.DROP_LAYER_FACTORY
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: DropLayerFactory{
+    @discardableResult open func getSize() -> Int32 {
+        return self.list.size()
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerFactory.DROP_LAYER_FACTORY
+    @discardableResult open func getRandomInstance() -> PickedUpLayerInterfaceFactoryInterface! {
+        return (self.basicArrayListUtil.getRandom(self.list) as! PickedUpLayerInterfaceFactoryInterface)
+    }
+    
+
+    open func add(_ layerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface!) {
+        self.list.add((layerInterfaceFactoryInterface as? JObject))
+    }
+    
+
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.list
+    }
 }
-
-
-        }
-            
-    private val list: BasicArrayList = BasicArrayListD()
-private constructor ()
-            : super()
-        {
-}
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list.clear()
-}
-
-
-    open fun getSize()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size()
-}
-
-
-    private val basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!!
-
-    open fun getRandomInstance()
-        //nullable = true from not(false or (false and true)) = true
-: PickedUpLayerInterfaceFactoryInterface{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!!.getRandom(this.list) as PickedUpLayerInterfaceFactoryInterface
-}
-
-
-    open fun add(layerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var layerInterfaceFactoryInterface = layerInterfaceFactoryInterface
-this.list.add(layerInterfaceFactoryInterface)
-}
-
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-}
-                
-            
 

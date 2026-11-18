@@ -42,7 +42,7 @@ open class BasicArrayListUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> BasicArrayListUtil! {
+    @discardableResult open class func getInstance() -> BasicArrayListUtil! {
         return BasicArrayListUtil.instance
     }
     
@@ -100,7 +100,7 @@ open class BasicArrayListUtil: JObject {
     }
     
 
-    public static func main(_ args: JArray<String?>!) {
+    open class func main(_ args: JArray<String?>!) {
         let commonPhoneStrings: CommonPhoneStrings! = CommonPhoneStrings.getInstance()
         let list: BasicArrayList! = BasicArrayListD()
         list.add(jBoxString(commonPhoneStrings.ONE))

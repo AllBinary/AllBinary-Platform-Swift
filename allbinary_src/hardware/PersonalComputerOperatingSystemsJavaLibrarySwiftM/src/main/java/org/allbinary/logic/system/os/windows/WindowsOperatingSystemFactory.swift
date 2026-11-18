@@ -34,7 +34,7 @@ open class WindowsOperatingSystemFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> WindowsOperatingSystemFactory! {
+    @discardableResult open class func getInstance() -> WindowsOperatingSystemFactory! {
         return WindowsOperatingSystemFactory.instance
     }
     

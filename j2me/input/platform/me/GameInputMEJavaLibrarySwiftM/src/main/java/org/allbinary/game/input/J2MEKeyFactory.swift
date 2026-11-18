@@ -1,238 +1,112 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
 
+open class J2MEKeyFactory: JObject {
+    fileprivate static let instance: J2MEKeyFactory! = J2MEKeyFactory()
+    fileprivate var gameKeyFactory: GameKeyFactory! = nil
 
+    private func initFields() {
+    self.gameKeyFactory = GameKeyFactory.getInstance()
+    }
+    
 
+    @discardableResult open class func getInstance() -> J2MEKeyFactory! {
+        return J2MEKeyFactory.instance
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-open public class J2MEKeyFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: J2MEKeyFactory = J2MEKeyFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: J2MEKeyFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.instance
-}
-
-
+    open func `init`() {
+        let gameKeyArray: JArray<GameKey?>! = JArray<GameKey?>([self.gameKeyFactory.DOWN, self.gameKeyFactory.FIRE, self.gameKeyFactory.GAME_A, self.gameKeyFactory.GAME_B, self.gameKeyFactory.GAME_C, self.gameKeyFactory.GAME_D, self.gameKeyFactory.KEY_NUM0, self.gameKeyFactory.KEY_NUM1, self.gameKeyFactory.KEY_NUM2, self.gameKeyFactory.KEY_NUM3, self.gameKeyFactory.KEY_NUM4, self.gameKeyFactory.KEY_NUM5, self.gameKeyFactory.KEY_NUM6, self.gameKeyFactory.KEY_NUM7, self.gameKeyFactory.KEY_NUM8, self.gameKeyFactory.KEY_NUM9, self.gameKeyFactory.KEY_POUND, self.gameKeyFactory.KEY_STAR, self.gameKeyFactory.LEFT, self.gameKeyFactory.LEVEL_DOWN, self.gameKeyFactory.LEVEL_UP, self.gameKeyFactory.NONE, self.gameKeyFactory.RIGHT, self.gameKeyFactory.UP])
+        let inputFactory: InputFactory! = InputFactory.getInstance()
+        do {
+            var index: Int32 = gameKeyArray.length
+            while (jPreDecrement(&index) >= 0) {
+            inputFactory.add(gameKeyArray[index]!.getId(), gameKeyArray[index])
+            }
         }
-            private constructor ()
-            : super()
-        {
-}
-
-
-    private val gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!!
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var gameKeyArray: Array<GameKey?> = arrayOf(this.gameKeyFactory!!.DOWN,this.gameKeyFactory!!.FIRE,this.gameKeyFactory!!.GAME_A,this.gameKeyFactory!!.GAME_B,this.gameKeyFactory!!.GAME_C,this.gameKeyFactory!!.GAME_D,this.gameKeyFactory!!.KEY_NUM0,this.gameKeyFactory!!.KEY_NUM1,this.gameKeyFactory!!.KEY_NUM2,this.gameKeyFactory!!.KEY_NUM3,this.gameKeyFactory!!.KEY_NUM4,this.gameKeyFactory!!.KEY_NUM5,this.gameKeyFactory!!.KEY_NUM6,this.gameKeyFactory!!.KEY_NUM7,this.gameKeyFactory!!.KEY_NUM8,this.gameKeyFactory!!.KEY_NUM9,this.gameKeyFactory!!.KEY_POUND,this.gameKeyFactory!!.KEY_STAR,this.gameKeyFactory!!.LEFT,this.gameKeyFactory!!.LEVEL_DOWN,this.gameKeyFactory!!.LEVEL_UP,this.gameKeyFactory!!.NONE,this.gameKeyFactory!!.RIGHT,this.gameKeyFactory!!.UP)
-
-
-    var inputFactory: InputFactory = InputFactory.getInstance()!!
-
-
-
-
-
-                        for (index in gameKeyArray!!.size  - 1  downTo 0)
-
-        {
-inputFactory!!.add(gameKeyArray[index]!!.getId(), gameKeyArray[index]!!)
-}
-
-}
-
-
-    open fun isSubmission(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    }
     
-                        if(input == this.gameKeyFactory!!.FIRE)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isDelete(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isSubmission(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.FIRE) {
+            return true
+        }
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.GAME_D)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isBackSpace(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isUp(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isDelete(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.GAME_D) {
+            return true
+        }
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.UP)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isDown(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isBackSpace(_ input: Input!) -> Bool {
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.DOWN)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isLeft(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isUp(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.UP) {
+            return true
+        }
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.LEFT)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isRight(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isDown(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.DOWN) {
+            return true
+        }
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.RIGHT)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun isEnter(input: Input)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var input = input
-
+    @discardableResult open func isLeft(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.LEFT) {
+            return true
+        }
+        return false
+    }
     
-                        if(input == this.gameKeyFactory!!.FIRE)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
 
-                                    }
-                                
+    @discardableResult open func isRight(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.RIGHT) {
+            return true
+        }
+        return false
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
+    @discardableResult open func isEnter(_ input: Input!) -> Bool {
+        if (input === self.gameKeyFactory.FIRE) {
+            return true
+        }
+        return false
+    }
 }
-
-
-}
-                
-            
 

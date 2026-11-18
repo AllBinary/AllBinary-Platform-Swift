@@ -26,7 +26,7 @@ open class TsUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> TsUtil! {
+    @discardableResult open class func getInstance() -> TsUtil! {
         return TsUtil.instance
     }
     

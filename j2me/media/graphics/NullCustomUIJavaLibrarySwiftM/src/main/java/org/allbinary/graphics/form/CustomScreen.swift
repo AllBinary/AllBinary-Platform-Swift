@@ -1,27 +1,12 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
 
+open class CustomScreen: CustomDisplayable {
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-
-open public class CustomScreen : CustomDisplayable {
-        
-
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
+    public override init() {
+        super.init()
+    }
 }
-                
-            
 

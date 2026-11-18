@@ -1,315 +1,176 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Choice
+// import javax.microedition.lcdui.Command
+// import javax.microedition.lcdui.CommandListener
+// import javax.microedition.lcdui.Item
+// import javax.microedition.lcdui.TextField
+// import org.allbinary.MIDPUtil
+// import org.allbinary.game.commands.GameCommandsFactory
+// import org.allbinary.game.configuration.feature.GameFeatureChoiceGroups
+// import org.allbinary.game.configuration.feature.GameFeatureFormUtil
+// import org.allbinary.game.configuration.feature.GameFeatureItemCommandListener
+// import org.allbinary.game.configuration.feature.GameFeatureItemStateListener
+// import org.allbinary.game.configuration.feature.SensorFeatureFactory
+// import org.allbinary.game.configuration.persistance.GameConfigurationPersistanceSingleton
+// import org.allbinary.game.configuration.persistance.KeyValuePersistance
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.displayable.command.MyCommandsFactory
+// import org.allbinary.graphics.displayable.screen.CommandForm
+// import org.allbinary.input.gyro.OrientationData
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.HashtableUtil
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.util.ABHashtable
 
+open class GameOptionsForm: CommandForm {
+    fileprivate var meUtil: MIDPUtil! = nil
 
-
-
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Choice
-import javax.microedition.lcdui.Command
-import javax.microedition.lcdui.CommandListener
-import javax.microedition.lcdui.Item
-import javax.microedition.lcdui.TextField
-import org.allbinary.MIDPUtil
-import org.allbinary.game.commands.GameCommandsFactory
-import org.allbinary.game.configuration.feature.GameFeatureChoiceGroups
-import org.allbinary.game.configuration.feature.GameFeatureFormUtil
-import org.allbinary.game.configuration.feature.GameFeatureItemCommandListener
-import org.allbinary.game.configuration.feature.GameFeatureItemStateListener
-import org.allbinary.game.configuration.feature.SensorFeatureFactory
-import org.allbinary.game.configuration.persistance.GameConfigurationPersistanceSingleton
-import org.allbinary.game.configuration.persistance.KeyValuePersistance
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.displayable.command.MyCommandsFactory
-import org.allbinary.graphics.displayable.screen.CommandForm
-import org.allbinary.input.gyro.OrientationData
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.HashtableUtil
-import org.allbinary.logic.StdUtil
-import org.allbinary.util.ABHashtable
-
-open public class GameOptionsForm : CommandForm {
-        
-
-    private val meUtil: MIDPUtil = MIDPUtil.getInstance()!!
-public constructor (commandListener: CommandListener, title: String, backgrounBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(commandListener, title, backgrounBasicColor, foregroundBasicColor){
-    //var commandListener = commandListener
-    //var title = title
-    //var backgrounBasicColor = backgrounBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.CONSTRUCTOR)
-this.addConfiguration()
-
-    var gameFeatureFormUtil: GameFeatureFormUtil = GameFeatureFormUtil.getInstance()!!
-
-gameFeatureFormUtil!!.addChoiceGroup(this, GameFeatureChoiceGroups.getExclusiveInstance()!!.get(), Choice.EXCLUSIVE)
-gameFeatureFormUtil!!.addChoiceGroup(this, GameFeatureChoiceGroups.getMultipleInstance()!!.get(), Choice.MULTIPLE)
-this.initCommands(commandListener)
-this.setItemStateListener(GameFeatureItemStateListener(this))
-this.addTextFieldsIfSimulated()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun closeClientInformation(abeClientInformation: AbeClientInformationInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-super.close()
-this.save(abeClientInformation)
-}
-
-
-    open fun addTextFieldsIfSimulated()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var key: String = OrientationData.getInstance()!!.ORIENTATION_SENSOR_INPUT
-
-
-    var hashtable: ABHashtable<Any, Any> = GameFeatureChoiceGroups.getExclusiveInstance()!!.get()!!
-
-
+    // Each class has its own field initializers
+    private func initFields() {
+    self.meUtil = MIDPUtil.getInstance()
+    }
     
-                        if(hashtable != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var listCanBeNull: Any? = hashtable.get(key as Object)
 
-
+    public override init(_ commandListener: CommandListener!, _ title: String!, _ backgrounBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(commandListener, title, backgrounBasicColor, foregroundBasicColor)
+        self.initFields()
+        self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CONSTRUCTOR)
+        self.addConfiguration()
+        let gameFeatureFormUtil: GameFeatureFormUtil! = GameFeatureFormUtil.getInstance()
+        gameFeatureFormUtil.addChoiceGroup(self, GameFeatureChoiceGroups.getExclusiveInstance().get(), ChoiceConstants.EXCLUSIVE)
+        gameFeatureFormUtil.addChoiceGroup(self, GameFeatureChoiceGroups.getMultipleInstance().get(), ChoiceConstants.MULTIPLE)
+        self.initCommands(commandListener)
+        self.setItemStateListener(GameFeatureItemStateListener(self))
+        self.addTextFieldsIfSimulated()
+    }
     
-                        if(listCanBeNull != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-    var list: BasicArrayList = listCanBeNull as BasicArrayList
 
-
+    open func closeClientInformation(_ abeClientInformation: AbeClientInformationInterface!) {
+        super.close()
+        self.save(abeClientInformation)
+    }
     
-                        if(list.contains(SensorFeatureFactory.getInstance()!!.SIMULATED_ORIENTATION_SENSORS))
-                        
-                                    {
-                                    this.addTextFields()
 
-                                    }
-                                
-
-                                    }
-                                
-
-                                    }
-                                
-}
-
-
-    open fun addTextFields()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var hashtable: ABHashtable<Any, Any> = GameConfigurationTextInput.getHashtable()!!
-
-
-    var size: Int = hashtable.size
-
-
-    var objectArray: Array<Any?> = HashtableUtil.getInstance()!!.getKeysAsArray(hashtable)!!
-
-
-    var gameConfigurationTextInput: GameConfigurationTextInput
-
-
-    var textField: TextField
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-gameConfigurationTextInput= hashtable.get(objectArray[index]!! as Object) as GameConfigurationTextInput
-textField= TextField(gameConfigurationTextInput!!.getLabel(), gameConfigurationTextInput!!.getText(), 30, TextField.ANY)
-this.meUtil!!.appendItem(this, textField)
-}
-
-}
-
-
-    open fun addConfiguration()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-    var METHOD_NAME: String = "addConfiguration"
-
-
-    var NAME: String = "Name: "
-
-
-    var list: BasicArrayList = GameConfigurationSingleton.getInstance()!!.getOptionsBasicArrayList()!!
-
-
-    var GAUGE_CHANGE: Command = MyCommandsFactory.getInstance()!!.GAUGE_CHANGE
-
-
-    var stringMaker: StringMaker = StringMaker()
-
-
-    var size: Int = list.size()
-
-
-    var gameConfiguration: GameConfiguration
-
-
-    var gauge: GameConfigurationGauge
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-gameConfiguration= list.objectArray[index]!! as GameConfiguration
-stringMaker!!.delete(0, stringMaker!!.length())
-this.logUtil!!.putF(stringMaker!!.append(NAME)!!.append(gameConfiguration!!.toString())!!.toString(), this, METHOD_NAME)
-gauge= GameConfigurationGauge(gameConfiguration)
-gauge.setDefaultCommand(GAUGE_CHANGE)
-gauge.setItemCommandListener(GameFeatureItemCommandListener(this))
-this.meUtil!!.appendItem(this, gauge)
-}
-
-}
-
-
-    override fun initCommands(cmdListener: CommandListener)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var cmdListener = cmdListener
-
-    var gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!!
-
-this.removeAllCommands()
-this.addCommand(gameCommandsFactory!!.CLOSE_OPTIONS)
-this.addCommand(gameCommandsFactory!!.DEFAULT_OPTIONS)
-this.setCommandListener(cmdListener)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun save(abeClientInformation: AbeClientInformationInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var abeClientInformation = abeClientInformation
-
-    var size: Int = this.size()
-
-
-    var item: Item
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-item= this.get(index)!!
-
+    fileprivate func addTextFieldsIfSimulated() {
+        let key: String! = OrientationData.getInstance().ORIENTATION_SENSOR_INPUT
+        let hashtable: ABHashtable! = GameFeatureChoiceGroups.getExclusiveInstance().get()
+        if (hashtable != nil) {
+            let listCanBeNull: JObject! = hashtable.get(jBoxString(key))
+            if (listCanBeNull != nil) {
+                let list: BasicArrayList! = (listCanBeNull as! BasicArrayList)
+                if (list.contains(SensorFeatureFactory.getInstance().SIMULATED_ORIENTATION_SENSORS)) {
+                    self.addTextFields()
+                }
+            }
+        }
+    }
     
-                        if(item is GameConfigurationGauge)
-                        
-                                    {
-                                    GameConfigurationUtil.getInstance()!!.update(item as GameConfigurationGauge)
 
-                                    }
-                                
-                             else 
+    fileprivate func addTextFields() {
+        let hashtable: ABHashtable! = GameConfigurationTextInput.getHashtable()
+        let size: Int32 = hashtable.size()
+        let objectArray: JArray<JObject?>! = HashtableUtil.getInstance().getKeysAsArray(hashtable)
+        var gameConfigurationTextInput: GameConfigurationTextInput! = nil
+        var textField: TextField! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            gameConfigurationTextInput = (hashtable.get(objectArray[index]) as! GameConfigurationTextInput)
+            textField = TextField(gameConfigurationTextInput.getLabel(), gameConfigurationTextInput.getText(), 30, TextField.ANY)
+            self.meUtil.appendItem(self, textField)
+            }
+        }
+    }
     
-                        if(item is TextField)
-                        
-                                    {
-                                    GameConfigurationTextInput.update(item as TextField)
 
-                                    }
-                                
+    fileprivate func addConfiguration() {
+        let METHOD_NAME: String! = "addConfiguration"
+        let NAME: String! = "Name: "
+        let list: BasicArrayList! = GameConfigurationSingleton.getInstance().getOptionsBasicArrayList()
+        let GAUGE_CHANGE: Command! = MyCommandsFactory.getInstance().GAUGE_CHANGE
+        let stringMaker: StringMaker! = StringMaker()
+        let size: Int32 = list.size()
+        var gameConfiguration: GameConfiguration! = nil
+        var gauge: GameConfigurationGauge! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            gameConfiguration = (list.objectArray[index] as! GameConfiguration)
+            stringMaker.delete(0, stringMaker.length())
+            self.logUtil.putF(stringMaker.append(NAME).append(gameConfiguration.toString()).toString(), self, METHOD_NAME)
+            gauge = GameConfigurationGauge(gameConfiguration)
+            gauge.setDefaultCommand(GAUGE_CHANGE)
+            gauge.setItemCommandListener(GameFeatureItemCommandListener(self))
+            self.meUtil.appendItem(self, gauge)
+            }
+        }
+    }
+    
+
+    open override func initCommands(_ cmdListener: CommandListener!) {
+        let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
+        self.removeAllCommands()
+        self.addCommand(gameCommandsFactory.CLOSE_OPTIONS)
+        self.addCommand(gameCommandsFactory.DEFAULT_OPTIONS)
+        self.setCommandListener(cmdListener)
+    }
+    
+
+    open func save(_ abeClientInformation: AbeClientInformationInterface!) {
+        let size: Int32 = self.size()
+        var item: Item! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            item = self.get(index)
+            if ((item is GameConfigurationGauge)) {
+                GameConfigurationUtil.getInstance().update((item as! GameConfigurationGauge))
+            } else if ((item is TextField)) {
+                GameConfigurationTextInput.update((item as! TextField))
+            }
+            }
+        }
+        GameConfigurationUtil.getInstance().updateCompetitionValue()
+        let hashtable: ABHashtable! = StdUtil.getInstance().createHashtable()
+        let SCALE: GameConfiguration! = GameConfigurationCentral.getInstance().SCALE
+        hashtable.put(jBoxString(SCALE.getName()), jBoxString(jstr(SCALE.getValue().intValue())))
+        let keyValuePersistance: KeyValuePersistance! = GameConfigurationPersistanceSingleton.getInstance()
+        keyValuePersistance.clear()
+        keyValuePersistance.loadAll(abeClientInformation)
+        let list: BasicArrayList! = keyValuePersistance.getIds()
+        keyValuePersistance.save(abeClientInformation, hashtable)
+        let size2: Int32 = list.size()
+        var integer: Int32! = nil
+        do {
+            var index: Int32 = 0
+            while (index < size2) {
+                defer { index &+= 1 }
+            integer = jUnboxValue(list.objectArray[index], Int32.self)
+            keyValuePersistance.delete(abeClientInformation, integer.intValue())
+            }
+        }
+    }
 }
-
-GameConfigurationUtil.getInstance()!!.updateCompetitionValue()
-
-    var hashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-
-
-    var SCALE: GameConfiguration = GameConfigurationCentral.getInstance()!!.SCALE
-
-hashtable.put(SCALE.getName(), Integer.toString(SCALE.getValue()!!.toInt()))
-
-    var keyValuePersistance: KeyValuePersistance = GameConfigurationPersistanceSingleton.getInstance()!!
-
-keyValuePersistance!!.clear()
-keyValuePersistance!!.loadAll(abeClientInformation)
-
-    var list: BasicArrayList = keyValuePersistance!!.getIds()!!
-
-keyValuePersistance!!.save(abeClientInformation, hashtable)
-
-    var size2: Int = list.size()
-
-
-    var integer: Integer
-
-
-
-
-
-                        for (index in 0 until size2)
-
-        {
-integer= list.objectArray[index]!! as Integer
-keyValuePersistance!!.delete(abeClientInformation, integer.toInt())
-}
-
-}
-
-
-}
-                
-            
 

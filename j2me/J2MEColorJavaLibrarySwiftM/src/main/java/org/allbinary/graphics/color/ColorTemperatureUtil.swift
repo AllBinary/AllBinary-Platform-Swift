@@ -31,7 +31,7 @@ open class ColorTemperatureUtil: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> ColorTemperatureUtil! {
+    @discardableResult open class func getInstance() -> ColorTemperatureUtil! {
         return ColorTemperatureUtil.instance
     }
     

@@ -24,7 +24,7 @@ open class AvianUtil: JObject {
     }
     
 
-    @discardableResult public static func isAvian() -> Bool {
+    @discardableResult open class func isAvian() -> Bool {
         return false
     }
 }

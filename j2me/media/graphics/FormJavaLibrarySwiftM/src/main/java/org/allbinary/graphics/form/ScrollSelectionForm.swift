@@ -1,800 +1,333 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Canvas
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.GPoint
+// import org.allbinary.graphics.Rectangle
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.form.item.ABCustomItem
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.math.RectangleCollisionUtil
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
 
+open class ScrollSelectionForm: PaintableForm {
+    fileprivate static var NULL_SCROLL_SELECTION_FORM: JObject! = NullUtil.getInstance().NULL_OBJECT
+    fileprivate static var NULL_SCROLL_SELECTION_HORIZONTAL_FORM: JObject! = NullUtil.getInstance().NULL_OBJECT
+    fileprivate static let INSIDE_FORM: String! = " inside form"
+    fileprivate static let IS_IN_FORM: String! = "isInForm"
+    fileprivate static let GET_SELECTED_INDEX: String! = "getSelectedIndexForPoint"
+    fileprivate var rectangleCollisionUtil: RectangleCollisionUtil! = nil
+    public var border: Int32 = 0
+    public var halfBorder: Int32 = 0
+    fileprivate var buttonBasicColor: BasicColor! = nil
+    public var scrollSelectionFormFormTypeItemIndexPaintable: ItemIndexPaintable! = nil
+    fileprivate var formTypeItemIndexDx: ItemIndexDx! = nil
+    public var paintable: ItemPaintable! = nil
+    fileprivate var adjustedExtraBorder: Int32 = 0
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Canvas
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.GPoint
-import org.allbinary.graphics.Rectangle
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.form.item.ABCustomItem
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.math.RectangleCollisionUtil
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-
-open public class ScrollSelectionForm : PaintableForm {
-        
-companion object {
-            
-    open fun createForm(title: String, items: Array<ABCustomItem?>, formPaintableFactory: ItemPaintableFactory, border: Int, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-: PaintableForm{
-    //var title = title
-    //var items = items
-    //var formPaintableFactory = formPaintableFactory
-    //var border = border
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-        try {
-            
+    // Each class has its own field initializers
+    private func initFields() {
+    self.rectangleCollisionUtil = RectangleCollisionUtil.getInstance()
     
-                        if(formPaintableFactory == ItemPaintableFactory.getInstance())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm(title, items, formPaintableFactory, border,  -3, backgroundBasicColor, foregroundBasicColor)
-
-                                    }
-                                
-                        else {
-                            
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-logUtil!!.putF(commonStrings!!.EXCEPTION, logUtil, commonStrings!!.EXCEPTION)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm.getNullPaintableForm()
-
-                        }
-                            
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-
-    var logUtil: LogUtil = LogUtil.getInstance()!!
-
-logUtil!!.put(commonStrings!!.EXCEPTION, logUtil, commonStrings!!.EXCEPTION, e)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm.getNullPaintableForm()
-}
-
-}
-
-
-    private var NULL_SCROLL_SELECTION_FORM: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullScrollSelectionForm()
-        //nullable = true from not(false or (false and true)) = true
-: ScrollSelectionForm{
-
     
-                        if(ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM= ScrollSelectionForm.createForm(StringUtil.getInstance()!!.EMPTY_STRING, arrayOfNulls(0), ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM as ScrollSelectionForm
-}
-
-
-    private var NULL_SCROLL_SELECTION_HORIZONTAL_FORM: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getNullScrollSelectionFormHorizontal()
-        //nullable = true from not(false or (false and true)) = true
-: ScrollSelectionForm{
-
     
-                        if(ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM= ScrollSelectionForm.createForm(StringUtil.getInstance()!!.EMPTY_STRING, arrayOfNulls(0), ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance()!!.BLACK, BasicColorFactory.getInstance()!!.WHITE)
+    self.scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable.getInstance()
+    self.formTypeItemIndexDx = ItemIndexDx.getInstance()
+    self.paintable = ItemPaintableFactory.getInstance()
+    
+    }
+    
 
-                                    }
-                                
+    @discardableResult fileprivate static func createForm(_ title: String!, _ items: JArray<ABCustomItem?>!, _ formPaintableFactory: ItemPaintableFactory!, _ border: Int32, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) -> PaintableForm! {
+        do {
+            if (formPaintableFactory === ItemPaintableFactory.getInstance()) {
+                return ScrollSelectionForm(title, items, formPaintableFactory, border, -3, backgroundBasicColor, foregroundBasicColor)
+            } else {
+                let commonStrings: CommonStrings! = CommonStrings.getInstance()
+                let logUtil: LogUtil! = LogUtil.getInstance()
+                logUtil.putF(commonStrings.EXCEPTION, logUtil, commonStrings.EXCEPTION)
+                return PaintableForm.getNullPaintableForm()
+            }
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM as ScrollSelectionForm
-}
-
-
-    private val INSIDE_FORM: String = " inside form"
-
-    private val IS_IN_FORM: String = "isInForm"
-
-    private val GET_SELECTED_INDEX: String = "getSelectedIndexForPoint"
-
+    @discardableResult open class func getNullScrollSelectionForm() -> ScrollSelectionForm! {
+        if (ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM === NullUtil.getInstance().NULL_OBJECT) {
+            ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM = ScrollSelectionForm.createForm(StringUtil.getInstance().EMPTY_STRING, JArray<ABCustomItem?>(0, nil), ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
         }
-            
-    private val rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!!
-
-    val border: Int
-
-    val halfBorder: Int
-
-    private var buttonBasicColor: BasicColor
-
-    var scrollSelectionFormFormTypeItemIndexPaintable: ItemIndexPaintable = ItemIndexPaintable.getInstance()!!
-
-    private var formTypeItemIndexDx: ItemIndexDx = ItemIndexDx.getInstance()!!
-
-    var paintable: ItemPaintable = ItemPaintableFactory.getInstance()!!
-
-    private val adjustedExtraBorder: Int
-public constructor (title: String, items: Array<ABCustomItem?>, formPaintableFactory: ItemPaintableFactory, border: Int, adjustedExtraBorder: Int, backgroundBasicColor: BasicColor, foregroundBasicColor: BasicColor)                        
-
-                            : super(title, items, backgroundBasicColor, foregroundBasicColor){
-    //var title = title
-    //var items = items
-    //var formPaintableFactory = formPaintableFactory
-    //var border = border
-    //var adjustedExtraBorder = adjustedExtraBorder
-    //var backgroundBasicColor = backgroundBasicColor
-    //var foregroundBasicColor = foregroundBasicColor
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this.adjustedExtraBorder= adjustedExtraBorder
-this.buttonBasicColor= foregroundBasicColor
-this.border= border
-this.halfBorder= (border shr 1)
-this.paintable= formPaintableFactory!!.getInstanceItemPaintable(this)!!
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun init(rectangle: Rectangle, formType: FormType)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var rectangle = rectangle
-    //var formType = formType
-super.init(rectangle, formType)
-
-    var formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!!
-
-
+        return (ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM as! ScrollSelectionForm)
+    }
     
-                        if(formType == formTypeFactory!!.HORIZONTAL_FORM)
-                        
-                                    {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormHorizontalPaintable(this)
-this.formTypeItemIndexDx= ScrollSelectionFormHorizontalDx(this)
 
-                                    }
-                                
-                             else 
+    @discardableResult open class func getNullScrollSelectionFormHorizontal() -> ScrollSelectionForm! {
+        if (ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM === NullUtil.getInstance().NULL_OBJECT) {
+            ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM = ScrollSelectionForm.createForm(StringUtil.getInstance().EMPTY_STRING, JArray<ABCustomItem?>(0, nil), ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance().BLACK, BasicColorFactory.getInstance().WHITE)
+        }
+        return (ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM as! ScrollSelectionForm)
+    }
     
-                        if(formType == formTypeFactory!!.VERTICAL_CENTER_FORM)
-                        
-                                    {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormVerticalPaintable(this)
-this.formTypeItemIndexDx= ScrollSelectionFormVericalDx(this)
 
-                                    }
-                                
-                             else 
+    public init(_ title: String!, _ items: JArray<ABCustomItem?>!, _ formPaintableFactory: ItemPaintableFactory!, _ border: Int32, _ adjustedExtraBorder: Int32, _ backgroundBasicColor: BasicColor!, _ foregroundBasicColor: BasicColor!) {
+        super.init(title, items, backgroundBasicColor, foregroundBasicColor)
+        self.initFields()
+        self.adjustedExtraBorder = adjustedExtraBorder
+        self.buttonBasicColor = foregroundBasicColor
+        self.border = border
+        self.halfBorder = (border >> 1)
+        self.paintable = formPaintableFactory.getInstanceItemPaintable(self)
+    }
     
-                        if(formType == formTypeFactory!!.TEMP_HORIZONTAL_FORM)
-                        
-                                    {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormTempHorizontalPaintable(this)
-this.formTypeItemIndexDx= ScrollSelectionFormTempHorizontalDx(this)
 
-                                    }
-                                
-                             else 
+    open override func `init`(_ rectangle: Rectangle!, _ formType: FormType!) {
+        super.`init`(rectangle, formType)
+        let formTypeFactory: FormTypeFactory! = FormTypeFactory.getInstance()
+        if (formType === formTypeFactory.HORIZONTAL_FORM) {
+            self.scrollSelectionFormFormTypeItemIndexPaintable = ScrollSelectionFormHorizontalPaintable(self)
+            self.formTypeItemIndexDx = ScrollSelectionFormHorizontalDx(self)
+        } else if (formType === formTypeFactory.VERTICAL_CENTER_FORM) {
+            self.scrollSelectionFormFormTypeItemIndexPaintable = ScrollSelectionFormVerticalPaintable(self)
+            self.formTypeItemIndexDx = ScrollSelectionFormVericalDx(self)
+        } else if (formType === formTypeFactory.TEMP_HORIZONTAL_FORM) {
+            self.scrollSelectionFormFormTypeItemIndexPaintable = ScrollSelectionFormTempHorizontalPaintable(self)
+            self.formTypeItemIndexDx = ScrollSelectionFormTempHorizontalDx(self)
+        } else if (formType === formTypeFactory.NULL_FORM_TYPE) {
+        } else {
+            jThrow(JException("Exception", formTypeFactory.UNK))
+        }
+    }
     
-                        if(formType == formTypeFactory!!.NULL_FORM_TYPE)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
 
-
-                            throw Exception(formTypeFactory!!.UNK)
-
-                        }
-                            
-}
-
-
-    open fun paintItemHorizontal(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-
-    var width: Int = item.getMinimumWidth()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return x +width +this.border
-}
-
-
-    open fun paintItemVertical(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-
-    var height: Int = item.getMinimumHeight()
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return y +height +this.border
-}
-
-
-    open fun paintItemTempHorizontal(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun getSelectedIndexForPointHorizontalDx(index: Int, item: ABCustomItem, dx: Int, dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var index = index
-    //var item = item
-var dx = dx
-    //var dy = dy
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx -this.halfBorder
-}
-
-
-    open fun getSelectedIndexForPointVerticalDx(index: Int, item: ABCustomItem, dx: Int, dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var index = index
-    //var item = item
-var dx = dx
-    //var dy = dy
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx +this.getDiffX(item)
-}
-
-
-    open fun getSelectedIndexForPointTempHorizontalDx(index: Int, item: ABCustomItem, dx: Int, dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var index = index
-    //var item = item
-var dx = dx
-    //var dy = dy
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx +this.getDiffX(item)
-}
-
-
-    override fun append(item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var item = item
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.append(item)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getSelectedItem(point: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-: ABCustomItem{
-    //var point = point
-
-    var index: Int = this.getSelectedIndexForPoint(point)
-
-
+    @discardableResult open func paintItemHorizontal(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        let width: Int32 = item.getMinimumWidth()
+        return x &+ width &+ self.border
+    }
     
-                        if(index !=  -1)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.get(index)
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.getNullInstance()
+    @discardableResult open func paintItemVertical(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        let height: Int32 = item.getMinimumHeight()
+        return y &+ height &+ self.border
+    }
+    
 
-                        }
-                            
+    @discardableResult open func paintItemTempHorizontal(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        return 0
+    }
+    
+
+    @discardableResult open func getSelectedIndexForPointHorizontalDx(_ index: Int32, _ item: ABCustomItem!, _ dx: Int32, _ dy: Int32) -> Int32 {
+        return dx &- self.halfBorder
+    }
+    
+
+    @discardableResult open func getSelectedIndexForPointVerticalDx(_ index: Int32, _ item: ABCustomItem!, _ dx: Int32, _ dy: Int32) -> Int32 {
+        return dx &+ self.getDiffX(item)
+    }
+    
+
+    @discardableResult open func getSelectedIndexForPointTempHorizontalDx(_ index: Int32, _ item: ABCustomItem!, _ dx: Int32, _ dy: Int32) -> Int32 {
+        return dx &+ self.getDiffX(item)
+    }
+    
+
+    @discardableResult open override func append(_ item: ABCustomItem!) -> Int32 {
+        return super.append(item)
+    }
+    
+
+    @discardableResult open func getSelectedItem(_ point: GPoint!) -> ABCustomItem! {
+        let index: Int32 = self.getSelectedIndexForPoint(point)
+        if (index != -1) {
+            return self.get(index)
+        } else {
+            return ABCustomItem.getNullInstance()
+        }
+    }
+    
+
+    @discardableResult open func getItemIndex(_ item: ABCustomItem!) -> Int32 {
+        var nextItem: ABCustomItem! = nil
+        let size: Int32 = self.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            nextItem = (self.get(index) as! ABCustomItem)
+            if (nextItem === item) {
+                return index
+            }
+            }
+        }
+        return -1
+    }
+    
+
+    @discardableResult open func getStartIndex() -> Int32 {
+        return 0
+    }
+    
+
+    @discardableResult open func getSelectedIndexForPoint(_ point: GPoint!) -> Int32 {
+        let start: Int32 = self.getStartIndex()
+        let size: Int32 = self.size()
+        var dx: Int32 = self.getDx()
+        var dy: Int32 = self.getDy()
+        let formTypeFactory: FormTypeFactory! = FormTypeFactory.getInstance()
+        let commonLabels: CommonLabels! = CommonLabels.getInstance()
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(commonLabels.START_LABEL)
+        stringBuffer.appendint(start)
+        stringBuffer.append(CommonSeps.getInstance().SPACE)
+        stringBuffer.append(commonLabels.TOTAL_LABEL)
+        stringBuffer.appendint(size)
+        self.logUtil.putF(stringBuffer.toString(), self, ScrollSelectionForm.GET_SELECTED_INDEX)
+        var item: ABCustomItem! = nil
+        var width: Int32 = 0
+        var height: Int32 = 0
+        var diffX: Int32 = 0
+        do {
+            var index: Int32 = start
+            while (index < size) {
+                defer { index &+= 1 }
+            item = self.get(index)
+            width = item.getMinimumWidth()
+            height = item.getMinimumHeight()
+            diffX = self.formTypeItemIndexDx.getDx(index, item, dx, dy)
+            if (self.rectangleCollisionUtil.isInside(diffX, dy &- self.halfBorder, diffX &+ width &+ self.border, dy &+ height &+ self.halfBorder &+ 1, point.getX(), point.getY())) {
+                stringBuffer.delete(0, stringBuffer.length())
+                stringBuffer.append(commonLabels.ITEM_LABEL)
+                stringBuffer.append(item.getLabel())
+                stringBuffer.append(CommonSeps.getInstance().SPACE)
+                stringBuffer.append(commonLabels.INDEX_LABEL)
+                stringBuffer.appendint(index)
+                self.logUtil.putF(stringBuffer.toString(), self, ScrollSelectionForm.GET_SELECTED_INDEX)
+                return index
+            }
+            if (self.formType == formTypeFactory.HORIZONTAL_FORM) {
+                dx = dx &+ width &+ self.border
+                if (dx > self.rectangle.getMaxX()) {
+                    break
+                }
+            } else if (self.formType == formTypeFactory.VERTICAL_CENTER_FORM) {
+                dy = dy &+ height &+ self.border
+                if (dy > self.rectangle.getMaxY()) {
+                    break
+                }
+            } else if (self.formType == formTypeFactory.NULL_FORM_TYPE) {
+            } else {
+                jThrow(JException("Exception", formTypeFactory.UNK))
+            }
+            }
+        }
+        return -1
+    }
+    
+
+    @discardableResult open func processInputKey(_ gameKeyCode: Int32) -> Int32 {
+        let formTypeFactory: FormTypeFactory! = FormTypeFactory.getInstance()
+        if (self.size() == 0) {
+            return -1
+        }
+        var index: Int32 = self.getSelectedIndex()
+        if (self.formType == formTypeFactory.HORIZONTAL_FORM || self.formType == formTypeFactory.TEMP_HORIZONTAL_FORM) {
+            if (gameKeyCode == Canvas.RIGHT) {
+                index &+= 1
+            } else if (gameKeyCode == Canvas.LEFT) {
+                index &-= 1
+            }
+        } else if (self.formType == formTypeFactory.VERTICAL_CENTER_FORM) {
+            if (gameKeyCode == Canvas.DOWN) {
+                index &+= 1
+            } else if (gameKeyCode == Canvas.UP) {
+                index &-= 1
+            }
+        } else if (self.formType == formTypeFactory.NULL_FORM_TYPE) {
+        } else {
+            jThrow(JException("Exception", formTypeFactory.UNK))
+        }
+        let max: Int32 = self.size() &- 1
+        if (index < 0) {
+            self.setSelectedIndex(0)
+        } else if (index > max) {
+            self.setSelectedIndex(max)
+        } else {
+            self.setSelectedIndex(index)
+        }
+        return -1
+    }
+    
+
+    @discardableResult open func isInForm(_ point: GPoint!) -> Bool {
+        if (self.rectangleCollisionUtil.isInside(self.x, self.y - self.halfBorder, self.rectangle.getMaxX() &+ self.border, self.rectangle.getMaxY() &+ self.border, point.getX(), point.getY())) {
+            self.logUtil.putF(StringMaker().append(StringUtil.getInstance().toString(point)).append(ScrollSelectionForm.INSIDE_FORM).toString(), self, ScrollSelectionForm.IS_IN_FORM)
+            return true
+        }
+        return false
+    }
+    
+
+    @discardableResult open func paintItem(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        item.paintXY(graphics, x, y)
+        let width: Int32 = item.getMinimumWidth()
+        let height: Int32 = item.getMinimumHeight()
+        graphics.setColor(self.getButtonBasicColor().intValue())
+        let adjustedBorder: Int32 = 3
+        graphics.drawRect(x &- self.halfBorder &- adjustedBorder, y &- self.halfBorder &- adjustedBorder, width &+ self.border &+ self.adjustedExtraBorder, height &+ self.border &+ self.adjustedExtraBorder)
+        return self.scrollSelectionFormFormTypeItemIndexPaintable.paint(graphics, index, item, x, y)
+    }
+    
+
+    @discardableResult open func paintUnselectedItem(_ graphics: Graphics!, _ index: Int32, _ item: ABCustomItem!, _ x: Int32, _ y: Int32) -> Int32 {
+        graphics.setColor(self.getButtonBasicColor().intValue())
+        item.paintUnselected(graphics, x, y)
+        return self.scrollSelectionFormFormTypeItemIndexPaintable.paint(graphics, index, item, x, y)
+    }
+    
+
+    @discardableResult open func getDiffX(_ item: ABCustomItem!) -> Int32 {
+        return 0
+    }
+    
+
+    @discardableResult open func getDx() -> Int32 {
+        return self.x
+    }
+    
+
+    @discardableResult open func getDy() -> Int32 {
+        return self.y
+    }
+    
+
+    open func setButtonBasicColor(_ buttonBasicColor: BasicColor!) {
+        self.buttonBasicColor = buttonBasicColor
+    }
+    
+
+    @discardableResult fileprivate func getButtonBasicColor() -> BasicColor! {
+        return self.buttonBasicColor
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    open fun getItemIndex(item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var item = item
-
-    var nextItem: ABCustomItem
-
-
-    var size: Int = this.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-nextItem= this.get(index) as ABCustomItem
-
-    
-                        if(nextItem == item)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return index
-
-                                    }
-                                
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-    open fun getStartIndex()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun getSelectedIndexForPoint(point: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var point = point
-
-    var start: Int = this.getStartIndex()
-
-
-    var size: Int = this.size()
-
-
-    var dx: Int = this.getDx()
-
-
-    var dy: Int = this.getDy()
-
-
-    var formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!!
-
-
-    var commonLabels: CommonLabels = CommonLabels.getInstance()!!
-
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(commonLabels!!.START_LABEL)
-stringBuffer!!.appendint(start)
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(commonLabels!!.TOTAL_LABEL)
-stringBuffer!!.appendint(size)
-this.logUtil!!.putF(stringBuffer!!.toString(), this, ScrollSelectionForm.GET_SELECTED_INDEX)
-
-    var item: ABCustomItem
-
-
-    var width: Int= 0
-
-
-    var height: Int= 0
-
-
-    var diffX: Int= 0
-
-
-
-
-
-                        for (index in start until size)
-
-        {
-item= this.get(index)!!
-width= item.getMinimumWidth()
-height= item.getMinimumHeight()
-diffX= this.formTypeItemIndexDx!!.getDx(index, item, dx, dy)
-
-    
-                        if(this.rectangleCollisionUtil!!.isInside(diffX, dy -this.halfBorder, diffX +width +this.border, dy +height +this.halfBorder +1, point.getX(), point.getY()))
-                        
-                                    {
-                                    stringBuffer!!.delete(0, stringBuffer!!.length())
-stringBuffer!!.append(commonLabels!!.ITEM_LABEL)
-stringBuffer!!.append(item.getLabel())
-stringBuffer!!.append(CommonSeps.getInstance()!!.SPACE)
-stringBuffer!!.append(commonLabels!!.INDEX_LABEL)
-stringBuffer!!.appendint(index)
-this.logUtil!!.putF(stringBuffer!!.toString(), this, ScrollSelectionForm.GET_SELECTED_INDEX)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return index
-
-                                    }
-                                
-
-    
-                        if(this.formType == formTypeFactory!!.HORIZONTAL_FORM)
-                        
-                                    {
-                                    dx= dx +width +this.border
-
-    
-                        if(dx > this.rectangle.getMaxX())
-                        
-                                    {
-                                    break;
-
-                    
-
-                                    }
-                                
-
-                                    }
-                                
-                             else 
-    
-                        if(this.formType == formTypeFactory!!.VERTICAL_CENTER_FORM)
-                        
-                                    {
-                                    dy= dy +height +this.border
-
-    
-                        if(dy > this.rectangle.getMaxY())
-                        
-                                    {
-                                    break;
-
-                    
-
-                                    }
-                                
-
-                                    }
-                                
-                             else 
-    
-                        if(this.formType == formTypeFactory!!.NULL_FORM_TYPE)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception(formTypeFactory!!.UNK)
-
-                        }
-                            
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processInputKey(gameKeyCode: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var gameKeyCode = gameKeyCode
-
-    var formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!!
-
-
-    
-                        if(this.size() == 0)
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-
-                                    }
-                                
-
-    var index: Int = this.getSelectedIndex()
-
-
-    
-                        if(this.formType == formTypeFactory!!.HORIZONTAL_FORM || this.formType == formTypeFactory!!.TEMP_HORIZONTAL_FORM)
-                        
-                                    {
-                                    
-    
-                        if(gameKeyCode == Canvas.RIGHT)
-                        
-                                    {
-                                    index++
-
-                                    }
-                                
-                             else 
-    
-                        if(gameKeyCode == Canvas.LEFT)
-                        
-                                    {
-                                    index--
-
-                                    }
-                                
-
-                                    }
-                                
-                             else 
-    
-                        if(this.formType == formTypeFactory!!.VERTICAL_CENTER_FORM)
-                        
-                                    {
-                                    
-    
-                        if(gameKeyCode == Canvas.DOWN)
-                        
-                                    {
-                                    index++
-
-                                    }
-                                
-                             else 
-    
-                        if(gameKeyCode == Canvas.UP)
-                        
-                                    {
-                                    index--
-
-                                    }
-                                
-
-                                    }
-                                
-                             else 
-    
-                        if(this.formType == formTypeFactory!!.NULL_FORM_TYPE)
-                        
-                                    {
-                                    
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw Exception(formTypeFactory!!.UNK)
-
-                        }
-                            
-
-    var max: Int = this.size() -1
-
-
-    
-                        if(index < 0)
-                        
-                                    {
-                                    this.setSelectedIndex(0)
-
-                                    }
-                                
-                             else 
-    
-                        if(index > max)
-                        
-                                    {
-                                    this.setSelectedIndex(max)
-
-                                    }
-                                
-                        else {
-                            this.setSelectedIndex(index)
-
-                        }
-                            
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return  -1
-}
-
-
-    open fun isInForm(point: GPoint)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var point = point
-
-    
-                        if(this.rectangleCollisionUtil!!.isInside(this.x, this.y -this.halfBorder, this.rectangle.getMaxX() +this.border, this.rectangle.getMaxY() +this.border, point.getX(), point.getY()))
-                        
-                                    {
-                                    this.logUtil!!.putF(StringMaker().
-                            append(StringUtil.getInstance()!!.toString(point))!!.append(ScrollSelectionForm.INSIDE_FORM)!!.toString(), this, ScrollSelectionForm.IS_IN_FORM)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true
-
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun paintItem(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-item.paintXY(graphics, x, y)
-
-    var width: Int = item.getMinimumWidth()
-
-
-    var height: Int = item.getMinimumHeight()
-
-graphics.setColor(this.getButtonBasicColor()!!.toInt())
-
-    var adjustedBorder: Int = 3
-
-graphics.drawRect(x -this.halfBorder -adjustedBorder, y -this.halfBorder -adjustedBorder, width +this.border +this.adjustedExtraBorder, height +this.border +this.adjustedExtraBorder)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionFormFormTypeItemIndexPaintable!!.paint(graphics, index, item, x, y)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun paintUnselectedItem(graphics: Graphics, index: Int, item: ABCustomItem, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var graphics = graphics
-    //var index = index
-    //var item = item
-    //var x = x
-    //var y = y
-graphics.setColor(this.getButtonBasicColor()!!.toInt())
-item.paintUnselected(graphics, x, y)
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionFormFormTypeItemIndexPaintable!!.paint(graphics, index, item, x, y)
-}
-
-
-    open fun getDiffX(item: ABCustomItem)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var item = item
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun getDx()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x
-}
-
-
-    open fun getDy()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y
-}
-
-
-    open fun setButtonBasicColor(buttonBasicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var buttonBasicColor = buttonBasicColor
-this.buttonBasicColor= buttonBasicColor
-}
-
-
-    open fun getButtonBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buttonBasicColor
-}
-
-
-}
-                
-            
 

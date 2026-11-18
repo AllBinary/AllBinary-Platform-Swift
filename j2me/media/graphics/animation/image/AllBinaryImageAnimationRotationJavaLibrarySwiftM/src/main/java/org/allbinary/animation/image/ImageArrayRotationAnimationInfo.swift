@@ -1,142 +1,93 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import org.allbinary.math.AngleInfo
 
+open class ImageArrayRotationAnimationInfo: JObject {
+    fileprivate var imageArray: JArray<Image?>! = nil
+    fileprivate var angleIncrement: Int32 = 0
+    fileprivate var totalAngle: Int32 = 0
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
 
+    private func initFields() {
+    
+    
+    
+    
+    
+    }
+    
 
+    public init(_ imageArray: JArray<Image?>!, _ angleIncrement: Int32, _ totalAngle: Int32, _ dx: Int32, _ dy: Int32) {
+        super.init()
+        self.initFields()
+        self.imageArray = imageArray
+        self.angleIncrement = angleIncrement
+        self.totalAngle = totalAngle
+        self.dx = dx
+        self.dy = dy
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import org.allbinary.math.AngleInfo
+    open func setImageArray(_ imageArray: JArray<Image?>!) {
+        self.imageArray = imageArray
+    }
+    
 
-open public class ImageArrayRotationAnimationInfo
-            : Object
-         {
-        
+    @discardableResult open func getImageArray() -> JArray<Image?>! {
+        return self.imageArray
+    }
+    
 
-    private var imageArray: Array<Image?>
+    @discardableResult open func getAngleInfoP() -> AngleInfo! {
+        return AngleInfo.getInstance(Int16(truncatingIfNeeded: self.angleIncrement))
+    }
+    
 
-    private var angleIncrement: Int
+    open func setTotalAngle(_ totalAngle: Int32) {
+        self.totalAngle = totalAngle
+    }
+    
 
-    private var totalAngle: Int
+    @discardableResult open func getTotalAngle() -> Int32 {
+        return self.totalAngle
+    }
+    
 
-    private var dx: Int
+    open func setDx(_ dx: Int32) {
+        self.dx = dx
+    }
+    
 
-    private var dy: Int
-public constructor (imageArray: Array<Image?>, angleIncrement: Int, totalAngle: Int, dx: Int, dy: Int)
-            : super()
-        {
-var imageArray = imageArray
-var angleIncrement = angleIncrement
-var totalAngle = totalAngle
-var dx = dx
-var dy = dy
-this.imageArray= imageArray
-this.angleIncrement= angleIncrement
-this.totalAngle= totalAngle
-this.dx= dx
-this.dy= dy
+    @discardableResult open func getDx() -> Int32 {
+        return self.dx
+    }
+    
+
+    open func setDy(_ dy: Int32) {
+        self.dy = dy
+    }
+    
+
+    @discardableResult open func getDy() -> Int32 {
+        return self.dy
+    }
 }
-
-
-    open fun setImageArray(imageArray: Array<Image?>)
-        //nullable = true from not(false or (false and false)) = true
-{
-var imageArray = imageArray
-this.imageArray= imageArray
-}
-
-
-    open fun getImageArray()
-        //nullable = true from not(false or (false and true)) = true
-: Array<Image?>{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageArray
-}
-
-
-    open fun getAngleInfoP()
-        //nullable = true from not(false or (false and true)) = true
-: AngleInfo{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleInfo.getInstance(this.angleIncrement.toShort())
-}
-
-
-    open fun setTotalAngle(totalAngle: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var totalAngle = totalAngle
-this.totalAngle= totalAngle
-}
-
-
-    open fun getTotalAngle()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalAngle
-}
-
-
-    open fun setDx(dx: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dx = dx
-this.dx= dx
-}
-
-
-    open fun getDx()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx
-}
-
-
-    open fun setDy(dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var dy = dy
-this.dy= dy
-}
-
-
-    open fun getDy()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy
-}
-
-
-}
-                
-            
 

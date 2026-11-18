@@ -1,51 +1,28 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form.item
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.form.item
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.NullImage
+// import org.allbinary.graphics.color.BasicColor
 
+open class ABCustomImageItem: ABCustomItem {
+    public var yOffset: Int32 = 0
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.yOffset = 0
+    }
+    
 
+    public init(_ label: String!, _ image: Image!, _ layout: Int32, _ altText: String!, _ basicColor: BasicColor!, _ yOffset: Int32) {
+        super.init(label, basicColor, basicColor)
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.NullImage
-import org.allbinary.graphics.color.BasicColor
-
-open public class ABCustomImageItem : ABCustomItem {
-        
-
-    var yOffset: Int = 0
-public constructor (label: String, image: Image, layout: Int, altText: String, basicColor: BasicColor, yOffset: Int)                        
-
-                            : super(label, basicColor, basicColor){
-var label = label
-var image = image
-var layout = layout
-var altText = altText
-var basicColor = basicColor
-var yOffset = yOffset
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
+    @discardableResult open func getImage() -> Image! {
+        return NullImage.NULL_IMAGE
+    }
 }
-
-
-    open fun getImage()
-        //nullable = true from not(false or (false and true)) = true
-: Image{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE
-}
-
-
-}
-                
-            
 

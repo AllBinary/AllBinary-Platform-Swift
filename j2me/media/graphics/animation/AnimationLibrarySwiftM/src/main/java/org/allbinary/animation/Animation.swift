@@ -1,226 +1,138 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
+// import javax.microedition.lcdui.Graphics
+// import org.allbinary.graphics.color.BasicColor
+// import org.allbinary.graphics.color.BasicColorFactory
+// import org.allbinary.graphics.color.BasicColorSetUtil
+// import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
 
+open class Animation: JObject, AnimationInterface, OpenGLSurfaceChangedInterface {
+    public var basicSetColorUtil: BasicColorSetUtil! = nil
+    public var basicColor: BasicColor! = nil
+    public var colorP: Int32 = 0
+    public var changeBasicColorP: BasicColor! = nil
+    public var changeColorP: Int32 = 0
+    public var alphaP: Int32 = 0
 
+    private func initFields() {
+    self.basicSetColorUtil = BasicColorSetUtil.getInstance()
+    self.basicColor = BasicColorFactory.getInstance().WHITE
+    self.colorP = 0
+    self.changeBasicColorP = BasicColorFactory.getInstance().NULL_COLOR
+    self.changeColorP = 0
+    self.alphaP = 0
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-import javax.microedition.lcdui.Graphics
-import org.allbinary.graphics.color.BasicColor
-import org.allbinary.graphics.color.BasicColorFactory
-import org.allbinary.graphics.color.BasicColorSetUtil
-import org.allbinary.image.opengles.OpenGLSurfaceChangedInterface
+    open func setAlpha(_ alpha: Int32) {
+        self.alphaP = alpha
+    }
+    
 
-open public class Animation
-            : Object
-        
-                , AnimationInterface
-                , OpenGLSurfaceChangedInterface {
-        
+    open func nextFrame() {
+    }
+    
 
-    val basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!!
+    open func paintXY(_ graphics: Graphics!, _ x: Int32, _ y: Int32) {
+        self.basicSetColorUtil.setBasicColorP3(graphics, self.getBasicColorP(), self.getColor())
+    }
+    
 
-    var basicColor: BasicColor = BasicColorFactory.getInstance()!!.WHITE
+    open func paintThreedXYZ(_ graphics: Graphics!, _ x: Int32, _ y: Int32, _ z: Int32) {
+    }
+    
 
-    var colorP: Int= 0
+    @discardableResult open func isThreed() -> Bool {
+        return false
+    }
+    
 
-    var changeBasicColorP: BasicColor = BasicColorFactory.getInstance()!!.NULL_COLOR
+    @discardableResult open func getBasicColorP() -> BasicColor! {
+        return self.basicColor
+    }
+    
 
-    var changeColorP: Int= 0
+    open func setBasicColorP(_ basicColor: BasicColor!) {
+        self.basicColor = basicColor
+        self.colorP = self.basicColor.intValue()
+    }
+    
 
-    var alphaP: Int= 0
-public constructor ()
-            : super()
-        {
+    open func setBackgroundBasicColorP(_ basicColor: BasicColor!) {
+    }
+    
+
+    @discardableResult open func getChangeBasicColor() -> BasicColor! {
+        return self.changeBasicColorP
+    }
+    
+
+    open func changeBasicColor(_ basicColor: BasicColor!) {
+        self.changeBasicColorP = basicColor
+        self.changeColorP = self.changeBasicColorP.intValue()
+    }
+    
+
+    @discardableResult open func getChangeColor() -> Int32 {
+        return self.changeColorP
+    }
+    
+
+    @discardableResult open func getColor() -> Int32 {
+        return self.colorP
+    }
+    
+
+    open func setScale(_ scaleX: Float, _ scaleY: Float) {
+    }
+    
+
+    open func setMaxScale(_ maxScaleX: Float, _ maxScaleY: Float) {
+    }
+    
+
+    open func set(_ gl: GL!) {
+    }
+    
+
+    open func setDx(_ dx: Int32) {
+    }
+    
+
+    @discardableResult open func getDx() -> Int32 {
+        return 0
+    }
+    
+
+    open func setDy(_ dy: Int32) {
+    }
+    
+
+    @discardableResult open func getDy() -> Int32 {
+        return 0
+    }
 }
-
-
-    open fun setAlpha(alpha: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var alpha = alpha
-this.alphaP= alpha
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun nextFrame()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    override fun paintXY(graphics: Graphics, x: Int, y: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-this.basicSetColorUtil!!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor())
-}
-
-
-    override fun paintThreedXYZ(graphics: Graphics, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-    //var x = x
-    //var y = y
-    //var z = z
-}
-
-
-    open fun isThreed()
-        //nullable = true from not(false or (false and true)) = true
-: Boolean{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun getBasicColorP()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor
-}
-
-
-    open fun setBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-this.basicColor= basicColor
-this.colorP= this.basicColor!!.toInt()
-}
-
-
-    open fun setBackgroundBasicColorP(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-}
-
-
-    open fun getChangeBasicColor()
-        //nullable = true from not(false or (false and true)) = true
-: BasicColor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changeBasicColorP
-}
-
-
-    open fun changeBasicColor(basicColor: BasicColor)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var basicColor = basicColor
-this.changeBasicColorP= basicColor
-this.changeColorP= this.changeBasicColorP!!.toInt()
-}
-
-
-    open fun getChangeColor()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changeColorP
-}
-
-
-    open fun getColor()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorP
-}
-
-
-    open fun setScale(scaleX: Float, scaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleX = scaleX
-    //var scaleY = scaleY
-}
-
-
-    open fun setMaxScale(maxScaleX: Float, maxScaleY: Float)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var maxScaleX = maxScaleX
-    //var maxScaleY = maxScaleY
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-}
-
-
-    open fun setDx(dx: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var dx = dx
-}
-
-
-    open fun getDx()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-    open fun setDy(dy: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var dy = dy
-}
-
-
-    open fun getDy()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0
-}
-
-
-}
-                
-            
 

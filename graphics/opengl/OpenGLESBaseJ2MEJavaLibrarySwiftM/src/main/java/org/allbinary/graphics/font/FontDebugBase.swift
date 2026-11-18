@@ -1,75 +1,39 @@
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.font
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.font
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import org.allbinary.logic.string.StringMaker
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import org.allbinary.logic.string.StringMaker
 //OpenGLESBaseJ2MEJavaLibrary
-open public class FontDebugBase
-            : Object
-         {
-        
-companion object {
-            
-    private val instanceBase: FontDebugBase = FontDebugBase()
+open class FontDebugBase: JObject {
+    fileprivate static let instanceBase: FontDebugBase! = FontDebugBase()
+    public var SET_FONT: String! = nil
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: FontDebugBase{
+    private func initFields() {
+    self.SET_FONT = "setFont"
+    }
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontDebugBase.instanceBase
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
+
+    @discardableResult open class func getInstance() -> FontDebugBase! {
+        return FontDebugBase.instanceBase
+    }
+    
+
+    open func debugMetrics(_ currentFont: Font!, _ convertedTextSize: Float, _ displayMetrics: JObject!, _ stringBuffer: StringMaker!) {
+    }
+    
+
+    open func debugDpi(_ densityDpi: Int32, _ stringBuffer: StringMaker!) {
+    }
+    
+
+    open func debugDimension(_ currentFont: Font!, _ convertedTextSize: Float, _ longestDimensionTotalPixels: Int32, _ stringBuffer: StringMaker!) {
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val SET_FONT: String = "setFont"
-
-    open fun debugMetrics(currentFont: Font, convertedTextSize: Float, displayMetrics: Any, stringBuffer: StringMaker)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var currentFont = currentFont
-    //var convertedTextSize = convertedTextSize
-    //var displayMetrics = displayMetrics
-    //var stringBuffer = stringBuffer
-}
-
-
-    open fun debugDpi(densityDpi: Int, stringBuffer: StringMaker)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var densityDpi = densityDpi
-    //var stringBuffer = stringBuffer
-}
-
-
-    open fun debugDimension(currentFont: Font, convertedTextSize: Float, longestDimensionTotalPixels: Int, stringBuffer: StringMaker)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var currentFont = currentFont
-    //var convertedTextSize = convertedTextSize
-    //var longestDimensionTotalPixels = longestDimensionTotalPixels
-    //var stringBuffer = stringBuffer
-}
-
-
-}
-                
-            
 

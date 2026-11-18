@@ -1,223 +1,113 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.string.tokens
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.string.tokens
+import J2SEForSwiftLibrary
+// import org.allbinary.TsUtil
+// import org.allbinary.logic.StdUtil
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class Tokenizer: JObject {
+    fileprivate var sep: String! = nil
+    fileprivate var endSep: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.TsUtil
-import org.allbinary.logic.StdUtil
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class Tokenizer
-            : Object
-         {
-        
-
-    private var sep: String
-
-    private var endSep: String = StringUtil.getInstance()!!.EMPTY_STRING
-public constructor (sep: String)
-            : super()
-        {
-var sep = sep
-
+    private func initFields() {
     
-                        if(TsUtil.getInstance()!!.compareTo(sep, StringUtil.getInstance()!!.EMPTY_STRING) == 0)
-                        
-                                    {
-                                    
-
-
-                            throw Exception("Sep provided is not valid")
-
-                                    }
-                                
-this.sep= sep
-}
-
-
-    open fun setSep(sep: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var sep = sep
-this.sep= sep
-}
-
-
-    open fun setEndSep(endSep: String)
-        //nullable = true from not(false or (false and false)) = true
-{
-var endSep = endSep
-this.endSep= endSep
-}
-
-
-    open fun getInsideSep(string: String)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-var string = string
-
-    var tokenList: BasicArrayList = BasicArrayListD()
-
-
-    var index: Int = 0
-
-
-    var size: Int = string.length
-
-
-        while(index < size)
-        {
-index= string.indexOf(this.sep, index)
-
+    self.endSep = StringUtil.getInstance().EMPTY_STRING
+    }
     
-                        if(index !=  -1)
-                        
-                                    {
-                                    
-    var end: Int = string.indexOf(this.endSep, index +this.sep.length)
 
-
+    public init(_ sep: String!) {
+        super.init()
+        self.initFields()
+        if (TsUtil.getInstance().compareTo(sep, StringUtil.getInstance().EMPTY_STRING) == 0) {
+            jThrow(JException("Exception", "Sep provided is not valid"))
+        }
+        self.sep = sep
+    }
     
-                        if(end !=  -1)
-                        
-                                    {
-                                    tokenList!!.add(string.substring(index +this.sep.length, end -(this.endSep!!.length -1)))
-index= end +this.endSep!!.length
 
-                                    }
-                                
-                        else {
-                            
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            break;
-
-                    
-
-                        }
-                            
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return tokenList
-}
-
-
-    open fun getTokensFromString(string: String, tokenVector: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-: BasicArrayList{
-var string = string
-var tokenVector = tokenVector
-
-    var index: Int = 0
-
-
-    var end: Int = 0
-
-
-        while(index < string.length)
-        {
-end= string.indexOf(this.sep, index)
-
+    open func setSep(_ sep: String!) {
+        self.sep = sep
+    }
     
-                        if(end !=  -1)
-                        
-                                    {
-                                    tokenVector!!.add(string.substring(index, end))
-index= end +this.sep.length
 
-                                    }
-                                
-                        else {
-                            tokenVector!!.add(string.substring(index, string.length))
-break;
-
-                    
-
-                        }
-                            
-}
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return tokenVector
-}
-
-
-    open fun getTokens(stringVector: BasicArrayList)
-        //nullable = true from not(false or (false and false)) = true
-: ABHashtable<Any, Any>{
-var stringVector = stringVector
-
-    var tokenHashtable: ABHashtable<Any, Any> = StdUtil.getInstance()!!.createHashtable()!!
-
-
-    var string: String = StringUtil.getInstance()!!.EMPTY_STRING
-
-
-    var end: Int = 0
-
-
-    var size: Int = stringVector!!.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-string= stringVector!!.objectArray[index]!! as String
-end= string.indexOf(this.sep)
-
+    open func setEndSep(_ endSep: String!) {
+        self.endSep = endSep
+    }
     
-                        if(end >= 0)
-                        
-                                    {
-                                    tokenHashtable!!.put(string.substring(0, end), string.substring(end +1, string.length))
 
-                                    }
-                                
+    @discardableResult open func getInsideSep(_ string: String!) -> BasicArrayList! {
+        let tokenList: BasicArrayList! = BasicArrayListD()
+        var index: Int32 = 0
+        let size: Int32 = JString.length(string)
+        while (index < size) {
+            index = JString.indexOf(string, self.sep, index)
+            if (index != -1) {
+                let end: Int32 = JString.indexOf(string, self.endSep, index &+ JString.length(self.sep))
+                if (end != -1) {
+                    tokenList.add(jBoxString(JString.substring(string, index &+ JString.length(self.sep), end &- (JString.length(self.endSep) &- 1))))
+                    index = end &+ JString.length(self.endSep)
+                } else {
+                }
+            } else {
+                break
+            }
+        }
+        return tokenList
+    }
+    
+
+    @discardableResult open func getTokensFromString(_ string: String!, _ tokenVector: BasicArrayList!) -> BasicArrayList! {
+        var index: Int32 = 0
+        var end: Int32 = 0
+        while (index < JString.length(string)) {
+            end = JString.indexOf(string, self.sep, index)
+            if (end != -1) {
+                tokenVector.add(jBoxString(JString.substring(string, index, end)))
+                index = end &+ JString.length(self.sep)
+            } else {
+                tokenVector.add(jBoxString(JString.substring(string, index, JString.length(string))))
+                break
+            }
+        }
+        return tokenVector
+    }
+    
+
+    @discardableResult open func getTokens(_ stringVector: BasicArrayList!) -> ABHashtable! {
+        let tokenHashtable: ABHashtable! = StdUtil.getInstance().createHashtable()
+        var string: String! = StringUtil.getInstance().EMPTY_STRING
+        var end: Int32 = 0
+        let size: Int32 = stringVector.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            string = jUnboxString(stringVector.objectArray[index])
+            end = JString.indexOf(string, self.sep)
+            if (end >= 0) {
+                tokenHashtable.put(jBoxString(JString.substring(string, 0, end)), jBoxString(JString.substring(string, end &+ 1, JString.length(string))))
+            }
+            }
+        }
+        return tokenHashtable
+    }
 }
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return tokenHashtable
-}
-
-
-}
-                
-            
 

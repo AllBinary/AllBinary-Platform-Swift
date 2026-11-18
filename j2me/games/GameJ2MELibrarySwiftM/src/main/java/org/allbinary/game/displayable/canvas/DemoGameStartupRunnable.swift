@@ -1,84 +1,57 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.displayable.canvas
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.thread.ABRunnable
 
+open class DemoGameStartupRunnable: ABRunnable {
+    public static let TYPE: Int32 = 4
+    public var logUtil: LogUtil! = nil
+    fileprivate var demoCanvas: DemoCanvas! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    
+    }
+    
 
+    public init(_ demoCanvas: DemoCanvas!) {
+        super.init()
+        self.initFields()
+        self.demoCanvas = demoCanvas
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.thread.ABRunnable
+    open override func run() {
+        do {
+            self.setRunning(true)
+            self.demoCanvas.stopGameDemo()
+            self.demoCanvas.create()
+            self.demoCanvas.start()
+            self.setRunning(false)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-open public class DemoGameStartupRunnable : ABRunnable {
-        
-companion object {
-            
-    val TYPE: Int = 4
-
-        }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val demoCanvas: DemoCanvas
-public constructor (demoCanvas: DemoCanvas){
-var demoCanvas = demoCanvas
-this.demoCanvas= demoCanvas
+    @discardableResult open override func getType() -> Int32 {
+        return DemoGameStartupRunnable.TYPE
+    }
 }
-
-
-    override fun run()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            this.setRunning(true)
-this.demoCanvas!!.stopGameDemo()
-this.demoCanvas!!.create()
-this.demoCanvas!!.start()
-this.setRunning(false)
-} catch(e: Exception)
-            {
-this.setRunning(false)
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.RUN, e)
-}
-
-}
-
-
-    override fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameStartupRunnable.TYPE
-}
-
-
-}
-                
-            
 

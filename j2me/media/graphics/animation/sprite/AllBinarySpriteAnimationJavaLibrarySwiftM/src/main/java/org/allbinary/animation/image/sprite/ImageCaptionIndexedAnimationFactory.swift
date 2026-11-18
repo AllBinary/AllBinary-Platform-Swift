@@ -1,167 +1,106 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot   
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.animation.image.sprite
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.game.Sprite
+// import javax.microedition.media.Player
+// import org.allbinary.animation.Animation
+// import org.allbinary.animation.AnimationBehaviorFactory
+// import org.allbinary.animation.AnimationInterfaceFactoryInterface
+// import org.allbinary.animation.IndexedAnimation
+// import org.allbinary.animation.caption.CaptionIndexedAnimation
+// import org.allbinary.animation.image.ImageAnimation
+// import org.allbinary.graphics.color.BasicColorUtil
+// import org.allbinary.image.AnimationFactoryImageScaleUtil
+// import org.allbinary.image.sprite.AnimationFactorySpriteScaleUtil
+// import org.allbinary.logic.communication.log.ForcedLogUtil
+// import org.allbinary.media.ScaleProperties
+// import org.allbinary.media.audio.Sound
 
+open class ImageCaptionIndexedAnimationFactory: JObject, AnimationInterfaceFactoryInterface {
+    public var animationFactoryImageScaleUtil: AnimationFactoryImageScaleUtil! = nil
+    fileprivate var animationFactorySpriteScaleUtil: AnimationFactorySpriteScaleUtil! = nil
+    fileprivate var captionImage: Image! = nil
+    fileprivate var spriteMovieImage: Image! = nil
+    fileprivate var frameWidth: Int32 = 0
+    fileprivate var frameHeight: Int32 = 0
+    fileprivate var captionDx: Int32 = 0
+    fileprivate var captionDy: Int32 = 0
+    fileprivate var dx: Int32 = 0
+    fileprivate var dy: Int32 = 0
+    fileprivate var time: Int32 = 0
+    fileprivate var soundInterface: Sound! = nil
+    public var scaleProperties: ScaleProperties! = nil
+    fileprivate var animationBehaviorFactory: AnimationBehaviorFactory! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.game.Sprite
-import javax.microedition.media.Player
-import org.allbinary.animation.Animation
-import org.allbinary.animation.AnimationBehaviorFactory
-import org.allbinary.animation.AnimationInterfaceFactoryInterface
-import org.allbinary.animation.IndexedAnimation
-import org.allbinary.animation.caption.CaptionIndexedAnimation
-import org.allbinary.animation.image.ImageAnimation
-import org.allbinary.graphics.color.BasicColorUtil
-import org.allbinary.image.AnimationFactoryImageScaleUtil
-import org.allbinary.image.sprite.AnimationFactorySpriteScaleUtil
-import org.allbinary.logic.communication.log.ForcedLogUtil
-import org.allbinary.media.ScaleProperties
-import org.allbinary.media.audio.Sound
-
-open public class ImageCaptionIndexedAnimationFactory
-            : Object
-        
-                , AnimationInterfaceFactoryInterface {
-        
-
-    val animationFactoryImageScaleUtil: AnimationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil.getInstance()!!
-
-    private val animationFactorySpriteScaleUtil: AnimationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil.getInstance()!!
-
-    private var captionImage: Image
-
-    private var spriteMovieImage: Image
-
-    private var frameWidth: Int
-
-    private var frameHeight: Int
-
-    private var captionDx: Int
-
-    private var captionDy: Int
-
-    private var dx: Int
-
-    private var dy: Int
-
-    private var time: Int
-
-    private var soundInterface: Sound
-
-    var scaleProperties: ScaleProperties = ScaleProperties.instance
-
-    private val animationBehaviorFactory: AnimationBehaviorFactory
-public constructor (captionImage: Image, spriteMovieImage: Image, soundInterface: Sound, frameWidth: Int, frameHeight: Int, captionDx: Int, captionDy: Int, dx: Int, dy: Int, time: Int, animationBehaviorFactory: AnimationBehaviorFactory)
-            : super()
-        {
-    //var captionImage = captionImage
-    //var spriteMovieImage = spriteMovieImage
-    //var soundInterface = soundInterface
-    //var frameWidth = frameWidth
-    //var frameHeight = frameHeight
-    //var captionDx = captionDx
-    //var captionDy = captionDy
-    //var dx = dx
-    //var dy = dy
-    //var time = time
-    //var animationBehaviorFactory = animationBehaviorFactory
-
+    private func initFields() {
+    self.animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil.getInstance()
+    self.animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil.getInstance()
     
-                        if(animationBehaviorFactory == AnimationBehaviorFactory.getInstance())
-                        
-                                    {
-                                    ForcedLogUtil.log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this)
-
-                                    }
-                                
-this.captionImage= captionImage
-this.spriteMovieImage= spriteMovieImage
-this.frameWidth= frameWidth
-this.frameHeight= frameHeight
-this.captionDx= captionDx
-this.captionDy= captionDy
-this.dx= dx
-this.dy= dy
-this.time= time
-this.soundInterface= soundInterface
-this.animationBehaviorFactory= animationBehaviorFactory
-}
-
-
-                @Throws(Exception::class)
-            
-    override fun getInstance(instanceId: Int)
-        //nullable =  from not(true or (false and false)) = 
-: Animation{
-    //var instanceId = instanceId
-
-    var scaledImage: Image = this.animationFactoryImageScaleUtil!!.createImage(this.captionImage, this.captionImage!!.getWidth(), this.captionImage!!.getHeight(), this.scaleProperties!!.scaleWidth, this.scaleProperties!!.scaleHeight)!!
-
-
-    var animationInterface: Animation = ImageAnimation(scaledImage, this.animationBehaviorFactory!!.getOrCreateInstance())
-
-
-    var sprite: Sprite = this.animationFactorySpriteScaleUtil!!.createImage(this.spriteMovieImage, this.frameWidth, this.frameHeight, this.scaleProperties!!.scaleWidth, this.scaleProperties!!.scaleHeight)!!
-
-
-    var movieIndexedAnimationInterface: IndexedAnimation = SpriteIndexedAnimation(sprite, this.spriteMovieImage, BasicColorUtil.getInstance()!!.ZERO_ARRAY, this.animationBehaviorFactory!!.getOrCreateInstance())
-
-
-    var player: Player = this.soundInterface!!.getPlayerP()!!
-
-
     
-                        if(player == 
-                                    null
-                                )
-                        
-                                    {
-                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    self.scaleProperties = ScaleProperties.instance
+    
+    }
+    
 
+    public init(_ captionImage: Image!, _ spriteMovieImage: Image!, _ soundInterface: Sound!, _ frameWidth: Int32, _ frameHeight: Int32, _ captionDx: Int32, _ captionDy: Int32, _ dx: Int32, _ dy: Int32, _ time: Int32, _ animationBehaviorFactory: AnimationBehaviorFactory!) {
+        super.init()
+        self.initFields()
+        if (animationBehaviorFactory === AnimationBehaviorFactory.getInstance()) {
+            ForcedLogUtil.log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", self)
+        }
+        self.captionImage = captionImage
+        self.spriteMovieImage = spriteMovieImage
+        self.frameWidth = frameWidth
+        self.frameHeight = frameHeight
+        self.captionDx = captionDx
+        self.captionDy = captionDy
+        self.dx = dx
+        self.dy = dy
+        self.time = time
+        self.soundInterface = soundInterface
+        self.animationBehaviorFactory = animationBehaviorFactory
+    }
+    
 
-                            throw Exception("Sound Was not Initialized")
+    @discardableResult open func getInstance(_ instanceId: Int32) -> Animation! {
+        let scaledImage: Image! = self.animationFactoryImageScaleUtil.createImage(self.captionImage, self.captionImage.getWidth(), self.captionImage.getHeight(), self.scaleProperties.scaleWidth, self.scaleProperties.scaleHeight)
+        let animationInterface: Animation! = ImageAnimation(scaledImage, self.animationBehaviorFactory.getOrCreateInstance())
+        let sprite: Sprite! = self.animationFactorySpriteScaleUtil.createImage(self.spriteMovieImage, self.frameWidth, self.frameHeight, self.scaleProperties.scaleWidth, self.scaleProperties.scaleHeight)
+        let movieIndexedAnimationInterface: IndexedAnimation! = SpriteIndexedAnimation(sprite, self.spriteMovieImage, BasicColorUtil.getInstance().ZERO_ARRAY, self.animationBehaviorFactory.getOrCreateInstance())
+        let player: Player! = self.soundInterface.getPlayerP()
+        if (player == nil) {
+            jThrow(JException("Exception", "Sound Was not Initialized"))
+        }
+        return CaptionIndexedAnimation(animationInterface, movieIndexedAnimationInterface, player, self.captionDx, self.captionDy, self.dx, self.dy, self.time, self.animationBehaviorFactory.getOrCreateInstance())
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CaptionIndexedAnimation(animationInterface, movieIndexedAnimationInterface, player, this.captionDx, this.captionDy, this.dx, this.dy, this.time, this.animationBehaviorFactory!!.getOrCreateInstance())
+    open func setInitialScale(_ scaleProperties: ScaleProperties!) {
+        self.scaleProperties = scaleProperties
+    }
 }
-
-
-    override fun setInitialScale(scaleProperties: ScaleProperties)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var scaleProperties = scaleProperties
-this.scaleProperties= scaleProperties
-}
-
-
-}
-                
-            
 

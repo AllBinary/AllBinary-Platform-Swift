@@ -1,87 +1,48 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2025 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.font
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2025 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.font
+import J2SEForSwiftLibrary
+// import javax.microedition.lcdui.Font
+// import javax.microedition.lcdui.Graphics
 
+open class MyFontProcessor: JObject {
+    fileprivate static let instance: MyFontProcessor! = MyFontProcessor()
 
+    public override init() {
+        super.init()
+    }
+    
 
+    @discardableResult open class func defaultCharWidth(_ font: Font!) -> Int32 {
+        return font.charWidth(UInt16(("C" as Unicode.Scalar).value))
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.lcdui.Font
-import javax.microedition.lcdui.Graphics
+    @discardableResult open class func defaultStringWidth(_ font: Font!, _ size: Int32) -> Int32 {
+        return MyFontProcessor.defaultCharWidth(font) * size
+    }
+    
 
-open public class MyFontProcessor
-            : Object
-         {
-        
-companion object {
-            
-    open fun defaultCharWidth(font: Font)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var font = font
+    @discardableResult open class func getInstance() -> MyFontProcessor! {
+        return MyFontProcessor.instance
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return font.charWidth('C')
+    open func process(_ graphics: Graphics!) {
+    }
 }
-
-
-    open fun defaultStringWidth(font: Font, size: Int)
-        //nullable = true from not(false or (false and false)) = true
-: Int{
-    //var font = font
-    //var size = size
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFontProcessor.defaultCharWidth(font) *size
-}
-
-
-    private val instance: MyFontProcessor = MyFontProcessor()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: MyFontProcessor{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFontProcessor.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun process(graphics: Graphics)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var graphics = graphics
-}
-
-
-}
-                
-            
 

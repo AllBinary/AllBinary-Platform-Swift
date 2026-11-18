@@ -35,7 +35,7 @@ open class SystemHardwareFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> SystemHardwareFactory! {
+    @discardableResult open class func getInstance() -> SystemHardwareFactory! {
         return SystemHardwareFactory.instance
     }
     
@@ -57,7 +57,7 @@ open class SystemHardwareFactory: JObject {
     }
     
 
-    @discardableResult public static func static_toString() -> String! {
+    @discardableResult open class func static_toString() -> String! {
         let systemHardwareFactory: SystemHardwareFactory! = SystemHardwareFactory.getInstance()
         let osBuffer: StringMaker! = StringMaker()
         osBuffer.append("Hardware Info: \n")

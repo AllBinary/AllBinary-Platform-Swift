@@ -48,7 +48,7 @@ open class AdminRoleFactory: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> AdminRoleFactory! {
+    @discardableResult open class func getInstance() -> AdminRoleFactory! {
         return AdminRoleFactory.instance
     }
     

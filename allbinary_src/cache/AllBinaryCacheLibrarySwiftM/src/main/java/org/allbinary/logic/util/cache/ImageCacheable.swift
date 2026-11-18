@@ -1,66 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.util.cache
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.logic.util.cache
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class ImageCacheable: JObject {
+    fileprivate var name: String! = nil
 
+    private func initFields() {
+    self.name = StringUtil.getInstance().EMPTY_STRING
+    }
+    
 
+    public init(_ name: String!, _ anyType: JObject!) {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
+    @discardableResult open func getKey() -> JObject! {
+        return self.name
+    }
+    
 
-open public class ImageCacheable
-            : Object
-         {
-        
-
-    private var name: String = StringUtil.getInstance()!!.EMPTY_STRING
-public constructor (name: String, anyType: Any)
-            : super()
-        {
-var name = name
-var anyType = anyType
+    @discardableResult open override func toString() -> String! {
+        return self.name
+    }
 }
-
-
-    open fun getKey()
-        //nullable = true from not(false or (false and true)) = true
-: Any{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-}
-                
-            
 

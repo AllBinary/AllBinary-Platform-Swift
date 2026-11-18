@@ -1,112 +1,55 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.input
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.layer.AllBinaryLayerManager
 
+open class GameInputProcessor: JObject {
+    fileprivate static let instance: GameInputProcessor! = GameInputProcessor()
+    
 
+    @discardableResult open class func getInstance() -> GameInputProcessor! {
+        return GameInputProcessor.instance
+    }
+    
 
+    public override init() {
+        super.init()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.layer.AllBinaryLayerManager
+    open func processEvent(_ allbinaryLayerManager: AllBinaryLayerManager!, _ gameKeyEvent: GameKeyEvent!) {
+    }
+    
 
-open public class GameInputProcessor
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: GameInputProcessor = GameInputProcessor()
+    open func processReleasedEvent(_ allbinaryLayerManager: AllBinaryLayerManager!, _ gameKeyEvent: GameKeyEvent!) {
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: GameInputProcessor{
+    open func processAnalog(_ allbinaryLayerManager: AllBinaryLayerManager!, _ gameKeyEvent: GameKeyEvent!, _ analogValue: Int32) {
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputProcessor.instance
+    open func process(_ allbinaryLayerManager: AllBinaryLayerManager!, _ keyAsInteger: Int32!) {
+    }
+    
+
+    open func processReleased(_ allbinaryLayerManager: AllBinaryLayerManager!, _ keyAsInteger: Int32!) {
+    }
 }
-
-
-        }
-            protected constructor ()
-            : super()
-        {
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processEvent(allbinaryLayerManager: AllBinaryLayerManager, gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var gameKeyEvent = gameKeyEvent
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processReleasedEvent(allbinaryLayerManager: AllBinaryLayerManager, gameKeyEvent: GameKeyEvent)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var gameKeyEvent = gameKeyEvent
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processAnalog(allbinaryLayerManager: AllBinaryLayerManager, gameKeyEvent: GameKeyEvent, analogValue: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var gameKeyEvent = gameKeyEvent
-    //var analogValue = analogValue
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun process(allbinaryLayerManager: AllBinaryLayerManager, keyAsInteger: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var keyAsInteger = keyAsInteger
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun processReleased(allbinaryLayerManager: AllBinaryLayerManager, keyAsInteger: Integer)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var allbinaryLayerManager = allbinaryLayerManager
-    //var keyAsInteger = keyAsInteger
-}
-
-
-}
-                
-            
 

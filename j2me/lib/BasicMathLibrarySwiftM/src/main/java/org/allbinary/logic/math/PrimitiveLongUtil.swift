@@ -40,7 +40,7 @@ open class PrimitiveLongUtil: JObject {
     }
     
 
-    @discardableResult public static func createPowerOfTen(_ powerOfTen: Int32) -> PrimitiveLongUtil! {
+    @discardableResult open class func createPowerOfTen(_ powerOfTen: Int32) -> PrimitiveLongUtil! {
         let primitiveLongUtil: PrimitiveLongUtil! = PrimitiveLongUtil(powerOfTen, NullUtil.getInstance().NULL_OBJECT)
         if (powerOfTen % 10 != 0) {
             let logUtil: LogUtil! = LogUtil.getInstance()

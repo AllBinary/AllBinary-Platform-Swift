@@ -1,177 +1,120 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.resource
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.resource
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.feature.Features
+// import org.allbinary.game.configuration.feature.GameFeatureControlledInterface
+// import org.allbinary.game.configuration.feature.GraphicsFeatureFactory
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonSeps
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class FeaturedResourceFactory: JObject {
+    public var logUtil: LogUtil! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var ANIMATION_FEATURES: String! = nil
+    fileprivate var IMAGE_LABEL: String! = nil
+    fileprivate var IMAGE_GRAPHICS_ARRAY: String! = nil
+    fileprivate var IMAGE_GRAPHICS_ROTATION: String! = nil
+    fileprivate var SPRITE_QUARTER: String! = nil
+    fileprivate var SPRITE_FULL: String! = nil
+    fileprivate var IS_LOADING_LEVEL_LABEL: String! = nil
+    fileprivate var IS_FEATURE: String! = nil
+    fileprivate var GAME_FEATURE_CONTROLLED: String! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.feature.Features
-import org.allbinary.game.configuration.feature.GameFeatureControlledInterface
-import org.allbinary.game.configuration.feature.GraphicsFeatureFactory
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonSeps
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class FeaturedResourceFactory
-            : Object
-         {
-        
-
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val list: BasicArrayList = BasicArrayListD()
-public constructor ()
-            : super()
-        {
-}
-
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val ANIMATION_FEATURES: String = "Animation Features: Vector: "
-
-    private val IMAGE_LABEL: String = " Image: "
-
-    private val IMAGE_GRAPHICS_ARRAY: String = "Image Array: "
-
-    private val IMAGE_GRAPHICS_ROTATION: String = "Image Rotate: "
-
-    private val SPRITE_QUARTER: String = " Sprite Quarter: "
-
-    private val SPRITE_FULL: String = " Sprite Full: "
-
-    private val IS_LOADING_LEVEL_LABEL: String = " isLoadingLevel "
-
-    private val IS_FEATURE: String = " isFeature: "
-
-    private val GAME_FEATURE_CONTROLLED: String = "GameFeatureControlledInterface: "
-
-                @Throws(Exception::class)
-            
-    open fun init(level: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var level = level
-
-    var size: Int = this.list.size()
-
-
-
-
-
-                        for (index in 0 until size)
-
-        {
-
-    var featureInterface: GameFeatureControlledInterface = this.list.objectArray[index]!! as GameFeatureControlledInterface
-
-
-    var isLoadingLevel: Boolean = featureInterface!!.isLoadingLevel(level)
-
-
-    var isFeature: Boolean = featureInterface!!.isFeature()
-
-this.logUtil!!.putF(StringMaker().
-                            append(this.GAME_FEATURE_CONTROLLED)!!.append(featureInterface!!.toString())!!.append(this.IS_LOADING_LEVEL_LABEL)!!.append(ResourceLoadingLevelFactory.getInstance()!!.getLevelString(level))!!.append(CommonSeps.getInstance()!!.COLON_SEP)!!.appendboolean(isLoadingLevel)!!.append(this.IS_FEATURE)!!.appendboolean(isFeature)!!.toString(), this, this.commonStrings!!.INIT)
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.list = BasicArrayListD()
+    self.commonStrings = CommonStrings.getInstance()
+    self.ANIMATION_FEATURES = "Animation Features: Vector: "
+    self.IMAGE_LABEL = " Image: "
+    self.IMAGE_GRAPHICS_ARRAY = "Image Array: "
+    self.IMAGE_GRAPHICS_ROTATION = "Image Rotate: "
+    self.SPRITE_QUARTER = " Sprite Quarter: "
+    self.SPRITE_FULL = " Sprite Full: "
+    self.IS_LOADING_LEVEL_LABEL = " isLoadingLevel "
+    self.IS_FEATURE = " isFeature: "
+    self.GAME_FEATURE_CONTROLLED = "GameFeatureControlledInterface: "
+    }
     
-                        if(isLoadingLevel && isFeature)
-                        
-                                    {
-                                    featureInterface!!.init(level)
 
-                                    }
-                                
-}
-
-
-    var features: Features = Features.getInstance()!!
-
-
-    var graphicsFeatureFactory: GraphicsFeatureFactory = GraphicsFeatureFactory.getInstance()!!
-
-
-    var stringBuffer: StringMaker = StringMaker()
-
-stringBuffer!!.append(this.ANIMATION_FEATURES)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.VECTOR_GRAPHICS))
-stringBuffer!!.append(this.IMAGE_LABEL)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.IMAGE_GRAPHICS))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.INIT)
-
+    public override init() {
+        super.init()
+        self.initFields()
+    }
     
-                        if(features.isFeature(graphicsFeatureFactory!!.IMAGE_GRAPHICS))
-                        
-                                    {
-                                    stringBuffer!!.delete(0, stringBuffer!!.length())
-stringBuffer!!.append(this.IMAGE_GRAPHICS_ARRAY)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.IMAGE_TO_ARRAY_GRAPHICS))
-stringBuffer!!.append(this.IMAGE_GRAPHICS_ROTATION)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.IMAGE_TO_ARRAY_GRAPHICS))
-stringBuffer!!.append(this.SPRITE_QUARTER)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.SPRITE_QUARTER_ROTATION_GRAPHICS))
-stringBuffer!!.append(this.SPRITE_FULL)
-stringBuffer!!.appendboolean(features.isFeature(graphicsFeatureFactory!!.SPRITE_FULL_GRAPHICS))
-this.logUtil!!.putF(stringBuffer!!.toString(), this, this.commonStrings!!.INIT)
 
-                                    }
-                                
+    open func `init`(_ level: Int32) {
+        let size: Int32 = self.list.size()
+        do {
+            var index: Int32 = 0
+            while (index < size) {
+                defer { index &+= 1 }
+            let featureInterface: GameFeatureControlledInterface! = (self.list.objectArray[index] as! GameFeatureControlledInterface)
+            let isLoadingLevel: Bool = featureInterface.isLoadingLevel(level)
+            let isFeature: Bool = featureInterface.isFeature()
+            self.logUtil.putF(StringMaker().append(self.GAME_FEATURE_CONTROLLED).append(jstr(featureInterface)).append(self.IS_LOADING_LEVEL_LABEL).append(ResourceLoadingLevelFactory.getInstance().getLevelString(level)).append(CommonSeps.getInstance().COLON_SEP).appendboolean(isLoadingLevel).append(self.IS_FEATURE).appendboolean(isFeature).toString(), self, self.commonStrings.INIT)
+            if (isLoadingLevel && isFeature) {
+                featureInterface.`init`(level)
+            }
+            }
+        }
+        let features: Features! = Features.getInstance()
+        let graphicsFeatureFactory: GraphicsFeatureFactory! = GraphicsFeatureFactory.getInstance()
+        let stringBuffer: StringMaker! = StringMaker()
+        stringBuffer.append(self.ANIMATION_FEATURES)
+        stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.VECTOR_GRAPHICS))
+        stringBuffer.append(self.IMAGE_LABEL)
+        stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS))
+        self.logUtil.putF(stringBuffer.toString(), self, self.commonStrings.INIT)
+        if (features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS)) {
+            stringBuffer.delete(0, stringBuffer.length())
+            stringBuffer.append(self.IMAGE_GRAPHICS_ARRAY)
+            stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS))
+            stringBuffer.append(self.IMAGE_GRAPHICS_ROTATION)
+            stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS))
+            stringBuffer.append(self.SPRITE_QUARTER)
+            stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS))
+            stringBuffer.append(self.SPRITE_FULL)
+            stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_FULL_GRAPHICS))
+            self.logUtil.putF(stringBuffer.toString(), self, self.commonStrings.INIT)
+        }
+    }
+    
+
+    open func clear() {
+        self.list.clear()
+    }
+    
+
+    open func add(_ featureInterface: GameFeatureControlledInterface!) {
+        self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().START_LABEL).append(StringUtil.getInstance().toString((featureInterface as? JObject))).toString(), self, self.commonStrings.ADD)
+        self.list.add((featureInterface as? JObject))
+    }
+    
+
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.list
+    }
 }
-
-
-    open fun clear()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list.clear()
-}
-
-
-    open fun add(featureInterface: GameFeatureControlledInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-var featureInterface = featureInterface
-this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(StringUtil.getInstance()!!.toString(featureInterface))!!.toString(), this, this.commonStrings!!.ADD)
-this.list.add(featureInterface)
-}
-
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list
-}
-
-
-}
-                
-            
 

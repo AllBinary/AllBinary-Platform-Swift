@@ -1,114 +1,69 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.layer
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.layer
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.string.StringUtil
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.ABHashtable
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
+// import org.allbinary.util.BasicArrayListUtil
 
+open class LayerInterfaceFactory: JObject {
+    fileprivate static let SINGLETON: LayerInterfaceFactory! = LayerInterfaceFactory()
+    public var logUtil: LogUtil! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var HASHTABLE_LABEL: String! = nil
 
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.list = BasicArrayListUtil.getInstance().getImmutableInstance()
+    self.HASHTABLE_LABEL = "Hashtable: "
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        import java.lang.Integer
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.string.StringUtil
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.ABHashtable
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-import org.allbinary.util.BasicArrayListUtil
+    @discardableResult open class func getInstance() -> LayerInterfaceFactory! {
+        return LayerInterfaceFactory.SINGLETON
+    }
+    
 
-open public class LayerInterfaceFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val SINGLETON: LayerInterfaceFactory = LayerInterfaceFactory()
+    open func `init`() {
+        self.list = BasicArrayListD()
+    }
+    
 
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: LayerInterfaceFactory{
+    @discardableResult open func getNexInstance(_ hashtable: ABHashtable!, _ x: Int32, _ y: Int32, _ z: Int32) -> AllBinaryLayer! {
+        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        self.logUtil.putF(StringMaker().append(self.HASHTABLE_LABEL).append(StringUtil.getInstance().toString(hashtable)).toString(), self, commonStrings.GET_INSTANCE)
+        let typeInteger: Int32! = jUnboxValue(hashtable.get((Layer.ID as! JObject)), Int32.self)
+        let layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface! = (self.list.objectArray[typeInteger.intValue() - 1] as! LayerInterfaceFactoryInterface)
+        return layerInterfaceFactoryInterface.getNextInstance(hashtable, x, y, z)
+    }
+    
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerInterfaceFactory.SINGLETON
+    open func add(_ layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface!) {
+        self.list.add((layerInterfaceFactoryInterface as? JObject))
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private var list: BasicArrayList = BasicArrayListUtil.getInstance()!!.getImmutableInstance()!!
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-this.list= BasicArrayListD()
-}
-
-
-    private val HASHTABLE_LABEL: String = "Hashtable: "
-
-                @Throws(Exception::class)
-            
-    open fun getNexInstance(hashtable: ABHashtable<Any, Any>, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-: AllBinaryLayer{
-    //var hashtable = hashtable
-    //var x = x
-    //var y = y
-var z = z
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.putF(StringMaker().
-                            append(this.HASHTABLE_LABEL)!!.append(StringUtil.getInstance()!!.toString(hashtable))!!.toString(), this, commonStrings!!.GET_INSTANCE)
-
-    var typeInteger: Integer = hashtable.get(Layer.ID as Object) as Integer
-
-
-    var layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface = this.list.objectArray[typeInteger!!.toInt() -1]!! as LayerInterfaceFactoryInterface
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface!!.getNextInstance(hashtable, x, y, z)
-}
-
-
-    open fun add(layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var layerInterfaceFactoryInterface = layerInterfaceFactoryInterface
-this.list.add(layerInterfaceFactoryInterface)
-}
-
-
-}
-                
-            
 

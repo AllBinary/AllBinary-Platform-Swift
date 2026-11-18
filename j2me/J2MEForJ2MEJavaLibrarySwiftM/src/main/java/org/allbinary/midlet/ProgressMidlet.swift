@@ -1,89 +1,56 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.midlet
+import J2SEForSwiftLibrary
+// import org.allbinary.canvas.Processor
+// import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
+// import org.allbinary.logic.system.security.licensing.ClientInformationFactory
+// import org.allbinary.thread.PrimaryThreadPool
+// import org.allbinary.thread.ThreadPool
 
-
-
-
-        import java.lang.Object        
-        
-        import java.lang.Runnable
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.canvas.Processor
-import org.allbinary.logic.system.security.licensing.AbeClientInformationInterface
-import org.allbinary.logic.system.security.licensing.ClientInformationFactory
-import org.allbinary.thread.PrimaryThreadPool
-import org.allbinary.thread.ThreadPool
 //J2MEForJ2ME
-open public class ProgressMidlet : AllBinaryMidlet {
-        
+open class ProgressMidlet: AllBinaryMidlet {
+    public var abeClientInformation: AbeClientInformationInterface! = nil
 
-    val abeClientInformation: AbeClientInformationInterface
-public constructor (clientInformationFactory: ClientInformationFactory){
-    //var clientInformationFactory = clientInformationFactory
-this.preInit()
-this.abeClientInformation= clientInformationFactory!!.getInstance()!!
+    // Each class has its own field initializers
+    private func initFields() {
+    
+    }
+    
+
+    public init(_ clientInformationFactory: ClientInformationFactory!) {
+        super.init()
+        self.initFields()
+        self.preInit()
+        self.abeClientInformation = clientInformationFactory.getInstance()
+    }
+    
+
+    open func preInit() {
+    }
+    
+
+    open func exitProgress(_ isProgress: Bool) {
+        let processor: Processor! = MidletExitProcessorFactory.getInstance().getExitInstance(self)
+        do {
+            let primaryThreadPool: ThreadPool! = PrimaryThreadPool.getInstance()
+            let runnable: Runnable! = ExitRunnable(self, processor, isProgress)
+            primaryThreadPool.runTask(runnable)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
 }
-
-
-    open fun preInit()
-        //nullable = true from not(false or (false and true)) = true
-{
-}
-
-
-    open fun exitProgress(isProgress: Boolean)
-        //nullable = true from not(false or (false and false)) = true
-{
-var isProgress = isProgress
-
-    var processor: Processor = MidletExitProcessorFactory.getInstance()!!.getExitInstance(this)!!
-
-
-        try {
-            
-    var primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!!
-
-
-    var runnable: Runnable = ExitRunnable(this, processor, isProgress)
-
-primaryThreadPool!!.runTask(runnable)
-} catch(e: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "exit", e)
-
-        try {
-            processor.process()
-} catch(e2: Exception)
-            {
-this.logUtil!!.put(this.commonStrings!!.EXCEPTION, this, "exit", e)
-}
-
-}
-
-}
-
-
-}
-                
-            
 

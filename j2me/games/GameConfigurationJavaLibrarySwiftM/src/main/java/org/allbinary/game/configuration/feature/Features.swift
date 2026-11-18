@@ -1,260 +1,144 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.configuration.feature
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game.configuration.feature
+import J2SEForSwiftLibrary
+// import org.allbinary.game.configuration.event.GameFeatureEvent
+// import org.allbinary.game.configuration.event.GameFeatureEventHandler
+// import org.allbinary.logic.NullUtil
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.logic.communication.log.PreLogUtil
+// import org.allbinary.logic.string.StringMaker
+// import org.allbinary.logic.system.os.GenericOperatingSystem
+// import org.allbinary.logic.system.os.OperatingSystemFactory
+// import org.allbinary.string.CommonLabels
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
+open class Features: JObject {
+    fileprivate static var SINGLETON: JObject! = NullUtil.getInstance().NULL_OBJECT
+    public var logUtil: LogUtil! = nil
+    fileprivate var commonStrings: CommonStrings! = nil
+    fileprivate var list: BasicArrayList! = nil
+    fileprivate var defaultList: BasicArrayList! = nil
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.configuration.event.GameFeatureEvent
-import org.allbinary.game.configuration.event.GameFeatureEventHandler
-import org.allbinary.logic.NullUtil
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.logic.communication.log.PreLogUtil
-import org.allbinary.logic.string.StringMaker
-import org.allbinary.logic.system.os.GenericOperatingSystem
-import org.allbinary.logic.system.os.OperatingSystemFactory
-import org.allbinary.string.CommonLabels
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
-
-open public class Features
-            : Object
-         {
-        
-companion object {
-            
-    private var SINGLETON: Any = NullUtil.getInstance()!!.NULL_OBJECT
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: Features{
-
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.commonStrings = CommonStrings.getInstance()
     
-                        if(Features.SINGLETON == NullUtil.getInstance()!!.NULL_OBJECT)
-                        
-                                    {
-                                    Features.SINGLETON= Features()
+    
+    }
+    
 
-                                    }
-                                
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Features.SINGLETON as Features
-}
-
-
+    @discardableResult open class func getInstance() -> Features! {
+        if (Features.SINGLETON === NullUtil.getInstance().NULL_OBJECT) {
+            Features.SINGLETON = Features()
         }
-            
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val list: BasicArrayList
-
-    private val defaultList: BasicArrayList
-private constructor ()
-            : super()
-        {
-this.list= BasicArrayListD()
-this.defaultList= BasicArrayListD()
-this.init()
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun addDefault(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-this.add(gameFeature)
-
+        return (Features.SINGLETON as! Features)
+    }
     
-                        if(!this.defaultList!!.contains(gameFeature))
-                        
-                                    {
-                                    this.defaultList!!.add(gameFeature)
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun add(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-
+    public override init() {
+        super.init()
+        self.initFields()
+        self.list = BasicArrayListD()
+        self.defaultList = BasicArrayListD()
+        self.`init`()
+    }
     
-                        if(!this.list.contains(gameFeature))
-                        
-                                    {
-                                    this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(gameFeature!!.toString())!!.toString(), this, this.commonStrings!!.ADD)
-this.list.add(gameFeature)
-GameFeatureEventHandler.getInstance()!!.fireEvent(GameFeatureEvent(gameFeature, gameFeature!!.toString()))
 
-                                    }
-                                
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun removeDefault(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-this.logUtil!!.putF(StringMaker().
-                            append(CommonLabels.getInstance()!!.START_LABEL)!!.append(gameFeature!!.toString())!!.toString(), this, "removeDefault")
-this.remove(gameFeature)
-this.defaultList!!.remove(gameFeature)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun remove(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-
+    open func addDefault(_ gameFeature: Feature!) {
+        self.add(gameFeature)
+        if (!self.defaultList.contains(gameFeature)) {
+            self.defaultList.add(gameFeature)
+        }
+    }
     
-                        if(this.list.contains(gameFeature))
-                        
-                                    {
-                                    this.logUtil!!.putF(this.commonStrings!!.START, this, this.commonStrings!!.REMOVE)
-this.list.remove(gameFeature)
-GameFeatureEventHandler.getInstance()!!.fireEvent(GameFeatureEvent(gameFeature, gameFeature!!.toString()))
 
-                                    }
-                                
-}
-
-
-    open fun init()
-        //nullable = true from not(false or (false and true)) = true
-{
-
-        try {
-            
-    var gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!!
-
-
-    var inputFeatureFactory: InputFeatureFactory = InputFeatureFactory.getInstance()!!
-
-
-    var sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!!
-
-
-    var touchFeatureFactory: TouchFeatureFactory = TouchFeatureFactory.getInstance()!!
-
-this.addDefault(gameFeatureFactory!!.ARTIFICIAL_INTELLEGENCE_PROCESSOR)
-this.addDefault(gameFeatureFactory!!.COLLIDABLE_INTERFACE_LAYER_PROCESSOR)
-this.addDefault(gameFeatureFactory!!.GAME_INPUT_LAYER_PROCESSOR)
-this.addDefault(gameFeatureFactory!!.TICKABLE_LAYER_PROCESSOR)
-this.addDefault(inputFeatureFactory!!.MULTI_KEY_PRESS)
-this.addDefault(inputFeatureFactory!!.REMOVE_DUPLICATE_KEY_PRESSES)
-this.addDefault(gameFeatureFactory!!.SCREEN_SHAKE)
-this.addDefault(gameFeatureFactory!!.POST_IMAGE_LOADING_MODIFICATION)
-
-    var operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!!.getOperatingSystemInstance()!!
-
-
+    open func add(_ gameFeature: Feature!) {
+        if (!self.list.contains(gameFeature)) {
+            self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().START_LABEL).append(gameFeature.toString()).toString(), self, self.commonStrings.ADD)
+            self.list.add(gameFeature)
+            GameFeatureEventHandler.getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()))
+        }
+    }
     
-                        if(operatingSystemInterface!!.isOverScan())
-                        
-                                    {
-                                    this.addDefault(sensorFeatureFactory!!.NO_ORIENTATION)
-this.addDefault(touchFeatureFactory!!.HIDE_SCREEN_BUTTONS)
 
-                                    }
-                                
-                        else {
-                            this.addDefault(sensorFeatureFactory!!.ORIENTATION_SENSORS)
-this.addDefault(touchFeatureFactory!!.AUTO_HIDE_SHOW_SCREEN_BUTTONS)
-
-                        }
-                            
-this.addDefault(touchFeatureFactory!!.TOUCH_ENABLED)
-this.addDefault(MainFeatureFactory.getInstance()!!.FULL_SCREEN)
-this.addDefault(MainFeatureFactory.getInstance()!!.LOAD_ONDEMAND)
-} catch(e: Exception)
-            {
-PreLogUtil.putOE(this.commonStrings!!.EXCEPTION, this, this.commonStrings!!.INIT, e)
-}
-
-}
-
-
-    open fun isDefault(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var gameFeature = gameFeature
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultList!!.contains(gameFeature)
-}
-
-
-    open fun isFeature(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-    //var gameFeature = gameFeature
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(gameFeature)
-}
-
-
-                @Throws(Exception::class)
-            
-    open fun toggle(gameFeature: Feature)
-        //nullable = true from not(false or (false and false)) = true
-{
-    //var gameFeature = gameFeature
-
+    open func removeDefault(_ gameFeature: Feature!) {
+        self.logUtil.putF(StringMaker().append(CommonLabels.getInstance().START_LABEL).append(gameFeature.toString()).toString(), self, "removeDefault")
+        self.remove(gameFeature)
+        self.defaultList.remove(gameFeature)
+    }
     
-                        if(this.isFeature(gameFeature))
-                        
-                                    {
-                                    this.remove(gameFeature)
 
-                                    }
-                                
-                        else {
-                            this.add(gameFeature)
+    open func remove(_ gameFeature: Feature!) {
+        if (self.list.contains(gameFeature)) {
+            self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.REMOVE)
+            self.list.remove(gameFeature)
+            GameFeatureEventHandler.getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()))
+        }
+    }
+    
 
-                        }
-                            
+    fileprivate func `init`() {
+        do {
+            let gameFeatureFactory: GameFeatureFactory! = GameFeatureFactory.getInstance()
+            let inputFeatureFactory: InputFeatureFactory! = InputFeatureFactory.getInstance()
+            let sensorFeatureFactory: SensorFeatureFactory! = SensorFeatureFactory.getInstance()
+            let touchFeatureFactory: TouchFeatureFactory! = TouchFeatureFactory.getInstance()
+            self.addDefault(gameFeatureFactory.ARTIFICIAL_INTELLEGENCE_PROCESSOR)
+            self.addDefault(gameFeatureFactory.COLLIDABLE_INTERFACE_LAYER_PROCESSOR)
+            self.addDefault(gameFeatureFactory.GAME_INPUT_LAYER_PROCESSOR)
+            self.addDefault(gameFeatureFactory.TICKABLE_LAYER_PROCESSOR)
+            self.addDefault(inputFeatureFactory.MULTI_KEY_PRESS)
+            self.addDefault(inputFeatureFactory.REMOVE_DUPLICATE_KEY_PRESSES)
+            self.addDefault(gameFeatureFactory.SCREEN_SHAKE)
+            self.addDefault(gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION)
+            let operatingSystemInterface: GenericOperatingSystem! = OperatingSystemFactory.getInstance().getOperatingSystemInstance()
+            if (operatingSystemInterface.isOverScan()) {
+                self.addDefault(sensorFeatureFactory.NO_ORIENTATION)
+                self.addDefault(touchFeatureFactory.HIDE_SCREEN_BUTTONS)
+            } else {
+                self.addDefault(sensorFeatureFactory.ORIENTATION_SENSORS)
+                self.addDefault(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS)
+            }
+            self.addDefault(touchFeatureFactory.TOUCH_ENABLED)
+            self.addDefault(MainFeatureFactory.getInstance().FULL_SCREEN)
+            self.addDefault(MainFeatureFactory.getInstance().LOAD_ONDEMAND)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
+
+    @discardableResult open func isDefault(_ gameFeature: Feature!) -> Bool {
+        return self.defaultList.contains(gameFeature)
+    }
+    
+
+    @discardableResult open func isFeature(_ gameFeature: Feature!) -> Bool {
+        return self.list.contains(gameFeature)
+    }
+    
+
+    open func toggle(_ gameFeature: Feature!) {
+        if (self.isFeature(gameFeature)) {
+            self.remove(gameFeature)
+        } else {
+            self.add(gameFeature)
+        }
+    }
 }
-
-
-}
-                
-            
 

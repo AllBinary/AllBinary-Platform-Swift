@@ -1,86 +1,45 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.midlet
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.midlet
+import J2SEForSwiftLibrary
+// import javax.microedition.midlet.MIDlet
+// import org.allbinary.AppletUtil
+// import org.allbinary.J2MEUtil
+// import org.allbinary.canvas.Processor
 
+open class MidletExitProcessorFactory: JObject {
+    fileprivate static let instance: MidletExitProcessorFactory! = MidletExitProcessorFactory()
 
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.midlet.MIDlet
-import org.allbinary.AppletUtil
-import org.allbinary.J2MEUtil
-import org.allbinary.canvas.Processor
-
-open public class MidletExitProcessorFactory
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: MidletExitProcessorFactory = MidletExitProcessorFactory()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: MidletExitProcessorFactory{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletExitProcessorFactory.instance
-}
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    open fun getExitInstance(midlet: MIDlet)
-        //nullable = true from not(false or (false and false)) = true
-: Processor{
-var midlet = midlet
-
+    public override init() {
+        super.init()
+    }
     
-                        if(AppletUtil.isAppletLoader(midlet) || J2MEUtil.isJ2ME())
-                        
-                                    {
-                                    
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Processor.getInstance()
 
-                                    }
-                                
-                        else {
-                            
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletExitProcessor(midlet)
+    @discardableResult open class func getInstance() -> MidletExitProcessorFactory! {
+        return MidletExitProcessorFactory.instance
+    }
+    
 
-                        }
-                            
+    @discardableResult open func getExitInstance(_ midlet: MIDlet!) -> Processor! {
+        if (AppletUtil.isAppletLoader(midlet) || J2MEUtil.isJ2ME()) {
+            return Processor.getInstance()
+        } else {
+            return MidletExitProcessor(midlet)
+        }
+    }
 }
-
-
-}
-                
-            
 

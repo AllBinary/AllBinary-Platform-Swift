@@ -1,108 +1,69 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.game.input.GameKey
+// import org.allbinary.game.input.GameKeyEventSourceInterface
+// import org.allbinary.game.input.Input
+// import org.allbinary.game.input.InputFactory
+// import org.allbinary.game.input.event.GameKeyEvent
+// import org.allbinary.game.input.event.GameKeyEventFactory
+// import org.allbinary.game.input.mapping.InputToGameKeyMapping
+// import org.allbinary.logic.communication.log.LogUtil
+// import org.allbinary.string.CommonStrings
 
+public final class TouchButtonInput: Input, GameKeyEventSourceInterface {
+    public var logUtil: LogUtil! = nil
+    fileprivate var gameKeyEventFactory: GameKeyEventFactory! = nil
+    fileprivate var TOUCH_BUTTON_SOURCE_ID: Int32 = 0
+    fileprivate var gameKeyEvent: GameKeyEvent! = nil
 
+    // Each class has its own field initializers
+    private func initFields() {
+    self.logUtil = LogUtil.getInstance()
+    self.gameKeyEventFactory = GameKeyEventFactory.getInstance()
+    self.TOUCH_BUTTON_SOURCE_ID = self.gameKeyEventFactory.TOUCH_BUTTON_SOURCE_ID
+    self.gameKeyEvent = GameKeyEvent.NONE
+    }
+    
 
+    public override init(_ id: Int32, _ name: String!) {
+        super.init(id, name)
+        self.initFields()
+        let inputFactory: InputFactory! = InputFactory.getInstance()
+        inputFactory.add(self.getId(), self)
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.input.GameKey
-import org.allbinary.game.input.GameKeyEventSourceInterface
-import org.allbinary.game.input.Input
-import org.allbinary.game.input.InputFactory
-import org.allbinary.game.input.event.GameKeyEvent
-import org.allbinary.game.input.event.GameKeyEventFactory
-import org.allbinary.game.input.mapping.InputToGameKeyMapping
-import org.allbinary.logic.communication.log.LogUtil
-import org.allbinary.string.CommonStrings
+    public func update(_ inputToGameKeyMapping: InputToGameKeyMapping!) {
+        do {
+            let gameKey: GameKey! = inputToGameKeyMapping.getInstance(self.getId())
+            self.gameKeyEvent = self.gameKeyEventFactory.getInstanceForInput(self, gameKey)
+        } /* catch (Exception e): a thrown Java exception stops the program */
+    }
+    
 
-open public class TouchButtonInput : Input
-                , GameKeyEventSourceInterface {
-        
+    @discardableResult public func getSourceId() -> Int32 {
+        return self.TOUCH_BUTTON_SOURCE_ID
+    }
+    
 
-    val logUtil: LogUtil = LogUtil.getInstance()!!
-
-    private val gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!!
-
-    private val TOUCH_BUTTON_SOURCE_ID: Int = this.gameKeyEventFactory!!.TOUCH_BUTTON_SOURCE_ID
-
-    private var gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE
-public constructor (id: Int, name: String)                        
-
-                            : super(id, name){
-var id = id
-var name = name
-
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    var inputFactory: InputFactory = InputFactory.getInstance()!!
-
-inputFactory!!.add(this.getId(), this)
+    @discardableResult public func getGameKeyEvent() -> GameKeyEvent! {
+        return self.gameKeyEvent
+    }
 }
-
-
-    open fun update(inputToGameKeyMapping: InputToGameKeyMapping)
-        //nullable = true from not(false or (false and false)) = true
-{
-var inputToGameKeyMapping = inputToGameKeyMapping
-
-        try {
-            
-    var gameKey: GameKey = inputToGameKeyMapping!!.getInstance(this.getId())!!
-
-this.gameKeyEvent= this.gameKeyEventFactory!!.getInstanceForInput(this, gameKey)!!
-} catch(e: Exception)
-            {
-
-    var commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-this.logUtil!!.put(commonStrings!!.EXCEPTION, this, commonStrings!!.UPDATE, e)
-}
-
-}
-
-
-    override fun getSourceId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TOUCH_BUTTON_SOURCE_ID
-}
-
-
-    open fun getGameKeyEvent()
-        //nullable = true from not(false or (false and true)) = true
-: GameKeyEvent{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEvent
-}
-
-
-}
-                
-            
 

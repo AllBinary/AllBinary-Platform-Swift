@@ -24,7 +24,7 @@ open class TimeStampUtil: JObject {
     fileprivate static let instance: TimeStampUtil! = TimeStampUtil()
     
 
-    @discardableResult public static func getInstance() -> TimeStampUtil! {
+    @discardableResult open class func getInstance() -> TimeStampUtil! {
         return TimeStampUtil.instance
     }
     

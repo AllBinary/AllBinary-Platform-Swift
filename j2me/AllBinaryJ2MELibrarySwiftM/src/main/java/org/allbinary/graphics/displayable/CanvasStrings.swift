@@ -1,95 +1,74 @@
+/*
+ * 
+ * AllBinary Open License Version 1 
+ * Copyright (c) 2022 AllBinary 
+ *  
+ * By agreeing to this license you and any business entity you represent are 
+ * legally bound to the AllBinary Open License Version 1 legal agreement. 
+ *  
+ * You may obtain the AllBinary Open License Version 1 legal agreement from 
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+ *  
+ * Created By: Travis Berthelot 
+ *   
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.displayable
 
-        /*
-                *  
-                *  AllBinary Open License Version 1 
-                *  Copyright (c) 2022 AllBinary 
-                *   
-                *  By agreeing to this license you and any business entity you represent are 
-                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
-                *   
-                *  Created By: Travis Berthelot    
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.graphics.displayable
+import J2SEForSwiftLibrary
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListUtil
 
+open class CanvasStrings: JObject {
+    fileprivate static let instance: CanvasStrings! = CanvasStrings()
+    public var CONSTRUCTOR: String! = nil
+    public var PAUSE: String! = nil
+    public var UN_PAUSE: String! = nil
+    public var SET_FULL_SCREEN_MODE: String! = nil
+    public var SIZE_CHANGED: String! = nil
+    public var SCALED_IMAGES: String! = nil
+    public var PAINT: String! = nil
+    public var ON_DISPLAY_CHANGE_EVENT: String! = nil
+    public var UPDATE_MEASUREMENT: String! = nil
+    public var FD_WIDTH: String! = nil
+    public var FD_HEIGHT: String! = nil
+    public var EMPTY_CHILD_NAME_LIST: BasicArrayList! = nil
+    public var ABOUT: String! = nil
+    public var OPTIONS: String! = nil
+    public var FONT_ATLAS: String! = nil
+    public var OBJ_MODEL: String! = nil
+    public var MD2_MODEL: String! = nil
+    public var _PNG: String! = nil
 
+    private func initFields() {
+    self.CONSTRUCTOR = "MyCanvas::MyCanvas"
+    self.PAUSE = "MyCanvas::pause"
+    self.UN_PAUSE = "MyCanvas::unPause"
+    self.SET_FULL_SCREEN_MODE = "setFullScreenMode"
+    self.SIZE_CHANGED = "sizeChanged"
+    self.SCALED_IMAGES = "scaledImages"
+    self.PAINT = "paint"
+    self.ON_DISPLAY_CHANGE_EVENT = "onDisplayChangeEvent"
+    self.UPDATE_MEASUREMENT = "updateMeasurement"
+    self.FD_WIDTH = " font/display width: "
+    self.FD_HEIGHT = " font/display height: "
+    self.EMPTY_CHILD_NAME_LIST = BasicArrayListUtil.getInstance().getImmutableInstance()
+    self.ABOUT = "About"
+    self.OPTIONS = "Options"
+    self.FONT_ATLAS = "/font.png"
+    self.OBJ_MODEL = "_obj"
+    self.MD2_MODEL = "_md2"
+    self._PNG = ".png"
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListUtil
-
-open public class CanvasStrings
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: CanvasStrings = CanvasStrings()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: CanvasStrings{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasStrings.instance
+    @discardableResult open class func getInstance() -> CanvasStrings! {
+        return CanvasStrings.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    val CONSTRUCTOR: String = "MyCanvas::MyCanvas"
-
-    val PAUSE: String = "MyCanvas::pause"
-
-    val UN_PAUSE: String = "MyCanvas::unPause"
-
-    val SET_FULL_SCREEN_MODE: String = "setFullScreenMode"
-
-    val SIZE_CHANGED: String = "sizeChanged"
-
-    val SCALED_IMAGES: String = "scaledImages"
-
-    val PAINT: String = "paint"
-
-    val ON_DISPLAY_CHANGE_EVENT: String = "onDisplayChangeEvent"
-
-    val UPDATE_MEASUREMENT: String = "updateMeasurement"
-
-    val FD_WIDTH: String = " font/display width: "
-
-    val FD_HEIGHT: String = " font/display height: "
-
-    val EMPTY_CHILD_NAME_LIST: BasicArrayList = BasicArrayListUtil.getInstance()!!.getImmutableInstance()!!
-
-    val ABOUT: String = "About"
-
-    val OPTIONS: String = "Options"
-
-    val FONT_ATLAS: String = "/font.png"
-
-    val OBJ_MODEL: String = "_obj"
-
-    val MD2_MODEL: String = "_md2"
-
-    val _PNG: String = ".png"
-
-}
-                
-            
 

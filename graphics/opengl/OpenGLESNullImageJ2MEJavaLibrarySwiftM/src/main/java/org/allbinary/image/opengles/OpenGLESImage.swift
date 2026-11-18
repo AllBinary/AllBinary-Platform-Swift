@@ -1,133 +1,78 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.image.opengles
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.image.opengles
+import J2SEForSwiftLibrary
+// import javax.microedition.khronos.opengles.GL
+// import javax.microedition.khronos.opengles.GL10
+// import javax.microedition.lcdui.Image
+// import javax.microedition.lcdui.NullImage
+// import org.allbinary.platform.graphics.PlatformBitmapBase
+// import org.allbinary.platform.graphics.PlatformBitmapBaseFactory
+// import org.allbinary.platform.opengles.PlatformTextureBaseFactory
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListD
 
-
-
-
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import javax.microedition.khronos.opengles.GL
-import javax.microedition.khronos.opengles.GL10
-import javax.microedition.lcdui.Image
-import javax.microedition.lcdui.NullImage
-import org.allbinary.platform.graphics.PlatformBitmapBase
-import org.allbinary.platform.graphics.PlatformBitmapBaseFactory
-import org.allbinary.platform.opengles.PlatformTextureBaseFactory
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListD
 //OpenGLESNullImageJ2MEJavaLibrary
-open public class OpenGLESImage
-            : Object
-        
-                , OpenGLSurfaceChangedInterface {
-        
-companion object {
-            
-    val NULL_OPENGL_IMAGE: OpenGLESImage = OpenGLESImage(NullImage.NULL_IMAGE, PlatformBitmapBaseFactory.NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory.NULL_PLATFORM_TEXTURE_BASE_FACTORY)
+open class OpenGLESImage: JObject, OpenGLSurfaceChangedInterface {
+    public static let NULL_OPENGL_IMAGE: OpenGLESImage! = OpenGLESImage(NullImage.NULL_IMAGE, PlatformBitmapBaseFactory.NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory.NULL_PLATFORM_TEXTURE_BASE_FACTORY)
+    public static let texture2dList: BasicArrayList! = BasicArrayListD()
+    public static let TYPE: Int32 = 4
+    public var commonStrings: CommonStrings! = nil
+    public var textureFactory: PlatformTextureBaseFactory! = nil
+    public var openGLBitmap: PlatformBitmapBase! = nil
+    public var openGLESImageProperties: OpenGLESImageProperties! = nil
 
-    val texture2dList: BasicArrayList = BasicArrayListD()
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    
+    
+    self.openGLESImageProperties = OpenGLESImageProperties()
+    }
+    
 
-    val TYPE: Int = 4
+    public init(_ image: Image!, _ bitmapFactory: PlatformBitmapBaseFactory!, _ textureFactory: PlatformTextureBaseFactory!) {
+        super.init()
+        self.initFields()
+        self.openGLBitmap = bitmapFactory.createBitmap(image)
+        self.textureFactory = textureFactory
+    }
+    
 
-        }
-            
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
+    open func set(_ gl: GL!) {
+        jThrow(JException("Exception", self.commonStrings.NOT_IMPLEMENTED))
+    }
+    
 
-    val textureFactory: PlatformTextureBaseFactory
+    @discardableResult open func initTexture(_ gl: GL10!) -> Bool {
+        return false
+    }
+    
 
-    val openGLBitmap: PlatformBitmapBase
+    open func drawRegion(_ gl: GL10!, _ viewHeight: Int32, _ x_src: Float, _ y_src: Float, _ width: Float, _ height: Float, _ x: Int32, _ y: Int32, _ z: Int32) {
+    }
+    
 
-    val openGLESImageProperties: OpenGLESImageProperties = OpenGLESImageProperties()
-public constructor (image: Image, bitmapFactory: PlatformBitmapBaseFactory, textureFactory: PlatformTextureBaseFactory)
-            : super()
-        {
-    //var image = image
-    //var bitmapFactory = bitmapFactory
-    //var textureFactory = textureFactory
-this.openGLBitmap= bitmapFactory!!.createBitmap(image)!!
-this.textureFactory= textureFactory
+    open func draw(_ gl: GL10!, _ x: Int32, _ y: Int32, _ z: Int32) {
+    }
+    
+
+    @discardableResult open func getType() -> Int32 {
+        return OpenGLESImage.TYPE
+    }
 }
-
-
-                @Throws(Exception::class)
-            
-    override fun set(gl: GL)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-
-
-
-                            throw Exception(this.commonStrings!!.NOT_IMPLEMENTED)
-}
-
-
-    open fun initTexture(gl: GL10)
-        //nullable = true from not(false or (false and false)) = true
-: Boolean{
-var gl = gl
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false
-}
-
-
-    open fun drawRegion(gl: GL10, viewHeight: Int, x_src: Float, y_src: Float, width: Float, height: Float, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var viewHeight = viewHeight
-var x_src = x_src
-var y_src = y_src
-var width = width
-var height = height
-var x = x
-var y = y
-var z = z
-}
-
-
-    open fun draw(gl: GL10, x: Int, y: Int, z: Int)
-        //nullable = true from not(false or (false and false)) = true
-{
-var gl = gl
-var x = x
-var y = y
-var z = z
-}
-
-
-    open fun getType()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImage.TYPE
-}
-
-
-}
-                
-            
 

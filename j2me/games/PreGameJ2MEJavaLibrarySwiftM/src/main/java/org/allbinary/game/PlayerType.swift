@@ -1,79 +1,53 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.game
+import J2SEForSwiftLibrary
+// import org.allbinary.logic.string.StringUtil
 
+open class PlayerType: JObject {
+    fileprivate var id: Int32 = 0
+    fileprivate var name: String! = nil
 
+    private func initFields() {
+    
+    self.name = StringUtil.getInstance().EMPTY_STRING
+    }
+    
 
+    public init(_ name: String!, _ value: Int32) {
+        super.init()
+        self.initFields()
+        self.name = name
+        self.id = value
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.logic.string.StringUtil
+    @discardableResult open func getId() -> Int32 {
+        return self.id
+    }
+    
 
-open public class PlayerType
-            : Object
-         {
-        
+    @discardableResult open func getName() -> String! {
+        return self.name
+    }
+    
 
-    private var id: Int
-
-    private var name: String = StringUtil.getInstance()!!.EMPTY_STRING
- constructor (name: String, value: Int)
-            : super()
-        {
-    //var name = name
-    //var value = value
-this.name= name
-this.id= value
+    @discardableResult open override func toString() -> String! {
+        return self.getName()
+    }
 }
-
-
-    open fun getId()
-        //nullable = true from not(false or (false and true)) = true
-: Int{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id
-}
-
-
-    open fun getName()
-        //nullable = true from not(false or (false and true)) = true
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName()
-}
-
-
-}
-                
-            
 

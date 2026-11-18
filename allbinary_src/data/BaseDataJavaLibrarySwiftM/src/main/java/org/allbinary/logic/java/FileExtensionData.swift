@@ -28,7 +28,7 @@ open class FileExtensionData: JObject {
     }
     
 
-    @discardableResult public static func getInstance() -> FileExtensionData! {
+    @discardableResult open class func getInstance() -> FileExtensionData! {
         return FileExtensionData.instance
     }
     

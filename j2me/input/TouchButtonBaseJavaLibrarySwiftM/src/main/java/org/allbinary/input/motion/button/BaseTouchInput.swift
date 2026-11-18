@@ -1,68 +1,48 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.button
 
-        /*
-                * 
-                *  AllBinary Open License Version 1
-                *  Copyright (c) 2011 AllBinary
-                *  
-                *  By agreeing to this license you and any business entity you represent are
-                *  legally bound to the AllBinary Open License Version 1 legal agreement.
-                *  
-                *  You may obtain the AllBinary Open License Version 1 legal agreement from
-                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
-                *  
-                *  Created By: Travis Berthelot  
-        */
-        
-        /* Generated Code Do Not Modify */
-        package org.allbinary.input.motion.button
+import J2SEForSwiftLibrary
+// import org.allbinary.string.CommonStrings
+// import org.allbinary.util.BasicArrayList
+// import org.allbinary.util.BasicArrayListUtil
 
+open class BaseTouchInput: JObject {
+    public var commonStrings: CommonStrings! = nil
+    fileprivate var basicArrayListUtil: BasicArrayListUtil! = nil
 
+    private func initFields() {
+    self.commonStrings = CommonStrings.getInstance()
+    self.basicArrayListUtil = BasicArrayListUtil.getInstance()
+    }
+    
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.string.CommonStrings
-import org.allbinary.util.BasicArrayList
-import org.allbinary.util.BasicArrayListUtil
+    @discardableResult open func getList() -> BasicArrayList! {
+        return self.basicArrayListUtil.getImmutableInstance()
+    }
+    
 
-open public class BaseTouchInput
-            : Object
-         {
-        
-
-    val commonStrings: CommonStrings = CommonStrings.getInstance()!!
-
-    private val basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!!
-public constructor ()
-            : super()
-        {
+    @discardableResult open override func toString() -> String! {
+        return JObject.className(self)
+    }
 }
-
-
-    open fun getList()
-        //nullable = true from not(false or (false and true)) = true
-: BasicArrayList{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!!.getImmutableInstance()
-}
-
-
-    override fun toString()
-        //nullable =  from not(false or (true and true)) = 
-: String{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this::class.toString()!!
-}
-
-
-}
-                
-            
 

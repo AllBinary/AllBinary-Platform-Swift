@@ -25,7 +25,7 @@ open class SecondaryThreadPool: ThreadPool {
     fileprivate static let instance: ThreadPool! = SecondaryThreadPool("Secondary", 1, ThreadPool.NORMAL_PRIORITY)
     
 
-    @discardableResult public static func getInstance() -> ThreadPool! {
+    @discardableResult open class func getInstance() -> ThreadPool! {
         return SecondaryThreadPool.instance
     }
     

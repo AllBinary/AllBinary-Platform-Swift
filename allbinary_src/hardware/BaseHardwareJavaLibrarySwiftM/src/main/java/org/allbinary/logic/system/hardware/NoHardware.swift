@@ -29,7 +29,7 @@ open class NoHardware: JObject, HardwareInterface {
     }
     
 
-    @discardableResult public static func getInstance() -> HardwareInterface! {
+    @discardableResult open class func getInstance() -> HardwareInterface! {
         return NoHardware.instance
     }
     
