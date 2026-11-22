@@ -79,7 +79,7 @@ open class MakeCountedPartsSingletonArrayFactory: JObject {
             var index: Int32 = 0
             while (index < newSize) {
                 defer { index &+= 1 }
-            newPartInterfaceArray[index] = (self.list.get(index) as! PartInterface)
+            newPartInterfaceArray[index] = (self.list.get(index) as Any as? PartInterface)
             }
         }
         return newPartInterfaceArray

@@ -35,7 +35,7 @@ open class BasicMotionGesturesHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let baseMotionGestureEventListener: BaseMotionGestureEventListener! = (eventListenerInterface as! BaseMotionGestureEventListener)
+        let baseMotionGestureEventListener: BaseMotionGestureEventListener! = (eventListenerInterface as Any as? BaseMotionGestureEventListener)
         baseMotionGestureEventListener.onMotionGestureEvent((eventObject as! MotionGestureEvent))
     }
 }

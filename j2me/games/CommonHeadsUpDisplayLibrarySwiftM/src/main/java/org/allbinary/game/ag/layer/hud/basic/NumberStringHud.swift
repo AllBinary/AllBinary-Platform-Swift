@@ -66,7 +66,7 @@ open class NumberStringHud: BasicHud, PaintableInterface {
 
     open override func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.offset = font.stringWidth(self.prependString) + MyFontProcessor.defaultCharWidth(font)
+        self.offset = font.stringWidth(self.prependString) &+ MyFontProcessor.defaultCharWidth(font)
         super.updateMeasurement(graphics)
     }
     

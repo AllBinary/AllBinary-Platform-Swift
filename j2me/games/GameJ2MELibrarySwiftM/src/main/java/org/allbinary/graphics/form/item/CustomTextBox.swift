@@ -57,7 +57,7 @@ open class CustomTextBox: GameCommandCanvas, RawKeyEventListener {
     }
     
 
-    open override func onEventRaw(_ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool) {
+    open func onEventRaw(_ keyCode: Int32, _ deviceId: Int32, _ repeated: Bool) {
         self.logUtil.putF(StringMaker().append(self.commonStrings.START).appendint(keyCode).toString(), self, "onEvent")
         self.keyPressedByDevice(keyCode, deviceId)
     }

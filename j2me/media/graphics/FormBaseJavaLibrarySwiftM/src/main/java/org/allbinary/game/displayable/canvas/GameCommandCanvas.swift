@@ -132,7 +132,7 @@ open class GameCommandCanvas: MyCanvas, MenuListener, DisplayChangeEventListener
     }
     
 
-    open override func updateMeasurement(_ graphics: Graphics!) {
+    open func updateMeasurement(_ graphics: Graphics!) {
         do {
             let font: Font! = graphics.getFont()
             self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(self.canvasStrings.FD_WIDTH).appendint(MyFontProcessor.defaultCharWidth(font)).append(self.canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), self, self.canvasStrings.UPDATE_MEASUREMENT)
@@ -145,12 +145,12 @@ open class GameCommandCanvas: MyCanvas, MenuListener, DisplayChangeEventListener
     }
     
 
-    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
         ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
     }
     
 
-    open override func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+    open func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
         self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(DisplayInfoSingleton.getInstance().toString()).toString(), self, self.canvasStrings.ON_DISPLAY_CHANGE_EVENT)
         self.myFontProcessor = self.updateMyFontProcessor
     }
@@ -190,7 +190,7 @@ open class GameCommandCanvas: MyCanvas, MenuListener, DisplayChangeEventListener
     }
     
 
-    open override func `open`() {
+    open func `open`() {
         self.logUtil.putF(self.commonStrings.START, self, "open")
         BasicMotionGesturesHandler.getInstance().addListenerInterface(self.getMenuInputProcessor())
         GameKeyEventHandler.getInstance().addListener(self.getMenuInputProcessor())
@@ -198,7 +198,7 @@ open class GameCommandCanvas: MyCanvas, MenuListener, DisplayChangeEventListener
     }
     
 
-    open override func close() {
+    open func close() {
         self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CLOSE)
         BasicMotionGesturesHandler.getInstance().removeListener(self.getMenuInputProcessor())
         GameKeyEventHandler.getInstance().removeListener(self.getMenuInputProcessor())
@@ -211,7 +211,7 @@ open class GameCommandCanvas: MyCanvas, MenuListener, DisplayChangeEventListener
     }
     
 
-    @discardableResult open override func getSourceId() -> Int32 {
+    @discardableResult open func getSourceId() -> Int32 {
         return GameCommandCanvas.id
     }
     

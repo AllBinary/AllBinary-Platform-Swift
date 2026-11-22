@@ -57,7 +57,7 @@ open class LayerInterfaceFactory: JObject {
         let commonStrings: CommonStrings! = CommonStrings.getInstance()
         self.logUtil.putF(StringMaker().append(self.HASHTABLE_LABEL).append(StringUtil.getInstance().toString(hashtable)).toString(), self, commonStrings.GET_INSTANCE)
         let typeInteger: Int32! = jUnboxValue(hashtable.get((Layer.ID as! JObject)), Int32.self)
-        let layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface! = (self.list.objectArray[typeInteger.intValue() - 1] as! LayerInterfaceFactoryInterface)
+        let layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface! = (self.list.objectArray[typeInteger.intValue() - 1] as Any as? LayerInterfaceFactoryInterface)
         return layerInterfaceFactoryInterface.getNextInstance(hashtable, x, y, z)
     }
     

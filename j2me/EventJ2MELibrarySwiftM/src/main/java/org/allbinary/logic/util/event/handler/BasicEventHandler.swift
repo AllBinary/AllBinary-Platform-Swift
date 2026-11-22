@@ -62,7 +62,7 @@ open class BasicEventHandler: JObject, BasicEventHandlerInterface {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            eventListenerInterface = (vector.get(index) as! EventListenerInterface)
+            eventListenerInterface = (vector.get(index) as Any as? EventListenerInterface)
             self.addListenerInterface(eventListenerInterface)
             }
         }
@@ -76,7 +76,7 @@ open class BasicEventHandler: JObject, BasicEventHandlerInterface {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            eventListenerInterface = (vector.get(index) as! EventListenerInterface)
+            eventListenerInterface = (vector.get(index) as Any as? EventListenerInterface)
             self.removeListener(eventListenerInterface)
             }
         }
@@ -112,7 +112,7 @@ open class BasicEventHandler: JObject, BasicEventHandlerInterface {
         var index: Int32 = 0
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? EventListenerInterface)
                 self.process(eventObject, eventListenerInterface)
             } /* catch (Exception e): a thrown Java exception stops the program */
             index &+= 1
@@ -138,7 +138,7 @@ open class BasicEventHandler: JObject, BasicEventHandlerInterface {
         var index: Int32 = 0
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? EventListenerInterface)
                 stringBuffer.append(self.eventStrings.LISTENER_LABEL)
                 stringBuffer.append(jstr(eventListenerInterface))
             } /* catch (Exception e): a thrown Java exception stops the program */

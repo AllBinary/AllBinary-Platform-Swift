@@ -29,7 +29,7 @@ import J2SEForSwiftLibrary
 // import org.allbinary.graphics.form.item.CommandTextItem
 // import org.allbinary.graphics.form.item.ABCustomItem
 
-open class CommandCurrentSelectionForm: ScrollCurrentSelectionForm, UpdateMyFontInterface {
+open class CommandCurrentSelectionForm: ScrollCurrentSelectionForm {
     public var selectedAnimationArray: JArray<Animation?>! = nil
     public var unSelectedAnimationArray: JArray<Animation?>! = nil
 

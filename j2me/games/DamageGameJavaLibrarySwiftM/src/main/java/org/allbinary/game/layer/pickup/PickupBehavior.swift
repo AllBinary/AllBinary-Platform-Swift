@@ -57,7 +57,7 @@ open class PickupBehavior: JObject, PickupBehaviorInterface {
 
     open func doPickup(_ pickupProcessorInterface: PickupProcessorInterface!) {
         do {
-            let healthInterfaceCompositeInterface: HealthInterfaceCompositeInterface! = (self.ownerLayerInterface as! HealthInterfaceCompositeInterface)
+            let healthInterfaceCompositeInterface: HealthInterfaceCompositeInterface! = (self.ownerLayerInterface as Any as? HealthInterfaceCompositeInterface)
             if (healthInterfaceCompositeInterface.getHealthInterface().isAlive()) {
                 pickupProcessorInterface.process(self.ownerLayerInterface)
             }
@@ -71,13 +71,13 @@ open class PickupBehavior: JObject, PickupBehaviorInterface {
             let pickedUpLayerType: PickedUpLayerType! = pickedUpLayerInterfaceFactoryInterface.getPickedUpLayerType()
             let pickedUpLayerTypeFactory: PickedUpLayerTypeFactory! = PickedUpLayerTypeFactory.getInstance()
             if (pickedUpLayerType === pickedUpLayerTypeFactory.BEAM || pickedUpLayerType === pickedUpLayerTypeFactory.MINE || pickedUpLayerType === pickedUpLayerTypeFactory.PROJECTILE || pickedUpLayerType === pickedUpLayerTypeFactory.ENHANCEMENT) {
-                self.add((pickedUpLayerInterfaceFactoryInterface as! CountedPickedUpLayerInterfaceFactoryInterface))
-            } else if (pickedUpLayerInterfaceFactoryInterface.getPickedUpLayerType() == pickedUpLayerTypeFactory.PART) {
+                self.add((pickedUpLayerInterfaceFactoryInterface as Any as? CountedPickedUpLayerInterfaceFactoryInterface))
+            } else if (pickedUpLayerInterfaceFactoryInterface.getPickedUpLayerType() === pickedUpLayerTypeFactory.PART) {
                 let collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer! = (self.ownerLayerInterface as! CollidableDestroyableDamageableLayer)
                 collidableDestroyableDamageableLayer.addPart(pickedUpLayerInterfaceFactoryInterface)
             } else if (pickedUpLayerType === pickedUpLayerTypeFactory.NONE) {
             } else {
-                let pickupProcessorInterface: PickupProcessorInterface! = (pickedUpLayerInterfaceFactoryInterface as! PickupProcessorInterface)
+                let pickupProcessorInterface: PickupProcessorInterface! = (pickedUpLayerInterfaceFactoryInterface as Any as? PickupProcessorInterface)
                 self.doPickup(pickupProcessorInterface)
             }
             pickupLayerInterface.setPickedUp()

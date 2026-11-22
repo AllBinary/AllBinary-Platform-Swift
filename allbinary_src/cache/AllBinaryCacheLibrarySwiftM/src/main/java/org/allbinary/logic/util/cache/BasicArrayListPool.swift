@@ -34,7 +34,7 @@ open class BasicArrayListPool: AbstractArrayListPool {
     @discardableResult open override func remove(_ key: JObject!) -> CacheableInterface! {
         let size: Int32 = self.buffers.size()
         if (size > 0) {
-            return (self.buffers.removeAt(size &- 1) as! CacheableInterface)
+            return (self.buffers.removeAt(size &- 1) as Any as? CacheableInterface)
         } else {
             return self.cacheableInterfaceFactoryInterface.getInstance(key)
         }
@@ -45,7 +45,7 @@ open class BasicArrayListPool: AbstractArrayListPool {
         do {
             var index: Int32 = usedList.size()
             while (jPreDecrement(&index) >= 0) {
-            let anyType: CacheableInterface! = (usedList.objectArray[index] as! CacheableInterface)
+            let anyType: CacheableInterface! = (usedList.objectArray[index] as Any as? CacheableInterface)
             self.add(anyType)
             }
         }

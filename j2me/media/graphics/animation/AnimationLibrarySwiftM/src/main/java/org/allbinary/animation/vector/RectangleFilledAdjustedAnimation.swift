@@ -20,7 +20,7 @@ import J2SEForSwiftLibrary
 // import org.allbinary.graphics.color.BasicColor
 // import org.allbinary.graphics.color.ColorCompositeInterface
 
-open class RectangleFilledAdjustedAnimation: RectangleFilledAnimation, ColorCompositeInterface {
+open class RectangleFilledAdjustedAnimation: RectangleFilledAnimation {
     fileprivate var offsetX: Int32 = 0
     fileprivate var offsetY: Int32 = 0
 

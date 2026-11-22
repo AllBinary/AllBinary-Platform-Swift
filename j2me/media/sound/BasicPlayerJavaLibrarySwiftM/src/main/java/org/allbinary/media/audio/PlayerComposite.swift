@@ -144,7 +144,7 @@ open class PlayerComposite: JObject, Controllable, Player {
     
 
     open func setVolume(_ leftVolume: Int32, _ rightVolume: Int32) {
-        let controllable2: Controllable2! = ((self.player as! Controllable2))
+        let controllable2: Controllable2! = ((self.player as Any as? Controllable2))
         controllable2.setVolume(leftVolume, rightVolume)
     }
     

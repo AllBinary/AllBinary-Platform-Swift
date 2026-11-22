@@ -67,7 +67,7 @@ open class OwnershipPaintable: Paintable, UpdateMyFontInterface {
 
     open func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.COPYRIGHT_Y = 2 * font.getHeight()
+        self.COPYRIGHT_Y = 2 &* font.getHeight()
         self.beginWidth = (font.stringWidth(self.COPYRIGHT) >> 1)
         self.myFontProcessor = MyFontProcessor.getInstance()
     }

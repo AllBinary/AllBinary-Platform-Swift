@@ -65,7 +65,7 @@ open class DatabaseEncoder: JObject {
                 while (index < size) {
                     defer { index &+= 1 }
                 byteOfData = jUnboxString(vector.objectArray[index])
-                decode[index] = Byte.parseByte(byteOfData)
+                decode[index] = Int8(byteOfData)!
                 }
             }
             return decode

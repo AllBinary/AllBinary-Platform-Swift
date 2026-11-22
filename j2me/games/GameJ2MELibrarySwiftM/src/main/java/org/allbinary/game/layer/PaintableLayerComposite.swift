@@ -52,7 +52,7 @@ open class PaintableLayerComposite: Paintable {
         do {
             var index: Int32 = self.paintableArray.length
             while (jPreDecrement(&index) >= 0) {
-            paintableInterface = (self.paintableArray[index] as! PaintableInterface)
+            paintableInterface = (self.paintableArray[index] as Any as? PaintableInterface)
             paintableInterface.paintThreed(graphics)
             }
         }

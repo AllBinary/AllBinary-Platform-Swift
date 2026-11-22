@@ -77,8 +77,9 @@ repository="$(sed -n 's:.*<localRepository>\([^<]*\)</localRepository>.*:\1:p' "
 missing_dir="$object_dir/missing-modules"
 mkdir -p "$missing_dir"
 include_flags+=(-I "$(cygpath -w "$missing_dir")")
-# A project with many dependencies (microemu-midp) finds a missing module or two each attempt
-for attempt in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16; do
+# A project with many dependencies (microemu-midp, GameResource) finds a missing module or two each attempt, then the
+# ambiguous classes: a module deep in the reactor needs more than 16 attempts. The loop also ends when nothing changed.
+for attempt in $(seq 1 40); do
     output="$(swiftc -emit-module -parse-as-library "${compiler_flags[@]}" -module-name "$module_name" "${include_flags[@]}" "@$(cygpath -w "$sources_file")" -emit-module-path "$(cygpath -w "$output_dir/modules/$module_name.swiftmodule")")"
     status=$?
     echo "$output"
@@ -89,6 +90,10 @@ for attempt in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16; do
     changed=false
     while IFS= read -r module; do
         jar="$(ls "$(cygpath -u "$repository")/org/allbinary/$module"/*/"$module"-*.jar 2>/dev/null | grep -v sources | head -1)"
+        # A module of a sub-group (GameResourceNoneJavaLibrarySwift is org.allbinary.game)
+        if [ -z "$jar" ]; then
+            jar="$(ls "$(cygpath -u "$repository")/org/allbinary"/*/"$module"/*/"$module"-*.jar 2>/dev/null | grep -v sources | head -1)"
+        fi
         # The microemu module microemu_midp_for_polyglotSwift is the org.microemu artifact microemu-midp-for-polyglotSwift
         if [ -z "$jar" ]; then
             artifact_name="$(echo "$module" | tr '_' '-')"
@@ -136,7 +141,9 @@ $(echo "$output" | tr -d '\000' | grep -a -B1 "note: found this candidate" | gre
         printf 'public typealias %s = %s.%s\n' "$name" "$module" "$name" >> "$imports"
         echo "$name" >> "$object_dir/switched-aliases.txt"
         changed=true
-    done < <(echo "$output" | tr -d '\000' | grep -a -o "cannot convert value of type '${module_name}\.[A-Za-z0-9_]*?\?' (aka '[^']*') to expected argument type '[A-Za-z0-9_.]*?\?' (aka '[^']*')" | sed -n "s/.*value of type '${module_name}\.\([A-Za-z0-9_]*\)?\{0,1\}'.*expected argument type '[^']*' (aka '[^<']*<\{0,1\}\([A-Za-z0-9_]*\)\.\1>\{0,1\}').*/\1|\2/p" | sort -u)
+    done < <({ echo "$output" | tr -d '\000' | grep -a -o "cannot convert value of type '${module_name}\.[A-Za-z0-9_]*?\?' (aka '[^']*') to expected argument type '[A-Za-z0-9_.]*?\?' (aka '[^']*')" | sed -n "s/.*value of type '${module_name}\.\([A-Za-z0-9_]*\)?\{0,1\}'.*expected argument type '[^']*' (aka '[^<']*<\{0,1\}\([A-Za-z0-9_]*\)\.\1>\{0,1\}').*/\1|\2/p"
+        # A dependency's value assigned to a variable of this module's alias: the alias follows the dependency's module
+        echo "$output" | tr -d '\000' | grep -a -o "cannot assign value of type '[A-Za-z0-9_.]*?\?' (aka '[^']*') to type '${module_name}\.[A-Za-z0-9_]*?\?'" | sed -n "s/.*value of type '[^']*' (aka '[^<']*<\{0,1\}\([A-Za-z0-9_]*\)\.\([A-Za-z0-9_]*\)>\{0,1\}') to type '${module_name}\.\2?\{0,1\}'.*/\2|\1/p"; } | sort -u)
     [ "$changed" = "true" ] || break
 done
 echo "Swift build failed: $artifact" >&2

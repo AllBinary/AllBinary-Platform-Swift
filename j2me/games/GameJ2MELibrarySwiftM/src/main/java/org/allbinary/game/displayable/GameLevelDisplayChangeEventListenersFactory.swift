@@ -53,7 +53,7 @@ open class GameLevelDisplayChangeEventListenersFactory: JObject {
         do {
             var index: Int32 = self.list.size()
             while (jPreDecrement(&index) >= 0) {
-            displayChangeEventListener = (self.list.objectArray[index] as! DisplayChangeEventListener)
+            displayChangeEventListener = (self.list.objectArray[index] as Any as? DisplayChangeEventListener)
             displayChangeEventHandler.removeListener(displayChangeEventListener)
             }
         }

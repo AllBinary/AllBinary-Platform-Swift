@@ -38,8 +38,8 @@ open class ReverseVelocityBoundsVisitor: JObject, BoundsVisitorInterface {
         super.init()
         self.initFields()
         self.layerInterface = layerInterface
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (layerInterface as! VelocityInterfaceCompositeInterface)
-        self.velocityInterface = (velocityInterfaceCompositeInterface.getVelocityProperties() as! VelocityInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (layerInterface as Any as? VelocityInterfaceCompositeInterface)
+        self.velocityInterface = (velocityInterfaceCompositeInterface.getVelocityProperties() as Any as? VelocityInterface)
     }
     
 

@@ -87,7 +87,7 @@ open class BaseResourceAnimationInterfaceFactoryInterfaceFactory: JObject, Featu
         if (basicAnimationInterfaceFactoryInterfaceCanBeNull == nil) {
             return NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY
         }
-        return (basicAnimationInterfaceFactoryInterfaceCanBeNull as! BasicAnimationInterfaceFactoryInterface)
+        return (basicAnimationInterfaceFactoryInterfaceCanBeNull as Any as? BasicAnimationInterfaceFactoryInterface)
     }
     
 

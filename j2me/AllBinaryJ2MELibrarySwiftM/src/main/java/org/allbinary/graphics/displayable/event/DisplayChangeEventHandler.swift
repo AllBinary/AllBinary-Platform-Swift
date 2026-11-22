@@ -35,7 +35,7 @@ open class DisplayChangeEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let displayChangeEventListener: DisplayChangeEventListener! = ((eventListenerInterface as! DisplayChangeEventListener))
+        let displayChangeEventListener: DisplayChangeEventListener! = ((eventListenerInterface as Any as? DisplayChangeEventListener))
         displayChangeEventListener.onDisplayChangeEvent((eventObject as! DisplayChangeEvent))
     }
 }

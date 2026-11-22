@@ -47,7 +47,7 @@ open class ImageJ2MEScaleUtil: JObject {
     @discardableResult open func scale(_ image: Image!, _ width: Int32, _ height: Int32) -> Image! {
         let sourceWidth: Int32 = image.getWidth()
         let sourceHeight: Int32 = image.getHeight()
-        let originalData: JArray<Int32>! = JArray<Int32>(image.getWidth() * image.getHeight(), 0)
+        let originalData: JArray<Int32>! = JArray<Int32>(image.getWidth() &* image.getHeight(), 0)
         image.getRGB(originalData, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight())
         let scaledData: JArray<Int32>! = JArray<Int32>(width &* height, 0)
         let heightRatioFactor: Int32 = (8 &* sourceHeight) / height

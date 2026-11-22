@@ -113,7 +113,7 @@ open class PickupLayer: MultiPlayerGameLayer, PickedUpLayerInterface, Pickupable
     
 
     open override func set(_ gl: GL!) {
-        let openGLSurfaceChangedInterface: OpenGLSurfaceChangedInterface! = (self.animationInterface as! OpenGLSurfaceChangedInterface)
+        let openGLSurfaceChangedInterface: OpenGLSurfaceChangedInterface! = (self.animationInterface as Any as? OpenGLSurfaceChangedInterface)
         openGLSurfaceChangedInterface.set(gl)
     }
 }

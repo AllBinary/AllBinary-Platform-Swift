@@ -36,7 +36,7 @@ open class CollidableCharacterNoDamageBehavior: CollidableDestroyableDamageableB
         let collisionType: CollisionType! = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer)
         if (collisionType === collisionTypeFactory.PICKUP) {
             let collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer! = (ownerLayer as! CollidableDestroyableDamageableLayer)
-            collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer((collidableInterfaceCompositeInterface as! PickedUpLayerInterface))
+            collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer((collidableInterfaceCompositeInterface as Any as? PickedUpLayerInterface))
         } else {
         }
     }

@@ -28,7 +28,7 @@ open class AllBinarySpriteRotationAnimation: HackRotationSpriteIndexedAnimation 
     
 
     public init(_ sprite: Sprite!, _ image: Image!, _ animationBehavior: AnimationBehavior!) {
-        super.init(sprite, image, AngleInfo.getInstance(Int16(truncatingIfNeeded: (Int32(AngleFactory.getInstance().TOTAL_ANGLE) / sprite.getRawFrameCount()))), animationBehavior)
+        super.init(sprite, image, AngleInfo.getInstance(Int16(truncatingIfNeeded: (Int32(Int32(truncatingIfNeeded: AngleFactory.getInstance().TOTAL_ANGLE)) / sprite.getRawFrameCount()))), animationBehavior)
         self.angleInfo.adjustAngle(self.sprite.getFrame())
     }
     

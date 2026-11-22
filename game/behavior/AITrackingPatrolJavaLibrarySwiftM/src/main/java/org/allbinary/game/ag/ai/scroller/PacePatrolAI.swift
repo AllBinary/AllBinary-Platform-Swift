@@ -103,10 +103,10 @@ open class PacePatrolAI: BasePatrolAI, TrackingEventListenerInterface {
             let absYDistance: Int32 = abs(yDistance)
             if (absYDistance <= 100) {
                 if (absXDistance < self.getFiringDistance() / 2) {
-                    directionCompositeInterface = (self.getOwnerLayerInterface() as! DirectionCompositeInterface)
-                    if (xDistance < 0 && directionCompositeInterface.getDirection() == directionFactory.RIGHT) {
+                    directionCompositeInterface = (self.getOwnerLayerInterface() as Any as? DirectionCompositeInterface)
+                    if (xDistance < 0 && directionCompositeInterface.getDirection() === directionFactory.RIGHT) {
                         direction = directionFactory.RIGHT
-                    } else if (xDistance > 0 && directionCompositeInterface.getDirection() == directionFactory.LEFT) {
+                    } else if (xDistance > 0 && directionCompositeInterface.getDirection() === directionFactory.LEFT) {
                         direction = directionFactory.LEFT
                     }
                 }

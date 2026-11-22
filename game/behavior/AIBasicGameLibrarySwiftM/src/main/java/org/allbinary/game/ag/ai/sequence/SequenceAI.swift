@@ -51,7 +51,7 @@ open class SequenceAI: ArrayAI {
         self.index &+= 1
         let artificialIntelligenceInterface: ArtificialIntelligenceInterface! = self.getSelectedArtificialIntelligenceInterface()
         if (artificialIntelligenceInterface.getId() == ArtificialIntelligence.AI_ID) {
-            let artificialIntelligenceTransitionInterface: ArtificialIntelligenceTransitionInterface! = (artificialIntelligenceInterface as! ArtificialIntelligenceTransitionInterface)
+            let artificialIntelligenceTransitionInterface: ArtificialIntelligenceTransitionInterface! = (artificialIntelligenceInterface as Any as? ArtificialIntelligenceTransitionInterface)
             artificialIntelligenceTransitionInterface.transition()
         }
     }

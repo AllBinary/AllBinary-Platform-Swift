@@ -81,8 +81,8 @@ open class ImageCopyUtil: JObject {
             self.logUtil.put(self.NO_COPY, self, self.commonStrings.CONSTRUCTOR, JException("Exception", ""))
             return originalImage
         }
-        var newWidth: Int32 = Int32(truncatingIfNeeded: (originalImage.getWidth() * canvasScale))
-        var newHeight: Int32 = Int32(truncatingIfNeeded: (originalImage.getHeight() * canvasScale))
+        var newWidth: Int32 = JMath.toInt32(Double((Float(originalImage.getWidth()) * canvasScale)))
+        var newHeight: Int32 = JMath.toInt32(Double((Float(originalImage.getHeight()) * canvasScale)))
         if (resize) {
             if (newWidth < newHeight) {
                 newWidth = newHeight
@@ -93,8 +93,8 @@ open class ImageCopyUtil: JObject {
         }
         let image: Image! = self.imageCreationUtil.createImageWH(newWidth, newHeight)
         if (image.isMutable()) {
-            let halfWidthDelta: Int32 = (newWidth - originalImage.getWidth()) / 2
-            let halfHeightDelta: Int32 = (newHeight - originalImage.getHeight()) / 2
+            let halfWidthDelta: Int32 = (newWidth &- originalImage.getWidth()) / 2
+            let halfHeightDelta: Int32 = (newHeight &- originalImage.getHeight()) / 2
             let graphics: Graphics! = image.getGraphics()
             graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, self.anchor)
             return image

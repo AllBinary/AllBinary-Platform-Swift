@@ -83,7 +83,7 @@ open class AbFileSystem: JObject {
             closeable = idFile
             let size: Int32 = idFile.read(bytes)
             if (size > 0) {
-                return JString.fromChars(bytes, 0, size)
+                return JString.fromBytes(bytes, 0, size)
             }
         } /* catch (Exception e): a thrown Java exception stops the program */
         return StringUtil.getInstance().EMPTY_STRING

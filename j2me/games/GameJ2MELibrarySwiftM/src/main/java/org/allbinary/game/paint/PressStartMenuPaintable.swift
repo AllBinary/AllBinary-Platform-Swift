@@ -74,7 +74,7 @@ open class PressStartMenuPaintable: Paintable, UpdateMyFontInterface {
     open func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
         self.beginWidth = (graphics.getFont().stringWidth(self.startString) >> 1)
-        self.line = (4 &* MyFontProcessor.defaultCharWidth(font)) + (font.getHeight() >> 1)
+        self.line = (4 &* MyFontProcessor.defaultCharWidth(font)) &+ (font.getHeight() >> 1)
         self.myFontProcessor = MyFontProcessor.getInstance()
     }
     

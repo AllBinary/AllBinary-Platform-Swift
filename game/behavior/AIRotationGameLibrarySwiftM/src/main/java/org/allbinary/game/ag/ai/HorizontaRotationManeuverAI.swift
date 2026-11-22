@@ -53,21 +53,21 @@ open class HorizontaRotationManeuverAI: BasicAI, ArtificialIntelligenceTransitio
     public override init(_ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
         super.init(ownerLayerInterface, gameInput)
         self.initFields()
-        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
         self.rotationAnimationInterface = rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface()
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? VelocityInterfaceCompositeInterface)
         self.baseVelocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties()
-        self.velocityInterface = (self.baseVelocityInterface as! VelocityInterface)
-        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as! RotationAnimationInterface)
+        self.velocityInterface = (self.baseVelocityInterface as Any as? VelocityInterface)
+        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as Any as? RotationAnimationInterface)
         let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
         rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue())
     }
     
 
     open func transition() {
-        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as! RotationAnimationInterface)
+        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as Any as? RotationAnimationInterface)
         let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
-        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
         rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue())
         let allbinaryLayer: AllBinaryLayer! = self.getOwnerLayerInterface()
         allbinaryLayer.setPosition(allbinaryLayer.getXP(), 1, allbinaryLayer.getZP())
@@ -75,7 +75,7 @@ open class HorizontaRotationManeuverAI: BasicAI, ArtificialIntelligenceTransitio
     
 
     open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
-        let rotationAnimationInterface: RotationAnimationInterface! = ((self.rotationAnimationInterface as! RotationAnimationInterface))
+        let rotationAnimationInterface: RotationAnimationInterface! = ((self.rotationAnimationInterface as Any as? RotationAnimationInterface))
         let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
         let frame: Int32 = self.rotationAnimationInterface.getFrame()
         let ownerLayerInterface: AllBinaryLayer! = self.getOwnerLayerInterface()
@@ -104,15 +104,15 @@ open class HorizontaRotationManeuverAI: BasicAI, ArtificialIntelligenceTransitio
     
 
     open func reverse() {
-        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as! RotationAnimationInterface)
+        let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as Any as? RotationAnimationInterface)
         let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
         let frame: Int32 = self.rotationAnimationInterface.getFrame()
         if (frame == angleIncrementInfo.LEFT_FRAME.intValue()) {
-            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
             rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue())
             self.baseVelocityInterface.zero()
         } else if (frame == angleIncrementInfo.RIGHT_FRAME.intValue()) {
-            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
             rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue())
             self.baseVelocityInterface.zero()
         }

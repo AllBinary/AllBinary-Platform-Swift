@@ -68,7 +68,7 @@ open class AllBinaryMediaManager: JObject {
         let logUtil: LogUtil! = LogUtil.getInstance()
         let commonString: CommonStrings! = CommonStrings.getInstance()
         logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), "creatPlayer(InputStream)")
-        return (NoPlayer.NO_PLAYER as! Player)
+        return (NoPlayer.NO_PLAYER as Any as? Player)
     }
     
 
@@ -76,7 +76,7 @@ open class AllBinaryMediaManager: JObject {
         let logUtil: LogUtil! = LogUtil.getInstance()
         let commonString: CommonStrings! = CommonStrings.getInstance()
         logUtil.putF(commonString.START, jBoxString(AllBinaryMediaManager.THIS), "creatPlayer(locator)")
-        return (NoPlayer.NO_PLAYER as! Player)
+        return (NoPlayer.NO_PLAYER as Any as? Player)
     }
     
 

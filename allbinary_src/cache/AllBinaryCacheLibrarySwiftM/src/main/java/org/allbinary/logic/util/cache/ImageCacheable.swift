@@ -33,7 +33,7 @@ open class ImageCacheable: JObject {
     
 
     @discardableResult open func getKey() -> JObject! {
-        return self.name
+        return jBoxString(self.name)
     }
     
 

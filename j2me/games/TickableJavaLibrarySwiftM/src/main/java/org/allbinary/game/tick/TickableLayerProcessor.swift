@@ -29,7 +29,7 @@ open class TickableLayerProcessor: LayerProcessor {
     
 
     open override func processAt(_ allBinaryLayerManager: AllBinaryLayerManager!, _ layerInterface: AllBinaryLayer!, _ index: Int32) {
-        let tickableInterface: TickableInterface! = (layerInterface as! TickableInterface)
+        let tickableInterface: TickableInterface! = (layerInterface as Any as? TickableInterface)
         tickableInterface.processTick(allBinaryLayerManager)
     }
     

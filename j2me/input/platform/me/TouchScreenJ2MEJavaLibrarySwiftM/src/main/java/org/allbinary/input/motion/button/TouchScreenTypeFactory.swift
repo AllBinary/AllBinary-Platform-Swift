@@ -19,10 +19,6 @@ import J2SEForSwiftLibrary
 
 open class TouchScreenTypeFactory: JObject {
     fileprivate static let instance: TouchScreenTypeFactory! = TouchScreenTypeFactory()
-
-    public override init() {
-        super.init()
-    }
     
 
     @discardableResult open class func getInstance() -> TouchScreenTypeFactory! {
@@ -30,7 +26,8 @@ open class TouchScreenTypeFactory: JObject {
     }
     
 
-    open func TouchScreenTypeFactory() {
+    public override init() {
+        super.init()
         let touchScreenFactory: TouchScreenFactory! = TouchScreenFactory.getInstance()
         touchScreenFactory.setTouch(true)
     }

@@ -117,7 +117,7 @@ open class MyCanvas: Canvas, DisplayableInterface, MyCommandInterface {
     }
     
 
-    open override func removeAllCommands() {
+    open func removeAllCommands() {
         let size: Int32 = self.commandStack.size()
         do {
             var index: Int32 = 0

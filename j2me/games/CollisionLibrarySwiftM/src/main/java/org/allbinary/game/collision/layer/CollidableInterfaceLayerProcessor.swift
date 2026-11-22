@@ -31,7 +31,7 @@ open class CollidableInterfaceLayerProcessor: LayerProcessor {
     
 
     open override func processAt(_ allBinaryLayerManager: AllBinaryLayerManager!, _ layerInterface: AllBinaryLayer!, _ index: Int32) {
-        let collidableInterfaceCompositeInterface: CollidableInterfaceCompositeInterface! = (layerInterface as! CollidableInterfaceCompositeInterface)
+        let collidableInterfaceCompositeInterface: CollidableInterfaceCompositeInterface! = (layerInterface as Any as? CollidableInterfaceCompositeInterface)
         if (collidableInterfaceCompositeInterface.getCollidableInferface().isCollidable((collidableInterfaceCompositeInterface as! CollidableCompositeLayer))) {
             AllBinaryCollisionManager.getInstance().process(self.getLayerManager(), collidableInterfaceCompositeInterface, index)
         }

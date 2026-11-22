@@ -34,7 +34,7 @@ open class StopAtEdgeAI: BasicAI {
 
     open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
         let ownerLayerInterface: AllBinaryLayer! = self.getOwnerLayerInterface()
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = ((ownerLayerInterface as! VelocityInterfaceCompositeInterface))
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = ((ownerLayerInterface as Any as? VelocityInterfaceCompositeInterface))
         let velocityProperties: BasicVelocityProperties! = velocityInterfaceCompositeInterface.getVelocityProperties()
         let x: Int32 = ownerLayerInterface.getXP()
         let y: Int32 = ownerLayerInterface.getYP()

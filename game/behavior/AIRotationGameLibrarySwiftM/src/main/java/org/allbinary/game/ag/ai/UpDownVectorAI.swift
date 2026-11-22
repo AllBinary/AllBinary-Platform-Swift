@@ -38,7 +38,7 @@ open class UpDownVectorAI: BasicAI {
     public override init(_ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
         super.init(ownerLayerInterface, gameInput)
         self.initFields()
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? VelocityInterfaceCompositeInterface)
         self.velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties()
         self.velocityInterface.getVelocityYBasicDecimalP().setint(0)
     }

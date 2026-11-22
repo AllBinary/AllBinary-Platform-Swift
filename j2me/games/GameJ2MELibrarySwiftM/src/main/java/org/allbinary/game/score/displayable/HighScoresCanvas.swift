@@ -138,7 +138,7 @@ open class HighScoresCanvas: GameCommandCanvas, HighScoresResultsListener {
     }
     
 
-    open override func setHighScoresArray(_ highScoresArray: JArray<HighScores?>!) {
+    open func setHighScoresArray(_ highScoresArray: JArray<HighScores?>!) {
         do {
             if (highScoresArray != nil) {
                 self.logUtil.putF(StringMaker().append(self.commonStrings.START).appendint(highScoresArray.length).toString(), self, "setHighScoresArray")

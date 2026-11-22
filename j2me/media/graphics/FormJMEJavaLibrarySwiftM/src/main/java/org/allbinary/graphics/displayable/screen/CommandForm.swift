@@ -70,12 +70,12 @@ open class CommandForm: Form, MyCommandInterface, MenuListener {
     }
     
 
-    open override func `open`() {
+    open func `open`() {
         self.logUtil.putF(self.commonStrings.START, self, "open")
     }
     
 
-    open override func close() {
+    open func close() {
         self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.CLOSE)
     }
     
@@ -85,7 +85,7 @@ open class CommandForm: Form, MyCommandInterface, MenuListener {
     }
     
 
-    @discardableResult open override func getSourceId() -> Int32 {
+    @discardableResult open func getSourceId() -> Int32 {
         return 0
     }
     
@@ -96,7 +96,7 @@ open class CommandForm: Form, MyCommandInterface, MenuListener {
     }
     
 
-    open override func removeAllCommands() {
+    open func removeAllCommands() {
         let size: Int32 = self.commandStack.size()
         do {
             var index: Int32 = 0

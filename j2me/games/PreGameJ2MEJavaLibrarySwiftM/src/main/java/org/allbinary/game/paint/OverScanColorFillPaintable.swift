@@ -29,7 +29,7 @@ open class OverScanColorFillPaintable: ColorFillPaintable {
 
     open override func paint(_ graphics: Graphics!) {
         graphics.setColor(self.colorP)
-        graphics.fillRect(-graphics.getClipX(), -graphics.getClipY(), self.displayInfoSingleton.getLastWidth() + (graphics.getClipX() * 2), self.displayInfoSingleton.getLastHeight() + (graphics.getClipY() * 2))
+        graphics.fillRect(-graphics.getClipX(), -graphics.getClipY(), self.displayInfoSingleton.getLastWidth() &+ (graphics.getClipX() &* 2), self.displayInfoSingleton.getLastHeight() &+ (graphics.getClipY() &* 2))
     }
 }
 

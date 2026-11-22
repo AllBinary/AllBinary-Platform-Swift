@@ -79,7 +79,7 @@ open class ViewPositionEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let viewPositionEventListenerInterface: ViewPositionEventListenerInterface! = ((eventListenerInterface as! ViewPositionEventListenerInterface))
+        let viewPositionEventListenerInterface: ViewPositionEventListenerInterface! = ((eventListenerInterface as Any as? ViewPositionEventListenerInterface))
         viewPositionEventListenerInterface.onChangeEvent((eventObject as! ViewPositionEvent))
     }
 }

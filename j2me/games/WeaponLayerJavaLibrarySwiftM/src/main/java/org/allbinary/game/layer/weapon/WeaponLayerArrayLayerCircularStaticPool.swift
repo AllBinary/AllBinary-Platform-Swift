@@ -29,9 +29,9 @@ open class WeaponLayerArrayLayerCircularStaticPool: JObject {
     private func initFields() {
     self.MAX = 5
     self.circularIndexUtil = CircularIndexUtil.createInstance(self.MAX)
-    self.WEAPONLAYER_ARRAY = nil
-    self.TWO_WEAPONLAYER_ARRAY = nil
-    self.THREE_WEAPONLAYER_ARRAY = nil
+    self.WEAPONLAYER_ARRAY = JArray<JArray<WeaponLayer?>?>(self.MAX &* 2, nil)
+    self.TWO_WEAPONLAYER_ARRAY = JArray<JArray<WeaponLayer?>?>(self.MAX, nil)
+    self.THREE_WEAPONLAYER_ARRAY = JArray<JArray<WeaponLayer?>?>(self.MAX, nil)
     }
 
     public override init() {
@@ -46,21 +46,18 @@ open class WeaponLayerArrayLayerCircularStaticPool: JObject {
     
 
     open func `init`() {
-        let WEAPONLAYER_ARRAY: JArray<JArray<WeaponLayer?>?>! = JArray<JArray<WeaponLayer?>?>(self.MAX &* 2, nil)
-        let TWO_WEAPONLAYER_ARRAY: JArray<JArray<WeaponLayer?>?>! = JArray<JArray<WeaponLayer?>?>(self.MAX, nil)
-        let THREE_WEAPONLAYER_ARRAY: JArray<JArray<WeaponLayer?>?>! = JArray<JArray<WeaponLayer?>?>(self.MAX, nil)
         do {
             var index: Int32 = 0
             while (index < self.MAX) {
                 defer { index &+= 1 }
-            WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(1, nil)
-            TWO_WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(2, nil)
-            THREE_WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(3, nil)
+            self.WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(1, nil)
+            self.TWO_WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(2, nil)
+            self.THREE_WEAPONLAYER_ARRAY[index] = JArray<WeaponLayer?>(3, nil)
             }
         }
-        self.WEAPONLAYER_ARRAY = WEAPONLAYER_ARRAY
-        self.TWO_WEAPONLAYER_ARRAY = TWO_WEAPONLAYER_ARRAY
-        self.THREE_WEAPONLAYER_ARRAY = THREE_WEAPONLAYER_ARRAY
+        // self.WEAPONLAYER_ARRAY = self.WEAPONLAYER_ARRAY
+        // self.TWO_WEAPONLAYER_ARRAY = self.TWO_WEAPONLAYER_ARRAY
+        // self.THREE_WEAPONLAYER_ARRAY = self.THREE_WEAPONLAYER_ARRAY
     }
     
 

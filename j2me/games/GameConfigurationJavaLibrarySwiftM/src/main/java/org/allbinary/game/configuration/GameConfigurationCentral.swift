@@ -109,9 +109,9 @@ open class GameConfigurationCentral: JObject {
             let list: BasicArrayList! = keyValuePersistance.getIds()
             if (list.size() > 0) {
                 let hashtable: ABHashtable! = keyValuePersistance.get(0)
-                let anyType: JObject! = (self.SCALE.getName() as! JObject)
+                let anyType: JObject! = jBoxString(self.SCALE.getName())
                 let value: String! = jUnboxString(hashtable.get(anyType))
-                self.SCALE.setValue(smallIntegerSingletonFactory.getAt(jstr(value).intValue()))
+                self.SCALE.setValue(smallIntegerSingletonFactory.getAt(Int32(value)!.intValue()))
             } else {
                 self.logUtil.putF("No Game Configuration To Load", self, commonStrings.LOAD)
             }

@@ -319,7 +319,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
         self.gameInitializationInterfaceFactoryInterface = gameInitializationInterfaceFactoryInterface
         self.`init`(gameLayerManager, buffered)
         self.highScoresFactoryInterface = highScoresFactoryInterface
-        if (self.gameLayerManager.getGameInfo().getGameType() == self.gameTypeFactory.BOT || self.gameLayerManager.getGameInfo().getGameType() == self.gameTypeFactory.NONE) {
+        if (self.gameLayerManager.getGameInfo().getGameType() === self.gameTypeFactory.BOT || self.gameLayerManager.getGameInfo().getGameType() === self.gameTypeFactory.NONE) {
             self.gameBehavior = DemoGameBehavior.getInstance()
             self.menuBehavior = BaseMenuBehavior.getInstance()
         } else {
@@ -333,7 +333,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func updateMeasurement(_ graphics: Graphics!) {
+    open func updateMeasurement(_ graphics: Graphics!) {
         do {
             let font: Font! = graphics.getFont()
             self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(self.canvasStrings.FD_WIDTH).appendint(MyFontProcessor.defaultCharWidth(font)).append(self.canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), self, self.canvasStrings.UPDATE_MEASUREMENT)
@@ -365,12 +365,12 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
         ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
     }
     
 
-    open override func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+    open func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
         do {
             self.logUtil.putF(StringMaker().append(self.commonStrings.START).append(DisplayInfoSingleton.getInstance().toString()).toString(), self, self.canvasStrings.UPDATE_MEASUREMENT)
             self.myFontProcessor = self.updateMyFontProcessor
@@ -493,7 +493,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     
 
     @discardableResult open override func isPausable() -> Bool {
-        if (CurrentDisplayableFactory.getInstance().getUsedRunnable() == NullWaitGameRunnable.getInstance()) {
+        if (CurrentDisplayableFactory.getInstance().getUsedRunnable() === NullWaitGameRunnable.getInstance()) {
             return true
         } else {
             return false
@@ -501,7 +501,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func popupMenu() {
+    open func popupMenu() {
         self.menuBehavior.popupMenu(self)
     }
     
@@ -515,7 +515,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func toggleMenu() {
+    open func toggleMenu() {
         self.logUtil.putF(self.commonStrings.START, self, self.gameStrings.TOGGLE_MENU)
         if (self.getMenuPaintable() === self.getOpenMenuPaintable()) {
             self.pause()
@@ -528,7 +528,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func closeMenu() {
+    open func closeMenu() {
         self.menuBehavior.closeMenu(self)
     }
     
@@ -541,13 +541,13 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func `open`() {
+    open func `open`() {
         self.basicMotionGesturesHandler.addListenerInterface(self.menuInputProcessor)
         self.gameKeyEventHandler.addListener(self.menuInputProcessor)
     }
     
 
-    open override func close() {
+    open func close() {
         self.basicMotionGesturesHandler.removeListener(self.menuInputProcessor)
         self.gameKeyEventHandler.removeListener(self.menuInputProcessor)
         self.primaryPlayerQueue.clear()
@@ -602,7 +602,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func notifyIntermission(_ enable: Bool) {
+    open func notifyIntermission(_ enable: Bool) {
         if (enable) {
             self.startIntermissionProcessor = self.realStartIntermissionProcessor
         } else {
@@ -704,7 +704,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     open func addCommands() {
         let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
         let myCommandsFactory: MyCommandsFactory! = MyCommandsFactory.getInstance()
-        if (DebugFactory.getInstance() != NoDebug.getInstance()) {
+        if (DebugFactory.getInstance() !== NoDebug.getInstance()) {
             self.addCommand(gameCommandsFactory.START_TRACE)
         }
         self.addCommand(gameCommandsFactory.RESTART_COMMAND)
@@ -723,7 +723,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func itemStateChanged(_ item: Item!) {
+    open func itemStateChanged(_ item: Item!) {
         do {
             let itemLabel: String! = item.getLabel()
             self.logUtil.putF(StringMaker().append(self.commonLabels.ITEM_LABEL).append(itemLabel).toString(), self, "itemStateChanged")
@@ -763,7 +763,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func getLayerManager() -> AllBinaryGameLayerManager! {
+    @discardableResult open func getLayerManager() -> AllBinaryGameLayerManager! {
         return self.gameLayerManager
     }
     
@@ -773,7 +773,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func isGameOver() -> Bool {
+    @discardableResult open func isGameOver() -> Bool {
         return self.gameOver
     }
     
@@ -783,7 +783,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func processGameOver() {
+    open func processGameOver() {
         PreLogUtil.put(self.commonStrings.START, self, self.gameStrings.SET_GAME_OVER)
         self.setGameOver(true)
         self.removePauseCommand()
@@ -792,12 +792,12 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func isHighScoreSubmitted() -> Bool {
+    @discardableResult open func isHighScoreSubmitted() -> Bool {
         return self.highScoreSubmitted
     }
     
 
-    open override func setHighScoreSubmitted(_ highScoreSubmitted: Bool) {
+    open func setHighScoreSubmitted(_ highScoreSubmitted: Bool) {
         self.highScoreSubmitted = highScoreSubmitted
         if (highScoreSubmitted) {
             self.highScoresHelper.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance())
@@ -806,12 +806,12 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func getGameState() -> GameState! {
+    @discardableResult open func getGameState() -> GameState! {
         return self.gameState
     }
     
 
-    open override func setGameState(_ gameState: GameState!) {
+    open func setGameState(_ gameState: GameState!) {
         self.logUtil.putF(StringMaker().append(self.gameStrings.GAME_STATE).append(self.stringUtil.toString(gameState)).toString(), self, self.gameStrings.SET_GAME_STATE)
         self.gameState = gameState
         self.gameStateTimeHelper.setStartTimeTNT()
@@ -986,26 +986,26 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
         let hashtable: ABHashtable! = self.getLoadStateHashtable()
         if (hashtable != nil && hashtable.size() > 0) {
             let levelAsString: String! = jUnboxString(hashtable.get((GameInfo.LEVEL_NAME as! JObject)))
-            let level: Int32 = jstr(levelAsString).intValue()
+            let level: Int32 = Int32(levelAsString)!.intValue()
             let gameInfo: GameInfo! = self.gameLayerManager.getGameInfo()
             gameInfo.setCurrentLevel(level)
         }
     }
     
 
-    @discardableResult open override func getLoadStateHashtable() -> ABHashtable! {
+    @discardableResult open func getLoadStateHashtable() -> ABHashtable! {
         self.logUtil.putF(StringMaker().append(self.commonLabels.START_LABEL).append(self.stringUtil.toString(self.hashtable)).toString(), self, "getLoadStateHashtable")
         return self.hashtable
     }
     
 
-    open override func setLoadStateHashtable(_ hashtable: ABHashtable!) {
+    open func setLoadStateHashtable(_ hashtable: ABHashtable!) {
         self.logUtil.putF(StringMaker().append(self.commonLabels.START_LABEL).append(self.stringUtil.toString(hashtable)).toString(), self, "setLoadStateHashtable")
         self.hashtable = hashtable
     }
     
 
-    @discardableResult open override func getCurrentStateHashtable() -> ABHashtable! {
+    @discardableResult open func getCurrentStateHashtable() -> ABHashtable! {
         let hashtable: ABHashtable! = self.stdUtil.createHashtable()
         let level: Int32 = self.gameLayerManager.getGameInfo().getCurrentLevel()
         hashtable.put(jBoxString(GameInfo.LEVEL_NAME.toString()), jBoxString(jstr(level)))
@@ -1040,7 +1040,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    open override func paintThreed(_ graphics: Graphics!) {
+    open func paintThreed(_ graphics: Graphics!) {
     }
     
 
@@ -1228,7 +1228,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
             if (running) {
             } else {
                 if (features.isDefault(self.openGLFeatureFactory.OPENGL) || SWTUtil.isSWT) {
-                    if (self.gameLayerManager.getGameInfo().getGameType() != self.gameTypeFactory.BOT) {
+                    if (self.gameLayerManager.getGameInfo().getGameType() !== self.gameTypeFactory.BOT) {
                         let currentDisplayableFactory: CurrentDisplayableFactory! = CurrentDisplayableFactory.getInstance()
                         currentDisplayableFactory.clearRunnable()
                     }
@@ -1291,12 +1291,12 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func isInitialized() -> Bool {
+    @discardableResult open func isInitialized() -> Bool {
         return self.initialized
     }
     
 
-    @discardableResult open override func getSourceId() -> Int32 {
+    @discardableResult open func getSourceId() -> Int32 {
         return AllBinaryGameCanvas.id
     }
     
@@ -1306,12 +1306,12 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     }
     
 
-    @discardableResult open override func getStartIntermissionInterface() -> IntermissionInterface! {
+    @discardableResult open func getStartIntermissionInterface() -> IntermissionInterface! {
         return self.startIntermissionInterface
     }
     
 
-    @discardableResult open override func getEndLevelIntermissionInterface() -> IntermissionInterface! {
+    @discardableResult open func getEndLevelIntermissionInterface() -> IntermissionInterface! {
         return self.endLevelIntermissionInterface
     }
     

@@ -32,7 +32,7 @@ open class BasicArrayListResetablePool: AbstractArrayListPool {
     @discardableResult open override func remove(_ key: JObject!) -> CacheableInterface! {
         let size: Int32 = self.buffers.size()
         if (size > 0) {
-            return (self.buffers.removeAt(size &- 1) as! CacheableInterface)
+            return (self.buffers.removeAt(size &- 1) as Any as? CacheableInterface)
         } else {
             return self.cacheableInterfaceFactoryInterface.getInstance(key)
         }

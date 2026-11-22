@@ -29,7 +29,7 @@ open class BasicProbabilityAIDataFactory: JObject {
     
 
     @discardableResult open func getInstance() -> ABHashtable! {
-        let likelyhoodIntegerArray: JArray<JArray<Int32?>?>! = JArray<JArray<Int32?>?>(Canvas.KEY_NUM9 + 1, factory: { JArray<Int32?>(2, nil) })
+        let likelyhoodIntegerArray: JArray<JArray<Int32?>?>! = JArray<JArray<Int32?>?>(Canvas.KEY_NUM9 &+ 1, factory: { JArray<Int32?>(2, nil) })
         let smallIntegerSingletonFactory: SmallIntegerSingletonFactory! = SmallIntegerSingletonFactory.getInstance()
         likelyhoodIntegerArray[Canvas.UP]![0] = smallIntegerSingletonFactory.getAt(0)
         likelyhoodIntegerArray[Canvas.UP]![1] = smallIntegerSingletonFactory.getAt(10)
@@ -45,7 +45,7 @@ open class BasicProbabilityAIDataFactory: JObject {
         likelyhoodIntegerArray[Canvas.KEY_NUM9]![1] = smallIntegerSingletonFactory.getAt(30)
         likelyhoodIntegerArray[Canvas.KEY_NUM1]![0] = smallIntegerSingletonFactory.getAt(30)
         likelyhoodIntegerArray[Canvas.KEY_NUM1]![1] = smallIntegerSingletonFactory.getAt(40)
-        let repeatLikelyhoodIntegerArray: JArray<Int32?>! = JArray<Int32?>(Canvas.KEY_NUM9 + 1, nil)
+        let repeatLikelyhoodIntegerArray: JArray<Int32?>! = JArray<Int32?>(Canvas.KEY_NUM9 &+ 1, nil)
         repeatLikelyhoodIntegerArray[Canvas.UP] = smallIntegerSingletonFactory.getAt(0)
         repeatLikelyhoodIntegerArray[Canvas.DOWN] = smallIntegerSingletonFactory.getAt(0)
         repeatLikelyhoodIntegerArray[Canvas.LEFT] = smallIntegerSingletonFactory.getAt(0)

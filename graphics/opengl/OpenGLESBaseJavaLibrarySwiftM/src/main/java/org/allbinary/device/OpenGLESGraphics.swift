@@ -31,7 +31,7 @@ open class OpenGLESGraphics: Graphics, OpenGLSurfaceChangedInterface, GraphicsIn
     }
     
 
-    open override func set(_ gl: GL!) {
+    open func set(_ gl: GL!) {
     }
     
 
@@ -56,7 +56,7 @@ open class OpenGLESGraphics: Graphics, OpenGLSurfaceChangedInterface, GraphicsIn
     }
     
 
-    open override func setFontDebug(_ font: Font!, _ fontDebug: FontDebugBase!) {
+    open func setFontDebug(_ font: Font!, _ fontDebug: FontDebugBase!) {
         jThrow(JException("RuntimeException", ""))
     }
 }

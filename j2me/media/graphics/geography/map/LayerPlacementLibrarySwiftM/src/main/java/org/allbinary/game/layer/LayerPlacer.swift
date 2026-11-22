@@ -53,7 +53,7 @@ open class LayerPlacer: JObject {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            layerPlacementInterface = (list.objectArray[index] as! LayerPlacementInterface)
+            layerPlacementInterface = (list.objectArray[index] as Any as? LayerPlacementInterface)
             self.process(layerPlacementInterface)
             }
         }

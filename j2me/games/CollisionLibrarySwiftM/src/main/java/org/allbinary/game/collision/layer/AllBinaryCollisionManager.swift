@@ -41,7 +41,7 @@ open class AllBinaryCollisionManager: JObject {
             var index: Int32 = startIndex &+ 1
             while (index < size) {
                 defer { index &+= 1 }
-            let collidableInterfaceCompositeInterface2: CollidableInterfaceCompositeInterface! = (layerManager.getLayerAt(index) as! CollidableInterfaceCompositeInterface)
+            let collidableInterfaceCompositeInterface2: CollidableInterfaceCompositeInterface! = (layerManager.getLayerAt(index) as Any as? CollidableInterfaceCompositeInterface)
             self.collide(layerManager, collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2)
             }
         }

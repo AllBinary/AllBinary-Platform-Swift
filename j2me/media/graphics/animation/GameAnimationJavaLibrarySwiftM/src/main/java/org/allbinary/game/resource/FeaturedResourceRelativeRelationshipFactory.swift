@@ -53,7 +53,7 @@ open class FeaturedResourceRelativeRelationshipFactory: FeaturedResourceFactory 
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            let featureInterface: ResourceRelativeRelationshipFactoryInterface! = (featureReleaseList.objectArray[index] as! ResourceRelativeRelationshipFactoryInterface)
+            let featureInterface: ResourceRelativeRelationshipFactoryInterface! = (featureReleaseList.objectArray[index] as Any as? ResourceRelativeRelationshipFactoryInterface)
             if (featureInterface.isFeature()) {
                 let list: BasicArrayList! = featureInterface.getResourceRelativeRelationshipList(resource)
                 if (list !== self.basicArrayListUtil.getImmutableInstance()) {

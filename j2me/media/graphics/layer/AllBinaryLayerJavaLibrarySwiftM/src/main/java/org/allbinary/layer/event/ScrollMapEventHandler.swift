@@ -35,7 +35,7 @@ open class ScrollMapEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let scrollMapEventListenerInterface: ScrollMapEventListenerInterface! = ((eventListenerInterface as! ScrollMapEventListenerInterface))
+        let scrollMapEventListenerInterface: ScrollMapEventListenerInterface! = ((eventListenerInterface as Any as? ScrollMapEventListenerInterface))
         scrollMapEventListenerInterface.onMoveEvent((eventObject as! ScrollMapEvent))
     }
 }

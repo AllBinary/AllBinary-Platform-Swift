@@ -45,7 +45,7 @@ open class VirtualKeyboardEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let virtualKeyboardEventListenerInterface: VirtualKeyboardEventListenerInterface! = (eventListenerInterface as! VirtualKeyboardEventListenerInterface)
+        let virtualKeyboardEventListenerInterface: VirtualKeyboardEventListenerInterface! = (eventListenerInterface as Any as? VirtualKeyboardEventListenerInterface)
         virtualKeyboardEventListenerInterface.onVirtualKeyboardEvent((eventObject as! VirtualKeyboardEvent))
     }
     

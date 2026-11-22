@@ -90,7 +90,7 @@ open class TerrainEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let terrainEventListenerInterface: TerrainEventListenerInterface! = (eventListenerInterface as! TerrainEventListenerInterface)
+        let terrainEventListenerInterface: TerrainEventListenerInterface! = (eventListenerInterface as Any as? TerrainEventListenerInterface)
         terrainEventListenerInterface.onTerrainEvent((eventObject as! TerrainEvent))
     }
 }

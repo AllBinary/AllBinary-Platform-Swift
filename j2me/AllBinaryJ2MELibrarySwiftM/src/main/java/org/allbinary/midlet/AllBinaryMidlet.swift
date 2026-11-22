@@ -148,7 +148,7 @@ open class AllBinaryMidlet: MIDlet, CommandListener {
     }
     
 
-    open override func commandAction(_ command: Command!, _ displayable: Displayable!) {
+    open func commandAction(_ command: Command!, _ displayable: Displayable!) {
     }
 }
 

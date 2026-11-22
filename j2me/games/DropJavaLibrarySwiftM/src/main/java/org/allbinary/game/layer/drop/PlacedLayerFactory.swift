@@ -40,7 +40,7 @@ open class PlacedLayerFactory: JObject {
     
 
     @discardableResult open func getRandomInstance() -> AllBinaryLayerFactoryInterface! {
-        return (self.basicArrayListUtil.getRandom(self.list) as! AllBinaryLayerFactoryInterface)
+        return (self.basicArrayListUtil.getRandom(self.list) as Any as? AllBinaryLayerFactoryInterface)
     }
     
 

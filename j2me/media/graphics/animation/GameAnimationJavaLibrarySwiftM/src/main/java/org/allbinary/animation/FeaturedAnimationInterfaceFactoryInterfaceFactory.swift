@@ -56,7 +56,7 @@ open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFa
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            let featureInterface: FeatureResourceAnimationInterfaceFactoryInterface! = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+            let featureInterface: FeatureResourceAnimationInterfaceFactoryInterface! = (list.objectArray[index] as Any as? FeatureResourceAnimationInterfaceFactoryInterface)
             if (featureInterface.isFeature()) {
                 let rectangle: Rectangle! = featureInterface.getRectangle(resource)
                 if (rectangle !== RectangleFactory.SINGLETON) {
@@ -70,12 +70,12 @@ open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFa
     
 
     @discardableResult open func getProcedural(_ resource: String!) -> ProceduralAnimationInterfaceFactoryInterface! {
-        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as! ProceduralAnimationInterfaceFactoryInterface)
+        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as Any as? ProceduralAnimationInterfaceFactoryInterface)
     }
     
 
     @discardableResult open func get(_ resource: String!) -> AnimationInterfaceFactoryInterface! {
-        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as! AnimationInterfaceFactoryInterface)
+        return (self.getBasicAnimationInterfaceFactoryInstance(resource) as Any as? AnimationInterfaceFactoryInterface)
     }
     
 
@@ -89,7 +89,7 @@ open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFa
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+            featureInterface = (list.objectArray[index] as Any as? FeatureResourceAnimationInterfaceFactoryInterface)
             if (featureInterface.isFeature()) {
                 resourceTypeAvailableList.add((featureInterface as? JObject))
                 animationInterfaceFactoryInterface = featureInterface.getBasicAnimationInterfaceFactoryInstance(resource)
@@ -127,7 +127,7 @@ open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFa
                 while (index < size) {
                     defer { index &+= 1 }
                 stringBuffer.append(CommonSeps.getInstance().NEW_LINE)
-                featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+                featureInterface = (list.objectArray[index] as Any as? FeatureResourceAnimationInterfaceFactoryInterface)
                 if (featureInterface.isFeature()) {
                     stringBuffer.append(StringUtil.getInstance().toString((featureInterface as? JObject)))
                     stringBuffer.append(HAS_KEY)
@@ -143,7 +143,7 @@ open class FeaturedAnimationInterfaceFactoryInterfaceFactory: FeaturedResourceFa
                 var index: Int32 = 0
                 while (index < size) {
                     defer { index &+= 1 }
-                featureInterface = (list.objectArray[index] as! FeatureResourceAnimationInterfaceFactoryInterface)
+                featureInterface = (list.objectArray[index] as Any as? FeatureResourceAnimationInterfaceFactoryInterface)
                 stringBuffer.append(jstr(featureInterface))
                 stringBuffer.append(CommonSeps.getInstance().SPACE)
                 }

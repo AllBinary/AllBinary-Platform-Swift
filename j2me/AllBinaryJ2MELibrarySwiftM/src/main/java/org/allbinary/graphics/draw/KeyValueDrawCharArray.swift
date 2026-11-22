@@ -49,7 +49,7 @@ open class KeyValueDrawCharArray: JObject, UpdateMyFontInterface {
     
 
     open func updateMeasurement(_ graphics: Graphics!) {
-        let labelWidth: Int32 = graphics.getFont().stringWidth(self.LABEL) - JString.length(self.LABEL)
+        let labelWidth: Int32 = graphics.getFont().stringWidth(self.LABEL) &- JString.length(self.LABEL)
         self.valueX = labelWidth &+ self.labelX
         self.myFontProcessor = MyFontProcessor.getInstance()
     }

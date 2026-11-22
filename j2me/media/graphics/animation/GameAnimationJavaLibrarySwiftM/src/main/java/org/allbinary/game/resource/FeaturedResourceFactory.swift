@@ -70,7 +70,7 @@ open class FeaturedResourceFactory: JObject {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            let featureInterface: GameFeatureControlledInterface! = (self.list.objectArray[index] as! GameFeatureControlledInterface)
+            let featureInterface: GameFeatureControlledInterface! = (self.list.objectArray[index] as Any as? GameFeatureControlledInterface)
             let isLoadingLevel: Bool = featureInterface.isLoadingLevel(level)
             let isFeature: Bool = featureInterface.isFeature()
             self.logUtil.putF(StringMaker().append(self.GAME_FEATURE_CONTROLLED).append(jstr(featureInterface)).append(self.IS_LOADING_LEVEL_LABEL).append(ResourceLoadingLevelFactory.getInstance().getLevelString(level)).append(CommonSeps.getInstance().COLON_SEP).appendboolean(isLoadingLevel).append(self.IS_FEATURE).appendboolean(isFeature).toString(), self, self.commonStrings.INIT)

@@ -60,7 +60,7 @@ open class RawKeyEventHandler: JObject {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            eventListenerInterface = (vector.get(index) as! RawKeyEventListener)
+            eventListenerInterface = (vector.get(index) as Any as? RawKeyEventListener)
             self.addListener(eventListenerInterface)
             }
         }
@@ -96,7 +96,7 @@ open class RawKeyEventHandler: JObject {
         var index: Int32 = 0
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! RawKeyEventListener)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? RawKeyEventListener)
                 self.process(keyCode, deviceId, repeated, eventListenerInterface)
             } /* catch (Exception e): a thrown Java exception stops the program */
             index &+= 1
@@ -122,7 +122,7 @@ open class RawKeyEventHandler: JObject {
         var index: Int32 = 0
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! RawKeyEventListener)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? RawKeyEventListener)
                 stringBuffer.append(RawKeyEventHandler.LISTENER_LABEL)
                 stringBuffer.append(jstr(eventListenerInterface))
             } /* catch (Exception e): a thrown Java exception stops the program */

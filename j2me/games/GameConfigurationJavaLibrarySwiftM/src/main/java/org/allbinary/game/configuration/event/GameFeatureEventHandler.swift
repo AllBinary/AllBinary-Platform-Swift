@@ -35,7 +35,7 @@ open class GameFeatureEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let gameFeatureListenerInterface: GameFeatureListenerInterface! = ((eventListenerInterface as! GameFeatureListenerInterface))
+        let gameFeatureListenerInterface: GameFeatureListenerInterface! = ((eventListenerInterface as Any as? GameFeatureListenerInterface))
         gameFeatureListenerInterface.onGameFeatureChange((eventObject as! GameFeatureEvent))
     }
 }

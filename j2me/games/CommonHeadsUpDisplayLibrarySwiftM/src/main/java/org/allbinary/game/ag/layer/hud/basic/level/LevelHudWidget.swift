@@ -65,8 +65,8 @@ open class LevelHudWidget: BasicHud, PaintableInterface {
 
     open override func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.updateMaxWidth = font.getSize() * 4
-        self.offset = font.charsWidth(self.levelString, 0, self.levelString.length) + font.getSize()
+        self.updateMaxWidth = font.getSize() &* 4
+        self.offset = font.charsWidth(self.levelString, 0, self.levelString.length) &+ font.getSize()
         super.updateMeasurement(graphics)
     }
     

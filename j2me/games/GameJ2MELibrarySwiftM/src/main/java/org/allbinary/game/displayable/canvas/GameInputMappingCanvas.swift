@@ -130,7 +130,7 @@ open class GameInputMappingCanvas: GameCommandCanvas, InputMappingInterface {
     }
     
 
-    open override func processInputMapping(_ gameKey: GameKey!, _ input: Input!) {
+    open func processInputMapping(_ gameKey: GameKey!, _ input: Input!) {
         let stringBuffer: StringMaker! = StringMaker()
         stringBuffer.append("Start Passed GameKey: ")
         stringBuffer.append(self.stringUtil.toString(gameKey))

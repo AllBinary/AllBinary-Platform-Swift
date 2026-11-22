@@ -35,7 +35,7 @@ open class TrackingEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let trackingEventListenerInterface: TrackingEventListenerInterface! = (eventListenerInterface as! TrackingEventListenerInterface)
+        let trackingEventListenerInterface: TrackingEventListenerInterface! = (eventListenerInterface as Any as? TrackingEventListenerInterface)
         trackingEventListenerInterface.onMovement((eventObject as! TrackingEvent))
     }
 }

@@ -54,7 +54,7 @@ open class DropLayerFactory: JObject {
     
 
     @discardableResult open func getRandomInstance() -> PickedUpLayerInterfaceFactoryInterface! {
-        return (self.basicArrayListUtil.getRandom(self.list) as! PickedUpLayerInterfaceFactoryInterface)
+        return (self.basicArrayListUtil.getRandom(self.list) as Any as? PickedUpLayerInterfaceFactoryInterface)
     }
     
 

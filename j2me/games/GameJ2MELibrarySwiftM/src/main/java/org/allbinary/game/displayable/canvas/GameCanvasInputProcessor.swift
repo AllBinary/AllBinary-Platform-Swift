@@ -91,7 +91,7 @@ open class GameCanvasInputProcessor: InputProcessor {
         do {
             let gameKey: GameKey! = self.inputToGameKeyMapping.getInstanceForCanvas(canvas, keyCode)
             if (gameKey !== self.NONE) {
-                let gameKeyEventSourceInterface: GameKeyEventSourceInterface! = (canvas as! GameKeyEventSourceInterface)
+                let gameKeyEventSourceInterface: GameKeyEventSourceInterface! = (canvas as Any as? GameKeyEventSourceInterface)
                 let gameKeyEvent: GameKeyEvent! = self.gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey)
                 self.upGameKeyEventHandler.fireEvent(gameKeyEvent)
                 self.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent)

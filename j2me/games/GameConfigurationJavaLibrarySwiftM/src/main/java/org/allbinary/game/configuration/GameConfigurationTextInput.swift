@@ -44,7 +44,7 @@ open class GameConfigurationTextInput: JObject {
     
 
     open class func update(_ textField: TextField!) {
-        let anyType: JObject! = (textField.getLabel() as! JObject)
+        let anyType: JObject! = jAsObject(textField.getLabel())
         let gameConfigurationTextInput: GameConfigurationTextInput! = (GameConfigurationTextInput.hashtable.get(anyType) as! GameConfigurationTextInput)
         gameConfigurationTextInput.setText(textField.getString())
     }

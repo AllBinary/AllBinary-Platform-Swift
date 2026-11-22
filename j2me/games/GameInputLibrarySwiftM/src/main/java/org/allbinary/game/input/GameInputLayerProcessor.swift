@@ -29,7 +29,7 @@ open class GameInputLayerProcessor: LayerProcessor {
     
 
     open override func processAt(_ allBinaryLayerManager: AllBinaryLayerManager!, _ layerInterface: AllBinaryLayer!, _ index: Int32) {
-        let gameInputInterface: GameInputInterface! = (layerInterface as! GameInputInterface)
+        let gameInputInterface: GameInputInterface! = (layerInterface as Any as? GameInputInterface)
         gameInputInterface.processInput(allBinaryLayerManager)
     }
     

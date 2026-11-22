@@ -37,8 +37,8 @@ open class TopUBoundBounceAIFactory: JObject, ArtificialIntelligenceInterfaceFac
     
 
     @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (ownerLayerInterface as! VelocityInterfaceCompositeInterface)
-        let velocityInterface: VelocityInterface! = (velocityInterfaceCompositeInterface.getVelocityProperties() as! VelocityInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (ownerLayerInterface as Any as? VelocityInterfaceCompositeInterface)
+        let velocityInterface: VelocityInterface! = (velocityInterfaceCompositeInterface.getVelocityProperties() as Any as? VelocityInterface)
         let maxDistancePerTick: Int32 = (velocityInterface.getMaxForwardVelocity() >> velocityInterface.getVelocityXBasicDecimalP().getScaledFactor())
         let halfWidth: Int32 = ownerLayerInterface.getWidth() &* 2 &+ maxDistancePerTick &+ 1
         let halfHeight: Int32 = ownerLayerInterface.getHeight() &* 2 &+ maxDistancePerTick &+ 1

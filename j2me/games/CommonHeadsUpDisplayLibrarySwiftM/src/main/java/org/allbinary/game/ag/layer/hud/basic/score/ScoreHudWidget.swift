@@ -38,7 +38,7 @@ open class ScoreHudWidget: NumberStringHud {
 
     open override func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.updateMaxWidth = font.getSize() * 5
+        self.updateMaxWidth = font.getSize() &* 5
         super.updateMeasurement(graphics)
     }
 }

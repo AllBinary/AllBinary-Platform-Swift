@@ -80,7 +80,7 @@ open class UpKeyEventHandlerBase: BasicEventHandler {
         var eventListenerInterface: EventListenerInterface! = nil
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? EventListenerInterface)
                 self.processForInteger(eventObject, eventListenerInterface)
             } /* catch (Exception e): a thrown Java exception stops the program */
             index &+= 1
@@ -89,7 +89,7 @@ open class UpKeyEventHandlerBase: BasicEventHandler {
     
 
     open func processForInteger(_ eventObject: Int32!, _ eventListenerInterface: EventListenerInterface!) {
-        let upKeyEventListenerInterface: UpKeyEventListenerInterface! = (eventListenerInterface as! UpKeyEventListenerInterface)
+        let upKeyEventListenerInterface: UpKeyEventListenerInterface! = (eventListenerInterface as Any as? UpKeyEventListenerInterface)
         upKeyEventListenerInterface.onUpKeyEvent(eventObject)
     }
     
@@ -104,7 +104,7 @@ open class UpKeyEventHandlerBase: BasicEventHandler {
             while (index < self.list.size()) {
                 defer { index &+= 1 }
             do {
-                let eventListenerInterface: EventListenerInterface! = (self.list.get(index) as! EventListenerInterface)
+                let eventListenerInterface: EventListenerInterface! = (self.list.get(index) as Any as? EventListenerInterface)
                 stringBuffer.append(UpKeyEventHandlerBase.LISTENER_LABEL)
                 stringBuffer.append(jstr(eventListenerInterface))
             } /* catch (Exception e): a thrown Java exception stops the program */

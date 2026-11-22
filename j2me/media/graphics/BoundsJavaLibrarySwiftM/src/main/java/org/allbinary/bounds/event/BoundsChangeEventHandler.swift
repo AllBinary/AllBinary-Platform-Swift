@@ -35,7 +35,7 @@ open class BoundsChangeEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let boundsChangeEventListener: BoundsChangeEventListener! = (eventListenerInterface as! BoundsChangeEventListener)
+        let boundsChangeEventListener: BoundsChangeEventListener! = (eventListenerInterface as Any as? BoundsChangeEventListener)
         boundsChangeEventListener.onBoundsChangeEvent((eventObject as! BoundsChangeEvent))
     }
 }

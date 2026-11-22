@@ -33,32 +33,32 @@ open class TimeUtil: JObject {
     
 
     open func setCalendar(_ calendar: Calendar!, _ yearString: String!, _ monthString: String!, _ dayString: String!, _ hourString: String!) {
-        let year: Int32 = yearString.intValue()
-        let month: Int32 = monthString.intValue()
-        let day: Int32 = dayString.intValue()
-        let hour: Int32 = hourString.intValue()
+        let year: Int32 = Int32(yearString)!.intValue()
+        let month: Int32 = Int32(monthString)!.intValue()
+        let day: Int32 = Int32(dayString)!.intValue()
+        let hour: Int32 = Int32(hourString)!.intValue()
         calendar.set(year, month, day, hour, 0)
     }
     
 
     open func setCalendarWithTime(_ calendar: Calendar!, _ yearString: String!, _ monthString: String!, _ dayString: String!, _ hourString: String!, _ minuteString: String!, _ secondString: String!) {
-        let year: Int32 = yearString.intValue()
-        let month: Int32 = monthString.intValue()
-        let day: Int32 = dayString.intValue()
-        let hour: Int32 = hourString.intValue()
-        let minute: Int32 = minuteString.intValue()
-        let second: Int32 = secondString.intValue()
+        let year: Int32 = Int32(yearString)!.intValue()
+        let month: Int32 = Int32(monthString)!.intValue()
+        let day: Int32 = Int32(dayString)!.intValue()
+        let hour: Int32 = Int32(hourString)!.intValue()
+        let minute: Int32 = Int32(minuteString)!.intValue()
+        let second: Int32 = Int32(secondString)!.intValue()
         calendar.set(year, month, day, hour, minute, second)
     }
     
 
     open func setExpirationCalendar(_ calendar: Calendar!, _ yearsString: String!, _ monthsString: String!, _ daysString: String!, _ hoursString: String!, _ minutesString: String!, _ secondsString: String!) {
-        let year: Int32 = calendar.get(Calendar.YEAR) + yearsString.intValue()
-        let month: Int32 = calendar.get(Calendar.MONTH) + monthsString.intValue()
-        let day: Int32 = calendar.get(Calendar.DAY_OF_MONTH) + daysString.intValue()
-        let hour: Int32 = calendar.get(Calendar.HOUR) + hoursString.intValue()
-        let minute: Int32 = calendar.get(Calendar.MINUTE) + minutesString.intValue()
-        let second: Int32 = calendar.get(Calendar.SECOND) + secondsString.intValue()
+        let year: Int32 = calendar.get(Calendar.YEAR) + Int32(yearsString)!.intValue()
+        let month: Int32 = calendar.get(Calendar.MONTH) + Int32(monthsString)!.intValue()
+        let day: Int32 = calendar.get(Calendar.DAY_OF_MONTH) + Int32(daysString)!.intValue()
+        let hour: Int32 = calendar.get(Calendar.HOUR) + Int32(hoursString)!.intValue()
+        let minute: Int32 = calendar.get(Calendar.MINUTE) + Int32(minutesString)!.intValue()
+        let second: Int32 = calendar.get(Calendar.SECOND) + Int32(secondsString)!.intValue()
         calendar.set(year, month, day, hour, minute, second)
     }
     

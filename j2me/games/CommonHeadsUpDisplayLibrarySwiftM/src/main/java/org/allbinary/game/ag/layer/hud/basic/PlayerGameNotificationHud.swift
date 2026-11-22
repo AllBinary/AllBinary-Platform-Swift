@@ -38,7 +38,7 @@ import J2SEForSwiftLibrary
 // import org.allbinary.time.TimeDelayHelper
 // import org.allbinary.util.CircularIndexUtil
 
-open class PlayerGameNotificationHud: GameNotificationHud, UpdateMyFontInterface {
+open class PlayerGameNotificationHud: GameNotificationHud {
     fileprivate var gameTickTimeDelayHelper: GameTickTimeDelayHelper! = nil
     fileprivate var EMPTY_STRING: String! = nil
     fileprivate var displayInfo: DisplayInfoSingleton! = nil

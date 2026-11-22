@@ -97,8 +97,8 @@ open class LayerManagerEventHandler: BasicEventHandler {
         var listenerIndex: Int32 = 0
         while (listenerIndex < eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (eventListenerInterfaceList.objectArray[listenerIndex] as! EventListenerInterface)
-                layerManagerEventListenerInterface = ((eventListenerInterface as! LayerManagerEventListenerInterface))
+                eventListenerInterface = (eventListenerInterfaceList.objectArray[listenerIndex] as Any as? EventListenerInterface)
+                layerManagerEventListenerInterface = ((eventListenerInterface as Any as? LayerManagerEventListenerInterface))
                 layerManagerEventListenerInterface.onDeleteLayerManagerEvent((eventObject as! LayerManagerEvent))
             } /* catch (Exception e): a thrown Java exception stops the program */
             listenerIndex &+= 1
@@ -107,7 +107,7 @@ open class LayerManagerEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let layerManagerEventListenerInterface: LayerManagerEventListenerInterface! = ((eventListenerInterface as! LayerManagerEventListenerInterface))
+        let layerManagerEventListenerInterface: LayerManagerEventListenerInterface! = ((eventListenerInterface as Any as? LayerManagerEventListenerInterface))
         layerManagerEventListenerInterface.onCreateLayerManagerEvent((eventObject as! LayerManagerEvent))
     }
 }

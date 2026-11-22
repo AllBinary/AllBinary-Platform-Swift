@@ -106,7 +106,7 @@ open class BaseImageAnimationFactory: JObject, AnimationInterfaceFactoryInterfac
         let stringBuffer: StringMaker! = StringMaker()
         stringBuffer.append(super.toString())
         stringBuffer.append(commonLabels.HEIGHT_LABEL)
-        stringBuffer.appendint(Int32(truncatingIfNeeded: self.image.getHeight()))
+        stringBuffer.appendint(self.image.getHeight())
         stringBuffer.append(commonSeps.SPACE)
         stringBuffer.append(self.animationFactoryInitializationVisitor.toString())
         return stringBuffer.toString()

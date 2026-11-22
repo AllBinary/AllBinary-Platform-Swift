@@ -68,7 +68,7 @@ open class AnalogControllerConfigurationEventHandler: BasicEventHandler {
             var index: Int32 = self.list.size()
             while (jPreDecrement(&index) >= 0) {
             do {
-                let playerGameInput: AnalogControllerConfigurationEventListenerInterface! = (self.list.objectArray[index] as! AnalogControllerConfigurationEventListenerInterface)
+                let playerGameInput: AnalogControllerConfigurationEventListenerInterface! = (self.list.objectArray[index] as Any as? AnalogControllerConfigurationEventListenerInterface)
                 playerGameInput.onAnalogControllerConfigurationEvent((eventObject as! AnalogControllerConfigurationEvent))
             } /* catch (Exception e): a thrown Java exception stops the program */
             }
@@ -78,7 +78,7 @@ open class AnalogControllerConfigurationEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let analogControllerConfigurationEventListenerInterface: AnalogControllerConfigurationEventListenerInterface! = ((eventListenerInterface as! AnalogControllerConfigurationEventListenerInterface))
+        let analogControllerConfigurationEventListenerInterface: AnalogControllerConfigurationEventListenerInterface! = ((eventListenerInterface as Any as? AnalogControllerConfigurationEventListenerInterface))
         analogControllerConfigurationEventListenerInterface.onAnalogControllerConfigurationEvent((eventObject as! AnalogControllerConfigurationEvent))
     }
 }

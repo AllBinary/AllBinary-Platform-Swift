@@ -200,12 +200,12 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    open override func onEvent(_ eventObject: AllBinaryEventObject!) {
+    open func onEvent(_ eventObject: AllBinaryEventObject!) {
         ForcedLogUtil.log(EventStrings.getInstance().PERFORMANCE_MESSAGE, self)
     }
     
 
-    open override func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
+    open func onDisplayChangeEvent(_ displayChangeEvent: DisplayChangeEvent!) {
         do {
             let scrollSelectionForm: ScrollSelectionForm! = self.getMenuForm()
             if (scrollSelectionForm != nil) {
@@ -276,7 +276,7 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    open override func itemStateChanged(_ item: Item!) {
+    open func itemStateChanged(_ item: Item!) {
         ForcedLogUtil.log(self.commonStrings.NOT_IMPLEMENTED, self)
     }
     
@@ -287,19 +287,19 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    open override func `open`() {
+    open func `open`() {
         BasicMotionGesturesHandler.getInstance().addListenerInterface(self.getMenuInputProcessor())
         GameKeyEventHandler.getInstance().addListener(self.getMenuInputProcessor())
     }
     
 
-    open override func close() {
+    open func close() {
         BasicMotionGesturesHandler.getInstance().removeListener(self.getMenuInputProcessor())
         GameKeyEventHandler.getInstance().removeListener(self.getMenuInputProcessor())
     }
     
 
-    @discardableResult open override func getSourceId() -> Int32 {
+    @discardableResult open func getSourceId() -> Int32 {
         return StartCanvas.id
     }
     
@@ -375,7 +375,7 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     
 
     @discardableResult open override func isPausable() -> Bool {
-        if (CurrentDisplayableFactory.getInstance().getUsedRunnable() == NullWaitGameRunnable.getInstance()) {
+        if (CurrentDisplayableFactory.getInstance().getUsedRunnable() === NullWaitGameRunnable.getInstance()) {
             return true
         } else {
             return false
@@ -383,30 +383,30 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    @discardableResult open override func isGameOver() -> Bool {
+    @discardableResult open func isGameOver() -> Bool {
         self.logUtil.putF(StringMaker().append(self.commonStrings.NOT_IMPLEMENTED).append(" since not a game").toString(), self, "isGameOver")
         return false
     }
     
 
-    open override func setLoadStateHashtable(_ hashtable: ABHashtable!) {
+    open func setLoadStateHashtable(_ hashtable: ABHashtable!) {
         self.logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", self, "setLoadStateHashtable")
     }
     
 
-    @discardableResult open override func getLoadStateHashtable() -> ABHashtable! {
+    @discardableResult open func getLoadStateHashtable() -> ABHashtable! {
         self.logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", self, "getLoadStateHashtable")
         return self.stdUtil.NULL_TABLE
     }
     
 
-    @discardableResult open override func getCurrentStateHashtable() -> ABHashtable! {
+    @discardableResult open func getCurrentStateHashtable() -> ABHashtable! {
         self.logUtil.putF("Trying to save the AI lol", self, "getCurrentStateHashtable")
         return self.stdUtil.NULL_TABLE
     }
     
 
-    open override func setHighScoreSubmitted(_ isNotUsed: Bool) {
+    open func setHighScoreSubmitted(_ isNotUsed: Bool) {
     }
     
 
@@ -420,13 +420,13 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    open override func paintThreed(_ graphics: Graphics!) {
+    open func paintThreed(_ graphics: Graphics!) {
         self.paintableInterface.paintThreed(graphics)
         self.paintedSpecialAnimationInterface.paintThreedXYZ(graphics, 0, 0, 0)
     }
     
 
-    open override func processGameOver() {
+    open func processGameOver() {
         self.logUtil.putF("Not Implemented since not a game", self, "setGameOver")
     }
     
@@ -581,11 +581,11 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    open override func setGameState(_ gameState: GameState!) {
+    open func setGameState(_ gameState: GameState!) {
     }
     
 
-    @discardableResult open override func getGameState() -> GameState! {
+    @discardableResult open func getGameState() -> GameState! {
         return self.gameStateFactory.PLAYING_GAME_STATE
     }
     
@@ -600,7 +600,7 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    @discardableResult open override func isHighScoreSubmitted() -> Bool {
+    @discardableResult open func isHighScoreSubmitted() -> Bool {
         self.logUtil.putF("Wow the AI got a high score!", self, "isHighScoreSubmitted")
         return false
     }
@@ -667,7 +667,7 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     }
     
 
-    @discardableResult open override func isInitialized() -> Bool {
+    @discardableResult open func isInitialized() -> Bool {
         return self.initialized
     }
     

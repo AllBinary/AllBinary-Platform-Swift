@@ -27,7 +27,7 @@ open class BasicArrayListCacheable: BasicArrayListD, CacheableInterface {
     
 
     @discardableResult open func getKey() -> JObject! {
-        return StringUtil.getInstance().EMPTY_STRING
+        return jBoxString(StringUtil.getInstance().EMPTY_STRING)
     }
 }
 

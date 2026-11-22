@@ -79,7 +79,7 @@ open class DestroyedEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let destroyedEventListenerInterface: DestroyedEventListenerInterface! = (eventListenerInterface as! DestroyedEventListenerInterface)
+        let destroyedEventListenerInterface: DestroyedEventListenerInterface! = (eventListenerInterface as Any as? DestroyedEventListenerInterface)
         destroyedEventListenerInterface.onDestroyed((eventObject as! DestroyedEvent))
     }
 }

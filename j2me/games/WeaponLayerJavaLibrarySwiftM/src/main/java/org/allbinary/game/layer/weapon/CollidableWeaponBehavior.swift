@@ -92,8 +92,8 @@ open class CollidableWeaponBehavior: CollidableDestroyableDamageableBehavior {
     
 
     open override func collideInterface(_ ownerLayer: CollidableCompositeLayer!, _ collidableInterfaceCompositeInterface: CollidableInterfaceCompositeInterface!) {
-        let ownerDamageableInterface: DamageableInterface! = (ownerLayer as! DamageableInterface)
-        let damageableInterface: DamageableInterface! = (collidableInterfaceCompositeInterface as! DamageableInterface)
+        let ownerDamageableInterface: DamageableInterface! = (ownerLayer as Any as? DamageableInterface)
+        let damageableInterface: DamageableInterface! = (collidableInterfaceCompositeInterface as Any as? DamageableInterface)
         self.damageUtil.process(ownerDamageableInterface, damageableInterface)
         self.collided = true
     }

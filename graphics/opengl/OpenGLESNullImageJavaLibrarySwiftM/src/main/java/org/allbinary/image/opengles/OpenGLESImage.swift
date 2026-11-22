@@ -31,7 +31,7 @@ import J2SEForSwiftLibrary
 open class OpenGLESImage: Image, OpenGLSurfaceChangedInterface {
     public static let NULL_OPENGL_IMAGE: OpenGLESImage! = OpenGLESImage(NullImage.NULL_IMAGE, PlatformBitmapBaseFactory.NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory.NULL_PLATFORM_TEXTURE_BASE_FACTORY)
     public static let texture2dList: BasicArrayList! = BasicArrayListD()
-    public static let TYPE: Int32 = 4
+    // TYPE is the static of the superclass
     public var commonStrings: CommonStrings! = nil
     public var textureFactory: PlatformTextureBaseFactory! = nil
     public var openGLBitmap: PlatformBitmapBase! = nil
@@ -58,7 +58,7 @@ open class OpenGLESImage: Image, OpenGLSurfaceChangedInterface {
     }
     
 
-    open override func set(_ gl: GL!) {
+    open func set(_ gl: GL!) {
         jThrow(JException("Exception", self.commonStrings.NOT_IMPLEMENTED))
     }
     
@@ -76,7 +76,7 @@ open class OpenGLESImage: Image, OpenGLSurfaceChangedInterface {
     }
     
 
-    @discardableResult open func getType() -> Int32 {
+    @discardableResult open override func getType() -> Int32 {
         return OpenGLESImage.TYPE
     }
 }

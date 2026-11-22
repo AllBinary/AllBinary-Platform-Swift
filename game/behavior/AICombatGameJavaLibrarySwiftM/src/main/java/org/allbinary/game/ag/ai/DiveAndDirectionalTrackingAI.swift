@@ -92,9 +92,9 @@ open class DiveAndDirectionalTrackingAI: BasicAI, TrackingEventListenerInterface
         self.initFields()
         self.aiVistor = visitor
         self.artificialIntelligenceInterface = artificialIntelligenceInterface
-        let directionalCompositeInterface: DirectionalCompositeInterface! = (self.getOwnerLayerInterface() as! DirectionalCompositeInterface)
+        let directionalCompositeInterface: DirectionalCompositeInterface! = (self.getOwnerLayerInterface() as Any as? DirectionalCompositeInterface)
         self.directionalInterface = directionalCompositeInterface.getDirectionalInterface()
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? VelocityInterfaceCompositeInterface)
         self.velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties()
         DestroyedEventHandler.getInstance().addListenerInterface(self)
         self.`init`()
@@ -293,7 +293,7 @@ open class DiveAndDirectionalTrackingAI: BasicAI, TrackingEventListenerInterface
     
 
     open func onDestroyed(_ destroyedEvent: DestroyedEvent!) {
-        if (self.getOwnerLayerInterface() == destroyedEvent.getLayerInterface()) {
+        if (self.getOwnerLayerInterface() === destroyedEvent.getLayerInterface()) {
             TrackingEventHandler.getInstance().removeListener(self)
             DestroyedEventHandler.getInstance().removeListener(self)
         }

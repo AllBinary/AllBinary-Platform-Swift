@@ -80,7 +80,7 @@ open class DownKeyEventHandlerBase: BasicEventHandler {
         var eventListenerInterface: EventListenerInterface! = nil
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? EventListenerInterface)
                 self.processI(eventObject, eventListenerInterface)
             } /* catch (Exception e): a thrown Java exception stops the program */
             index &+= 1
@@ -103,7 +103,7 @@ open class DownKeyEventHandlerBase: BasicEventHandler {
         var eventListenerInterface: EventListenerInterface! = nil
         while (index < self.eventListenerInterfaceList.size()) {
             do {
-                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.eventListenerInterfaceList.get(index) as Any as? EventListenerInterface)
                 self.processEvent(eventObject, eventListenerInterface)
             } /* catch (Exception e): a thrown Java exception stops the program */
             index &+= 1
@@ -112,13 +112,13 @@ open class DownKeyEventHandlerBase: BasicEventHandler {
     
 
     open func processI(_ eventObject: Int32!, _ eventListenerInterface: EventListenerInterface!) {
-        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as! DownKeyEventListenerInterface)
+        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as Any as? DownKeyEventListenerInterface)
         downKeyEventListenerInterface.onDownKey(eventObject)
     }
     
 
     open func processEvent(_ eventObject: GameKeyEvent!, _ eventListenerInterface: EventListenerInterface!) {
-        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as! DownKeyEventListenerInterface)
+        let downKeyEventListenerInterface: DownKeyEventListenerInterface! = (eventListenerInterface as Any as? DownKeyEventListenerInterface)
         downKeyEventListenerInterface.onDownKeyEvent(eventObject)
     }
     
@@ -134,7 +134,7 @@ open class DownKeyEventHandlerBase: BasicEventHandler {
             while (index < self.list.size()) {
                 defer { index &+= 1 }
             do {
-                eventListenerInterface = (self.list.get(index) as! EventListenerInterface)
+                eventListenerInterface = (self.list.get(index) as Any as? EventListenerInterface)
                 stringBuffer.append(DownKeyEventHandlerBase.LISTENER_LABEL)
                 stringBuffer.append(jstr(eventListenerInterface))
             } /* catch (Exception e): a thrown Java exception stops the program */

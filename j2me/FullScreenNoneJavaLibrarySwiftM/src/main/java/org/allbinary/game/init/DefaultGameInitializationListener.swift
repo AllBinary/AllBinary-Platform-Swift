@@ -44,7 +44,7 @@ open class DefaultGameInitializationListener: JObject, GameInitializedListenerIn
         self.initFields()
         let gameInitializedEventHandler: GameInitializedEventHandler! = GameInitializedEventHandler.getInstance()
         gameInitializedEventHandler.removeAllListeners()
-        gameInitializedEventHandler.addListenerInterface((self as! GameInitializedListenerInterface))
+        gameInitializedEventHandler.addListenerInterface((self as Any as? GameInitializedListenerInterface))
     }
     
 

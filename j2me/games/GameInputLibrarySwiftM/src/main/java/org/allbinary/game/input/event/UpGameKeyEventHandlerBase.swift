@@ -82,7 +82,7 @@ open class UpGameKeyEventHandlerBase: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let upGameKeyEventListenerInterface: UpGameKeyEventListenerInterface! = (eventListenerInterface as! UpGameKeyEventListenerInterface)
+        let upGameKeyEventListenerInterface: UpGameKeyEventListenerInterface! = (eventListenerInterface as Any as? UpGameKeyEventListenerInterface)
         upGameKeyEventListenerInterface.onUpGameKeyEvent((eventObject as! GameKeyEvent))
     }
     
@@ -98,7 +98,7 @@ open class UpGameKeyEventHandlerBase: BasicEventHandler {
             while (index < size) {
                 defer { index &+= 1 }
             do {
-                let eventListenerInterface: EventListenerInterface! = (self.list.get(index) as! EventListenerInterface)
+                let eventListenerInterface: EventListenerInterface! = (self.list.get(index) as Any as? EventListenerInterface)
                 stringBuffer.append(UpGameKeyEventHandlerBase.LISTENER_LABEL)
                 stringBuffer.append(jstr(eventListenerInterface))
             } /* catch (Exception e): a thrown Java exception stops the program */

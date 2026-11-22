@@ -64,9 +64,9 @@ open class MineCountedPickedUpLayerInterfaceFactory: CountedPickedUpLayerInterfa
     
 
     @discardableResult open override func getNextInstance(_ hashtable: ABHashtable!, _ x: Int32, _ y: Int32, _ z: Int32) -> AllBinaryLayer! {
-        let sourceLayerInterface: AllBinaryLayer! = (hashtable.get((self.smallIntegerSingletonFactory.getAt(0) as! JObject)) as! AllBinaryLayer)
-        let angle: Int32! = jUnboxValue(hashtable.get((self.smallIntegerSingletonFactory.getAt(1) as! JObject)), Int32.self)
-        let scoreableInterface: ScoreableInterface! = (sourceLayerInterface as! ScoreableInterface)
+        let sourceLayerInterface: AllBinaryLayer! = (hashtable.get(jAsObject(self.smallIntegerSingletonFactory.getAt(0))) as! AllBinaryLayer)
+        let angle: Int32! = jUnboxValue(hashtable.get(jAsObject(self.smallIntegerSingletonFactory.getAt(1))), Int32.self)
+        let scoreableInterface: ScoreableInterface! = (sourceLayerInterface as Any as? ScoreableInterface)
         return self.weaponLayerCircularStaticPool.getInstanceWeaponLayer(sourceLayerInterface, x, y, z, Int32(truncatingIfNeeded: angle.intValue()), 0, self.weaponProperties, scoreableInterface)
     }
 }

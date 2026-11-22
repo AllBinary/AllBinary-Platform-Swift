@@ -36,7 +36,7 @@ open class LurchRotationAI: LurchAI {
     public override init(_ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
         super.init(ownerLayerInterface, gameInput)
         self.initFields()
-        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+        let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
         self.rotationAnimationInterface = rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface()
         self.update()
     }
@@ -50,14 +50,14 @@ open class LurchRotationAI: LurchAI {
 
     fileprivate func update() {
         if (self.currentRelativeAngle == 0) {
-            let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as! RotationAnimationInterface)
+            let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as Any as? RotationAnimationInterface)
             let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
-            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
             rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue())
         } else if (self.currentRelativeAngle == 180) {
-            let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as! RotationAnimationInterface)
+            let rotationAnimationInterface: RotationAnimationInterface! = (self.rotationAnimationInterface as Any as? RotationAnimationInterface)
             let angleIncrementInfo: AngleIncrementInfo! = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo()
-            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! RotationAnimationInterfaceCompositeInterface)
+            let rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? RotationAnimationInterfaceCompositeInterface)
             rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue())
         }
     }

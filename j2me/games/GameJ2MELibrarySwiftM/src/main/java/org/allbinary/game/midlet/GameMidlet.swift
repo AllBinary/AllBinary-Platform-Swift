@@ -106,7 +106,7 @@ import J2SEForSwiftLibrary
 // import org.allbinary.logic.StdUtil
 // import org.allbinary.util.ABHashtable
 
-open class GameMidlet: ProgressMidlet, CommandListener {
+open class GameMidlet: ProgressMidlet {
     fileprivate var enumerationUtil: EnumerationUtil! = nil
     public var basicColorFactory: BasicColorFactory! = nil
     public var features: Features! = nil
@@ -318,7 +318,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
                 }
                 self.unPauseAppBackground(false)
             } else if (command === gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS) {
-                let menuListener: MenuListener! = (displayable as! MenuListener)
+                let menuListener: MenuListener! = (displayable as Any as? MenuListener)
                 menuListener.close()
                 self.setDisplay((gameCanvasRunnableInterface as! Displayable))
                 self.unPauseAppBackground(false)
@@ -330,7 +330,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
             } else if (command === gameCommandsFactory.EXIT_WITHOUT_PROGRESS_COMMAND) {
                 self.exitProgress(false)
             } else if (command === gameCommandsFactory.START_COMMAND || command === gameCommandsFactory.RESTART_COMMAND || command === gameCommandsFactory.CONTINUE_COMMAND) {
-                if (self.gameMidletStateFactory.getCurrentGameState() != self.gameStateFactory.PLAYING_GAME_STATE || command === gameCommandsFactory.RESTART_COMMAND) {
+                if (self.gameMidletStateFactory.getCurrentGameState() !== self.gameStateFactory.PLAYING_GAME_STATE || command === gameCommandsFactory.RESTART_COMMAND) {
                     if (self.gameStartTimeHelper.isTimeTNT()) {
                         if (command === gameCommandsFactory.START_COMMAND && self.isDemoLoading()) {
                             self.logUtil.putF("Trying to Start Game Before Loading Complete", self, self.midletStrings.COMMAND_ACTION)
@@ -357,7 +357,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
             } else if (command === gameCommandsFactory.QUIT_COMMAND) {
                 if (self.gameStartTimeHelper.isTimeTNT()) {
                     if ((displayable is HighScoreTextBox)) {
-                        let menuListener: MenuListener! = (displayable as! MenuListener)
+                        let menuListener: MenuListener! = (displayable as Any as? MenuListener)
                         menuListener.close()
                     }
                     self.stopGameCanvasRunnableInterface()
@@ -373,7 +373,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
                 self.setDisplay(displayable)
             } else if (command === gameCommandsFactory.SET_MENU_DISPLAYABLE) {
                 self.pauseAppBackground(false)
-                let menuListener: MenuListener! = (displayable as! MenuListener)
+                let menuListener: MenuListener! = (displayable as Any as? MenuListener)
                 menuListener.`open`()
                 self.setDisplay(displayable)
             } else if (command === gameCommandsFactory.START_TRACE) {
@@ -409,7 +409,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
             } else if (command === HighScoreCommands.getInstance().DISPLAY) {
                 self.commandAction(gameCommandsFactory.SET_MENU_DISPLAYABLE, self.createHighScoresCanvas())
             } else if (command === GameInputMappingInstructionsCanvas.CLOSE) {
-                let menuListener: MenuListener! = (displayable as! MenuListener)
+                let menuListener: MenuListener! = (displayable as Any as? MenuListener)
                 menuListener.close()
                 self.commandAction(GameInputMappingCanvas.DISPLAY, NullCanvas.NULL_CANVAS)
             } else if (command === GameInputMappingCanvas.DISPLAY) {
@@ -570,7 +570,7 @@ open class GameMidlet: ProgressMidlet, CommandListener {
     open func startGameCanvasRunnableInterface() {
         let threadFactoryUtil: ThreadFactoryUtil! = ThreadFactoryUtil.getInstance()
         self.thread = threadFactoryUtil.getInstanceGameCanvasRunnable(self.allbinaryGameCanvasRunnableInterface)
-        self.logUtil.putF(StringMaker().append("Thread Priority: ").appendint(Int32(truncatingIfNeeded: self.thread.getPriority())).toString(), self, "startGameCanvasRunnableInterface")
+        self.logUtil.putF(StringMaker().append("Thread Priority: ").appendint(self.thread.getPriority()).toString(), self, "startGameCanvasRunnableInterface")
         self.allbinaryGameCanvasRunnableInterface.setThread(self.thread)
         threadFactoryUtil.start(self.thread)
     }

@@ -47,7 +47,7 @@ open class Globals: JObject {
         let commonStrings: CommonStrings! = CommonStrings.getInstance()
         let appUrlGlobals: AppUrlGlobals! = AppUrlGlobals()
         appUrlGlobals.setWebappPath(pathString)
-        .URLGLOBALS.`init`(appUrlGlobals)
+        URLGLOBALS.`init`(appUrlGlobals)
         WebappClassLoaderInfo.setLoader(classLoader)
         let stringBuffer: StringMaker! = StringMaker()
         stringBuffer.append("Setting Up AllBinary System Configuration Args: ")
@@ -63,12 +63,12 @@ open class Globals: JObject {
             stringBuffer.append(CommonSeps.getInstance().SPACE)
             stringBuffer.append(CommonSeps.getInstance().EQUALS)
             stringBuffer.append(CommonSeps.getInstance().SPACE)
-            stringBuffer.append(.URLGLOBALS.getWebappPath())
+            stringBuffer.append(URLGLOBALS.getWebappPath())
             self.logUtil.putF(stringBuffer.toString(), self, commonStrings.INIT)
         }
         stringBuffer.delete(0, stringBuffer.length())
         stringBuffer.append("Webapp Path Set To: ")
-        stringBuffer.append(.URLGLOBALS.getWebappPath())
+        stringBuffer.append(URLGLOBALS.getWebappPath())
         self.logUtil.putF(stringBuffer.toString(), self, commonStrings.INIT)
     }
 }

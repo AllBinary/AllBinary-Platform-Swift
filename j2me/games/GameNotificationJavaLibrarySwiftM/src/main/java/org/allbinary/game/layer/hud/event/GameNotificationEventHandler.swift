@@ -42,7 +42,7 @@ open class GameNotificationEventHandler: BasicEventHandler {
         var eventListenerInterface: EventListenerInterface! = NullEventListener.NULL_EVENT_LISTENER
         let list: BasicArrayList! = self.eventListenerInterfaceList
         if (list.size() > 0) {
-            eventListenerInterface = (list.objectArray[0] as! EventListenerInterface)
+            eventListenerInterface = (list.objectArray[0] as Any as? EventListenerInterface)
         }
         super.removeAllListeners()
         if (eventListenerInterface !== NullEventListener.NULL_EVENT_LISTENER) {
@@ -60,7 +60,7 @@ open class GameNotificationEventHandler: BasicEventHandler {
         if (!self.enabled) {
             return
         }
-        let gameNotificationListenerInterface: GameNotificationListenerInterface! = (eventListenerInterface as! GameNotificationListenerInterface)
+        let gameNotificationListenerInterface: GameNotificationListenerInterface! = (eventListenerInterface as Any as? GameNotificationListenerInterface)
         gameNotificationListenerInterface.onGameNotificationEvent((eventObject as! GameNotificationEvent))
     }
 }

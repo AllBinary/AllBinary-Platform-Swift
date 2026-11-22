@@ -35,7 +35,7 @@ open class InputMappingEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let inputMappingEventListenerInterface: InputMappingEventListenerInterface! = (eventListenerInterface as! InputMappingEventListenerInterface)
+        let inputMappingEventListenerInterface: InputMappingEventListenerInterface! = (eventListenerInterface as Any as? InputMappingEventListenerInterface)
         inputMappingEventListenerInterface.onInputMappingEvent((eventObject as! InputMappingEvent))
     }
 }

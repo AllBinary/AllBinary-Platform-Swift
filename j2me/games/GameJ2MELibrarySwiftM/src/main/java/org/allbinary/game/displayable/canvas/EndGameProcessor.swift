@@ -46,7 +46,7 @@ open class EndGameProcessor: Processor {
     open override func process() {
         if (self.gameCanvas.isHighScoreSubmitted()) {
             if (self.gameCanvas.getGameStateTimeHelper().isElapsedTNT(self.WAIT)) {
-                if (self.gameCanvas.getGameState() == self.gameStateFactory.SHOW_END_RESULT_GAME_STATE) {
+                if (self.gameCanvas.getGameState() === self.gameStateFactory.SHOW_END_RESULT_GAME_STATE) {
                     let highScoresBase: HighScoresHelperBase! = (self.gameCanvas.highScoresHelper as! HighScoresHelperBase)
                     let highScores: HighScores! = highScoresBase.getSelectedHighScores()
                     if (highScores !== NullHighScoresSingletonFactory.getInstance()) {
@@ -55,7 +55,7 @@ open class EndGameProcessor: Processor {
                         self.gameCanvas.setGameState(self.gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE)
                         self.gameCanvas.setHighScoresPaintable(self.gameCanvas.getRealHighScoresPaintable())
                     }
-                } else if (self.gameCanvas.getGameState() == self.gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE) {
+                } else if (self.gameCanvas.getGameState() === self.gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE) {
                     self.gameCanvas.setGameState(self.gameStateFactory.SHOW_END_RESULT_GAME_STATE)
                     self.gameCanvas.setHighScoresPaintable(NullPaintable.getInstance())
                 }

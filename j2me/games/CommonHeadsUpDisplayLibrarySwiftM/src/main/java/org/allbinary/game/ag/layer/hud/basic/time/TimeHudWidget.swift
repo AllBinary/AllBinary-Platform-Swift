@@ -58,8 +58,8 @@ open class TimeHudWidget: BasicHud {
 
     open override func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.updateMaxWidth = font.getSize() * 5
-        self.offset = font.stringWidth(self.TIME_STRING) + MyFontProcessor.defaultStringWidth(font, 3)
+        self.updateMaxWidth = font.getSize() &* 5
+        self.offset = font.stringWidth(self.TIME_STRING) &+ MyFontProcessor.defaultStringWidth(font, 3)
         super.updateMeasurement(graphics)
     }
     

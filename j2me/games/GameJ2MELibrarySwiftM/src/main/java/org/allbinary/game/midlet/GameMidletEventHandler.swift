@@ -35,7 +35,7 @@ open class GameMidletEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let gameMidletEventListener: GameMidletEventListener! = (eventListenerInterface as! GameMidletEventListener)
+        let gameMidletEventListener: GameMidletEventListener! = (eventListenerInterface as Any as? GameMidletEventListener)
         gameMidletEventListener.onGameEnd(eventObject)
     }
 }

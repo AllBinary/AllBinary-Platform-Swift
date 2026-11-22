@@ -78,7 +78,7 @@ open class CompleteMotionGestureInputEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let completeMotionGestureInputEventListenerInterface: CompleteMotionGestureInputEventListenerInterface! = (eventListenerInterface as! CompleteMotionGestureInputEventListenerInterface)
+        let completeMotionGestureInputEventListenerInterface: CompleteMotionGestureInputEventListenerInterface! = (eventListenerInterface as Any as? CompleteMotionGestureInputEventListenerInterface)
         completeMotionGestureInputEventListenerInterface.onCompleteMotionGestureInputEvent((eventObject as! CompleteMotionGestureInputEvent))
     }
 }

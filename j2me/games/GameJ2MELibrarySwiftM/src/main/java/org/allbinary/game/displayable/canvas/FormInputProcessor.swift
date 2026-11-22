@@ -80,7 +80,7 @@ open class FormInputProcessor: InputProcessor {
             if (self.platformKeyFactory.isEnter(input)) {
                 PreLogUtil.put(StringMaker().append(self.inputFactory.KEY_CODE_LABEL).appendint(keyCode).append(CommonSeps.getInstance().SPACE).append(self.inputFactory.DEVICE_ID_LABEL).appendint(deviceId).toString(), self, self.gameInputStrings.KEY_RELEASED)
                 let gameKey: GameKey! = GameKeyFactory.getInstance().KEY_NUM0
-                let gameKeyEventSourceInterface: GameKeyEventSourceInterface! = (canvas as! GameKeyEventSourceInterface)
+                let gameKeyEventSourceInterface: GameKeyEventSourceInterface! = (canvas as Any as? GameKeyEventSourceInterface)
                 let gameKeyEvent: GameKeyEvent! = self.gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey)
                 self.upGameKeyEventHandler.fireEvent(gameKeyEvent)
                 self.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent)

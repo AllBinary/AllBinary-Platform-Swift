@@ -62,7 +62,7 @@ open class CountedLayerInterfaceFactoryPart: JObject, PartInterface, UpdateMyFon
 
     open func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
-        self.setXOffset(font.charsWidth(self.totalString, 0, self.primitiveLongUtil.getCurrentTotalDigits()) + (font.getSize() >> 1))
+        self.setXOffset(font.charsWidth(self.totalString, 0, self.primitiveLongUtil.getCurrentTotalDigits()) &+ (font.getSize() >> 1))
         self.myFontProcessor = MyFontProcessor.getInstance()
     }
     

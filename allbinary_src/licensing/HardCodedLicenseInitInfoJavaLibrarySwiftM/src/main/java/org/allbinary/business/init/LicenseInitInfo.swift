@@ -79,7 +79,7 @@ open class LicenseInitInfo: JObject {
     
 
     open func setServerList(_ servers: BasicArrayList!) {
-        if (DebugFactory.getInstance() == NoDebug.getInstance()) {
+        if (DebugFactory.getInstance() === NoDebug.getInstance()) {
             self.serverList = servers
         }
     }

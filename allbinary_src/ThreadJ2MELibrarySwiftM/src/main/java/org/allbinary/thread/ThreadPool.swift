@@ -100,7 +100,7 @@ open class ThreadPool: JObject {
                     var index: Int32 = 0
                     while (index < size) {
                         defer { index &+= 1 }
-                    runnable = (self.taskQueue.get(index) as! PriorityRunnable)
+                    runnable = (self.taskQueue.get(index) as Any as? PriorityRunnable)
                     if (runnable.getPriority() > task.getPriority()) {
                         lowerPriorityRunnable = runnable
                         break

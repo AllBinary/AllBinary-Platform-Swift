@@ -29,7 +29,7 @@ open class ArtificialIntelligenceLayerProcessor: LayerProcessor {
     
 
     open override func processAt(_ allBinaryLayerManager: AllBinaryLayerManager!, _ layerInterface: AllBinaryLayer!, _ index: Int32) {
-        let artificialIntelligenceCompositeInterface: ArtificialIntelligenceCompositeInterface! = (layerInterface as! ArtificialIntelligenceCompositeInterface)
+        let artificialIntelligenceCompositeInterface: ArtificialIntelligenceCompositeInterface! = (layerInterface as Any as? ArtificialIntelligenceCompositeInterface)
         artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager)
     }
     

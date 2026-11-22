@@ -45,7 +45,7 @@ open class DropLayerProcessor: BasicLayerProcessor {
             while (index < size) {
                 defer { index &+= 1 }
             layerInterface = (list.objectArray[index] as! AllBinaryLayer)
-            dropLayerInterface = (layerInterface as! DropLayerInterface)
+            dropLayerInterface = (layerInterface as Any as? DropLayerInterface)
             layerInterface = (dropLayerInterface.getDroppedLayer() as! AllBinaryLayer)
             allBinaryLayerManager.append(layerInterface)
             }

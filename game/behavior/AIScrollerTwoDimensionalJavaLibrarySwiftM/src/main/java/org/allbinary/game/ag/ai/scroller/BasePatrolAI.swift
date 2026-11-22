@@ -62,7 +62,7 @@ open class BasePatrolAI: BasicAI {
     
 
     fileprivate func updateTotalDistance() {
-        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as! VelocityInterfaceCompositeInterface)
+        let velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface! = (self.getOwnerLayerInterface() as Any as? VelocityInterfaceCompositeInterface)
         let velocityProperties: BasicVelocityProperties! = velocityInterfaceCompositeInterface.getVelocityProperties()
         self.xTotalDistance = self.xTotalDistance &+ velocityProperties.getVelocityXBasicDecimalP().getScaled()
     }

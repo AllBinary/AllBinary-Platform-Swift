@@ -115,7 +115,7 @@ open class LoadGameForm: CommandForm {
     @discardableResult open func getSelectedText() -> Int32 {
         if (self.areChoices) {
             let choiceGroup: ChoiceGroup! = (self.get(0) as! ChoiceGroup)
-            let value: Int32 = jstr(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue()
+            let value: Int32 = Int32(choiceGroup.getString(choiceGroup.getSelectedIndex()))!.intValue()
             return value
         } else {
             return -1

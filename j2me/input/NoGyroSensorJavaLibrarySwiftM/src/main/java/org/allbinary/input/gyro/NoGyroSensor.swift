@@ -20,7 +20,7 @@ import J2SEForSwiftLibrary
 // import org.allbinary.logic.communication.log.LogUtil
 // import org.allbinary.logic.math.Orientation
 
-open class NoGyroSensor: AllBinaryOrientationSensor, AllBinarySensorListener {
+open class NoGyroSensor: AllBinaryOrientationSensor {
     
 
     public override init() {

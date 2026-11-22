@@ -55,7 +55,7 @@ open class CommonGameInitialization: BaseGameInitialization {
             AngleFactory.getInstance()
             progressCanvas.addNormalPortion(50, "Angles")
             self.initGame()
-            self.resourceInitializationArray[self.GAME_RESOURCES].`init`()
+            self.resourceInitializationArray[self.GAME_RESOURCES]!.`init`()
         }
         super.resourceInitialization(level)
     }

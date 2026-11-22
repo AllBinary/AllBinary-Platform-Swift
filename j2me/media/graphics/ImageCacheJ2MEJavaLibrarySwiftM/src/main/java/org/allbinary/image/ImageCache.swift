@@ -59,7 +59,7 @@ open class ImageCache: ImageCacheBase {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            if (resourceStringArray[index] === key) {
+            if (jSame(resourceStringArray[index], key)) {
                 return index
             }
             }
@@ -87,7 +87,7 @@ open class ImageCache: ImageCacheBase {
                     self.heights[self.nextIndex] = height
                     self.nextIndex &+= 1
                 }
-                self.listOfList[foundIndex].add(image)
+                self.listOfList[foundIndex]!.add(image)
             }
         }
         return image

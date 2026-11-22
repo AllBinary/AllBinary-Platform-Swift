@@ -40,7 +40,7 @@ open class VectorExplosionAnimationFactory: JObject, ProceduralAnimationInterfac
     
 
     @discardableResult open func getInstanceAnimation(_ animationInterface: Animation!) -> Animation! {
-        let vectorRotationAnimationInterface: VectorAnimationInterface! = (animationInterface as! VectorAnimationInterface)
+        let vectorRotationAnimationInterface: VectorAnimationInterface! = (animationInterface as Any as? VectorAnimationInterface)
         let frame: Int32 = vectorRotationAnimationInterface.getFrame()
         let framePoints: JArray<JArray<Int32>?>! = vectorRotationAnimationInterface.getPoints(frame)
         let points: JArray<JArray<JArray<Int32>?>?>! = self.vectorExplosionGenerator.getInstance(framePoints, 6, self.vectorExplosionGenerator.ROTATION)

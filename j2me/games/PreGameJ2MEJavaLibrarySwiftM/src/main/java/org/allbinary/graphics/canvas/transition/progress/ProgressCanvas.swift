@@ -104,7 +104,7 @@ open class ProgressCanvas: RunnableCanvas, PaintableInterface, UpdateMyFontInter
     }
     
 
-    open override func updateMeasurement(_ graphics: Graphics!) {
+    open func updateMeasurement(_ graphics: Graphics!) {
         let font: Font! = graphics.getFont()
         self.gauge.setHeight(font.getHeight() &+ 2)
         self.myFontProcessor = MyFontProcessor.getInstance()
@@ -236,7 +236,7 @@ open class ProgressCanvas: RunnableCanvas, PaintableInterface, UpdateMyFontInter
     }
     
 
-    open override func paintThreed(_ graphics: Graphics!) {
+    open func paintThreed(_ graphics: Graphics!) {
     }
     
 

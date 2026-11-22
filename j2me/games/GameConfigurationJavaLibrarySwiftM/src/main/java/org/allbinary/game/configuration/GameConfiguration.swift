@@ -55,7 +55,7 @@ open class GameConfiguration: JObject {
     
 
     open func setValue(_ value: Int32!) {
-        if (self.value !== value) {
+        if (self.value != value) {
             let oldValue: Int32! = self.value
             self.value = value
             GameFeatureEventHandler.getInstance().fireEvent(GameFeatureEvent(self, StringMaker().append(self.name).append(" value: from: ").appendint(Int32(truncatingIfNeeded: oldValue.intValue())).append(" to ").appendint(Int32(truncatingIfNeeded: self.value.intValue())).toString()))

@@ -111,7 +111,7 @@ open class SimpleFileUtil: JObject {
                     returnLine = 0
                 }
             }
-            let s: String! = JString.fromChars(byteArray, startIndex, (index &+ includeReturnLine &- returnLine &- startIndex))
+            let s: String! = JString.fromBytes(byteArray, startIndex, (index &+ includeReturnLine &- returnLine &- startIndex))
             stringList.add(jBoxString(s))
             index &+= 1
         }

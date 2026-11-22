@@ -80,7 +80,7 @@ open class PressGameKeyEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let pressGameKeyEventListenerInterface: PressGameKeyEventListenerInterface! = ((eventListenerInterface as! PressGameKeyEventListenerInterface))
+        let pressGameKeyEventListenerInterface: PressGameKeyEventListenerInterface! = ((eventListenerInterface as Any as? PressGameKeyEventListenerInterface))
         pressGameKeyEventListenerInterface.onPressGameKeyEvent((eventObject as! GameKeyEvent))
     }
 }

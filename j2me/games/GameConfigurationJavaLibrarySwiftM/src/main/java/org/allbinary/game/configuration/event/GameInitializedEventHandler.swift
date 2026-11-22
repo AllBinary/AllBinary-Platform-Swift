@@ -35,7 +35,7 @@ open class GameInitializedEventHandler: BasicEventHandler {
     
 
     open override func process(_ eventObject: AllBinaryEventObject!, _ eventListenerInterface: EventListenerInterface!) {
-        let gameInitializedListenerInterface: GameInitializedListenerInterface! = ((eventListenerInterface as! GameInitializedListenerInterface))
+        let gameInitializedListenerInterface: GameInitializedListenerInterface! = ((eventListenerInterface as Any as? GameInitializedListenerInterface))
         gameInitializedListenerInterface.onGameInitialized((eventObject as! GameInitializedEvent))
     }
 }

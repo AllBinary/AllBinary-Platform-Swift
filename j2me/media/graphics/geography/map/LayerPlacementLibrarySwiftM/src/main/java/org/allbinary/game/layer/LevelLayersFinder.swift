@@ -51,7 +51,7 @@ open class LevelLayersFinder: JObject {
         var integerCanBeNull: Int32! = nil
         var cachedIntegerCanBeNull: Int32! = nil
         while (self.enumerationUtil.hasMoreElements(enumeration)) {
-            layerHashtableCanBeNull = (hashtable.get((self.enumerationUtil.nextElement(enumeration) as! JObject)) as! ABHashtable)
+            layerHashtableCanBeNull = (hashtable.get(jAsObject(self.enumerationUtil.nextElement(enumeration))) as! ABHashtable)
             integerCanBeNull = jUnboxValue(layerHashtableCanBeNull.get((Layer.ID as! JObject)), Int32.self)
             cachedIntegerCanBeNull = smallIntegerSingletonFactory.getAt(integerCanBeNull.intValue())
             if (!list.contains(jBoxValue(cachedIntegerCanBeNull))) {

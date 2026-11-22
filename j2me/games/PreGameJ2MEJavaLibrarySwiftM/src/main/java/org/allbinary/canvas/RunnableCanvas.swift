@@ -109,12 +109,12 @@ open class RunnableCanvas: MyCanvas, RunnableInterface {
     }
     
 
-    open override func setThread(_ thread: Thread!) {
+    open func setThread(_ thread: Thread!) {
         self.thread = thread
     }
     
 
-    open override func setRunning(_ running: Bool) {
+    open func setRunning(_ running: Bool) {
         self.running = running
         if (!self.running) {
             self.thread = NullThread.NULL_THREAD
@@ -126,7 +126,7 @@ open class RunnableCanvas: MyCanvas, RunnableInterface {
     }
     
 
-    @discardableResult open override func isRunning() -> Bool {
+    @discardableResult open func isRunning() -> Bool {
         if (self.thread === self.currentThread) {
             return self.running
         } else {
@@ -247,7 +247,7 @@ open class RunnableCanvas: MyCanvas, RunnableInterface {
     }
     
 
-    open override func run() {
+    open func run() {
         self.setCurrentThread()
     }
     
