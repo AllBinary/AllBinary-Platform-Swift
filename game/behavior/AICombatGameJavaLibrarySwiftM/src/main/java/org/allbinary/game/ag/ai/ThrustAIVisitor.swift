@@ -45,7 +45,7 @@ open class ThrustAIVisitor: Visitor {
             let basicAI: BasicAI! = (anyType as! BasicAI)
             basicAI.processKeyAI(Canvas.UP)
         } /* catch (Exception e): a thrown Java exception stops the program */
-        return self.TRUE
+        return jBoxValue(self.TRUE)
     }
 }
 

@@ -58,7 +58,7 @@ open class UpKeyEventHandler: UpKeyEventHandlerBase {
             var index: Int32 = UpKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpKeyEventHandler.instanceArray[index].removeAllListeners()
+            UpKeyEventHandler.instanceArray[index]!.removeAllListeners()
             }
         }
     }
@@ -70,7 +70,7 @@ open class UpKeyEventHandler: UpKeyEventHandlerBase {
             var index: Int32 = UpKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpKeyEventHandler.instanceArray[index].removeListenerSingleThreaded(eventListenerInterface)
+            UpKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface)
             }
         }
     }
@@ -82,7 +82,7 @@ open class UpKeyEventHandler: UpKeyEventHandlerBase {
             var index: Int32 = UpKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpKeyEventHandler.instanceArray[index].removeListener(eventListenerInterface)
+            UpKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface)
             }
         }
     }

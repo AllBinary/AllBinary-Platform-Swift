@@ -46,7 +46,7 @@ open class NumberOnOwnGroupSequenceAIFactory: JObject {
             var index: Int32 = 0
             while (index < integerArray.length) {
                 defer { index &+= 1 }
-            let integerCanBeNull: JObject! = hashtable.get((integerArray[index] as! JObject))
+            let integerCanBeNull: JObject! = hashtable.get(jBoxValue(integerArray[index]))
             if (integerCanBeNull == nil) {
                 break
             }

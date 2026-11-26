@@ -191,10 +191,10 @@ open class ScrollCurrentSelectionForm: ScrollSelectionForm, UpdateMyFontInterfac
                     delta = self.paintUnselectedItem(graphics, index, item, deltaX &+ diffX, deltaY)
                     self.paintable.paint(graphics, index, deltaX &+ diffX, deltaY)
                 }
-                if (self.formType == formTypeFactory.TEMP_HORIZONTAL_FORM) {
-                } else if (self.formType == formTypeFactory.HORIZONTAL_FORM) {
+                if (self.formType === formTypeFactory.TEMP_HORIZONTAL_FORM) {
+                } else if (self.formType === formTypeFactory.HORIZONTAL_FORM) {
                     deltaX = delta
-                } else if (self.formType == formTypeFactory.VERTICAL_CENTER_FORM) {
+                } else if (self.formType === formTypeFactory.VERTICAL_CENTER_FORM) {
                     deltaY = delta
                 } else {
                     jThrow(JException("Exception", formTypeFactory.UNK))

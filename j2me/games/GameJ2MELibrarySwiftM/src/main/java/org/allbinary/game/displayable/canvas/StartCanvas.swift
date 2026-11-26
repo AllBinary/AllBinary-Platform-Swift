@@ -221,7 +221,7 @@ open class StartCanvas: RunnableCanvas, GameCanvasRunnableInterface, MenuListene
     @discardableResult open func getCustomCommands() -> JArray<JObject?>! {
         let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
         if (J2MEUtil.isHTML()) {
-            let commandArray: JArray<JObject?>! = JArray<JObject?>([gameCommandsFactory.START_COMMAND, HighScoreCommands.getInstance().DISPLAY, GameInputMappingCanvas.DISPLAY, gameCommandsFactory.DISPLAY_ABOUT])
+            let commandArray: JArray<JObject?>! = JArray<JObject?>(([gameCommandsFactory.START_COMMAND, HighScoreCommands.getInstance().DISPLAY, GameInputMappingCanvas.DISPLAY, gameCommandsFactory.DISPLAY_ABOUT] as [Any?]).map { jAsObject($0) })
             return commandArray
         } else {
             let commandList: BasicArrayList! = BasicArrayListD()

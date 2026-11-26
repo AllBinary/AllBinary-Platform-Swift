@@ -43,7 +43,7 @@ open class SequenceAI: ArrayAI {
     
 
     open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
-        self.getArtificialIntelligenceInterface()[self.index].processAI(allBinaryLayerManager)
+        self.getArtificialIntelligenceInterface()[self.index]!.processAI(allBinaryLayerManager)
     }
     
 
@@ -81,7 +81,7 @@ open class SequenceAI: ArrayAI {
         let stringBuffer: StringMaker! = StringMaker()
         stringBuffer.append(super.toString())
         stringBuffer.append(" Selected AI: ")
-        stringBuffer.append(StringUtil.getInstance().toString(self.getSelectedArtificialIntelligenceInterface()))
+        stringBuffer.append(StringUtil.getInstance().toString((self.getSelectedArtificialIntelligenceInterface() as? JObject)))
         return stringBuffer.toString()
     }
 }

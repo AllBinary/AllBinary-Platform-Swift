@@ -44,7 +44,7 @@ open class AbFileOutputStream: FileOutputStream {
     }
     
 
-    public init(_ name: String!, _ append: Bool) {
+    public override init(_ name: String!, _ append: Bool) {
         super.init(name, append)
     }
 }

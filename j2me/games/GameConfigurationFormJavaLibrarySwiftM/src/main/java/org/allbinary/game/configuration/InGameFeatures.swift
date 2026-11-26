@@ -36,10 +36,10 @@ open class InGameFeatures: Init {
     open override func `init`() {
         let LABEL: String! = "Screen Buttons"
         let orientationData: OrientationData! = OrientationData.getInstance()
-        let exclusiveOrientationSensorVector: BasicArrayList! = (GameFeatureChoiceGroups.getExclusiveInstance().get().get((orientationData.ORIENTATION_SENSOR_INPUT as! JObject)) as! BasicArrayList)
+        let exclusiveOrientationSensorVector: BasicArrayList! = (GameFeatureChoiceGroups.getExclusiveInstance().get().get(jBoxString(orientationData.ORIENTATION_SENSOR_INPUT)) as! BasicArrayList)
         let inGameFeatureChoiceGroups: InGameFeatureChoiceGroups! = InGameFeatureChoiceGroups.getExclusiveInstance()
         if (exclusiveOrientationSensorVector != nil) {
-            let inGameExclusiveOrientationSensorVectorCanBeNull: JObject! = inGameFeatureChoiceGroups.get().get((orientationData.ORIENTATION_SENSOR_INPUT as! JObject))
+            let inGameExclusiveOrientationSensorVectorCanBeNull: JObject! = inGameFeatureChoiceGroups.get().get(jBoxString(orientationData.ORIENTATION_SENSOR_INPUT))
             if (inGameExclusiveOrientationSensorVectorCanBeNull == nil) {
                 self.addToInGameMenu()
             } else {
@@ -76,7 +76,7 @@ open class InGameFeatures: Init {
         if (features.isFeature(touchFeatureFactory.SHOW_SCREEN_BUTTONS) || features.isFeature(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS) || features.isFeature(touchFeatureFactory.HIDE_SCREEN_BUTTONS)) {
             return true
         }
-        let exclusiveOrientationSensorVector: BasicArrayList! = (GameFeatureChoiceGroups.getExclusiveInstance().get().get((OrientationData.getInstance().ORIENTATION_SENSOR_INPUT as! JObject)) as! BasicArrayList)
+        let exclusiveOrientationSensorVector: BasicArrayList! = (GameFeatureChoiceGroups.getExclusiveInstance().get().get(jBoxString(OrientationData.getInstance().ORIENTATION_SENSOR_INPUT)) as! BasicArrayList)
         if (exclusiveOrientationSensorVector != nil) {
             return true
         }

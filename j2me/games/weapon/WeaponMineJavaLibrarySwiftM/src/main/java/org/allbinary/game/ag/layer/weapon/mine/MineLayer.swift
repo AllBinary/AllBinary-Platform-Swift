@@ -46,7 +46,7 @@ open class MineLayer: SimpleWeaponLayer {
 
     open override func initXYZ(_ x: Int32, _ y: Int32, _ z: Int32) {
         self.setPosition(x &+ 5, y &+ 5, z)
-        self.viewPositionEventHandler.addListener((self as! AllBinaryLayer))
+        self.viewPositionEventHandler.addListener(self)
         SecondaryPlayerQueueFactory.getInstance().add(DropWeaponSound.getInstance())
     }
     

@@ -262,7 +262,7 @@ open class InputMappingHelpPaintable: HelpPaintable {
                 while (index2 < size2) {
                     defer { index2 &+= 1 }
                 input = (list.objectArray[index2] as! Input)
-                graphics.setColor(self.inputBasicColorArray[index]![index2].intValue())
+                graphics.setColor(self.inputBasicColorArray[index]![index2]!.intValue())
                 graphics.drawString(input.getName(), halfWidth &- beginWidth &+ deltaX, y, self.anchor)
                 deltaX = deltaX &+ self.updateMyFontProperties.inputDeltaXArray[index]![index2]
                 sep = self.updateMyFontProperties.sepArray[index]![index2]

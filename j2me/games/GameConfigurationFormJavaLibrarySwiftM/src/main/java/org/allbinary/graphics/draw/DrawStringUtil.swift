@@ -78,7 +78,7 @@ open class DrawStringUtil: JObject {
                         currentLength = size &- offset
                     }
                     if (offset &+ currentLength != size) {
-                        while (currentLength > 0 && stringArray[index]!.charAt(offset &+ currentLength) != UInt16((" " as Unicode.Scalar).value)) {
+                        while (currentLength > 0 && JString.charAt(stringArray[index], offset &+ currentLength) != UInt16((" " as Unicode.Scalar).value)) {
                             currentLength &-= 1
                         }
                         if (currentLength <= 4) {

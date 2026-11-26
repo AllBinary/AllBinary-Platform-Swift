@@ -33,11 +33,11 @@ open class BasicRandomAIFactory: JObject, ArtificialIntelligenceInterfaceFactory
     
 
     @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
-        let visitor: Visitor! = (hashtable.get((BasicAI.AI_VISITOR as! JObject)) as! Visitor)
+        let visitor: Visitor! = (hashtable.get(jBoxValue(BasicAI.AI_VISITOR)) as! Visitor)
         if (visitor == nil) {
             jThrow(JException("Exception", "No Visitor Provided"))
         }
-        let inputProbability: InputProbability! = (hashtable.get((InputProbability.INPUT_PROBABILITY as! JObject)) as! InputProbability)
+        let inputProbability: InputProbability! = (hashtable.get(jBoxValue(InputProbability.INPUT_PROBABILITY)) as! InputProbability)
         return BasicRandomAI(ownerLayerInterface, gameInput, inputProbability, visitor)
     }
 }

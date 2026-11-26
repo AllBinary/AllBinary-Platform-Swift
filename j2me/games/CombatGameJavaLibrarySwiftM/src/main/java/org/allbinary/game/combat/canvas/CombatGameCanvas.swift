@@ -74,7 +74,7 @@ open class CombatGameCanvas: AllBinaryGameCanvas {
         do {
             var index: Int32 = CombatGameCanvas.basicLayerProcessor.length
             while (jPreDecrement(&index) >= 0) {
-            CombatGameCanvas.basicLayerProcessor[index].process(self.gameLayerManager)
+            CombatGameCanvas.basicLayerProcessor[index]!.process(self.gameLayerManager)
             }
         }
     }
@@ -85,7 +85,7 @@ open class CombatGameCanvas: AllBinaryGameCanvas {
         do {
             var index: Int32 = CombatGameCanvas.basicLayerProcessor.length
             while (jPreDecrement(&index) >= 0) {
-            CombatGameCanvas.basicLayerProcessor[index].getList().clear()
+            CombatGameCanvas.basicLayerProcessor[index]!.getList().clear()
             }
         }
         GroupLayerManagerListener.getInstance().clear()

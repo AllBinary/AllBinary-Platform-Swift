@@ -90,9 +90,15 @@ for attempt in $(seq 1 40); do
     changed=false
     while IFS= read -r module; do
         jar="$(ls "$(cygpath -u "$repository")/org/allbinary/$module"/*/"$module"-*.jar 2>/dev/null | grep -v sources | head -1)"
-        # A module of a sub-group (GameResourceNoneJavaLibrarySwift is org.allbinary.game)
+        # A module of another group under org: org.<name> (GraphBaseJavaLibrarySwift is org.graph) and the org.allbinary
+        # sub-groups up to three levels (GameResourceNoneJavaLibrarySwift is org.allbinary.game, ImageJ2MEJavaLibrarySwift
+        # org.allbinary.media.image). A glob over every group of the repository takes minutes, so the search stays in org.
         if [ -z "$jar" ]; then
-            jar="$(ls "$(cygpath -u "$repository")/org/allbinary"/*/"$module"/*/"$module"-*.jar 2>/dev/null | grep -v sources | head -1)"
+            repository_unix="$(cygpath -u "$repository")"
+            for pattern in "org/*" "org/allbinary/*" "org/allbinary/*/*" "org/allbinary/*/*/*"; do
+                jar="$(ls "$repository_unix"/$pattern/"$module"/*/"$module"-*.jar 2>/dev/null | grep -v sources | head -1)"
+                [ -n "$jar" ] && break
+            done
         fi
         # The microemu module microemu_midp_for_polyglotSwift is the org.microemu artifact microemu-midp-for-polyglotSwift
         if [ -z "$jar" ]; then

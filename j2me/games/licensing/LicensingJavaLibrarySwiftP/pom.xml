@@ -14,8 +14,12 @@
 
     <modules>
 
+        <!-- Swift: the Android resources (R) are not built, like the pom generator's Android rule left them, and
+             ClientInformationMobileLicensingRegistration (its AllBinaryAndroidGameInitializationUtil uses AndroidResources)
+             is Android code that needs them. In Swift the R nested classes are top level classes named like the
+             AndroidResources fields (drawable, id...), so AndroidResources does not compile. No other module needs them. -->
         <!--<module>../../platform/android/AndroidResourcesTempJavaLibrarySwiftM</module>-->
-        <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibrarySwiftM</module>
+        <!--<module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibrarySwiftM</module>-->
 
         <!--
         <module>../../../../../workingswift/allbinary_src/licensing/LicenseRegistrationJavaLibrarySwiftM</module>

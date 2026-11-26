@@ -48,7 +48,7 @@ open class AbCrypt: JObject, CryptInterface {
     
 
     open func `init`(_ keyAsString: String!) {
-        let commonStrings: CommonStrings! = CommonStrings.getInstance()
+        _ = CommonStrings.getInstance()
         do {
             do {
                 Security.addProvider(BouncyCastleProvider())

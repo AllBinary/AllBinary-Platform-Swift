@@ -58,7 +58,7 @@ open class UpGameKeyEventHandler: UpGameKeyEventHandlerBase {
             var index: Int32 = UpGameKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpGameKeyEventHandler.instanceArray[index].removeAllListeners()
+            UpGameKeyEventHandler.instanceArray[index]!.removeAllListeners()
             }
         }
     }
@@ -70,7 +70,7 @@ open class UpGameKeyEventHandler: UpGameKeyEventHandlerBase {
             var index: Int32 = UpGameKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpGameKeyEventHandler.instanceArray[index].removeListenerSingleThreaded(eventListenerInterface)
+            UpGameKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface)
             }
         }
     }
@@ -82,7 +82,7 @@ open class UpGameKeyEventHandler: UpGameKeyEventHandlerBase {
             var index: Int32 = UpGameKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            UpGameKeyEventHandler.instanceArray[index].removeListener(eventListenerInterface)
+            UpGameKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface)
             }
         }
     }

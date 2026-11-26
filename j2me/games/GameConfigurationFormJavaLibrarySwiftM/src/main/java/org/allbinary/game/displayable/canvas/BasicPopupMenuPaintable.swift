@@ -96,7 +96,7 @@ open class BasicPopupMenuPaintable: Paintable, UpdateMyFontInterface {
             BORDER = MyFontProcessor.defaultCharWidth(font) &* 2
         }
         self.BORDER = BORDER
-        self.heightOffset = self.rectangle.getHeight() &- (font.getHeight() &* BasicPopupMenuPaintable.NAME.length())
+        self.heightOffset = self.rectangle.getHeight() &- (font.getHeight() &* JString.length(BasicPopupMenuPaintable.NAME))
         if (OpenGLFeatureUtil.getInstance().isAnyThreed()) {
             self.heightOffset = self.heightOffset &- font.getHeight() &+ 2
             if (AndroidUtil.isAndroid()) {

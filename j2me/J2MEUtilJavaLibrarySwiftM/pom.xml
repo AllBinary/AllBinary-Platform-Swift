@@ -54,9 +54,12 @@
             <!-- AllBinary Platform Version End -->
 
         </dependency>
+        <!-- Swift: LogJ2ME instead of the Java LogNoPlatform. The Log variants define the same classes (ABHashtable,
+             ABStack, StdUtil...), which Java links as one class from the one variant on the class path, but Swift makes a
+             type per module: the J2ME modules use LogJ2ME, so J2MEUtil must too or ABHashtable is two unrelated types. -->
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>LogNoPlatformJavaLibrarySwift</artifactId>
+            <artifactId>LogJ2MEJavaLibrarySwift</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->

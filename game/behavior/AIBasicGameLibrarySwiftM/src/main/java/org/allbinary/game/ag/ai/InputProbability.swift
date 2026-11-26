@@ -68,7 +68,7 @@ open class InputProbability: JObject {
 
     @discardableResult open func toHashtable() -> ABHashtable! {
         let hashtable: ABHashtable! = StdUtil.getInstance().createHashtable()
-        hashtable.put(InputProbability.INPUT_PROBABILITY, self)
+        hashtable.put(jBoxValue(InputProbability.INPUT_PROBABILITY), self)
         return hashtable
     }
 }

@@ -985,7 +985,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
         self.logUtil.putF(self.commonStrings.START, self, self.commonStrings.LOAD)
         let hashtable: ABHashtable! = self.getLoadStateHashtable()
         if (hashtable != nil && hashtable.size() > 0) {
-            let levelAsString: String! = jUnboxString(hashtable.get((GameInfo.LEVEL_NAME as! JObject)))
+            let levelAsString: String! = jUnboxString(hashtable.get(jBoxString(GameInfo.LEVEL_NAME)))
             let level: Int32 = Int32(levelAsString)!.intValue()
             let gameInfo: GameInfo! = self.gameLayerManager.getGameInfo()
             gameInfo.setCurrentLevel(level)
@@ -1008,7 +1008,7 @@ open class AllBinaryGameCanvas: RunnableCanvas, AllBinaryGameCanvasInterface, Ga
     @discardableResult open func getCurrentStateHashtable() -> ABHashtable! {
         let hashtable: ABHashtable! = self.stdUtil.createHashtable()
         let level: Int32 = self.gameLayerManager.getGameInfo().getCurrentLevel()
-        hashtable.put(jBoxString(GameInfo.LEVEL_NAME.toString()), jBoxString(jstr(level)))
+        hashtable.put(jBoxString(GameInfo.LEVEL_NAME), jBoxString(jstr(level)))
         self.logUtil.putF(StringMaker().append("End: ").append(self.stringUtil.toString(hashtable)).toString(), self, "getCurrentStateHashtable")
         return hashtable
     }

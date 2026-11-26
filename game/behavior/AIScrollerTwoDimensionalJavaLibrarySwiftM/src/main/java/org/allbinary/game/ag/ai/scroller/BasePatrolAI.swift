@@ -50,7 +50,7 @@ open class BasePatrolAI: BasicAI {
     public init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
         super.init(ownerLayerInterface, gameInput)
         self.initFields()
-        self.maxDistance = jUnboxValue(hashtable.get(BasePatrolAI.MAX_DISTANCE), Int32.self)
+        self.maxDistance = jUnboxValue(hashtable.get(jBoxValue(BasePatrolAI.MAX_DISTANCE)), Int32.self)
         self.currentDistance = self.maxDistance.intValue()
     }
     

@@ -56,7 +56,7 @@ open class LayerInterfaceFactory: JObject {
     @discardableResult open func getNexInstance(_ hashtable: ABHashtable!, _ x: Int32, _ y: Int32, _ z: Int32) -> AllBinaryLayer! {
         let commonStrings: CommonStrings! = CommonStrings.getInstance()
         self.logUtil.putF(StringMaker().append(self.HASHTABLE_LABEL).append(StringUtil.getInstance().toString(hashtable)).toString(), self, commonStrings.GET_INSTANCE)
-        let typeInteger: Int32! = jUnboxValue(hashtable.get((Layer.ID as! JObject)), Int32.self)
+        let typeInteger: Int32! = jUnboxValue(hashtable.get(jBoxValue(Layer.ID)), Int32.self)
         let layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface! = (self.list.objectArray[typeInteger.intValue() - 1] as Any as? LayerInterfaceFactoryInterface)
         return layerInterfaceFactoryInterface.getNextInstance(hashtable, x, y, z)
     }

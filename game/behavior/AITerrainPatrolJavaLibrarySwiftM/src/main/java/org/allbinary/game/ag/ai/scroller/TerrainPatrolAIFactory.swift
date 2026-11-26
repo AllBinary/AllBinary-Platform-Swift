@@ -31,7 +31,7 @@ open class TerrainPatrolAIFactory: JObject, ArtificialIntelligenceInterfaceFacto
     
 
     @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
-        hashtable.put(BasePatrolAI.MAX_DISTANCE, jBoxValue(SmallIntegerSingletonFactory.getInstance().getAt(220)))
+        hashtable.put(jBoxValue(BasePatrolAI.MAX_DISTANCE), jBoxValue(SmallIntegerSingletonFactory.getInstance().getAt(220)))
         return TerrainPatrolAI(hashtable, ownerLayerInterface, gameInput)
     }
 }

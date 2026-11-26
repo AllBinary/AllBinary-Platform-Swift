@@ -38,7 +38,7 @@ open class CollidableDestroyableDamageableBehavior: CollidableBaseBehavior {
     
 
     @discardableResult open override func isCollision(_ ownerLayer: CollidableCompositeLayer!, _ collisionLayer: CollidableCompositeLayer!) -> Bool {
-        if (ownerLayer.getGroupInterface()[0] != collisionLayer.getGroupInterface()[0]) {
+        if (ownerLayer.getGroupInterface()[0] !== collisionLayer.getGroupInterface()[0]) {
             return super.isCollision(ownerLayer, collisionLayer)
         }
         return false

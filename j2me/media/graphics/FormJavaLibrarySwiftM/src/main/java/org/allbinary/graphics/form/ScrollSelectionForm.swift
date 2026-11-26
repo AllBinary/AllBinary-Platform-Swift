@@ -174,7 +174,7 @@ open class ScrollSelectionForm: PaintableForm {
             var index: Int32 = 0
             while (index < size) {
                 defer { index &+= 1 }
-            nextItem = (self.get(index) as! ABCustomItem)
+            nextItem = self.get(index)
             if (nextItem === item) {
                 return index
             }
@@ -225,17 +225,17 @@ open class ScrollSelectionForm: PaintableForm {
                 self.logUtil.putF(stringBuffer.toString(), self, ScrollSelectionForm.GET_SELECTED_INDEX)
                 return index
             }
-            if (self.formType == formTypeFactory.HORIZONTAL_FORM) {
+            if (self.formType === formTypeFactory.HORIZONTAL_FORM) {
                 dx = dx &+ width &+ self.border
                 if (dx > self.rectangle.getMaxX()) {
                     break
                 }
-            } else if (self.formType == formTypeFactory.VERTICAL_CENTER_FORM) {
+            } else if (self.formType === formTypeFactory.VERTICAL_CENTER_FORM) {
                 dy = dy &+ height &+ self.border
                 if (dy > self.rectangle.getMaxY()) {
                     break
                 }
-            } else if (self.formType == formTypeFactory.NULL_FORM_TYPE) {
+            } else if (self.formType === formTypeFactory.NULL_FORM_TYPE) {
             } else {
                 jThrow(JException("Exception", formTypeFactory.UNK))
             }
@@ -251,19 +251,19 @@ open class ScrollSelectionForm: PaintableForm {
             return -1
         }
         var index: Int32 = self.getSelectedIndex()
-        if (self.formType == formTypeFactory.HORIZONTAL_FORM || self.formType == formTypeFactory.TEMP_HORIZONTAL_FORM) {
+        if (self.formType === formTypeFactory.HORIZONTAL_FORM || self.formType === formTypeFactory.TEMP_HORIZONTAL_FORM) {
             if (gameKeyCode == Canvas.RIGHT) {
                 index &+= 1
             } else if (gameKeyCode == Canvas.LEFT) {
                 index &-= 1
             }
-        } else if (self.formType == formTypeFactory.VERTICAL_CENTER_FORM) {
+        } else if (self.formType === formTypeFactory.VERTICAL_CENTER_FORM) {
             if (gameKeyCode == Canvas.DOWN) {
                 index &+= 1
             } else if (gameKeyCode == Canvas.UP) {
                 index &-= 1
             }
-        } else if (self.formType == formTypeFactory.NULL_FORM_TYPE) {
+        } else if (self.formType === formTypeFactory.NULL_FORM_TYPE) {
         } else {
             jThrow(JException("Exception", formTypeFactory.UNK))
         }

@@ -30,9 +30,9 @@ open class TextItemVisitor: Visitor {
     @discardableResult open override func visit(_ anyType: JObject!) -> JObject! {
         let value: String! = jUnboxString(anyType)
         if (JString.length(value) < 2) {
-            return BooleanFactory.getInstance().TRUE
+            return jBoxValue(BooleanFactory.getInstance().TRUE)
         } else {
-            return BooleanFactory.getInstance().FALSE
+            return jBoxValue(BooleanFactory.getInstance().FALSE)
         }
     }
 }

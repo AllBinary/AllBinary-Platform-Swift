@@ -66,7 +66,7 @@ open class HudTimer: JObject {
 
     open func update() {
         let lastLowerTime: Int64 = self.hundredthTime
-        var currentTime: Int64 = ((self.modifier + self.gameTickTimeDelayHelper.startTime) - self.startTime)
+        var currentTime: Int64 = ((self.modifier &+ Int64(self.gameTickTimeDelayHelper.startTime)) - self.startTime)
         if (currentTime < 0) {
             currentTime = 0
         }

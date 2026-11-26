@@ -33,12 +33,12 @@ open class DiveAndDirectionalTrackingAIFactory: JObject, ArtificialIntelligenceI
     
 
     @discardableResult open func getInstance(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) -> ArtificialIntelligenceInterface! {
-        var visitorCanBeNull: JObject! = hashtable.get((BasicAI.AI_VISITOR as! JObject))
+        var visitorCanBeNull: JObject! = hashtable.get(jBoxValue(BasicAI.AI_VISITOR))
         if (visitorCanBeNull == nil) {
             visitorCanBeNull = ThrustAIVisitorFactory.getInstance()
         }
         let hashtable2: ABHashtable! = BasicProbabilityAIDataFactory().getInstance()
-        hashtable2.put(BasicAI.AI_VISITOR, LastKeyAIVisitorFactory.getInstance())
+        hashtable2.put(jBoxValue(BasicAI.AI_VISITOR), LastKeyAIVisitorFactory.getInstance())
         let artificialIntelligenceInterface: ArtificialIntelligenceInterface! = BasicRandomAIFactory().getInstance(hashtable2, ownerLayerInterface, gameInput)
         return DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, (visitorCanBeNull as! Visitor))
     }

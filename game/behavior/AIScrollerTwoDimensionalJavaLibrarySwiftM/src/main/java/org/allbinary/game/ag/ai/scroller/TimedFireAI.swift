@@ -46,7 +46,7 @@ open class TimedFireAI: BasicAI {
 
     open override func processAI(_ allBinaryLayerManager: AllBinaryLayerManager!) {
         let timeFiredInterface: TimeFiredInterface! = (self.getOwnerLayerInterface() as Any as? TimeFiredInterface)
-        if (self.maxFireDelayTimeHelper.isTime(GameTickTimeDelayHelperFactory.getInstance().startTime) && timeFiredInterface.getLastFireTime() + self.maxFireDelayTimeHelper.delay < self.maxFireDelayTimeHelper.getStartTime()) {
+        if (self.maxFireDelayTimeHelper.isTime(GameTickTimeDelayHelperFactory.getInstance().startTime) && timeFiredInterface.getLastFireTime() &+ Int64(self.maxFireDelayTimeHelper.delay) < self.maxFireDelayTimeHelper.getStartTime()) {
             super.processKeyAI(Canvas.KEY_NUM1)
             self.maxFireDelayTimeHelper.delay = self.delay
         }

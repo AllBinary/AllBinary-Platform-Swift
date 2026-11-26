@@ -58,7 +58,7 @@ open class DownKeyEventHandler: DownKeyEventHandlerBase {
             var index: Int32 = DownKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            DownKeyEventHandler.instanceArray[index].removeAllListeners()
+            DownKeyEventHandler.instanceArray[index]!.removeAllListeners()
             }
         }
     }
@@ -70,7 +70,7 @@ open class DownKeyEventHandler: DownKeyEventHandlerBase {
             var index: Int32 = DownKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            DownKeyEventHandler.instanceArray[index].removeListenerSingleThreaded(eventListenerInterface)
+            DownKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface)
             }
         }
     }
@@ -82,7 +82,7 @@ open class DownKeyEventHandler: DownKeyEventHandlerBase {
             var index: Int32 = DownKeyEventHandler.instanceArray.length &- 1
             while (index >= 0) {
                 defer { index &-= 1 }
-            DownKeyEventHandler.instanceArray[index].removeListener(eventListenerInterface)
+            DownKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface)
             }
         }
     }

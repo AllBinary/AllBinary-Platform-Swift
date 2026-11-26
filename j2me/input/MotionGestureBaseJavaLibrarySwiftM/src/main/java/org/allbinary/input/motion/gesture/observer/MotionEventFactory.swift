@@ -47,7 +47,7 @@ open class MotionEventFactory: JObject, AllBinaryEventObjectFactoryInterface {
         let inputFactory: InputFactory! = InputFactory.getInstance()
         let input: Input! = inputFactory.getInstanceById(jPostIncrement(&MotionEventFactory.index))
         if (input === inputFactory.NO_INPUT) {
-            return MotionGestureEvent(self.source, self.id, (TouchMotionGestureFactory.getInstance().NO_MOTION as! MotionGestureInput))
+            return MotionGestureEvent(self.source, self.id, TouchMotionGestureFactory.getInstance().NO_MOTION)
         } else {
             return MotionGestureEvent(self.source, self.id, (input as! MotionGestureInput))
         }

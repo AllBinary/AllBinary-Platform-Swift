@@ -66,7 +66,7 @@ open class MotionGestureToMotionGestureActionAssociation: JObject {
             var i: Int32 = size &- 1
             while (i >= 0) {
                 defer { i &-= 1 }
-            if (aList.objectArray[i] != self.list.objectArray[i]) {
+            if (aList.objectArray[i] !== self.list.objectArray[i]) {
                 return false
             }
             }

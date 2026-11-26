@@ -58,7 +58,7 @@ open class HorizontalScreenPatrolAI: BasicAI {
     public init(_ hashtable: ABHashtable!, _ ownerLayerInterface: AllBinaryLayer!, _ gameInput: GameInput!) {
         super.init(ownerLayerInterface, gameInput)
         self.initFields()
-        self.sound = (hashtable.get(HorizontalScreenPatrolAI.SOUND) as! Sound)
+        self.sound = (hashtable.get(jBoxValue(HorizontalScreenPatrolAI.SOUND)) as! Sound)
         if (self.sound == nil) {
             jThrow(JException("Exception", "No Sound Provided!!"))
         }

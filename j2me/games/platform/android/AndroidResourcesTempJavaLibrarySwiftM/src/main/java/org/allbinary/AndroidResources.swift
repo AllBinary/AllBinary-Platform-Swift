@@ -1,54 +1,33 @@
+// Generated Code Do Not Modify
+// package org.allbinary
 
-        /* Generated Code Do Not Modify */
-        package org.allbinary
+import J2SEForSwiftLibrary
+// import org.allbinary.game.testgamedemo.R
 
+open class AndroidResources: JObject {
+    fileprivate static let instance: AndroidResources! = AndroidResources()
+    public var drawable: drawable! = nil
+    public var id: id! = nil
+    public var layout: layout! = nil
+    public var raw: raw! = nil
+    public var string: string! = nil
 
+    private func initFields() {
+    self.drawable = drawable()
+    self.id = id()
+    self.layout = layout()
+    self.raw = raw()
+    self.string = string()
+    }
 
+    public override init() {
+        super.init()
+        self.initFields()
+    }
+    
 
-        import java.lang.Object        
-        
-        
-        import kotlin.Array
-        import kotlin.reflect.KClass
-                    
-        
-import org.allbinary.game.testgamedemo.R
-
-open public class AndroidResources
-            : Object
-         {
-        
-companion object {
-            
-    private val instance: AndroidResources = AndroidResources()
-
-    open fun getInstance()
-        //nullable =  from not(true or (false and true)) = 
-: AndroidResources{
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidResources.instance
+    @discardableResult open class func getInstance() -> AndroidResources! {
+        return AndroidResources.instance
+    }
 }
-
-
-        }
-            
-            //Auto Generated
-            public constructor() : super()
-            {
-            }            
-        
-    var drawable: R.Companion.drawable = R.Companion.drawable()
-
-    var id: R.Companion.id = R.Companion.id()
-
-    var layout: R.Companion.layout = R.Companion.layout()
-
-    var raw: R.Companion.raw = R.Companion.raw()
-
-    var string: R.Companion.string = R.Companion.string()
-
-}
-                
-            
 

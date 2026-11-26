@@ -178,9 +178,11 @@
             <!-- AllBinary Platform Version End -->
         </dependency>
 
+        <!-- Swift: BasicPlayer instead of BasicPlayerMIDP2 (not built for Swift, remarked in GameJ2MELibrarySwiftP). This
+             platform module has no sources; it gathers the platform dependencies. -->
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>BasicPlayerMIDP2JavaLibrarySwift</artifactId>
+            <artifactId>BasicPlayerJavaLibrarySwift</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->

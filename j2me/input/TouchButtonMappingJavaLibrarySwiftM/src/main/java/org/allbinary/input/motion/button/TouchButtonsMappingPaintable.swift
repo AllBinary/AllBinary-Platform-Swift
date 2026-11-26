@@ -87,7 +87,7 @@ open class TouchButtonsMappingPaintable: Paintable {
                 var rowIndex: Int32 = totalRows &- 1
                 while (rowIndex >= 0) {
                     defer { rowIndex &-= 1 }
-                self.paintableTable[index]![rowIndex].paint(graphics)
+                self.paintableTable[index]![rowIndex]!.paint(graphics)
                 }
             }
             }

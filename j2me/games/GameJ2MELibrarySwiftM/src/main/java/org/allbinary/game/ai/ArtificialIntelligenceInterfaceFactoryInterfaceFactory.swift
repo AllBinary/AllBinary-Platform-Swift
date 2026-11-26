@@ -46,7 +46,7 @@ open class ArtificialIntelligenceInterfaceFactoryInterfaceFactory: JObject {
     
 
     @discardableResult open func getInstanceFromCollection(_ hashtable: ABHashtable!) -> ArtificialIntelligenceInterfaceFactoryInterface! {
-        let typeInteger: Int32! = jUnboxValue(hashtable.get((BasicAI.ID as! JObject)), Int32.self)
+        let typeInteger: Int32! = jUnboxValue(hashtable.get(jBoxValue(BasicAI.ID)), Int32.self)
         let type: Int32 = typeInteger.intValue()
         let artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface! = (self.list.objectArray[type &- 1] as Any as? ArtificialIntelligenceInterfaceFactoryInterface)
         return artificialIntelligenceInterfaceFactoryInterface

@@ -282,7 +282,7 @@ open class GameMidlet: ProgressMidlet {
             gameAdState.getAdvertisements().startAll()
             let START_APP: String! = "startApp"
             self.logUtil.putF(self.commonStrings.START, self, START_APP)
-            let gameCanvasRunnableInterface: JObject! = self.allbinaryGameCanvasRunnableInterface
+            let gameCanvasRunnableInterface: JObject! = (self.allbinaryGameCanvasRunnableInterface as? JObject)
             if (gameCanvasRunnableInterface === NullGameCanvasRunnable.NULL_GAME_CANVAS_RUNNABLE) {
                 self.gameMidletStateFactory.setCurrentGameState(self.gameStateFactory.NO_GAME_STATE)
                 self.setDemo()
@@ -311,7 +311,7 @@ open class GameMidlet: ProgressMidlet {
             PreLogUtil.put(StringMaker().append(self.COMMAND_NAME).append(label).append(self.DISPLAYABLE).append(displayableAsString).toString(), self, self.COMMAND_ACTION)
             let gameCommandsFactory: GameCommandsFactory! = GameCommandsFactory.getInstance()
             let allbinaryGameCanvasRunnableInterface: GameCanvasRunnableInterface! = self.allbinaryGameCanvasRunnableInterface
-            let gameCanvasRunnableInterface: JObject! = allbinaryGameCanvasRunnableInterface
+            let gameCanvasRunnableInterface: JObject! = (allbinaryGameCanvasRunnableInterface as? JObject)
             if (command === gameCommandsFactory.SHOW_GAME_CANVAS) {
                 if (self.getDisplay().getCurrent() !== gameCanvasRunnableInterface && allbinaryGameCanvasRunnableInterface.getType() != NullGameCanvasRunnable.NULL_GAME_CANVAS_RUNNABLE.getType()) {
                     self.setDisplay((gameCanvasRunnableInterface as! Displayable))

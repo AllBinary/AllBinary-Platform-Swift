@@ -61,9 +61,11 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Swift: PartnerJ2ME instead of PartnerAndroid (not built for Swift, remarked in CombatGameJavaLibraryPOSwiftM).
+             Both variants have the one class PartnerIdentifierFileUtil. -->
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>PartnerAndroidJavaLibrarySwift</artifactId>
+            <artifactId>PartnerJ2MEJavaLibrarySwift</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->

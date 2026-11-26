@@ -28,8 +28,8 @@ open class VirtualKeyboardEventHandler: BasicEventHandler {
 
     // Each class has its own field initializers
     private func initFields() {
-    self.SHOW_EVENT = VirtualKeyboardEvent(BooleanFactory.getInstance().TRUE)
-    self.HIDE_EVENT = VirtualKeyboardEvent(BooleanFactory.getInstance().FALSE)
+    self.SHOW_EVENT = VirtualKeyboardEvent(jBoxValue(BooleanFactory.getInstance().TRUE))
+    self.HIDE_EVENT = VirtualKeyboardEvent(jBoxValue(BooleanFactory.getInstance().FALSE))
     }
     
 

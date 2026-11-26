@@ -69,9 +69,9 @@ open class InputPersistance: BasicPersitance {
     open func save(_ abeClientInformation: AbeClientInformationInterface!, _ hashtable: ABHashtable!) {
         PreLogUtil.put(StringMaker().append(self.persistanceStrings.NOT_SAVING).append(StringUtil.getInstance().toString(hashtable)).toString(), self, self.commonStrings.SAVE)
         let recordStore: RecordStore! = RecordStore.openRecordStore(self.getRecordId(abeClientInformation), true)
-        var gameActionInput: Input! = nil
+        var gameActionInput: Input! = nil; _ = gameActionInput
         var list: BasicArrayList! = nil
-        var input: Input! = nil
+        var input: Input! = nil; _ = input
         let inputObjectArray: JArray<JObject?>! = self.hashtableUtil.getKeysAsArray(hashtable)
         let size: Int32 = inputObjectArray.length
         do {

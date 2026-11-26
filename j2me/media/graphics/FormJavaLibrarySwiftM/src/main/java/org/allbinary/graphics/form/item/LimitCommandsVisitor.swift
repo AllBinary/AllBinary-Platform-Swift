@@ -44,9 +44,9 @@ open class LimitCommandsVisitor: Visitor {
         let command: Command! = (anyType as! Command)
         let booleanFactory: BooleanFactory! = BooleanFactory.getInstance()
         if (self.isNotSmallDisplay || command.getPriority() == 1 || command === GameCommandsFactory.getInstance().EXIT_COMMAND || command === GameCommandsFactory.getInstance().EXIT_WITHOUT_PROGRESS_COMMAND) {
-            return booleanFactory.TRUE
+            return jBoxValue(booleanFactory.TRUE)
         } else {
-            return booleanFactory.FALSE
+            return jBoxValue(booleanFactory.FALSE)
         }
     }
 }

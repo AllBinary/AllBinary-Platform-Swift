@@ -44,17 +44,17 @@ open class TextItemUserIdentifierVisitor: Visitor {
             let charValue: UInt16 = JString.charAt(value, 0)
             let stringValidationUtil: StringValidationUtil! = StringValidationUtil.getInstance()
             if (stringValidationUtil.isNumber(value)) {
-                return BooleanFactory.getInstance().TRUE
+                return jBoxValue(BooleanFactory.getInstance().TRUE)
             } else if (self.isLetter(charValue)) {
-                return BooleanFactory.getInstance().TRUE
+                return jBoxValue(BooleanFactory.getInstance().TRUE)
             } else {
                 do {
                     TextNotificationUtil.getInstance().fireError("Only Letters & Numbers Allowed")
                 } /* catch (Exception e): a thrown Java exception stops the program */
-                return BooleanFactory.getInstance().FALSE
+                return jBoxValue(BooleanFactory.getInstance().FALSE)
             }
         } else {
-            return BooleanFactory.getInstance().FALSE
+            return jBoxValue(BooleanFactory.getInstance().FALSE)
         }
     }
     

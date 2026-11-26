@@ -45,7 +45,9 @@
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibrarySwiftM</module>
         <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibrarySwiftM</module>
         -->
-        <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibrarySwiftM</module>
+        <!-- Swift: the J2SE rotation needs ImageJ2SEJavaLibrarySwift (java.awt image code), which is not built for Swift
+             (remarked in OtherGraphicsMediaLibrarySwiftP); AllBinaryImageAnimationRotation with ImageJ2ME is the rotation -->
+        <!--<module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibrarySwiftM</module>-->
         <!--<module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibrarySwiftM</module>-->
         <!--<module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibrarySwiftM</module>-->
 

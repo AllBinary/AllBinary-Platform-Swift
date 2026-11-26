@@ -112,7 +112,7 @@ open class WeaponLayer: MultiPlayerGameLayer, TickableInterface {
 
     open func setGroupInterfaces() {
         let basicGroupFactory: BasicGroupFactory! = BasicGroupFactory.getInstance()
-        if (self.sourceLayerInterface.getGroupInterface()[0] == basicGroupFactory.ENEMY) {
+        if (self.sourceLayerInterface.getGroupInterface()[0] === basicGroupFactory.ENEMY) {
             self.setGroupInterface(basicGroupFactory.ENEMY_ARRAY)
         } else {
             self.setGroupInterface(self.sourceLayerInterface.getGroupInterface())

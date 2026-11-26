@@ -8,7 +8,7 @@ open class AppNameLicensingAdConfiguration: AdConfiguration {
     
 
     public init() {
-        super.init(JArray<JObject?>([StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING]))
+        super.init(JArray<JObject?>(([StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING, StringUtil.getInstance().EMPTY_STRING] as [Any?]).map { jAsObject($0) }))
     }
 }
 

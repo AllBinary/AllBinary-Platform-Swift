@@ -64,7 +64,7 @@ open class CollidableWeaponBehavior: CollidableDestroyableDamageableBehavior {
 
     @discardableResult open override func isCollision(_ ownerLayer: CollidableCompositeLayer!, _ collisionLayer: CollidableCompositeLayer!) -> Bool {
         if (self.collisionHelper.isCollidable(collisionLayer)) {
-            if (ownerLayer.getGroupInterface()[0] != collisionLayer.getGroupInterface()[0]) {
+            if (ownerLayer.getGroupInterface()[0] !== collisionLayer.getGroupInterface()[0]) {
                 return super.isCollision(ownerLayer, collisionLayer)
             }
         }
@@ -81,7 +81,7 @@ open class CollidableWeaponBehavior: CollidableDestroyableDamageableBehavior {
     @discardableResult open override func isCollisionInterface(_ ownerLayer: CollidableCompositeLayer!, _ collidableInterfaceCompositeInterface: CollidableInterfaceCompositeInterface!) -> Bool {
         if (self.collisionHelper.isCollidable((collidableInterfaceCompositeInterface as! CollidableCompositeLayer))) {
             let layerInterface: AllBinaryLayer! = (collidableInterfaceCompositeInterface as! AllBinaryLayer)
-            if (ownerLayer.getGroupInterface()[0] != layerInterface.getGroupInterface()[0]) {
+            if (ownerLayer.getGroupInterface()[0] !== layerInterface.getGroupInterface()[0]) {
                 if (self.layerCollisionUtil.isCollision(ownerLayer, layerInterface)) {
                     return true
                 }

@@ -43,15 +43,15 @@ open class TextItemNumberVisitor: Visitor {
         if (JString.length(value) < 2) {
             let stringValidationUtil: StringValidationUtil! = StringValidationUtil.getInstance()
             if (stringValidationUtil.isNumber(value)) {
-                return BooleanFactory.getInstance().TRUE
+                return jBoxValue(BooleanFactory.getInstance().TRUE)
             } else {
                 do {
                     TextNotificationUtil.getInstance().fireError("Numbers Only")
                 } /* catch (Exception e): a thrown Java exception stops the program */
-                return BooleanFactory.getInstance().FALSE
+                return jBoxValue(BooleanFactory.getInstance().FALSE)
             }
         } else {
-            return BooleanFactory.getInstance().FALSE
+            return jBoxValue(BooleanFactory.getInstance().FALSE)
         }
     }
 }

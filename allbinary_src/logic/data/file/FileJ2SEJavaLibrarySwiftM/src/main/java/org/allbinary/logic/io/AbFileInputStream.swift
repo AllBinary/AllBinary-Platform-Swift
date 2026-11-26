@@ -25,7 +25,7 @@ import J2SEForSwiftLibrary
 open class AbFileInputStream: FileInputStream {
     
 
-    public init(_ name: String!) {
+    public override init(_ name: String!) {
         super.init(name)
     }
     

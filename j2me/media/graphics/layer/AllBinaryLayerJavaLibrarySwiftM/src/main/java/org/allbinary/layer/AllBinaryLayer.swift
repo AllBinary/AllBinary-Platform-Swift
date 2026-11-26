@@ -54,7 +54,7 @@ open class AllBinaryLayer: Layer, LayerInterface {
     public init(_ name: String!, _ rectangle: Rectangle!, _ viewPosition: ViewPositionBase!) {
         super.init(rectangle.getWidth(), rectangle.getHeight())
         self.initFields()
-        let localName: String! = nil
+        let localName: String!
         localName = StringMaker().append(name).append(CommonSeps.getInstance().COLON).append(Integer.toHexString(TsUtil.getInstance().hashCode(self))).toString()
         self.name = localName
         let point: GPoint! = rectangle.getPoint()

@@ -43,7 +43,7 @@ open class SaveHighScoreRunnable: JObject, Runnable {
     
 
     open func run() {
-        let logUtil: LogUtil! = LogUtil.getInstance()
+        _ = LogUtil.getInstance()
         do {
             if (self.isLast) {
                 self.textBox.submit()

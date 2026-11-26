@@ -187,17 +187,17 @@ open class AbFile: JObject, AbFileInterface {
     
 
     @discardableResult open func listFiles() -> JArray<JObject?>! {
-        return (self.file.listFiles() as! JArray<JObject?>)
+        return jArrayCast(self.file.listFiles(), JObject.self)
     }
     
 
     @discardableResult open func listFilesFileNameFilter(_ filter: FilenameFilter!) -> JArray<JObject?>! {
-        return (self.file.listFiles(filter) as! JArray<JObject?>)
+        return jArrayCast(self.file.listFiles(filter), JObject.self)
     }
     
 
     @discardableResult open func listFilesFileFilter(_ filter: FileFilter!) -> JArray<JObject?>! {
-        return (self.file.listFiles(filter) as! JArray<JObject?>)
+        return jArrayCast(self.file.listFiles(filter), JObject.self)
     }
     
 

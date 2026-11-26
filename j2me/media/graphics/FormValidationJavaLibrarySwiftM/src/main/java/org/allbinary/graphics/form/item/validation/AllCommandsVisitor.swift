@@ -28,7 +28,7 @@ open class AllCommandsVisitor: Visitor {
     
 
     @discardableResult open override func visit(_ anyType: JObject!) -> JObject! {
-        return BooleanFactory.getInstance().TRUE
+        return jBoxValue(BooleanFactory.getInstance().TRUE)
     }
 }
 

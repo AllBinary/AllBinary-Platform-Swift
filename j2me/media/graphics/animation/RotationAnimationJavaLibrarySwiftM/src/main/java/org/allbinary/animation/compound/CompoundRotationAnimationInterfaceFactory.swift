@@ -34,12 +34,12 @@ open class CompoundRotationAnimationInterfaceFactory: CompoundAnimationInterface
     
 
     @discardableResult open override func createArray(_ size: Int32) -> JArray<Animation?>! {
-        return JArray<RotationAnimation?>(size, nil)
+        return JArray<Animation?>(size, nil)
     }
     
 
     @discardableResult open override func createAnimation(_ animationInterfaceArray: JArray<Animation?>!) -> Animation! {
-        return CompoundRotationAnimation((animationInterfaceArray as! JArray<RotationAnimation?>), self.animationBehaviorFactory.getOrCreateInstance())
+        return CompoundRotationAnimation(jArrayCast(animationInterfaceArray, RotationAnimation.self), self.animationBehaviorFactory.getOrCreateInstance())
     }
 }
 
